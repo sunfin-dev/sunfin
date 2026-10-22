@@ -919,14 +919,13 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
       duration: _kExpandDuration,
       curve: LeftSidebar.expandCurve,
       width: _isExpanded ? expandedWidth : PlexStyle.railCollapsedWidth,
-      // Collapsed on home, the rail takes the page's tint beside it and
-      // fades with it, so there is no seam; open, it is the theme's surface.
+      // On home the rail, open or collapsed, takes the page's tint beside it
+      // and fades with it, so there is no seam (user, 2026-10-22). Elsewhere
+      // it is the theme's surface.
       child: ValueListenableBuilder<Color?>(
         valueListenable: PlexStyle.pageTint,
         builder: (context, tint, child) => TweenAnimationBuilder<Color?>(
-          tween: ColorTween(
-            end: !_isExpanded && onHome && tint != null ? tint : surface,
-          ),
+          tween: ColorTween(end: onHome && tint != null ? tint : surface),
           duration: PlexStyle.tintDuration,
           curve: Curves.easeOut,
           builder: (context, color, child) =>
