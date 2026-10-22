@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'dart:collection';
 import 'dart:typed_data';
-import 'dart:ui' as ui;
 
 import 'package:flutter/widgets.dart';
+import 'package:http/http.dart' as http;
+import 'package:image/image.dart' as img;
+import 'package:server_core/server_core.dart' show serverImageHeaders;
 
 import 'plex_style.dart';
 
@@ -32,9 +34,10 @@ class PlexTintTween extends Tween<PlexTint> {
 /// The page tint Plex derives from the backdrop: region averages of the art,
 /// darkened until they read as a background.
 ///
-/// Samples the art the backdrop has just decoded for display, scaled down
-/// to 16x9 on the GPU: one tiny draw and a 576-byte readback, with no second
-/// fetch that could queue behind the posters.
+/// Asks the server for a 32-pixel-wide PNG of the same backdrop (about a
+/// kilobyte, fetched directly so it never queues behind the posters) and
+/// averages it on the CPU. A GPU route (downscale or readback of the decoded
+/// art) never completed on the Shield, which left every page grey.
 abstract final class PlexBackdropTint {
   /// Relative luminance the tint is darkened to (Plex's page measures
   /// around 0.04-0.06 in the reference screenshots).
@@ -60,64 +63,71 @@ abstract final class PlexBackdropTint {
     return tint;
   }
 
-  /// The tint for [url] from its decoded [art], or null when the art can't
-  /// be read (the caller keeps [PlexTint.fallback]). Disposes [art].
-  static Future<PlexTint?> fromImage(String url, ui.Image art) {
+  /// The tint for [url], or null when the art can't be read (the caller
+  /// keeps [PlexTint.fallback]).
+  static Future<PlexTint?> resolve(String url) {
     final hit = cached(url);
-    if (hit != null) {
-      art.dispose();
-      return Future.value(hit);
-    }
-    final pending = _inFlight[url];
-    if (pending != null) {
-      art.dispose();
-      return pending;
-    }
-    return _inFlight[url] = _compute(url, art).whenComplete(
+    if (hit != null) return Future.value(hit);
+    return _inFlight[url] ??= _compute(url).whenComplete(
       () => _inFlight.remove(url),
     );
   }
 
-  static Future<PlexTint?> _compute(String url, ui.Image art) async {
-    ui.Image? image;
-    try {
-      image = await _downscale(art);
-    } finally {
-      art.dispose();
+  static Future<PlexTint?> _compute(String url) async {
+    final sampleUrl = _sampleUrl(url);
+    if (sampleUrl == null) return null;
+    final response = await http
+        .get(sampleUrl, headers: serverImageHeaders)
+        .timeout(_fetchTimeout);
+    if (response.statusCode != 200) return null;
+    final decoded = img.decodeImage(response.bodyBytes);
+    if (decoded == null) return null;
+    final pixels = img
+        .copyResize(
+          decoded,
+          width: _sampleWidth,
+          height: _sampleHeight,
+          interpolation: img.Interpolation.average,
+        )
+        .getBytes(order: img.ChannelOrder.rgba);
+    final bytes = ByteData.sublistView(pixels);
+    final left = _darken(_average(bytes, (x, y) => x < _leftColumns));
+    final bottom = _darken(_average(bytes, (x, y) => y >= _bottomFirstRow));
+    if (left == null && bottom == null) return null;
+    final tint = PlexTint(
+      left ?? bottom ?? PlexStyle.background,
+      bottom ?? left ?? PlexStyle.background,
+    );
+    _cache[url] = tint;
+    while (_cache.length > _cacheSize) {
+      _cache.remove(_cache.keys.first);
     }
-    try {
-      final bytes = await image.toByteData(format: ui.ImageByteFormat.rawRgba);
-      if (bytes == null) return null;
-      final left = _darken(_average(bytes, (x, y) => x < _leftColumns));
-      final bottom = _darken(_average(bytes, (x, y) => y >= _bottomFirstRow));
-      if (left == null && bottom == null) return null;
-      final tint = PlexTint(
-        left ?? bottom ?? PlexStyle.background,
-        bottom ?? left ?? PlexStyle.background,
-      );
-      _cache[url] = tint;
-      while (_cache.length > _cacheSize) {
-        _cache.remove(_cache.keys.first);
-      }
-      return tint;
-    } finally {
-      image.dispose();
-    }
+    return tint;
   }
 
-  /// Squashes [art] to 16x9, which is all a region average needs.
-  static Future<ui.Image> _downscale(ui.Image art) {
-    final recorder = ui.PictureRecorder();
-    Canvas(recorder).drawImageRect(
-      art,
-      Rect.fromLTWH(0, 0, art.width.toDouble(), art.height.toDouble()),
-      Rect.fromLTWH(0, 0, _sampleWidth.toDouble(), _sampleHeight.toDouble()),
-      Paint()..filterQuality = FilterQuality.medium,
-    );
-    final picture = recorder.endRecording();
-    return picture
-        .toImage(_sampleWidth, _sampleHeight)
-        .whenComplete(picture.dispose);
+  static const _fetchTimeout = Duration(seconds: 5);
+
+  /// The same Jellyfin image at sample size, as PNG. Null for art that isn't
+  /// a server image (e.g. a TMDB URL), which keeps the fallback page.
+  static Uri? _sampleUrl(String url) {
+    final uri = Uri.tryParse(url);
+    if (uri == null || !uri.path.contains('/Images/')) return null;
+    final query = Map<String, String>.of(uri.queryParameters)
+      ..removeWhere(
+        (k, _) => const {
+          'maxwidth',
+          'maxheight',
+          'width',
+          'height',
+          'fillwidth',
+          'fillheight',
+          'quality',
+          'format',
+        }.contains(k.toLowerCase()),
+      )
+      ..['maxWidth'] = '32'
+      ..['format'] = 'png';
+    return uri.replace(queryParameters: query);
   }
 
   /// Average of the sample pixels [include] accepts, weighted by alpha and

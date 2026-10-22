@@ -1,5 +1,3 @@
-import 'dart:ui' as ui;
-
 import 'package:flutter/material.dart';
 
 import '../../util/image_fetch_priority.dart';
@@ -107,26 +105,16 @@ class _PlexBackdropState extends State<PlexBackdrop> {
     final stream = provider.resolve(createLocalImageConfiguration(context));
     final listener = ImageStreamListener(
       (info, _) {
-        // Our own handle on the decoded art: the tint is sampled from it, so
-        // it never waits behind the poster downloads for a second fetch.
-        final art = info.image.clone();
         info.dispose();
         _stopLoading();
-        if (!mounted || _wanted != url) {
-          art.dispose();
-          return;
-        }
+        if (!mounted || _wanted != url) return;
         final cached = PlexBackdropTint.cached(url);
         setState(() {
           _shownUrl = url;
           _shownProvider = provider;
           if (cached != null) _applyTint(cached);
         });
-        if (cached != null) {
-          art.dispose();
-        } else {
-          _resolveTint(url, art);
-        }
+        if (cached == null) _resolveTint(url);
       },
       onError: (_, _) {
         _stopLoading();
@@ -144,12 +132,14 @@ class _PlexBackdropState extends State<PlexBackdrop> {
     stream.addListener(listener);
   }
 
-  /// Tints from the art just decoded for display; [art] is disposed here.
-  void _resolveTint(String url, ui.Image art) {
-    PlexBackdropTint.fromImage(url, art).then((tint) {
+  void _resolveTint(String url) {
+    PlexBackdropTint.resolve(url).then((tint) {
       if (!mounted || _shownUrl != url) return;
       setState(() => _applyTint(tint ?? PlexTint.fallback));
-    }, onError: (Object _) {});
+    }, onError: (Object e) {
+      // A failed sample only costs the tint; say why in the log.
+      debugPrint('[PlexTint] $url: $e');
+    });
   }
 
   void _stopLoading() {
