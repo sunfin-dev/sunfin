@@ -566,17 +566,20 @@ class _NavigationLayoutState extends State<NavigationLayout>
               final reserved = showRail ? PlexStyle.railCollapsedWidth : 0.0;
               return Stack(
                 children: [
-                  ValueListenableBuilder<bool>(
-                    valueListenable: _railExpanded,
-                    builder: (context, expanded, child) => AnimatedPositioned(
+                  ListenableBuilder(
+                    listenable: Listenable.merge([
+                      _railExpanded,
+                      LeftSidebar.plexExpandedWidthNotifier,
+                    ]),
+                    builder: (context, child) => AnimatedPositioned(
                       duration: LeftSidebar.expandDuration,
                       curve: LeftSidebar.expandCurve,
                       top: 0,
                       bottom: 0,
                       left: !showRail
                           ? 0
-                          : expanded
-                          ? PlexStyle.railExpandedWidth
+                          : _railExpanded.value
+                          ? LeftSidebar.plexExpandedWidthNotifier.value
                           : PlexStyle.railCollapsedWidth,
                       width: math.max(0, constraints.maxWidth - reserved),
                       child: child!,

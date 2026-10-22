@@ -84,6 +84,12 @@ class LeftSidebar extends StatefulWidget {
   static const expandDuration = _kExpandDuration;
   static const expandCurve = Curves.easeInOut;
 
+  /// Plex mode: how wide the open rail is. It fits the longest label the
+  /// rail shows (a long library name widens it), so the layout reads it here
+  /// to slide the content by the same amount.
+  static final ValueNotifier<double> plexExpandedWidthNotifier =
+      ValueNotifier<double>(PlexStyle.railExpandedWidth);
+
   /// Set by [NavigationLayout] so its content can move with this rail.
   final ValueNotifier<bool>? expandedNotifier;
 
@@ -311,8 +317,85 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
     LeftSidebar.railWidthNotifier.value = !PlexStyle.enabled
         ? 0
         : _isExpanded
-        ? PlexStyle.railExpandedWidth
+        ? LeftSidebar.plexExpandedWidthNotifier.value
         : PlexStyle.railCollapsedWidth;
+  }
+
+  // Row geometry around a label in the open rail: 18 padding each side, the
+  // 32 icon slot and a 12 gap (see _SidebarItem); the profile row adds the
+  // same 80 around the user's name (margins, avatar, gap).
+  static const _plexLabelChrome = 80.0;
+  static const _plexLabelMargin = 10.0;
+  String _plexWidthKey = '';
+
+  /// Plex mode: every label the open rail can show, as _buildContent does.
+  List<String> _plexRailLabels(AppLocalizations l10n) {
+    final kidsMode = _kidsMode;
+    final seerrPrefs = GetIt.instance<SeerrPreferences>();
+    return [
+      l10n.search,
+      l10n.home,
+      if (!kidsMode && _prefs.get(UserPreferences.showLibrariesInToolbar))
+        for (final lib in _navLibraries) lib.name,
+      if (_prefs.get(UserPreferences.showShuffleButton)) l10n.shuffle,
+      if (_prefs.get(UserPreferences.showGenresButton)) l10n.genres,
+      if (_prefs.get(UserPreferences.showFavoritesButton)) l10n.favorites,
+      if (_showLiveTvButton) l10n.liveTv,
+      if (_prefs.get(UserPreferences.enableFolderView)) l10n.folders,
+      if (!kidsMode && _prefs.get(UserPreferences.showSyncPlayButton))
+        l10n.syncPlay,
+      if (!kidsMode && _prefs.get(UserPreferences.showSeerrButton))
+        seerrPrefs.labelOrDefault(l10n.seerr),
+      if (DownloadsNavSlot.isOffered()) l10n.savedMedia,
+      if (FriendsNavSlot.isOffered() && _friendsAvailable) l10n.friends,
+      if (_prefs.get(UserPreferences.showServerMessagesButton))
+        l10n.serverMessages,
+      l10n.settings,
+    ];
+  }
+
+  /// Plex mode: the open rail's width, measured from its longest label with
+  /// the font it is drawn in, never wider than 40% of the screen.
+  double _plexExpandedWidth() {
+    final l10n = AppLocalizations.of(context);
+    final labels = _plexRailLabels(l10n);
+    final userName = _userRepo.currentUser?.name ?? '';
+    final key = '${labels.join('\u0000')}\u0001$userName';
+    if (key == _plexWidthKey) return LeftSidebar.plexExpandedWidthNotifier.value;
+
+    final base = DefaultTextStyle.of(context).style;
+    final scaler = MediaQuery.textScalerOf(context);
+    double measure(String text, FontWeight weight) {
+      final painter = TextPainter(
+        text: TextSpan(
+          text: text,
+          style: base.copyWith(fontSize: 14, fontWeight: weight),
+        ),
+        textDirection: TextDirection.ltr,
+        maxLines: 1,
+        textScaler: scaler,
+      )..layout();
+      final width = painter.width;
+      painter.dispose();
+      return width;
+    }
+
+    var widest = measure(userName, FontWeight.w600);
+    for (final label in labels) {
+      widest = math.max(widest, measure(label, FontWeight.w500));
+    }
+    final width = (widest + _plexLabelChrome + _plexLabelMargin).clamp(
+      PlexStyle.railCollapsedWidth,
+      MediaQuery.sizeOf(context).width * 0.4,
+    );
+    _plexWidthKey = key;
+    // Published after the frame: listeners rebuild the layout.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      LeftSidebar.plexExpandedWidthNotifier.value = width;
+      _publishRailState();
+    });
+    return width;
   }
 
   void _onUserViewsChanged() {
@@ -829,12 +912,11 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
   /// and expanded. It no longer floats over the page: navigation_layout.dart
   /// puts the content beside it, so nothing scrolls under the icons.
   Widget _buildPlexRail() {
+    final expandedWidth = _plexExpandedWidth();
     return AnimatedContainer(
       duration: _kExpandDuration,
       curve: LeftSidebar.expandCurve,
-      width: _isExpanded
-          ? PlexStyle.railExpandedWidth
-          : PlexStyle.railCollapsedWidth,
+      width: _isExpanded ? expandedWidth : PlexStyle.railCollapsedWidth,
       color: AppColorScheme.surface.withValues(alpha: 1),
       child: ClipRect(
         child: FocusScope(
@@ -1115,6 +1197,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                       _SidebarItem(
                         key: ValueKey('sidebar-library-${lib.id}'),
                         icon: plexLibraryIcon(lib.collectionType),
+                        iconBuilder: plexLibraryIconBuilder(lib.collectionType),
                         label: lib.name,
                         baseColor: nextMainSidebarColor(),
                         focusNode: _libraryFocusNode(lib.id),

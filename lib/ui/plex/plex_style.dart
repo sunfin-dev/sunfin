@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
@@ -36,9 +37,9 @@ abstract final class PlexStyle {
   /// Collapsed rail: icons only (Plex: ~80 px of 1920, icons centred at 40).
   static const railCollapsedWidth = 40.0 * _k;
 
-  /// Expanded rail with labels: just wide enough for the longest label
-  /// ("Favorites"/"TVShows" end ~205 px of 1920) plus a margin (user,
-  /// 2026-10-22: Plex's ~400 px felt twice too wide).
+  /// Expanded rail: the starting guess only. The rail measures its labels
+  /// and fits the longest one (LeftSidebar.plexExpandedWidthNotifier); the
+  /// user found Plex's fixed ~400 px twice too wide (2026-10-22).
   static const railExpandedWidth = 145.0;
 
   // Home layout contract (plex_home_header.dart, plex_backdrop.dart and the
@@ -94,6 +95,32 @@ abstract final class PlexStyle {
 /// Plex's sidebar icons are thin outlines; Material Symbols drawn at this
 /// weight match them (plain Material Icons ignore it).
 const double plexIconWeight = 300;
+
+/// The Movies icon the user picked (round 2, option 3): Plex's film strip
+/// with a middle frame line and two sprocket ticks per half. Drawn black and
+/// recoloured, so it follows the row's colour like the font icons.
+const _plexMoviesSvg =
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'
+    '<g fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" '
+    'stroke-linejoin="round">'
+    '<rect x="3.5" y="3.5" width="17" height="17" rx="1.5"/>'
+    '<path d="M7.5 3.5v17M16.5 3.5v17M3.5 12h17"/>'
+    '<path d="M3.5 6.4h4M3.5 9.2h4M3.5 14.8h4M3.5 17.6h4'
+    'M16.5 6.4h4M16.5 9.2h4M16.5 14.8h4M16.5 17.6h4"/>'
+    '</g></svg>';
+
+Widget plexMoviesIcon(double size, Color color) => SvgPicture.string(
+  _plexMoviesSvg,
+  width: size,
+  height: size,
+  colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+);
+
+/// Sidebar icon builder for libraries drawn from SVG rather than the icon
+/// font; null when [plexLibraryIcon] covers the type.
+Widget Function(double size, Color color)? plexLibraryIconBuilder(
+  String? collectionType,
+) => (collectionType ?? '').toLowerCase() == 'movies' ? plexMoviesIcon : null;
 
 /// Sidebar icon per library type, as in Plex: a film strip for movies, a
 /// monitor on a stand for shows, a note for music.
