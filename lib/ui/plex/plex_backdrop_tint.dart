@@ -68,9 +68,11 @@ abstract final class PlexBackdropTint {
   static Future<PlexTint?> resolve(String url) {
     final hit = cached(url);
     if (hit != null) return Future.value(hit);
-    return _inFlight[url] ??= _compute(url).whenComplete(
-      () => _inFlight.remove(url),
-    );
+    // A block body on purpose: `=> _inFlight.remove(url)` would hand
+    // whenComplete this very future to wait for, and it never completed.
+    return _inFlight[url] ??= _compute(url).whenComplete(() {
+      _inFlight.remove(url);
+    });
   }
 
   static Future<PlexTint?> _compute(String url) async {

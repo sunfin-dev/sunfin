@@ -31,9 +31,11 @@ abstract final class PlexHeaderCast {
     final hit = cached(item);
     if (hit != null) return Future.value(hit);
     final key = _key(item);
-    return _pending[key] ??= _fetch(item, key).whenComplete(
-      () => _pending.remove(key),
-    );
+    // A block body on purpose: `=> _pending.remove(key)` would hand
+    // whenComplete this very future to wait for, and it never completed.
+    return _pending[key] ??= _fetch(item, key).whenComplete(() {
+      _pending.remove(key);
+    });
   }
 
   static Future<List<String>> _fetch(AggregatedItem item, String key) async {
