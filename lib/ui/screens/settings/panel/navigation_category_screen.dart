@@ -70,6 +70,15 @@ class _NavigationCategoryScreenState extends State<_NavigationCategoryScreen> {
           _SectionHeader(l10n.appearance),
           adaptiveListSection(
             children: [
+              // Fork: device-local, so not pushed with the personalization sync.
+              if (PlatformDetection.isTV)
+                SwitchPreferenceTile(
+                  preference: UserPreferences.plexMode,
+                  title: 'Plex style',
+                  subtitle:
+                      'Plex-like sidebar, home header and posters. Needs the left sidebar.',
+                  icon: Icons.auto_awesome_mosaic_outlined,
+                ),
               EnumPreferenceTile<NavbarPosition>(
                 preference: UserPreferences.navbarPosition,
                 title: l10n.navigationStyle,

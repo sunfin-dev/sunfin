@@ -87,6 +87,9 @@ import 'home_view_model.dart';
 import '../../widgets/seerr/seerr_genre_label.dart';
 import '../../widgets/skeleton/skeleton_home_row.dart';
 import '../../widgets/skeleton/skeleton_shimmer.dart';
+import '../../plex/plex_backdrop.dart';
+import '../../plex/plex_home_header.dart';
+import '../../plex/plex_style.dart';
 
 Color get _homeBackground => AppColorScheme.background;
 
@@ -95,6 +98,18 @@ const _kHomeStartThreshold = 20.0;
 
 /// Room for the title, subtitle and gaps that sit under classic card artwork.
 const _classicCardMetadataHeight = 50.0;
+
+/// Plex mode: x of the first poster's left edge, which the header text column
+/// lines up with (112 px on the 1920 wide Plex reference).
+const _kPlexPosterLeft = 56.0;
+
+/// Plex mode: row title line height and its gap to the posters.
+const _kPlexRowTitleHeight = 20.0;
+const _kPlexRowTitleGap = 12.0;
+
+/// Plex mode: row title top to the next row title top (462 px in the Plex
+/// reference).
+const _kPlexRowPitch = 231.0;
 
 /// How far a focused card grows past the top of its row. The scale is anchored
 /// at the bottom of the artwork, so all of the growth goes upward.
@@ -392,6 +407,11 @@ class _HomeShellState extends State<_HomeShell>
       AggregatedItem? item, {
         bool preserveBackground = false,
       }) {
+    // Plex keeps the last title in the header while focus is in the sidebar;
+    // only an empty home clears it.
+    if (item == null && PlexStyle.enabled && _viewModel.rows.isNotEmpty) {
+      return;
+    }
     _selectionDebounce?.cancel();
     _selectionDebounce = Timer(_selectionDelay, () {
       if (!mounted) return;
@@ -407,6 +427,14 @@ class _HomeShellState extends State<_HomeShell>
 
       if (!preserveBackground) {
         _backdropDebounce = Timer(_backdropDelay, () {
+          final episodeStill = _plexEpisodeStillUrl(item);
+          if (episodeStill != null) {
+            _backgroundService.setBackgroundUrl(
+              episodeStill,
+              context: BlurContext.browsing,
+            );
+            return;
+          }
           _backgroundService.setBackground(
             item,
             context: BlurContext.browsing,
@@ -416,6 +444,29 @@ class _HomeShellState extends State<_HomeShell>
 
       _maybePlayThemeMusic(item);
     });
+  }
+
+  /// Plex mode: the cards show the series poster, so the header backdrop
+  /// shows the episode's own thumbnail instead of the series art (user's
+  /// choice). Null when not an episode or it has no thumbnail.
+  String? _plexEpisodeStillUrl(AggregatedItem? item) {
+    if (item == null || !PlexStyle.enabled || item.type != 'Episode') {
+      return null;
+    }
+    final tag = item.primaryImageTag;
+    if (tag == null || tag.isEmpty) return null;
+    try {
+      return GetIt.instance<MediaServerClientFactory>()
+          .clientForServerOrActive(item.serverId)
+          .imageApi
+          .getPrimaryImageUrl(
+            item.id,
+            maxWidth: BackgroundService.backdropMaxWidth,
+            tag: tag,
+          );
+    } catch (_) {
+      return null;
+    }
   }
 
   void _maybeRegisterThemeMusic() {
@@ -528,6 +579,22 @@ class _HomeShellState extends State<_HomeShell>
     final useMakdBackdropFx =
         PlatformDetection.useMobileUi &&
         mediaBarMode == UserPreferences.mediaBarModeMakd;
+    final plexMode = PlexStyle.enabled;
+    final contentRows = _ContentRows(
+      key: _contentRowsKey,
+      viewModel: _viewModel,
+      mediaBarViewModel: _viewModel.mediaBarViewModel,
+      prefs: _userPrefs,
+      selectedItemNotifier: _selectedItemNotifier,
+      onItemSelected: onItemSelected,
+      isHoverPausedNotifier: _isHoverPausedNotifier,
+      isScrolledToTopNotifier: _isScrolledToTopNotifier,
+      onScrolledToTopChanged: (atTop) {
+        if (atTop != _isScrolledToTopNotifier.value) {
+          _isScrolledToTopNotifier.value = atTop;
+        }
+      },
+    );
 
     return PopScope(
       canPop: false,
@@ -545,35 +612,51 @@ class _HomeShellState extends State<_HomeShell>
             child: Stack(
               fit: StackFit.expand,
               children: [
-                if (backdropEnabled)
-                  ValueListenableBuilder<String?>(
-                    valueListenable: _backdropUrlNotifier,
-                    builder: (context, url, _) {
-                      return _Backdrop(
-                        url: url,
-                        blurAmount: blurAmount,
-                        useMakdBackdropFx: useMakdBackdropFx,
-                      );
-                    },
+                if (plexMode) ...[
+                  // Plex: sharp backdrop always (no blur, ignores the
+                  // backdrop pref), the header describing the focused item,
+                  // and the rows in their own viewport below the header.
+                  Positioned.fill(
+                    child: ValueListenableBuilder<String?>(
+                      valueListenable: _backdropUrlNotifier,
+                      builder: (context, url, _) => PlexBackdrop(url: url),
+                    ),
                   ),
-                const _GradientScrim(),
-                Positioned.fill(
-                  child: _ContentRows(
-                    key: _contentRowsKey,
-                    viewModel: _viewModel,
-                    mediaBarViewModel: _viewModel.mediaBarViewModel,
-                    prefs: _userPrefs,
-                    selectedItemNotifier: _selectedItemNotifier,
-                    onItemSelected: onItemSelected,
-                    isHoverPausedNotifier: _isHoverPausedNotifier,
-                    isScrolledToTopNotifier: _isScrolledToTopNotifier,
-                    onScrolledToTopChanged: (atTop) {
-                      if (atTop != _isScrolledToTopNotifier.value) {
-                        _isScrolledToTopNotifier.value = atTop;
-                      }
-                    },
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: PlexStyle.rowsTop,
+                    child: ValueListenableBuilder<AggregatedItem?>(
+                      valueListenable: _selectedItemNotifier,
+                      builder: (context, item, _) => PlexHomeHeader(
+                        item: item,
+                        leftInset: _kPlexPosterLeft,
+                      ),
+                    ),
                   ),
-                ),
+                  Positioned(
+                    top: PlexStyle.rowsTop,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    child: ClipRect(child: contentRows),
+                  ),
+                ] else ...[
+                  if (backdropEnabled)
+                    ValueListenableBuilder<String?>(
+                      valueListenable: _backdropUrlNotifier,
+                      builder: (context, url, _) {
+                        return _Backdrop(
+                          url: url,
+                          blurAmount: blurAmount,
+                          useMakdBackdropFx: useMakdBackdropFx,
+                        );
+                      },
+                    ),
+                  const _GradientScrim(),
+                  Positioned.fill(child: contentRows),
+                ],
                 if (seasonalEffect != UserPreferences.seasonalNone)
                   Positioned.fill(
                     child: SeasonalEffectsHost(
@@ -1006,6 +1089,9 @@ class _ContentRowsState extends State<_ContentRows>
   }
 
   double _desktopRowFocusTargetTop() {
+    // Plex: the rows viewport already starts below the header, so the
+    // focused row's title sits at its very top.
+    if (PlexStyle.enabled) return 0.0;
     if (!_scrollController.hasClients) return 0.0;
     final viewportHeight = _scrollController.position.viewportDimension;
     if (viewportHeight <= 0.0) return 0.0;
@@ -1174,6 +1260,9 @@ class _ContentRowsState extends State<_ContentRows>
   }
 
   bool _isMediaBarEnabledByMode() {
+    // Plex has no media bar; the header replaces it. Overridden here rather
+    // than in the synced preference.
+    if (PlexStyle.enabled) return false;
     final mode = widget.prefs.get(UserPreferences.mediaBarMode);
     return UserPreferences.isMediaBarModeEnabled(mode);
   }
@@ -1347,7 +1436,7 @@ class _ContentRowsState extends State<_ContentRows>
         ? (fullScreenRows ? 95.0 : (navbarIsTop ? 45.0 : 15.0))
         : (navbarIsTop ? (PlatformDetection.useMobileUi ? 60.0 : 80.0) : (fullScreenRows ? 0.0 : 80.0));
 
-    final listTopPadding = includeMediaBar || showInfoOverlay
+    final listTopPadding = PlexStyle.enabled || includeMediaBar || showInfoOverlay
         ? 0.0
         : _isHomeRowsStyleV2()
             ? (fullScreenRows ? (safeTop + navbarHeight + 8.0).clamp(56.0, double.infinity) : safeTop + navbarHeight + 8)
@@ -1377,7 +1466,10 @@ class _ContentRowsState extends State<_ContentRows>
       currentTop += _mediaBarHeight();
     }
     final focusedRowSpacing =
-        PlatformDetection.isTV && !fullScreenRows && !showInfoOverlay
+        PlatformDetection.isTV &&
+            !fullScreenRows &&
+            !showInfoOverlay &&
+            !PlexStyle.enabled
         ? _focusedRowExtraSpacing * 2
         : 0.0;
 
@@ -2174,11 +2266,17 @@ class _ContentRowsState extends State<_ContentRows>
   }
 
   bool _isHomeRowsStyleV2() {
+    // Plex mode lays rows out on the classic path with its own cards.
+    if (PlexStyle.enabled) return false;
     return widget.prefs.get(UserPreferences.homeRowsStyle) == HomeRowsStyle.v2;
   }
 
   bool _showHomeRowInfoOverlay() {
     if (PlatformDetection.useMobileUi) {
+      return false;
+    }
+    // The Plex header replaces the info overlay.
+    if (PlexStyle.enabled) {
       return false;
     }
     if (_isHomeRowsStyleV2()) {
@@ -2753,6 +2851,7 @@ class _ContentRowsState extends State<_ContentRows>
   double _staticRowHeight(int rowIndex) {
     final row = rowIndex < widget.viewModel.rows.length ? widget.viewModel.rows[rowIndex] : null;
     if (row == null) return 0.0;
+    if (_isPlexPosterRow(row)) return _kPlexRowPitch;
 
     final cached = _staticRowHeightCache[rowIndex];
     if (cached != null) {
@@ -3276,7 +3375,8 @@ class _ContentRowsState extends State<_ContentRows>
 
             final fullScreenRows =
                 !PlatformDetection.useMobileUi &&
-                widget.prefs.get(UserPreferences.fullScreenRows);
+                widget.prefs.get(UserPreferences.fullScreenRows) &&
+                !PlexStyle.enabled;
             if (fullScreenRows && _scrollController.hasClients) {
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 if (!mounted || !_scrollController.hasClients) {
@@ -3521,7 +3621,8 @@ class _ContentRowsState extends State<_ContentRows>
     final isDesktop = !PlatformDetection.isTV && !PlatformDetection.useMobileUi;
     final fullScreenRows =
         !PlatformDetection.useMobileUi &&
-        widget.prefs.get(UserPreferences.fullScreenRows);
+        widget.prefs.get(UserPreferences.fullScreenRows) &&
+        !PlexStyle.enabled;
 
     final shouldUpdateActiveRow = isDesktop &&
         _rowTopOffsets.isNotEmpty &&
@@ -3610,7 +3711,8 @@ class _ContentRowsState extends State<_ContentRows>
     final prefs = widget.prefs;
     final fullScreenRows =
         !PlatformDetection.useMobileUi &&
-        prefs.get(UserPreferences.fullScreenRows);
+        prefs.get(UserPreferences.fullScreenRows) &&
+        !PlexStyle.enabled;
     if (!fullScreenRows) return;
 
     if (_mediaBarFocusNode.hasFocus) return;
@@ -3783,7 +3885,9 @@ class _ContentRowsState extends State<_ContentRows>
   ) {
     final desktopScale = _desktopUiScaleFactor();
     final metadataScale = desktopScale;
-    if (row.isLoading) {
+    if (_isPlexPosterRow(row)) {
+      return _kPlexRowPitch;
+    } else if (row.isLoading) {
       return _libraryRowExtent(
         220 * metadataScale,
         metadataScale: metadataScale,
@@ -3850,7 +3954,8 @@ class _ContentRowsState extends State<_ContentRows>
 
     final fullScreenRows =
         !PlatformDetection.useMobileUi &&
-        prefs.get(UserPreferences.fullScreenRows);
+        prefs.get(UserPreferences.fullScreenRows) &&
+        !PlexStyle.enabled;
     if (fullScreenRows) {
       final desktopScale = _desktopUiScaleFactor();
       final viewportHeight = MediaQuery.sizeOf(context).height;
@@ -3898,7 +4003,8 @@ class _ContentRowsState extends State<_ContentRows>
     final desktopScale = _desktopUiScaleFactor();
     final fullScreenRows =
         !PlatformDetection.useMobileUi &&
-        prefs.get(UserPreferences.fullScreenRows);
+        prefs.get(UserPreferences.fullScreenRows) &&
+        !PlexStyle.enabled;
     final homeRowsStyle = prefs.get(UserPreferences.homeRowsStyle);
     final showInfoOverlay = prefs.get(UserPreferences.homeRowInfoOverlay);
     final navbarPosition = prefs.get(UserPreferences.navbarPosition);
@@ -3981,9 +4087,36 @@ class _ContentRowsState extends State<_ContentRows>
       row.rowType == HomeRowType.libraryTilesSmall ||
       row.rowType == HomeRowType.libraryTiles;
 
+  /// Plex mode: rows drawn as Plex's portrait poster rows. Calendars, genres,
+  /// studios, libraries, Live TV and music rows keep the upstream rendering.
+  bool _isPlexPosterRow(HomeRow row) {
+    if (!PlexStyle.enabled || row.isLoading || row.isAudio) return false;
+    if (_isSeerrFilterRow(row) || _isLatestMusicRow(row)) return false;
+    switch (row.id) {
+      case 'merged_calendar' ||
+          'radarr_calendar' ||
+          'sonarr_calendar' ||
+          'favorites_artists' ||
+          'favorites_albums' ||
+          'favorites_songs':
+        return false;
+    }
+    return switch (row.rowType) {
+      HomeRowType.resume ||
+      HomeRowType.nextUp ||
+      HomeRowType.latestMedia ||
+      HomeRowType.recentlyReleased ||
+      HomeRowType.favorites ||
+      HomeRowType.collections ||
+      HomeRowType.pluginDynamic => true,
+      _ => false,
+    };
+  }
+
   bool _fullScreenRowsEnabled(UserPreferences prefs) =>
       !PlatformDetection.useMobileUi &&
-      prefs.get(UserPreferences.fullScreenRows);
+      prefs.get(UserPreferences.fullScreenRows) &&
+      !PlexStyle.enabled;
 
   double _v2MetadataBudgetFor(HomeRow row, UserPreferences prefs) =>
       row.rowType == HomeRowType.libraryTiles
@@ -4019,7 +4152,8 @@ class _ContentRowsState extends State<_ContentRows>
   }) {
     final fullScreenRows =
         !PlatformDetection.useMobileUi &&
-        widget.prefs.get(UserPreferences.fullScreenRows);
+        widget.prefs.get(UserPreferences.fullScreenRows) &&
+        !PlexStyle.enabled;
     final isRowsV2 =
         widget.prefs.get(UserPreferences.homeRowsStyle) == HomeRowsStyle.v2;
     final overlayActive = showInfoOverlay && _infoRevealed;
@@ -4226,7 +4360,8 @@ class _ContentRowsState extends State<_ContentRows>
     final desktopScale = _desktopUiScaleFactor();
     final fullScreenRows =
         !PlatformDetection.useMobileUi &&
-        prefs.get(UserPreferences.fullScreenRows);
+        prefs.get(UserPreferences.fullScreenRows) &&
+        !PlexStyle.enabled;
     final navbarIsTop =
         widget.prefs.get(UserPreferences.navbarPosition) == NavbarPosition.top;
     final navbarIsLeft = !navbarIsTop;
@@ -4235,7 +4370,7 @@ class _ContentRowsState extends State<_ContentRows>
         : (navbarIsTop
               ? (PlatformDetection.useMobileUi ? 60.0 : 80.0)
               : (fullScreenRows ? 0.0 : 80.0));
-    final listTopPadding = includeMediaBar || showInfoOverlay
+    final listTopPadding = PlexStyle.enabled || includeMediaBar || showInfoOverlay
         ? 0.0
         : _isHomeRowsStyleV2()
         ? (fullScreenRows
@@ -4246,11 +4381,14 @@ class _ContentRowsState extends State<_ContentRows>
         navbarIsTop && PlatformDetection.isTV && !PlatformDetection.useMobileUi
         ? 48.0
         : 0.0;
-    final rowLeftInset =
-        (navbarIsLeft && !PlatformDetection.useMobileUi
-            ? 56.0
-            : tvTopNavbarInset) +
-        (!PlatformDetection.useMobileUi ? 16.0 : 0.0);
+    // Plex: the row's own label inset brings titles and posters to
+    // _kPlexPosterLeft, where the header text starts too.
+    final rowLeftInset = PlexStyle.enabled
+        ? _kPlexPosterLeft - _kHomeRowLabelInset
+        : (navbarIsLeft && !PlatformDetection.useMobileUi
+                  ? 56.0
+                  : tvTopNavbarInset) +
+              (!PlatformDetection.useMobileUi ? 16.0 : 0.0);
     final infoTopBasePadding =
         (!PlatformDetection.useMobileUi && navbarHeight == 0) ? 14.0 : 8.0;
     final infoTopPadding = safeTop + navbarHeight + infoTopBasePadding;
@@ -4286,6 +4424,16 @@ class _ContentRowsState extends State<_ContentRows>
       // below for that reads as blank space here. It only needs to clear the
       // navbar the rows scroll behind.
       neededBottomPadding = minBottomPadding + _bottomNavbarInset();
+    } else if (PlexStyle.enabled) {
+      // Plex: the rows viewport starts at rowsTop, and the last row must
+      // still be able to bring its title to the top of it.
+      final viewportHeight =
+          MediaQuery.of(context).size.height - PlexStyle.rowsTop;
+      final lastRowExtent = rowExtents.isEmpty ? 0.0 : rowExtents.last;
+      neededBottomPadding = (viewportHeight - lastRowExtent).clamp(
+        minBottomPadding,
+        double.infinity,
+      );
     } else {
       // Ensure the last row can be scrolled so its top sits just below the
       // info overlay, otherwise scroll targets clamp to maxScrollExtent and
@@ -4547,6 +4695,7 @@ class _ContentRowsState extends State<_ContentRows>
                               vertical: (PlatformDetection.isTV &&
                                       !fullScreenRows &&
                                       !showInfoOverlay &&
+                                      !PlexStyle.enabled &&
                                       rowIndex == activeRowIndex)
                                   ? _focusedRowExtraSpacing
                                   : 0,
@@ -4886,12 +5035,22 @@ class _ContentRowsState extends State<_ContentRows>
           (_classicCardMetadataHeight * metadataScale);
     }
 
-    final rowPadding = 5.0 * metadataScale;
-    final topPadding =
-        rowPadding + _focusHeadroom(maxImageHeight, cardExpansion);
-    final lockedRowHeight = maxCardHeight + topPadding + rowPadding;
+    // Plex: fixed portrait posters, no title text under them and no
+    // landscape expansion; the focus scale spills into the row's spare room.
+    final plexPosterRow = _isPlexPosterRow(row);
+    if (plexPosterRow) {
+      firstCardWidth = PlexStyle.posterWidth;
+    }
 
-    final subtitle = _rowSubtitle(row, l10n);
+    final rowPadding = plexPosterRow ? 0.0 : 5.0 * metadataScale;
+    final topPadding = plexPosterRow
+        ? 0.0
+        : rowPadding + _focusHeadroom(maxImageHeight, cardExpansion);
+    final lockedRowHeight = plexPosterRow
+        ? PlexStyle.posterHeight
+        : maxCardHeight + topPadding + rowPadding;
+
+    final subtitle = plexPosterRow ? null : _rowSubtitle(row, l10n);
     final hasSubtitle = subtitle != null && subtitle.isNotEmpty;
     final rowTotalHeight =
         lockedRowHeight + (hasSubtitle ? 18.0 : 0.0);
@@ -4923,6 +5082,7 @@ class _ContentRowsState extends State<_ContentRows>
       rowIndex: rowIndex,
       hasItems: row.items.isNotEmpty,
       height: rowTotalHeight,
+      plexPosterRow: plexPosterRow,
       child: LockedFocusRow<AggregatedItem>(
         key: _rowKey(rowIndex),
         items: row.items,
@@ -4931,9 +5091,13 @@ class _ContentRowsState extends State<_ContentRows>
           controller: _rowHorizontalController(rowIndex),
           height: lockedRowHeight,
           itemExtent: firstCardWidth,
-          itemSpacing: _rowItemSpacing(firstCardWidth, cardExpansion),
+          itemSpacing: plexPosterRow
+              ? PlexStyle.posterGap
+              : _rowItemSpacing(firstCardWidth, cardExpansion),
           leadingPadding: isRowsV2 ? _kHomeRowLabelInset : 0,
-          clipBehavior: (isRowsV2 || cardExpansion) ? Clip.none : Clip.hardEdge,
+          clipBehavior: (isRowsV2 || cardExpansion || plexPosterRow)
+              ? Clip.none
+              : Clip.hardEdge,
           padding: EdgeInsets.fromLTRB(
             _kHomeRowLabelInset,
             topPadding,
@@ -4979,7 +5143,8 @@ class _ContentRowsState extends State<_ContentRows>
             _revealAndScrollToPinnedInfo(ignoreScrollCooldown: forceReveal),
           );
           final canPreview = _supportsEpisodePreview(item);
-          if (!PlatformDetection.useMobileUi && canPreview) {
+          // Plex poster cards have no inline video preview.
+          if (!PlatformDetection.useMobileUi && canPreview && !plexPosterRow) {
             _schedulePreview(item, delay: _previewStartDelay, rowIndex: rowIndex);
           } else {
             _finishSharedPreview();
@@ -5015,6 +5180,44 @@ class _ContentRowsState extends State<_ContentRows>
           final requestScale = MediaQuery.devicePixelRatioOf(
             context,
           ).clamp(1.0, 2.0);
+          if (plexPosterRow) {
+            final image = _unfocusedCardImage(
+              row,
+              item,
+              prefs: prefs,
+              posterSize: posterSize,
+              useSeriesThumbs: useSeriesThumbs,
+              requestScale: requestScale,
+            );
+            return _PlexPosterCard(
+              imageUrl: image.url,
+              title: item.type == 'Episode'
+                  ? (item.seriesName ?? item.name)
+                  : item.name,
+              isFocused: isFocused,
+              playedPercentage: item.playedPercentage,
+              onTap: () {
+                _finishSharedPreview(releaseResources: true);
+                if (item.serverId == 'seerr') {
+                  _navigateToSeerrItem(context, item);
+                } else {
+                  context.push(
+                    Destinations.itemOrPhoto(
+                      item.id,
+                      serverId: item.serverId,
+                      type: item.type,
+                      channelId: item.channelId,
+                    ),
+                  );
+                }
+              },
+              onLongPress: () => showContextMenu(
+                context,
+                item,
+                onChanged: () => setState(() {}),
+              ),
+            );
+          }
           final imageApi = widget.viewModel.imageApiForServer(item.serverId);
           final previewKey = _previewKeyFor(item, rowIndex);
           final isV2MobileTouch = isRowsV2 && PlatformDetection.useMobileUi &&
@@ -5505,7 +5708,43 @@ class _ContentRowsState extends State<_ContentRows>
     required bool hasItems,
     required double height,
     required Widget child,
+    bool plexPosterRow = false,
   }) {
+    if (plexPosterRow) {
+      // Plex: the title line sits at the row's top, a fixed gap above the
+      // posters, with no subtitle or header controls.
+      return RepaintBoundary(
+        child: SingleChildScrollView(
+          physics: const NeverScrollableScrollPhysics(),
+          clipBehavior: Clip.none,
+          child: Column(
+            key: key,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  _kHomeRowLabelInset,
+                  0,
+                  8,
+                  _kPlexRowTitleGap,
+                ),
+                child: SizedBox(
+                  height: _kPlexRowTitleHeight,
+                  child: Text(
+                    title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: PlexStyle.rowTitleStyle,
+                  ),
+                ),
+              ),
+              child,
+            ],
+          ),
+        ),
+      );
+    }
     final isRowsV2 = _isHomeRowsStyleV2();
     final showHeaderControls =
         hasItems && PlatformDetection.useDesktopUi && !PlatformDetection.isTV;
@@ -5616,6 +5855,10 @@ class _ContentRowsState extends State<_ContentRows>
 
   static bool _isRowModern(HomeRow row, UserPreferences prefs) {
     if (prefs.get(UserPreferences.homeRowsStyle) != HomeRowsStyle.v2) {
+      return false;
+    }
+    // Plex mode lays rows out on the classic path with its own cards.
+    if (PlexStyle.enabled) {
       return false;
     }
     if (_isWideArtworkRow(row)) {
@@ -5996,6 +6239,20 @@ class _ContentRowsState extends State<_ContentRows>
     required double requestScale,
   }) {
     final imageApi = widget.viewModel.imageApiForServer(item.serverId);
+    if (_isPlexPosterRow(row)) {
+      // Plex: always the portrait poster; episodes take the series poster
+      // whatever the series-thumbnail preference says.
+      const aspect = 2 / 3;
+      final url = _cachedRowImageUrl(
+        item,
+        imageApi,
+        PlexStyle.posterHeight,
+        ImageType.poster,
+        true,
+        requestScale,
+      );
+      return (url: url, width: PlexStyle.posterWidth, aspectRatio: aspect);
+    }
     final isRowsV2 = _isRowModern(row, prefs);
     final isModernMyMediaStatic = _isModernMyMediaStatic(row, prefs);
     final rowImageType = _isSeerrFilterRow(row)
@@ -6468,6 +6725,107 @@ class _ContentRowsState extends State<_ContentRows>
     final tags = item.rawData['ImageTags'];
     if (tags is! Map) return null;
     return tags[imageType] as String?;
+  }
+}
+
+/// Plex mode home card: a portrait poster with no title under it. Focus
+/// scales it up from the centre and draws a thin white border; watch progress
+/// is a gold bar inside the poster's bottom edge.
+class _PlexPosterCard extends StatelessWidget {
+  final String? imageUrl;
+  final String title;
+  final bool isFocused;
+  final double? playedPercentage;
+  final VoidCallback onTap;
+  final VoidCallback onLongPress;
+
+  const _PlexPosterCard({
+    required this.imageUrl,
+    required this.title,
+    required this.isFocused,
+    required this.playedPercentage,
+    required this.onTap,
+    required this.onLongPress,
+  });
+
+  static const _focusDuration = Duration(milliseconds: 150);
+
+  Widget _placeholder() => Center(
+    child: Padding(
+      padding: const EdgeInsets.all(8),
+      child: Text(
+        title,
+        textAlign: TextAlign.center,
+        maxLines: 4,
+        overflow: TextOverflow.ellipsis,
+        style: const TextStyle(color: Colors.white70, fontSize: 12),
+      ),
+    ),
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    final radius = BorderRadius.circular(PlexStyle.posterRadius);
+    final progress = ((playedPercentage ?? 0) / 100).clamp(0.0, 1.0);
+    final url = imageUrl;
+    return GestureDetector(
+      onTap: onTap,
+      onLongPress: onLongPress,
+      child: AnimatedScale(
+        scale: isFocused ? PlexStyle.focusedPosterScale : 1.0,
+        duration: _focusDuration,
+        curve: Curves.easeOut,
+        child: Container(
+          width: PlexStyle.posterWidth,
+          height: PlexStyle.posterHeight,
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.08),
+            borderRadius: radius,
+          ),
+          foregroundDecoration: isFocused
+              ? BoxDecoration(
+                  borderRadius: radius,
+                  border: Border.all(
+                    color: Colors.white,
+                    width: PlexStyle.focusBorderWidth,
+                  ),
+                )
+              : null,
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              if (url == null)
+                _placeholder()
+              else
+                BoundedNetworkImage(
+                  imageUrl: url,
+                  maxWidth: MediaCard.decodeMaxWidthFor(2 / 3),
+                  errorBuilder: (_, _, _) => _placeholder(),
+                ),
+              if (progress > 0 && progress < 1)
+                Positioned(
+                  left: 4,
+                  right: 4,
+                  bottom: 5,
+                  height: 3,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(1.5),
+                    child: ColoredBox(
+                      color: Colors.black.withValues(alpha: 0.6),
+                      child: FractionallySizedBox(
+                        alignment: Alignment.centerLeft,
+                        widthFactor: progress,
+                        child: const ColoredBox(color: PlexStyle.accent),
+                      ),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 

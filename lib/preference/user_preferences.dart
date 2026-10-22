@@ -1727,6 +1727,15 @@ class UserPreferences extends ChangeNotifier {
     defaultValue: true,
   );
 
+  /// Plex-style layout (fork): libraries as top-level sidebar entries, a home
+  /// header that follows the focused item, and series art for episodes.
+  /// Deliberately neither synced nor scoped, so the stock Moonfin app signed
+  /// in to the same account never sees it.
+  static final plexMode = Preference(
+    key: 'pref_plex_mode',
+    defaultValue: true,
+  );
+
   static final navbarAlwaysExpanded = Preference(
     key: 'pref_navbar_always_expanded',
     defaultValue: false,

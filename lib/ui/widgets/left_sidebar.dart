@@ -29,6 +29,7 @@ import '../../util/platform_detection.dart';
 import '../navigation/destinations.dart';
 import '../navigation/home_refresh_bus.dart';
 import '../navigation/route_lifecycle_observer.dart';
+import '../plex/plex_style.dart';
 import 'navigation_layout.dart';
 import 'settings/settings_panel.dart';
 import '../screens/downloads/downloads_panel.dart';
@@ -87,6 +88,10 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
   final _viewsRepo = GetIt.instance<UserViewsRepository>();
   final _sidebarFocus = FocusScopeNode(debugLabel: 'LeftSidebar');
   final _homeFocusNode = FocusNode(debugLabel: 'LeftSidebarHome');
+  final _searchFocusNode = FocusNode(debugLabel: 'LeftSidebarSearch');
+  // Plex mode lists every library as its own row; keyed by library id so a
+  // row keeps its node (and focus) across library reloads.
+  final Map<String, FocusNode> _libraryFocusNodes = {};
   final _settingsFocusNode = FocusNode(debugLabel: 'LeftSidebarSettings');
   final _serverMessagesFocusNode = FocusNode(
     debugLabel: 'LeftSidebarServerMessages',
@@ -134,7 +139,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
       if (!_isMobile && !_isExpanded) {
         _expand();
       }
-      _homeFocusNode.requestFocus();
+      _activeEntryFocusNode().requestFocus();
     };
     _focusAvatarCallback = () {
       if (!mounted) return;
@@ -237,6 +242,10 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
     _focusHomeTimer?.cancel();
     _librariesReloadDebounce?.cancel();
     _homeFocusNode.dispose();
+    _searchFocusNode.dispose();
+    for (final node in _libraryFocusNodes.values) {
+      node.dispose();
+    }
     _settingsFocusNode.dispose();
     _serverMessagesFocusNode.dispose();
     _friendsFocusNode.dispose();
@@ -426,7 +435,8 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
               !identical(primary, _sidebarFocus) &&
               _isDescendantOf(primary, _sidebarFocus);
           if (!hasSpecificChild) {
-            _homeFocusNode.requestFocus();
+            // Plex lands on the section you are in, not always on Home.
+            _activeEntryFocusNode().requestFocus();
           }
         });
       }
@@ -496,9 +506,11 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
           }
         }
       }
+      // The top row hands up to the avatar: Search in Plex mode, else Home.
+      final topNode = PlexStyle.enabled ? _searchFocusNode : _homeFocusNode;
       if (PlatformDetection.isTV &&
           event.logicalKey == LogicalKeyboardKey.arrowUp &&
-          _homeFocusNode.hasFocus) {
+          topNode.hasFocus) {
         if (_profileFocusNode.context != null) {
           _profileFocusNode.requestFocus();
         }
@@ -588,6 +600,39 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
 
   bool _isActive(String route) {
     return _currentPath() == _normalizedPath(route);
+  }
+
+  /// Like [_isActive], for routes that carry a query (library routes do).
+  bool _isActiveRoute(String route) =>
+      _currentPath() == _normalizedPath(Uri.parse(route).path);
+
+  String _libraryRouteFor(AggregatedLibrary lib) => libraryRoute(
+    lib.id,
+    lib.collectionType,
+    lib.name,
+    serverId: lib.serverId,
+  );
+
+  FocusNode _libraryFocusNode(String id) => _libraryFocusNodes.putIfAbsent(
+    id,
+    () => FocusNode(debugLabel: 'LeftSidebarLibrary-$id'),
+  );
+
+  /// The row focus lands on when the rail opens: the section on screen in
+  /// Plex mode, otherwise Home as upstream does.
+  FocusNode _activeEntryFocusNode() {
+    if (PlexStyle.enabled) {
+      if (_isActive(Destinations.search)) return _searchFocusNode;
+      for (final lib in _navLibraries) {
+        final node = _libraryFocusNodes[lib.id];
+        if (node != null &&
+            node.context != null &&
+            _isActiveRoute(_libraryRouteFor(lib))) {
+          return node;
+        }
+      }
+    }
+    return _homeFocusNode;
   }
 
   @override
@@ -763,6 +808,25 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
           onKeyEvent: _onKeyEvent,
           child: Stack(
             children: [
+              // Plex mode: posters scroll left under the collapsed rail, so a
+              // soft scrim keeps its icons legible.
+              if (!_isExpanded && PlexStyle.enabled)
+                Positioned.fill(
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                          Colors.black.withValues(alpha: 0.7),
+                          Colors.black.withValues(alpha: 0.45),
+                          Colors.transparent,
+                        ],
+                        stops: const [0.0, 0.7, 1.0],
+                      ),
+                    ),
+                  ),
+                ),
               if (_isExpanded)
                 Align(
                   alignment: Alignment.centerLeft,
@@ -925,6 +989,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
     final navLibraries = _navLibraries;
     final showLibraries =
         !kidsMode && _prefs.get(UserPreferences.showLibrariesInToolbar);
+    final plexMode = PlexStyle.enabled;
     final showFolders = _prefs.get(UserPreferences.enableFolderView);
     final showSyncPlay =
         !kidsMode &&
@@ -962,14 +1027,14 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                 return c;
               }
 
-              final items = <Widget>[
-                _SidebarItem(
+              final homeItem = _SidebarItem(
                   key: const ValueKey('sidebar-home'),
-                  icon: Icons.home_rounded,
+                  icon: plexMode ? Icons.home_outlined : Icons.home_rounded,
                   label: l10n.home,
                   baseColor: nextMainSidebarColor(),
                   focusNode: _homeFocusNode,
                   showLabel: _showLabels,
+                  active: plexMode && _isActive(Destinations.home),
                   onPressed: () {
                     _onNavigate();
                     if (_isActive(Destinations.home)) {
@@ -981,13 +1046,15 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                     _markNavigationAwayFromSidebar();
                     context.go(Destinations.home);
                   },
-                ),
-                _SidebarItem(
+                );
+              final searchItem = _SidebarItem(
                   key: const ValueKey('sidebar-search'),
                   icon: Icons.search_rounded,
                   label: l10n.search,
                   baseColor: nextMainSidebarColor(),
+                  focusNode: _searchFocusNode,
                   showLabel: _showLabels,
+                  active: plexMode && _isActive(Destinations.search),
                   onPressed: () {
                     _onNavigate();
                     if (_isActive(Destinations.search)) {
@@ -997,7 +1064,38 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                     _markNavigationAwayFromSidebar();
                     context.navigateTopLevel(Destinations.search);
                   },
-                ),
+                );
+
+              final items = <Widget>[
+                // Plex order: Search, Home, then each library as its own row.
+                if (plexMode) ...[
+                  searchItem,
+                  homeItem,
+                  if (showLibraries)
+                    for (final lib in navLibraries)
+                      _SidebarItem(
+                        key: ValueKey('sidebar-library-${lib.id}'),
+                        icon: plexLibraryIcon(lib.collectionType),
+                        label: lib.name,
+                        baseColor: nextMainSidebarColor(),
+                        focusNode: _libraryFocusNode(lib.id),
+                        showLabel: _showLabels,
+                        active: _isActiveRoute(_libraryRouteFor(lib)),
+                        onPressed: () {
+                          _onNavigate();
+                          final route = _libraryRouteFor(lib);
+                          if (_isActiveRoute(route)) {
+                            _exitSidebarToContent();
+                            return;
+                          }
+                          _markNavigationAwayFromSidebar();
+                          context.navigateTopLevel(route);
+                        },
+                      ),
+                ] else ...[
+                  homeItem,
+                  searchItem,
+                ],
                 if (showShuffle)
                   _SidebarItem(
                     key: const ValueKey('sidebar-shuffle'),
@@ -1121,7 +1219,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                       context.navigateTopLevel(Destinations.seerrDiscover);
                     },
                   ),
-                if (showLibraries && navLibraries.isNotEmpty) ...[
+                if (!plexMode && showLibraries && navLibraries.isNotEmpty) ...[
                   _SidebarItem(
                     key: const ValueKey('sidebar-libraries'),
                     baseColor: nextMainSidebarColor(),
@@ -1208,24 +1306,8 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                     navColor: nextMainSidebarColor(),
                     label: l10n.serverMessages,
                   ),
-                _SidebarItem(
-                  key: const ValueKey('sidebar-settings'),
-                  icon: Icons.settings_rounded,
-                  label: l10n.settings,
-                  baseColor: nextMainSidebarColor(),
-                  focusNode: _settingsFocusNode,
-                  showLabel: _showLabels,
-                  onPressed: () async {
-                    _onNavigate();
-                    await SettingsPanel.open(
-                      context,
-                      const SettingsSidePanel(),
-                    );
-                    if (!mounted) return;
-                    _markNavigationAwayFromSidebar();
-                    _settingsFocusNode.requestFocus();
-                  },
-                ),
+                // Plex pins Settings to the bottom; see below the list.
+                if (!plexMode) _settingsItem(l10n, nextMainSidebarColor()),
               ];
 
               return SingleChildScrollView(
@@ -1236,7 +1318,9 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                     minHeight: math.max(0, constraints.maxHeight - 8),
                   ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: plexMode
+                        ? MainAxisAlignment.start
+                        : MainAxisAlignment.center,
                     children: items,
                   ),
                 ),
@@ -1244,6 +1328,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
             },
           ),
         ),
+        if (plexMode) _settingsItem(l10n, null),
         SidebarMusicCard(
           isExpanded: _showLabels,
           focusNode: _musicCardFocusNode,
@@ -1281,6 +1366,27 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
         else
           const SizedBox(height: 16),
       ],
+    );
+  }
+
+  Widget _settingsItem(AppLocalizations l10n, Color? baseColor) {
+    return _SidebarItem(
+      key: const ValueKey('sidebar-settings'),
+      icon: Icons.settings_rounded,
+      label: l10n.settings,
+      baseColor: baseColor,
+      focusNode: _settingsFocusNode,
+      showLabel: _showLabels,
+      onPressed: () async {
+        _onNavigate();
+        await SettingsPanel.open(
+          context,
+          const SettingsSidePanel(),
+        );
+        if (!mounted) return;
+        _markNavigationAwayFromSidebar();
+        _settingsFocusNode.requestFocus();
+      },
     );
   }
 
@@ -1397,7 +1503,8 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                     return KeyEventResult.handled;
                   }
                   if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
-                    _homeFocusNode.requestFocus();
+                    (PlexStyle.enabled ? _searchFocusNode : _homeFocusNode)
+                        .requestFocus();
                     return KeyEventResult.handled;
                   }
                 }
@@ -1435,6 +1542,10 @@ class _SidebarItem extends StatefulWidget {
   /// Unread count drawn as a small red circle on the icon. Zero draws nothing.
   final int badgeCount;
 
+  /// The section on screen (Plex mode): gold icon on a faint tile while the
+  /// row is not focused.
+  final bool active;
+
   const _SidebarItem({
     super.key,
     this.icon,
@@ -1446,6 +1557,7 @@ class _SidebarItem extends StatefulWidget {
     this.focusNode,
     this.baseColor,
     this.badgeCount = 0,
+    this.active = false,
   });
 
   @override
@@ -1503,8 +1615,11 @@ class _SidebarItemState extends State<_SidebarItem> {
     final focusColor = Color(_prefs.get(UserPreferences.focusColor).colorValue);
     final tvFocused = PlatformDetection.isTV && _isFocused;
     final baseColor = widget.baseColor ?? Colors.white.withValues(alpha: 0.6);
+    final showActive = widget.active && !tvFocused;
     final fgColor = tvFocused
         ? Colors.black
+        : showActive
+        ? PlexStyle.accent
         : highlighted
         ? (useBaseForFocus ? baseColor : focusColor)
         : baseColor;
@@ -1540,13 +1655,15 @@ class _SidebarItemState extends State<_SidebarItem> {
               decoration: BoxDecoration(
                 color: tvFocused
                     ? Colors.white
+                    : showActive
+                    ? Colors.white.withValues(alpha: 0.08)
                     : highlighted
                     ? (useBaseForFocus
                           ? baseColor.withValues(alpha: 0.12)
                           : focusColor.withValues(alpha: 0.12))
                     : Colors.transparent,
                 borderRadius: PlatformDetection.isTV
-                    ? AppRadius.circular(24)
+                    ? AppRadius.circular(PlexStyle.enabled ? 6 : 24)
                     : BorderRadius.zero,
               ),
               child: Row(
