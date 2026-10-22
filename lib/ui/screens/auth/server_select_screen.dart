@@ -62,6 +62,11 @@ class _ServerSelectScreenState extends State<ServerSelectScreen> {
 
   final List<DiscoveredServer> _discoveredServers = [];
   bool _isDiscovering = false;
+
+  // Fork: search again while this screen is open, so a server that was
+  // still starting (or just came online) shows up without an app restart.
+  static const _rediscoveryInterval = Duration(seconds: 10);
+  Timer? _rediscoveryTimer;
   bool get _isMoonfin => ThemeRegistry.active.id == ThemeRegistry.moonfinId;
 
   bool get _isWebPluginMode =>
@@ -140,10 +145,17 @@ class _ServerSelectScreenState extends State<ServerSelectScreen> {
     _additionSub = _serverRepo.additionState.listen(_onAdditionState);
     _loadServers();
     _startDiscovery();
+    _rediscoveryTimer = Timer.periodic(_rediscoveryInterval, (_) {
+      if (!mounted || _isDiscovering || _isConnecting || _isAddDialogOpen) {
+        return;
+      }
+      _startDiscovery(quiet: true);
+    });
   }
 
   @override
   void dispose() {
+    _rediscoveryTimer?.cancel();
     _addressController.dispose();
     _additionSub?.cancel();
     _discoverySub?.cancel();
@@ -313,28 +325,42 @@ class _ServerSelectScreenState extends State<ServerSelectScreen> {
     }
   }
 
-  void _startDiscovery() {
-    setState(() => _isDiscovering = true);
-    _discoveredServers.clear();
+  /// [quiet] is the timed re-search: no spinner and no clearing, so the list
+  /// doesn't flicker or lose focus; servers not seen again drop out at the end.
+  void _startDiscovery({bool quiet = false}) {
+    if (quiet) {
+      _isDiscovering = true;
+    } else {
+      setState(() => _isDiscovering = true);
+      _discoveredServers.clear();
+    }
+    final seenThisRound = <String>{};
+
+    void finish() {
+      if (!mounted) return;
+      setState(() {
+        _isDiscovering = false;
+        if (quiet) {
+          _discoveredServers.removeWhere((s) => !seenThisRound.contains(s.id));
+        }
+      });
+    }
 
     _discoverySub?.cancel();
     _discoverySub = _discoveryService.discoverLocalServers().listen(
       (server) {
+        seenThisRound.add(server.id);
         final savedAddresses = _serverRepo.servers
             .map((s) => s.address)
             .toSet();
-        if (!savedAddresses.contains(server.address)) {
-          if (mounted) {
-            setState(() => _discoveredServers.add(server));
-          }
+        if (savedAddresses.contains(server.address)) return;
+        if (_discoveredServers.any((s) => s.id == server.id)) return;
+        if (mounted) {
+          setState(() => _discoveredServers.add(server));
         }
       },
-      onDone: () {
-        if (mounted) setState(() => _isDiscovering = false);
-      },
-      onError: (_) {
-        if (mounted) setState(() => _isDiscovering = false);
-      },
+      onDone: finish,
+      onError: (_) => finish(),
     );
   }
 
