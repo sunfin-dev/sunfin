@@ -5,7 +5,6 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/widgets.dart';
 
-import '../widgets/image_source.dart';
 import 'plex_style.dart';
 
 /// The two page colours Plex derives from the backdrop: one from the art's
@@ -33,9 +32,9 @@ class PlexTintTween extends Tween<PlexTint> {
 /// The page tint Plex derives from the backdrop: region averages of the art,
 /// darkened until they read as a background.
 ///
-/// Works from a 16x9 decode of the same URL, which comes out of the disk
-/// cache the backdrop itself fills, so it costs one tiny decode and a
-/// 576-byte readback, all off the build path.
+/// Samples the art the backdrop has just decoded for display, scaled down
+/// to 16x9 on the GPU: one tiny draw and a 576-byte readback, with no second
+/// fetch that could queue behind the posters.
 abstract final class PlexBackdropTint {
   /// Relative luminance the tint is darkened to (Plex's page measures
   /// around 0.04-0.06 in the reference screenshots).
@@ -61,25 +60,31 @@ abstract final class PlexBackdropTint {
     return tint;
   }
 
-  /// The tint for [url], or null when the art can't be read (the caller
-  /// keeps [PlexTint.fallback]).
-  static Future<PlexTint?> resolve(
-    String url, {
-    Map<String, String>? headers,
-  }) {
+  /// The tint for [url] from its decoded [art], or null when the art can't
+  /// be read (the caller keeps [PlexTint.fallback]). Disposes [art].
+  static Future<PlexTint?> fromImage(String url, ui.Image art) {
     final hit = cached(url);
-    if (hit != null) return Future.value(hit);
-    return _inFlight[url] ??= _compute(url, headers).whenComplete(
+    if (hit != null) {
+      art.dispose();
+      return Future.value(hit);
+    }
+    final pending = _inFlight[url];
+    if (pending != null) {
+      art.dispose();
+      return pending;
+    }
+    return _inFlight[url] = _compute(url, art).whenComplete(
       () => _inFlight.remove(url),
     );
   }
 
-  static Future<PlexTint?> _compute(
-    String url,
-    Map<String, String>? headers,
-  ) async {
-    final image = await _decodeSample(url, headers);
-    if (image == null) return null;
+  static Future<PlexTint?> _compute(String url, ui.Image art) async {
+    ui.Image? image;
+    try {
+      image = await _downscale(art);
+    } finally {
+      art.dispose();
+    }
     try {
       final bytes = await image.toByteData(format: ui.ImageByteFormat.rawRgba);
       if (bytes == null) return null;
@@ -100,40 +105,19 @@ abstract final class PlexBackdropTint {
     }
   }
 
-  static Future<ui.Image?> _decodeSample(
-    String url,
-    Map<String, String>? headers,
-  ) {
-    // Both bounds given: ResizeImage squashes to exactly 16x9, which is all
-    // an average needs.
-    final provider = ArtworkDecode.provider(
-      url,
-      width: _sampleWidth,
-      height: _sampleHeight,
-      headers: headers,
+  /// Squashes [art] to 16x9, which is all a region average needs.
+  static Future<ui.Image> _downscale(ui.Image art) {
+    final recorder = ui.PictureRecorder();
+    Canvas(recorder).drawImageRect(
+      art,
+      Rect.fromLTWH(0, 0, art.width.toDouble(), art.height.toDouble()),
+      Rect.fromLTWH(0, 0, _sampleWidth.toDouble(), _sampleHeight.toDouble()),
+      Paint()..filterQuality = FilterQuality.medium,
     );
-    final completer = Completer<ui.Image?>();
-    final stream = provider.resolve(ImageConfiguration.empty);
-    late final ImageStreamListener listener;
-    listener = ImageStreamListener(
-      (info, _) {
-        stream.removeListener(listener);
-        if (completer.isCompleted) {
-          info.dispose();
-          return;
-        }
-        // Keep our own handle; the listener's copy is ours to dispose.
-        final image = info.image.clone();
-        info.dispose();
-        completer.complete(image);
-      },
-      onError: (_, _) {
-        stream.removeListener(listener);
-        if (!completer.isCompleted) completer.complete(null);
-      },
-    );
-    stream.addListener(listener);
-    return completer.future;
+    final picture = recorder.endRecording();
+    return picture
+        .toImage(_sampleWidth, _sampleHeight)
+        .whenComplete(picture.dispose);
   }
 
   /// Average of the sample pixels [include] accepts, weighted by alpha and

@@ -325,7 +325,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
   // 32 icon slot and a 12 gap (see _SidebarItem); the profile row adds the
   // same 80 around the user's name (margins, avatar, gap).
   static const _plexLabelChrome = 80.0;
-  static const _plexLabelMargin = 10.0;
+  static const _plexLabelMargin = 0.0;
   String _plexWidthKey = '';
 
   /// Plex mode: every label the open rail can show, as _buildContent does.
@@ -913,17 +913,33 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
   /// puts the content beside it, so nothing scrolls under the icons.
   Widget _buildPlexRail() {
     final expandedWidth = _plexExpandedWidth();
+    final surface = AppColorScheme.surface.withValues(alpha: 1);
+    final onHome = _isActive(Destinations.home);
     return AnimatedContainer(
       duration: _kExpandDuration,
       curve: LeftSidebar.expandCurve,
       width: _isExpanded ? expandedWidth : PlexStyle.railCollapsedWidth,
-      color: AppColorScheme.surface.withValues(alpha: 1),
-      child: ClipRect(
-        child: FocusScope(
-          node: _sidebarFocus,
-          onFocusChange: _onSidebarFocusChange,
-          onKeyEvent: _onKeyEvent,
-          child: _buildContent(),
+      // Collapsed on home, the rail takes the page's tint beside it and
+      // fades with it, so there is no seam; open, it is the theme's surface.
+      child: ValueListenableBuilder<Color?>(
+        valueListenable: PlexStyle.pageTint,
+        builder: (context, tint, child) => TweenAnimationBuilder<Color?>(
+          tween: ColorTween(
+            end: !_isExpanded && onHome && tint != null ? tint : surface,
+          ),
+          duration: PlexStyle.tintDuration,
+          curve: Curves.easeOut,
+          builder: (context, color, child) =>
+              ColoredBox(color: color ?? surface, child: child),
+          child: child,
+        ),
+        child: ClipRect(
+          child: FocusScope(
+            node: _sidebarFocus,
+            onFocusChange: _onSidebarFocusChange,
+            onKeyEvent: _onKeyEvent,
+            child: _buildContent(),
+          ),
         ),
       ),
     );

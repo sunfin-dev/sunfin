@@ -27,6 +27,15 @@ abstract final class PlexStyle {
   /// Base page colour the backdrop fades into when no art tint is known.
   static const background = Color(0xFF1F2326);
 
+  /// The home page's current tint at its left edge (from PlexBackdrop), so
+  /// the collapsed rail beside it can take the same colour and show no seam.
+  /// Null when no Plex backdrop has published one.
+  static final ValueNotifier<Color?> pageTint = ValueNotifier<Color?>(null);
+
+  /// How long the page tint takes to follow a new item (PlexBackdrop); the
+  /// rail fades its colour over the same time so the two stay matched.
+  static const tintDuration = Duration(milliseconds: 400);
+
   /// Multiplies a 960-wide measurement onto Moonfin's TV canvas.
   static double s(double v960) => v960 * _k;
 

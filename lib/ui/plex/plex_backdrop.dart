@@ -1,3 +1,5 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 
 import '../../util/image_fetch_priority.dart';
@@ -24,7 +26,7 @@ class PlexBackdrop extends StatefulWidget {
 }
 
 class _PlexBackdropState extends State<PlexBackdrop> {
-  static const _crossfade = Duration(milliseconds: 400);
+  static const _crossfade = PlexStyle.tintDuration;
 
   /// The url the parent wants now; a load that finishes for any other url is
   /// stale and dropped.
@@ -63,6 +65,16 @@ class _PlexBackdropState extends State<PlexBackdrop> {
     super.dispose();
   }
 
+  /// Sets the page tint and, after this frame, publishes its left colour for
+  /// the collapsed rail (publishing mid-build would rebuild another widget
+  /// during this one's build). Call inside setState.
+  void _applyTint(PlexTint tint) {
+    _tint = tint;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) PlexStyle.pageTint.value = _tint.left;
+    });
+  }
+
   void _request(String? url) {
     _wanted = url;
     _stopLoading();
@@ -71,7 +83,7 @@ class _PlexBackdropState extends State<PlexBackdrop> {
         setState(() {
           _shownUrl = null;
           _shownProvider = null;
-          _tint = PlexTint.fallback;
+          _applyTint(PlexTint.fallback);
         });
       }
       return;
@@ -95,15 +107,26 @@ class _PlexBackdropState extends State<PlexBackdrop> {
     final stream = provider.resolve(createLocalImageConfiguration(context));
     final listener = ImageStreamListener(
       (info, _) {
+        // Our own handle on the decoded art: the tint is sampled from it, so
+        // it never waits behind the poster downloads for a second fetch.
+        final art = info.image.clone();
         info.dispose();
         _stopLoading();
-        if (!mounted || _wanted != url) return;
+        if (!mounted || _wanted != url) {
+          art.dispose();
+          return;
+        }
+        final cached = PlexBackdropTint.cached(url);
         setState(() {
           _shownUrl = url;
           _shownProvider = provider;
-          _tint = PlexBackdropTint.cached(url) ?? _tint;
+          if (cached != null) _applyTint(cached);
         });
-        _resolveTint(url, local ? null : headers);
+        if (cached != null) {
+          art.dispose();
+        } else {
+          _resolveTint(url, art);
+        }
       },
       onError: (_, _) {
         _stopLoading();
@@ -112,7 +135,7 @@ class _PlexBackdropState extends State<PlexBackdrop> {
         setState(() {
           _shownUrl = null;
           _shownProvider = null;
-          _tint = PlexTint.fallback;
+          _applyTint(PlexTint.fallback);
         });
       },
     );
@@ -121,13 +144,11 @@ class _PlexBackdropState extends State<PlexBackdrop> {
     stream.addListener(listener);
   }
 
-  /// Runs after the backdrop has loaded, so the sample decode reads the file
-  /// the backdrop just put in the disk cache instead of fetching it again.
-  void _resolveTint(String url, Map<String, String>? headers) {
-    if (PlexBackdropTint.cached(url) != null) return;
-    PlexBackdropTint.resolve(url, headers: headers).then((tint) {
+  /// Tints from the art just decoded for display; [art] is disposed here.
+  void _resolveTint(String url, ui.Image art) {
+    PlexBackdropTint.fromImage(url, art).then((tint) {
       if (!mounted || _shownUrl != url) return;
-      setState(() => _tint = tint ?? PlexTint.fallback);
+      setState(() => _applyTint(tint ?? PlexTint.fallback));
     }, onError: (Object _) {});
   }
 
