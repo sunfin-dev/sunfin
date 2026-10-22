@@ -35,7 +35,7 @@ class _PlexBackdropState extends State<PlexBackdrop> {
   String? _shownUrl;
   ImageProvider? _shownProvider;
 
-  Color _pageColor = PlexStyle.background;
+  PlexTint _tint = PlexTint.fallback;
 
   ImageStream? _stream;
   ImageStreamListener? _listener;
@@ -71,7 +71,7 @@ class _PlexBackdropState extends State<PlexBackdrop> {
         setState(() {
           _shownUrl = null;
           _shownProvider = null;
-          _pageColor = PlexStyle.background;
+          _tint = PlexTint.fallback;
         });
       }
       return;
@@ -101,7 +101,7 @@ class _PlexBackdropState extends State<PlexBackdrop> {
         setState(() {
           _shownUrl = url;
           _shownProvider = provider;
-          _pageColor = PlexBackdropTint.cached(url) ?? _pageColor;
+          _tint = PlexBackdropTint.cached(url) ?? _tint;
         });
         _resolveTint(url, local ? null : headers);
       },
@@ -112,7 +112,7 @@ class _PlexBackdropState extends State<PlexBackdrop> {
         setState(() {
           _shownUrl = null;
           _shownProvider = null;
-          _pageColor = PlexStyle.background;
+          _tint = PlexTint.fallback;
         });
       },
     );
@@ -127,7 +127,7 @@ class _PlexBackdropState extends State<PlexBackdrop> {
     if (PlexBackdropTint.cached(url) != null) return;
     PlexBackdropTint.resolve(url, headers: headers).then((tint) {
       if (!mounted || _shownUrl != url) return;
-      setState(() => _pageColor = tint ?? PlexStyle.background);
+      setState(() => _tint = tint ?? PlexTint.fallback);
     }, onError: (Object _) {});
   }
 
@@ -156,14 +156,24 @@ class _PlexBackdropState extends State<PlexBackdrop> {
             ),
           );
 
-    return TweenAnimationBuilder<Color?>(
-      tween: ColorTween(end: _pageColor),
+    return TweenAnimationBuilder<PlexTint>(
+      tween: PlexTintTween(end: _tint),
       duration: _crossfade,
       curve: Curves.easeOut,
-      // The art subtree is built once per url; only the colour layers below
-      // rebuild on each tint frame.
+      // The art subtree is built once per url; only the page gradient below
+      // rebuilds on each tint frame.
       child: RepaintBoundary(
-        child: Vibrance.wrap(
+        // The art fades to transparent (not to one colour) so the two-tone
+        // page shows through its edges, as in Plex.
+        child: _fadeMask(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          stops: const [0, 0.42],
+          child: _fadeMask(
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+            stops: const [0, 0.5],
+            child: Vibrance.wrap(
           AnimatedSwitcher(
             duration: _crossfade,
             switchInCurve: Curves.easeOut,
@@ -183,13 +193,22 @@ class _PlexBackdropState extends State<PlexBackdrop> {
             },
             child: art,
           ),
+            ),
+          ),
         ),
       ),
-      builder: (context, color, artChild) {
-        final page = color ?? PlexStyle.background;
-        final clear = page.withValues(alpha: 0);
-        return ColoredBox(
-          color: page,
+      builder: (context, tint, artChild) {
+        return DecoratedBox(
+          // Plex tints the page with two of the art's colours: its left part
+          // behind the header, its lower part under the rows on the right.
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [tint.left, tint.left, tint.bottom],
+              stops: const [0, 0.35, 1],
+            ),
+          ),
           child: Stack(
             fit: StackFit.expand,
             children: [
@@ -198,39 +217,31 @@ class _PlexBackdropState extends State<PlexBackdrop> {
                 right: 0,
                 width: PlexStyle.backdropWidth,
                 height: PlexStyle.backdropHeight,
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    artChild!,
-                    // Fading into the page colour with overlays gives the same
-                    // result as a dstIn mask without the two saveLayers.
-                    DecoratedBox(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                          colors: [page, page.withValues(alpha: 0.6), clear],
-                          stops: const [0, 0.2, 0.45],
-                        ),
-                      ),
-                    ),
-                    DecoratedBox(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter,
-                          colors: [page, page.withValues(alpha: 0.6), clear],
-                          stops: const [0, 0.15, 0.35],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                child: artChild!,
               ),
             ],
           ),
         );
       },
+    );
+  }
+
+  /// Fades [child] from transparent at [begin] to opaque at stops[1].
+  static Widget _fadeMask({
+    required Alignment begin,
+    required Alignment end,
+    required List<double> stops,
+    required Widget child,
+  }) {
+    return ShaderMask(
+      blendMode: BlendMode.dstIn,
+      shaderCallback: (rect) => LinearGradient(
+        begin: begin,
+        end: end,
+        colors: const [Color(0x00000000), Color(0xFF000000)],
+        stops: stops,
+      ).createShader(rect),
+      child: child,
     );
   }
 }

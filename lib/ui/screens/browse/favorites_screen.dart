@@ -28,11 +28,12 @@ import '../../widgets/quick_return_wrapper.dart';
 import '../../widgets/rating_display.dart';
 import '../../widgets/sliding_pill_tabs.dart';
 import '../../widgets/skeleton/skeleton_library_grid.dart';
+import '../../plex/plex_nav.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../util/error_message.dart';
 
 Color get _navyBackground => AppColorScheme.background;
-const _horizontalPadding = 60.0;
+double get _horizontalPadding => plexBrowseMargin(60.0);
 const _kCompactBreakpoint = 600.0;
 
 bool _isCompact(BuildContext context) =>
@@ -380,17 +381,20 @@ class _FavoritesScreenState extends State<FavoritesScreen>
   }
 
   @override
-  Widget build(BuildContext context) => RequestInitialFocus(
-    targetNode:
-        _vm.viewStyle == FavoritesViewStyle.home ? _tabsFocusNode : null,
-    child: QuickReturnWrapper(
-      scrollController: _scrollController,
-      // cleanupGridFocusNodes disposes node 0 once the list empties, and the
-      // wrapper would keep holding it, so pass nothing instead.
-      topFocusNode: _focusTrackedItems.isNotEmpty
-          ? getGridItemFocusNode(0)
-          : null,
-      child: _buildContent(context),
+  Widget build(BuildContext context) => plexNavShell(
+    background: _navyBackground,
+    child: RequestInitialFocus(
+      targetNode:
+          _vm.viewStyle == FavoritesViewStyle.home ? _tabsFocusNode : null,
+      child: QuickReturnWrapper(
+        scrollController: _scrollController,
+        // cleanupGridFocusNodes disposes node 0 once the list empties, and the
+        // wrapper would keep holding it, so pass nothing instead.
+        topFocusNode: _focusTrackedItems.isNotEmpty
+            ? getGridItemFocusNode(0)
+            : null,
+        child: _buildContent(context),
+      ),
     ),
   );
 

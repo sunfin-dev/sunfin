@@ -24,6 +24,7 @@ class PlexHomeHeader extends StatelessWidget {
   const PlexHomeHeader({super.key, required this.item, required this.leftInset});
 
   static const _fade = Duration(milliseconds: 180);
+  static final _scale = PlexStyle.s(1);
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +35,11 @@ class PlexHomeHeader extends StatelessWidget {
       // rowsTop is cut, and OverflowBox keeps the Column from reporting an
       // overflow while it is.
       child: ClipRect(
+        // minWidth 0: the header is placed with a tight full-screen width,
+        // which would otherwise force the text column to span the screen.
         child: OverflowBox(
           alignment: Alignment.topLeft,
+          minWidth: 0,
           minHeight: 0,
           maxHeight: double.infinity,
           child: Padding(
@@ -43,17 +47,23 @@ class PlexHomeHeader extends StatelessWidget {
               left: leftInset,
               top: PlexStyle.headerTop,
             ),
-            child: SizedBox(
-              width: PlexStyle.headerTextWidth,
-              child: AnimatedSwitcher(
-                duration: _fade,
-                layoutBuilder: (currentChild, previousChildren) => Stack(
-                  alignment: Alignment.topLeft,
-                  children: [...previousChildren, ?currentChild],
+            // The text sizes below are Plex's 960-wide measurements; one
+            // scale lands the whole column on Moonfin's TV canvas.
+            child: Transform.scale(
+              scale: _scale,
+              alignment: Alignment.topLeft,
+              child: SizedBox(
+                width: PlexStyle.headerTextWidth / _scale,
+                child: AnimatedSwitcher(
+                  duration: _fade,
+                  layoutBuilder: (currentChild, previousChildren) => Stack(
+                    alignment: Alignment.topLeft,
+                    children: [...previousChildren, ?currentChild],
+                  ),
+                  child: current == null
+                      ? const SizedBox.shrink()
+                      : _HeaderText(key: ValueKey(current.id), item: current),
                 ),
-                child: current == null
-                    ? const SizedBox.shrink()
-                    : _HeaderText(key: ValueKey(current.id), item: current),
               ),
             ),
           ),

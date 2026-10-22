@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:moonfin_design/moonfin_design.dart';
 import 'package:server_core/server_core.dart';
 
@@ -71,11 +72,27 @@ class LeftSidebar extends StatefulWidget {
   /// current focus is within the sidebar; it's resilient during teardown.
   static final ValueNotifier<bool> isFocusedNotifier = ValueNotifier<bool>(false);
 
+  /// Plex mode: how much of the screen's left edge the rail takes, which is
+  /// where the content starts. It jumps to the target of an expand or
+  /// collapse; the rail and content get there over [expandDuration] on
+  /// [expandCurve]. Zero outside Plex mode. Follows the sidebar of the route
+  /// on screen.
+  static final ValueNotifier<double> railWidthNotifier = ValueNotifier<double>(
+    0,
+  );
+
+  static const expandDuration = _kExpandDuration;
+  static const expandCurve = Curves.easeInOut;
+
+  /// Set by [NavigationLayout] so its content can move with this rail.
+  final ValueNotifier<bool>? expandedNotifier;
+
   const LeftSidebar({
     super.key,
     this.activeRoute,
     this.contentFocusNode,
     this.showBackButton = false,
+    this.expandedNotifier,
   });
 
   @override
@@ -187,6 +204,8 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
         if (mounted) setState(() {});
       });
     }
+    // Not during this build: the layout listens and would rebuild mid-frame.
+    WidgetsBinding.instance.addPostFrameCallback((_) => _publishRailState());
   }
 
   ModalRoute<dynamic>? _observedRoute;
@@ -210,6 +229,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
     // that it targets this live one.
     NavigationLayout.focusNavbarNotifier.value = _focusNavbarCallback;
     NavigationLayout.focusNavbarAvatarNotifier.value = _focusAvatarCallback;
+    _publishRailState();
   }
 
   @override
@@ -280,6 +300,19 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
     _updateClock();
     _scheduleLibrariesReload();
     setState(() {});
+    // Plex mode can be switched on or off from the settings.
+    _publishRailState();
+  }
+
+  /// Tells the layout (and screens) how wide the rail now is.
+  void _publishRailState() {
+    if (!mounted) return;
+    widget.expandedNotifier?.value = _isExpanded;
+    LeftSidebar.railWidthNotifier.value = !PlexStyle.enabled
+        ? 0
+        : _isExpanded
+        ? PlexStyle.railExpandedWidth
+        : PlexStyle.railCollapsedWidth;
   }
 
   void _onUserViewsChanged() {
@@ -385,6 +418,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
   void _expand() {
     if (_isExpanded) return;
     setState(() => _isExpanded = true);
+    _publishRailState();
     _labelTimer?.cancel();
     final delay = PlatformDetection.isTV
         ? const Duration(milliseconds: 150)
@@ -402,6 +436,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
       _showLabels = false;
       _librariesExpanded = false;
     });
+    _publishRailState();
   }
 
   void _toggle() {
@@ -790,7 +825,30 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
     );
   }
 
+  /// Plex mode: a solid rail in the theme's surface colour, the same collapsed
+  /// and expanded. It no longer floats over the page: navigation_layout.dart
+  /// puts the content beside it, so nothing scrolls under the icons.
+  Widget _buildPlexRail() {
+    return AnimatedContainer(
+      duration: _kExpandDuration,
+      curve: LeftSidebar.expandCurve,
+      width: _isExpanded
+          ? PlexStyle.railExpandedWidth
+          : PlexStyle.railCollapsedWidth,
+      color: AppColorScheme.surface.withValues(alpha: 1),
+      child: ClipRect(
+        child: FocusScope(
+          node: _sidebarFocus,
+          onFocusChange: _onSidebarFocusChange,
+          onKeyEvent: _onKeyEvent,
+          child: _buildContent(),
+        ),
+      ),
+    );
+  }
+
   Widget _buildTvLayout() {
+    if (PlexStyle.enabled) return _buildPlexRail();
     final backdropColor = _overlayColor().withValues(alpha: _overlayOpacity());
     final isNeon = ThemeRegistry.active.id == ThemeRegistry.neonPulseId;
     final desktopHoverRail =
@@ -808,25 +866,6 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
           onKeyEvent: _onKeyEvent,
           child: Stack(
             children: [
-              // Plex mode: posters scroll left under the collapsed rail, so a
-              // soft scrim keeps its icons legible.
-              if (!_isExpanded && PlexStyle.enabled)
-                Positioned.fill(
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [
-                          Colors.black.withValues(alpha: 0.7),
-                          Colors.black.withValues(alpha: 0.45),
-                          Colors.transparent,
-                        ],
-                        stops: const [0.0, 0.7, 1.0],
-                      ),
-                    ),
-                  ),
-                ),
               if (_isExpanded)
                 Align(
                   alignment: Alignment.centerLeft,
@@ -1029,7 +1068,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
 
               final homeItem = _SidebarItem(
                   key: const ValueKey('sidebar-home'),
-                  icon: plexMode ? Icons.home_outlined : Icons.home_rounded,
+                  icon: plexMode ? Symbols.home : Icons.home_rounded,
                   label: l10n.home,
                   baseColor: nextMainSidebarColor(),
                   focusNode: _homeFocusNode,
@@ -1049,7 +1088,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                 );
               final searchItem = _SidebarItem(
                   key: const ValueKey('sidebar-search'),
-                  icon: Icons.search_rounded,
+                  icon: plexMode ? Symbols.search : Icons.search_rounded,
                   label: l10n.search,
                   baseColor: nextMainSidebarColor(),
                   focusNode: _searchFocusNode,
@@ -1372,7 +1411,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
   Widget _settingsItem(AppLocalizations l10n, Color? baseColor) {
     return _SidebarItem(
       key: const ValueKey('sidebar-settings'),
-      icon: Icons.settings_rounded,
+      icon: PlexStyle.enabled ? Symbols.settings : Icons.settings_rounded,
       label: l10n.settings,
       baseColor: baseColor,
       focusNode: _settingsFocusNode,
@@ -1489,8 +1528,14 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
       ),
     );
 
+    // Plex's collapsed rail is narrower than the avatar plus upstream's
+    // margins, so the margin shrinks to centre the avatar in it.
+    final sidePad = PlexStyle.enabled && tvCompact
+        ? math.max(0.0, (PlexStyle.railCollapsedWidth - 40) / 2)
+        : 8.0;
+
     return Padding(
-      padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
+      padding: EdgeInsets.fromLTRB(sidePad, 16, sidePad, 8),
       child: PlatformDetection.isTV
           ? Focus(
               focusNode: _profileFocusNode,
@@ -1626,6 +1671,10 @@ class _SidebarItemState extends State<_SidebarItem> {
     final iconSize = desktopSidebar ? 28.0 : 24.0;
     final iconSlotWidth = desktopSidebar ? 36.0 : 32.0;
     final labelFontSize = desktopSidebar ? 16.0 : 14.0;
+    // Plex mode: the icon sits centred in the narrower collapsed rail.
+    final compactPad = PlexStyle.enabled
+        ? math.max(0.0, (PlexStyle.railCollapsedWidth - iconSlotWidth) / 2)
+        : 12.0;
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 1),
@@ -1649,8 +1698,8 @@ class _SidebarItemState extends State<_SidebarItem> {
               duration: const Duration(milliseconds: 150),
               height: desktopSidebar ? 44 : 40,
               padding: EdgeInsets.only(
-                left: _tvCompact ? 12 : 18,
-                right: _tvCompact ? 12 : 18,
+                left: _tvCompact ? compactPad : 18,
+                right: _tvCompact ? compactPad : 18,
               ),
               decoration: BoxDecoration(
                 color: tvFocused
@@ -1675,11 +1724,19 @@ class _SidebarItemState extends State<_SidebarItem> {
                       child:
                           widget.iconBuilder?.call(iconSize, fgColor) ??
                           (widget.icon != null
-                              ? AdaptiveIcon(
-                                  widget.icon!,
-                                  size: iconSize,
-                                  color: fgColor,
-                                )
+                              ? (PlexStyle.enabled
+                                    // Thin outline icons, as in Plex.
+                                    ? Icon(
+                                        widget.icon!,
+                                        size: iconSize,
+                                        color: fgColor,
+                                        weight: plexIconWeight,
+                                      )
+                                    : AdaptiveIcon(
+                                        widget.icon!,
+                                        size: iconSize,
+                                        color: fgColor,
+                                      ))
                               : const SizedBox.shrink()),
                     ),
                   ),

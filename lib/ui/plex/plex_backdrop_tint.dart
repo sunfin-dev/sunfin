@@ -8,8 +8,30 @@ import 'package:flutter/widgets.dart';
 import '../widgets/image_source.dart';
 import 'plex_style.dart';
 
-/// The page colour Plex derives from the backdrop: the art's average colour
-/// darkened until it reads as a background.
+/// The two page colours Plex derives from the backdrop: one from the art's
+/// left part (behind the header) and one from its lower part (under the rows).
+@immutable
+class PlexTint {
+  final Color left;
+  final Color bottom;
+
+  const PlexTint(this.left, this.bottom);
+
+  static const fallback = PlexTint(PlexStyle.background, PlexStyle.background);
+}
+
+class PlexTintTween extends Tween<PlexTint> {
+  PlexTintTween({super.begin, super.end});
+
+  @override
+  PlexTint lerp(double t) => PlexTint(
+    Color.lerp(begin!.left, end!.left, t)!,
+    Color.lerp(begin!.bottom, end!.bottom, t)!,
+  );
+}
+
+/// The page tint Plex derives from the backdrop: region averages of the art,
+/// darkened until they read as a background.
 ///
 /// Works from a 16x9 decode of the same URL, which comes out of the disk
 /// cache the backdrop itself fills, so it costs one tiny decode and a
@@ -22,21 +44,25 @@ abstract final class PlexBackdropTint {
   static const _sampleHeight = 9;
   static const _cacheSize = 30;
 
+  /// Left third of the sample (columns) and bottom third (rows).
+  static const _leftColumns = 6;
+  static const _bottomFirstRow = 6;
+
   /// Most recently used last; a hit moves the entry to the end.
-  static final LinkedHashMap<String, Color> _cache =
-      LinkedHashMap<String, Color>();
-  static final Map<String, Future<Color?>> _inFlight = {};
+  static final LinkedHashMap<String, PlexTint> _cache =
+      LinkedHashMap<String, PlexTint>();
+  static final Map<String, Future<PlexTint?>> _inFlight = {};
 
   /// A tint computed earlier for [url], without starting any work.
-  static Color? cached(String url) {
-    final color = _cache.remove(url);
-    if (color != null) _cache[url] = color;
-    return color;
+  static PlexTint? cached(String url) {
+    final tint = _cache.remove(url);
+    if (tint != null) _cache[url] = tint;
+    return tint;
   }
 
   /// The tint for [url], or null when the art can't be read (the caller
-  /// keeps [PlexStyle.background]).
-  static Future<Color?> resolve(
+  /// keeps [PlexTint.fallback]).
+  static Future<PlexTint?> resolve(
     String url, {
     Map<String, String>? headers,
   }) {
@@ -47,7 +73,7 @@ abstract final class PlexBackdropTint {
     );
   }
 
-  static Future<Color?> _compute(
+  static Future<PlexTint?> _compute(
     String url,
     Map<String, String>? headers,
   ) async {
@@ -56,8 +82,13 @@ abstract final class PlexBackdropTint {
     try {
       final bytes = await image.toByteData(format: ui.ImageByteFormat.rawRgba);
       if (bytes == null) return null;
-      final tint = _darken(_average(bytes));
-      if (tint == null) return null;
+      final left = _darken(_average(bytes, (x, y) => x < _leftColumns));
+      final bottom = _darken(_average(bytes, (x, y) => y >= _bottomFirstRow));
+      if (left == null && bottom == null) return null;
+      final tint = PlexTint(
+        left ?? bottom ?? PlexStyle.background,
+        bottom ?? left ?? PlexStyle.background,
+      );
       _cache[url] = tint;
       while (_cache.length > _cacheSize) {
         _cache.remove(_cache.keys.first);
@@ -104,9 +135,12 @@ abstract final class PlexBackdropTint {
     return completer.future;
   }
 
-  static Color _average(ByteData bytes) {
+  /// Alpha-weighted average of the sample pixels [include] accepts.
+  static Color _average(ByteData bytes, bool Function(int x, int y) include) {
     var r = 0, g = 0, b = 0, weight = 0;
     for (var i = 0; i + 3 < bytes.lengthInBytes; i += 4) {
+      final pixel = i ~/ 4;
+      if (!include(pixel % _sampleWidth, pixel ~/ _sampleWidth)) continue;
       final a = bytes.getUint8(i + 3);
       r += bytes.getUint8(i) * a;
       g += bytes.getUint8(i + 1) * a;

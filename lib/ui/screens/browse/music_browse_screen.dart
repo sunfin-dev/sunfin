@@ -2,6 +2,7 @@ import 'dart:async';
 
 import '../../widgets/offline_aware_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:moonfin_design/moonfin_design.dart';
@@ -25,10 +26,12 @@ import '../../../l10n/app_localizations.dart';
 import '../../util/home_row_title_localizer.dart';
 import '../../widgets/overlay_sheet.dart';
 import '../../widgets/skeleton/skeleton_music_browse.dart';
+import '../../plex/plex_nav.dart';
 
 Color get _navyBackground => AppColorScheme.background;
 
-double get _horizontalPadding => PlatformDetection.useMobileUi ? 20.0 : 60.0;
+double get _horizontalPadding =>
+    PlatformDetection.useMobileUi ? 20.0 : plexBrowseMargin(60.0);
 double get _cardSize => PlatformDetection.useMobileUi
     ? 112.0
     : (PlatformDetection.isTV ? 168.0 : 148.0);
@@ -207,8 +210,10 @@ class _MusicBrowseScreenState extends State<MusicBrowseScreen> {
   }
 
   @override
-  Widget build(BuildContext context) =>
-      RequestInitialFocus(child: _buildContent(context));
+  Widget build(BuildContext context) => plexNavShell(
+    background: _navyBackground,
+    child: RequestInitialFocus(child: _buildContent(context)),
+  );
 
   Widget _buildContent(BuildContext context) {
     final l10n = AppLocalizations.of(context);
@@ -829,6 +834,8 @@ class _CategoryButtonState extends State<_CategoryButton> with FocusStateMixin {
           }
           if (event.isActionable && !widget.vertical) {
             if (widget.isFirst && event.logicalKey.isLeftKey) {
+              // Plex mode: the start of the row opens the rail.
+              if (event is KeyDownEvent) plexFocusRailFromEdge();
               return KeyEventResult.handled;
             }
             if (widget.isLast && event.logicalKey.isRightKey) {
@@ -1111,6 +1118,8 @@ class _MusicSquareCardState extends State<_MusicSquareCard>
             }
             if (event.isActionable) {
               if (widget.isFirst && event.logicalKey.isLeftKey) {
+                // Plex mode: the start of the row opens the rail.
+                if (event is KeyDownEvent) plexFocusRailFromEdge();
                 return KeyEventResult.handled;
               }
               if (widget.isLast && event.logicalKey.isRightKey) {

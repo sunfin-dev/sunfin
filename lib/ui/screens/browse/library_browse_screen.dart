@@ -41,11 +41,12 @@ import '../detail/item_detail_screen.dart';
 import '../../widgets/local_search_field.dart';
 import '../../widgets/skeleton/skeleton_library_grid.dart';
 import '../../../l10n/app_localizations.dart';
+import '../../plex/plex_nav.dart';
 import '../../util/error_message.dart';
 
 Color get _navyBackground => AppColorScheme.background;
 Color get _jellyfinBlue => AppColorScheme.accent;
-const _horizontalPadding = 60.0;
+double get _horizontalPadding => plexBrowseMargin(60.0);
 const _kCompactBreakpoint = 600.0;
 
 const _kLoadMoreExtent = 400.0;
@@ -810,21 +811,23 @@ class _LibraryBrowseScreenState extends State<LibraryBrowseScreen>
   }
 
   @override
-  Widget build(BuildContext context) =>
-      RequestInitialFocus(
-        targetNode: _homeButtonFocusNode,
-        child: QuickReturnWrapper(
-          scrollController: _scrollController,
-          scrollDirection:
-              _vm.scrollDirection == LibraryScrollDirection.horizontal
-              ? Axis.horizontal
-              : Axis.vertical,
-          // cleanupGridFocusNodes disposes node 0 once the list empties, and
-          // the wrapper would keep holding it, so pass nothing instead.
-          topFocusNode: _vm.items.isNotEmpty ? getGridItemFocusNode(0) : null,
-          child: _buildContent(context),
-        ),
-      );
+  Widget build(BuildContext context) => plexNavShell(
+    background: _navyBackground,
+    child: RequestInitialFocus(
+      targetNode: _homeButtonFocusNode,
+      child: QuickReturnWrapper(
+        scrollController: _scrollController,
+        scrollDirection:
+            _vm.scrollDirection == LibraryScrollDirection.horizontal
+            ? Axis.horizontal
+            : Axis.vertical,
+        // cleanupGridFocusNodes disposes node 0 once the list empties, and
+        // the wrapper would keep holding it, so pass nothing instead.
+        topFocusNode: _vm.items.isNotEmpty ? getGridItemFocusNode(0) : null,
+        child: _buildContent(context),
+      ),
+    ),
+  );
 
   Widget _buildContent(BuildContext context) {
     final isMobile = _isCompact(context);
@@ -1035,7 +1038,7 @@ class _LibraryBrowseScreenState extends State<LibraryBrowseScreen>
       children: [
         if (showHorizChevrons)
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: _horizontalPadding),
+            padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [

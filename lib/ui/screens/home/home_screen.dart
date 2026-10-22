@@ -100,16 +100,18 @@ const _kHomeStartThreshold = 20.0;
 const _classicCardMetadataHeight = 50.0;
 
 /// Plex mode: x of the first poster's left edge, which the header text column
-/// lines up with (112 px on the 1920 wide Plex reference).
-const _kPlexPosterLeft = 56.0;
+/// lines up with. Measured from the content edge: the Plex rail pushes the
+/// content right instead of covering it.
+const _kPlexPosterLeft = PlexStyle.contentInset;
 
-/// Plex mode: row title line height and its gap to the posters.
-const _kPlexRowTitleHeight = 20.0;
-const _kPlexRowTitleGap = 12.0;
+/// Plex mode: row title line height and its gap to the posters (TV canvas
+/// units, see PlexStyle).
+const _kPlexRowTitleHeight = 20.0 * PlexStyle.k;
+const _kPlexRowTitleGap = 12.0 * PlexStyle.k;
 
 /// Plex mode: row title top to the next row title top (462 px in the Plex
 /// reference).
-const _kPlexRowPitch = 231.0;
+const _kPlexRowPitch = 231.0 * PlexStyle.k;
 
 /// How far a focused card grows past the top of its row. The scale is anchored
 /// at the bottom of the artwork, so all of the growth goes upward.
@@ -427,14 +429,6 @@ class _HomeShellState extends State<_HomeShell>
 
       if (!preserveBackground) {
         _backdropDebounce = Timer(_backdropDelay, () {
-          final episodeStill = _plexEpisodeStillUrl(item);
-          if (episodeStill != null) {
-            _backgroundService.setBackgroundUrl(
-              episodeStill,
-              context: BlurContext.browsing,
-            );
-            return;
-          }
           _backgroundService.setBackground(
             item,
             context: BlurContext.browsing,
@@ -444,29 +438,6 @@ class _HomeShellState extends State<_HomeShell>
 
       _maybePlayThemeMusic(item);
     });
-  }
-
-  /// Plex mode: the cards show the series poster, so the header backdrop
-  /// shows the episode's own thumbnail instead of the series art (user's
-  /// choice). Null when not an episode or it has no thumbnail.
-  String? _plexEpisodeStillUrl(AggregatedItem? item) {
-    if (item == null || !PlexStyle.enabled || item.type != 'Episode') {
-      return null;
-    }
-    final tag = item.primaryImageTag;
-    if (tag == null || tag.isEmpty) return null;
-    try {
-      return GetIt.instance<MediaServerClientFactory>()
-          .clientForServerOrActive(item.serverId)
-          .imageApi
-          .getPrimaryImageUrl(
-            item.id,
-            maxWidth: BackgroundService.backdropMaxWidth,
-            tag: tag,
-          );
-    } catch (_) {
-      return null;
-    }
   }
 
   void _maybeRegisterThemeMusic() {
@@ -1660,8 +1631,11 @@ class _ContentRowsState extends State<_ContentRows>
     final navbarPosition = widget.prefs.get(UserPreferences.navbarPosition);
     final isTopNavbarFocus =
         navbarPosition == NavbarPosition.top && global.dy < 140;
-    final isLeftSidebarFocus =
-        navbarPosition == NavbarPosition.left && global.dx < 240;
+    // Plex mode: posters start right of the rail, well inside 240, so ask
+    // the sidebar instead of guessing from x.
+    final isLeftSidebarFocus = PlexStyle.enabled
+        ? LeftSidebar.isFocusedNotifier.value
+        : navbarPosition == NavbarPosition.left && global.dx < 240;
     return isTopNavbarFocus || isLeftSidebarFocus;
   }
 
@@ -2567,8 +2541,9 @@ class _ContentRowsState extends State<_ContentRows>
             final global = box.localToGlobal(Offset.zero);
             final isTopNavbarFocus =
                 navbarPosition == NavbarPosition.top && global.dy < 120;
-            final isLeftSidebarFocus =
-                navbarPosition == NavbarPosition.left && global.dx < 220;
+            final isLeftSidebarFocus = PlexStyle.enabled
+                ? LeftSidebar.isFocusedNotifier.value
+                : navbarPosition == NavbarPosition.left && global.dx < 220;
             if (isTopNavbarFocus || isLeftSidebarFocus) {
               return;
             }

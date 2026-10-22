@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../preference/preference_constants.dart';
 import '../../preference/user_preferences.dart';
+import '../../util/focus/dpad_keys.dart';
 import '../../util/platform_detection.dart';
 import '../../util/overlay_color_palette.dart';
+import '../plex/plex_style.dart';
 import 'bottom_nav/bottom_navbar.dart';
 import 'download_progress_bar.dart';
 import 'left_sidebar.dart';
 import 'top_toolbar.dart';
 
 import 'dart:async';
+import 'dart:math' as math;
 import 'package:moonfin_design/moonfin_design.dart';
 import 'package:playback_core/playback_core.dart';
 import '../navigation/destinations.dart';
@@ -121,6 +125,10 @@ class _NavigationLayoutState extends State<NavigationLayout>
   late BottomNavbarStyle _bottomStyle;
   bool _keyboardVisible = false;
 
+  // Plex mode: the rail's expanded state, which places the content beside it.
+  final _railExpanded = ValueNotifier<bool>(false);
+  late bool _plexMode;
+
   // Split shrinks while the user scrolls down and comes back on the way up.
   // The flag only flips at the thresholds, so scrolling rebuilds nothing.
   final _bottomMinimized = ValueNotifier<bool>(false);
@@ -140,6 +148,7 @@ class _NavigationLayoutState extends State<NavigationLayout>
       _prefs.set(UserPreferences.navbarPosition, _position);
     }
     _bottomStyle = _prefs.get(UserPreferences.bottomNavbarStyle);
+    _plexMode = PlexStyle.enabled;
     _prefs.addListener(_onPrefsChanged);
     WidgetsBinding.instance.addObserver(this);
     NavigationLayout.positionNotifier.addListener(_onPositionNotified);
@@ -226,6 +235,7 @@ class _NavigationLayoutState extends State<NavigationLayout>
     _queueSub?.cancel();
     _contentFocusNode.dispose();
     _toolbarScrollOffset.dispose();
+    _railExpanded.dispose();
     super.dispose();
   }
 
@@ -246,9 +256,13 @@ class _NavigationLayoutState extends State<NavigationLayout>
   }
 
   // The bar's height, and with it the content inset, depends on the style.
+  // So does Plex mode, which moves the content beside the rail.
   void _onPrefsChanged() {
+    if (!mounted) return;
+    final plexMode = PlexStyle.enabled;
+    if (plexMode != _plexMode) setState(() => _plexMode = plexMode);
     final style = _prefs.get(UserPreferences.bottomNavbarStyle);
-    if (style == _bottomStyle || !mounted) return;
+    if (style == _bottomStyle) return;
     _expandBottomBar();
     setState(() => _bottomStyle = style);
   }
@@ -479,8 +493,13 @@ class _NavigationLayoutState extends State<NavigationLayout>
         activeRoute: widget.activeRoute,
         contentFocusNode: _contentFocusNode,
         showBackButton: widget.showBackButton,
+        expandedNotifier: _railExpanded,
       ),
     );
+
+    if (PlatformDetection.isTV && _plexMode) {
+      return _buildPlexSidebar(content, sidebar);
+    }
 
     if (PlatformDetection.isTV || (PlatformDetection.isDesktop || (PlatformDetection.isWeb && !PlatformDetection.useMobileUi))) {
       return Column(
@@ -524,6 +543,89 @@ class _NavigationLayoutState extends State<NavigationLayout>
         const DownloadProgressBar(),
       ],
     );
+  }
+
+  /// Plex mode: the content starts at the rail's right edge instead of lying
+  /// under it, and slides right as the rail opens (in step with it) rather
+  /// than reflowing, as in the Plex app. It keeps the width it has beside
+  /// the collapsed rail, so a grid keeps its columns and the right edge runs
+  /// off screen while the rail is open.
+  Widget _buildPlexSidebar(Widget content, Widget sidebar) {
+    final showRail = widget.showNavigationChrome;
+    final body = Focus(
+      canRequestFocus: false,
+      skipTraversal: true,
+      onKeyEvent: _onPlexContentKey,
+      child: content,
+    );
+    return Column(
+      children: [
+        Expanded(
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              final reserved = showRail ? PlexStyle.railCollapsedWidth : 0.0;
+              return Stack(
+                children: [
+                  ValueListenableBuilder<bool>(
+                    valueListenable: _railExpanded,
+                    builder: (context, expanded, child) => AnimatedPositioned(
+                      duration: LeftSidebar.expandDuration,
+                      curve: LeftSidebar.expandCurve,
+                      top: 0,
+                      bottom: 0,
+                      left: !showRail
+                          ? 0
+                          : expanded
+                          ? PlexStyle.railExpandedWidth
+                          : PlexStyle.railCollapsedWidth,
+                      width: math.max(0, constraints.maxWidth - reserved),
+                      child: child!,
+                    ),
+                    child: body,
+                  ),
+                  Positioned(top: 0, left: 0, bottom: 0, child: sidebar),
+                ],
+              );
+            },
+          ),
+        ),
+        const DownloadProgressBar(),
+      ],
+    );
+  }
+
+  /// Plex mode: left on the content's leftmost item opens the rail. Screens
+  /// see the key first, so one that uses left itself keeps it; this only
+  /// gets the presses they let through.
+  KeyEventResult _onPlexContentKey(FocusNode node, KeyEvent event) {
+    if (!event.isActionable ||
+        !event.logicalKey.isLeftKey ||
+        !widget.showNavigationChrome) {
+      return KeyEventResult.ignored;
+    }
+    final primary = FocusManager.instance.primaryFocus;
+    if (primary == null) return KeyEventResult.ignored;
+    // A text field moves its caret with left; the app-wide text editing
+    // shortcuts sit above this layout and would never see it otherwise.
+    if (primary.context?.findAncestorStateOfType<EditableTextState>() !=
+        null) {
+      return KeyEventResult.ignored;
+    }
+    if (primary.focusInDirection(TraversalDirection.left)) {
+      // The rail sits left of the content now, so plain traversal can reach
+      // one of its rows. Open it on the section on screen instead, the way
+      // focusNavbar() does, once the move has landed.
+      scheduleMicrotask(() {
+        final inChrome = NavigationLayout.chromeFocusRoots.any(
+          (root) => root.hasFocus,
+        );
+        if (inChrome) NavigationLayout.focusNavbar();
+      });
+      return KeyEventResult.handled;
+    }
+    // Held keys stop at the edge; only a fresh press opens the rail.
+    if (event is KeyDownEvent) NavigationLayout.focusNavbar();
+    return KeyEventResult.handled;
   }
 
   Widget _buildFloatingBackButton() {
