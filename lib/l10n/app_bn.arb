@@ -1,6 +1,6 @@
 {
     "@@locale": "bn",
-    "appTitle": "Moonfin",
+    "appTitle": "Plexfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Moonfin সংস্করণ {version}",
+    "appVersionFooter": "Plexfin সংস্করণ {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Moonfin আপনার সিস্টেম কীরিং অ্যাক্সেস করতে পারেনি। লগইন চালিয়ে যেতে পারে, কিন্তু কীরিং আনলক না হওয়া পর্যন্ত নিরাপদ টোকেন স্টোরেজ অনুপলব্ধ হতে পারে।",
+    "secureStorageUnavailableMessage": "Plexfin আপনার সিস্টেম কীরিং অ্যাক্সেস করতে পারেনি। লগইন চালিয়ে যেতে পারে, কিন্তু কীরিং আনলক না হওয়া পর্যন্ত নিরাপদ টোকেন স্টোরেজ অনুপলব্ধ হতে পারে।",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -168,17 +168,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "অ্যাপ রিস্টার্ট না করে Moonfin এবং Neon Pulse এর মধ্যে পাল্টান",
+    "settingsAppearanceThemeSubtitle": "অ্যাপ রিস্টার্ট না করে Plexfin এবং Neon Pulse এর মধ্যে পাল্টান",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Moonfin",
+    "themeMoonfin": "Plexfin",
     "@themeMoonfin": {
-        "description": "Display name for the Moonfin theme"
+        "description": "Display name for the Plexfin theme"
     },
-    "themeMoonfinSubtitle": "বর্তমান Moonfin দেখুন আপনারা সবাই প্রেমে পড়েছেন",
+    "themeMoonfinSubtitle": "বর্তমান Plexfin দেখুন আপনারা সবাই প্রেমে পড়েছেন",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Moonfin theme"
+        "description": "Preview description for the Plexfin theme"
     },
     "themeNeonPulse": "নিয়ন পালস",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "প্রস্থান করুন Moonfin?",
+    "exitApp": "প্রস্থান করুন Plexfin?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "সেট করা হয়নি। Moonfin অ্যাপ/ডেটা ফোল্ডারে একটি ডিফল্ট mpv.conf চেষ্টা করবে।",
+    "notSetMpvConf": "সেট করা হয়নি। Plexfin অ্যাপ/ডেটা ফোল্ডারে একটি ডিফল্ট mpv.conf চেষ্টা করবে।",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "লাইব্রেরি প্রতি হোম পেজ দৃশ্যমানতা টগল করুন। পরিবর্তনগুলি কার্যকর করার জন্য Moonfin পুনরায় চালু করুন৷",
+    "libraryVisibilityDescription": "লাইব্রেরি প্রতি হোম পেজ দৃশ্যমানতা টগল করুন। পরিবর্তনগুলি কার্যকর করার জন্য Plexfin পুনরায় চালু করুন৷",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3557,13 +3557,13 @@
     "@mediaBarMode": {
         "description": "Setting for choosing media bar style"
     },
-    "mediaBarModeDescription": "Moonfin, MakD এর মধ্যে বেছে নিন অথবা মিডিয়া বার বন্ধ করুন",
+    "mediaBarModeDescription": "Plexfin, MakD এর মধ্যে বেছে নিন অথবা মিডিয়া বার বন্ধ করুন",
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Moonfin",
+    "mediaBarModeMoonfin": "Plexfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Moonfin"
+        "description": "Media bar style option: Plexfin"
     },
     "mediaBarModeMakd": "ম্যাকডি",
     "@mediaBarModeMakd": {
@@ -4121,6 +4121,7 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
+    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
     "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
@@ -4293,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Moonfin এ খেলুন",
+    "playInMoonfin": "Plexfin এ খেলুন",
     "@playInMoonfin": {
-        "description": "Button to play available media in Moonfin"
+        "description": "Button to play available media in Plexfin"
     },
     "requestedByName": "{name} দ্বারা অনুরোধ করা হয়েছে",
     "@requestedByName": {
@@ -4347,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "আপনার Moonfin লাইব্রেরিতে আইটেম পাওয়া যায়নি",
+    "itemNotFoundInLibrary": "আপনার Plexfin লাইব্রেরিতে আইটেম পাওয়া যায়নি",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4651,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "সার্ভার রিবুট চলছে",
-    "adminServerRebootMessage": "সার্ভার রিবুট চলছে, অনুগ্রহ করে পুনরায় চালু করুন Moonfin",
+    "adminServerRebootMessage": "সার্ভার রিবুট চলছে, অনুগ্রহ করে পুনরায় চালু করুন Plexfin",
     "adminActiveSessions": "সক্রিয় সেশন",
     "adminSessionsLoadFailed": "সেশনগুলি লোড করতে ব্যর্থ হয়েছে৷",
     "adminNoActiveSessions": "কোনো সক্রিয় সেশন নেই",
@@ -6539,7 +6540,7 @@
     "settingsShowGenresButtonInNavigation": "নেভিগেশন বারে জেনার বোতামটি দেখান",
     "settingsShowFavoritesButtonInNavigation": "নেভিগেশন বারে পছন্দের বোতামটি দেখান",
     "settingsShowLibrariesButtonInNavigation": "নেভিগেশন বারে লাইব্রেরি বোতামটি দেখান",
-    "settingsLibraryVisibilitySubtitle": "লাইব্রেরি প্রতি হোম পেজ দৃশ্যমানতা টগল করুন। পরিবর্তনগুলি কার্যকর করার জন্য Moonfin পুনরায় চালু করুন৷",
+    "settingsLibraryVisibilitySubtitle": "লাইব্রেরি প্রতি হোম পেজ দৃশ্যমানতা টগল করুন। পরিবর্তনগুলি কার্যকর করার জন্য Plexfin পুনরায় চালু করুন৷",
     "settingsMediaBarAndLocalPreviews": "মিডিয়া বার এবং স্থানীয় পূর্বরূপ",
     "settingsVisualOverlays": "ভিজ্যুয়াল ওভারলে",
     "settingsSeasonalSurprise": "ঋতু চমক",
@@ -6558,14 +6559,14 @@
     "settingsJoinDiscord": "যোগ দিন Discord",
     "settingsJoinDiscordSubtitle": "সম্প্রদায়ের সাথে চ্যাট করুন",
     "settingsJoinTheDiscord": "যোগ দিন Discord",
-    "settingsSupportMoonfin": "সমর্থন Moonfin",
+    "settingsSupportMoonfin": "সমর্থন Plexfin",
     "settingsLegal": "আইনি",
     "settingsLicenses": "লাইসেন্স",
     "settingsOpenSourceLicenseNotices": "ওপেন সোর্স লাইসেন্স বিজ্ঞপ্তি",
     "settingsPrivacyPolicy": "গোপনীয়তা নীতি",
-    "settingsPrivacyPolicySubtitle": "Moonfin কীভাবে আপনার ডেটা পরিচালনা করে",
+    "settingsPrivacyPolicySubtitle": "Plexfin কীভাবে আপনার ডেটা পরিচালনা করে",
     "settingsCheckForUpdates": "আপডেটের জন্য চেক করুন",
-    "settingsCheckForUpdatesSubtitle": "সর্বশেষ Moonfin রিলিজের জন্য চেক করুন",
+    "settingsCheckForUpdatesSubtitle": "সর্বশেষ Plexfin রিলিজের জন্য চেক করুন",
     "settingsPoweredByFlutter": "ফ্লটার দ্বারা চালিত",
     "settingsLicenseNoticesCount": "{count, plural, one {# লাইসেন্স নোটিশ} other {# লাইসেন্স নোটিশ}}",
     "@settingsLicenseNoticesCount": {
@@ -7098,12 +7099,12 @@
     "preferSdhSubtitles": "SDH সাবটাইটেল পছন্দ করুন",
     "preferSdhSubtitlesSubtitle": "স্বয়ংক্রিয়ভাবে নির্বাচন করার সময় SDH/CC সাবটাইটেল ট্র্যাকগুলিকে অগ্রাধিকার দিন৷",
     "webDiagnostics": "ওয়েব ডায়াগনস্টিকস",
-    "webDiagnosticsTitle": "Moonfin ওয়েব ডায়াগনস্টিকস",
+    "webDiagnosticsTitle": "Plexfin ওয়েব ডায়াগনস্টিকস",
     "webDiagnosticsIntro": "ব্রাউজার সংযোগ সমস্যা (CORS, মিশ্র বিষয়বস্তু, এবং আবিষ্কার সেটিংস) নির্ণয় করতে এই পৃষ্ঠাটি ব্যবহার করুন।",
     "webDiagnosticsDetectedMixedContentFailure": "মিশ্র-সামগ্রী ব্যর্থতা সনাক্ত করা হয়েছে",
     "webDiagnosticsDetectedCorsPreflightFailure": "সনাক্ত করা CORS/প্রিফ্লাইট ব্যর্থতা",
-    "webDiagnosticsMixedContentFailureBody": "Moonfin একটি HTTPS পৃষ্ঠা সনাক্ত করেছে যা একটি HTTP সার্ভার URL কল করার চেষ্টা করছে৷ ব্রাউজার এই অনুরোধটি আপনার সার্ভারে পৌঁছানোর আগেই ব্লক করে।",
-    "webDiagnosticsCorsFailureBody": "Moonfin একটি ব্রাউজার-স্তরের অনুরোধ ব্যর্থতা সনাক্ত করেছে যা সাধারণত মিডিয়া সার্ভারে CORS বা প্রিফ্লাইট হেডার অনুপস্থিত হওয়ার কারণে ঘটে।",
+    "webDiagnosticsMixedContentFailureBody": "Plexfin একটি HTTPS পৃষ্ঠা সনাক্ত করেছে যা একটি HTTP সার্ভার URL কল করার চেষ্টা করছে৷ ব্রাউজার এই অনুরোধটি আপনার সার্ভারে পৌঁছানোর আগেই ব্লক করে।",
+    "webDiagnosticsCorsFailureBody": "Plexfin একটি ব্রাউজার-স্তরের অনুরোধ ব্যর্থতা সনাক্ত করেছে যা সাধারণত মিডিয়া সার্ভারে CORS বা প্রিফ্লাইট হেডার অনুপস্থিত হওয়ার কারণে ঘটে।",
     "webDiagnosticsTargetUrl": "টার্গেট URL: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7133,7 +7134,7 @@
     "notConfigured": "কনফিগার করা হয়নি",
     "webDiagnosticsMixedContent": "মিশ্র বিষয়বস্তু",
     "webDiagnosticsMixedContentDetected": "এই পৃষ্ঠাটি HTTPS-এর মাধ্যমে লোড করা হয়েছে, কিন্তু এক বা একাধিক কনফিগার করা URL হল HTTP৷ ব্রাউজার HTTPS পৃষ্ঠাগুলিকে HTTP API কল করা থেকে ব্লক করে।",
-    "webDiagnosticsMixedContentFix": "ঠিক করুন: HTTPS এর মাধ্যমে আপনার মিডিয়া সার্ভার বা প্রক্সি এন্ডপয়েন্ট পরিবেশন করুন, অথবা শুধুমাত্র বিশ্বস্ত স্থানীয় নেটওয়ার্কগুলিতে HTTP-এর উপর Moonfin লোড করুন।",
+    "webDiagnosticsMixedContentFix": "ঠিক করুন: HTTPS এর মাধ্যমে আপনার মিডিয়া সার্ভার বা প্রক্সি এন্ডপয়েন্ট পরিবেশন করুন, অথবা শুধুমাত্র বিশ্বস্ত স্থানীয় নেটওয়ার্কগুলিতে HTTP-এর উপর Plexfin লোড করুন।",
     "webDiagnosticsNoMixedContentDetected": "বর্তমান রানটাইম সেটিংস থেকে কোনো সুস্পষ্ট মিশ্র-সামগ্রী কনফিগারেশন সনাক্ত করা যায়নি।",
     "webDiagnosticsCorsChecklist": "CORS চেকলিস্ট",
     "webDiagnosticsCorsChecklistItem1": "• অ্যাক্সেস-কন্ট্রোল-অ্যালো-অরিজিনে ব্রাউজার অরিজিনকে অনুমতি দিন।",
@@ -7330,7 +7331,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "ক্লাসিক হলো Moonfin-এর মূল কেন্দ্রীভূত লেআউট। মডার্ন হলো একটি রেসপনসিভ সিনেম্যাটিক লেআউট।",
+    "detailScreenStyleSubtitle": "ক্লাসিক হলো Plexfin-এর মূল কেন্দ্রীভূত লেআউট। মডার্ন হলো একটি রেসপনসিভ সিনেম্যাটিক লেআউট।",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7362,13 +7363,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "Moonfin Recommends-এর লোকাল-লাইব্রেরি অ্যালগরিদম অথবা অনলাইন TMDb-এর সাদৃশ্য মেট্রিক ব্যবহার করুন। দ্রষ্টব্য: অনলাইন সুপারিশের জন্য Seerr ইন্টিগ্রেশন প্রয়োজন।",
+    "recommendationSystemSubtitle": "Plexfin Recommends-এর লোকাল-লাইব্রেরি অ্যালগরিদম অথবা অনলাইন TMDb-এর সাদৃশ্য মেট্রিক ব্যবহার করুন। দ্রষ্টব্য: অনলাইন সুপারিশের জন্য Seerr ইন্টিগ্রেশন প্রয়োজন।",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Moonfin Recommends",
+    "recommendationSystemMoonfin": "Plexfin Recommends",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Moonfin Recommends"
+        "description": "Recommendation system option: Plexfin Recommends"
     },
     "recommendationSystemTmdb": "TMDb সাদৃশ্য",
     "@recommendationSystemTmdb": {
@@ -7378,7 +7379,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "লক্ষ্য মিডিয়ার প্যারেন্টাল রেটিং অনুযায়ী Moonfin Recommends-এর সাজেশন সীমিত করুন",
+    "recommendationsApplyParentalRatingCapSubtitle": "লক্ষ্য মিডিয়ার প্যারেন্টাল রেটিং অনুযায়ী Plexfin Recommends-এর সাজেশন সীমিত করুন",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7426,7 +7427,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "কাস্টম থিম Moonfin জুড়ে ভিজ্যুয়াল উপাদান বদলে দেয়। আপনার পছন্দ অনুযায়ী একটি বেছে নিন।",
+    "customThemeSubtitle": "কাস্টম থিম Plexfin জুড়ে ভিজ্যুয়াল উপাদান বদলে দেয়। আপনার পছন্দ অনুযায়ী একটি বেছে নিন।",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7599,7 +7600,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "আপনার ফোনে Moonfin-এ সাইন ইন করুন",
+    "carSignInPrompt": "আপনার ফোনে Plexfin-এ সাইন ইন করুন",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8940,7 +8941,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller হলো Flutter-এর আধুনিক GPU রেন্ডারার, যা আরও মসৃণ অ্যানিমেশন ও কম আটকানো নিশ্চিত করে। কিছু টিভি বক্স ও পুরোনো GPU-তে এটি গ্লিচ বা কালো ভিডিওর কারণ হতে পারে; এমন হলে এটি বন্ধ করে দিন। স্বয়ংক্রিয় আপনার ডিভাইসের জন্য সেরা ডিফল্টটি বেছে নেয়। প্রয়োগ করতে Moonfin রিস্টার্ট করুন।",
+    "impellerRenderingSubtitle": "Impeller হলো Flutter-এর আধুনিক GPU রেন্ডারার, যা আরও মসৃণ অ্যানিমেশন ও কম আটকানো নিশ্চিত করে। কিছু টিভি বক্স ও পুরোনো GPU-তে এটি গ্লিচ বা কালো ভিডিওর কারণ হতে পারে; এমন হলে এটি বন্ধ করে দিন। স্বয়ংক্রিয় আপনার ডিভাইসের জন্য সেরা ডিফল্টটি বেছে নেয়। প্রয়োগ করতে Plexfin রিস্টার্ট করুন।",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8951,7 +8952,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "রেন্ডারিং ইঞ্জিন পরিবর্তন করতে Moonfin রিস্টার্ট করা প্রয়োজন। এখন অ্যাপটি বন্ধ করে আবার চালু করলে পরিবর্তনটি প্রয়োগ হবে।",
+    "impellerRestartMessage": "রেন্ডারিং ইঞ্জিন পরিবর্তন করতে Plexfin রিস্টার্ট করা প্রয়োজন। এখন অ্যাপটি বন্ধ করে আবার চালু করলে পরিবর্তনটি প্রয়োগ হবে।",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },

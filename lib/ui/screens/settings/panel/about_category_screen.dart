@@ -1,5 +1,10 @@
 part of '../settings_side_panel.dart';
 
+/// Plexfin: upstream's donation, privacy-policy, Discord and issue-tracker
+/// links point at the Moonfin project, so this fork hides them. The licence
+/// and source links stay (GPL).
+const bool _showUpstreamLinks = false;
+
 class _AboutCategoryScreen extends StatelessWidget {
   const _AboutCategoryScreen();
 
@@ -20,6 +25,15 @@ class _AboutCategoryScreen extends StatelessWidget {
             child: Text(
               l10n.versionValue(appVersion),
               style: Theme.of(context).textTheme.bodyMedium,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              l10n.aboutBasedOnMoonfin,
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.bodySmall,
             ),
           ),
           const SizedBox(height: 16),
@@ -47,16 +61,18 @@ class _AboutCategoryScreen extends StatelessWidget {
                   title: l10n.sourceCode,
                 ),
               ),
-              _TvSettingsListTile(
-                leading: const Icon(Icons.bug_report),
-                title: Text(l10n.settingsReportAnIssue),
-                subtitle: Text(l10n.settingsReportAnIssueSubtitle),
-                onTap: () => showQrOrLaunch(
-                  context,
-                  url: 'https://github.com/Moonfin-Client/Moonfin-Core/issues',
-                  title: l10n.settingsReportAnIssue,
+              // Plexfin: bugs in this fork don't belong in upstream's tracker.
+              if (_showUpstreamLinks)
+                _TvSettingsListTile(
+                  leading: const Icon(Icons.bug_report),
+                  title: Text(l10n.settingsReportAnIssue),
+                  subtitle: Text(l10n.settingsReportAnIssueSubtitle),
+                  onTap: () => showQrOrLaunch(
+                    context,
+                    url: 'https://github.com/Moonfin-Client/Moonfin-Core/issues',
+                    title: l10n.settingsReportAnIssue,
+                  ),
                 ),
-              ),
               _TvSettingsListTile(
                 leading: const Icon(Icons.troubleshoot),
                 title: const Text('Diagnostics & Logging'),
@@ -87,22 +103,26 @@ class _AboutCategoryScreen extends StatelessWidget {
                   context.navigateTopLevel(Destinations.setup);
                 },
               ),
-              _TvSettingsListTile(
-                leading: const Icon(Icons.forum),
-                title: Text(l10n.settingsJoinDiscord),
-                subtitle: Text(l10n.settingsJoinDiscordSubtitle),
-                onTap: () => showQrOrLaunch(
-                  context,
-                  url: 'https://discord.gg/moonfin',
-                  title: l10n.settingsJoinTheDiscord,
+              // Plexfin: upstream's community Discord is not this fork's.
+              if (_showUpstreamLinks)
+                _TvSettingsListTile(
+                  leading: const Icon(Icons.forum),
+                  title: Text(l10n.settingsJoinDiscord),
+                  subtitle: Text(l10n.settingsJoinDiscordSubtitle),
+                  onTap: () => showQrOrLaunch(
+                    context,
+                    url: 'https://discord.gg/moonfin',
+                    title: l10n.settingsJoinTheDiscord,
+                  ),
                 ),
-              ),
-              _TvSettingsListTile(
-                leading: const Icon(Icons.favorite),
-                title: Text(l10n.settingsSupportMoonfin),
-                subtitle: Text(l10n.settingsSupportMoonfinSubtitle),
-                onTap: () => showSupportDialog(context),
-              ),
+              // Plexfin: the upstream donation tile is hidden in this fork.
+              if (_showUpstreamLinks)
+                _TvSettingsListTile(
+                  leading: const Icon(Icons.favorite),
+                  title: Text(l10n.settingsSupportMoonfin),
+                  subtitle: Text(l10n.settingsSupportMoonfinSubtitle),
+                  onTap: () => showSupportDialog(context),
+                ),
             ],
           ),
           _SectionHeader(l10n.settingsLegal),
@@ -119,16 +139,18 @@ class _AboutCategoryScreen extends StatelessWidget {
                   title: l10n.settingsLicenses,
                 ),
               ),
-              _TvSettingsListTile(
-                leading: const Icon(Icons.privacy_tip),
-                title: Text(l10n.settingsPrivacyPolicy),
-                subtitle: Text(l10n.settingsPrivacyPolicySubtitle),
-                onTap: () => showQrOrLaunch(
-                  context,
-                  url: 'https://moonfin.io/privacy',
-                  title: l10n.settingsPrivacyPolicy,
+              // Plexfin: upstream's privacy policy does not cover this fork.
+              if (_showUpstreamLinks)
+                _TvSettingsListTile(
+                  leading: const Icon(Icons.privacy_tip),
+                  title: Text(l10n.settingsPrivacyPolicy),
+                  subtitle: Text(l10n.settingsPrivacyPolicySubtitle),
+                  onTap: () => showQrOrLaunch(
+                    context,
+                    url: 'https://moonfin.io/privacy',
+                    title: l10n.settingsPrivacyPolicy,
+                  ),
                 ),
-              ),
             ],
           ),
         ],

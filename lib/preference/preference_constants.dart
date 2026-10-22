@@ -923,7 +923,7 @@ enum SinceYouWatchedSource {
   online;
 
   String get displayName => switch (this) {
-    SinceYouWatchedSource.local => 'Moonfin Recommends',
+    SinceYouWatchedSource.local => 'Plexfin Recommends',
     SinceYouWatchedSource.server => 'Jellyfin Recommends',
     SinceYouWatchedSource.online => 'TMDb Similarity',
   };

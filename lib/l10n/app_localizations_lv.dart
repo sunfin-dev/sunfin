@@ -10,7 +10,7 @@ class AppLocalizationsLv extends AppLocalizations {
   AppLocalizationsLv([String locale = 'lv']) : super(locale);
 
   @override
-  String get appTitle => 'Moonfin';
+  String get appTitle => 'Plexfin';
 
   @override
   String get animeMarkerFiller => 'Filler';
@@ -108,7 +108,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String appVersionFooter(String version) {
-    return 'Moonfin versija $version';
+    return 'Plexfin versija $version';
   }
 
   @override
@@ -160,7 +160,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get secureStorageUnavailableMessage =>
-      'Moonfin nevarēja piekļūt jūsu sistēmas atslēgu piekariņam. Pieteikšanos var turpināt, taču droša marķiera krātuve var nebūt pieejama, kamēr atslēgu piekariņš nav atbloķēts.';
+      'Plexfin nevarēja piekļūt jūsu sistēmas atslēgu piekariņam. Pieteikšanos var turpināt, taču droša marķiera krātuve var nebūt pieejama, kamēr atslēgu piekariņš nav atbloķēts.';
 
   @override
   String get ok => 'Labi';
@@ -173,7 +173,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get detailScreenStyleSubtitle =>
-      'Klasiskais ir oriģinālais centrētais Moonfin izkārtojums. Modernais ir adaptīvs kinematogrāfisks izkārtojums.';
+      'Klasiskais ir oriģinālais centrētais Plexfin izkārtojums. Modernais ir adaptīvs kinematogrāfisks izkārtojums.';
 
   @override
   String get detailScreenStyleMoonfin => 'Klasiskais';
@@ -410,10 +410,10 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get recommendationSystemSubtitle =>
-      'Izmantojiet Moonfin Recommends vietējās bibliotēkas algoritmu vai tiešsaistes TMDB līdzības rādītājus. Piezīme: tiešsaistes ieteikumiem nepieciešama Seerr integrācija.';
+      'Izmantojiet Plexfin Recommends vietējās bibliotēkas algoritmu vai tiešsaistes TMDB līdzības rādītājus. Piezīme: tiešsaistes ieteikumiem nepieciešama Seerr integrācija.';
 
   @override
-  String get recommendationSystemMoonfin => 'Moonfin Recommends';
+  String get recommendationSystemMoonfin => 'Plexfin Recommends';
 
   @override
   String get recommendationSystemJellyfin => 'Jellyfin Recommends';
@@ -427,7 +427,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get recommendationsApplyParentalRatingCapSubtitle =>
-      'Ierobežot Moonfin Recommends ieteikumus atbilstoši izvēlētā satura vecuma ierobežojumam';
+      'Ierobežot Plexfin Recommends ieteikumus atbilstoši izvēlētā satura vecuma ierobežojumam';
 
   @override
   String get interfaceStyle => 'Saskarnes stils';
@@ -450,7 +450,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get interfaceLayoutSubtitle =>
-      'Override the detected layout when this device is read wrong. Restart Moonfin for changes to take effect.';
+      'Override the detected layout when this device is read wrong. Restart Plexfin for changes to take effect.';
 
   @override
   String get interfaceLayoutAutomatic => 'Automatic';
@@ -515,14 +515,14 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get settingsAppearanceThemeSubtitle =>
-      'Pārslēdzieties starp Moonfin un Neon Pulse, nerestartējot lietotni';
+      'Pārslēdzieties starp Plexfin un Neon Pulse, nerestartējot lietotni';
 
   @override
   String get customThemeTitle => 'Pielāgota tēma';
 
   @override
   String get customThemeSubtitle =>
-      'Pielāgotas tēmas maina vizuālos elementus visā Moonfin lietotnē. Izvēlieties vienu no šīm iespējām atbilstoši savam stilam.';
+      'Pielāgotas tēmas maina vizuālos elementus visā Plexfin lietotnē. Izvēlieties vienu no šīm iespējām atbilstoši savam stilam.';
 
   @override
   String get keyboardPreferSystemIme => 'Dod priekšroku sistēmas tastatūrai';
@@ -542,11 +542,11 @@ class AppLocalizationsLv extends AppLocalizations {
       'Let a connected game controller move focus and select items';
 
   @override
-  String get themeMoonfin => 'Moonfin';
+  String get themeMoonfin => 'Plexfin';
 
   @override
   String get themeMoonfinSubtitle =>
-      'Pašreizējais Moonfin izskats, ko jūs visi esat iemīlējuši';
+      'Pašreizējais Plexfin izskats, ko jūs visi esat iemīlējuši';
 
   @override
   String get themeNeonPulse => 'Neona pulss';
@@ -622,7 +622,7 @@ class AppLocalizationsLv extends AppLocalizations {
   }
 
   @override
-  String get exitApp => 'Vai iziet no Moonfin?';
+  String get exitApp => 'Vai iziet no Plexfin?';
 
   @override
   String get exitAppConfirmation => 'Vai tiešām vēlaties iziet?';
@@ -1777,7 +1777,7 @@ class AppLocalizationsLv extends AppLocalizations {
   String get shuffleAllMusic => 'Jaukt visu mūziku';
 
   @override
-  String get carSignInPrompt => 'Pierakstieties Moonfin savā tālrunī';
+  String get carSignInPrompt => 'Pierakstieties Plexfin savā tālrunī';
 
   @override
   String get carServerUnreachable => 'Nevar sasniegt serveri';
@@ -2063,7 +2063,7 @@ class AppLocalizationsLv extends AppLocalizations {
   String get shortcutToggleFullscreen => 'Fullscreen on or off';
 
   @override
-  String get shortcutQuit => 'Quit Moonfin';
+  String get shortcutQuit => 'Quit Plexfin';
 
   @override
   String get shortcutPlayPause => 'Play or pause';
@@ -3025,7 +3025,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get loadingAnimationDescription =>
-      'Customize the loading animations used throughout Moonfin';
+      'Customize the loading animations used throughout Plexfin';
 
   @override
   String get loadingAnimationConfiguration => 'Loading Animation Configuration';
@@ -3034,7 +3034,7 @@ class AppLocalizationsLv extends AppLocalizations {
   String get loadingAnimationImage => 'Image';
 
   @override
-  String get loadingAnimationImageMoonfinLogo => 'Moonfin Logo';
+  String get loadingAnimationImageMoonfinLogo => 'Plexfin Logo';
 
   @override
   String get loadingAnimationImageSpinner => 'Spinner';
@@ -3046,7 +3046,7 @@ class AppLocalizationsLv extends AppLocalizations {
   String get loadingAnimationImageMoonPhases => 'Moon Phases';
 
   @override
-  String get loadingAnimationImageMoonfinPhases => 'Moonfin Phases';
+  String get loadingAnimationImageMoonfinPhases => 'Plexfin Phases';
 
   @override
   String get loadingAnimationImageNeonfinPhases => 'Neonfin Phases';
@@ -4056,7 +4056,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get notSetMpvConf =>
-      'Nav iestatīts. Moonfin izmēģinās noklusējuma mpv.conf lietotņu/datu mapēs.';
+      'Nav iestatīts. Plexfin izmēģinās noklusējuma mpv.conf lietotņu/datu mapēs.';
 
   @override
   String get selectMpvConf => 'Atlasiet mpv.conf';
@@ -4335,7 +4335,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get downloadLocationLimitedByAndroid =>
-      'Android only lets Moonfin write to the folders it owns, and this device has no removable storage. Turn on Save to Downloads folder above to keep downloads somewhere other apps can reach.';
+      'Android only lets Plexfin write to the folders it owns, and this device has no removable storage. Turn on Save to Downloads folder above to keep downloads somewhere other apps can reach.';
 
   @override
   String get saveToDownloadsFolder => 'Saglabāt mapē Lejupielādes';
@@ -4524,7 +4524,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get libraryVisibilityDescription =>
-      'Pārslēgt mājas lapas redzamību katrai bibliotēkai. Restartējiet Moonfin, lai izmaiņas stātos spēkā.';
+      'Pārslēgt mājas lapas redzamību katrai bibliotēkai. Restartējiet Plexfin, lai izmaiņas stātos spēkā.';
 
   @override
   String get showInNavigation => 'Rādīt navigācijā';
@@ -4593,7 +4593,7 @@ class AppLocalizationsLv extends AppLocalizations {
       'Izvēlieties starp dažādiem multivides joslas stiliem vai izslēdziet multivides joslu';
 
   @override
-  String get mediaBarModeMoonfin => 'Moonfin';
+  String get mediaBarModeMoonfin => 'Plexfin';
 
   @override
   String get mediaBarModeMakd => 'MakD';
@@ -4926,7 +4926,7 @@ class AppLocalizationsLv extends AppLocalizations {
   String get screensaverBackdropBlack => 'Black';
 
   @override
-  String get screensaverBackdropMoonfin => 'Moonfin';
+  String get screensaverBackdropMoonfin => 'Plexfin';
 
   @override
   String get screensaverBackdropCalm => 'Calm';
@@ -4941,7 +4941,7 @@ class AppLocalizationsLv extends AppLocalizations {
   String get screensaverAdditionalComponent => 'Additional Component';
 
   @override
-  String get screensaverComponentMoonfinLogo => 'Moonfin Logo';
+  String get screensaverComponentMoonfinLogo => 'Plexfin Logo';
 
   @override
   String get screensaverComponentRunner => 'Runner';
@@ -5215,6 +5215,10 @@ class AppLocalizationsLv extends AppLocalizations {
   String get sourceCode => 'Avota kods';
 
   @override
+  String get aboutBasedOnMoonfin =>
+      'Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core';
+
+  @override
   String get sourceCodeUrl => 'https://github.com/Moonfin-Client/Moonfin-Core';
 
   @override
@@ -5400,7 +5404,7 @@ class AppLocalizationsLv extends AppLocalizations {
   String get cancelRequest4k => 'Cancel 4K Request';
 
   @override
-  String get playInMoonfin => 'Spēlē Moonfin';
+  String get playInMoonfin => 'Spēlē Plexfin';
 
   @override
   String get requestedByLabel => 'Requested by';
@@ -5446,7 +5450,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get itemNotFoundInLibrary =>
-      'Vienums nav atrasts jūsu Moonfin bibliotēkā';
+      'Vienums nav atrasts jūsu Plexfin bibliotēkā';
 
   @override
   String get errorSearchingLibrary => 'Meklējot bibliotēku, radās kļūda';
@@ -6042,7 +6046,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get adminServerRebootMessage =>
-      'Notiek servera atsāknēšana, lūdzu, restartējiet Moonfin';
+      'Notiek servera atsāknēšana, lūdzu, restartējiet Plexfin';
 
   @override
   String get adminActiveSessions => 'Aktīvās sesijas';
@@ -10124,7 +10128,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get settingsLibraryVisibilitySubtitle =>
-      'Pārslēgt mājas lapas redzamību katrai bibliotēkai. Restartējiet Moonfin, lai izmaiņas stātos spēkā.';
+      'Pārslēgt mājas lapas redzamību katrai bibliotēkai. Restartējiet Plexfin, lai izmaiņas stātos spēkā.';
 
   @override
   String get settingsMediaBarAndLocalPreviews =>
@@ -10256,7 +10260,7 @@ class AppLocalizationsLv extends AppLocalizations {
   String get settingsJoinTheDiscord => 'Pievienojieties Discord';
 
   @override
-  String get settingsSupportMoonfin => 'Atbalstiet Moonfin';
+  String get settingsSupportMoonfin => 'Atbalstiet Plexfin';
 
   @override
   String get settingsSupportMoonfinSubtitle => 'Uzsauciet izstrādātājam kafiju';
@@ -10275,14 +10279,14 @@ class AppLocalizationsLv extends AppLocalizations {
   String get settingsPrivacyPolicy => 'Privātuma politika';
 
   @override
-  String get settingsPrivacyPolicySubtitle => 'Kā Moonfin apstrādā jūsu datus';
+  String get settingsPrivacyPolicySubtitle => 'Kā Plexfin apstrādā jūsu datus';
 
   @override
   String get settingsCheckForUpdates => 'Pārbaudiet atjauninājumus';
 
   @override
   String get settingsCheckForUpdatesSubtitle =>
-      'Pārbaudiet jaunāko Moonfin versiju';
+      'Pārbaudiet jaunāko Plexfin versiju';
 
   @override
   String get settingsPoweredByFlutter => 'Darbojas ar Flutter';
@@ -11105,7 +11109,7 @@ class AppLocalizationsLv extends AppLocalizations {
   String get webDiagnostics => 'Web diagnostika';
 
   @override
-  String get webDiagnosticsTitle => 'Moonfin Tīmekļa diagnostika';
+  String get webDiagnosticsTitle => 'Plexfin Tīmekļa diagnostika';
 
   @override
   String get webDiagnosticsIntro =>
@@ -11121,11 +11125,11 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get webDiagnosticsMixedContentFailureBody =>
-      'Moonfin atklāja HTTPS lapu, kas mēģina izsaukt HTTP servera URL. Pārlūkprogrammas bloķē šo pieprasījumu, pirms tas sasniedz jūsu serveri.';
+      'Plexfin atklāja HTTPS lapu, kas mēģina izsaukt HTTP servera URL. Pārlūkprogrammas bloķē šo pieprasījumu, pirms tas sasniedz jūsu serveri.';
 
   @override
   String get webDiagnosticsCorsFailureBody =>
-      'Moonfin atklāja pārlūkprogrammas līmeņa pieprasījuma kļūmi, ko parasti izraisa trūkstošas ​​CORS vai pirmspārbaudes galvenes multivides serverī.';
+      'Plexfin atklāja pārlūkprogrammas līmeņa pieprasījuma kļūmi, ko parasti izraisa trūkstošas ​​CORS vai pirmspārbaudes galvenes multivides serverī.';
 
   @override
   String webDiagnosticsTargetUrl(String url) {
@@ -11175,7 +11179,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get webDiagnosticsMixedContentFix =>
-      'Labojums: apkalpojiet multivides serveri vai starpniekservera galapunktu, izmantojot HTTPS, vai ielādējiet Moonfin, izmantojot HTTP, tikai uzticamos lokālos tīklos.';
+      'Labojums: apkalpojiet multivides serveri vai starpniekservera galapunktu, izmantojot HTTPS, vai ielādējiet Plexfin, izmantojot HTTP, tikai uzticamos lokālos tīklos.';
 
   @override
   String get webDiagnosticsNoMixedContentDetected =>
@@ -12909,7 +12913,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get impellerRenderingSubtitle =>
-      'Impeller ir Flutter modernais GPU renderētājs, kas nodrošina plūstošākas animācijas un mazāku raustīšanos. Dažās TV pierīcēs un vecākos GPU tas var radīt traucējumus vai melnu attēlu; tādā gadījumā izslēdziet to. “Automātiski” izvēlas jūsu ierīcei piemērotāko noklusējumu. Lai lietotu izmaiņas, restartējiet Moonfin.';
+      'Impeller ir Flutter modernais GPU renderētājs, kas nodrošina plūstošākas animācijas un mazāku raustīšanos. Dažās TV pierīcēs un vecākos GPU tas var radīt traucējumus vai melnu attēlu; tādā gadījumā izslēdziet to. “Automātiski” izvēlas jūsu ierīcei piemērotāko noklusējumu. Lai lietotu izmaiņas, restartējiet Plexfin.';
 
   @override
   String get impellerAuto => 'Automātiski';
@@ -12925,7 +12929,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get impellerRestartMessage =>
-      'Lai mainītu renderēšanas dzinēju, Moonfin ir jārestartē. Aizveriet lietotni tagad un atveriet to no jauna.';
+      'Lai mainītu renderēšanas dzinēju, Plexfin ir jārestartē. Aizveriet lietotni tagad un atveriet to no jauna.';
 
   @override
   String get impellerCloseNow => 'Aizvērt lietotni tagad';
@@ -13443,7 +13447,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get autoDownloadTranscodedForegroundNote =>
-      'Transcoded qualities only download while Moonfin is open. Original quality also downloads in the background.';
+      'Transcoded qualities only download while Plexfin is open. Original quality also downloads in the background.';
 
   @override
   String get autoDownloadTranscodedRunningNote =>
@@ -13451,7 +13455,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get autoDownloadForegroundOnly =>
-      'Downloads only while Moonfin is open';
+      'Downloads only while Plexfin is open';
 
   @override
   String get autoDownloadQualityTitle => 'Auto-download quality';
@@ -13506,15 +13510,15 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get autoDownloadBackgroundRefreshSubtitle =>
-      'Allow the system to check for new episodes periodically while Moonfin is closed';
+      'Allow the system to check for new episodes periodically while Plexfin is closed';
 
   @override
   String get autoDownloadBackgroundRefreshDenied =>
-      'Background App Refresh is disabled for Moonfin. Enable it in iOS Settings.';
+      'Background App Refresh is disabled for Plexfin. Enable it in iOS Settings.';
 
   @override
   String get autoDownloadBackgroundRestrictedAndroid =>
-      'Background usage is restricted for Moonfin in Android Settings.';
+      'Background usage is restricted for Plexfin in Android Settings.';
 
   @override
   String get autoDownloadCheckNow => 'Check now';
@@ -13735,13 +13739,13 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get topShelfDescription =>
-      'What the Apple TV home screen shows above the Moonfin icon when it is selected. This setting stays on this device.';
+      'What the Apple TV home screen shows above the Plexfin icon when it is selected. This setting stays on this device.';
 
   @override
   String get topShelfLatestMedia => 'Latest media';
 
   @override
-  String get topShelfAppBanner => 'Moonfin banner';
+  String get topShelfAppBanner => 'Plexfin banner';
 
   @override
   String get keepVideoClearOfDynamicIsland =>

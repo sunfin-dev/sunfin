@@ -1,6 +1,6 @@
 {
     "@@locale": "ko",
-    "appTitle": "Moonfin",
+    "appTitle": "Plexfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Moonfin 버전 {version}",
+    "appVersionFooter": "Plexfin 버전 {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Moonfin이 시스템 키링에 액세스할 수 없습니다. 로그인은 계속할 수 있지만 키링이 잠금 해제될 때까지 보안 토큰 저장을 사용하지 못할 수 있습니다.",
+    "secureStorageUnavailableMessage": "Plexfin이 시스템 키링에 액세스할 수 없습니다. 로그인은 계속할 수 있지만 키링이 잠금 해제될 때까지 보안 토큰 저장을 사용하지 못할 수 있습니다.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -168,17 +168,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "앱을 다시 시작하지 않고도 Moonfin과 Neon Pulse 간에 전환할 수 있습니다.",
+    "settingsAppearanceThemeSubtitle": "앱을 다시 시작하지 않고도 Plexfin과 Neon Pulse 간에 전환할 수 있습니다.",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Moonfin",
+    "themeMoonfin": "Plexfin",
     "@themeMoonfin": {
-        "description": "Display name for the Moonfin theme"
+        "description": "Display name for the Plexfin theme"
     },
-    "themeMoonfinSubtitle": "모두에게 친숙하고 사랑받는 기존 Moonfin 스타일입니다.",
+    "themeMoonfinSubtitle": "모두에게 친숙하고 사랑받는 기존 Plexfin 스타일입니다.",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Moonfin theme"
+        "description": "Preview description for the Plexfin theme"
     },
     "themeNeonPulse": "네온 펄스",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Moonfin을(를) 종료하시겠습니까?",
+    "exitApp": "Plexfin을(를) 종료하시겠습니까?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "설정되지 않았습니다. Moonfin은 app/data 폴더에서 기본 mpv.conf를 시도합니다.",
+    "notSetMpvConf": "설정되지 않았습니다. Plexfin은 app/data 폴더에서 기본 mpv.conf를 시도합니다.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "라이브러리별로 홈 페이지 가시성을 전환합니다. 변경 사항을 적용하려면 Moonfin을 다시 시작하세요.",
+    "libraryVisibilityDescription": "라이브러리별로 홈 페이지 가시성을 전환합니다. 변경 사항을 적용하려면 Plexfin을 다시 시작하세요.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3561,9 +3561,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Moonfin",
+    "mediaBarModeMoonfin": "Plexfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Moonfin"
+        "description": "Media bar style option: Plexfin"
     },
     "mediaBarModeMakd": "MakD",
     "@mediaBarModeMakd": {
@@ -4121,6 +4121,7 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
+    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
     "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
@@ -4293,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Moonfin에 플레이",
+    "playInMoonfin": "Plexfin에 플레이",
     "@playInMoonfin": {
-        "description": "Button to play available media in Moonfin"
+        "description": "Button to play available media in Plexfin"
     },
     "requestedByName": "{name} 요청",
     "@requestedByName": {
@@ -4347,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "Moonfin 라이브러리에서 항목을 찾을 수 없습니다.",
+    "itemNotFoundInLibrary": "Plexfin 라이브러리에서 항목을 찾을 수 없습니다.",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4651,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "서버 재부팅 진행 중",
-    "adminServerRebootMessage": "서버 재부팅이 진행 중입니다. Moonfin을 다시 시작해주세요.",
+    "adminServerRebootMessage": "서버 재부팅이 진행 중입니다. Plexfin을 다시 시작해주세요.",
     "adminActiveSessions": "활성 세션",
     "adminSessionsLoadFailed": "세션을 로드하지 못했습니다.",
     "adminNoActiveSessions": "활성 세션 없음",
@@ -6539,7 +6540,7 @@
     "settingsShowGenresButtonInNavigation": "탐색 표시줄에 장르 버튼 표시",
     "settingsShowFavoritesButtonInNavigation": "탐색 표시줄에 즐겨찾기 버튼 표시",
     "settingsShowLibrariesButtonInNavigation": "탐색 모음에 라이브러리 버튼 표시",
-    "settingsLibraryVisibilitySubtitle": "라이브러리별로 홈 페이지 가시성을 전환합니다. 변경 사항을 적용하려면 Moonfin을 다시 시작하세요.",
+    "settingsLibraryVisibilitySubtitle": "라이브러리별로 홈 페이지 가시성을 전환합니다. 변경 사항을 적용하려면 Plexfin을 다시 시작하세요.",
     "settingsMediaBarAndLocalPreviews": "미디어 바 및 로컬 미리보기",
     "settingsVisualOverlays": "시각적 오버레이",
     "settingsSeasonalSurprise": "시즌 서프라이즈",
@@ -6558,14 +6559,14 @@
     "settingsJoinDiscord": "Discord에 가입하세요",
     "settingsJoinDiscordSubtitle": "커뮤니티와 채팅",
     "settingsJoinTheDiscord": "Discord에 가입하세요",
-    "settingsSupportMoonfin": "Moonfin 지원",
+    "settingsSupportMoonfin": "Plexfin 지원",
     "settingsLegal": "합법적인",
     "settingsLicenses": "라이센스",
     "settingsOpenSourceLicenseNotices": "오픈소스 라이선스 공지",
     "settingsPrivacyPolicy": "개인 정보 보호 정책",
-    "settingsPrivacyPolicySubtitle": "Moonfin이 데이터를 처리하는 방법",
+    "settingsPrivacyPolicySubtitle": "Plexfin이 데이터를 처리하는 방법",
     "settingsCheckForUpdates": "업데이트 확인",
-    "settingsCheckForUpdatesSubtitle": "최신 Moonfin 릴리스를 확인하세요.",
+    "settingsCheckForUpdatesSubtitle": "최신 Plexfin 릴리스를 확인하세요.",
     "settingsPoweredByFlutter": "Flutter에서 제공",
     "settingsLicenseNoticesCount": "{count, plural, one {라이선스 고지 #건} other {라이선스 고지 #건}}",
     "@settingsLicenseNoticesCount": {
@@ -7098,12 +7099,12 @@
     "preferSdhSubtitles": "SDH 자막 우선",
     "preferSdhSubtitlesSubtitle": "자막을 자동으로 선택할 때 SDH/CC 트랙을 우선합니다.",
     "webDiagnostics": "웹 진단",
-    "webDiagnosticsTitle": "Moonfin 웹 진단",
+    "webDiagnosticsTitle": "Plexfin 웹 진단",
     "webDiagnosticsIntro": "이 페이지에서 브라우저 연결 문제(CORS, 혼합 콘텐츠, 검색 설정)를 진단할 수 있습니다.",
     "webDiagnosticsDetectedMixedContentFailure": "혼합 콘텐츠 오류 감지됨",
     "webDiagnosticsDetectedCorsPreflightFailure": "CORS/프리플라이트 오류 감지됨",
-    "webDiagnosticsMixedContentFailureBody": "Moonfin이 HTTPS 페이지에서 HTTP 서버 URL을 호출하려는 시도를 감지했습니다. 브라우저는 이 요청이 서버에 도달하기 전에 차단합니다.",
-    "webDiagnosticsCorsFailureBody": "Moonfin이 브라우저 수준의 요청 실패를 감지했습니다. 보통 미디어 서버에 CORS 또는 프리플라이트 헤더가 없을 때 발생합니다.",
+    "webDiagnosticsMixedContentFailureBody": "Plexfin이 HTTPS 페이지에서 HTTP 서버 URL을 호출하려는 시도를 감지했습니다. 브라우저는 이 요청이 서버에 도달하기 전에 차단합니다.",
+    "webDiagnosticsCorsFailureBody": "Plexfin이 브라우저 수준의 요청 실패를 감지했습니다. 보통 미디어 서버에 CORS 또는 프리플라이트 헤더가 없을 때 발생합니다.",
     "webDiagnosticsTargetUrl": "대상 URL: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7133,7 +7134,7 @@
     "notConfigured": "설정되지 않음",
     "webDiagnosticsMixedContent": "혼합 콘텐츠",
     "webDiagnosticsMixedContentDetected": "이 페이지는 HTTPS로 로드되었지만 설정된 URL 중 하나 이상이 HTTP입니다. 브라우저는 HTTPS 페이지에서 HTTP API를 호출하지 못하게 차단합니다.",
-    "webDiagnosticsMixedContentFix": "해결 방법: 미디어 서버나 프록시 엔드포인트를 HTTPS로 제공하거나, 신뢰할 수 있는 로컬 네트워크에서만 Moonfin을 HTTP로 사용하세요.",
+    "webDiagnosticsMixedContentFix": "해결 방법: 미디어 서버나 프록시 엔드포인트를 HTTPS로 제공하거나, 신뢰할 수 있는 로컬 네트워크에서만 Plexfin을 HTTP로 사용하세요.",
     "webDiagnosticsNoMixedContentDetected": "현재 실행 설정에서 뚜렷한 혼합 콘텐츠 문제가 감지되지 않았습니다.",
     "webDiagnosticsCorsChecklist": "CORS 점검 목록",
     "webDiagnosticsCorsChecklistItem1": "• Access-Control-Allow-Origin에 브라우저 출처를 허용하세요.",
@@ -7330,7 +7331,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "클래식은 기존의 가운데 정렬 Moonfin 레이아웃입니다. 모던은 반응형 시네마틱 레이아웃입니다.",
+    "detailScreenStyleSubtitle": "클래식은 기존의 가운데 정렬 Plexfin 레이아웃입니다. 모던은 반응형 시네마틱 레이아웃입니다.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7362,13 +7363,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "로컬 라이브러리 기반 Moonfin 추천 알고리즘 또는 온라인 TMDb 유사도 지표를 사용합니다. 참고: 온라인 추천에는 Seerr 연동이 필요합니다.",
+    "recommendationSystemSubtitle": "로컬 라이브러리 기반 Plexfin 추천 알고리즘 또는 온라인 TMDb 유사도 지표를 사용합니다. 참고: 온라인 추천에는 Seerr 연동이 필요합니다.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Moonfin 추천",
+    "recommendationSystemMoonfin": "Plexfin 추천",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Moonfin Recommends"
+        "description": "Recommendation system option: Plexfin Recommends"
     },
     "recommendationSystemTmdb": "TMDb 유사도",
     "@recommendationSystemTmdb": {
@@ -7378,7 +7379,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "대상 미디어의 시청 등급에 따라 Moonfin 추천 항목을 제한합니다",
+    "recommendationsApplyParentalRatingCapSubtitle": "대상 미디어의 시청 등급에 따라 Plexfin 추천 항목을 제한합니다",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7426,7 +7427,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "사용자 지정 테마는 Moonfin 전반의 시각 요소를 바꿉니다. 취향에 맞는 테마를 선택하세요.",
+    "customThemeSubtitle": "사용자 지정 테마는 Plexfin 전반의 시각 요소를 바꿉니다. 취향에 맞는 테마를 선택하세요.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7599,7 +7600,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "휴대폰에서 Moonfin에 로그인하세요",
+    "carSignInPrompt": "휴대폰에서 Plexfin에 로그인하세요",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8936,7 +8937,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller는 더 부드러운 애니메이션과 적은 끊김을 제공하는 Flutter의 최신 GPU 렌더러입니다. 일부 TV 박스나 오래된 GPU에서는 화면 깨짐이나 검은 영상이 나타날 수 있으며, 이 경우 끄세요. 자동은 기기에 가장 알맞은 기본값을 선택합니다. 적용하려면 Moonfin을 다시 시작하세요.",
+    "impellerRenderingSubtitle": "Impeller는 더 부드러운 애니메이션과 적은 끊김을 제공하는 Flutter의 최신 GPU 렌더러입니다. 일부 TV 박스나 오래된 GPU에서는 화면 깨짐이나 검은 영상이 나타날 수 있으며, 이 경우 끄세요. 자동은 기기에 가장 알맞은 기본값을 선택합니다. 적용하려면 Plexfin을 다시 시작하세요.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8947,7 +8948,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "렌더링 엔진을 변경하려면 Moonfin을 다시 시작해야 합니다. 지금 앱을 종료한 후 다시 실행하면 적용됩니다.",
+    "impellerRestartMessage": "렌더링 엔진을 변경하려면 Plexfin을 다시 시작해야 합니다. 지금 앱을 종료한 후 다시 실행하면 적용됩니다.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },
@@ -9134,7 +9135,7 @@
     "@sdCard": {
         "description": "Download location option for a removable storage volume"
     },
-    "downloadLocationLimitedByAndroid": "Android에서는 Moonfin이 소유한 폴더에만 쓸 수 있도록 제한하고 있으며, 이 기기에는 이동식 저장소가 없습니다. 다른 앱이 접근할 수 있는 위치에 다운로드 항목을 보관하려면 위의 '다운로드 폴더에 저장'을 켜세요.",
+    "downloadLocationLimitedByAndroid": "Android에서는 Plexfin이 소유한 폴더에만 쓸 수 있도록 제한하고 있으며, 이 기기에는 이동식 저장소가 없습니다. 다른 앱이 접근할 수 있는 위치에 다운로드 항목을 보관하려면 위의 '다운로드 폴더에 저장'을 켜세요.",
     "@downloadLocationLimitedByAndroid": {
         "description": "Note shown when the only download location Android allows is the default one"
     },
@@ -10026,7 +10027,7 @@
     "@seriesRecordingCancelled": {
         "description": "Snackbar confirmation after cancelling a live TV series recording"
     },
-    "interfaceLayoutSubtitle": "이 기기에서 잘못 읽히는 경우 감지된 레이아웃을 재정의합니다. 변경 사항을 적용하려면 Moonfin을 다시 시작하세요.",
+    "interfaceLayoutSubtitle": "이 기기에서 잘못 읽히는 경우 감지된 레이아웃을 재정의합니다. 변경 사항을 적용하려면 Plexfin을 다시 시작하세요.",
     "@interfaceLayoutSubtitle": {
         "description": "Subtitle for the interface layout setting"
     },

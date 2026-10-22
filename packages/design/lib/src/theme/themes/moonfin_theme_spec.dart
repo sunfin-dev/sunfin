@@ -5,7 +5,7 @@ import '../theme_spec.dart';
 
 const moonfinThemeSpec = ThemeSpec(
   id: 'moonfin',
-  displayName: 'Moonfin',
+  displayName: 'Plexfin',
   colors: ThemeColorTokens(
     background: AppColors.black700,
     onBackground: AppColors.white,

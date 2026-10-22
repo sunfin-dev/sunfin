@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "appTitle": "Moonfin",
+    "appTitle": "Plexfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Moonfin verzia {version}",
+    "appVersionFooter": "Plexfin verzia {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Moonfin nemá prístup k vášmu systémovému zväzku kľúčov. Prihlasovanie môže pokračovať, ale bezpečné úložisko tokenov môže byť nedostupné, kým sa kľúčenka neodomkne.",
+    "secureStorageUnavailableMessage": "Plexfin nemá prístup k vášmu systémovému zväzku kľúčov. Prihlasovanie môže pokračovať, ale bezpečné úložisko tokenov môže byť nedostupné, kým sa kľúčenka neodomkne.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -168,17 +168,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "Prepínajte medzi Moonfin a Neon Pulse bez reštartovania aplikácie",
+    "settingsAppearanceThemeSubtitle": "Prepínajte medzi Plexfin a Neon Pulse bez reštartovania aplikácie",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Moonfin",
+    "themeMoonfin": "Plexfin",
     "@themeMoonfin": {
-        "description": "Display name for the Moonfin theme"
+        "description": "Display name for the Plexfin theme"
     },
-    "themeMoonfinSubtitle": "Aktuálny vzhľad Moonfin, ktorý ste si všetci obľúbili",
+    "themeMoonfinSubtitle": "Aktuálny vzhľad Plexfin, ktorý ste si všetci obľúbili",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Moonfin theme"
+        "description": "Preview description for the Plexfin theme"
     },
     "themeNeonPulse": "Neónový pulz",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Odísť z Moonfin?",
+    "exitApp": "Odísť z Plexfin?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "Nie je nastavené. Moonfin vyskúša predvolený súbor mpv.conf v priečinkoch aplikácií/údajov.",
+    "notSetMpvConf": "Nie je nastavené. Plexfin vyskúša predvolený súbor mpv.conf v priečinkoch aplikácií/údajov.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "Prepnúť viditeľnosť domovskej stránky podľa knižnice. Reštartujte Moonfin, aby sa zmeny prejavili.",
+    "libraryVisibilityDescription": "Prepnúť viditeľnosť domovskej stránky podľa knižnice. Reštartujte Plexfin, aby sa zmeny prejavili.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3561,9 +3561,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Moonfin",
+    "mediaBarModeMoonfin": "Plexfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Moonfin"
+        "description": "Media bar style option: Plexfin"
     },
     "mediaBarModeMakd": "MakD",
     "@mediaBarModeMakd": {
@@ -4121,6 +4121,7 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
+    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
     "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
@@ -4293,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Hrajte v Moonfin",
+    "playInMoonfin": "Hrajte v Plexfin",
     "@playInMoonfin": {
-        "description": "Button to play available media in Moonfin"
+        "description": "Button to play available media in Plexfin"
     },
     "requestedByName": "Požiadal {name}",
     "@requestedByName": {
@@ -4347,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "Položka sa nenašla vo vašej knižnici Moonfin",
+    "itemNotFoundInLibrary": "Položka sa nenašla vo vašej knižnici Plexfin",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4651,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "Prebieha reštart servera",
-    "adminServerRebootMessage": "Prebieha reštart servera, reštartujte prosím Moonfin",
+    "adminServerRebootMessage": "Prebieha reštart servera, reštartujte prosím Plexfin",
     "adminActiveSessions": "Aktívne relácie",
     "adminSessionsLoadFailed": "Nepodarilo sa načítať relácie",
     "adminNoActiveSessions": "Žiadne aktívne relácie",
@@ -6539,7 +6540,7 @@
     "settingsShowGenresButtonInNavigation": "Zobraziť tlačidlo žánrov na navigačnom paneli",
     "settingsShowFavoritesButtonInNavigation": "Zobraziť tlačidlo obľúbených na navigačnom paneli",
     "settingsShowLibrariesButtonInNavigation": "Zobraziť tlačidlo knižnice na navigačnom paneli",
-    "settingsLibraryVisibilitySubtitle": "Prepnúť viditeľnosť domovskej stránky podľa knižnice. Reštartujte Moonfin, aby sa zmeny prejavili.",
+    "settingsLibraryVisibilitySubtitle": "Prepnúť viditeľnosť domovskej stránky podľa knižnice. Reštartujte Plexfin, aby sa zmeny prejavili.",
     "settingsMediaBarAndLocalPreviews": "Panel médií a miestne ukážky",
     "settingsVisualOverlays": "Vizuálne prekrytia",
     "settingsSeasonalSurprise": "Sezónne prekvapenie",
@@ -6558,14 +6559,14 @@
     "settingsJoinDiscord": "Pripojte sa k Discordu",
     "settingsJoinDiscordSubtitle": "Chatujte s komunitou",
     "settingsJoinTheDiscord": "Pripojte sa k Discordu",
-    "settingsSupportMoonfin": "Podporte Moonfina",
+    "settingsSupportMoonfin": "Podporte Plexfina",
     "settingsLegal": "PRÁVNE",
     "settingsLicenses": "Licencie",
     "settingsOpenSourceLicenseNotices": "Oznámenia o licencii s otvoreným zdrojom",
     "settingsPrivacyPolicy": "Zásady ochrany osobných údajov",
-    "settingsPrivacyPolicySubtitle": "Ako Moonfin narába s vašimi údajmi",
+    "settingsPrivacyPolicySubtitle": "Ako Plexfin narába s vašimi údajmi",
     "settingsCheckForUpdates": "Skontrolujte aktualizácie",
-    "settingsCheckForUpdatesSubtitle": "Pozrite si najnovšie vydanie Moonfin",
+    "settingsCheckForUpdatesSubtitle": "Pozrite si najnovšie vydanie Plexfin",
     "settingsPoweredByFlutter": "Beží na Flutter",
     "settingsLicenseNoticesCount": "{count, plural, one {# licenčné oznámenie} few {# licenčné oznámenia} many {# licenčného oznámenia} other {# licenčných oznámení}}",
     "@settingsLicenseNoticesCount": {
@@ -7098,12 +7099,12 @@
     "preferSdhSubtitles": "Uprednostniť titulky SDH",
     "preferSdhSubtitlesSubtitle": "Pri automatickom výbere uprednostniť stopy titulkov SDH/CC.",
     "webDiagnostics": "Webová diagnostika",
-    "webDiagnosticsTitle": "Webová diagnostika Moonfin",
+    "webDiagnosticsTitle": "Webová diagnostika Plexfin",
     "webDiagnosticsIntro": "Na tejto stránke môžete diagnostikovať problémy s pripojením v prehliadači (CORS, zmiešaný obsah a nastavenia zisťovania).",
     "webDiagnosticsDetectedMixedContentFailure": "Zistené zlyhanie pre zmiešaný obsah",
     "webDiagnosticsDetectedCorsPreflightFailure": "Zistené zlyhanie CORS/preflight",
-    "webDiagnosticsMixedContentFailureBody": "Moonfin zistil, že stránka HTTPS sa pokúša volať URL servera cez HTTP. Prehliadače túto požiadavku zablokujú skôr, než sa dostane na váš server.",
-    "webDiagnosticsCorsFailureBody": "Moonfin zistil zlyhanie požiadavky na úrovni prehliadača, ktoré býva spôsobené chýbajúcimi hlavičkami CORS alebo preflight na mediálnom serveri.",
+    "webDiagnosticsMixedContentFailureBody": "Plexfin zistil, že stránka HTTPS sa pokúša volať URL servera cez HTTP. Prehliadače túto požiadavku zablokujú skôr, než sa dostane na váš server.",
+    "webDiagnosticsCorsFailureBody": "Plexfin zistil zlyhanie požiadavky na úrovni prehliadača, ktoré býva spôsobené chýbajúcimi hlavičkami CORS alebo preflight na mediálnom serveri.",
     "webDiagnosticsTargetUrl": "Cieľová URL: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7133,7 +7134,7 @@
     "notConfigured": "nie je nakonfigurované",
     "webDiagnosticsMixedContent": "Zmiešaný obsah",
     "webDiagnosticsMixedContentDetected": "Táto stránka je načítaná cez HTTPS, ale jedna alebo viac nakonfigurovaných URL používa HTTP. Prehliadače blokujú volania z HTTPS stránok na HTTP API.",
-    "webDiagnosticsMixedContentFix": "Riešenie: sprístupnite mediálny server alebo proxy koncový bod cez HTTPS, alebo načítavajte Moonfin cez HTTP len v dôveryhodných lokálnych sieťach.",
+    "webDiagnosticsMixedContentFix": "Riešenie: sprístupnite mediálny server alebo proxy koncový bod cez HTTPS, alebo načítavajte Plexfin cez HTTP len v dôveryhodných lokálnych sieťach.",
     "webDiagnosticsNoMixedContentDetected": "V aktuálnych nastaveniach behu sa nezistila žiadna zjavná konfigurácia so zmiešaným obsahom.",
     "webDiagnosticsCorsChecklist": "Kontrolný zoznam CORS",
     "webDiagnosticsCorsChecklistItem1": "• Povoľte origin prehliadača v Access-Control-Allow-Origin.",
@@ -7330,7 +7331,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "Klasický je pôvodné vycentrované rozloženie Moonfin. Moderný je responzívne filmové rozloženie.",
+    "detailScreenStyleSubtitle": "Klasický je pôvodné vycentrované rozloženie Plexfin. Moderný je responzívne filmové rozloženie.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7362,13 +7363,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "Použite algoritmus Moonfin odporúča pre lokálnu knižnicu alebo online metriky podobnosti TMDb. Poznámka: Online odporúčania vyžadujú integráciu Seerr.",
+    "recommendationSystemSubtitle": "Použite algoritmus Plexfin odporúča pre lokálnu knižnicu alebo online metriky podobnosti TMDb. Poznámka: Online odporúčania vyžadujú integráciu Seerr.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Moonfin odporúča",
+    "recommendationSystemMoonfin": "Plexfin odporúča",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Moonfin Recommends"
+        "description": "Recommendation system option: Plexfin Recommends"
     },
     "recommendationSystemTmdb": "Podobnosť TMDb",
     "@recommendationSystemTmdb": {
@@ -7378,7 +7379,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "Obmedziť návrhy funkcie Moonfin odporúča podľa rodičovského hodnotenia cieľového média",
+    "recommendationsApplyParentalRatingCapSubtitle": "Obmedziť návrhy funkcie Plexfin odporúča podľa rodičovského hodnotenia cieľového média",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7426,7 +7427,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "Vlastné témy menia vizuálne prvky v celej aplikácii Moonfin. Vyberte si možnosť, ktorá vyhovuje vášmu štýlu.",
+    "customThemeSubtitle": "Vlastné témy menia vizuálne prvky v celej aplikácii Plexfin. Vyberte si možnosť, ktorá vyhovuje vášmu štýlu.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7599,7 +7600,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "Prihláste sa do Moonfin v telefóne",
+    "carSignInPrompt": "Prihláste sa do Plexfin v telefóne",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8939,7 +8940,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller je moderný GPU renderer Flutteru pre plynulejšie animácie a menej trhania. Na niektorých TV boxoch a starších GPU môže spôsobovať chyby zobrazenia alebo čierne video; v takom prípade ho vypnite. Automatický vyberie najlepšiu predvoľbu pre vaše zariadenie. Zmena sa prejaví po reštarte Moonfin.",
+    "impellerRenderingSubtitle": "Impeller je moderný GPU renderer Flutteru pre plynulejšie animácie a menej trhania. Na niektorých TV boxoch a starších GPU môže spôsobovať chyby zobrazenia alebo čierne video; v takom prípade ho vypnite. Automatický vyberie najlepšiu predvoľbu pre vaše zariadenie. Zmena sa prejaví po reštarte Plexfin.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8950,7 +8951,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "Moonfin sa musí reštartovať, aby sa zmenil vykresľovací engine. Zatvorte teraz aplikáciu a znova ju otvorte.",
+    "impellerRestartMessage": "Plexfin sa musí reštartovať, aby sa zmenil vykresľovací engine. Zatvorte teraz aplikáciu a znova ju otvorte.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },

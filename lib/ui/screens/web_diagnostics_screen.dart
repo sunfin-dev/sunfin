@@ -22,7 +22,7 @@ class WebDiagnosticsScreen extends StatelessWidget {
   final String? detail;
 
   static const _corsSnippet =
-      r'''# Example reverse-proxy headers for Moonfin web
+      r'''# Example reverse-proxy headers for Plexfin web
 add_header Access-Control-Allow-Origin "$http_origin" always;
 add_header Access-Control-Allow-Credentials "true" always;
 add_header Access-Control-Allow-Headers "Authorization, X-Emby-Authorization, X-Emby-Token, Content-Type, Range, Accept, Origin" always;

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "appTitle": "Moonfin",
+    "appTitle": "Plexfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Moonfin الإصدار {version}",
+    "appVersionFooter": "Plexfin الإصدار {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Moonfin تعذر الوصول إلى حلقة مفاتيح النظام. يمكن متابعة تسجيل الدخول، ولكن قد لا يكون تخزين الرمز المميز متاحًا حتى يتم إلغاء قفل حلقة المفاتيح.",
+    "secureStorageUnavailableMessage": "Plexfin تعذر الوصول إلى حلقة مفاتيح النظام. يمكن متابعة تسجيل الدخول، ولكن قد لا يكون تخزين الرمز المميز متاحًا حتى يتم إلغاء قفل حلقة المفاتيح.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -168,17 +168,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "قم بالتبديل بين Moonfin وNeon Pulse دون إعادة تشغيل التطبيق",
+    "settingsAppearanceThemeSubtitle": "قم بالتبديل بين Plexfin وNeon Pulse دون إعادة تشغيل التطبيق",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Moonfin",
+    "themeMoonfin": "Plexfin",
     "@themeMoonfin": {
-        "description": "Display name for the Moonfin theme"
+        "description": "Display name for the Plexfin theme"
     },
-    "themeMoonfinSubtitle": "مظهر Moonfin الأصلي والبسيط.",
+    "themeMoonfinSubtitle": "مظهر Plexfin الأصلي والبسيط.",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Moonfin theme"
+        "description": "Preview description for the Plexfin theme"
     },
     "themeNeonPulse": "نبض النيون",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "هل تريد الخروج من Moonfin؟",
+    "exitApp": "هل تريد الخروج من Plexfin؟",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "لم يتم ضبطه. Moonfin سيحاول mpv.conf الافتراضي في مجلدات التطبيق/البيانات.",
+    "notSetMpvConf": "لم يتم ضبطه. Plexfin سيحاول mpv.conf الافتراضي في مجلدات التطبيق/البيانات.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "تبديل رؤية الصفحة الرئيسية لكل مكتبة. أعد تشغيل Moonfin لتصبح التغييرات سارية المفعول.",
+    "libraryVisibilityDescription": "تبديل رؤية الصفحة الرئيسية لكل مكتبة. أعد تشغيل Plexfin لتصبح التغييرات سارية المفعول.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3561,9 +3561,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Moonfin",
+    "mediaBarModeMoonfin": "Plexfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Moonfin"
+        "description": "Media bar style option: Plexfin"
     },
     "mediaBarModeMakd": "ماكد",
     "@mediaBarModeMakd": {
@@ -4121,6 +4121,7 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
+    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
     "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
@@ -4293,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "العب في Moonfin",
+    "playInMoonfin": "العب في Plexfin",
     "@playInMoonfin": {
-        "description": "Button to play available media in Moonfin"
+        "description": "Button to play available media in Plexfin"
     },
     "requestedByName": "تم الطلب بواسطة {name}",
     "@requestedByName": {
@@ -4347,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "لم يتم العثور على العنصر في مكتبة Moonfin الخاصة بك",
+    "itemNotFoundInLibrary": "لم يتم العثور على العنصر في مكتبة Plexfin الخاصة بك",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4651,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "جاري إعادة تشغيل الخادم",
-    "adminServerRebootMessage": "جاري إعادة تشغيل الخادم، يرجى إعادة التشغيل Moonfin",
+    "adminServerRebootMessage": "جاري إعادة تشغيل الخادم، يرجى إعادة التشغيل Plexfin",
     "adminActiveSessions": "الجلسات النشطة",
     "adminSessionsLoadFailed": "فشل تحميل الجلسات",
     "adminNoActiveSessions": "لا توجد جلسات نشطة",
@@ -6539,7 +6540,7 @@
     "settingsShowGenresButtonInNavigation": "إظهار زر الأنواع في شريط التنقل",
     "settingsShowFavoritesButtonInNavigation": "إظهار زر المفضلة في شريط التنقل",
     "settingsShowLibrariesButtonInNavigation": "إظهار زر المكتبات في شريط التنقل",
-    "settingsLibraryVisibilitySubtitle": "تبديل رؤية الصفحة الرئيسية لكل مكتبة. أعد تشغيل Moonfin لتصبح التغييرات سارية المفعول.",
+    "settingsLibraryVisibilitySubtitle": "تبديل رؤية الصفحة الرئيسية لكل مكتبة. أعد تشغيل Plexfin لتصبح التغييرات سارية المفعول.",
     "settingsMediaBarAndLocalPreviews": "شريط الوسائط والمعاينة المحلية",
     "settingsVisualOverlays": "التراكبات المرئية",
     "settingsSeasonalSurprise": "مفاجأة موسمية",
@@ -6558,14 +6559,14 @@
     "settingsJoinDiscord": "انضم إلى Discord",
     "settingsJoinDiscordSubtitle": "الدردشة مع المجتمع",
     "settingsJoinTheDiscord": "انضم إلى Discord",
-    "settingsSupportMoonfin": "الدعم Moonfin",
+    "settingsSupportMoonfin": "الدعم Plexfin",
     "settingsLegal": "قانوني",
     "settingsLicenses": "التراخيص",
     "settingsOpenSourceLicenseNotices": "إشعارات الترخيص مفتوحة المصدر",
     "settingsPrivacyPolicy": "سياسة الخصوصية",
-    "settingsPrivacyPolicySubtitle": "كيف يتعامل Moonfin مع بياناتك",
+    "settingsPrivacyPolicySubtitle": "كيف يتعامل Plexfin مع بياناتك",
     "settingsCheckForUpdates": "التحقق من وجود تحديثات",
-    "settingsCheckForUpdatesSubtitle": "تحقق من وجود أحدث إصدار Moonfin",
+    "settingsCheckForUpdatesSubtitle": "تحقق من وجود أحدث إصدار Plexfin",
     "settingsPoweredByFlutter": "مدعوم من رفرفة",
     "settingsLicenseNoticesCount": "{count, plural, zero{# إشعارات ترخيص} one{# إشعار ترخيص} two{# إشعارا ترخيص} few{# إشعارات ترخيص} many{# إشعار ترخيص} other{# إشعار ترخيص}}",
     "@settingsLicenseNoticesCount": {
@@ -7098,12 +7099,12 @@
     "preferSdhSubtitles": "تفضل ترجمات SDH",
     "preferSdhSubtitlesSubtitle": "قم بإعطاء الأولوية لمسارات الترجمة SDH/CC عند التحديد التلقائي.",
     "webDiagnostics": "تشخيص الويب",
-    "webDiagnosticsTitle": "Moonfin تشخيص الويب",
+    "webDiagnosticsTitle": "Plexfin تشخيص الويب",
     "webDiagnosticsIntro": "استخدم هذه الصفحة لتشخيص مشكلات اتصال المتصفح (CORS والمحتوى المختلط وإعدادات الاكتشاف).",
     "webDiagnosticsDetectedMixedContentFailure": "تم اكتشاف فشل المحتوى المختلط",
     "webDiagnosticsDetectedCorsPreflightFailure": "تم اكتشاف فشل CORS/التجربة المبدئية",
-    "webDiagnosticsMixedContentFailureBody": "اكتشف Moonfin صفحة HTTPS تحاول الاتصال بعنوان URL لخادم HTTP. تقوم المتصفحات بحظر هذا الطلب قبل أن يصل إلى الخادم الخاص بك.",
-    "webDiagnosticsCorsFailureBody": "اكتشف Moonfin فشل طلب على مستوى المستعرض والذي يحدث عادةً بسبب فقدان CORS أو رؤوس الاختبار المبدئي على خادم الوسائط.",
+    "webDiagnosticsMixedContentFailureBody": "اكتشف Plexfin صفحة HTTPS تحاول الاتصال بعنوان URL لخادم HTTP. تقوم المتصفحات بحظر هذا الطلب قبل أن يصل إلى الخادم الخاص بك.",
+    "webDiagnosticsCorsFailureBody": "اكتشف Plexfin فشل طلب على مستوى المستعرض والذي يحدث عادةً بسبب فقدان CORS أو رؤوس الاختبار المبدئي على خادم الوسائط.",
     "webDiagnosticsTargetUrl": "عنوان URL المستهدف: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7133,7 +7134,7 @@
     "notConfigured": "لم يتم تكوينه",
     "webDiagnosticsMixedContent": "محتوى مختلط",
     "webDiagnosticsMixedContentDetected": "تم تحميل هذه الصفحة عبر HTTPS، ولكن هناك عنوان URL واحد أو أكثر تم تكوينه هو HTTP. تمنع المتصفحات صفحات HTTPS من الاتصال بواجهات برمجة تطبيقات HTTP.",
-    "webDiagnosticsMixedContentFix": "الإصلاح: خدمة خادم الوسائط أو نقطة نهاية الوكيل عبر HTTPS، أو تحميل Moonfin عبر HTTP على الشبكات المحلية الموثوقة فقط.",
+    "webDiagnosticsMixedContentFix": "الإصلاح: خدمة خادم الوسائط أو نقطة نهاية الوكيل عبر HTTPS، أو تحميل Plexfin عبر HTTP على الشبكات المحلية الموثوقة فقط.",
     "webDiagnosticsNoMixedContentDetected": "لم يتم اكتشاف أي تكوين واضح للمحتوى المختلط من إعدادات وقت التشغيل الحالية.",
     "webDiagnosticsCorsChecklist": "قائمة مراجعة CORS",
     "webDiagnosticsCorsChecklistItem1": "• السماح بأصل المتصفح في Access-Control-Allow-Origin.",
@@ -7330,7 +7331,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "الكلاسيكي هو تخطيط Moonfin الأصلي المتمركز. الحديث تخطيط سينمائي متجاوب.",
+    "detailScreenStyleSubtitle": "الكلاسيكي هو تخطيط Plexfin الأصلي المتمركز. الحديث تخطيط سينمائي متجاوب.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7362,13 +7363,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "استخدم خوارزمية المكتبة المحلية Moonfin Recommends أو مقاييس التشابه من TMDb عبر الإنترنت. ملاحظة: تتطلب التوصيات عبر الإنترنت تكامل Seerr.",
+    "recommendationSystemSubtitle": "استخدم خوارزمية المكتبة المحلية Plexfin Recommends أو مقاييس التشابه من TMDb عبر الإنترنت. ملاحظة: تتطلب التوصيات عبر الإنترنت تكامل Seerr.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Moonfin Recommends",
+    "recommendationSystemMoonfin": "Plexfin Recommends",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Moonfin Recommends"
+        "description": "Recommendation system option: Plexfin Recommends"
     },
     "recommendationSystemTmdb": "تشابه TMDb",
     "@recommendationSystemTmdb": {
@@ -7378,7 +7379,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "تقييد اقتراحات Moonfin Recommends حسب التصنيف العمري للوسائط المستهدفة",
+    "recommendationsApplyParentalRatingCapSubtitle": "تقييد اقتراحات Plexfin Recommends حسب التصنيف العمري للوسائط المستهدفة",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7426,7 +7427,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "تغيّر السمات المخصصة العناصر المرئية في Moonfin. اختر أحد هذه الخيارات بما يناسب ذوقك.",
+    "customThemeSubtitle": "تغيّر السمات المخصصة العناصر المرئية في Plexfin. اختر أحد هذه الخيارات بما يناسب ذوقك.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7599,7 +7600,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "سجّل الدخول إلى Moonfin من هاتفك",
+    "carSignInPrompt": "سجّل الدخول إلى Plexfin من هاتفك",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8940,7 +8941,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller هو محرك التصيير الحديث في Flutter الذي يعتمد على GPU لحركات أكثر سلاسة وتقطّع أقل. قد يسبب خللاً في الصورة أو فيديو أسود على بعض أجهزة التلفزيون وبطاقات GPU الأقدم؛ اضبطه على إيقاف إذا واجهت ذلك. يختار الوضع التلقائي أفضل إعداد افتراضي لجهازك. أعد تشغيل Moonfin للتطبيق.",
+    "impellerRenderingSubtitle": "Impeller هو محرك التصيير الحديث في Flutter الذي يعتمد على GPU لحركات أكثر سلاسة وتقطّع أقل. قد يسبب خللاً في الصورة أو فيديو أسود على بعض أجهزة التلفزيون وبطاقات GPU الأقدم؛ اضبطه على إيقاف إذا واجهت ذلك. يختار الوضع التلقائي أفضل إعداد افتراضي لجهازك. أعد تشغيل Plexfin للتطبيق.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8951,7 +8952,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "يحتاج Moonfin إلى إعادة التشغيل لتغيير محرك التصيير. أغلق التطبيق الآن ثم أعد فتحه للتطبيق.",
+    "impellerRestartMessage": "يحتاج Plexfin إلى إعادة التشغيل لتغيير محرك التصيير. أغلق التطبيق الآن ثم أعد فتحه للتطبيق.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },
@@ -9006,7 +9007,7 @@
     "@interfaceLayout": {
         "description": "Setting to override which UI layout the app uses"
     },
-    "interfaceLayoutSubtitle": "غير شكل الواجهة إذا تم التعرّف على الجهاز بشكل خاطئ. أعد تشغيل Moonfin حتى تظهر التغييرات.",
+    "interfaceLayoutSubtitle": "غير شكل الواجهة إذا تم التعرّف على الجهاز بشكل خاطئ. أعد تشغيل Plexfin حتى تظهر التغييرات.",
     "@interfaceLayoutSubtitle": {
         "description": "Subtitle for the interface layout setting"
     },
@@ -9121,7 +9122,7 @@
             }
         }
     },
-    "recordSeries": "إقتراحات Moonfin",
+    "recordSeries": "إقتراحات Plexfin",
     "@recordSeries": {
         "description": "Button label to record every showing of a live TV series"
     },

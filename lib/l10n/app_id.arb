@@ -1,6 +1,6 @@
 {
     "@@locale": "id",
-    "appTitle": "Moonfin",
+    "appTitle": "Plexfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Moonfin versi {version}",
+    "appVersionFooter": "Plexfin versi {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Moonfin tidak dapat mengakses keyring sistem Anda. Login tetap dapat dilanjutkan, tetapi penyimpanan token aman mungkin tidak tersedia sampai keyring dibuka.",
+    "secureStorageUnavailableMessage": "Plexfin tidak dapat mengakses keyring sistem Anda. Login tetap dapat dilanjutkan, tetapi penyimpanan token aman mungkin tidak tersedia sampai keyring dibuka.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -168,17 +168,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "Beralih antara Moonfin dan Neon Pulse tanpa memulai ulang aplikasi",
+    "settingsAppearanceThemeSubtitle": "Beralih antara Plexfin dan Neon Pulse tanpa memulai ulang aplikasi",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Moonfin",
+    "themeMoonfin": "Plexfin",
     "@themeMoonfin": {
-        "description": "Display name for the Moonfin theme"
+        "description": "Display name for the Plexfin theme"
     },
-    "themeMoonfinSubtitle": "Tampilan Moonfin saat ini yang sudah Anda sukai",
+    "themeMoonfinSubtitle": "Tampilan Plexfin saat ini yang sudah Anda sukai",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Moonfin theme"
+        "description": "Preview description for the Plexfin theme"
     },
     "themeNeonPulse": "Neon Pulse",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Keluar dari Moonfin?",
+    "exitApp": "Keluar dari Plexfin?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "Belum diatur. Moonfin akan mencoba mpv.conf default di folder app/data.",
+    "notSetMpvConf": "Belum diatur. Plexfin akan mencoba mpv.conf default di folder app/data.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "Atur visibilitas halaman beranda untuk tiap pustaka. Mulai ulang Moonfin agar perubahan berlaku.",
+    "libraryVisibilityDescription": "Atur visibilitas halaman beranda untuk tiap pustaka. Mulai ulang Plexfin agar perubahan berlaku.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3561,9 +3561,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Moonfin",
+    "mediaBarModeMoonfin": "Plexfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Moonfin"
+        "description": "Media bar style option: Plexfin"
     },
     "mediaBarModeMakd": "MakD",
     "@mediaBarModeMakd": {
@@ -4121,6 +4121,7 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
+    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
     "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
@@ -4293,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Putar di Moonfin",
+    "playInMoonfin": "Putar di Plexfin",
     "@playInMoonfin": {
-        "description": "Button to play available media in Moonfin"
+        "description": "Button to play available media in Plexfin"
     },
     "requestedByName": "Diminta oleh {name}",
     "@requestedByName": {
@@ -4347,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "Item tidak ditemukan di pustaka Moonfin Anda",
+    "itemNotFoundInLibrary": "Item tidak ditemukan di pustaka Plexfin Anda",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4651,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "Restart server sedang berlangsung",
-    "adminServerRebootMessage": "Restart server sedang berlangsung, silakan mulai ulang Moonfin",
+    "adminServerRebootMessage": "Restart server sedang berlangsung, silakan mulai ulang Plexfin",
     "adminActiveSessions": "Sesi Aktif",
     "adminSessionsLoadFailed": "Gagal memuat sesi",
     "adminNoActiveSessions": "Tidak ada sesi aktif",
@@ -6539,7 +6540,7 @@
     "settingsShowGenresButtonInNavigation": "Tampilkan tombol genre di bilah navigasi",
     "settingsShowFavoritesButtonInNavigation": "Tampilkan tombol favorit di bilah navigasi",
     "settingsShowLibrariesButtonInNavigation": "Tampilkan tombol pustaka di bilah navigasi",
-    "settingsLibraryVisibilitySubtitle": "Atur visibilitas halaman beranda per pustaka. Mulai ulang Moonfin agar perubahan berlaku.",
+    "settingsLibraryVisibilitySubtitle": "Atur visibilitas halaman beranda per pustaka. Mulai ulang Plexfin agar perubahan berlaku.",
     "settingsMediaBarAndLocalPreviews": "Media Bar & Pratinjau Lokal",
     "settingsVisualOverlays": "Overlay Visual",
     "settingsSeasonalSurprise": "Kejutan Musiman",
@@ -6558,14 +6559,14 @@
     "settingsJoinDiscord": "Gabung Discord",
     "settingsJoinDiscordSubtitle": "Mengobrol dengan komunitas",
     "settingsJoinTheDiscord": "Gabung ke Discord",
-    "settingsSupportMoonfin": "Dukung Moonfin",
+    "settingsSupportMoonfin": "Dukung Plexfin",
     "settingsLegal": "HUKUM",
     "settingsLicenses": "Lisensi",
     "settingsOpenSourceLicenseNotices": "Pemberitahuan lisensi open source",
     "settingsPrivacyPolicy": "Kebijakan Privasi",
-    "settingsPrivacyPolicySubtitle": "Cara Moonfin menangani data Anda",
+    "settingsPrivacyPolicySubtitle": "Cara Plexfin menangani data Anda",
     "settingsCheckForUpdates": "Periksa Pembaruan",
-    "settingsCheckForUpdatesSubtitle": "Periksa rilis Moonfin terbaru",
+    "settingsCheckForUpdatesSubtitle": "Periksa rilis Plexfin terbaru",
     "settingsPoweredByFlutter": "Didukung oleh Flutter",
     "settingsLicenseNoticesCount": "{count, plural, one {# pemberitahuan lisensi} other {# pemberitahuan lisensi}}",
     "@settingsLicenseNoticesCount": {
@@ -7098,12 +7099,12 @@
     "preferSdhSubtitles": "Utamakan subtitle SDH",
     "preferSdhSubtitlesSubtitle": "Prioritaskan track subtitle SDH/CC saat memilih otomatis.",
     "webDiagnostics": "Diagnostik web",
-    "webDiagnosticsTitle": "Diagnostik Web Moonfin",
+    "webDiagnosticsTitle": "Diagnostik Web Plexfin",
     "webDiagnosticsIntro": "Gunakan halaman ini untuk mendiagnosis masalah konektivitas browser (CORS, mixed content, dan pengaturan discovery).",
     "webDiagnosticsDetectedMixedContentFailure": "Kegagalan Mixed Content Terdeteksi",
     "webDiagnosticsDetectedCorsPreflightFailure": "Kegagalan CORS/Preflight Terdeteksi",
-    "webDiagnosticsMixedContentFailureBody": "Moonfin mendeteksi halaman HTTPS yang mencoba memanggil URL server HTTP. Browser memblokir permintaan ini sebelum mencapai server Anda.",
-    "webDiagnosticsCorsFailureBody": "Moonfin mendeteksi kegagalan permintaan pada tingkat browser yang umumnya disebabkan oleh header CORS atau preflight yang tidak ada pada server media.",
+    "webDiagnosticsMixedContentFailureBody": "Plexfin mendeteksi halaman HTTPS yang mencoba memanggil URL server HTTP. Browser memblokir permintaan ini sebelum mencapai server Anda.",
+    "webDiagnosticsCorsFailureBody": "Plexfin mendeteksi kegagalan permintaan pada tingkat browser yang umumnya disebabkan oleh header CORS atau preflight yang tidak ada pada server media.",
     "webDiagnosticsTargetUrl": "URL Target: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7133,7 +7134,7 @@
     "notConfigured": "tidak dikonfigurasi",
     "webDiagnosticsMixedContent": "Konten Campuran",
     "webDiagnosticsMixedContentDetected": "Halaman ini dimuat melalui HTTPS, tetapi satu atau lebih URL yang dikonfigurasi menggunakan HTTP. Browser memblokir halaman HTTPS untuk memanggil API HTTP.",
-    "webDiagnosticsMixedContentFix": "Perbaikan: sajikan server media atau endpoint proxy Anda melalui HTTPS, atau muat Moonfin melalui HTTP hanya pada jaringan lokal tepercaya.",
+    "webDiagnosticsMixedContentFix": "Perbaikan: sajikan server media atau endpoint proxy Anda melalui HTTPS, atau muat Plexfin melalui HTTP hanya pada jaringan lokal tepercaya.",
     "webDiagnosticsNoMixedContentDetected": "Tidak ada konfigurasi mixed content yang jelas terdeteksi dari pengaturan runtime saat ini.",
     "webDiagnosticsCorsChecklist": "Daftar Periksa CORS",
     "webDiagnosticsCorsChecklistItem1": "-  Izinkan origin browser di Access-Control-Allow-Origin.",
@@ -7635,7 +7636,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "Klasik adalah tata letak Moonfin asli yang terpusat. Modern adalah tata letak sinematik yang responsif.",
+    "detailScreenStyleSubtitle": "Klasik adalah tata letak Plexfin asli yang terpusat. Modern adalah tata letak sinematik yang responsif.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7667,13 +7668,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "Gunakan algoritme pustaka lokal Moonfin Recommends atau metrik kemiripan TMDb online. Catatan: rekomendasi online memerlukan integrasi Seerr.",
+    "recommendationSystemSubtitle": "Gunakan algoritme pustaka lokal Plexfin Recommends atau metrik kemiripan TMDb online. Catatan: rekomendasi online memerlukan integrasi Seerr.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Moonfin Recommends",
+    "recommendationSystemMoonfin": "Plexfin Recommends",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Moonfin Recommends"
+        "description": "Recommendation system option: Plexfin Recommends"
     },
     "recommendationSystemTmdb": "Kemiripan TMDb",
     "@recommendationSystemTmdb": {
@@ -7683,7 +7684,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "Batasi saran Moonfin Recommends berdasarkan rating orang tua dari media yang dituju",
+    "recommendationsApplyParentalRatingCapSubtitle": "Batasi saran Plexfin Recommends berdasarkan rating orang tua dari media yang dituju",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7731,7 +7732,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "Tema kustom mengubah elemen visual di seluruh Moonfin. Pilih salah satu opsi berikut yang sesuai dengan gaya Anda.",
+    "customThemeSubtitle": "Tema kustom mengubah elemen visual di seluruh Plexfin. Pilih salah satu opsi berikut yang sesuai dengan gaya Anda.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7879,7 +7880,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "Masuk ke Moonfin di ponsel Anda",
+    "carSignInPrompt": "Masuk ke Plexfin di ponsel Anda",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8940,7 +8941,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller adalah perender GPU modern dari Flutter untuk animasi yang lebih mulus dan minim patah-patah. Pada sebagian TV box dan GPU lama, Impeller dapat menyebabkan gangguan tampilan atau video hitam; matikan jika Anda mengalaminya. Otomatis memilih nilai bawaan terbaik untuk perangkat Anda. Mulai ulang Moonfin untuk menerapkannya.",
+    "impellerRenderingSubtitle": "Impeller adalah perender GPU modern dari Flutter untuk animasi yang lebih mulus dan minim patah-patah. Pada sebagian TV box dan GPU lama, Impeller dapat menyebabkan gangguan tampilan atau video hitam; matikan jika Anda mengalaminya. Otomatis memilih nilai bawaan terbaik untuk perangkat Anda. Mulai ulang Plexfin untuk menerapkannya.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8951,7 +8952,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "Moonfin perlu dimulai ulang untuk mengubah mesin rendering. Tutup aplikasi sekarang, lalu buka kembali untuk menerapkannya.",
+    "impellerRestartMessage": "Plexfin perlu dimulai ulang untuk mengubah mesin rendering. Tutup aplikasi sekarang, lalu buka kembali untuk menerapkannya.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },

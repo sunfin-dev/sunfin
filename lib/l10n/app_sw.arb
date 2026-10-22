@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "appTitle": "Moonfin",
+    "appTitle": "Plexfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Moonfin toleo {version}",
+    "appVersionFooter": "Plexfin toleo {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Moonfin haikuweza kufikia ufunguo wa mfumo wako. Kuingia kunaweza kuendelea, lakini hifadhi salama ya tokeni huenda isipatikane hadi ufunguo ufunguliwe.",
+    "secureStorageUnavailableMessage": "Plexfin haikuweza kufikia ufunguo wa mfumo wako. Kuingia kunaweza kuendelea, lakini hifadhi salama ya tokeni huenda isipatikane hadi ufunguo ufunguliwe.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -168,17 +168,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "Badili kati ya Moonfin na Neon Pulse bila kuanzisha upya programu",
+    "settingsAppearanceThemeSubtitle": "Badili kati ya Plexfin na Neon Pulse bila kuanzisha upya programu",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Moonfin",
+    "themeMoonfin": "Plexfin",
     "@themeMoonfin": {
-        "description": "Display name for the Moonfin theme"
+        "description": "Display name for the Plexfin theme"
     },
-    "themeMoonfinSubtitle": "Mwonekano wa sasa wa Moonfin nyote mmependa",
+    "themeMoonfinSubtitle": "Mwonekano wa sasa wa Plexfin nyote mmependa",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Moonfin theme"
+        "description": "Preview description for the Plexfin theme"
     },
     "themeNeonPulse": "Neon Pulse",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Ungependa kufunga Moonfin?",
+    "exitApp": "Ungependa kufunga Plexfin?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "Haijawekwa. Moonfin itajaribu mpv.conf chaguo-msingi katika folda za programu/data.",
+    "notSetMpvConf": "Haijawekwa. Plexfin itajaribu mpv.conf chaguo-msingi katika folda za programu/data.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "Geuza mwonekano wa ukurasa wa nyumbani kwa kila maktaba. Anzisha tena Moonfin ili mabadiliko yaanze kutumika.",
+    "libraryVisibilityDescription": "Geuza mwonekano wa ukurasa wa nyumbani kwa kila maktaba. Anzisha tena Plexfin ili mabadiliko yaanze kutumika.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3561,9 +3561,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Moonfin",
+    "mediaBarModeMoonfin": "Plexfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Moonfin"
+        "description": "Media bar style option: Plexfin"
     },
     "mediaBarModeMakd": "MakD",
     "@mediaBarModeMakd": {
@@ -4121,6 +4121,7 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
+    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
     "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
@@ -4293,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Cheza katika Moonfin",
+    "playInMoonfin": "Cheza katika Plexfin",
     "@playInMoonfin": {
-        "description": "Button to play available media in Moonfin"
+        "description": "Button to play available media in Plexfin"
     },
     "requestedByName": "Imeombwa na {name}",
     "@requestedByName": {
@@ -4347,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "Kipengee hakipatikani kwenye maktaba yako ya Moonfin",
+    "itemNotFoundInLibrary": "Kipengee hakipatikani kwenye maktaba yako ya Plexfin",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4651,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "Kuwasha upya seva kunaendelea",
-    "adminServerRebootMessage": "Kuwasha upya seva kunaendelea, tafadhali anzisha upya Moonfin",
+    "adminServerRebootMessage": "Kuwasha upya seva kunaendelea, tafadhali anzisha upya Plexfin",
     "adminActiveSessions": "Vipindi Amilifu",
     "adminSessionsLoadFailed": "Imeshindwa kupakia vipindi",
     "adminNoActiveSessions": "Hakuna vipindi vinavyotumika",
@@ -6539,7 +6540,7 @@
     "settingsShowGenresButtonInNavigation": "Onyesha kitufe cha aina kwenye upau wa kusogeza",
     "settingsShowFavoritesButtonInNavigation": "Onyesha kitufe cha vipendwa kwenye upau wa kusogeza",
     "settingsShowLibrariesButtonInNavigation": "Onyesha kitufe cha maktaba kwenye upau wa kusogeza",
-    "settingsLibraryVisibilitySubtitle": "Geuza mwonekano wa ukurasa wa nyumbani kwa kila maktaba. Anzisha tena Moonfin ili mabadiliko yaanze kutumika.",
+    "settingsLibraryVisibilitySubtitle": "Geuza mwonekano wa ukurasa wa nyumbani kwa kila maktaba. Anzisha tena Plexfin ili mabadiliko yaanze kutumika.",
     "settingsMediaBarAndLocalPreviews": "Upau wa Midia na Uhakiki wa Karibu Nawe",
     "settingsVisualOverlays": "Viwekeleo vya Kuonekana",
     "settingsSeasonalSurprise": "Mshangao wa Msimu",
@@ -6558,14 +6559,14 @@
     "settingsJoinDiscord": "Jiunge na Discord",
     "settingsJoinDiscordSubtitle": "Piga gumzo na jumuiya",
     "settingsJoinTheDiscord": "Jiunge na Discord",
-    "settingsSupportMoonfin": "Msaada Moonfin",
+    "settingsSupportMoonfin": "Msaada Plexfin",
     "settingsLegal": "KISHERIA",
     "settingsLicenses": "Leseni",
     "settingsOpenSourceLicenseNotices": "Notisi za leseni ya chanzo huria",
     "settingsPrivacyPolicy": "Sera ya Faragha",
-    "settingsPrivacyPolicySubtitle": "Jinsi Moonfin hushughulikia data yako",
+    "settingsPrivacyPolicySubtitle": "Jinsi Plexfin hushughulikia data yako",
     "settingsCheckForUpdates": "Angalia Usasisho",
-    "settingsCheckForUpdatesSubtitle": "Angalia toleo jipya zaidi la Moonfin",
+    "settingsCheckForUpdatesSubtitle": "Angalia toleo jipya zaidi la Plexfin",
     "settingsPoweredByFlutter": "Inaendeshwa na Flutter",
     "settingsLicenseNoticesCount": "{count, plural, one {ilani # ya leseni} other {ilani # za leseni}}",
     "@settingsLicenseNoticesCount": {
@@ -7098,12 +7099,12 @@
     "preferSdhSubtitles": "Pendelea manukuu ya SDH",
     "preferSdhSubtitlesSubtitle": "Tanguliza mikondo ya manukuu ya SDH/CC wakati wa kuchagua kiotomatiki.",
     "webDiagnostics": "Uchunguzi wa wavuti",
-    "webDiagnosticsTitle": "Uchunguzi wa Wavuti wa Moonfin",
+    "webDiagnosticsTitle": "Uchunguzi wa Wavuti wa Plexfin",
     "webDiagnosticsIntro": "Tumia ukurasa huu kuchunguza matatizo ya muunganisho wa kivinjari (CORS, maudhui mchanganyiko, na mipangilio ya ugunduzi).",
     "webDiagnosticsDetectedMixedContentFailure": "Hitilafu ya Maudhui Mchanganyiko Imetambuliwa",
     "webDiagnosticsDetectedCorsPreflightFailure": "Hitilafu ya CORS/Preflight Imetambuliwa",
-    "webDiagnosticsMixedContentFailureBody": "Moonfin imetambua ukurasa wa HTTPS unaojaribu kupiga simu kwa URL ya seva ya HTTP. Vivinjari huzuia ombi hili kabla halijafika kwenye seva yako.",
-    "webDiagnosticsCorsFailureBody": "Moonfin imetambua hitilafu ya ombi katika kiwango cha kivinjari ambayo mara nyingi husababishwa na vichwa vya CORS au preflight vinavyokosekana kwenye seva ya maudhui.",
+    "webDiagnosticsMixedContentFailureBody": "Plexfin imetambua ukurasa wa HTTPS unaojaribu kupiga simu kwa URL ya seva ya HTTP. Vivinjari huzuia ombi hili kabla halijafika kwenye seva yako.",
+    "webDiagnosticsCorsFailureBody": "Plexfin imetambua hitilafu ya ombi katika kiwango cha kivinjari ambayo mara nyingi husababishwa na vichwa vya CORS au preflight vinavyokosekana kwenye seva ya maudhui.",
     "webDiagnosticsTargetUrl": "URL lengwa: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7133,7 +7134,7 @@
     "notConfigured": "haijasanidiwa",
     "webDiagnosticsMixedContent": "Maudhui Mchanganyiko",
     "webDiagnosticsMixedContentDetected": "Ukurasa huu umepakiwa kupitia HTTPS, lakini URL moja au zaidi zilizosanidiwa ni za HTTP. Vivinjari huzuia kurasa za HTTPS kupiga simu kwa API za HTTP.",
-    "webDiagnosticsMixedContentFix": "Suluhisho: toa seva yako ya maudhui au ncha ya proksi kupitia HTTPS, au pakia Moonfin kupitia HTTP kwenye mitandao ya ndani inayoaminika pekee.",
+    "webDiagnosticsMixedContentFix": "Suluhisho: toa seva yako ya maudhui au ncha ya proksi kupitia HTTPS, au pakia Plexfin kupitia HTTP kwenye mitandao ya ndani inayoaminika pekee.",
     "webDiagnosticsNoMixedContentDetected": "Hakuna usanidi dhahiri wa maudhui mchanganyiko uliotambuliwa kutoka kwa mipangilio ya sasa ya utekelezaji.",
     "webDiagnosticsCorsChecklist": "Orodha ya Kukagua ya CORS",
     "webDiagnosticsCorsChecklistItem1": "• Ruhusu asili ya kivinjari katika Access-Control-Allow-Origin.",
@@ -7330,7 +7331,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "Klasiki ni mpangilio asili wa Moonfin ulio katikati. Kisasa ni mpangilio wa kisinema unaojirekebisha.",
+    "detailScreenStyleSubtitle": "Klasiki ni mpangilio asili wa Plexfin ulio katikati. Kisasa ni mpangilio wa kisinema unaojirekebisha.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7362,13 +7363,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "Tumia algoriti ya maktaba ya ndani ya Moonfin Recommends au Vipimo vya Ufanano vya TMDb mtandaoni. Kumbuka: Mapendekezo ya mtandaoni yanahitaji muunganisho wa Seerr.",
+    "recommendationSystemSubtitle": "Tumia algoriti ya maktaba ya ndani ya Plexfin Recommends au Vipimo vya Ufanano vya TMDb mtandaoni. Kumbuka: Mapendekezo ya mtandaoni yanahitaji muunganisho wa Seerr.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Moonfin Recommends",
+    "recommendationSystemMoonfin": "Plexfin Recommends",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Moonfin Recommends"
+        "description": "Recommendation system option: Plexfin Recommends"
     },
     "recommendationSystemTmdb": "Ufanano wa TMDb",
     "@recommendationSystemTmdb": {
@@ -7378,7 +7379,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "Punguza mapendekezo ya Moonfin Recommends kulingana na ukadiriaji wa wazazi wa maudhui lengwa",
+    "recommendationsApplyParentalRatingCapSubtitle": "Punguza mapendekezo ya Plexfin Recommends kulingana na ukadiriaji wa wazazi wa maudhui lengwa",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7426,7 +7427,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "Mandhari maalum hubadilisha vipengele vya kuonekana katika Moonfin nzima. Chagua mojawapo ya chaguo hizi ili kuendana na mtindo wako.",
+    "customThemeSubtitle": "Mandhari maalum hubadilisha vipengele vya kuonekana katika Plexfin nzima. Chagua mojawapo ya chaguo hizi ili kuendana na mtindo wako.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7599,7 +7600,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "Ingia kwenye Moonfin kwenye simu yako",
+    "carSignInPrompt": "Ingia kwenye Plexfin kwenye simu yako",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8940,7 +8941,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller ni kionyeshi cha kisasa cha GPU cha Flutter kwa uhuishaji laini na mkwaruzo mdogo. Kwenye baadhi ya visanduku vya TV na GPU za zamani inaweza kusababisha hitilafu au video nyeusi; izime ikiwa unaona hayo. Kiotomatiki huchagua chaguo-msingi bora kwa kifaa chako. Anzisha upya Moonfin ili kutumia.",
+    "impellerRenderingSubtitle": "Impeller ni kionyeshi cha kisasa cha GPU cha Flutter kwa uhuishaji laini na mkwaruzo mdogo. Kwenye baadhi ya visanduku vya TV na GPU za zamani inaweza kusababisha hitilafu au video nyeusi; izime ikiwa unaona hayo. Kiotomatiki huchagua chaguo-msingi bora kwa kifaa chako. Anzisha upya Plexfin ili kutumia.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8951,7 +8952,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "Moonfin inahitaji kuanzishwa upya ili kubadilisha injini ya uonyeshaji. Funga programu sasa, kisha uifungue tena ili kutumia.",
+    "impellerRestartMessage": "Plexfin inahitaji kuanzishwa upya ili kubadilisha injini ya uonyeshaji. Funga programu sasa, kisha uifungue tena ili kutumia.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },

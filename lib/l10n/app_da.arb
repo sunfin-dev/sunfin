@@ -1,6 +1,6 @@
 {
     "@@locale": "da",
-    "appTitle": "Moonfin",
+    "appTitle": "Plexfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Moonfin version {version}",
+    "appVersionFooter": "Plexfin version {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Moonfin kunne ikke få adgang til din systemnøglering. Login kan fortsætte, men sikker token-opbevaring er muligvis ikke tilgængelig, før nøgleringen er låst op.",
+    "secureStorageUnavailableMessage": "Plexfin kunne ikke få adgang til din systemnøglering. Login kan fortsætte, men sikker token-opbevaring er muligvis ikke tilgængelig, før nøgleringen er låst op.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -168,17 +168,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "Skift mellem Moonfin og Neon Pulse uden at genstarte appen",
+    "settingsAppearanceThemeSubtitle": "Skift mellem Plexfin og Neon Pulse uden at genstarte appen",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Moonfin",
+    "themeMoonfin": "Plexfin",
     "@themeMoonfin": {
-        "description": "Display name for the Moonfin theme"
+        "description": "Display name for the Plexfin theme"
     },
-    "themeMoonfinSubtitle": "Det nuværende Moonfin-udseende, som alle vil komme til at elske",
+    "themeMoonfinSubtitle": "Det nuværende Plexfin-udseende, som alle vil komme til at elske",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Moonfin theme"
+        "description": "Preview description for the Plexfin theme"
     },
     "themeNeonPulse": "Neonpuls",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Afslut Moonfin?",
+    "exitApp": "Afslut Plexfin?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "Ikke indstillet. Moonfin vil prøve en standard mpv.conf i app/data-mapper.",
+    "notSetMpvConf": "Ikke indstillet. Plexfin vil prøve en standard mpv.conf i app/data-mapper.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "Skift startsidesynlighed pr. bibliotek. Genstart Moonfin for at ændringerne træder i kraft.",
+    "libraryVisibilityDescription": "Skift startsidesynlighed pr. bibliotek. Genstart Plexfin for at ændringerne træder i kraft.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3561,9 +3561,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Moonfin",
+    "mediaBarModeMoonfin": "Plexfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Moonfin"
+        "description": "Media bar style option: Plexfin"
     },
     "mediaBarModeMakd": "MakD",
     "@mediaBarModeMakd": {
@@ -4121,6 +4121,7 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
+    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
     "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
@@ -4293,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Spil i Moonfin",
+    "playInMoonfin": "Spil i Plexfin",
     "@playInMoonfin": {
-        "description": "Button to play available media in Moonfin"
+        "description": "Button to play available media in Plexfin"
     },
     "requestedByName": "Anmodet af {name}",
     "@requestedByName": {
@@ -4347,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "Element blev ikke fundet i dit Moonfin-bibliotek",
+    "itemNotFoundInLibrary": "Element blev ikke fundet i dit Plexfin-bibliotek",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4651,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "Servergenstart er i gang",
-    "adminServerRebootMessage": "Servergenstart er i gang. Genstart venligst Moonfin",
+    "adminServerRebootMessage": "Servergenstart er i gang. Genstart venligst Plexfin",
     "adminActiveSessions": "Aktive sessioner",
     "adminSessionsLoadFailed": "Kunne ikke indlæse sessioner",
     "adminNoActiveSessions": "Ingen aktive sessioner",
@@ -6539,7 +6540,7 @@
     "settingsShowGenresButtonInNavigation": "Vis genreknappen i navigationslinjen",
     "settingsShowFavoritesButtonInNavigation": "Vis knappen Favoritter i navigationslinjen",
     "settingsShowLibrariesButtonInNavigation": "Vis biblioteksknappen i navigationslinjen",
-    "settingsLibraryVisibilitySubtitle": "Skift startsidesynlighed pr. bibliotek. Genstart Moonfin for at ændringerne træder i kraft.",
+    "settingsLibraryVisibilitySubtitle": "Skift startsidesynlighed pr. bibliotek. Genstart Plexfin for at ændringerne træder i kraft.",
     "settingsMediaBarAndLocalPreviews": "Mediebar og lokale forhåndsvisninger",
     "settingsVisualOverlays": "Visuelle overlejringer",
     "settingsSeasonalSurprise": "Sæsonbestemt overraskelse",
@@ -6558,14 +6559,14 @@
     "settingsJoinDiscord": "Tilmeld dig Discord",
     "settingsJoinDiscordSubtitle": "Chat med fællesskabet",
     "settingsJoinTheDiscord": "Deltag i Discord",
-    "settingsSupportMoonfin": "Støt Moonfin",
+    "settingsSupportMoonfin": "Støt Plexfin",
     "settingsLegal": "JURIDISK",
     "settingsLicenses": "Licenser",
     "settingsOpenSourceLicenseNotices": "Open source-licensmeddelelser",
     "settingsPrivacyPolicy": "Privatlivspolitik",
-    "settingsPrivacyPolicySubtitle": "Hvordan Moonfin håndterer dine data",
+    "settingsPrivacyPolicySubtitle": "Hvordan Plexfin håndterer dine data",
     "settingsCheckForUpdates": "Se efter opdateringer",
-    "settingsCheckForUpdatesSubtitle": "Se efter den seneste Moonfin-udgivelse",
+    "settingsCheckForUpdatesSubtitle": "Se efter den seneste Plexfin-udgivelse",
     "settingsPoweredByFlutter": "Drevet af Flutter",
     "settingsLicenseNoticesCount": "{count, plural, one {# licensmeddelelse} other {# licensmeddelelser}}",
     "@settingsLicenseNoticesCount": {
@@ -7098,12 +7099,12 @@
     "preferSdhSubtitles": "Foretrækker SDH undertekster",
     "preferSdhSubtitlesSubtitle": "Prioriter SDH/CC-undertekstspor ved automatisk valg.",
     "webDiagnostics": "Webdiagnostik",
-    "webDiagnosticsTitle": "Moonfin Webdiagnostik",
+    "webDiagnosticsTitle": "Plexfin Webdiagnostik",
     "webDiagnosticsIntro": "Brug denne side til at diagnosticere problemer med browserforbindelse (CORS, blandet indhold og indstillinger for opdagelse).",
     "webDiagnosticsDetectedMixedContentFailure": "Detekteret blandet indholdsfejl",
     "webDiagnosticsDetectedCorsPreflightFailure": "Detekteret CORS/Preflight-fejl",
-    "webDiagnosticsMixedContentFailureBody": "Moonfin registrerede en HTTPS-side, der forsøgte at kalde en HTTP-server-URL. Browsere blokerer denne anmodning, før den når din server.",
-    "webDiagnosticsCorsFailureBody": "Moonfin har registreret en anmodningsfejl på browserniveau, der almindeligvis er forårsaget af manglende CORS eller preflight-headers på medieserveren.",
+    "webDiagnosticsMixedContentFailureBody": "Plexfin registrerede en HTTPS-side, der forsøgte at kalde en HTTP-server-URL. Browsere blokerer denne anmodning, før den når din server.",
+    "webDiagnosticsCorsFailureBody": "Plexfin har registreret en anmodningsfejl på browserniveau, der almindeligvis er forårsaget af manglende CORS eller preflight-headers på medieserveren.",
     "webDiagnosticsTargetUrl": "Mål-URL: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7133,7 +7134,7 @@
     "notConfigured": "ikke konfigureret",
     "webDiagnosticsMixedContent": "Blandet indhold",
     "webDiagnosticsMixedContentDetected": "Denne side indlæses via HTTPS, men en eller flere konfigurerede URL'er er HTTP. Browsere blokerer HTTPS-sider fra at kalde HTTP API'er.",
-    "webDiagnosticsMixedContentFix": "Fix: server din medieserver eller proxy-slutpunkt via HTTPS, eller indlæs kun Moonfin over HTTP på betroede lokale netværk.",
+    "webDiagnosticsMixedContentFix": "Fix: server din medieserver eller proxy-slutpunkt via HTTPS, eller indlæs kun Plexfin over HTTP på betroede lokale netværk.",
     "webDiagnosticsNoMixedContentDetected": "Ingen åbenlys konfiguration af blandet indhold fundet fra aktuelle runtime-indstillinger.",
     "webDiagnosticsCorsChecklist": "CORS tjekliste",
     "webDiagnosticsCorsChecklistItem1": "• Tillad browserens oprindelse i Access-Control-Allow-Origin.",
@@ -7379,7 +7380,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "Klassisk er det oprindelige centrerede Moonfin-layout. Moderne er et responsivt, filmisk layout.",
+    "detailScreenStyleSubtitle": "Klassisk er det oprindelige centrerede Plexfin-layout. Moderne er et responsivt, filmisk layout.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7411,13 +7412,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "Brug Moonfin Anbefaler-algoritmen til dit lokale bibliotek eller TMDb's lighedsmålinger online. Bemærk: Onlineanbefalinger kræver Seerr-integration.",
+    "recommendationSystemSubtitle": "Brug Plexfin Anbefaler-algoritmen til dit lokale bibliotek eller TMDb's lighedsmålinger online. Bemærk: Onlineanbefalinger kræver Seerr-integration.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Moonfin Anbefaler",
+    "recommendationSystemMoonfin": "Plexfin Anbefaler",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Moonfin Recommends"
+        "description": "Recommendation system option: Plexfin Recommends"
     },
     "recommendationSystemTmdb": "TMDb-lighed",
     "@recommendationSystemTmdb": {
@@ -7427,7 +7428,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "Begræns forslag fra Moonfin Anbefaler efter målmediets aldersgrænse",
+    "recommendationsApplyParentalRatingCapSubtitle": "Begræns forslag fra Plexfin Anbefaler efter målmediets aldersgrænse",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7475,7 +7476,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "Brugerdefinerede temaer ændrer visuelle elementer i hele Moonfin. Vælg en af disse muligheder, der passer til din stil.",
+    "customThemeSubtitle": "Brugerdefinerede temaer ændrer visuelle elementer i hele Plexfin. Vælg en af disse muligheder, der passer til din stil.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7627,7 +7628,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "Log ind på Moonfin på din telefon",
+    "carSignInPrompt": "Log ind på Plexfin på din telefon",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8940,7 +8941,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller er Flutters moderne GPU-renderer, der giver jævnere animationer og mindre hakken. På nogle TV-bokse og ældre GPU'er kan den give grafikfejl eller sort video; slå den fra, hvis du oplever det. Automatisk vælger den bedste standardindstilling til din enhed. Genstart Moonfin for at anvende ændringen.",
+    "impellerRenderingSubtitle": "Impeller er Flutters moderne GPU-renderer, der giver jævnere animationer og mindre hakken. På nogle TV-bokse og ældre GPU'er kan den give grafikfejl eller sort video; slå den fra, hvis du oplever det. Automatisk vælger den bedste standardindstilling til din enhed. Genstart Plexfin for at anvende ændringen.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8951,7 +8952,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "Moonfin skal genstartes for at skifte gengivelsesmotor. Luk appen nu, og åbn den igen for at anvende ændringen.",
+    "impellerRestartMessage": "Plexfin skal genstartes for at skifte gengivelsesmotor. Luk appen nu, og åbn den igen for at anvende ændringen.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },

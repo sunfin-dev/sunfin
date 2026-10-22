@@ -83,7 +83,7 @@ android {
     flavorDimensions += "device"
     productFlavors {
         val baseAppId = "org.moonfin.androidtv"
-        val baseAppName = "Moonfin"
+        val baseAppName = "Plexfin"
         // Optional application-id suffix for on-device testing, set through the
         // environment so an unset build is byte-identical to before:
         //   MOONFIN_TEST_ID_SUFFIX=.hwtest flutter build apk --flavor androidTv --debug
@@ -119,8 +119,9 @@ android {
             versionCode = androidTvVersionCode
             versionName = androidTvVersionName
             ndk { abiFilters += tvAbis }
-            manifestPlaceholders["appName"] =
-                if (testIdSuffix.isEmpty()) baseAppName else "$baseAppName Test"
+            // Plexfin: the suffix only keeps this build installable next to
+            // stock Moonfin; the name already tells them apart, so no "Test".
+            manifestPlaceholders["appName"] = baseAppName
             // Impeller off on TV: the GLES fallback stutters on TV-box GPUs.
             manifestPlaceholders["enableImpeller"] = "false"
         }

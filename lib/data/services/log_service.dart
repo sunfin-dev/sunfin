@@ -265,7 +265,7 @@ class LogService extends ChangeNotifier {
       start = _entries.length - maxEntries;
     }
     final buffer = StringBuffer()
-      ..writeln('Moonfin diagnostic report')
+      ..writeln('Plexfin diagnostic report')
       ..writeln('Generated: ${DateTime.now().toIso8601String()}')
       ..writeln('App: ${_deviceInfo.appName} ${_deviceInfo.appVersion}')
       ..writeln('Device: ${_deviceInfo.name} (${_deviceInfo.id})')

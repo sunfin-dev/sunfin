@@ -10,7 +10,7 @@ class AppLocalizationsHu extends AppLocalizations {
   AppLocalizationsHu([String locale = 'hu']) : super(locale);
 
   @override
-  String get appTitle => 'Moonfin';
+  String get appTitle => 'Plexfin';
 
   @override
   String get animeMarkerFiller => 'Filler';
@@ -108,7 +108,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String appVersionFooter(String version) {
-    return 'Moonfin verzió $version';
+    return 'Plexfin verzió $version';
   }
 
   @override
@@ -160,7 +160,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get secureStorageUnavailableMessage =>
-      'A Moonfin nem tudott hozzáférni a rendszer kulcstartójához. A bejelentkezés folytatódhat, de előfordulhat, hogy a biztonságos tokentároló nem érhető el, amíg a kulcstartót fel nem oldják.';
+      'A Plexfin nem tudott hozzáférni a rendszer kulcstartójához. A bejelentkezés folytatódhat, de előfordulhat, hogy a biztonságos tokentároló nem érhető el, amíg a kulcstartót fel nem oldják.';
 
   @override
   String get ok => 'OK';
@@ -173,7 +173,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get detailScreenStyleSubtitle =>
-      'A Klasszikus az eredeti, középre igazított Moonfin elrendezés. A Modern egy reszponzív, moziszerű elrendezés. A Kiemelt egy tartalomközpontú elrendezés felugró tartalomkártyákkal. Az Újszerű egy teljesképernyős elrendezés, egymás alá rendezett szekciókkal. A Minimalista csak a borítóképet, lejátszási gombot és epizódlistát tartalmaz.';
+      'A Klasszikus az eredeti, középre igazított Plexfin elrendezés. A Modern egy reszponzív, moziszerű elrendezés. A Kiemelt egy tartalomközpontú elrendezés felugró tartalomkártyákkal. Az Újszerű egy teljesképernyős elrendezés, egymás alá rendezett szekciókkal. A Minimalista csak a borítóképet, lejátszási gombot és epizódlistát tartalmaz.';
 
   @override
   String get detailScreenStyleMoonfin => 'Klasszikus';
@@ -410,10 +410,10 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get recommendationSystemSubtitle =>
-      'Használd a Moonfin helyi könyvtárhoz készült ajánlóalgoritmusát, a Jellyfin ajánlóalgoritmusát vagy a TMDb online hasonlósági mutatóit. Megjegyzés: Az online ajánlásokhoz Seerr-integráció szükséges.';
+      'Használd a Plexfin helyi könyvtárhoz készült ajánlóalgoritmusát, a Jellyfin ajánlóalgoritmusát vagy a TMDb online hasonlósági mutatóit. Megjegyzés: Az online ajánlásokhoz Seerr-integráció szükséges.';
 
   @override
-  String get recommendationSystemMoonfin => 'Moonfin ajánlásai';
+  String get recommendationSystemMoonfin => 'Plexfin ajánlásai';
 
   @override
   String get recommendationSystemJellyfin => 'Jellyfin Ajánlások';
@@ -427,7 +427,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get recommendationsApplyParentalRatingCapSubtitle =>
-      'Korlátozd a „Moonfin ajánlásai” javaslatait a célmédia szülői korhatár-besorolása alapján';
+      'Korlátozd a „Plexfin ajánlásai” javaslatait a célmédia szülői korhatár-besorolása alapján';
 
   @override
   String get interfaceStyle => 'Felület stílusa';
@@ -450,7 +450,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get interfaceLayoutSubtitle =>
-      'Írd felül az észlelt elrendezést, ha az eszközt a rendszer hibásan ismeri fel. A módosítások érvénybe lépéséhez indítsd újra a Moonfint.';
+      'Írd felül az észlelt elrendezést, ha az eszközt a rendszer hibásan ismeri fel. A módosítások érvénybe lépéséhez indítsd újra a Plexfint.';
 
   @override
   String get interfaceLayoutAutomatic => 'Automatikus';
@@ -522,7 +522,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get customThemeSubtitle =>
-      'Az egyedi témák módosítják a Moonfin vizuális elemeit. Válassz egyet a stílusodhoz illő lehetőségek közül.';
+      'Az egyedi témák módosítják a Plexfin vizuális elemeit. Válassz egyet a stílusodhoz illő lehetőségek közül.';
 
   @override
   String get keyboardPreferSystemIme =>
@@ -543,11 +543,11 @@ class AppLocalizationsHu extends AppLocalizations {
       'Engedélyezi, hogy a csatlakoztatott kontrollerrel mozgasd a kijelölést és kiválaszd az elemeket';
 
   @override
-  String get themeMoonfin => 'Moonfin';
+  String get themeMoonfin => 'Plexfin';
 
   @override
   String get themeMoonfinSubtitle =>
-      'Az eredeti, letisztult Moonfin alapértelmezés.';
+      'Az eredeti, letisztult Plexfin alapértelmezés.';
 
   @override
   String get themeNeonPulse => 'Neon Pulse';
@@ -622,7 +622,7 @@ class AppLocalizationsHu extends AppLocalizations {
   }
 
   @override
-  String get exitApp => 'Kilépsz a Moonfinből?';
+  String get exitApp => 'Kilépsz a Plexfinből?';
 
   @override
   String get exitAppConfirmation => 'Biztosan ki szeretnél lépni?';
@@ -1773,7 +1773,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get shuffleAllMusic => 'Összes zene keverése';
 
   @override
-  String get carSignInPrompt => 'Jelentkezz be a Moonfinbe a telefonodon';
+  String get carSignInPrompt => 'Jelentkezz be a Plexfinbe a telefonodon';
 
   @override
   String get carServerUnreachable => 'A szervered nem érhető el';
@@ -2061,7 +2061,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get shortcutToggleFullscreen => 'Fullscreen on or off';
 
   @override
-  String get shortcutQuit => 'Quit Moonfin';
+  String get shortcutQuit => 'Quit Plexfin';
 
   @override
   String get shortcutPlayPause => 'Play or pause';
@@ -3024,7 +3024,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get loadingAnimationDescription =>
-      'Customize the loading animations used throughout Moonfin';
+      'Customize the loading animations used throughout Plexfin';
 
   @override
   String get loadingAnimationConfiguration => 'Loading Animation Configuration';
@@ -3033,7 +3033,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get loadingAnimationImage => 'Image';
 
   @override
-  String get loadingAnimationImageMoonfinLogo => 'Moonfin Logo';
+  String get loadingAnimationImageMoonfinLogo => 'Plexfin Logo';
 
   @override
   String get loadingAnimationImageSpinner => 'Spinner';
@@ -3045,7 +3045,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get loadingAnimationImageMoonPhases => 'Moon Phases';
 
   @override
-  String get loadingAnimationImageMoonfinPhases => 'Moonfin Phases';
+  String get loadingAnimationImageMoonfinPhases => 'Plexfin Phases';
 
   @override
   String get loadingAnimationImageNeonfinPhases => 'Neonfin Phases';
@@ -4058,7 +4058,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get notSetMpvConf =>
-      'Nincs beállítva. A Moonfin megpróbálja az alapértelmezett mpv.conf fájlt az alkalmazás/adat mappákban.';
+      'Nincs beállítva. A Plexfin megpróbálja az alapértelmezett mpv.conf fájlt az alkalmazás/adat mappákban.';
 
   @override
   String get selectMpvConf => 'mpv.conf kiválasztása';
@@ -4337,7 +4337,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get downloadLocationLimitedByAndroid =>
-      'Android only lets Moonfin write to the folders it owns, and this device has no removable storage. Turn on Save to Downloads folder above to keep downloads somewhere other apps can reach.';
+      'Android only lets Plexfin write to the folders it owns, and this device has no removable storage. Turn on Save to Downloads folder above to keep downloads somewhere other apps can reach.';
 
   @override
   String get saveToDownloadsFolder => 'Mentés a Letöltések mappába';
@@ -4528,7 +4528,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get libraryVisibilityDescription =>
-      'A kezdőlap láthatóságának váltása könyvtáronként. A módosítások életbe lépéséhez indítsd újra a Moonfin alkalmazást.';
+      'A kezdőlap láthatóságának váltása könyvtáronként. A módosítások életbe lépéséhez indítsd újra a Plexfin alkalmazást.';
 
   @override
   String get showInNavigation => 'Megjelenítés a navigációban';
@@ -4598,7 +4598,7 @@ class AppLocalizationsHu extends AppLocalizations {
       'Válassz a különböző médiasáv-stílusok közül, vagy kapcsold ki a médiasávot';
 
   @override
-  String get mediaBarModeMoonfin => 'Moonfin';
+  String get mediaBarModeMoonfin => 'Plexfin';
 
   @override
   String get mediaBarModeMakd => 'MakD';
@@ -4935,7 +4935,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get screensaverBackdropBlack => 'Black';
 
   @override
-  String get screensaverBackdropMoonfin => 'Moonfin';
+  String get screensaverBackdropMoonfin => 'Plexfin';
 
   @override
   String get screensaverBackdropCalm => 'Calm';
@@ -4950,7 +4950,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get screensaverAdditionalComponent => 'Additional Component';
 
   @override
-  String get screensaverComponentMoonfinLogo => 'Moonfin Logo';
+  String get screensaverComponentMoonfinLogo => 'Plexfin Logo';
 
   @override
   String get screensaverComponentRunner => 'Runner';
@@ -5226,6 +5226,10 @@ class AppLocalizationsHu extends AppLocalizations {
   String get sourceCode => 'Forráskód';
 
   @override
+  String get aboutBasedOnMoonfin =>
+      'Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core';
+
+  @override
   String get sourceCodeUrl => 'https://github.com/Moonfin-Client/Moonfin-Core';
 
   @override
@@ -5412,7 +5416,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get cancelRequest4k => 'Cancel 4K Request';
 
   @override
-  String get playInMoonfin => 'Lejátszás a Moonfinben';
+  String get playInMoonfin => 'Lejátszás a Plexfinben';
 
   @override
   String get requestedByLabel => 'Requested by';
@@ -5458,7 +5462,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get itemNotFoundInLibrary =>
-      'Az elem nem található a Moonfin-könyvtáradban';
+      'Az elem nem található a Plexfin-könyvtáradban';
 
   @override
   String get errorSearchingLibrary => 'Hiba a könyvtár keresése közben';
@@ -6054,7 +6058,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get adminServerRebootMessage =>
-      'A szerver újraindítása folyamatban van, kérlek, indítsd újra a Moonfint';
+      'A szerver újraindítása folyamatban van, kérlek, indítsd újra a Plexfint';
 
   @override
   String get adminActiveSessions => 'Aktív munkamenetek';
@@ -10158,7 +10162,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get settingsLibraryVisibilitySubtitle =>
-      'A kezdőlap láthatóságának váltása könyvtáronként. Indítsd újra a Moonfin alkalmazást, hogy a változtatások életbe lépjenek.';
+      'A kezdőlap láthatóságának váltása könyvtáronként. Indítsd újra a Plexfin alkalmazást, hogy a változtatások életbe lépjenek.';
 
   @override
   String get settingsMediaBarAndLocalPreviews => 'Médiasáv és helyi előnézetek';
@@ -10289,7 +10293,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get settingsJoinTheDiscord => 'Csatlakozz a Discordhoz';
 
   @override
-  String get settingsSupportMoonfin => 'Moonfin támogatása';
+  String get settingsSupportMoonfin => 'Plexfin támogatása';
 
   @override
   String get settingsSupportMoonfinSubtitle =>
@@ -10310,14 +10314,14 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get settingsPrivacyPolicySubtitle =>
-      'Hogyan kezeli a Moonfin az adataidat';
+      'Hogyan kezeli a Plexfin az adataidat';
 
   @override
   String get settingsCheckForUpdates => 'Frissítések ellenőrzése';
 
   @override
   String get settingsCheckForUpdatesSubtitle =>
-      'A legújabb Moonfin kiadás ellenőrzése';
+      'A legújabb Plexfin kiadás ellenőrzése';
 
   @override
   String get settingsPoweredByFlutter => 'Flutterrel készült';
@@ -11143,7 +11147,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get webDiagnostics => 'Webes diagnosztika';
 
   @override
-  String get webDiagnosticsTitle => 'Moonfin webes diagnosztika';
+  String get webDiagnosticsTitle => 'Plexfin webes diagnosztika';
 
   @override
   String get webDiagnosticsIntro =>
@@ -11159,11 +11163,11 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get webDiagnosticsMixedContentFailureBody =>
-      'A Moonfin észlelte, hogy egy HTTPS-oldal próbál hívni egy HTTP-szerver URL-t. A böngészők blokkolják ezt a kérést, mielőtt az elérné a szerveredet.';
+      'A Plexfin észlelte, hogy egy HTTPS-oldal próbál hívni egy HTTP-szerver URL-t. A böngészők blokkolják ezt a kérést, mielőtt az elérné a szerveredet.';
 
   @override
   String get webDiagnosticsCorsFailureBody =>
-      'A Moonfin böngészőszintű kéréshibát észlelt, amelyet általában a CORS- vagy preflight-fejlécek hiánya okoz a médiaszerveren.';
+      'A Plexfin böngészőszintű kéréshibát észlelt, amelyet általában a CORS- vagy preflight-fejlécek hiánya okoz a médiaszerveren.';
 
   @override
   String webDiagnosticsTargetUrl(String url) {
@@ -11212,7 +11216,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get webDiagnosticsMixedContentFix =>
-      'Megoldás: szolgáld ki a médiaszerveredet vagy a proxyvégpontodat HTTPS-en keresztül, vagy a Moonfint csak megbízható helyi hálózatokon töltsd be HTTP-n.';
+      'Megoldás: szolgáld ki a médiaszerveredet vagy a proxyvégpontodat HTTPS-en keresztül, vagy a Plexfint csak megbízható helyi hálózatokon töltsd be HTTP-n.';
 
   @override
   String get webDiagnosticsNoMixedContentDetected =>
@@ -12945,7 +12949,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get impellerRenderingSubtitle =>
-      'Az Impeller a Flutter modern GPU-megjelenítője a simább animációkért és a kevesebb akadozásért. Néhány TV-boxon és régebbi GPU-n képhibákat vagy fekete videót okozhat; ha ezeket tapasztalod, kapcsold ki. Az Automatikus a legmegfelelőbb alapértelmezést választja ki az eszközödhöz. Indítsd újra a Moonfint a beállítások érvényesítéséhez.';
+      'Az Impeller a Flutter modern GPU-megjelenítője a simább animációkért és a kevesebb akadozásért. Néhány TV-boxon és régebbi GPU-n képhibákat vagy fekete videót okozhat; ha ezeket tapasztalod, kapcsold ki. Az Automatikus a legmegfelelőbb alapértelmezést választja ki az eszközödhöz. Indítsd újra a Plexfint a beállítások érvényesítéséhez.';
 
   @override
   String get impellerAuto => 'Automatikus';
@@ -12961,7 +12965,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get impellerRestartMessage =>
-      'A Moonfinnek újra kell indulnia a megjelenítő motor megváltoztatásához. Zárd be most az alkalmazást, majd nyisd meg újra a beállítások érvényesítéséhez.';
+      'A Plexfinnek újra kell indulnia a megjelenítő motor megváltoztatásához. Zárd be most az alkalmazást, majd nyisd meg újra a beállítások érvényesítéséhez.';
 
   @override
   String get impellerCloseNow => 'Alkalmazás bezárása most';
@@ -13477,7 +13481,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get autoDownloadTranscodedForegroundNote =>
-      'Transcoded qualities only download while Moonfin is open. Original quality also downloads in the background.';
+      'Transcoded qualities only download while Plexfin is open. Original quality also downloads in the background.';
 
   @override
   String get autoDownloadTranscodedRunningNote =>
@@ -13485,7 +13489,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get autoDownloadForegroundOnly =>
-      'Downloads only while Moonfin is open';
+      'Downloads only while Plexfin is open';
 
   @override
   String get autoDownloadQualityTitle => 'Auto-download quality';
@@ -13540,15 +13544,15 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get autoDownloadBackgroundRefreshSubtitle =>
-      'Allow the system to check for new episodes periodically while Moonfin is closed';
+      'Allow the system to check for new episodes periodically while Plexfin is closed';
 
   @override
   String get autoDownloadBackgroundRefreshDenied =>
-      'Background App Refresh is disabled for Moonfin. Enable it in iOS Settings.';
+      'Background App Refresh is disabled for Plexfin. Enable it in iOS Settings.';
 
   @override
   String get autoDownloadBackgroundRestrictedAndroid =>
-      'Background usage is restricted for Moonfin in Android Settings.';
+      'Background usage is restricted for Plexfin in Android Settings.';
 
   @override
   String get autoDownloadCheckNow => 'Check now';
@@ -13769,13 +13773,13 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get topShelfDescription =>
-      'What the Apple TV home screen shows above the Moonfin icon when it is selected. This setting stays on this device.';
+      'What the Apple TV home screen shows above the Plexfin icon when it is selected. This setting stays on this device.';
 
   @override
   String get topShelfLatestMedia => 'Latest media';
 
   @override
-  String get topShelfAppBanner => 'Moonfin banner';
+  String get topShelfAppBanner => 'Plexfin banner';
 
   @override
   String get keepVideoClearOfDynamicIsland =>

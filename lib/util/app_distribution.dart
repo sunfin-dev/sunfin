@@ -78,16 +78,9 @@ class AppDistribution {
   /// Whether this build prompts about updates (linking to the releases page).
   /// Returns false for store/managed distributions (AAB, AUR, PKG, Microsoft
   /// Store, signed IPA), which update through their store.
-  static bool get supportsInAppUpdates {
-    switch (channel) {
-      case DistributionChannel.apk:
-      case DistributionChannel.androidTvApk:
-      case DistributionChannel.macosDmg:
-      case DistributionChannel.windows:
-      case DistributionChannel.linux:
-        return true;
-      default:
-        return false;
-    }
-  }
+  ///
+  /// Plexfin: always false. The checker only knows upstream Moonfin releases
+  /// (apk, androidTvApk, macosDmg, windows and linux returned true upstream),
+  /// so this fork never checks automatically and hides "Check for updates".
+  static bool get supportsInAppUpdates => false;
 }

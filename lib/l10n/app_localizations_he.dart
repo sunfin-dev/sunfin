@@ -10,7 +10,7 @@ class AppLocalizationsHe extends AppLocalizations {
   AppLocalizationsHe([String locale = 'he']) : super(locale);
 
   @override
-  String get appTitle => 'Moonfin';
+  String get appTitle => 'Plexfin';
 
   @override
   String get animeMarkerFiller => 'Filler';
@@ -108,7 +108,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String appVersionFooter(String version) {
-    return 'Moonfin גרסה $version';
+    return 'Plexfin גרסה $version';
   }
 
   @override
@@ -160,7 +160,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get secureStorageUnavailableMessage =>
-      'Moonfin לא הצליח לגשת למחזיק המפתחות של המערכת שלך. הכניסה יכולה להמשיך, אך ייתכן שאחסון אסימונים מאובטח לא יהיה זמין עד לביטול הנעילה של מחזיק המפתחות.';
+      'Plexfin לא הצליח לגשת למחזיק המפתחות של המערכת שלך. הכניסה יכולה להמשיך, אך ייתכן שאחסון אסימונים מאובטח לא יהיה זמין עד לביטול הנעילה של מחזיק המפתחות.';
 
   @override
   String get ok => 'בְּסֵדֶר';
@@ -173,7 +173,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get detailScreenStyleSubtitle =>
-      'קלאסי הוא הפריסה הממורכזת המקורית של Moonfin. מודרני הוא פריסה קולנועית רספונסיבית.';
+      'קלאסי הוא הפריסה הממורכזת המקורית של Plexfin. מודרני הוא פריסה קולנועית רספונסיבית.';
 
   @override
   String get detailScreenStyleMoonfin => 'קלאסי';
@@ -410,10 +410,10 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get recommendationSystemSubtitle =>
-      'השתמש באלגוריתם הספרייה המקומית של Moonfin Recommends או במדדי הדמיון המקוונים של TMDb. לתשומת לבך: המלצות מקוונות מחייבות שילוב עם Seerr.';
+      'השתמש באלגוריתם הספרייה המקומית של Plexfin Recommends או במדדי הדמיון המקוונים של TMDb. לתשומת לבך: המלצות מקוונות מחייבות שילוב עם Seerr.';
 
   @override
-  String get recommendationSystemMoonfin => 'Moonfin Recommends';
+  String get recommendationSystemMoonfin => 'Plexfin Recommends';
 
   @override
   String get recommendationSystemJellyfin => 'Jellyfin Recommends';
@@ -427,7 +427,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get recommendationsApplyParentalRatingCapSubtitle =>
-      'הגבל את ההצעות של Moonfin Recommends לפי דירוג ההורים של המדיה';
+      'הגבל את ההצעות של Plexfin Recommends לפי דירוג ההורים של המדיה';
 
   @override
   String get interfaceStyle => 'סגנון הממשק';
@@ -450,7 +450,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get interfaceLayoutSubtitle =>
-      'Override the detected layout when this device is read wrong. Restart Moonfin for changes to take effect.';
+      'Override the detected layout when this device is read wrong. Restart Plexfin for changes to take effect.';
 
   @override
   String get interfaceLayoutAutomatic => 'Automatic';
@@ -515,14 +515,14 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get settingsAppearanceThemeSubtitle =>
-      'מעבר בין Moonfin ל-Neon Pulse מבלי להפעיל מחדש את האפליקציה';
+      'מעבר בין Plexfin ל-Neon Pulse מבלי להפעיל מחדש את האפליקציה';
 
   @override
   String get customThemeTitle => 'ערכת נושא מותאמת';
 
   @override
   String get customThemeSubtitle =>
-      'ערכות נושא מותאמות משנות רכיבים חזותיים ברחבי Moonfin. בחר אחת מהאפשרויות כדי להתאים לסגנון שלך.';
+      'ערכות נושא מותאמות משנות רכיבים חזותיים ברחבי Plexfin. בחר אחת מהאפשרויות כדי להתאים לסגנון שלך.';
 
   @override
   String get keyboardPreferSystemIme => 'העדף את מקלדת המערכת';
@@ -542,10 +542,10 @@ class AppLocalizationsHe extends AppLocalizations {
       'Let a connected game controller move focus and select items';
 
   @override
-  String get themeMoonfin => 'Moonfin';
+  String get themeMoonfin => 'Plexfin';
 
   @override
-  String get themeMoonfinSubtitle => 'מראה Moonfin נוכחי שכולכם למדתם לאהוב';
+  String get themeMoonfinSubtitle => 'מראה Plexfin נוכחי שכולכם למדתם לאהוב';
 
   @override
   String get themeNeonPulse => 'דופק ניאון';
@@ -618,7 +618,7 @@ class AppLocalizationsHe extends AppLocalizations {
   }
 
   @override
-  String get exitApp => 'לצאת מ- Moonfin?';
+  String get exitApp => 'לצאת מ- Plexfin?';
 
   @override
   String get exitAppConfirmation => 'האם אתה בטוח שאתה רוצה לצאת?';
@@ -1758,7 +1758,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get shuffleAllMusic => 'ערבב את כל המוזיקה';
 
   @override
-  String get carSignInPrompt => 'היכנס ל-Moonfin בטלפון שלך';
+  String get carSignInPrompt => 'היכנס ל-Plexfin בטלפון שלך';
 
   @override
   String get carServerUnreachable => 'לא ניתן להגיע לשרת שלך';
@@ -2043,7 +2043,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get shortcutToggleFullscreen => 'Fullscreen on or off';
 
   @override
-  String get shortcutQuit => 'Quit Moonfin';
+  String get shortcutQuit => 'Quit Plexfin';
 
   @override
   String get shortcutPlayPause => 'Play or pause';
@@ -2994,7 +2994,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get loadingAnimationDescription =>
-      'Customize the loading animations used throughout Moonfin';
+      'Customize the loading animations used throughout Plexfin';
 
   @override
   String get loadingAnimationConfiguration => 'Loading Animation Configuration';
@@ -3003,7 +3003,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get loadingAnimationImage => 'Image';
 
   @override
-  String get loadingAnimationImageMoonfinLogo => 'Moonfin Logo';
+  String get loadingAnimationImageMoonfinLogo => 'Plexfin Logo';
 
   @override
   String get loadingAnimationImageSpinner => 'Spinner';
@@ -3015,7 +3015,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get loadingAnimationImageMoonPhases => 'Moon Phases';
 
   @override
-  String get loadingAnimationImageMoonfinPhases => 'Moonfin Phases';
+  String get loadingAnimationImageMoonfinPhases => 'Plexfin Phases';
 
   @override
   String get loadingAnimationImageNeonfinPhases => 'Neonfin Phases';
@@ -4019,7 +4019,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get notSetMpvConf =>
-      'לא מוגדר. Moonfin ינסה ברירת מחדל mpv.conf בתיקיות אפליקציות/נתונים.';
+      'לא מוגדר. Plexfin ינסה ברירת מחדל mpv.conf בתיקיות אפליקציות/נתונים.';
 
   @override
   String get selectMpvConf => 'בחר mpv.conf';
@@ -4295,7 +4295,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get downloadLocationLimitedByAndroid =>
-      'Android only lets Moonfin write to the folders it owns, and this device has no removable storage. Turn on Save to Downloads folder above to keep downloads somewhere other apps can reach.';
+      'Android only lets Plexfin write to the folders it owns, and this device has no removable storage. Turn on Save to Downloads folder above to keep downloads somewhere other apps can reach.';
 
   @override
   String get saveToDownloadsFolder => 'שמור בתיקיית הורדות';
@@ -4479,7 +4479,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get libraryVisibilityDescription =>
-      'החלף את נראות דף הבית לכל ספריה. הפעל מחדש את Moonfin כדי שהשינויים ייכנסו לתוקף.';
+      'החלף את נראות דף הבית לכל ספריה. הפעל מחדש את Plexfin כדי שהשינויים ייכנסו לתוקף.';
 
   @override
   String get showInNavigation => 'הצג בניווט';
@@ -4548,7 +4548,7 @@ class AppLocalizationsHe extends AppLocalizations {
       'בחרו בין סגנונות שונים של סרגל מדיה, או כבו את סרגל המדיה';
 
   @override
-  String get mediaBarModeMoonfin => 'Moonfin';
+  String get mediaBarModeMoonfin => 'Plexfin';
 
   @override
   String get mediaBarModeMakd => 'MakD';
@@ -4875,7 +4875,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get screensaverBackdropBlack => 'Black';
 
   @override
-  String get screensaverBackdropMoonfin => 'Moonfin';
+  String get screensaverBackdropMoonfin => 'Plexfin';
 
   @override
   String get screensaverBackdropCalm => 'Calm';
@@ -4890,7 +4890,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get screensaverAdditionalComponent => 'Additional Component';
 
   @override
-  String get screensaverComponentMoonfinLogo => 'Moonfin Logo';
+  String get screensaverComponentMoonfinLogo => 'Plexfin Logo';
 
   @override
   String get screensaverComponentRunner => 'Runner';
@@ -5156,6 +5156,10 @@ class AppLocalizationsHe extends AppLocalizations {
   String get sourceCode => 'קוד מקור';
 
   @override
+  String get aboutBasedOnMoonfin =>
+      'Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core';
+
+  @override
   String get sourceCodeUrl => 'https://github.com/Moonfin-Client/Moonfin-Core';
 
   @override
@@ -5335,7 +5339,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get cancelRequest4k => 'Cancel 4K Request';
 
   @override
-  String get playInMoonfin => 'שחקו ב- Moonfin';
+  String get playInMoonfin => 'שחקו ב- Plexfin';
 
   @override
   String get requestedByLabel => 'Requested by';
@@ -5380,7 +5384,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get keep => 'לִשְׁמוֹר';
 
   @override
-  String get itemNotFoundInLibrary => 'הפריט לא נמצא בספריית Moonfin שלך';
+  String get itemNotFoundInLibrary => 'הפריט לא נמצא בספריית Plexfin שלך';
 
   @override
   String get errorSearchingLibrary => 'שגיאה בחיפוש הספרייה';
@@ -5971,7 +5975,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get adminServerRebootMessage =>
-      'אתחול השרת מתבצע, אנא הפעל מחדש את Moonfin';
+      'אתחול השרת מתבצע, אנא הפעל מחדש את Plexfin';
 
   @override
   String get adminActiveSessions => 'הפעלות פעילות';
@@ -9959,7 +9963,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get settingsLibraryVisibilitySubtitle =>
-      'החלף את נראות דף הבית לכל ספריה. הפעל מחדש את Moonfin כדי שהשינויים ייכנסו לתוקף.';
+      'החלף את נראות דף הבית לכל ספריה. הפעל מחדש את Plexfin כדי שהשינויים ייכנסו לתוקף.';
 
   @override
   String get settingsMediaBarAndLocalPreviews =>
@@ -10089,7 +10093,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get settingsJoinTheDiscord => 'הצטרף ל-Discord';
 
   @override
-  String get settingsSupportMoonfin => 'תמכו ב- Moonfin';
+  String get settingsSupportMoonfin => 'תמכו ב- Plexfin';
 
   @override
   String get settingsSupportMoonfinSubtitle => 'תרום כוס קפה למפתח';
@@ -10107,14 +10111,14 @@ class AppLocalizationsHe extends AppLocalizations {
   String get settingsPrivacyPolicy => 'מדיניות פרטיות';
 
   @override
-  String get settingsPrivacyPolicySubtitle => 'כיצד Moonfin מטפל בנתונים שלך';
+  String get settingsPrivacyPolicySubtitle => 'כיצד Plexfin מטפל בנתונים שלך';
 
   @override
   String get settingsCheckForUpdates => 'בדוק אם קיימים עדכונים';
 
   @override
   String get settingsCheckForUpdatesSubtitle =>
-      'בדוק את המהדורה האחרונה של Moonfin';
+      'בדוק את המהדורה האחרונה של Plexfin';
 
   @override
   String get settingsPoweredByFlutter => 'מופעל על ידי Flutter';
@@ -10918,7 +10922,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get webDiagnostics => 'אבחון ווב';
 
   @override
-  String get webDiagnosticsTitle => 'אבחון ווב של Moonfin';
+  String get webDiagnosticsTitle => 'אבחון ווב של Plexfin';
 
   @override
   String get webDiagnosticsIntro =>
@@ -10933,11 +10937,11 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get webDiagnosticsMixedContentFailureBody =>
-      'Moonfin זיהה עמוד HTTPS שמנסה לפנות לכתובת שרת HTTP. דפדפנים חוסמים בקשה זו עוד לפני שהיא מגיעה לשרת שלך.';
+      'Plexfin זיהה עמוד HTTPS שמנסה לפנות לכתובת שרת HTTP. דפדפנים חוסמים בקשה זו עוד לפני שהיא מגיעה לשרת שלך.';
 
   @override
   String get webDiagnosticsCorsFailureBody =>
-      'Moonfin זיהה כשל בקשה ברמת הדפדפן, שנגרם בדרך כלל מכותרות CORS או preflight חסרות בשרת המדיה.';
+      'Plexfin זיהה כשל בקשה ברמת הדפדפן, שנגרם בדרך כלל מכותרות CORS או preflight חסרות בשרת המדיה.';
 
   @override
   String webDiagnosticsTargetUrl(String url) {
@@ -10985,7 +10989,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get webDiagnosticsMixedContentFix =>
-      'פתרון: הגש את שרת המדיה או את נקודת הקצה של הפרוקסי דרך HTTPS, או טען את Moonfin דרך HTTP ברשתות מקומיות מהימנות בלבד.';
+      'פתרון: הגש את שרת המדיה או את נקודת הקצה של הפרוקסי דרך HTTPS, או טען את Plexfin דרך HTTP ברשתות מקומיות מהימנות בלבד.';
 
   @override
   String get webDiagnosticsNoMixedContentDetected =>
@@ -12704,7 +12708,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get impellerRenderingSubtitle =>
-      'Impeller הוא מנוע ה-GPU המודרני של Flutter, לאנימציות חלקות יותר ולפחות קפיצות. בחלק ממכשירי הטלוויזיה ובמעבדים גרפיים ישנים הוא עלול לגרום לתקלות תצוגה או לווידאו שחור; כבה אותו אם אתה נתקל בכך. אוטומטי בוחר את ברירת המחדל הטובה ביותר עבור המכשיר שלך. הפעל מחדש את Moonfin כדי להחיל.';
+      'Impeller הוא מנוע ה-GPU המודרני של Flutter, לאנימציות חלקות יותר ולפחות קפיצות. בחלק ממכשירי הטלוויזיה ובמעבדים גרפיים ישנים הוא עלול לגרום לתקלות תצוגה או לווידאו שחור; כבה אותו אם אתה נתקל בכך. אוטומטי בוחר את ברירת המחדל הטובה ביותר עבור המכשיר שלך. הפעל מחדש את Plexfin כדי להחיל.';
 
   @override
   String get impellerAuto => 'אוטומטי';
@@ -12720,7 +12724,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get impellerRestartMessage =>
-      'יש להפעיל מחדש את Moonfin כדי לשנות את מנוע הרינדור. סגור את האפליקציה עכשיו ופתח אותה שוב כדי להחיל.';
+      'יש להפעיל מחדש את Plexfin כדי לשנות את מנוע הרינדור. סגור את האפליקציה עכשיו ופתח אותה שוב כדי להחיל.';
 
   @override
   String get impellerCloseNow => 'סגור את האפליקציה עכשיו';
@@ -13237,7 +13241,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get autoDownloadTranscodedForegroundNote =>
-      'Transcoded qualities only download while Moonfin is open. Original quality also downloads in the background.';
+      'Transcoded qualities only download while Plexfin is open. Original quality also downloads in the background.';
 
   @override
   String get autoDownloadTranscodedRunningNote =>
@@ -13245,7 +13249,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get autoDownloadForegroundOnly =>
-      'Downloads only while Moonfin is open';
+      'Downloads only while Plexfin is open';
 
   @override
   String get autoDownloadQualityTitle => 'Auto-download quality';
@@ -13300,15 +13304,15 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get autoDownloadBackgroundRefreshSubtitle =>
-      'Allow the system to check for new episodes periodically while Moonfin is closed';
+      'Allow the system to check for new episodes periodically while Plexfin is closed';
 
   @override
   String get autoDownloadBackgroundRefreshDenied =>
-      'Background App Refresh is disabled for Moonfin. Enable it in iOS Settings.';
+      'Background App Refresh is disabled for Plexfin. Enable it in iOS Settings.';
 
   @override
   String get autoDownloadBackgroundRestrictedAndroid =>
-      'Background usage is restricted for Moonfin in Android Settings.';
+      'Background usage is restricted for Plexfin in Android Settings.';
 
   @override
   String get autoDownloadCheckNow => 'Check now';
@@ -13529,13 +13533,13 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get topShelfDescription =>
-      'What the Apple TV home screen shows above the Moonfin icon when it is selected. This setting stays on this device.';
+      'What the Apple TV home screen shows above the Plexfin icon when it is selected. This setting stays on this device.';
 
   @override
   String get topShelfLatestMedia => 'Latest media';
 
   @override
-  String get topShelfAppBanner => 'Moonfin banner';
+  String get topShelfAppBanner => 'Plexfin banner';
 
   @override
   String get keepVideoClearOfDynamicIsland =>

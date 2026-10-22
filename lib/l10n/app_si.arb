@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "appTitle": "Moonfin",
+    "appTitle": "Plexfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Moonfin අනුවාදය {version}",
+    "appVersionFooter": "Plexfin අනුවාදය {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Moonfin හට ඔබගේ පද්ධති යතුරුකරණයට ප්‍රවේශ විය නොහැක. පුරනය දිගටම කරගෙන යා හැක, නමුත් යතුර අගුලු හරින තෙක් ආරක්ෂිත ටෝකන ගබඩාව නොතිබිය හැක.",
+    "secureStorageUnavailableMessage": "Plexfin හට ඔබගේ පද්ධති යතුරුකරණයට ප්‍රවේශ විය නොහැක. පුරනය දිගටම කරගෙන යා හැක, නමුත් යතුර අගුලු හරින තෙක් ආරක්ෂිත ටෝකන ගබඩාව නොතිබිය හැක.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -168,17 +168,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "යෙදුම නැවත ආරම්භ නොකර Moonfin සහ Neon Pulse අතර මාරු වන්න",
+    "settingsAppearanceThemeSubtitle": "යෙදුම නැවත ආරම්භ නොකර Plexfin සහ Neon Pulse අතර මාරු වන්න",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Moonfin",
+    "themeMoonfin": "Plexfin",
     "@themeMoonfin": {
-        "description": "Display name for the Moonfin theme"
+        "description": "Display name for the Plexfin theme"
     },
-    "themeMoonfinSubtitle": "වත්මන් Moonfin පෙනුම ඔබ සියලු දෙනාටම ආදරය කර ඇත",
+    "themeMoonfinSubtitle": "වත්මන් Plexfin පෙනුම ඔබ සියලු දෙනාටම ආදරය කර ඇත",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Moonfin theme"
+        "description": "Preview description for the Plexfin theme"
     },
     "themeNeonPulse": "නියොන් ස්පන්දනය",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Moonfin වෙතින් පිටවන්නද?",
+    "exitApp": "Plexfin වෙතින් පිටවන්නද?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "සකසා නැත. Moonfin යෙදුම්/දත්ත ෆෝල්ඩරවල පෙරනිමි mpv.conf එකක් උත්සාහ කරනු ඇත.",
+    "notSetMpvConf": "සකසා නැත. Plexfin යෙදුම්/දත්ත ෆෝල්ඩරවල පෙරනිමි mpv.conf එකක් උත්සාහ කරනු ඇත.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "පුස්තකාලයකට මුල් පිටුව දෘශ්‍යතාව ටොගල් කරන්න. වෙනස්කම් බලාත්මක වීමට Moonfin නැවත ආරම්භ කරන්න.",
+    "libraryVisibilityDescription": "පුස්තකාලයකට මුල් පිටුව දෘශ්‍යතාව ටොගල් කරන්න. වෙනස්කම් බලාත්මක වීමට Plexfin නැවත ආරම්භ කරන්න.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3557,13 +3557,13 @@
     "@mediaBarMode": {
         "description": "Setting for choosing media bar style"
     },
-    "mediaBarModeDescription": "Moonfin, MakD අතර තෝරන්න, නැතහොත් මාධ්‍ය තීරුව අක්‍රිය කරන්න",
+    "mediaBarModeDescription": "Plexfin, MakD අතර තෝරන්න, නැතහොත් මාධ්‍ය තීරුව අක්‍රිය කරන්න",
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Moonfin",
+    "mediaBarModeMoonfin": "Plexfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Moonfin"
+        "description": "Media bar style option: Plexfin"
     },
     "mediaBarModeMakd": "මැක්ඩී",
     "@mediaBarModeMakd": {
@@ -4121,6 +4121,7 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
+    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
     "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
@@ -4293,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Moonfin හි සෙල්ලම් කරන්න",
+    "playInMoonfin": "Plexfin හි සෙල්ලම් කරන්න",
     "@playInMoonfin": {
-        "description": "Button to play available media in Moonfin"
+        "description": "Button to play available media in Plexfin"
     },
     "requestedByName": "{name} විසින් ඉල්ලා ඇත",
     "@requestedByName": {
@@ -4347,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "ඔබගේ Moonfin පුස්තකාලයේ අයිතමය හමු නොවීය",
+    "itemNotFoundInLibrary": "ඔබගේ Plexfin පුස්තකාලයේ අයිතමය හමු නොවීය",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4651,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "සේවාදායකය නැවත ආරම්භ කිරීම සිදු වෙමින් පවතී",
-    "adminServerRebootMessage": "සේවාදායකය නැවත ආරම්භ කිරීම සිදු වෙමින් පවතී, කරුණාකර Moonfin නැවත ආරම්භ කරන්න",
+    "adminServerRebootMessage": "සේවාදායකය නැවත ආරම්භ කිරීම සිදු වෙමින් පවතී, කරුණාකර Plexfin නැවත ආරම්භ කරන්න",
     "adminActiveSessions": "ක්රියාකාරී සැසි",
     "adminSessionsLoadFailed": "සැසි පූරණය කිරීමට අසමත් විය",
     "adminNoActiveSessions": "සක්‍රිය සැසි නැත",
@@ -6539,7 +6540,7 @@
     "settingsShowGenresButtonInNavigation": "සංචාලන තීරුවේ ප්‍රභේද බොත්තම පෙන්වන්න",
     "settingsShowFavoritesButtonInNavigation": "සංචාලන තීරුවේ ප්‍රියතම බොත්තම පෙන්වන්න",
     "settingsShowLibrariesButtonInNavigation": "සංචාලන තීරුවේ පුස්තකාල බොත්තම පෙන්වන්න",
-    "settingsLibraryVisibilitySubtitle": "පුස්තකාලයකට මුල් පිටුව දෘශ්‍යතාව ටොගල් කරන්න. වෙනස්කම් බලාත්මක වීමට Moonfin නැවත ආරම්භ කරන්න.",
+    "settingsLibraryVisibilitySubtitle": "පුස්තකාලයකට මුල් පිටුව දෘශ්‍යතාව ටොගල් කරන්න. වෙනස්කම් බලාත්මක වීමට Plexfin නැවත ආරම්භ කරන්න.",
     "settingsMediaBarAndLocalPreviews": "මාධ්‍ය තීරුව සහ දේශීය පෙරදසුන්",
     "settingsVisualOverlays": "දෘශ්ය ආවරණ",
     "settingsSeasonalSurprise": "සෘතුමය පුදුමය",
@@ -6558,14 +6559,14 @@
     "settingsJoinDiscord": "Discord එක්වන්න",
     "settingsJoinDiscordSubtitle": "ප්රජාව සමඟ කතාබස් කරන්න",
     "settingsJoinTheDiscord": "Discord එකට එකතු වෙන්න",
-    "settingsSupportMoonfin": "Moonfin සඳහා සහය වන්න",
+    "settingsSupportMoonfin": "Plexfin සඳහා සහය වන්න",
     "settingsLegal": "නීතිමය",
     "settingsLicenses": "බලපත්ර",
     "settingsOpenSourceLicenseNotices": "විවෘත මූලාශ්‍ර බලපත්‍ර දැන්වීම්",
     "settingsPrivacyPolicy": "රහස්යතා ප්රතිපත්තිය",
-    "settingsPrivacyPolicySubtitle": "Moonfin ඔබේ දත්ත හසුරුවන ආකාරය",
+    "settingsPrivacyPolicySubtitle": "Plexfin ඔබේ දත්ත හසුරුවන ආකාරය",
     "settingsCheckForUpdates": "යාවත්කාලීන සඳහා පරීක්ෂා කරන්න",
-    "settingsCheckForUpdatesSubtitle": "නවතම Moonfin නිකුතුව සඳහා පරීක්ෂා කරන්න",
+    "settingsCheckForUpdatesSubtitle": "නවතම Plexfin නිකුතුව සඳහා පරීක්ෂා කරන්න",
     "settingsPoweredByFlutter": "Flutter මගින් බල ගැන්වේ",
     "settingsLicenseNoticesCount": "{count, plural, one {බලපත්‍ර දැන්වීම් #} other {බලපත්‍ර දැන්වීම් #}}",
     "@settingsLicenseNoticesCount": {
@@ -7098,12 +7099,12 @@
     "preferSdhSubtitles": "SDH උපසිරැසිවලට මුල් තැන දෙන්න",
     "preferSdhSubtitlesSubtitle": "ස්වයංක්‍රීයව තෝරන විට SDH/CC උපසිරැසි පථවලට ප්‍රමුඛත්වය දෙන්න.",
     "webDiagnostics": "වෙබ් දෝෂ නිර්ණය",
-    "webDiagnosticsTitle": "Moonfin වෙබ් දෝෂ නිර්ණය",
+    "webDiagnosticsTitle": "Plexfin වෙබ් දෝෂ නිර්ණය",
     "webDiagnosticsIntro": "බ්‍රවුසර සම්බන්ධතා ගැටලු (CORS, මිශ්‍ර අන්තර්ගතය සහ සොයාගැනීමේ සැකසීම්) විනිශ්චය කිරීමට මෙම පිටුව භාවිත කරන්න.",
     "webDiagnosticsDetectedMixedContentFailure": "මිශ්‍ර-අන්තර්ගත අසාර්ථකත්වයක් හඳුනාගන්නා ලදී",
     "webDiagnosticsDetectedCorsPreflightFailure": "CORS/Preflight අසාර්ථකත්වයක් හඳුනාගන්නා ලදී",
-    "webDiagnosticsMixedContentFailureBody": "HTTP සේවාදායක URL එකක් ඇමතීමට උත්සාහ කරන HTTPS පිටුවක් Moonfin හඳුනාගත්තේය. බ්‍රවුසර මෙම ඉල්ලීම ඔබේ සේවාදායකයට ළඟා වීමට පෙර අවහිර කරයි.",
-    "webDiagnosticsCorsFailureBody": "මාධ්‍ය සේවාදායකයේ අස්ථානගත වූ CORS හෝ preflight ශීර්ෂ නිසා බහුලව ඇතිවන බ්‍රවුසර මට්ටමේ ඉල්ලීම් අසාර්ථකත්වයක් Moonfin හඳුනාගත්තේය.",
+    "webDiagnosticsMixedContentFailureBody": "HTTP සේවාදායක URL එකක් ඇමතීමට උත්සාහ කරන HTTPS පිටුවක් Plexfin හඳුනාගත්තේය. බ්‍රවුසර මෙම ඉල්ලීම ඔබේ සේවාදායකයට ළඟා වීමට පෙර අවහිර කරයි.",
+    "webDiagnosticsCorsFailureBody": "මාධ්‍ය සේවාදායකයේ අස්ථානගත වූ CORS හෝ preflight ශීර්ෂ නිසා බහුලව ඇතිවන බ්‍රවුසර මට්ටමේ ඉල්ලීම් අසාර්ථකත්වයක් Plexfin හඳුනාගත්තේය.",
     "webDiagnosticsTargetUrl": "ඉලක්ක URL: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7133,7 +7134,7 @@
     "notConfigured": "වින්‍යාස කර නැත",
     "webDiagnosticsMixedContent": "මිශ්‍ර අන්තර්ගතය",
     "webDiagnosticsMixedContentDetected": "මෙම පිටුව HTTPS හරහා පූරණය වී ඇත, නමුත් වින්‍යාස කළ URL එකක් හෝ කිහිපයක් HTTP වේ. බ්‍රවුසර HTTPS පිටුවලට HTTP API ඇමතීම අවහිර කරයි.",
-    "webDiagnosticsMixedContentFix": "විසඳුම: ඔබේ මාධ්‍ය සේවාදායකය හෝ ප්‍රොක්සි අන්තය HTTPS හරහා සපයන්න, නැතහොත් Moonfin HTTP හරහා විශ්වාසනීය දේශීය ජාලවල පමණක් පූරණය කරන්න.",
+    "webDiagnosticsMixedContentFix": "විසඳුම: ඔබේ මාධ්‍ය සේවාදායකය හෝ ප්‍රොක්සි අන්තය HTTPS හරහා සපයන්න, නැතහොත් Plexfin HTTP හරහා විශ්වාසනීය දේශීය ජාලවල පමණක් පූරණය කරන්න.",
     "webDiagnosticsNoMixedContentDetected": "වත්මන් ධාවන කාල සැකසීම්වලින් පැහැදිලි මිශ්‍ර-අන්තර්ගත වින්‍යාසයක් හඳුනාගත නොහැකි විය.",
     "webDiagnosticsCorsChecklist": "CORS පිරික්සුම් ලැයිස්තුව",
     "webDiagnosticsCorsChecklistItem1": "• Access-Control-Allow-Origin හි බ්‍රවුසර මූලාරම්භයට ඉඩ දෙන්න.",
@@ -7330,7 +7331,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "සම්භාව්‍ය යනු Moonfin හි මුල් මධ්‍යගත සැකැස්මයි. නවීන යනු ප්‍රතිචාරාත්මක සිනමාත්මක සැකැස්මකි.",
+    "detailScreenStyleSubtitle": "සම්භාව්‍ය යනු Plexfin හි මුල් මධ්‍යගත සැකැස්මයි. නවීන යනු ප්‍රතිචාරාත්මක සිනමාත්මක සැකැස්මකි.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7362,13 +7363,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "Moonfin නිර්දේශ නම් දේශීය පුස්තකාල ඇල්ගොරිතමය හෝ මාර්ගගත TMDb සමානතා මිතික භාවිත කරන්න. සටහන: මාර්ගගත නිර්දේශ සඳහා Seerr ඒකාබද්ධතාව අවශ්‍ය වේ.",
+    "recommendationSystemSubtitle": "Plexfin නිර්දේශ නම් දේශීය පුස්තකාල ඇල්ගොරිතමය හෝ මාර්ගගත TMDb සමානතා මිතික භාවිත කරන්න. සටහන: මාර්ගගත නිර්දේශ සඳහා Seerr ඒකාබද්ධතාව අවශ්‍ය වේ.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Moonfin නිර්දේශ",
+    "recommendationSystemMoonfin": "Plexfin නිර්දේශ",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Moonfin Recommends"
+        "description": "Recommendation system option: Plexfin Recommends"
     },
     "recommendationSystemTmdb": "TMDb සමානතාව",
     "@recommendationSystemTmdb": {
@@ -7378,7 +7379,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "ඉලක්ක මාධ්‍යයේ මාපිය ශ්‍රේණිගත කිරීම අනුව Moonfin නිර්දේශ යෝජනා සීමා කරන්න",
+    "recommendationsApplyParentalRatingCapSubtitle": "ඉලක්ක මාධ්‍යයේ මාපිය ශ්‍රේණිගත කිරීම අනුව Plexfin නිර්දේශ යෝජනා සීමා කරන්න",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7426,7 +7427,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "අභිරුචි තේමා Moonfin පුරා දෘශ්‍ය අංග වෙනස් කරයි. ඔබේ විලාසයට ගැළපෙන විකල්පයක් තෝරන්න.",
+    "customThemeSubtitle": "අභිරුචි තේමා Plexfin පුරා දෘශ්‍ය අංග වෙනස් කරයි. ඔබේ විලාසයට ගැළපෙන විකල්පයක් තෝරන්න.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7599,7 +7600,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "ඔබේ දුරකථනයෙන් Moonfin වෙත පුරන්න",
+    "carSignInPrompt": "ඔබේ දුරකථනයෙන් Plexfin වෙත පුරන්න",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8940,7 +8941,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller යනු සුමට සජීවීකරණ සහ අඩු ගැහීම් සඳහා Flutter හි නවීන GPU විදැහුම්කරුයි. සමහර TV පෙට්ටි සහ පැරණි GPU වල එය දෝෂ හෝ කළු වීඩියෝ ඇති කළ හැක; ඒවා දුටුවහොත් එය ක්‍රියාවිරහිත කරන්න. ස්වයංක්‍රීය මඟින් ඔබේ උපාංගයට හොඳම පෙරනිමිය තෝරයි. යෙදීමට Moonfin නැවත අරඹන්න.",
+    "impellerRenderingSubtitle": "Impeller යනු සුමට සජීවීකරණ සහ අඩු ගැහීම් සඳහා Flutter හි නවීන GPU විදැහුම්කරුයි. සමහර TV පෙට්ටි සහ පැරණි GPU වල එය දෝෂ හෝ කළු වීඩියෝ ඇති කළ හැක; ඒවා දුටුවහොත් එය ක්‍රියාවිරහිත කරන්න. ස්වයංක්‍රීය මඟින් ඔබේ උපාංගයට හොඳම පෙරනිමිය තෝරයි. යෙදීමට Plexfin නැවත අරඹන්න.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8951,7 +8952,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "විදැහුම්කරණ එන්ජිම වෙනස් කිරීමට Moonfin නැවත ඇරඹිය යුතුය. දැන් යෙදුම වසා, යෙදීමට එය නැවත විවෘත කරන්න.",
+    "impellerRestartMessage": "විදැහුම්කරණ එන්ජිම වෙනස් කිරීමට Plexfin නැවත ඇරඹිය යුතුය. දැන් යෙදුම වසා, යෙදීමට එය නැවත විවෘත කරන්න.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },

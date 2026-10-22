@@ -1,6 +1,6 @@
 {
     "@@locale": "lt",
-    "appTitle": "Moonfin",
+    "appTitle": "Plexfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Moonfin versija {version}",
+    "appVersionFooter": "Plexfin versija {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Moonfin negalėjo pasiekti jūsų sistemos raktų pakabuko. Prisijungimas gali būti tęsiamas, tačiau saugi žetonų saugykla gali būti nepasiekiama, kol nebus atrakintas raktų pakabukas.",
+    "secureStorageUnavailableMessage": "Plexfin negalėjo pasiekti jūsų sistemos raktų pakabuko. Prisijungimas gali būti tęsiamas, tačiau saugi žetonų saugykla gali būti nepasiekiama, kol nebus atrakintas raktų pakabukas.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -168,17 +168,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "Perjunkite „Moonfin“ ir „Neon Pulse“ iš naujo nepaleidę programos",
+    "settingsAppearanceThemeSubtitle": "Perjunkite „Plexfin“ ir „Neon Pulse“ iš naujo nepaleidę programos",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Moonfin",
+    "themeMoonfin": "Plexfin",
     "@themeMoonfin": {
-        "description": "Display name for the Moonfin theme"
+        "description": "Display name for the Plexfin theme"
     },
-    "themeMoonfinSubtitle": "Dabartinė Moonfin išvaizda, kurią jūs visi pamėgote",
+    "themeMoonfinSubtitle": "Dabartinė Plexfin išvaizda, kurią jūs visi pamėgote",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Moonfin theme"
+        "description": "Preview description for the Plexfin theme"
     },
     "themeNeonPulse": "Neoninis pulsas",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Išeiti iš Moonfin?",
+    "exitApp": "Išeiti iš Plexfin?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "Nenustatyta. „Moonfin“ išbandys numatytąjį mpv.conf failą programų / duomenų aplankuose.",
+    "notSetMpvConf": "Nenustatyta. „Plexfin“ išbandys numatytąjį mpv.conf failą programų / duomenų aplankuose.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3336,7 +3336,7 @@
     "@saveToDownloadsFolder": {
         "description": "Setting for saving to downloads folder"
     },
-    "downloadsVisibleToOtherApps": "Atsisiuntimai / Moonfin – matoma kitoms programoms",
+    "downloadsVisibleToOtherApps": "Atsisiuntimai / Plexfin – matoma kitoms programoms",
     "@downloadsVisibleToOtherApps": {
         "description": "Description for downloads folder visibility"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "Perjungti pagrindinio puslapio matomumą pagal biblioteką. Iš naujo paleiskite „Moonfin“, kad pakeitimai įsigaliotų.",
+    "libraryVisibilityDescription": "Perjungti pagrindinio puslapio matomumą pagal biblioteką. Iš naujo paleiskite „Plexfin“, kad pakeitimai įsigaliotų.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3561,9 +3561,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Moonfin",
+    "mediaBarModeMoonfin": "Plexfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Moonfin"
+        "description": "Media bar style option: Plexfin"
     },
     "mediaBarModeMakd": "MakD",
     "@mediaBarModeMakd": {
@@ -4121,6 +4121,7 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
+    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
     "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
@@ -4293,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Žaisk „Moonfin“.",
+    "playInMoonfin": "Žaisk „Plexfin“.",
     "@playInMoonfin": {
-        "description": "Button to play available media in Moonfin"
+        "description": "Button to play available media in Plexfin"
     },
     "requestedByName": "Užklausą pateikė {name}",
     "@requestedByName": {
@@ -4347,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "Elementas nerastas jūsų Moonfin bibliotekoje",
+    "itemNotFoundInLibrary": "Elementas nerastas jūsų Plexfin bibliotekoje",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4651,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "Vyksta serverio perkrovimas",
-    "adminServerRebootMessage": "Serveris perkraunamas, iš naujo paleiskite „Moonfin“.",
+    "adminServerRebootMessage": "Serveris perkraunamas, iš naujo paleiskite „Plexfin“.",
     "adminActiveSessions": "Aktyvūs užsiėmimai",
     "adminSessionsLoadFailed": "Nepavyko įkelti seansų",
     "adminNoActiveSessions": "Nėra aktyvių seansų",
@@ -6539,7 +6540,7 @@
     "settingsShowGenresButtonInNavigation": "Rodyti žanrų mygtuką naršymo juostoje",
     "settingsShowFavoritesButtonInNavigation": "Rodyti parankinių mygtuką naršymo juostoje",
     "settingsShowLibrariesButtonInNavigation": "Rodyti bibliotekų mygtuką naršymo juostoje",
-    "settingsLibraryVisibilitySubtitle": "Perjungti pagrindinio puslapio matomumą pagal biblioteką. Iš naujo paleiskite „Moonfin“, kad pakeitimai įsigaliotų.",
+    "settingsLibraryVisibilitySubtitle": "Perjungti pagrindinio puslapio matomumą pagal biblioteką. Iš naujo paleiskite „Plexfin“, kad pakeitimai įsigaliotų.",
     "settingsMediaBarAndLocalPreviews": "Medijos juosta ir vietinės peržiūros",
     "settingsVisualOverlays": "Vaizdinės perdangos",
     "settingsSeasonalSurprise": "Sezoninė staigmena",
@@ -6558,14 +6559,14 @@
     "settingsJoinDiscord": "Prisijunkite prie „Discord“.",
     "settingsJoinDiscordSubtitle": "Kalbėkitės su bendruomene",
     "settingsJoinTheDiscord": "Prisijunkite prie Discord",
-    "settingsSupportMoonfin": "Palaikykite Moonfin",
+    "settingsSupportMoonfin": "Palaikykite Plexfin",
     "settingsLegal": "TEISINĖ",
     "settingsLicenses": "Licencijos",
     "settingsOpenSourceLicenseNotices": "Atvirojo kodo licencijos pranešimai",
     "settingsPrivacyPolicy": "Privatumo politika",
-    "settingsPrivacyPolicySubtitle": "Kaip Moonfin tvarko jūsų duomenis",
+    "settingsPrivacyPolicySubtitle": "Kaip Plexfin tvarko jūsų duomenis",
     "settingsCheckForUpdates": "Patikrinkite, ar nėra atnaujinimų",
-    "settingsCheckForUpdatesSubtitle": "Patikrinkite naujausią „Moonfin“ leidimą",
+    "settingsCheckForUpdatesSubtitle": "Patikrinkite naujausią „Plexfin“ leidimą",
     "settingsPoweredByFlutter": "Maitinamas Flutter",
     "settingsLicenseNoticesCount": "{count, plural, one {# licencijos pranešimas} few {# licencijos pranešimai} many {# licencijos pranešimo} other {# licencijos pranešimų}}",
     "@settingsLicenseNoticesCount": {
@@ -7098,12 +7099,12 @@
     "preferSdhSubtitles": "Pirmenybė teikiama SDH subtitrams",
     "preferSdhSubtitlesSubtitle": "Automatinio pasirinkimo metu pirmenybę teikite SDH/CC subtitrų takeliams.",
     "webDiagnostics": "Interneto diagnostika",
-    "webDiagnosticsTitle": "Moonfin Žiniatinklio diagnostika",
+    "webDiagnosticsTitle": "Plexfin Žiniatinklio diagnostika",
     "webDiagnosticsIntro": "Naudokite šį puslapį norėdami diagnozuoti naršyklės ryšio problemas (CORS, mišraus turinio ir atradimo nustatymus).",
     "webDiagnosticsDetectedMixedContentFailure": "Aptiktas mišraus turinio gedimas",
     "webDiagnosticsDetectedCorsPreflightFailure": "Aptiktas CORS / išankstinio skrydžio gedimas",
-    "webDiagnosticsMixedContentFailureBody": "Moonfin aptiko HTTPS puslapį, bandantį iškviesti HTTP serverio URL. Naršyklės blokuoja šią užklausą, kol ji pasiekia jūsų serverį.",
-    "webDiagnosticsCorsFailureBody": "Moonfin aptiko naršyklės lygio užklausos gedimą, kurį dažniausiai sukelia trūkstamos CORS arba išankstinio patikrinimo antraštės medijos serveryje.",
+    "webDiagnosticsMixedContentFailureBody": "Plexfin aptiko HTTPS puslapį, bandantį iškviesti HTTP serverio URL. Naršyklės blokuoja šią užklausą, kol ji pasiekia jūsų serverį.",
+    "webDiagnosticsCorsFailureBody": "Plexfin aptiko naršyklės lygio užklausos gedimą, kurį dažniausiai sukelia trūkstamos CORS arba išankstinio patikrinimo antraštės medijos serveryje.",
     "webDiagnosticsTargetUrl": "Tikslinis URL: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7133,7 +7134,7 @@
     "notConfigured": "nesukonfigūruotas",
     "webDiagnosticsMixedContent": "Mišrus turinys",
     "webDiagnosticsMixedContentDetected": "Šis puslapis įkeltas per HTTPS, bet vienas ar daugiau sukonfigūruotų URL yra HTTP. Naršyklės blokuoja HTTPS puslapius, kad jie negalėtų iškviesti HTTP API.",
-    "webDiagnosticsMixedContentFix": "Pataisymas: aptarnaukite medijos serverį arba tarpinį serverį per HTTPS arba įkelkite Moonfin per HTTP tik patikimuose vietiniuose tinkluose.",
+    "webDiagnosticsMixedContentFix": "Pataisymas: aptarnaukite medijos serverį arba tarpinį serverį per HTTPS arba įkelkite Plexfin per HTTP tik patikimuose vietiniuose tinkluose.",
     "webDiagnosticsNoMixedContentDetected": "Iš dabartinių vykdymo laiko nustatymų neaptikta jokios akivaizdžios mišraus turinio konfigūracijos.",
     "webDiagnosticsCorsChecklist": "CORS kontrolinis sąrašas",
     "webDiagnosticsCorsChecklistItem1": "• Leisti naršyklės kilmę Access-Control-Allow-Origin.",
@@ -7330,7 +7331,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "Klasikinis – originalus centruotas Moonfin išdėstymas. Modernus – prisitaikantis kinematografinis išdėstymas.",
+    "detailScreenStyleSubtitle": "Klasikinis – originalus centruotas Plexfin išdėstymas. Modernus – prisitaikantis kinematografinis išdėstymas.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7362,13 +7363,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "Naudokite Moonfin Recommends vietinės bibliotekos algoritmą arba internetinius TMDB panašumo rodiklius. Pastaba: internetinėms rekomendacijoms reikia Seerr integracijos.",
+    "recommendationSystemSubtitle": "Naudokite Plexfin Recommends vietinės bibliotekos algoritmą arba internetinius TMDB panašumo rodiklius. Pastaba: internetinėms rekomendacijoms reikia Seerr integracijos.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Moonfin Recommends",
+    "recommendationSystemMoonfin": "Plexfin Recommends",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Moonfin Recommends"
+        "description": "Recommendation system option: Plexfin Recommends"
     },
     "recommendationSystemTmdb": "TMDb panašumas",
     "@recommendationSystemTmdb": {
@@ -7378,7 +7379,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "Riboti Moonfin Recommends pasiūlymus pagal pasirinktos medijos amžiaus cenzą",
+    "recommendationsApplyParentalRatingCapSubtitle": "Riboti Plexfin Recommends pasiūlymus pagal pasirinktos medijos amžiaus cenzą",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7426,7 +7427,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "Pasirinktinės temos keičia vaizdo elementus visoje Moonfin programoje. Pasirinkite vieną iš šių parinkčių pagal savo stilių.",
+    "customThemeSubtitle": "Pasirinktinės temos keičia vaizdo elementus visoje Plexfin programoje. Pasirinkite vieną iš šių parinkčių pagal savo stilių.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7599,7 +7600,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "Prisijunkite prie Moonfin telefone",
+    "carSignInPrompt": "Prisijunkite prie Plexfin telefone",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8940,7 +8941,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller – modernus Flutter GPU atvaizdavimo variklis, užtikrinantis sklandesnes animacijas ir mažiau trūkčiojimų. Kai kuriuose TV priedėliuose ir senesniuose GPU jis gali sukelti trikdžius ar juodą vaizdą; tokiu atveju jį išjunkite. „Automatinis“ parenka geriausią numatytąjį variantą jūsų įrenginiui. Kad pakeitimai įsigaliotų, paleiskite Moonfin iš naujo.",
+    "impellerRenderingSubtitle": "Impeller – modernus Flutter GPU atvaizdavimo variklis, užtikrinantis sklandesnes animacijas ir mažiau trūkčiojimų. Kai kuriuose TV priedėliuose ir senesniuose GPU jis gali sukelti trikdžius ar juodą vaizdą; tokiu atveju jį išjunkite. „Automatinis“ parenka geriausią numatytąjį variantą jūsų įrenginiui. Kad pakeitimai įsigaliotų, paleiskite Plexfin iš naujo.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8951,7 +8952,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "Kad būtų pakeistas atvaizdavimo variklis, Moonfin reikia paleisti iš naujo. Uždarykite programą dabar ir vėl ją atidarykite.",
+    "impellerRestartMessage": "Kad būtų pakeistas atvaizdavimo variklis, Plexfin reikia paleisti iš naujo. Uždarykite programą dabar ir vėl ją atidarykite.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },

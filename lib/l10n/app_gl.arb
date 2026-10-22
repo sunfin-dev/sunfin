@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "appTitle": "Moonfin",
+    "appTitle": "Plexfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Moonfin versión {version}",
+    "appVersionFooter": "Plexfin versión {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Moonfin non puido acceder ao teu anel de chaves do sistema. O inicio de sesión pode continuar, pero é posible que o almacenamento seguro de tokens non estea dispoñible ata que se desbloquee o anel de chaves.",
+    "secureStorageUnavailableMessage": "Plexfin non puido acceder ao teu anel de chaves do sistema. O inicio de sesión pode continuar, pero é posible que o almacenamento seguro de tokens non estea dispoñible ata que se desbloquee o anel de chaves.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -168,17 +168,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "Cambia entre Moonfin e Neon Pulse sen reiniciar a aplicación",
+    "settingsAppearanceThemeSubtitle": "Cambia entre Plexfin e Neon Pulse sen reiniciar a aplicación",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Moonfin",
+    "themeMoonfin": "Plexfin",
     "@themeMoonfin": {
-        "description": "Display name for the Moonfin theme"
+        "description": "Display name for the Plexfin theme"
     },
-    "themeMoonfinSubtitle": "Look actual de Moonfin que todos che gustaron",
+    "themeMoonfinSubtitle": "Look actual de Plexfin que todos che gustaron",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Moonfin theme"
+        "description": "Preview description for the Plexfin theme"
     },
     "themeNeonPulse": "Neon Pulse",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Saír de Moonfin?",
+    "exitApp": "Saír de Plexfin?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "Non definido. Moonfin probará un mpv.conf predeterminado nos cartafoles aplicación/datos.",
+    "notSetMpvConf": "Non definido. Plexfin probará un mpv.conf predeterminado nos cartafoles aplicación/datos.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "Alterna a visibilidade da páxina de inicio por biblioteca. Reinicia Moonfin para que os cambios teñan efecto.",
+    "libraryVisibilityDescription": "Alterna a visibilidade da páxina de inicio por biblioteca. Reinicia Plexfin para que os cambios teñan efecto.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3561,9 +3561,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Moonfin",
+    "mediaBarModeMoonfin": "Plexfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Moonfin"
+        "description": "Media bar style option: Plexfin"
     },
     "mediaBarModeMakd": "MakD",
     "@mediaBarModeMakd": {
@@ -4121,6 +4121,7 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
+    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
     "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
@@ -4293,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Xoga en Moonfin",
+    "playInMoonfin": "Xoga en Plexfin",
     "@playInMoonfin": {
-        "description": "Button to play available media in Moonfin"
+        "description": "Button to play available media in Plexfin"
     },
     "requestedByName": "Solicitado por {name}",
     "@requestedByName": {
@@ -4347,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "Non se atopou o elemento na túa biblioteca de Moonfin",
+    "itemNotFoundInLibrary": "Non se atopou o elemento na túa biblioteca de Plexfin",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4651,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "Reinicio do servidor en curso",
-    "adminServerRebootMessage": "Reinicio do servidor en curso, reinicie Moonfin",
+    "adminServerRebootMessage": "Reinicio do servidor en curso, reinicie Plexfin",
     "adminActiveSessions": "Sesións activas",
     "adminSessionsLoadFailed": "Produciuse un erro ao cargar as sesións",
     "adminNoActiveSessions": "Non hai sesións activas",
@@ -6539,7 +6540,7 @@
     "settingsShowGenresButtonInNavigation": "Mostra o botón de xéneros na barra de navegación",
     "settingsShowFavoritesButtonInNavigation": "Mostra o botón de favoritos na barra de navegación",
     "settingsShowLibrariesButtonInNavigation": "Mostra o botón de bibliotecas na barra de navegación",
-    "settingsLibraryVisibilitySubtitle": "Alterna a visibilidade da páxina de inicio por biblioteca. Reinicia Moonfin para que os cambios teñan efecto.",
+    "settingsLibraryVisibilitySubtitle": "Alterna a visibilidade da páxina de inicio por biblioteca. Reinicia Plexfin para que os cambios teñan efecto.",
     "settingsMediaBarAndLocalPreviews": "Barra multimedia e vistas previas locais",
     "settingsVisualOverlays": "Superposicións visuais",
     "settingsSeasonalSurprise": "Sorpresa estacional",
@@ -6558,14 +6559,14 @@
     "settingsJoinDiscord": "Únete a Discord",
     "settingsJoinDiscordSubtitle": "Chatea coa comunidade",
     "settingsJoinTheDiscord": "Únete ao Discord",
-    "settingsSupportMoonfin": "Apoio Moonfin",
+    "settingsSupportMoonfin": "Apoio Plexfin",
     "settingsLegal": "LEGAL",
     "settingsLicenses": "Licenzas",
     "settingsOpenSourceLicenseNotices": "Avisos de licenza de código aberto",
     "settingsPrivacyPolicy": "Política de privacidade",
-    "settingsPrivacyPolicySubtitle": "Como manexa Moonfin os teus datos",
+    "settingsPrivacyPolicySubtitle": "Como manexa Plexfin os teus datos",
     "settingsCheckForUpdates": "Consulta as actualizacións",
-    "settingsCheckForUpdatesSubtitle": "Consulta a última versión de Moonfin",
+    "settingsCheckForUpdatesSubtitle": "Consulta a última versión de Plexfin",
     "settingsPoweredByFlutter": "Impulsado por Flutter",
     "settingsLicenseNoticesCount": "{count, plural, one {# aviso de licenza} other {# avisos de licenza}}",
     "@settingsLicenseNoticesCount": {
@@ -7098,12 +7099,12 @@
     "preferSdhSubtitles": "Preferir os subtítulos SDH",
     "preferSdhSubtitlesSubtitle": "Prioriza as pistas de subtítulos SDH/CC ao seleccionar automaticamente.",
     "webDiagnostics": "Diagnóstico web",
-    "webDiagnosticsTitle": "Diagnóstico web de Moonfin",
+    "webDiagnosticsTitle": "Diagnóstico web de Plexfin",
     "webDiagnosticsIntro": "Usa esta páxina para diagnosticar problemas de conectividade do navegador (CORS, contido mixto e configuración de descubrimento).",
     "webDiagnosticsDetectedMixedContentFailure": "Detectouse un fallo de contido mixto",
     "webDiagnosticsDetectedCorsPreflightFailure": "Detectouse un fallo de CORS/preflight",
-    "webDiagnosticsMixedContentFailureBody": "Moonfin detectou unha páxina HTTPS que tenta chamar a un URL de servidor HTTP. Os navegadores bloquean esta solicitude antes de que chegue ao teu servidor.",
-    "webDiagnosticsCorsFailureBody": "Moonfin detectou un fallo de solicitude a nivel de navegador que adoita deberse á falta de cabeceiras CORS ou de preflight no servidor multimedia.",
+    "webDiagnosticsMixedContentFailureBody": "Plexfin detectou unha páxina HTTPS que tenta chamar a un URL de servidor HTTP. Os navegadores bloquean esta solicitude antes de que chegue ao teu servidor.",
+    "webDiagnosticsCorsFailureBody": "Plexfin detectou un fallo de solicitude a nivel de navegador que adoita deberse á falta de cabeceiras CORS ou de preflight no servidor multimedia.",
     "webDiagnosticsTargetUrl": "URL de destino: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7133,7 +7134,7 @@
     "notConfigured": "non configurado",
     "webDiagnosticsMixedContent": "Contido mixto",
     "webDiagnosticsMixedContentDetected": "Esta páxina cárgase por HTTPS, pero un ou máis URL configurados son HTTP. Os navegadores bloquean que as páxinas HTTPS chamen a API HTTP.",
-    "webDiagnosticsMixedContentFix": "Solución: serve o teu servidor multimedia ou o punto final do proxy por HTTPS, ou carga Moonfin por HTTP só en redes locais de confianza.",
+    "webDiagnosticsMixedContentFix": "Solución: serve o teu servidor multimedia ou o punto final do proxy por HTTPS, ou carga Plexfin por HTTP só en redes locais de confianza.",
     "webDiagnosticsNoMixedContentDetected": "Non se detectou ningunha configuración obvia de contido mixto na configuración de execución actual.",
     "webDiagnosticsCorsChecklist": "Lista de comprobación de CORS",
     "webDiagnosticsCorsChecklistItem1": "• Permite a orixe do navegador en Access-Control-Allow-Origin.",
@@ -7330,7 +7331,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "Clásico é a disposición centrada orixinal de Moonfin. Moderno é unha disposición cinematográfica adaptable.",
+    "detailScreenStyleSubtitle": "Clásico é a disposición centrada orixinal de Plexfin. Moderno é unha disposición cinematográfica adaptable.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7362,13 +7363,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "Usa o algoritmo local de recomendacións de Moonfin (Recomendacións Moonfin) ou as métricas de similitude en liña de TMDb. Nota: as recomendacións en liña requiren a integración con Seerr.",
+    "recommendationSystemSubtitle": "Usa o algoritmo local de recomendacións de Plexfin (Recomendacións Plexfin) ou as métricas de similitude en liña de TMDb. Nota: as recomendacións en liña requiren a integración con Seerr.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Recomendacións Moonfin",
+    "recommendationSystemMoonfin": "Recomendacións Plexfin",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Moonfin Recommends"
+        "description": "Recommendation system option: Plexfin Recommends"
     },
     "recommendationSystemTmdb": "Similitude de TMDb",
     "@recommendationSystemTmdb": {
@@ -7378,7 +7379,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "Limita as suxestións de Recomendacións Moonfin segundo a clasificación parental do contido de destino",
+    "recommendationsApplyParentalRatingCapSubtitle": "Limita as suxestións de Recomendacións Plexfin segundo a clasificación parental do contido de destino",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7426,7 +7427,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "Os temas personalizados modifican os elementos visuais de todo Moonfin. Escolle unha destas opcións segundo o teu estilo.",
+    "customThemeSubtitle": "Os temas personalizados modifican os elementos visuais de todo Plexfin. Escolle unha destas opcións segundo o teu estilo.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7599,7 +7600,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "Inicia sesión en Moonfin no teu teléfono",
+    "carSignInPrompt": "Inicia sesión en Plexfin no teu teléfono",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8940,7 +8941,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller é o renderizador de GPU moderno de Flutter, para animacións máis fluídas e menos interrupcións. Nalgúns descodificadores de TV e GPU antigas pode provocar defectos visuais ou vídeo en negro; desactívao se os detectas. Automático escolle o mellor valor predeterminado para o teu dispositivo. Reinicia Moonfin para aplicalo.",
+    "impellerRenderingSubtitle": "Impeller é o renderizador de GPU moderno de Flutter, para animacións máis fluídas e menos interrupcións. Nalgúns descodificadores de TV e GPU antigas pode provocar defectos visuais ou vídeo en negro; desactívao se os detectas. Automático escolle o mellor valor predeterminado para o teu dispositivo. Reinicia Plexfin para aplicalo.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8951,7 +8952,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "Moonfin ten que reiniciarse para cambiar o motor de renderización. Pecha a aplicación agora e ábrea de novo para aplicalo.",
+    "impellerRestartMessage": "Plexfin ten que reiniciarse para cambiar o motor de renderización. Pecha a aplicación agora e ábrea de novo para aplicalo.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },
