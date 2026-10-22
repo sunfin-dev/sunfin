@@ -5073,6 +5073,7 @@ class _ContentRowsState extends State<_ContentRows>
           clipBehavior: (isRowsV2 || cardExpansion || plexPosterRow)
               ? Clip.none
               : Clip.hardEdge,
+          scrollOnlyAtEdges: plexPosterRow,
           padding: EdgeInsets.fromLTRB(
             _kHomeRowLabelInset,
             topPadding,

@@ -37,8 +37,9 @@ class PlexTintTween extends Tween<PlexTint> {
 /// cache the backdrop itself fills, so it costs one tiny decode and a
 /// 576-byte readback, all off the build path.
 abstract final class PlexBackdropTint {
-  /// Relative luminance the tint is darkened to (Plex sits around 0.07).
-  static const targetLuminance = 0.07;
+  /// Relative luminance the tint is darkened to (Plex's page measures
+  /// around 0.04-0.06 in the reference screenshots).
+  static const targetLuminance = 0.05;
 
   static const _sampleWidth = 16;
   static const _sampleHeight = 9;
@@ -135,20 +136,34 @@ abstract final class PlexBackdropTint {
     return completer.future;
   }
 
-  /// Alpha-weighted average of the sample pixels [include] accepts.
+  /// Average of the sample pixels [include] accepts, weighted by alpha and
+  /// strongly by saturation: a plain average of varied art comes out grey,
+  /// while Plex's page takes on the art's strong colours.
   static Color _average(ByteData bytes, bool Function(int x, int y) include) {
-    var r = 0, g = 0, b = 0, weight = 0;
+    var r = 0.0, g = 0.0, b = 0.0, weight = 0.0;
     for (var i = 0; i + 3 < bytes.lengthInBytes; i += 4) {
       final pixel = i ~/ 4;
       if (!include(pixel % _sampleWidth, pixel ~/ _sampleWidth)) continue;
-      final a = bytes.getUint8(i + 3);
-      r += bytes.getUint8(i) * a;
-      g += bytes.getUint8(i + 1) * a;
-      b += bytes.getUint8(i + 2) * a;
-      weight += a;
+      final pr = bytes.getUint8(i);
+      final pg = bytes.getUint8(i + 1);
+      final pb = bytes.getUint8(i + 2);
+      final max = [pr, pg, pb].reduce((a, b) => a > b ? a : b);
+      final min = [pr, pg, pb].reduce((a, b) => a < b ? a : b);
+      final saturation = max == 0 ? 0.0 : (max - min) / max;
+      final w =
+          bytes.getUint8(i + 3) / 255 * (saturation * saturation + 0.02);
+      r += pr * w;
+      g += pg * w;
+      b += pb * w;
+      weight += w;
     }
     if (weight == 0) return PlexStyle.background;
-    return Color.fromARGB(255, r ~/ weight, g ~/ weight, b ~/ weight);
+    return Color.fromARGB(
+      255,
+      (r / weight).round(),
+      (g / weight).round(),
+      (b / weight).round(),
+    );
   }
 
   /// Scales the colour (keeping its hue) until its luminance is

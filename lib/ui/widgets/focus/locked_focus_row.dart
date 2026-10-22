@@ -57,6 +57,11 @@ class LockedFocusRow<T> extends StatefulWidget {
   final bool autofocus;
   final Clip clipBehavior;
 
+  /// Plex style (fork): the row stays still while focus moves across the
+  /// visible cards and only scrolls to keep the focused card, plus half of
+  /// the next, on screen. Off: the focused card is pinned to the leading edge.
+  final bool scrollOnlyAtEdges;
+
   const LockedFocusRow({
     super.key,
     required this.items,
@@ -80,6 +85,7 @@ class LockedFocusRow<T> extends StatefulWidget {
     this.autofocus = false,
     this.clipBehavior = Clip.hardEdge,
     this.itemKey,
+    this.scrollOnlyAtEdges = false,
   });
 
   @override
@@ -235,11 +241,39 @@ class LockedFocusRowState<T> extends State<LockedFocusRow<T>> {
 
   void _scrollToIndex(int index) {
     if (!_scrollController.hasClients) return;
+    if (widget.scrollOnlyAtEdges) {
+      _scrollToKeepVisible(index);
+      return;
+    }
     scrollListToIndex(
       _scrollController,
       index,
       itemExtent: widget.itemExtent + widget.itemSpacing,
       leadingPadding: widget.leadingPadding,
+    );
+  }
+
+  void _scrollToKeepVisible(int index) {
+    final position = _scrollController.position;
+    final extent = widget.itemExtent + widget.itemSpacing;
+    final leading = widget.padding.left;
+    final itemStart = leading + index * extent;
+    final itemEnd = itemStart + widget.itemExtent;
+    final viewStart = position.pixels;
+    final viewEnd = viewStart + position.viewportDimension;
+    final peek = widget.itemExtent / 2;
+
+    double? target;
+    if (itemStart - leading < viewStart) {
+      target = itemStart - leading;
+    } else if (itemEnd + peek > viewEnd) {
+      target = itemEnd + peek - position.viewportDimension;
+    }
+    if (target == null) return;
+    _scrollController.animateTo(
+      target.clamp(0.0, position.maxScrollExtent),
+      duration: navigationAnimationDuration,
+      curve: Curves.easeOut,
     );
   }
 

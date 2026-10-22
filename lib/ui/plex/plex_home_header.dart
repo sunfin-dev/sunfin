@@ -26,6 +26,11 @@ class PlexHomeHeader extends StatelessWidget {
   static const _fade = Duration(milliseconds: 180);
   static final _scale = PlexStyle.s(1);
 
+  /// Plex lets the title run past the summary column (a long show name
+  /// reaches about half the screen), so the column is this wide and every
+  /// line but the title is held to [_textWidth]. 960-wide units.
+  static const _titleWidth = 620.0;
+
   @override
   Widget build(BuildContext context) {
     final current = item;
@@ -53,7 +58,7 @@ class PlexHomeHeader extends StatelessWidget {
               scale: _scale,
               alignment: Alignment.topLeft,
               child: SizedBox(
-                width: PlexStyle.headerTextWidth / _scale,
+                width: _titleWidth,
                 child: AnimatedSwitcher(
                   duration: _fade,
                   layoutBuilder: (currentChild, previousChildren) => Stack(
@@ -72,6 +77,15 @@ class PlexHomeHeader extends StatelessWidget {
     );
   }
 }
+
+/// The summary column width (960-wide units): Plex wraps the summary at
+/// ~46% of the screen, while the title may run wider.
+const _textWidth = 400.0;
+
+Widget _narrow(Widget child) => ConstrainedBox(
+  constraints: const BoxConstraints(maxWidth: _textWidth),
+  child: child,
+);
 
 /// Soft shadow so white text stays legible over bright art.
 const _shadows = [
@@ -159,23 +173,28 @@ class _HeaderText extends StatelessWidget {
         ],
         if (genres.isNotEmpty) ...[
           const SizedBox(height: 2),
-          Text(
-            genres,
-            style: _metaStyle,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
+          _narrow(
+            Text(
+              genres,
+              style: _metaStyle,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ],
         if (overview.isNotEmpty) ...[
           const SizedBox(height: 10),
-          Text(
-            overview,
-            style: _overviewStyle,
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
+          _narrow(
+            Text(
+              overview,
+              style: _overviewStyle,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ],
-        if (kind == _Kind.movieLike) _CastLine(item: item, fromItem: cast),
+        if (kind == _Kind.movieLike)
+          _narrow(_CastLine(item: item, fromItem: cast)),
       ],
     );
   }
