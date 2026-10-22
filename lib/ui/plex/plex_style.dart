@@ -36,8 +36,10 @@ abstract final class PlexStyle {
   /// Collapsed rail: icons only (Plex: ~80 px of 1920, icons centred at 40).
   static const railCollapsedWidth = 40.0 * _k;
 
-  /// Expanded rail with labels (Plex: ~400 px of 1920).
-  static const railExpandedWidth = 200.0 * _k;
+  /// Expanded rail with labels: just wide enough for the longest label
+  /// ("Favorites"/"TVShows" end ~205 px of 1920) plus a margin (user,
+  /// 2026-10-22: Plex's ~400 px felt twice too wide).
+  static const railExpandedWidth = 145.0;
 
   // Home layout contract (plex_home_header.dart, plex_backdrop.dart and the
   // Plex branch of home_screen.dart). x values are from the content's left
