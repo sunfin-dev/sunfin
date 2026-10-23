@@ -806,6 +806,12 @@ List<_SettingsSearchEntry> _buildSettingsSearchIndex({
     ]),
 
     navigation.screen(keywords: ['navbar', 'toolbar', 'sidebar']),
+    if (PlatformDetection.isTV)
+      navigation.leaf(
+        'pref_sidebar_auto_select',
+        'Auto-select',
+        keywords: ['sidebar', 'hover', 'highlight', 'delay', 'open'],
+      ),
     navigation.leaf('pref_navbar_position', l10n.navigationStyle, keywords: [
       'navbar position',
       'top',

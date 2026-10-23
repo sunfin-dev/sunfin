@@ -1167,6 +1167,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
 
               final homeItem = _SidebarItem(
                   key: const ValueKey('sidebar-home'),
+                  autoSelect: true,
                   icon: plexMode ? Symbols.home : Icons.home_rounded,
                   label: l10n.home,
                   baseColor: nextMainSidebarColor(),
@@ -1187,6 +1188,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                 );
               final searchItem = _SidebarItem(
                   key: const ValueKey('sidebar-search'),
+                  autoSelect: true,
                   icon: plexMode ? Symbols.search : Icons.search_rounded,
                   label: l10n.search,
                   baseColor: nextMainSidebarColor(),
@@ -1213,6 +1215,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                     for (final lib in navLibraries)
                       _SidebarItem(
                         key: ValueKey('sidebar-library-${lib.id}'),
+                        autoSelect: true,
                         icon: plexLibraryIcon(lib.collectionType),
                         iconBuilder: plexLibraryIconBuilder(lib.collectionType),
                         label: lib.name,
@@ -1250,6 +1253,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                 if (showGenres)
                   _SidebarItem(
                     key: const ValueKey('sidebar-genres'),
+                    autoSelect: true,
                     baseColor: nextMainSidebarColor(),
                     iconBuilder: (size, color) => Image.asset(
                       'assets/icons/genres.png',
@@ -1272,6 +1276,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                 if (showFavorites)
                   _SidebarItem(
                     key: const ValueKey('sidebar-favorites'),
+                    autoSelect: true,
                     icon: Icons.favorite_rounded,
                     label: l10n.favorites,
                     baseColor: nextMainSidebarColor(),
@@ -1289,6 +1294,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                 if (showLiveTv)
                   _SidebarItem(
                     key: const ValueKey('sidebar-livetv'),
+                    autoSelect: true,
                     icon: Icons.live_tv_rounded,
                     label: l10n.liveTv,
                     baseColor: nextMainSidebarColor(),
@@ -1306,6 +1312,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                 if (showFolders)
                   _SidebarItem(
                     key: const ValueKey('sidebar-folders'),
+                    autoSelect: true,
                     icon: Icons.folder_rounded,
                     label: l10n.folders,
                     baseColor: nextMainSidebarColor(),
@@ -1342,6 +1349,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                     GetIt.instance<PluginSyncService>().seerrAvailable)
                   _SidebarItem(
                     key: const ValueKey('sidebar-seerr'),
+                    autoSelect: true,
                     baseColor: nextMainSidebarColor(),
                     iconBuilder: (size, color) => seerrPrefs.isSeerrVariant
                         ? SeerrIcon(size: size, color: color)
@@ -1691,6 +1699,11 @@ class _SidebarItem extends StatefulWidget {
   /// row is not focused.
   final bool active;
 
+  /// Rows that open a page open it once focus rests on them (Settings >
+  /// Navigation > Auto-select). Rows that start something or open a menu,
+  /// like Shuffle or Settings, never do.
+  final bool autoSelect;
+
   const _SidebarItem({
     super.key,
     this.icon,
@@ -1703,6 +1716,7 @@ class _SidebarItem extends StatefulWidget {
     this.baseColor,
     this.badgeCount = 0,
     this.active = false,
+    this.autoSelect = false,
   });
 
   @override
@@ -1721,15 +1735,38 @@ class _SidebarItemState extends State<_SidebarItem> {
 
   bool get _tvCompact => PlatformDetection.isTV && !widget.showLabel;
 
+  Timer? _autoSelectTimer;
+
   @override
   void initState() {
     super.initState();
     _focusListener = () {
       if (!mounted) return;
-      setState(() => _isFocused = _focusNode.hasFocus);
+      final focused = _focusNode.hasFocus;
+      if (focused != _isFocused) _scheduleAutoSelect(focused);
+      setState(() => _isFocused = focused);
     };
     _focusNode.addListener(_focusListener);
     _isFocused = _focusNode.hasFocus;
+  }
+
+  /// Opens this row's page once focus has rested on it for the chosen time.
+  /// Moving on before then cancels it, so passing over rows opens nothing.
+  void _scheduleAutoSelect(bool focused) {
+    _autoSelectTimer?.cancel();
+    _autoSelectTimer = null;
+    if (!focused || !widget.autoSelect || widget.active) return;
+    if (!PlatformDetection.isTV) return;
+    if (!_prefs.get(UserPreferences.sidebarAutoSelect)) return;
+    final delay = Duration(
+      milliseconds: _prefs.get(UserPreferences.sidebarAutoSelectDelayMs),
+    );
+    _autoSelectTimer = Timer(delay, () {
+      _autoSelectTimer = null;
+      if (mounted && _focusNode.hasFocus && !widget.active) {
+        widget.onPressed();
+      }
+    });
   }
 
   @override
@@ -1744,6 +1781,7 @@ class _SidebarItemState extends State<_SidebarItem> {
 
   @override
   void dispose() {
+    _autoSelectTimer?.cancel();
     (widget.focusNode ?? _internalNode)?.removeListener(_focusListener);
     _internalNode?.dispose();
     super.dispose();

@@ -34,6 +34,14 @@ class ScreensaverContentService {
     return genres.any((g) => excluded.contains(g));
   }
 
+  /// [excluded] holds lower-cased tags: servers spell the same tag with
+  /// different capitals across items ("Gore", "gore").
+  static bool hasExcludedTag(Map<String, dynamic> item, Set<String> excluded) {
+    if (excluded.isEmpty) return false;
+    final tags = (item['Tags'] as List?)?.whereType<String>() ?? const [];
+    return tags.any((t) => excluded.contains(t.trim().toLowerCase()));
+  }
+
   Future<List<ScreensaverItem>> loadBatch() async {
     if (!GetIt.instance.isRegistered<MediaServerClient>()) {
       return const [];
@@ -48,6 +56,12 @@ class ScreensaverContentService {
         _splitCsv(_prefs.get(UserPreferences.screensaverCollectionIds));
     final excludedGenres =
         _splitCsv(_prefs.get(UserPreferences.screensaverExcludedGenres)).toSet();
+    final excludedTags = {
+      for (final tag in _splitCsv(
+        _prefs.get(UserPreferences.screensaverExcludedTags),
+      ))
+        tag.toLowerCase(),
+    };
 
     final includeItemTypes = switch (contentType) {
       'movies' => const ['Movie'],
@@ -128,6 +142,7 @@ class ScreensaverContentService {
       final items = <ScreensaverItem>[];
       for (final raw in rawItems) {
         if (_hasExcludedGenre(raw, excludedGenres)) continue;
+        if (hasExcludedTag(raw, excludedTags)) continue;
         final item = _toItem(client, raw, requireRating: requireRating);
         if (item != null) {
           items.add(item);
@@ -159,7 +174,7 @@ class ScreensaverContentService {
         recursive: true,
         startIndex: start,
         limit: _batchSize,
-        fields: 'ImageTags,BackdropImageTags,OfficialRating,Genres',
+        fields: 'ImageTags,BackdropImageTags,OfficialRating,Genres,Tags',
         enableTotalRecordCount: false,
         enableImageTypes: 'Backdrop,Logo',
         maxOfficialRating: maxAge == 'any' ? null : maxAge,

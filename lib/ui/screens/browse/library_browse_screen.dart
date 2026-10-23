@@ -42,6 +42,8 @@ import '../../widgets/local_search_field.dart';
 import '../../widgets/skeleton/skeleton_library_grid.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../plex/plex_nav.dart';
+import '../../plex/plex_style.dart';
+import '../../widgets/left_sidebar.dart';
 import '../../util/error_message.dart';
 
 Color get _navyBackground => AppColorScheme.background;
@@ -219,6 +221,35 @@ class _LibraryBrowseScreenState extends State<LibraryBrowseScreen>
     _hasSubtitlesCache = null;
     if (mounted) setState(() {});
     _maybeBumpGridVersion();
+    _maybeFocusFirstItem();
+  }
+
+  bool _firstItemFocusDone = false;
+
+  /// Plexfin: a library opens on its first title, as in Plex, rather than on
+  /// the home button in the toolbar (user, 2026-10-23). Once only, and only
+  /// while focus is still where the page opening left it, so a user who has
+  /// already moved keeps their place.
+  void _maybeFocusFirstItem({int attempt = 0}) {
+    if (_firstItemFocusDone || !PlexStyle.enabled || _vm.items.isEmpty) return;
+    _firstItemFocusDone = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !(ModalRoute.of(context)?.isCurrent ?? true)) return;
+      final primary = FocusManager.instance.primaryFocus;
+      final untouched =
+          primary == null ||
+          primary == _homeButtonFocusNode ||
+          LeftSidebar.isFocusedNotifier.value;
+      if (!untouched) return;
+      final first = getGridItemFocusNode(0);
+      if (first.context != null) {
+        first.requestFocus();
+      } else if (attempt < 5) {
+        // The first card may only be built on the next frame.
+        _firstItemFocusDone = false;
+        _maybeFocusFirstItem(attempt: attempt + 1);
+      }
+    });
   }
 
   // Scanning every loaded item is O(N) and the grid's LayoutBuilder re-runs on

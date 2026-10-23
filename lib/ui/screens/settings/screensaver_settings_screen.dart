@@ -1,3 +1,4 @@
+import 'package:custom_tv_text_field/custom_tv_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
@@ -9,6 +10,7 @@ import '../../../l10n/app_localizations.dart';
 import '../../../preference/preference_constants.dart';
 import '../../../preference/user_preferences.dart';
 import '../../../util/focus/dpad_keys.dart';
+import '../../../util/platform_detection.dart';
 import '../../widgets/adaptive/adaptive_dialog.dart';
 import '../../widgets/adaptive/adaptive_list_section.dart';
 import '../../widgets/focus/request_initial_focus.dart';
@@ -74,6 +76,7 @@ class _ScreensaverSettingsScreenState extends State<ScreensaverSettingsScreen> {
     required String title,
     required Map<String, String> options,
     bool truncated = false,
+    bool searchable = false,
   }) async {
     final split = _reconcileSources(
       stored: _splitCsv(pref).toSet(),
@@ -89,6 +92,7 @@ class _ScreensaverSettingsScreenState extends State<ScreensaverSettingsScreen> {
       title: title,
       items: options,
       selected: split.listed,
+      searchable: searchable,
     );
     if (result != null) {
       _saveCsv(pref, [...result, ...split.unlisted]);
@@ -182,6 +186,39 @@ class _ScreensaverSettingsScreenState extends State<ScreensaverSettingsScreen> {
         options: {
           for (final name in names) name: name,
         },
+        searchable: true,
+      );
+    } catch (_) {
+    } finally {
+      _selectorOpen = false;
+    }
+  }
+
+  /// Every tag on any movie or show the user can see, from the server's
+  /// filter values, so the list only holds tags that actually exist.
+  Future<void> _showTagSelector() async {
+    if (_selectorOpen) return;
+    _selectorOpen = true;
+    final client = GetIt.instance<MediaServerClient>();
+
+    try {
+      final filters = await client.itemsApi.getQueryFilters(
+        includeItemTypes: const ['Movie', 'Series'],
+      );
+      // One entry per tag however the server capitalises it on each item.
+      final byLower = <String, String>{};
+      for (final tag in filters.tags) {
+        final name = tag.trim();
+        // A comma would split the tag in two in the stored list.
+        if (name.isEmpty || name.contains(',')) continue;
+        byLower.putIfAbsent(name.toLowerCase(), () => name);
+      }
+
+      await _pickSources(
+        pref: UserPreferences.screensaverExcludedTags,
+        title: 'Excluded tags',
+        options: {for (final name in byLower.values) name: name},
+        searchable: true,
       );
     } catch (_) {
     } finally {
@@ -193,11 +230,32 @@ class _ScreensaverSettingsScreenState extends State<ScreensaverSettingsScreen> {
     required String title,
     required Map<String, String> items,
     required Set<String> selected,
+    bool searchable = false,
   }) {
     final l10n = AppLocalizations.of(context);
     final orderedEntries = items.entries.toList()
-      ..sort((a, b) => a.value.toLowerCase().compareTo(b.value.toLowerCase()));
+      ..sort((a, b) {
+        // Plexfin: a long searchable list puts what is already ticked first,
+        // so it can be seen without scrolling through every tag.
+        if (searchable) {
+          final aTicked = selected.contains(a.key);
+          if (aTicked != selected.contains(b.key)) return aTicked ? -1 : 1;
+        }
+        return a.value.toLowerCase().compareTo(b.value.toLowerCase());
+      });
     final working = Set<String>.from(selected);
+    final search = TextEditingController();
+    final searchFocus = FocusNode(debugLabel: 'multiSelectSearch');
+    final searchFieldKey = GlobalKey<CustomTVTextFieldState>();
+
+    List<MapEntry<String, String>> visibleEntries() {
+      final query = search.text.trim().toLowerCase();
+      if (query.isEmpty) return orderedEntries;
+      return [
+        for (final e in orderedEntries)
+          if (e.value.toLowerCase().contains(query)) e,
+      ];
+    }
 
     return showFocusRestoringDialog<Set<String>>(
       context: context,
@@ -226,62 +284,87 @@ class _ScreensaverSettingsScreenState extends State<ScreensaverSettingsScreen> {
                       title: Text(title),
                       content: SizedBox(
                         width: double.maxFinite,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
+                        child: ListenableBuilder(
+                          listenable: search,
+                          builder: (context, _) {
+                            final visible = visibleEntries();
+                            return Column(
+                              mainAxisSize: MainAxisSize.min,
                               children: [
-                                TextButton(
-                                  onPressed: () {
-                                    setDialogState(
-                                      () => working.addAll(items.keys),
-                                    );
-                                  },
-                                  child: Text(l10n.selectAll),
+                                if (searchable)
+                                  Padding(
+                                    padding: const EdgeInsets.only(bottom: 8),
+                                    child: _DialogSearchField(
+                                      controller: search,
+                                      focusNode: searchFocus,
+                                      fieldKey: searchFieldKey,
+                                      hint: l10n.search,
+                                    ),
+                                  ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    TextButton(
+                                      // What the search shows, not the
+                                      // whole list behind it.
+                                      onPressed: () {
+                                        setDialogState(
+                                          () => working.addAll(
+                                            visible.map((e) => e.key),
+                                          ),
+                                        );
+                                      },
+                                      child: Text(l10n.selectAll),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        setDialogState(() => working.clear());
+                                      },
+                                      child: Text(l10n.clear),
+                                    ),
+                                  ],
                                 ),
-                                TextButton(
-                                  onPressed: () {
-                                    setDialogState(() => working.clear());
-                                  },
-                                  child: Text(l10n.clear),
+                                Flexible(
+                                  // Built as it scrolls: a server can carry
+                                  // hundreds of tags.
+                                  child: ListView.builder(
+                                    shrinkWrap: true,
+                                    itemCount: visible.length,
+                                    itemBuilder: (context, i) {
+                                      final e = visible[i];
+                                      return TvFocusHighlight(
+                                        builder: (ctx, focused) =>
+                                            CheckboxListTile(
+                                              autofocus: i == 0,
+                                              dense: true,
+                                              visualDensity:
+                                                  VisualDensity.compact,
+                                              contentPadding:
+                                                  const EdgeInsets.symmetric(
+                                                    horizontal: 8.0,
+                                                  ),
+                                              controlAffinity:
+                                                  ListTileControlAffinity
+                                                      .leading,
+                                              title: Text(e.value),
+                                              value: working.contains(e.key),
+                                              onChanged: (checked) {
+                                                setDialogState(() {
+                                                  if (checked == true) {
+                                                    working.add(e.key);
+                                                  } else {
+                                                    working.remove(e.key);
+                                                  }
+                                                });
+                                              },
+                                            ),
+                                      );
+                                    },
+                                  ),
                                 ),
                               ],
-                            ),
-                            Flexible(
-                              child: ListView(
-                                shrinkWrap: true,
-                                children: orderedEntries.asMap().entries.map((entry) {
-                                  final i = entry.key;
-                                  final e = entry.value;
-                                  return TvFocusHighlight(
-                                    builder: (ctx, focused) => CheckboxListTile(
-                                      autofocus: i == 0,
-                                      dense: true,
-                                      visualDensity: VisualDensity.compact,
-                                      contentPadding:
-                                          const EdgeInsets.symmetric(
-                                            horizontal: 8.0,
-                                          ),
-                                      controlAffinity:
-                                          ListTileControlAffinity.leading,
-                                      title: Text(e.value),
-                                      value: working.contains(e.key),
-                                      onChanged: (checked) {
-                                        setDialogState(() {
-                                          if (checked == true) {
-                                            working.add(e.key);
-                                          } else {
-                                            working.remove(e.key);
-                                          }
-                                        });
-                                      },
-                                    ),
-                                  );
-                                }).toList(),
-                              ),
-                            ),
-                          ],
+                            );
+                          },
                         ),
                       ),
                       actions: [
@@ -308,7 +391,10 @@ class _ScreensaverSettingsScreenState extends State<ScreensaverSettingsScreen> {
           ),
         );
       },
-    );
+    ).whenComplete(() {
+      search.dispose();
+      searchFocus.dispose();
+    });
   }
 
   @override
@@ -530,6 +616,20 @@ class _ScreensaverSettingsScreenState extends State<ScreensaverSettingsScreen> {
                     ),
                     onTap: _showGenreSelector,
                   ),
+                  // Plexfin: tags as well as genres, for art that isn't fit
+                  // for children (user, 2026-10-23).
+                  _ScreensaverActionTile(
+                    icon: const Icon(Icons.sell_outlined),
+                    title: const Text('Excluded tags'),
+                    subtitle: Text(
+                      _sourceSubtitle(
+                        UserPreferences.screensaverExcludedTags,
+                        l10n.noneExcluded,
+                        l10n,
+                      ),
+                    ),
+                    onTap: _showTagSelector,
+                  ),
                   StringPickerPreferenceTile(
                     preference: UserPreferences.screensaverMaxAgeRating,
                     title: l10n.maxAgeRating,
@@ -734,6 +834,96 @@ class _ScreensaverSettingsScreenState extends State<ScreensaverSettingsScreen> {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// The search box over a long selection list. On TV it is one d-pad stop
+/// whose keyboard opens on select, as with settings search; elsewhere it is
+/// a plain text field.
+class _DialogSearchField extends StatelessWidget {
+  const _DialogSearchField({
+    required this.controller,
+    required this.focusNode,
+    required this.fieldKey,
+    required this.hint,
+  });
+
+  final TextEditingController controller;
+  final FocusNode focusNode;
+  final GlobalKey<CustomTVTextFieldState> fieldKey;
+  final String hint;
+
+  KeyEventResult _onTvKey(FocusNode node, KeyEvent event) {
+    if (event is! KeyDownEvent) return KeyEventResult.ignored;
+    if (event.logicalKey.isBackKey &&
+        (fieldKey.currentState?.isKeyboardVisible ?? false)) {
+      fieldKey.currentState?.closeKeyboard();
+      node.requestFocus();
+      return KeyEventResult.handled;
+    }
+    if (event.logicalKey.isSelectKey) {
+      fieldKey.currentState?.openKeyboard();
+      return KeyEventResult.handled;
+    }
+    return KeyEventResult.ignored;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!PlatformDetection.isTV) {
+      return TextField(
+        controller: controller,
+        focusNode: focusNode,
+        decoration: InputDecoration(
+          hintText: hint,
+          prefixIcon: const Icon(Icons.search),
+        ),
+      );
+    }
+    return ListenableBuilder(
+      listenable: focusNode,
+      builder: (context, _) {
+        final focused = focusNode.hasFocus;
+        final foreground = focused
+            ? AppColorScheme.onButtonFocused
+            : AppColorScheme.onSurface;
+        return Focus(
+          focusNode: focusNode,
+          onKeyEvent: _onTvKey,
+          child: CustomTVTextField(
+            key: fieldKey,
+            controller: controller,
+            isFocused: focused,
+            inputPurpose: InputPurpose.search,
+            keyboardType: KeyboardType.alphabetic,
+            preferSystemIme: GetIt.instance<UserPreferences>().get(
+              UserPreferences.preferSystemImeKeyboard,
+            ),
+            hint: hint,
+            prefixIcon: Icon(Icons.search, color: foreground, size: 22),
+            textStyle: TextStyle(color: foreground),
+            hintStyle: TextStyle(color: foreground.withValues(alpha: 0.55)),
+            filled: true,
+            fillColor: focused
+                ? AppColorScheme.buttonFocused
+                : AppColorScheme.surfaceVariant,
+            borderRadius: 24,
+            borderColor: Colors.transparent,
+            focusedBorderColor: Colors.transparent,
+            borderWidth: 0,
+            focusedBorderWidth: 0,
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 12,
+              vertical: 10,
+            ),
+            popParentOnKeyboardClose: false,
+            onVisibilityChanged: (visible) {
+              if (!visible) focusNode.requestFocus();
+            },
+          ),
+        );
+      },
     );
   }
 }

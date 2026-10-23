@@ -63,9 +63,12 @@ class PlexSeasonPage extends StatefulWidget {
     this.initialFocusNode,
   });
 
-  /// The item types this page draws.
+  /// The item types this page draws. A show opens on it too, at the episode
+  /// it's up to, the same page Continue Watching leads to (user, 2026-10-23).
   static bool handles(AggregatedItem? item) =>
-      item?.type == 'Episode' || item?.type == 'Season';
+      item?.type == 'Episode' ||
+      item?.type == 'Season' ||
+      item?.type == 'Series';
 
   @override
   State<PlexSeasonPage> createState() => _PlexSeasonPageState();
@@ -148,7 +151,8 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
         fallback;
   }
 
-  String? get _seriesId => _item?.seriesId;
+  String? get _seriesId =>
+      _item?.type == 'Series' ? _item?.id : _item?.seriesId;
 
   @override
   void initState() {
@@ -188,6 +192,12 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
     final seriesId = _seriesId;
     if (item == null || seriesId == null) return;
     var seasonId = item.type == 'Season' ? item.id : item.seasonId;
+    var focusEpisodeId = item.type == 'Episode' ? item.id : null;
+    if (item.type == 'Series') {
+      final upTo = await _episodeUpTo(seriesId);
+      seasonId = upTo?.seasonId;
+      focusEpisodeId = upTo?.id;
+    }
     try {
       final data = await _client.itemsApi.getSeasons(
         seriesId,
@@ -196,19 +206,51 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
       if (!mounted) return;
       final seasons = _mapItems(data);
       // An episode that came without its season id still has its number.
-      seasonId ??= seasons
-          .where((s) => s.indexNumber == item.parentIndexNumber)
-          .firstOrNull
-          ?.id;
+      if (item.type == 'Episode') {
+        seasonId ??= seasons
+            .where((s) => s.indexNumber == item.parentIndexNumber)
+            .firstOrNull
+            ?.id;
+      }
+      // A show with nothing under way: its first regular season with
+      // anything left to watch, else its first regular season.
+      seasonId ??= _firstSeasonToWatch(seasons)?.id;
       setState(() => _seasons = seasons);
     } catch (e) {
       debugPrint('[PlexSeasonPage] seasons for $seriesId: $e');
     }
     if (seasonId == null) return;
-    await _showSeason(
-      seasonId,
-      focusEpisodeId: item.type == 'Episode' ? item.id : null,
-    );
+    await _showSeason(seasonId, focusEpisodeId: focusEpisodeId);
+  }
+
+  /// The episode a show is up to, as Continue Watching has it: the one part
+  /// way through, else the server's next up. The in-progress one goes first
+  /// because next up can point at a special the user never meant to watch.
+  Future<AggregatedItem?> _episodeUpTo(String seriesId) async {
+    try {
+      final resume = await _client.itemsApi.getResumeItems(
+        parentId: seriesId,
+        includeItemTypes: const ['Episode'],
+        limit: 1,
+      );
+      final inProgress = _mapItems(resume).firstOrNull;
+      if (inProgress != null) return inProgress;
+      final nextUp = await _client.itemsApi.getNextUp(
+        seriesId: seriesId,
+        limit: 1,
+      );
+      return _mapItems(nextUp).firstOrNull;
+    } catch (e) {
+      debugPrint('[PlexSeasonPage] episode up to for $seriesId: $e');
+      return null;
+    }
+  }
+
+  static AggregatedItem? _firstSeasonToWatch(List<AggregatedItem> seasons) {
+    final regular = seasons.where((s) => (s.indexNumber ?? 0) > 0).toList();
+    final pool = regular.isEmpty ? seasons : regular;
+    return pool.where((s) => (s.unplayedItemCount ?? 0) > 0).firstOrNull ??
+        pool.firstOrNull;
   }
 
   /// Loads [seasonId] if needed and puts it on screen, focused episode and

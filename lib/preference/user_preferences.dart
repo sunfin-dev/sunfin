@@ -1738,6 +1738,18 @@ class UserPreferences extends ChangeNotifier {
     defaultValue: true,
   );
 
+  // Plexfin (user, 2026-10-23): a sidebar row opens its page once focus has
+  // rested on it this long, as if OK had been pressed. Device-local, so the
+  // stock Moonfin app never sees either.
+  static final sidebarAutoSelect = Preference(
+    key: 'pref_sidebar_auto_select',
+    defaultValue: true,
+  );
+  static final sidebarAutoSelectDelayMs = Preference(
+    key: 'pref_sidebar_auto_select_delay_ms',
+    defaultValue: 1000,
+  );
+
 
   static final navbarAlwaysExpanded = Preference(
     key: 'pref_navbar_always_expanded',
@@ -1974,6 +1986,13 @@ class UserPreferences extends ChangeNotifier {
 
   static final screensaverExcludedGenres = Preference(
     key: 'pref_screensaver_excluded_genres',
+    defaultValue: '',
+  );
+  // Plexfin (user, 2026-10-23): items carrying any of these tags never show
+  // on the screensaver, for art that isn't fit for children. Device-local,
+  // since the stock Moonfin app has no such setting.
+  static final screensaverExcludedTags = Preference(
+    key: 'pref_screensaver_excluded_tags',
     defaultValue: '',
   );
 

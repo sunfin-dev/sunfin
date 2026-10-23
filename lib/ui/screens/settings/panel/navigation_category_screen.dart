@@ -146,6 +146,37 @@ class _NavigationCategoryScreenState extends State<_NavigationCategoryScreen> {
               ],
             ),
           ],
+          // Plexfin: opening a sidebar row by resting on it (user,
+          // 2026-10-23). The rail is TV only, and so is this.
+          if (PlatformDetection.isTV) ...[
+            const _SectionHeader('Sidebar'),
+            ListenableBuilder(
+              listenable: prefs,
+              builder: (context, _) => adaptiveListSection(
+                children: [
+                  SwitchPreferenceTile(
+                    autofocus: true,
+                    preference: UserPreferences.sidebarAutoSelect,
+                    title: 'Auto-select',
+                    subtitle:
+                        'Open a sidebar entry once it stays highlighted, '
+                        'without pressing OK',
+                    icon: Icons.touch_app_outlined,
+                  ),
+                  if (prefs.get(UserPreferences.sidebarAutoSelect))
+                    SliderPreferenceTile(
+                      preference: UserPreferences.sidebarAutoSelectDelayMs,
+                      title: 'Auto-select delay',
+                      icon: Icons.timer_outlined,
+                      min: 0,
+                      max: 5000,
+                      divisions: 10,
+                      labelOf: (v) => '${(v / 1000).toStringAsFixed(1)} s',
+                    ),
+                ],
+              ),
+            ),
+          ],
           _SectionHeader(l10n.navButtons),
           ListenableBuilder(
             listenable: prefs,
