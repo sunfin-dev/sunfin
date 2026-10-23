@@ -803,7 +803,7 @@ class _FocusableTileState extends State<_FocusableTile> {
               : Colors.transparent,
           borderRadius: BorderRadius.circular(6),
           border: Border.all(
-            color: _isFocused ? Colors.cyanAccent : Colors.transparent,
+            color: _isFocused ? primary : Colors.transparent,
             width: 2.0,
           ),
         ),
@@ -856,13 +856,13 @@ class _FocusableActionButtonState extends State<_FocusableActionButton> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               border: Border.all(
-                color: _isFocused ? Colors.cyanAccent : (widget.isFilled ? primary : theme.colorScheme.outline),
+                color: _isFocused ? primary : (widget.isFilled ? primary : theme.colorScheme.outline),
                 width: _isFocused ? 2.5 : 1.0,
               ),
               boxShadow: _isFocused
                   ? [
                       BoxShadow(
-                        color: Colors.cyanAccent.withValues(alpha: 0.5),
+                        color: primary.withValues(alpha: 0.5),
                         blurRadius: 10,
                         spreadRadius: 1,
                       ),
@@ -872,14 +872,14 @@ class _FocusableActionButtonState extends State<_FocusableActionButton> {
             child: DefaultTextStyle(
               style: (theme.textTheme.labelLarge ?? const TextStyle()).copyWith(
                 color: _isFocused
-                    ? (widget.isFilled ? onPrimary : Colors.cyanAccent)
+                    ? (widget.isFilled ? onPrimary : primary)
                     : (widget.isFilled ? onPrimary : theme.colorScheme.onSurface),
                 fontWeight: FontWeight.bold,
               ),
               child: IconTheme(
                 data: IconThemeData(
                   color: _isFocused
-                      ? (widget.isFilled ? onPrimary : Colors.cyanAccent)
+                      ? (widget.isFilled ? onPrimary : primary)
                       : (widget.isFilled ? onPrimary : theme.colorScheme.onSurface),
                   size: 18,
                 ),

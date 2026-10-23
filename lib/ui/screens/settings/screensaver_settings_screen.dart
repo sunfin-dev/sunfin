@@ -813,8 +813,8 @@ class _ScreensaverSettingsScreenState extends State<ScreensaverSettingsScreen> {
                   Container(
                     width: 7,
                     height: 7,
-                    decoration: const BoxDecoration(
-                      color: Color(0xFF00A4DC),
+                    decoration: BoxDecoration(
+                      color: AppColorScheme.accent,
                       shape: BoxShape.circle,
                     ),
                   ),

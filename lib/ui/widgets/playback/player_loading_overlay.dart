@@ -36,7 +36,8 @@ class _PlayerLoadingOverlayState extends State<PlayerLoadingOverlay>
   static const _labelGradient = LinearGradient(
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
-    colors: [Color(0xFFAA5CC3), Color(0xFF00A4DC)],
+    // The Plexfin logo's two golds.
+    colors: [Color(0xFFF4B93A), Color(0xFFD9620F)],
   );
 
   late final AnimationController _labelController;

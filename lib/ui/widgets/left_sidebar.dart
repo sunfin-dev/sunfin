@@ -1589,7 +1589,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Color(0xFF00A4DC), Color(0xFF0077B6)],
+          colors: [Color(0xFFE5A00D), Color(0xFFB8740A)],
         ),
       ),
       child: ClipOval(

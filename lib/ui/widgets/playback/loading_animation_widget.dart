@@ -409,7 +409,7 @@ class _SpinnerPainter extends CustomPainter {
     final gradient = SweepGradient(
       startAngle: 0.0,
       endAngle: sweepAngle,
-      colors: const [Color(0x00AA5CC3), Color(0xFFAA5CC3), Color(0xFF00A4DC)],
+      colors: const [Color(0x00E5A00D), Color(0xFFE5A00D), Color(0xFFF4B93A)],
       stops: const [0.0, 0.45, 1.0],
       transform: GradientRotation(startAngle),
     );

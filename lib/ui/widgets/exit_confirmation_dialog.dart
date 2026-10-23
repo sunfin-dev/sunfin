@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:moonfin_design/moonfin_design.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../../util/app_exit.dart';
 import '../../util/focus/key_event_utils.dart';
+import '../plex/plex_style.dart';
 import 'navigation_layout.dart';
 import 'overlay_sheet.dart';
 
@@ -85,70 +87,119 @@ class _ExitConfirmationContentState extends State<_ExitConfirmationContent> {
     super.dispose();
   }
 
+  /// The title with "fin" of the app name in Plex gold, as in the wordmark.
+  /// Languages that don't name the app keep the plain title.
+  Widget _title() {
+    const style = TextStyle(
+      fontSize: 28,
+      fontWeight: FontWeight.w700,
+      color: Colors.white,
+      decoration: TextDecoration.none,
+    );
+    final title = widget.title;
+    final at = title.indexOf(_appName);
+    if (at < 0) return Text(title, style: style, textAlign: TextAlign.center);
+    final finAt = at + _appName.length - 3;
+    return Text.rich(
+      TextSpan(
+        style: style,
+        children: [
+          TextSpan(text: title.substring(0, finAt)),
+          const TextSpan(
+            text: 'fin',
+            style: TextStyle(color: PlexStyle.accent),
+          ),
+          TextSpan(text: title.substring(finAt + 3)),
+        ],
+      ),
+      textAlign: TextAlign.center,
+    );
+  }
+
+  static const _appName = 'Plexfin';
+
+  /// Plexfin's exit card (user, 2026-10-23, option B): the fin mark, a thin
+  /// gold top edge, and gold pill buttons.
   @override
   Widget build(BuildContext context) {
-    final glass = AppColorScheme.isGlass;
     return ConstrainedBox(
-      constraints: const BoxConstraints(maxWidth: 500),
-      child: Container(
-        padding: const EdgeInsets.all(32),
+      constraints: const BoxConstraints(maxWidth: 420),
+      child: DecoratedBox(
         decoration: BoxDecoration(
-          color: glass ? const Color(0xD90E1117) : AppColorScheme.surface,
-          borderRadius: AppRadius.circular(glass ? 20 : 16),
-          border: glass
-              ? const Border.fromBorderSide(
-                  BorderSide(color: Color(0x33FFFFFF), width: 1),
-                )
-              : null,
+          borderRadius: AppRadius.circular(10),
+          boxShadow: const [
+            BoxShadow(
+              color: Color(0x8C000000),
+              blurRadius: 46,
+              offset: Offset(0, 17),
+            ),
+          ],
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              Icons.exit_to_app_rounded,
-              size: 40,
-              color: AppColorScheme.accent,
-            ),
-            const SizedBox(height: 24),
-            Text(
-              widget.title,
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.w600,
-                color: AppColorScheme.onSurface,
-                decoration: TextDecoration.none,
+        child: ClipRRect(
+          borderRadius: AppRadius.circular(10),
+          child: DecoratedBox(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(0xFF2B2F32), Color(0xFF232628)],
               ),
             ),
-            const SizedBox(height: 12),
-            Text(
-              widget.message,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w400,
-                color: AppColorScheme.onSurface.withValues(alpha: 0.7),
-                decoration: TextDecoration.none,
-              ),
-            ),
-            const SizedBox(height: 24),
-            Row(
+            child: Column(
               mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                _ExitDialogButton(
-                  label: widget.cancelLabel,
-                  focusNode: widget.cancelFocus,
-                  autofocus: true,
-                  onPressed: widget.onCancel,
+                const ColoredBox(
+                  color: PlexStyle.accent,
+                  child: SizedBox(height: 3),
                 ),
-                const SizedBox(width: 16),
-                _ExitDialogButton(
-                  label: widget.exitLabel,
-                  focusNode: _exitFocus,
-                  onPressed: widget.onExit,
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(34, 32, 34, 34),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SvgPicture.asset(
+                        'assets/icons/moonfin_logo.svg',
+                        width: 62,
+                        height: 62,
+                      ),
+                      const SizedBox(height: 14),
+                      _title(),
+                      const SizedBox(height: 9),
+                      Text(
+                        widget.message,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white.withValues(alpha: 0.7),
+                          decoration: TextDecoration.none,
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          _ExitDialogButton(
+                            label: widget.cancelLabel,
+                            focusNode: widget.cancelFocus,
+                            autofocus: true,
+                            onPressed: widget.onCancel,
+                          ),
+                          const SizedBox(width: 14),
+                          _ExitDialogButton(
+                            label: widget.exitLabel,
+                            focusNode: _exitFocus,
+                            onPressed: widget.onExit,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -184,20 +235,22 @@ class _ExitDialogButtonState extends State<_ExitDialogButton> {
       onKeyEvent: (node, event) => handleOneShotSelect(event, widget.onPressed),
       child: GestureDetector(
         onTap: widget.onPressed,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        // Plex's Play/Resume pill: gold with dark text when focused.
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 120),
+          padding: const EdgeInsets.symmetric(horizontal: 34, vertical: 11),
           decoration: BoxDecoration(
             color: _focused
-                ? AppColorScheme.onSurface
-                : AppColorScheme.onSurface.withValues(alpha: 0.1),
-            borderRadius: AppRadius.circular(8),
+                ? PlexStyle.accent
+                : Colors.white.withValues(alpha: 0.1),
+            borderRadius: BorderRadius.circular(999),
           ),
           child: Text(
             widget.label,
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 17,
               fontWeight: FontWeight.w500,
-              color: _focused ? AppColors.black : AppColorScheme.onSurface,
+              color: _focused ? const Color(0xFF1F1F1F) : Colors.white,
               decoration: TextDecoration.none,
             ),
           ),
