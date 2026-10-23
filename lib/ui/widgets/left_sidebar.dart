@@ -914,18 +914,20 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
   Widget _buildPlexRail() {
     final expandedWidth = _plexExpandedWidth();
     final surface = AppColorScheme.surface.withValues(alpha: 1);
-    final onHome = _isActive(Destinations.home);
+    // Details pages draw the same Plex page as home (user, 2026-10-23).
+    final onPlexPage =
+        _isActive(Destinations.home) || _currentPath().startsWith('/item/');
     return AnimatedContainer(
       duration: _kExpandDuration,
       curve: LeftSidebar.expandCurve,
       width: _isExpanded ? expandedWidth : PlexStyle.railCollapsedWidth,
-      // On home the rail, open or collapsed, takes the page's tint beside it
-      // and fades with it, so there is no seam (user, 2026-10-22). Elsewhere
-      // it is the theme's surface.
+      // On home and details pages the rail, open or collapsed, takes the
+      // page's tint beside it and fades with it, so there is no seam (user,
+      // 2026-10-22). Elsewhere it is the theme's surface.
       child: ValueListenableBuilder<Color?>(
         valueListenable: PlexStyle.pageTint,
         builder: (context, tint, child) => TweenAnimationBuilder<Color?>(
-          tween: ColorTween(end: onHome && tint != null ? tint : surface),
+          tween: ColorTween(end: onPlexPage && tint != null ? tint : surface),
           duration: PlexStyle.tintDuration,
           curve: Curves.easeOut,
           builder: (context, color, child) =>

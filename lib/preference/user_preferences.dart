@@ -378,6 +378,9 @@ class UserPreferences extends ChangeNotifier {
     'hiddenDetailSectionsDesktop',
     'hiddenDetailSectionsMobile',
     'hiddenDetailSectionsTv',
+    'detailSectionOrderDesktop',
+    'detailSectionOrderMobile',
+    'detailSectionOrderTv',
     'hiddenOsdButtonsDesktop',
     'hiddenOsdButtonsMobile',
     'hiddenOsdButtonsTv',
@@ -2566,6 +2569,20 @@ class UserPreferences extends ChangeNotifier {
   );
   static final hiddenDetailSectionsDesktop = Preference(
     key: 'hiddenDetailSectionsDesktop',
+    defaultValue: '',
+  );
+  // Plexfin: the order of the Details screen's sections (user, 2026-10-23).
+  // Not synced, so the stock Moonfin app never sees it.
+  static final detailSectionOrderTv = Preference(
+    key: 'detailSectionOrderTv',
+    defaultValue: '',
+  );
+  static final detailSectionOrderMobile = Preference(
+    key: 'detailSectionOrderMobile',
+    defaultValue: '',
+  );
+  static final detailSectionOrderDesktop = Preference(
+    key: 'detailSectionOrderDesktop',
     defaultValue: '',
   );
   static final hiddenOsdButtonsTv = Preference(

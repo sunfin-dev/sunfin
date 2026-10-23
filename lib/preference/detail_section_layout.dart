@@ -49,6 +49,10 @@ enum DetailSection {
     _modern,
   }),
   lyrics('lyrics', Icons.lyrics, DetailSectionGroup.header, {_classic}),
+  // Plexfin: only there to be moved; a show's episodes can't be switched off.
+  episodes('episodes', Icons.view_carousel_outlined, DetailSectionGroup.sections, {
+    _nouveau,
+  }),
   cast('cast', Icons.people_outline, DetailSectionGroup.sections, {
     _classic,
     _modern,
@@ -61,7 +65,10 @@ enum DetailSection {
     _spotlight,
     _nouveau,
   }),
-  studios('studios', Icons.business_outlined, DetailSectionGroup.sections, {
+  // Plexfin: studios and media info live in the details block that closes
+  // the page, which doesn't move, so they sit under Other rather than among
+  // the sections that can be put in order.
+  studios('studios', Icons.business_outlined, DetailSectionGroup.other, {
     _classic,
     _modern,
     _spotlight,
@@ -97,7 +104,7 @@ enum DetailSection {
     DetailSectionGroup.sections,
     {_classic, _modern, _spotlight},
   ),
-  mediaInfo('mediaInfo', Icons.info_outline, DetailSectionGroup.sections, {
+  mediaInfo('mediaInfo', Icons.info_outline, DetailSectionGroup.other, {
     _modern,
     _nouveau,
   }),
@@ -196,6 +203,9 @@ enum DetailSection {
       (style == DetailScreenStyle.minimalist &&
           styles.contains(DetailScreenStyle.spotlight));
 
+  /// Listed so it can be moved, but never switched off.
+  bool get alwaysShown => this == DetailSection.episodes;
+
   /// Whether this device and server can show it at all.
   bool get isOffered => switch (group) {
     DetailSectionGroup.seerr =>
@@ -211,6 +221,7 @@ enum DetailSection {
     DetailSection.versionBadge => l10n.detailSectionVersionBadge,
     DetailSection.upNext => l10n.detailSectionUpNext,
     DetailSection.lyrics => l10n.detailSectionLyrics,
+    DetailSection.episodes => l10n.episodes,
     DetailSection.cast => l10n.detailSectionCast,
     DetailSection.crew => l10n.detailSectionCrew,
     DetailSection.studios => l10n.detailSectionStudios,
@@ -263,7 +274,8 @@ class DetailSectionVisibility {
 
   final Set<String> _hidden;
 
-  bool shows(DetailSection section) => !_hidden.contains(section.id);
+  bool shows(DetailSection section) =>
+      section.alwaysShown || !_hidden.contains(section.id);
 
   @override
   bool operator ==(Object other) =>
@@ -274,9 +286,33 @@ class DetailSectionVisibility {
 }
 
 /// The hidden Details screen sections, kept per kind of device like the
-/// metadata row. There's no order: each style lays its sections out itself.
+/// metadata row. There's no order here: each style lays its header and
+/// grouped parts out itself.
 final detailSectionLayout = ButtonLayout(
   hiddenTv: UserPreferences.hiddenDetailSectionsTv,
   hiddenMobile: UserPreferences.hiddenDetailSectionsMobile,
   hiddenDesktop: UserPreferences.hiddenDetailSectionsDesktop,
 );
+
+/// Plexfin: the [DetailSectionGroup.sections] group, which the user can also
+/// put in order (user, 2026-10-23). It shares the hidden list above, and only
+/// this group writes the order, so no other group's ids get dropped from it.
+final detailSectionOrderLayout = ButtonLayout(
+  hiddenTv: UserPreferences.hiddenDetailSectionsTv,
+  hiddenMobile: UserPreferences.hiddenDetailSectionsMobile,
+  hiddenDesktop: UserPreferences.hiddenDetailSectionsDesktop,
+  orderTv: UserPreferences.detailSectionOrderTv,
+  orderMobile: UserPreferences.detailSectionOrderMobile,
+  orderDesktop: UserPreferences.detailSectionOrderDesktop,
+);
+
+/// The page sections in the user's order, for a page to rank its parts by.
+List<DetailSection> orderedPageSections(UserPreferences prefs) =>
+    detailSectionOrderLayout.ordered(
+      [
+        for (final section in DetailSection.values)
+          if (section.group == DetailSectionGroup.sections) section,
+      ],
+      (section) => section.id,
+      prefs,
+    );

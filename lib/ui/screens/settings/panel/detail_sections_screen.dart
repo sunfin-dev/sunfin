@@ -52,7 +52,10 @@ class _DetailSectionsScreen extends StatelessWidget {
                       _SectionHeader(_groupTitle(group, l10n)),
                       ButtonLayoutList(
                         key: ValueKey('detailSections:${group.name}'),
-                        layout: detailSectionLayout,
+                        // Plexfin: the page's sections can also be moved.
+                        layout: group == DetailSectionGroup.sections
+                            ? detailSectionOrderLayout
+                            : detailSectionLayout,
                         entries: [
                           for (final section in offered.where(
                             (s) => s.group == group,
@@ -62,6 +65,7 @@ class _DetailSectionsScreen extends StatelessWidget {
                               title: section.label(l10n),
                               subtitle: section.subtitle(l10n),
                               icon: section.icon,
+                              canHide: !section.alwaysShown,
                             ),
                         ],
                       ),

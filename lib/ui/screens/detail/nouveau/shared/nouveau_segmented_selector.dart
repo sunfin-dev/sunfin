@@ -81,8 +81,47 @@ class NouveauSegmentedSelectorState<T>
   }
 
   void _handleFocusChanged(bool focused, T value) {
+    if (focused) _reveal(value, animate: true);
     if (focused && widget.selectOnFocus && value != widget.selectedValue) {
       widget.onValueActivated(value);
+    }
+  }
+
+  /// Plexfin: a show with many seasons runs the row past the screen edge, and
+  /// nothing scrolled it, so the focused season sat off screen (user,
+  /// 2026-10-23). Keeps [value]'s segment in view.
+  void _reveal(T value, {required bool animate}) {
+    final segmentContext = _focusNodes[value]?.context;
+    if (segmentContext == null || !segmentContext.mounted) return;
+    Scrollable.ensureVisible(
+      segmentContext,
+      alignment: 0.5,
+      duration: animate ? const Duration(milliseconds: 180) : Duration.zero,
+      curve: Curves.easeOutCubic,
+    );
+  }
+
+  /// The selection can also change from outside, e.g. the page opening on an
+  /// episode of a late season, so it is brought into view after each layout.
+  void _revealSelectedAfterLayout({required bool animate}) {
+    final selected = widget.selectedValue;
+    if (selected == null) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _reveal(selected, animate: animate);
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _revealSelectedAfterLayout(animate: false);
+  }
+
+  @override
+  void didUpdateWidget(covariant NouveauSegmentedSelector<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.selectedValue != widget.selectedValue) {
+      _revealSelectedAfterLayout(animate: true);
     }
   }
 
@@ -109,7 +148,9 @@ class NouveauSegmentedSelectorState<T>
       ),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        clipBehavior: Clip.none,
+        // Clipped now that it scrolls, or segments scrolled past the edge
+        // would draw outside the pill. Focus is drawn inside each segment.
+        clipBehavior: Clip.hardEdge,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

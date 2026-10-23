@@ -608,7 +608,11 @@ void main() {
       );
       await pumpContent(tester, vm, initialFocusNode: play, size: tvSize);
 
+      // Plexfin's default order puts the cast right under the hero, as Plex
+      // does, with the chapters after it.
       await focusPlay(tester);
+      await press(tester, LogicalKeyboardKey.arrowDown);
+      expect(focusIn<NouveauPeopleSection>(), isTrue);
       await press(tester, LogicalKeyboardKey.arrowDown);
       expect(focusIn<NouveauChaptersSection>(), isTrue);
 
@@ -641,6 +645,24 @@ void main() {
       await focusPlay(tester);
       await press(tester, LogicalKeyboardKey.arrowDown);
       expect(focusIn<NouveauDetailsSection>(), isTrue);
+    });
+
+    testWidgets('the sections follow the order set in settings', (
+      tester,
+    ) async {
+      useTv(tester);
+      await prefs.set(detailSectionOrderLayout.orderPreference, 'chapters,cast');
+      final vm = viewModel(
+        'Movie',
+        data: itemData('Movie', chapters: [chapter], people: [actor]),
+      );
+      await pumpContent(tester, vm, initialFocusNode: play, size: tvSize);
+
+      await focusPlay(tester);
+      await press(tester, LogicalKeyboardKey.arrowDown);
+      expect(focusIn<NouveauChaptersSection>(), isTrue);
+      await press(tester, LogicalKeyboardKey.arrowDown);
+      expect(focusIn<NouveauPeopleSection>(), isTrue);
     });
 
     testWidgets('a details section with every group hidden leaves the chain', (

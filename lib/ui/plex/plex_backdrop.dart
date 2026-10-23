@@ -26,6 +26,25 @@ class PlexBackdrop extends StatefulWidget {
 class _PlexBackdropState extends State<PlexBackdrop> {
   static const _crossfade = PlexStyle.tintDuration;
 
+  /// Every mounted backdrop, oldest first. A details page stacks its own on
+  /// top of home's, and only the newest one, the page on screen, sets the
+  /// rail's colour. Closing it hands the colour back to the one below.
+  static final List<_PlexBackdropState> _owners = [];
+
+  bool get _isOwner => _owners.isNotEmpty && identical(_owners.last, this);
+
+  void _publishTint() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted && _isOwner) PlexStyle.pageTint.value = _tint.left;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _owners.add(this);
+  }
+
   /// The url the parent wants now; a load that finishes for any other url is
   /// stale and dropped.
   String? _wanted;
@@ -60,6 +79,9 @@ class _PlexBackdropState extends State<PlexBackdrop> {
   @override
   void dispose() {
     _stopLoading();
+    final wasOwner = _isOwner;
+    _owners.remove(this);
+    if (wasOwner && _owners.isNotEmpty) _owners.last._publishTint();
     super.dispose();
   }
 
@@ -68,9 +90,7 @@ class _PlexBackdropState extends State<PlexBackdrop> {
   /// during this one's build). Call inside setState.
   void _applyTint(PlexTint tint) {
     _tint = tint;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) PlexStyle.pageTint.value = _tint.left;
-    });
+    _publishTint();
   }
 
   void _request(String? url) {

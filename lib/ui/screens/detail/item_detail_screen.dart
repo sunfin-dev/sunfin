@@ -90,6 +90,8 @@ import '../../widgets/seerr/seerr_stats_card.dart';
 import '../../widgets/seerr/seerr_status_dot.dart';
 import '../../widgets/seerr/seerr_status_pill.dart';
 import '../../widgets/change_artwork_dialog.dart';
+import '../../plex/plex_season_page.dart';
+import '../../plex/plex_style.dart';
 import '../../widgets/navigation_layout.dart';
 import '../../widgets/bottom_nav/bottom_navbar.dart';
 import '../../widgets/horizontal_scroll_section.dart';
@@ -806,6 +808,21 @@ class _ItemDetailScreenState extends State<ItemDetailScreen>
           ],
         ),
       ),
+      // Plexfin: episodes and seasons open Plex's season page (user,
+      // 2026-10-23).
+      ItemDetailState.ready
+          when PlexStyle.enabled && PlexSeasonPage.handles(_viewModel.item) =>
+        PlexSeasonPage(
+          viewModel: _viewModel,
+          prefs: _prefs,
+          backdropUrl: _backdropUrl,
+          selectedMediaSourceId: _selectedMediaSourceId,
+          onSelectedMediaSourceChanged: (id) {
+            setState(() => _selectedMediaSourceId = id);
+            _viewModel.load(mediaSourceId: id);
+          },
+          initialFocusNode: _ensureInitialFocusNode(),
+        ),
       ItemDetailState.ready => switch (_prefs.effectiveDetailScreenStyle) {
         DetailScreenStyle.classic => _DetailContent(
           viewModel: _viewModel,

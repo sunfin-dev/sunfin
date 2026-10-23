@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,8 @@ import '../../../../preference/detail_section_layout.dart';
 import '../../../../preference/user_preferences.dart';
 import '../../../../util/platform_detection.dart';
 import '../../../../util/seerr_credits.dart';
+import '../../../plex/plex_backdrop.dart';
+import '../../../plex/plex_style.dart';
 import '../../../widgets/fullscreen_backdrop_switcher.dart';
 import '../../../widgets/navigation_layout.dart';
 import '../detail_layout_metrics.dart';
@@ -1193,6 +1196,24 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
   }
 
   List<GlobalKey> _orderedMediaSectionKeys(AggregatedItem item) {
+    // Plexfin: in the order the user set under Details Screen > Sections. A
+    // part drawn from several settings (the people from cast and crew) goes
+    // where the first of them sits. The collection is the page itself on a
+    // box set or playlist, so it stays first.
+    final rank = <DetailSection, int>{};
+    final ordered = orderedPageSections(widget.prefs);
+    for (var i = 0; i < ordered.length; i++) {
+      rank[ordered[i]] = i;
+    }
+    int rankOf(GlobalKey key) => switch (key) {
+      _ when key == _collectionSectionKey => -1,
+      _ when key == _episodesSectionKey => rank[DetailSection.episodes]!,
+      _ when key == _chaptersSectionKey => rank[DetailSection.chapters]!,
+      _ when key == _extrasSectionKey => rank[DetailSection.extras]!,
+      _ when key == _discoverySectionKey => rank[DetailSection.moreLikeThis]!,
+      _ => math.min(rank[DetailSection.cast]!, rank[DetailSection.crew]!),
+    };
+
     return <GlobalKey>[
       _episodesSectionKey,
       _collectionSectionKey,
@@ -1200,7 +1221,8 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
       _extrasSectionKey,
       _discoverySectionKey,
       _peopleSectionKey,
-    ].where((key) => _sectionVisible(key, item)).toList();
+    ].where((key) => _sectionVisible(key, item)).toList()
+      ..sort((a, b) => rankOf(a).compareTo(rankOf(b)));
   }
 
   String _sectionName(GlobalKey key) {
@@ -1262,6 +1284,15 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
     String? backdropUrl,
     AggregatedItem item,
   ) {
+    // Plexfin: Plex's page, as on home: the art sharp in the top right over a
+    // colour taken from it, which the rail beside the page also takes, so
+    // there is no seam (user, 2026-10-23).
+    if (PlexStyle.enabled) {
+      return PlexBackdrop(
+        url: backdropUrl != null && backdropUrl.isNotEmpty ? backdropUrl : null,
+      );
+    }
+
     final base = Theme.of(context).scaffoldBackgroundColor;
 
     final portrait = _usePortraitLayout(context);
