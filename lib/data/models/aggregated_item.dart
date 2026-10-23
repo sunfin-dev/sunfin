@@ -244,8 +244,15 @@ class AggregatedItem {
     return result;
   }
 
-  String? get tmdbId => providerIds['Tmdb'] ?? providerIds['tmdb'] ?? providerIds['TMDB'];
-  String? get imdbId => providerIds['Imdb'] ?? providerIds['imdb'] ?? providerIds['IMDB'];
+  String? get tmdbId {
+    final ids = providerIds;
+    return ids['Tmdb'] ?? ids['tmdb'] ?? ids['TMDB'];
+  }
+
+  String? get imdbId {
+    final ids = providerIds;
+    return ids['Imdb'] ?? ids['imdb'] ?? ids['IMDB'];
+  }
 
   List<Map<String, dynamic>> get people => _toListOfMaps(rawData['People']);
 
@@ -496,15 +503,19 @@ class AggregatedItem {
     return name;
   }
 
+  /// The item's own maps rather than copies. These getters run many times per
+  /// build on the details pages (streams, cast, sources), and copying every
+  /// map on every read was pure garbage for a 32-bit TV CPU to collect.
+  /// Nothing writes through them.
   static List<Map<String, dynamic>> _toListOfMaps(dynamic value) {
     if (value is! List) return const [];
-    return value
-        .map((e) {
-          if (e is Map) return Map<String, dynamic>.from(e);
-          return null;
-        })
-        .whereType<Map<String, dynamic>>()
-        .toList();
+    return [
+      for (final e in value)
+        if (e is Map<String, dynamic>)
+          e
+        else if (e is Map)
+          e.cast<String, dynamic>(),
+    ];
   }
 
   static List<String> _toListOfStrings(dynamic value) {

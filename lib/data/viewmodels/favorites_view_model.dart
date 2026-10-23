@@ -67,6 +67,12 @@ class FavoritesViewModel extends ChangeNotifier {
   Map<String, double> _focusedRatings = const {};
   Map<String, double> get focusedRatings => _focusedRatings;
 
+  /// Ticks when [focusedItem] or [focusedRatings] change, apart from this view
+  /// model's own notifications, so a D-pad press only redraws the header.
+  final ValueNotifier<int> _focusRevision = ValueNotifier<int>(0);
+  ValueListenable<int> get focusRevision => _focusRevision;
+  bool _disposed = false;
+
   ImageApi get imageApi => _client.imageApi;
 
   late FavoritesViewStyle _viewStyle;
@@ -140,14 +146,17 @@ class FavoritesViewModel extends ChangeNotifier {
 
   @override
   void dispose() {
+    _disposed = true;
     userDataSync.removeListener(_onUserDataChanged);
+    _focusRevision.dispose();
     super.dispose();
   }
 
   void setFocusedItem(AggregatedItem? item) {
+    if (_disposed) return;
     _focusedItem = item;
     _focusedRatings = const {};
-    notifyListeners();
+    _focusRevision.value++;
     if (item != null) _loadFocusedRatings(item);
   }
 
@@ -164,9 +173,12 @@ class FavoritesViewModel extends ChangeNotifier {
       item,
       episodeRatingsEnabled: _prefs.canFetchEpisodeRatings,
     );
-    if (ratings != null && ratings.isNotEmpty && _focusedItem?.id == item.id) {
+    if (ratings != null &&
+        ratings.isNotEmpty &&
+        !_disposed &&
+        _focusedItem?.id == item.id) {
       _focusedRatings = ratings;
-      notifyListeners();
+      _focusRevision.value++;
     }
   }
 

@@ -161,7 +161,14 @@ class _LibraryBrowseScreenState extends State<LibraryBrowseScreen>
     _vm.load();
     _scrollController.addListener(_onScroll);
     _backgroundSub = _backgroundService.backgroundStream.listen((url) {
-      if (mounted) setState(() => _backdropUrl = url);
+      if (!mounted) return;
+      // Plexfin: library backdrops are locked off, so a new URL changes
+      // nothing on screen and isn't worth rebuilding the whole grid for.
+      if (_prefs.get(UserPreferences.hideBackdropsInLibraries)) {
+        _backdropUrl = url;
+        return;
+      }
+      setState(() => _backdropUrl = url);
     });
     _backdropUrl = _backgroundService.currentUrl;
     _prefs.addListener(_onChanged);
@@ -897,59 +904,63 @@ class _LibraryBrowseScreenState extends State<LibraryBrowseScreen>
             ),
           Column(
             children: [
-              _LibraryHeader(
-                libraryName: () {
-                  if (_vm.favoritesOnly) {
-                    return AppLocalizations.of(context).favorites;
-                  }
-                  if (_vm.includeItemTypes != null &&
-                      _vm.includeItemTypes!.isNotEmpty) {
-                    final type = _vm.includeItemTypes!.first;
-                    if (type == 'MusicAlbum') {
-                      return AppLocalizations.of(context).albums;
-                    } else if (type == 'AlbumArtist') {
-                      return AppLocalizations.of(context).albumArtists;
-                    } else if (type == 'MusicArtist') {
-                      return AppLocalizations.of(context).artists;
-                    } else if (type == 'Audio') {
-                      return AppLocalizations.of(context).songs;
+              ValueListenableBuilder<int>(
+                // Plexfin: only the header follows the focused item, not the grid.
+                valueListenable: _vm.focusRevision,
+                builder: (context, _, _) => _LibraryHeader(
+                  libraryName: () {
+                    if (_vm.favoritesOnly) {
+                      return AppLocalizations.of(context).favorites;
                     }
-                  }
-                  return _vm.libraryName;
-                }(),
-                totalCount: _vm.totalCount,
-                focusedItem: _vm.focusedItem,
-                focusedRatings: _vm.focusedRatings,
-                enableAdditionalRatings: _prefs.get(
-                  UserPreferences.enableAdditionalRatings,
+                    if (_vm.includeItemTypes != null &&
+                        _vm.includeItemTypes!.isNotEmpty) {
+                      final type = _vm.includeItemTypes!.first;
+                      if (type == 'MusicAlbum') {
+                        return AppLocalizations.of(context).albums;
+                      } else if (type == 'AlbumArtist') {
+                        return AppLocalizations.of(context).albumArtists;
+                      } else if (type == 'MusicArtist') {
+                        return AppLocalizations.of(context).artists;
+                      } else if (type == 'Audio') {
+                        return AppLocalizations.of(context).songs;
+                      }
+                    }
+                    return _vm.libraryName;
+                  }(),
+                  totalCount: _vm.totalCount,
+                  focusedItem: _vm.focusedItem,
+                  focusedRatings: _vm.focusedRatings,
+                  enableAdditionalRatings: _prefs.get(
+                    UserPreferences.enableAdditionalRatings,
+                  ),
+                  enabledRatings: _prefs.get(UserPreferences.enabledRatings),
+                  showLabels: _prefs.get(UserPreferences.showRatingLabels),
+                  showBadges: _prefs.get(UserPreferences.showRatingBadges),
+                  showMediaDetails: _prefs.get(
+                    UserPreferences.showMediaDetailsOnLibraryPage,
+                  ),
+                  sortBy: _vm.sortBy,
+                  letterFilter: _vm.letterFilter,
+                  allLetterFocusNode: _allLetterFocusNode,
+                  homeFocusNode: _homeButtonFocusNode,
+                  onTvSearchKey: _onTvSearchKey,
+                  isMusicBrowse: _vm.isMusicBrowse,
+                  playedFilter: _vm.playedFilter,
+                  searchController: _searchController,
+                  searchFocusNode: _searchFocusNode,
+                  onSearchChanged: (query) => _vm.setSearchQuery(query),
+                  onBack: () => PlatformDetection.isWeb
+                      ? context.popOrHome()
+                      : context.pop(),
+                  onSort: () => _showFilterSortDialog(context),
+                  onGroupBy: () => _showGroupByDialog(),
+                  isMovieOrSeriesLibrary: _vm.isMovieOrSeriesLibrary,
+                  onSettings: () => _showSettingsDialog(context),
+                  onShuffle: _isSongsBrowse ? () => _shuffleSongsLibrary() : null,
+                  isSongsBrowse: _isSongsBrowse,
+                  onLetterChanged: (l) => _jumpToLetter(l),
+                  onPlayedFilterChanged: (status) => _vm.setPlayedFilter(status),
                 ),
-                enabledRatings: _prefs.get(UserPreferences.enabledRatings),
-                showLabels: _prefs.get(UserPreferences.showRatingLabels),
-                showBadges: _prefs.get(UserPreferences.showRatingBadges),
-                showMediaDetails: _prefs.get(
-                  UserPreferences.showMediaDetailsOnLibraryPage,
-                ),
-                sortBy: _vm.sortBy,
-                letterFilter: _vm.letterFilter,
-                allLetterFocusNode: _allLetterFocusNode,
-                homeFocusNode: _homeButtonFocusNode,
-                onTvSearchKey: _onTvSearchKey,
-                isMusicBrowse: _vm.isMusicBrowse,
-                playedFilter: _vm.playedFilter,
-                searchController: _searchController,
-                searchFocusNode: _searchFocusNode,
-                onSearchChanged: (query) => _vm.setSearchQuery(query),
-                onBack: () => PlatformDetection.isWeb
-                    ? context.popOrHome()
-                    : context.pop(),
-                onSort: () => _showFilterSortDialog(context),
-                onGroupBy: () => _showGroupByDialog(),
-                isMovieOrSeriesLibrary: _vm.isMovieOrSeriesLibrary,
-                onSettings: () => _showSettingsDialog(context),
-                onShuffle: _isSongsBrowse ? () => _shuffleSongsLibrary() : null,
-                isSongsBrowse: _isSongsBrowse,
-                onLetterChanged: (l) => _jumpToLetter(l),
-                onPlayedFilterChanged: (status) => _vm.setPlayedFilter(status),
               ),
               Expanded(child: _buildBody()),
             ],

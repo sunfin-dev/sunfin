@@ -1,3 +1,5 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 
 import '../../util/image_fetch_priority.dart';
@@ -153,13 +155,16 @@ class _PlexBackdropState extends State<PlexBackdrop> {
   }
 
   void _resolveTint(String url) {
-    PlexBackdropTint.resolve(url).then((tint) {
-      if (!mounted || _shownUrl != url) return;
-      setState(() => _applyTint(tint ?? PlexTint.fallback));
-    }, onError: (Object e) {
-      // A failed sample only costs the tint; say why in the log.
-      debugPrint('[PlexTint] $url: $e');
-    });
+    PlexBackdropTint.resolve(url).then(
+      (tint) {
+        if (!mounted || _shownUrl != url) return;
+        setState(() => _applyTint(tint ?? PlexTint.fallback));
+      },
+      onError: (Object e) {
+        // A failed sample only costs the tint; say why in the log.
+        debugPrint('[PlexTint] $url: $e');
+      },
+    );
   }
 
   void _stopLoading() {
@@ -187,92 +192,130 @@ class _PlexBackdropState extends State<PlexBackdrop> {
             ),
           );
 
-    return TweenAnimationBuilder<PlexTint>(
-      tween: PlexTintTween(end: _tint),
-      duration: _crossfade,
-      curve: Curves.easeOut,
-      // The art subtree is built once per url; only the page gradient below
-      // rebuilds on each tint frame.
-      child: RepaintBoundary(
-        // The art fades to transparent (not to one colour) so the two-tone
-        // page shows through its edges, as in Plex.
-        child: _fadeMask(
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-          stops: const [0, 0.42],
+    // Its own layer: each frame of a tint fade repaints only the page colour
+    // and art, not the header and rows laid over it.
+    return RepaintBoundary(
+      child: TweenAnimationBuilder<PlexTint>(
+        tween: PlexTintTween(end: _tint),
+        duration: _crossfade,
+        curve: Curves.easeOut,
+        // The art subtree is built once per url; only the page gradient below
+        // rebuilds on each tint frame.
+        child: RepaintBoundary(
+          // The art fades to transparent (not to one colour) so the two-tone
+          // page shows through its edges, as in Plex.
           child: _fadeMask(
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
-            stops: const [0, 0.5],
             child: Vibrance.wrap(
-          AnimatedSwitcher(
-            duration: _crossfade,
-            switchInCurve: Curves.easeOut,
-            layoutBuilder: (current, previous) => Stack(
-              fit: StackFit.expand,
-              children: [...previous, ?current],
-            ),
-            // Only the incoming art fades; the outgoing one stays opaque
-            // beneath it, so the page colour never shows through mid-fade.
-            // Clearing to no art is the exception: then the old art fades out.
-            transitionBuilder: (child, animation) {
-              final incoming = child.key == ValueKey<String?>(shownUrl);
-              if (incoming || shownUrl == null) {
-                return FadeTransition(opacity: animation, child: child);
-              }
-              return child;
-            },
-            child: art,
-          ),
+              AnimatedSwitcher(
+                duration: _crossfade,
+                switchInCurve: Curves.easeOut,
+                layoutBuilder: (current, previous) => Stack(
+                  fit: StackFit.expand,
+                  children: [...previous, ?current],
+                ),
+                // Only the incoming art fades; the outgoing one stays opaque
+                // beneath it, so the page colour never shows through mid-fade.
+                // Clearing to no art is the exception: then the old art fades out.
+                transitionBuilder: (child, animation) {
+                  final incoming = child.key == ValueKey<String?>(shownUrl);
+                  if (incoming || shownUrl == null) {
+                    return FadeTransition(opacity: animation, child: child);
+                  }
+                  return child;
+                },
+                child: art,
+              ),
             ),
           ),
         ),
-      ),
-      builder: (context, tint, artChild) {
-        return DecoratedBox(
-          // Plex tints the page with two of the art's colours: its left part
-          // behind the header, its lower part under the rows on the right.
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [tint.left, tint.left, tint.bottom],
-              stops: const [0, 0.35, 1],
-            ),
-          ),
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              Positioned(
-                top: 0,
-                right: 0,
-                width: PlexStyle.backdropWidth,
-                height: PlexStyle.backdropHeight,
-                child: artChild!,
+        builder: (context, tint, artChild) {
+          return DecoratedBox(
+            // Plex tints the page with two of the art's colours: its left part
+            // behind the header, its lower part under the rows on the right.
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [tint.left, tint.left, tint.bottom],
+                stops: const [0, 0.35, 1],
               ),
-            ],
-          ),
-        );
-      },
+            ),
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  width: PlexStyle.backdropWidth,
+                  height: PlexStyle.backdropHeight,
+                  child: artChild!,
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 
-  /// Fades [child] from transparent at [begin] to opaque at stops[1].
-  static Widget _fadeMask({
-    required Alignment begin,
-    required Alignment end,
-    required List<double> stops,
-    required Widget child,
-  }) {
+  /// Fades [child] out towards its left edge (opaque from 42% across) and
+  /// its bottom edge (opaque from halfway up), as Plex does.
+  ///
+  /// One mask layer: the two fades are multiplied once into a small alpha
+  /// image and stretched over the art. Two stacked gradient masks gave the
+  /// same picture for two offscreen layers on every frame of a crossfade.
+  static Widget _fadeMask({required Widget child}) {
+    final mask = _maskImage;
     return ShaderMask(
       blendMode: BlendMode.dstIn,
-      shaderCallback: (rect) => LinearGradient(
-        begin: begin,
-        end: end,
-        colors: const [Color(0x00000000), Color(0xFF000000)],
-        stops: stops,
-      ).createShader(rect),
+      shaderCallback: (rect) => ImageShader(
+        mask,
+        TileMode.clamp,
+        TileMode.clamp,
+        Matrix4.diagonal3Values(
+          rect.width / mask.width,
+          rect.height / mask.height,
+          1,
+        ).storage,
+        filterQuality: FilterQuality.low,
+      ),
       child: child,
     );
+  }
+
+  static final ui.Image _maskImage = _buildMaskImage();
+
+  /// Both fades drawn once into a small image; bilinear sampling keeps the
+  /// stretched ramps smooth.
+  static ui.Image _buildMaskImage() {
+    const width = 192;
+    const height = 120;
+    const rect = Rect.fromLTWH(0, 0, width + 0.0, height + 0.0);
+    final recorder = ui.PictureRecorder();
+    final canvas = Canvas(recorder);
+    canvas.saveLayer(rect, Paint());
+    canvas.drawRect(
+      rect,
+      Paint()
+        ..shader = const LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [Color(0x00000000), Color(0xFF000000)],
+          stops: [0, 0.42],
+        ).createShader(rect),
+    );
+    canvas.drawRect(
+      rect,
+      Paint()
+        ..blendMode = BlendMode.dstIn
+        ..shader = const LinearGradient(
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter,
+          colors: [Color(0x00000000), Color(0xFF000000)],
+          stops: [0, 0.5],
+        ).createShader(rect),
+    );
+    canvas.restore();
+    return recorder.endRecording().toImageSync(width, height);
   }
 }

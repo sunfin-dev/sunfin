@@ -129,7 +129,11 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
   /// the row (Plex gets this wrong when opening an episode).
   String? _seasonId;
   String? _wantedSeasonId;
-  AggregatedItem? _focused;
+  /// The episode the header, chips and Watched check describe. A notifier
+  /// rather than page state, so a step along the row redraws only those and
+  /// not the tabs, the row and the sections below.
+  final _focusedNotifier = ValueNotifier<AggregatedItem?>(null);
+  AggregatedItem? get _focused => _focusedNotifier.value;
   _Region _region = _Region.row;
   int _lastButton = 0;
   bool _initialFocusDone = false;
@@ -178,6 +182,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
     }
     _scroll.dispose();
     _rowScroll.dispose();
+    _focusedNotifier.dispose();
     super.dispose();
   }
 
@@ -278,7 +283,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
         _nextToWatch(episodes);
     setState(() {
       _seasonId = seasonId;
-      _focused = target;
+      _focusedNotifier.value = target;
     });
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted || target == null) return;
@@ -524,7 +529,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
     _region = _Region.row;
     _revealTop();
     _scrollRowTo(_episodes.indexOf(episode), animate: true);
-    if (_focused?.id != episode.id) setState(() => _focused = episode);
+    if (_focused?.id != episode.id) _focusedNotifier.value = episode;
   }
 
   KeyEventResult _onButtonKey(int index, KeyEvent event) {
@@ -805,7 +810,6 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
   }
 
   Widget _buildFold() {
-    final focused = _focused;
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -813,7 +817,11 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
           top: 0,
           left: 0,
           right: 0,
-          child: PlexHomeHeader(item: focused, leftInset: _inset),
+          child: ValueListenableBuilder<AggregatedItem?>(
+            valueListenable: _focusedNotifier,
+            builder: (context, focused, _) =>
+                PlexHomeHeader(item: focused, leftInset: _inset),
+          ),
         ),
         if (_seasons.length > 1)
           Positioned(
@@ -835,13 +843,17 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
           left: _inset,
           child: _buildButtons(),
         ),
-        if (focused != null)
-          Positioned(
-            top: _buttonsTop,
-            right: _rightInset,
-            height: _buttonSize,
-            child: _MediaChips(episode: focused),
+        Positioned(
+          top: _buttonsTop,
+          right: _rightInset,
+          height: _buttonSize,
+          child: ValueListenableBuilder<AggregatedItem?>(
+            valueListenable: _focusedNotifier,
+            builder: (context, focused, _) => focused == null
+                ? const SizedBox.shrink()
+                : _MediaChips(episode: focused),
           ),
+        ),
       ],
     );
   }
@@ -912,8 +924,6 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
   }
 
   Widget _buildButtons() {
-    // The check fills in once the focused episode is watched.
-    final played = _focused?.isPlayed ?? false;
     const icons = [Symbols.play_arrow, Symbols.check_circle, Symbols.more_horiz];
     return Row(
       children: [
@@ -931,10 +941,14 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
             child: GestureDetector(
               onTap: () => _pressButton(i),
               child: ListenableBuilder(
-                listenable: _buttonNodes[i],
+                // The Watched check fills in once the focused episode is
+                // watched, so that one also follows the focused episode.
+                listenable: i == 1
+                    ? Listenable.merge([_buttonNodes[i], _focusedNotifier])
+                    : _buttonNodes[i],
                 builder: (context, _) => _RoundButton(
                   icon: icons[i],
-                  filled: i == 1 && played,
+                  filled: i == 1 && (_focused?.isPlayed ?? false),
                   focused: _buttonNodes[i].hasFocus,
                   size: _buttonSize,
                 ),

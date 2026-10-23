@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:get_it/get_it.dart';
 import 'package:server_core/server_core.dart';
 import 'package:dio/dio.dart';
@@ -2464,10 +2465,22 @@ class ItemDetailViewModel extends ChangeNotifier {
   List<AggregatedItem> get filmographyEpisodes =>
       _filmography.where((i) => i.type == 'Episode').toList();
 
+  bool _notifyScheduled = false;
+
+  /// Plexfin: at most one notification per frame. Opening a page starts some
+  /// ten independent loads (ratings, seasons, next up, similar, extras...)
+  /// and each used to rebuild the whole details screen as it landed, mostly
+  /// during the opening animation. Notifications are now gathered and sent at
+  /// the start of the next frame, so whatever arrived in between shows in one
+  /// rebuild, with no frame of delay.
   @override
   void notifyListeners() {
-    if (_isDisposed) return;
-    super.notifyListeners();
+    if (_isDisposed || _notifyScheduled) return;
+    _notifyScheduled = true;
+    SchedulerBinding.instance.scheduleFrameCallback((_) {
+      _notifyScheduled = false;
+      if (!_isDisposed) super.notifyListeners();
+    });
   }
 
   @override

@@ -317,7 +317,28 @@ class _MoonfinAppState extends State<MoonfinApp> {
                                     )
                                   : const SizedBox.shrink(),
                             ),
-                            shell,
+                            if (PlatformDetection.isTV)
+                              // Plexfin: the screensaver is opaque, so while it
+                              // shows the app underneath stops animating and
+                              // painting instead of keeping the GPU busy for
+                              // pixels nobody sees. Always wrapped, so showing
+                              // the screensaver never restructures the shell.
+                              ValueListenableBuilder<bool>(
+                                valueListenable: GetIt.instance<
+                                  ScreensaverController
+                                >().visible,
+                                child: shell,
+                                builder: (context, screensaverUp, shell) =>
+                                    TickerMode(
+                                      enabled: !screensaverUp,
+                                      child: Offstage(
+                                        offstage: screensaverUp,
+                                        child: shell,
+                                      ),
+                                    ),
+                              )
+                            else
+                              shell,
                             if (PlatformDetection.isTV) const ScreensaverHost(),
                           ],
                         );

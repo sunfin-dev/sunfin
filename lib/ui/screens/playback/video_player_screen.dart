@@ -240,6 +240,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
   bool _displayPlaying = false;
   Timer? _displayPlayingDebounce;
   Timer? _endsAtTicker;
+  final _wallClockTick = ValueNotifier<int>(0);
   bool _isSeeking = false;
   double _seekValue = 0;
   Duration? _pendingScrubSeekTarget;
@@ -1053,6 +1054,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
     _skipSegmentAutoHideTimer?.cancel();
     _displayPlayingDebounce?.cancel();
     _endsAtTicker?.cancel();
+    _wallClockTick.dispose();
     _volumeOverlayTimer?.cancel();
     _brightnessOverlayTimer?.cancel();
     _zoomModeToastTimer?.cancel();
@@ -2956,7 +2958,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
           _state.duration <= Duration.zero) {
         return;
       }
-      setState(() {});
+      _wallClockTick.value++;
     });
   }
 
@@ -4986,7 +4988,15 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
     );
   }
 
-  Widget _buildSeekbar() {
+  /// Plexfin: the time labels ("Ends at" moves with the clock while paused)
+  /// are refreshed by a once-a-second tick that rebuilds only the seek bar,
+  /// instead of a setState on the whole player.
+  Widget _buildSeekbar() => ListenableBuilder(
+    listenable: _wallClockTick,
+    builder: (context, _) => _buildSeekbarContent(),
+  );
+
+  Widget _buildSeekbarContent() {
     // The slot layout only changes from the settings screen, so resolve it
     // here instead of on every position tick inside the stream builders.
     final aboveLeftSlot = _prefs.get(UserPreferences.playbackTimeAboveLeft);

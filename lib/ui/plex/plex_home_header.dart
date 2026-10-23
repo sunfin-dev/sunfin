@@ -21,7 +21,11 @@ class PlexHomeHeader extends StatelessWidget {
   final AggregatedItem? item;
   final double leftInset;
 
-  const PlexHomeHeader({super.key, required this.item, required this.leftInset});
+  const PlexHomeHeader({
+    super.key,
+    required this.item,
+    required this.leftInset,
+  });
 
   static const _fade = Duration(milliseconds: 180);
   static final _scale = PlexStyle.s(1);
@@ -34,40 +38,44 @@ class PlexHomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final current = item;
-    return SizedBox(
-      height: PlexStyle.rowsTop,
-      // The header never pushes the rows down: whatever does not fit above
-      // rowsTop is cut, and OverflowBox keeps the Column from reporting an
-      // overflow while it is.
-      child: ClipRect(
-        // minWidth 0: the header is placed with a tight full-screen width,
-        // which would otherwise force the text column to span the screen.
-        child: OverflowBox(
-          alignment: Alignment.topLeft,
-          minWidth: 0,
-          minHeight: 0,
-          maxHeight: double.infinity,
-          child: Padding(
-            padding: EdgeInsets.only(
-              left: leftInset,
-              top: PlexStyle.headerTop,
-            ),
-            // The text sizes below are Plex's 960-wide measurements; one
-            // scale lands the whole column on Moonfin's TV canvas.
-            child: Transform.scale(
-              scale: _scale,
-              alignment: Alignment.topLeft,
-              child: SizedBox(
-                width: _titleWidth,
-                child: AnimatedSwitcher(
-                  duration: _fade,
-                  layoutBuilder: (currentChild, previousChildren) => Stack(
-                    alignment: Alignment.topLeft,
-                    children: [...previousChildren, ?currentChild],
+    // Its own layer: the header's text fade and the backdrop's tint fade run
+    // together on every focus change, and neither should repaint the other.
+    return RepaintBoundary(
+      child: SizedBox(
+        height: PlexStyle.rowsTop,
+        // The header never pushes the rows down: whatever does not fit above
+        // rowsTop is cut, and OverflowBox keeps the Column from reporting an
+        // overflow while it is.
+        child: ClipRect(
+          // minWidth 0: the header is placed with a tight full-screen width,
+          // which would otherwise force the text column to span the screen.
+          child: OverflowBox(
+            alignment: Alignment.topLeft,
+            minWidth: 0,
+            minHeight: 0,
+            maxHeight: double.infinity,
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: leftInset,
+                top: PlexStyle.headerTop,
+              ),
+              // The text sizes below are Plex's 960-wide measurements; one
+              // scale lands the whole column on Moonfin's TV canvas.
+              child: Transform.scale(
+                scale: _scale,
+                alignment: Alignment.topLeft,
+                child: SizedBox(
+                  width: _titleWidth,
+                  child: AnimatedSwitcher(
+                    duration: _fade,
+                    layoutBuilder: (currentChild, previousChildren) => Stack(
+                      alignment: Alignment.topLeft,
+                      children: [...previousChildren, ?currentChild],
+                    ),
+                    child: current == null
+                        ? const SizedBox.shrink()
+                        : _HeaderText(key: ValueKey(current.id), item: current),
                   ),
-                  child: current == null
-                      ? const SizedBox.shrink()
-                      : _HeaderText(key: ValueKey(current.id), item: current),
                 ),
               ),
             ),
@@ -88,9 +96,7 @@ Widget _narrow(Widget child) => ConstrainedBox(
 );
 
 /// Soft shadow so white text stays legible over bright art.
-const _shadows = [
-  Shadow(color: Color(0x66000000), blurRadius: 8),
-];
+const _shadows = [Shadow(color: Color(0x66000000), blurRadius: 8)];
 
 TextStyle _style(
   double size,
@@ -351,8 +357,18 @@ String? _formatDuration(Duration? d) {
 }
 
 const _months = [
-  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
 ];
 
 /// "May 13, 2024". The server sends a UTC midnight, so the date is read as

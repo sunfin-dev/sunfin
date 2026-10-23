@@ -82,7 +82,14 @@ class _FavoritesScreenState extends State<FavoritesScreen>
     _scrollController.addListener(_onScroll);
     WidgetsBinding.instance.addObserver(this);
     _backgroundSub = _backgroundService.backgroundStream.listen((url) {
-      if (mounted) setState(() => _backdropUrl = url);
+      if (!mounted) return;
+      // Plexfin: library backdrops are locked off, so a new URL changes
+      // nothing on screen and isn't worth rebuilding the whole grid for.
+      if (_prefs.get(UserPreferences.hideBackdropsInLibraries)) {
+        _backdropUrl = url;
+        return;
+      }
+      setState(() => _backdropUrl = url);
     });
     _backdropUrl = _backgroundService.currentUrl;
     _prefs.addListener(_onChanged);
@@ -420,19 +427,23 @@ class _FavoritesScreenState extends State<FavoritesScreen>
           ),
           Column(
             children: [
-              _FavoritesHeader(
-                totalCount: _vm.totalCount,
-                focusedItem: _vm.focusedItem,
-                focusedRatings: _vm.focusedRatings,
-                enableAdditionalRatings: _prefs.get(
-                  UserPreferences.enableAdditionalRatings,
+              ValueListenableBuilder<int>(
+                // Plexfin: only the header follows the focused item, not the grid.
+                valueListenable: _vm.focusRevision,
+                builder: (context, _, _) => _FavoritesHeader(
+                  totalCount: _vm.totalCount,
+                  focusedItem: _vm.focusedItem,
+                  focusedRatings: _vm.focusedRatings,
+                  enableAdditionalRatings: _prefs.get(
+                    UserPreferences.enableAdditionalRatings,
+                  ),
+                  enabledRatings: _prefs.get(UserPreferences.enabledRatings),
+                  showLabels: _prefs.get(UserPreferences.showRatingLabels),
+                  showBadges: _prefs.get(UserPreferences.showRatingBadges),
+                  onHome: () => context.go(Destinations.home),
+                  onSort: () => _showSortDialog(context),
+                  onSettings: () => _showSettingsDialog(context),
                 ),
-                enabledRatings: _prefs.get(UserPreferences.enabledRatings),
-                showLabels: _prefs.get(UserPreferences.showRatingLabels),
-                showBadges: _prefs.get(UserPreferences.showRatingBadges),
-                onHome: () => context.go(Destinations.home),
-                onSort: () => _showSortDialog(context),
-                onSettings: () => _showSettingsDialog(context),
               ),
               Expanded(child: _buildBody()),
             ],

@@ -199,6 +199,9 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
     if (GetIt.instance.isRegistered<AchievementsService>()) {
       GetIt.instance<AchievementsService>().addListener(_onAchievementsChanged);
     }
+    _lastMultiServerLibraries = _prefs.get(
+      UserPreferences.enableMultiServerLibraries,
+    );
     _loadLibraries();
     FocusManager.instance.addListener(_trackPreviousFocus);
     if (PlatformDetection.isTV || (PlatformDetection.isDesktop || (PlatformDetection.isWeb && !PlatformDetection.useMobileUi))) {
@@ -301,10 +304,20 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
     super.dispose();
   }
 
+  bool? _lastMultiServerLibraries;
+
   void _onPrefsChanged() {
     if (!mounted) return;
     _updateClock();
-    _scheduleLibrariesReload();
+    // Plexfin: the list only depends on the server's views, which notify on
+    // their own (_onUserViewsChanged), and, with several servers, on the
+    // per-server visibility kept here. Any other setting used to cost a
+    // server round trip for a list that could not have changed.
+    final multiServer = _prefs.get(UserPreferences.enableMultiServerLibraries);
+    if (multiServer || multiServer != _lastMultiServerLibraries) {
+      _scheduleLibrariesReload();
+    }
+    _lastMultiServerLibraries = multiServer;
     setState(() {});
     // Plex mode can be switched on or off from the settings.
     _publishRailState();
