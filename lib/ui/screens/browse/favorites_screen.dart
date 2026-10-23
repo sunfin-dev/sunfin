@@ -13,6 +13,7 @@ import '../../../data/services/background_service.dart';
 import '../../../data/viewmodels/favorites_view_model.dart';
 import '../../../preference/preference_constants.dart';
 import '../../../preference/user_preferences.dart';
+import '../../../util/item_watch_state.dart';
 import '../../../util/platform_detection.dart';
 import '../../../util/focus/grid_focus_node_mixin.dart';
 import '../../../util/focus/dpad_keys.dart';
@@ -651,7 +652,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
       isPlayed: item.isPlayed,
       isFavorite: item.isFavorite,
       unplayedCount: item.unplayedItemCount,
-      playedPercentage: item.playedPercentage,
+      playedPercentage: cardProgressOf(item),
       watchedBehavior: watchedBehavior,
       itemType: item.type,
       onFocus: isMobile ? null : () => _onItemFocused(item),
@@ -771,7 +772,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
                     isPlayed: item.isPlayed,
                     isFavorite: item.isFavorite,
                     unplayedCount: item.unplayedItemCount,
-                    playedPercentage: item.playedPercentage,
+                    playedPercentage: cardProgressOf(item),
                     watchedBehavior: watchedBehavior,
                     itemType: item.type,
                     onFocus: isMobile

@@ -29,11 +29,15 @@ class PlexHomeHeader extends StatelessWidget {
   final double leftInset;
   final ImageApi Function(AggregatedItem item)? imageApiFor;
 
+  /// The cast line under the summary; off where the page has its own cast row.
+  final bool showCast;
+
   const PlexHomeHeader({
     super.key,
     required this.item,
     required this.leftInset,
     this.imageApiFor,
+    this.showCast = true,
   });
 
   static const _fade = Duration(milliseconds: 180);
@@ -86,6 +90,7 @@ class PlexHomeHeader extends StatelessWidget {
                         : _HeaderText(
                             key: ValueKey(current.id),
                             item: current,
+                            showCast: showCast,
                             logoUrl: imageApiFor == null
                                 ? null
                                 : _logoUrl(current, imageApiFor!(current)),
@@ -159,8 +164,14 @@ String? _logoUrl(AggregatedItem item, ImageApi imageApi) {
 class _HeaderText extends StatelessWidget {
   final AggregatedItem item;
   final String? logoUrl;
+  final bool showCast;
 
-  const _HeaderText({super.key, required this.item, this.logoUrl});
+  const _HeaderText({
+    super.key,
+    required this.item,
+    this.logoUrl,
+    this.showCast = true,
+  });
 
   _Kind get _kind => switch ((item.type ?? '').toLowerCase()) {
     'movie' || 'series' => _Kind.movieLike,
@@ -185,7 +196,7 @@ class _HeaderText extends StatelessWidget {
     final genres = kind == _Kind.movieLike
         ? item.genres.take(3).join(', ')
         : '';
-    final cast = kind == _Kind.movieLike ? _cast() : '';
+    final cast = kind == _Kind.movieLike && showCast ? _cast() : '';
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -232,7 +243,7 @@ class _HeaderText extends StatelessWidget {
             ),
           ),
         ],
-        if (kind == _Kind.movieLike)
+        if (kind == _Kind.movieLike && showCast)
           _narrow(_CastLine(item: item, fromItem: cast)),
       ],
     );

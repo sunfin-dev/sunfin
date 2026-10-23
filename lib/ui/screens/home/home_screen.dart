@@ -45,6 +45,7 @@ import '../../../preference/user_preferences.dart';
 import '../../widgets/exit_confirmation_dialog.dart';
 import '../../widgets/overlay_sheet.dart';
 import '../../widgets/quick_return_wrapper.dart';
+import '../../../util/item_watch_state.dart';
 import '../../../util/app_exit.dart';
 import '../../../util/overview_text.dart';
 import '../../../util/global_shortcut_focus.dart';
@@ -5173,7 +5174,7 @@ class _ContentRowsState extends State<_ContentRows>
                   ? (item.seriesName ?? item.name)
                   : item.name,
               isFocused: isFocused,
-              playedPercentage: item.playedPercentage,
+              playedPercentage: cardProgressOf(item),
               onTap: () {
                 _finishSharedPreview(releaseResources: true);
                 if (item.serverId == 'seerr') {
@@ -5402,7 +5403,7 @@ class _ContentRowsState extends State<_ContentRows>
                     isFavorite: item.isFavorite,
                     isPlayed: item.isPlayed,
                     unplayedCount: item.unplayedItemCount,
-                    playedPercentage: item.playedPercentage,
+                    playedPercentage: cardProgressOf(item),
                     watchedBehavior: watchedBehavior,
                     itemType: item.type,
                     seerrMediaType: showMediaTypeBadges ? item.seerrMediaType : null,

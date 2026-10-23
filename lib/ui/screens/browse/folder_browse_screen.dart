@@ -8,6 +8,7 @@ import '../../../data/models/aggregated_item.dart';
 import '../../../data/services/media_server_client_factory.dart';
 import '../../../data/viewmodels/folder_browse_view_model.dart';
 import '../../../preference/user_preferences.dart';
+import '../../../util/item_watch_state.dart';
 import '../../../util/focus/dpad_keys.dart';
 import '../../navigation/destinations.dart';
 import '../../widgets/focus/request_initial_focus.dart';
@@ -427,7 +428,7 @@ class _FolderBrowseScreenState extends State<FolderBrowseScreen> {
               isPlayed: item.isPlayed,
               isFavorite: item.isFavorite,
               unplayedCount: item.unplayedItemCount,
-              playedPercentage: item.playedPercentage,
+              playedPercentage: cardProgressOf(item),
               watchedBehavior: watchedBehavior,
               onTap: () => _onItemTap(item),
             );

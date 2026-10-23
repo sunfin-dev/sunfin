@@ -9,6 +9,31 @@ AggregatedItem _item(String type, Map<String, dynamic> extra) => AggregatedItem(
 );
 
 void main() {
+  group('cardProgressOf', () {
+    test('a movie part way through keeps its bar', () {
+      final item = _item('Movie', {
+        'UserData': {'PlayedPercentage': 40.0},
+      });
+      expect(cardProgressOf(item), 40.0);
+    });
+
+    test('a finished show draws no bar, as in Plex', () {
+      final item = _item('Series', {
+        'UserData': {'PlayedPercentage': 100.0, 'Played': true},
+      });
+      expect(cardProgressOf(item), isNull);
+    });
+
+    test('a part watched season or collection draws no bar', () {
+      for (final type in ['Season', 'BoxSet']) {
+        final item = _item(type, {
+          'UserData': {'PlayedPercentage': 55.0},
+        });
+        expect(cardProgressOf(item), isNull, reason: type);
+      }
+    });
+  });
+
   group('a plain item', () {
     test('with nothing watched has no progress', () {
       final ws = watchStateOf(_item('Movie', {}));

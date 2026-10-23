@@ -24,6 +24,7 @@ import '../../../preference/user_preferences.dart';
 import '../../../preference/seerr_preferences.dart';
 import '../../navigation/destinations.dart';
 import '../../navigation/route_lifecycle_observer.dart';
+import '../../../util/item_watch_state.dart';
 import '../../../util/artwork_request_size.dart';
 import '../../../util/platform_detection.dart';
 import '../../../util/game_library.dart';
@@ -1503,7 +1504,7 @@ class _SearchScreenState extends State<SearchScreen>
       isFavorite: item.isFavorite,
       isPlayed: item.isPlayed,
       unplayedCount: item.unplayedItemCount,
-      playedPercentage: item.playedPercentage,
+      playedPercentage: cardProgressOf(item),
       itemType: item.type,
       focusColor: focusColor,
       cardFocusExpansion: cardFocusExpansion,

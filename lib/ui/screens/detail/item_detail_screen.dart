@@ -91,6 +91,7 @@ import '../../widgets/seerr/seerr_status_dot.dart';
 import '../../widgets/seerr/seerr_status_pill.dart';
 import '../../widgets/change_artwork_dialog.dart';
 import '../../plex/plex_season_page.dart';
+import '../../plex/plex_show_page.dart';
 import '../../plex/plex_style.dart';
 import '../../widgets/navigation_layout.dart';
 import '../../widgets/bottom_nav/bottom_navbar.dart';
@@ -275,6 +276,10 @@ class ItemDetailScreen extends StatefulWidget {
   /// see [ItemDetailViewModel.contextSeasonId].
   final String? contextSeasonId;
 
+  /// Plexfin: a show opened from its library lands on Plex's show page with
+  /// its seasons, rather than at the episode it's up to (user, 2026-10-23).
+  final bool showOverview;
+
   const ItemDetailScreen({
     super.key,
     required this.itemId,
@@ -282,6 +287,7 @@ class ItemDetailScreen extends StatefulWidget {
     this.autoPlay = false,
     this.seerrTitle,
     this.contextSeasonId,
+    this.showOverview = false,
   });
 
   @override
@@ -808,6 +814,23 @@ class _ItemDetailScreenState extends State<ItemDetailScreen>
           ],
         ),
       ),
+      // Plexfin: a show picked in its library opens Plex's show page; from
+      // anywhere else it opens the season page at the episode it's up to.
+      ItemDetailState.ready
+          when PlexStyle.enabled &&
+              widget.showOverview &&
+              PlexShowPage.handles(_viewModel.item) =>
+        PlexShowPage(
+          viewModel: _viewModel,
+          prefs: _prefs,
+          backdropUrl: _backdropUrl,
+          selectedMediaSourceId: _selectedMediaSourceId,
+          onSelectedMediaSourceChanged: (id) {
+            setState(() => _selectedMediaSourceId = id);
+            _viewModel.load(mediaSourceId: id);
+          },
+          initialFocusNode: _ensureInitialFocusNode(),
+        ),
       // Plexfin: episodes and seasons open Plex's season page (user,
       // 2026-10-23).
       ItemDetailState.ready

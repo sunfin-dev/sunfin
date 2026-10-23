@@ -49,6 +49,17 @@ ItemWatchState watchStateOf(AggregatedItem item) {
   );
 }
 
+/// The progress bar a poster card draws for [item], or null for none.
+///
+/// Plexfin follows Plex: a show, season or collection shows its watched tick
+/// or unwatched count, never a bar (user, 2026-10-23). The server's played
+/// percentage on those is the share of episodes watched, so a finished show
+/// would otherwise carry a full bar.
+double? cardProgressOf(AggregatedItem item) => switch (item.type) {
+  'Series' || 'Season' || 'BoxSet' => null,
+  _ => item.playedPercentage,
+};
+
 /// Whether a card shows its watched tick under [behavior]. Containers count as
 /// watched-ish while they still have unplayed children, which is what puts the
 /// remaining-episode badge on a season or series card.

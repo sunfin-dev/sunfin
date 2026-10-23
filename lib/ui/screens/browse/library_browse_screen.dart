@@ -20,6 +20,7 @@ import '../../../data/viewmodels/library_browse_view_model.dart';
 import '../../../preference/preference_constants.dart';
 import '../../../preference/user_preferences.dart';
 import '../../../ui/mixins/focus_state_mixin.dart';
+import '../../../util/item_watch_state.dart';
 import '../../../util/accent_folding.dart';
 import '../../../util/artwork_request_size.dart';
 import '../home/home_row_prefetch.dart';
@@ -479,6 +480,8 @@ class _LibraryBrowseScreenState extends State<LibraryBrowseScreen>
             serverId: item.serverId,
             type: item.type,
             channelId: item.channelId,
+            // Plex: a show picked here opens on its seasons.
+            showOverview: item.type == 'Series',
           ),
         )
         .then((result) {
@@ -489,6 +492,7 @@ class _LibraryBrowseScreenState extends State<LibraryBrowseScreen>
   }
 
   double? _displayPlayedPercentage(AggregatedItem item) {
+    if (cardProgressOf(item) == null) return null;
     final server = item.playedPercentage;
     if (server != null && server > 0) {
       return server;

@@ -191,11 +191,13 @@ class Destinations {
     String? serverId,
     bool autoPlay = false,
     String? seasonContext,
+    bool showOverview = false,
   }) {
     final base = '/item/$itemId';
     final params = <String>[
       if (serverId != null) 'serverId=$serverId',
       if (autoPlay) 'autoPlay=true',
+      if (showOverview) 'view=show',
       if (seasonContext != null && seasonContext.isNotEmpty)
         'seasonContext=${Uri.encodeQueryComponent(seasonContext)}',
     ];
@@ -316,6 +318,7 @@ class Destinations {
     String? serverId,
     String? type,
     String? channelId,
+    bool showOverview = false,
   }) {
     if (type == 'Photo') return photo(itemId);
     // Channels have no detail screen worth landing on, so go straight to
@@ -329,7 +332,7 @@ class Destinations {
     }
     // Folders open their contents rather than a detail screen.
     if (isFolderType(type)) return folder(itemId, serverId: serverId);
-    return item(itemId, serverId: serverId);
+    return item(itemId, serverId: serverId, showOverview: showOverview);
   }
 
   static String nextUpFor(String itemId) => '/player/next-up/$itemId';
