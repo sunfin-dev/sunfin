@@ -77,20 +77,27 @@ class _CustomizationCategoryScreen extends StatelessWidget {
             _SectionHeader(l10n.extras),
             adaptiveListSection(
               children: [
-                _TvSettingsListTile(
-                  leading: const Icon(Icons.featured_play_list),
-                  title: Text(l10n.mediaBar),
-                  subtitle: Text(l10n.featuredContentAppearance),
-                  onTap: () =>
-                      context.pushSettingsScreen(const MediaBarSettingsScreen()),
-                ),
-                _TvSettingsListTile(
-                  leading: const Icon(Icons.motion_photos_on_outlined),
-                  title: Text(l10n.loadingAnimation),
-                  subtitle: Text(l10n.loadingAnimationDescription),
-                  onTap: () =>
-                      context.pushSettingsScreen(const _LoadingAnimationScreen()),
-                ),
+                // Plexfin: the Plex header replaces the media bar, and the
+                // loading animation and seasonal effects are part of the
+                // fixed look (PlexLocks).
+                if (!PlexLocks.active) ...[
+                  _TvSettingsListTile(
+                    leading: const Icon(Icons.featured_play_list),
+                    title: Text(l10n.mediaBar),
+                    subtitle: Text(l10n.featuredContentAppearance),
+                    onTap: () => context.pushSettingsScreen(
+                      const MediaBarSettingsScreen(),
+                    ),
+                  ),
+                  _TvSettingsListTile(
+                    leading: const Icon(Icons.motion_photos_on_outlined),
+                    title: Text(l10n.loadingAnimation),
+                    subtitle: Text(l10n.loadingAnimationDescription),
+                    onTap: () => context.pushSettingsScreen(
+                      const _LoadingAnimationScreen(),
+                    ),
+                  ),
+                ],
                 _TvSettingsListTile(
                   leading: const Icon(Icons.preview),
                   title: Text(l10n.localPreviews),
@@ -99,13 +106,15 @@ class _CustomizationCategoryScreen extends StatelessWidget {
                     const LocalPreviewsSettingsScreen(),
                   ),
                 ),
-                _TvSettingsListTile(
-                  leading: const Icon(Icons.auto_awesome),
-                  title: Text(l10n.seasonalEffects),
-                  subtitle: Text(l10n.seasonalEffectsDescription),
-                  onTap: () =>
-                      context.pushSettingsScreen(const _SeasonalEffectsScreen()),
-                ),
+                if (!PlexLocks.active)
+                  _TvSettingsListTile(
+                    leading: const Icon(Icons.auto_awesome),
+                    title: Text(l10n.seasonalEffects),
+                    subtitle: Text(l10n.seasonalEffectsDescription),
+                    onTap: () => context.pushSettingsScreen(
+                      const _SeasonalEffectsScreen(),
+                    ),
+                  ),
                 _TvSettingsListTile(
                   leading: const Icon(Icons.music_note),
                   title: Text(l10n.themeMusic),

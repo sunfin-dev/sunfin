@@ -1883,5 +1883,35 @@ List<_SettingsSearchEntry> _buildSettingsSearchIndex({
     return true;
   }());
 
+  if (PlexLocks.active) {
+    entries.removeWhere((entry) => _isPlexLockedSearchEntry(entry.id));
+  }
   return entries;
+}
+
+/// Plexfin: whole screens that only hold the fixed look, by slug.
+const _plexLockedSearchScreens = {
+  'themes',
+  'theme-store',
+  'saved-themes',
+  'row-images',
+  'media-bar',
+  'seasonal',
+  'loading-animation',
+};
+
+/// Plexfin: locked leaves whose id isn't their preference key.
+const _plexLockedSearchLeaves = {
+  'home.home_rows_padding',
+  'about.run_setup_again',
+};
+
+/// A leaf id is `slug.preferenceKey`, so a locked preference drops out by its
+/// key, and a locked screen takes its leaves with it.
+bool _isPlexLockedSearchEntry(String id) {
+  if (_plexLockedSearchLeaves.contains(id)) return true;
+  final dot = id.indexOf('.');
+  final slug = dot < 0 ? id : id.substring(0, dot);
+  if (_plexLockedSearchScreens.contains(slug)) return true;
+  return dot >= 0 && PlexLocks.isLocked(id.substring(dot + 1));
 }

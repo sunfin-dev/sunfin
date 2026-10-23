@@ -55,6 +55,7 @@ import '../../../playback/device_profile_builder.dart';
 import '../../../playback/external_player_service.dart';
 import '../../../playback/letterbox_croppers.dart';
 import '../../../preference/bottom_nav_tabs.dart';
+import '../../../preference/plex_locks.dart';
 import '../../../preference/preference_constants.dart';
 import '../../../preference/user_preferences.dart';
 import '../../../preference/home_section_config.dart';

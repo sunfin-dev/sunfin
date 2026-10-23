@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get_it/get_it.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
-import '../../preference/preference_constants.dart';
-import '../../preference/user_preferences.dart';
-import '../../util/platform_detection.dart';
+import '../../preference/plex_locks.dart';
 import '../../util/tv_ui_scale.dart';
 
 /// Shared look of the fork's Plex-style mode, measured from the Plex Android
@@ -91,14 +88,9 @@ abstract final class PlexStyle {
     fontWeight: FontWeight.w700,
   );
 
-  /// Only on TV with the left sidebar: the Plex layout is a 10-foot UI built
-  /// around a left rail; with the top toolbar the header would sit under it.
-  static bool get enabled {
-    if (!PlatformDetection.isTV) return false;
-    final prefs = GetIt.instance<UserPreferences>();
-    return prefs.get(UserPreferences.plexMode) &&
-        prefs.get(UserPreferences.navbarPosition) == NavbarPosition.left;
-  }
+  /// Always on TV, the 10-foot UI it was built for. Not a setting: the look
+  /// is fixed, the left rail included (PlexLocks).
+  static bool get enabled => PlexLocks.active;
 }
 
 /// Plex's sidebar icons are thin outlines; Material Symbols drawn at this

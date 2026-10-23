@@ -93,16 +93,18 @@ class _AboutCategoryScreen extends StatelessWidget {
                     const _KeyboardShortcutsScreen(),
                   ),
                 ),
-              _TvSettingsListTile(
-                leading: const Icon(Icons.auto_awesome),
-                title: Text(l10n.runSetupAgain),
-                // Asking again on purpose says more than the stored answers do,
-                // so a deliberate re-run offers every question back.
-                onTap: () {
-                  GetIt.instance<SetupWizardGate>().beginRerun();
-                  context.navigateTopLevel(Destinations.setup);
-                },
-              ),
+              // Plexfin: every setup question is about the fixed look.
+              if (!PlexLocks.active)
+                _TvSettingsListTile(
+                  leading: const Icon(Icons.auto_awesome),
+                  title: Text(l10n.runSetupAgain),
+                  // Asking again on purpose says more than the stored answers do,
+                  // so a deliberate re-run offers every question back.
+                  onTap: () {
+                    GetIt.instance<SetupWizardGate>().beginRerun();
+                    context.navigateTopLevel(Destinations.setup);
+                  },
+                ),
               // Plexfin: upstream's community Discord is not this fork's.
               if (_showUpstreamLinks)
                 _TvSettingsListTile(

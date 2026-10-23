@@ -1249,7 +1249,7 @@ class PluginSyncService extends ChangeNotifier {
   }
 
   void _clearMissingCustomThemeSelection() {
-    final customThemeId = _prefs.get(UserPreferences.customThemeId);
+    final customThemeId = _prefs.getStored(UserPreferences.customThemeId);
     if (customThemeId.isNotEmpty &&
         !ThemeRegistry.availableThemes.containsKey(customThemeId)) {
       _store.set(
@@ -1696,23 +1696,26 @@ class PluginSyncService extends ChangeNotifier {
   }
 
   /// Serializes one table-driven field for the outgoing profile.
+  ///
+  /// Plexfin: reads what is stored rather than the Plex-locked value, so a
+  /// push never rewrites the stock Moonfin app's look with Plexfin's.
   dynamic _encodeSyncedField(SyncedField field) {
     switch (field.codec) {
       case SyncCodec.boolean:
       case SyncCodec.integer:
       case SyncCodec.text:
       case SyncCodec.decimal:
-        return _prefs.get(field.pref);
+        return _prefs.getStored(field.pref);
       case SyncCodec.enumName:
-        return (_prefs.get(field.pref) as Enum).name;
+        return (_prefs.getStored(field.pref) as Enum).name;
       case SyncCodec.intAsText:
-        return _prefs.get(field.pref).toString();
+        return _prefs.getStored(field.pref).toString();
       case SyncCodec.textAsInt:
-        return int.tryParse(_prefs.get(field.pref) as String) ??
+        return int.tryParse(_prefs.getStored(field.pref) as String) ??
             field.fallbackInt ??
             0;
       case SyncCodec.colorAsText:
-        return _formatArgb(_prefs.get(field.pref) as int);
+        return _formatArgb(_prefs.getStored(field.pref) as int);
       case SyncCodec.csvList:
         return _csvToList(field.pref as Preference<String>);
     }
@@ -1945,7 +1948,7 @@ class PluginSyncService extends ChangeNotifier {
   };
 
   List<String> _csvToList(Preference<String> pref) {
-    return _prefs.get(pref).split(',').where((s) => s.isNotEmpty).toList();
+    return _prefs.getStored(pref).split(',').where((s) => s.isNotEmpty).toList();
   }
 
   Map<String, dynamic> _buildProfileFromLocal() {

@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:moonfin_design/moonfin_design.dart';
 import 'package:jellyfin_preference/jellyfin_preference.dart';
 
+import '../../../preference/plex_locks.dart';
 import '../../../util/idiom/app_ui_idiom.dart';
 import '../../../util/platform_detection.dart';
 import '../../../util/focus/dpad_keys.dart';
@@ -332,6 +333,7 @@ class SwitchPreferenceTile extends StatefulWidget {
   final bool inverted;
   final bool enabled;
   final FocusNode? focusNode;
+  final bool autofocus;
 
   const SwitchPreferenceTile({
     super.key,
@@ -345,6 +347,7 @@ class SwitchPreferenceTile extends StatefulWidget {
     this.inverted = false,
     this.enabled = true,
     this.focusNode,
+    this.autofocus = false,
   });
 
   @override
@@ -381,6 +384,7 @@ class _SwitchPreferenceTileState extends State<SwitchPreferenceTile> {
 
   @override
   Widget build(BuildContext context) {
+    if (PlexLocks.isLocked(widget.preference.key)) return const SizedBox.shrink();
     return TvFocusHighlight(
       enabled: widget.enabled,
       builder: (context, focused) {
@@ -407,6 +411,7 @@ class _SwitchPreferenceTileState extends State<SwitchPreferenceTile> {
           valueListenable: _binding,
           builder: (context, value, _) => SwitchListTile.adaptive(
             focusNode: widget.focusNode,
+            autofocus: widget.autofocus,
             secondary: secondary,
             title: Text(widget.title, style: _kSettingsTitleTextStyle),
             subtitle: widget.subtitle != null
@@ -498,6 +503,7 @@ class _EnumPreferenceTileState<T extends Enum>
 
   @override
   Widget build(BuildContext context) {
+    if (PlexLocks.isLocked(widget.preference.key)) return const SizedBox.shrink();
     final values = widget.values ?? widget.preference.values.toList();
     return TvFocusHighlight(
       builder: (context, focused) => ValueListenableBuilder<T>(
@@ -754,6 +760,7 @@ class _SliderPreferenceTileState extends State<SliderPreferenceTile> {
 
   @override
   Widget build(BuildContext context) {
+    if (PlexLocks.isLocked(widget.preference.key)) return const SizedBox.shrink();
     final invert =
         widget.enabled && _outerFocused && settingsTileInvertsOnFocus;
     return Opacity(
@@ -928,6 +935,7 @@ class _StringPickerPreferenceTileState
 
   @override
   Widget build(BuildContext context) {
+    if (PlexLocks.isLocked(widget.preference.key)) return const SizedBox.shrink();
     return TvFocusHighlight(
       builder: (context, focused) => ValueListenableBuilder<String>(
         valueListenable: _binding,
@@ -1063,6 +1071,7 @@ class _IntPickerPreferenceTileState extends State<IntPickerPreferenceTile> {
 
   @override
   Widget build(BuildContext context) {
+    if (PlexLocks.isLocked(widget.preference.key)) return const SizedBox.shrink();
     return TvFocusHighlight(
       builder: (context, focused) => ValueListenableBuilder<int>(
         valueListenable: _binding,

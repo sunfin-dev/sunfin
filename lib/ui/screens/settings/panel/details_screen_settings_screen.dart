@@ -98,6 +98,8 @@ class _DetailsScreenSettingsScreenState
                       onChangeEnd: _pushPersonalizationSync,
                     ),
                   _TvSettingsListTile(
+                    // Plexfin: the style tile above is locked away.
+                    autofocus: PlexLocks.active,
                     leading: const Icon(Icons.smart_button_outlined),
                     title: Text(l10n.detailButtons),
                     subtitle: Text(l10n.detailButtonsDescription),

@@ -67,90 +67,85 @@ class _NavigationCategoryScreenState extends State<_NavigationCategoryScreen> {
       appBar: buildSettingsAppBar(context, Text(l10n.navigation)),
       body: ListView(
         children: [
-          _SectionHeader(l10n.appearance),
-          adaptiveListSection(
-            children: [
-              // Fork: device-local, so not pushed with the personalization sync.
-              if (PlatformDetection.isTV)
-                SwitchPreferenceTile(
-                  preference: UserPreferences.plexMode,
-                  title: 'Plex style',
-                  subtitle:
-                      'Plex-like sidebar, home header and posters. Needs the left sidebar.',
-                  icon: Icons.auto_awesome_mosaic_outlined,
+          // Plexfin: the rail's look is fixed (PlexLocks); only the buttons
+          // below stay the user's choice.
+          if (!PlexLocks.active) ...[
+            _SectionHeader(l10n.appearance),
+            adaptiveListSection(
+              children: [
+                EnumPreferenceTile<NavbarPosition>(
+                  preference: UserPreferences.navbarPosition,
+                  title: l10n.navigationStyle,
+                  icon: Icons.view_sidebar,
+                  values: availableNavbarPositions,
+                  labelOf: (v) => switch (v) {
+                    NavbarPosition.top => l10n.topBar,
+                    NavbarPosition.left => l10n.leftSidebar,
+                    NavbarPosition.bottom => l10n.bottomBar,
+                  },
+                  onChanged: () {
+                    final pos = GetIt.instance<UserPreferences>().get(
+                      UserPreferences.navbarPosition,
+                    );
+                    NavigationLayout.positionNotifier.value = pos;
+                    _pushPersonalizationSync();
+                  },
                 ),
-              EnumPreferenceTile<NavbarPosition>(
-                preference: UserPreferences.navbarPosition,
-                title: l10n.navigationStyle,
-                icon: Icons.view_sidebar,
-                values: availableNavbarPositions,
-                labelOf: (v) => switch (v) {
-                  NavbarPosition.top => l10n.topBar,
-                  NavbarPosition.left => l10n.leftSidebar,
-                  NavbarPosition.bottom => l10n.bottomBar,
-                },
-                onChanged: () {
-                  final pos = GetIt.instance<UserPreferences>().get(
-                    UserPreferences.navbarPosition,
-                  );
-                  NavigationLayout.positionNotifier.value = pos;
-                  _pushPersonalizationSync();
-                },
-              ),
-              // The picker above writes through its own binding, so this
-              // watches the preferences to follow it.
-              ListenableBuilder(
-                listenable: prefs,
-                builder: (context, _) => !NavigationLayout.usesBottomNavbar
-                    ? const SizedBox.shrink()
-                    : Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          EnumPreferenceTile<BottomNavbarStyle>(
-                            preference: UserPreferences.bottomNavbarStyle,
-                            title: l10n.bottomNavbarStyle,
-                            icon: Icons.space_bar_rounded,
-                            labelOf: (v) => bottomNavbarStyleLabel(l10n, v),
-                            dialogSubtitleOf: (v) =>
-                                bottomNavbarStyleHint(l10n, v),
-                            onChanged: _pushPersonalizationSync,
-                          ),
-                          _TvSettingsListTile(
-                            leading: const Icon(Icons.push_pin_outlined),
-                            title: Text(l10n.bottomNavbarTabs),
-                            subtitle: Text(_bottomTabsSummary(l10n, prefs)),
-                            onTap: () => context.pushSettingsScreen(
-                              const _BottomNavTabsScreen(),
+                // The picker above writes through its own binding, so this
+                // watches the preferences to follow it.
+                ListenableBuilder(
+                  listenable: prefs,
+                  builder: (context, _) => !NavigationLayout.usesBottomNavbar
+                      ? const SizedBox.shrink()
+                      : Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            EnumPreferenceTile<BottomNavbarStyle>(
+                              preference: UserPreferences.bottomNavbarStyle,
+                              title: l10n.bottomNavbarStyle,
+                              icon: Icons.space_bar_rounded,
+                              labelOf: (v) => bottomNavbarStyleLabel(l10n, v),
+                              dialogSubtitleOf: (v) =>
+                                  bottomNavbarStyleHint(l10n, v),
+                              onChanged: _pushPersonalizationSync,
                             ),
-                          ),
-                        ],
-                      ),
-              ),
-              _NavbarColorPickerTile(onChanged: _pushPersonalizationSync),
-              SliderPreferenceTile(
-                preference: UserPreferences.navbarOpacity,
-                title: l10n.navbarOpacity,
-                icon: Icons.opacity,
-                min: 0,
-                max: 100,
-                divisions: 20,
-                labelOf: (v) => '$v%',
-              ),
-              // The bottom navbar always labels its tabs.
-              ListenableBuilder(
-                listenable: prefs,
-                builder: (context, _) => NavigationLayout.usesBottomNavbar
-                    ? const SizedBox.shrink()
-                    : SwitchPreferenceTile(
-                        preference: UserPreferences.navbarAlwaysExpanded,
-                        title: l10n.navbarAlwaysExpanded,
-                        subtitle: l10n.settingsAlwaysExpandNavbarLabels,
-                        icon: Icons.unfold_more,
-                        onChanged: _pushPersonalizationSync,
-                      ),
-              ),
-            ],
-          ),
+                            _TvSettingsListTile(
+                              leading: const Icon(Icons.push_pin_outlined),
+                              title: Text(l10n.bottomNavbarTabs),
+                              subtitle: Text(_bottomTabsSummary(l10n, prefs)),
+                              onTap: () => context.pushSettingsScreen(
+                                const _BottomNavTabsScreen(),
+                              ),
+                            ),
+                          ],
+                        ),
+                ),
+                _NavbarColorPickerTile(onChanged: _pushPersonalizationSync),
+                SliderPreferenceTile(
+                  preference: UserPreferences.navbarOpacity,
+                  title: l10n.navbarOpacity,
+                  icon: Icons.opacity,
+                  min: 0,
+                  max: 100,
+                  divisions: 20,
+                  labelOf: (v) => '$v%',
+                ),
+                // The bottom navbar always labels its tabs.
+                ListenableBuilder(
+                  listenable: prefs,
+                  builder: (context, _) => NavigationLayout.usesBottomNavbar
+                      ? const SizedBox.shrink()
+                      : SwitchPreferenceTile(
+                          preference: UserPreferences.navbarAlwaysExpanded,
+                          title: l10n.navbarAlwaysExpanded,
+                          subtitle: l10n.settingsAlwaysExpandNavbarLabels,
+                          icon: Icons.unfold_more,
+                          onChanged: _pushPersonalizationSync,
+                        ),
+                ),
+              ],
+            ),
+          ],
           _SectionHeader(l10n.navButtons),
           ListenableBuilder(
             listenable: prefs,

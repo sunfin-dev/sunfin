@@ -14,6 +14,7 @@ import '../util/idiom/app_ui_idiom.dart';
 import '../util/language_matching.dart';
 import '../util/platform_detection.dart';
 import 'home_section_config.dart';
+import 'plex_locks.dart';
 import 'preference_constants.dart';
 import 'seerr_row_config.dart';
 
@@ -698,6 +699,13 @@ class UserPreferences extends ChangeNotifier {
   }
 
   T get<T>(Preference<T> pref) {
+    if (PlexLocks.isLocked(pref.key)) return PlexLocks.valueOf(pref);
+    return getStored(pref);
+  }
+
+  /// What is stored for [pref], ignoring [PlexLocks]. Only for code that
+  /// carries the user's own values elsewhere, i.e. the plugin sync.
+  T getStored<T>(Preference<T> pref) {
     if (_isScopedPreference(pref)) {
       final scoped = _scopedPreference(pref);
       if (scoped != null && _store.containsKey(scoped.key)) {
@@ -1727,14 +1735,6 @@ class UserPreferences extends ChangeNotifier {
     defaultValue: true,
   );
 
-  /// Plex-style layout (fork): libraries as top-level sidebar entries, a home
-  /// header that follows the focused item, and series art for episodes.
-  /// Deliberately neither synced nor scoped, so the stock Moonfin app signed
-  /// in to the same account never sees it.
-  static final plexMode = Preference(
-    key: 'pref_plex_mode',
-    defaultValue: true,
-  );
 
   static final navbarAlwaysExpanded = Preference(
     key: 'pref_navbar_always_expanded',
