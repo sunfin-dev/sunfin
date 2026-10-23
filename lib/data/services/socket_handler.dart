@@ -8,6 +8,7 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:server_core/server_core.dart';
 
 import 'log_service.dart';
+import 'socket_connect.dart';
 import 'websocket_message_parser.dart';
 
 abstract class ServerWebSocketClient {
@@ -78,6 +79,9 @@ abstract class _ReconnectingWebSocketClient implements ServerWebSocketClient {
   /// The url to open, or null when the client has nothing to connect with.
   Uri? buildUri();
 
+  /// Headers for the upgrade request. Only native platforms send them.
+  Map<String, String> buildHeaders() => const {};
+
   /// What to do with each frame the server sends.
   void handleMessage(dynamic data);
 
@@ -96,7 +100,7 @@ abstract class _ReconnectingWebSocketClient implements ServerWebSocketClient {
       final uri = buildUri();
       if (uri == null) return;
 
-      final socket = WebSocketChannel.connect(uri);
+      final socket = connectServerSocket(uri, buildHeaders());
       channel = socket;
       await socket.ready.timeout(_connectTimeout);
       _reconnectAttempt = 0;
@@ -234,6 +238,20 @@ class JellyfinWebSocketClient extends _ReconnectingWebSocketClient {
     final token = client.accessToken ?? '';
     return Uri.parse('$wsUrl/socket?ApiKey=$token');
   }
+
+  /// Without a Client here Jellyfin names the socket's session after the app
+  /// name stored when the token was issued, and never updates that name. A
+  /// token from before a rename then shows as a second session under the old
+  /// name, next to the one the HTTP requests open.
+  @override
+  Map<String, String> buildHeaders() => {
+    'Authorization': buildServerAuthorizationHeader(
+      scheme: 'MediaBrowser',
+      deviceInfo: client.deviceInfo,
+      accessToken: client.accessToken,
+    ),
+    'User-Agent': serverUserAgent,
+  };
 
   @override
   void onConnected() {

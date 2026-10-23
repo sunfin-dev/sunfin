@@ -18,6 +18,14 @@ class _FakeClient implements MediaServerClient {
   String? get accessToken => 'token';
 
   @override
+  DeviceInfo get deviceInfo => const DeviceInfo(
+    id: 'device-1',
+    name: 'SHIELD Android TV',
+    appName: 'Plexfin for Android TV',
+    appVersion: '2.7.0',
+  );
+
+  @override
   dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 }
 
@@ -155,5 +163,32 @@ void main() {
         reason: 'a stale channel left behind reads as a live connection',
       );
     });
+  });
+
+  test('the upgrade request names the client, not just the token', () async {
+    final server = await HttpServer.bind(InternetAddress.loopbackIPv4, 0);
+    addTearDown(() => server.close(force: true));
+    final request = server.first;
+
+    final client = JellyfinWebSocketClient(
+      _FakeClient(baseUrl: 'http://127.0.0.1:${server.port}'),
+      connectTimeout: const Duration(milliseconds: 500),
+    );
+    addTearDown(client.dispose);
+    unawaited(client.connect());
+
+    final auth = (await request).headers.value('authorization');
+    expect(
+      auth,
+      allOf(
+        startsWith('MediaBrowser '),
+        contains('Client="Plexfin for Android TV"'),
+        contains('DeviceId="device-1"'),
+        contains('Token="token"'),
+      ),
+      reason:
+          'without a Client Jellyfin uses the app name stored with the token, '
+          'which splits one app into two sessions after a rename',
+    );
   });
 }
