@@ -30,6 +30,7 @@ import '../../util/platform_detection.dart';
 import '../navigation/destinations.dart';
 import '../navigation/home_refresh_bus.dart';
 import '../navigation/route_lifecycle_observer.dart';
+import '../plex/plex_backdrop_tint.dart';
 import '../plex/plex_icons.dart';
 import '../plex/plex_style.dart';
 import 'navigation_layout.dart';
@@ -939,14 +940,26 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
       // On home and details pages the rail, open or collapsed, takes the
       // page's tint beside it and fades with it, so there is no seam (user,
       // 2026-10-22). Elsewhere it is the theme's surface.
-      child: ValueListenableBuilder<Color?>(
+      // The page's tint runs from one colour at the top of its left edge to
+      // another at the bottom (Plex's four-corner wash), so the rail draws the
+      // same blend.
+      child: ValueListenableBuilder<(Color, Color)?>(
         valueListenable: PlexStyle.pageTint,
-        builder: (context, tint, child) => TweenAnimationBuilder<Color?>(
-          tween: ColorTween(end: onPlexPage && tint != null ? tint : surface),
+        builder: (context, tint, child) => TweenAnimationBuilder<PlexTint>(
+          tween: PlexTintTween(
+            end: onPlexPage && tint != null
+                ? PlexTint(
+                    topLeft: tint.$1,
+                    topRight: tint.$1,
+                    bottomLeft: tint.$2,
+                    bottomRight: tint.$2,
+                  )
+                : PlexTint.solid(surface),
+          ),
           duration: PlexStyle.tintDuration,
           curve: Curves.easeOut,
-          builder: (context, color, child) =>
-              ColoredBox(color: color ?? surface, child: child),
+          builder: (context, value, child) =>
+              CustomPaint(painter: PlexTintPainter(value), child: child),
           child: child,
         ),
         child: ClipRect(

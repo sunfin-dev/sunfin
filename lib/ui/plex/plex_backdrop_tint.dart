@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:collection';
 import 'dart:math' as math;
 import 'dart:typed_data';
+import 'dart:ui' as ui;
 
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
@@ -10,16 +11,58 @@ import 'package:server_core/server_core.dart' show serverImageHeaders;
 
 import 'plex_style.dart';
 
-/// The two page colours Plex derives from the backdrop: one from the art's
-/// left part (behind the header) and one from its lower part (under the rows).
+/// The page colours Plex derives from the backdrop, one per corner of the
+/// page, taken from the same corner of the art and blended across the page
+/// (Plex's "UltraBlur"; user, 2026-10-26: "multiple gradients ... more
+/// liveliness"). The page's left edge, where the rail sits, runs from
+/// [topLeft] to [bottomLeft].
 @immutable
 class PlexTint {
-  final Color left;
-  final Color bottom;
+  final Color topLeft;
+  final Color topRight;
+  final Color bottomLeft;
+  final Color bottomRight;
 
-  const PlexTint(this.left, this.bottom);
+  const PlexTint({
+    required this.topLeft,
+    required this.topRight,
+    required this.bottomLeft,
+    required this.bottomRight,
+  });
 
-  static const fallback = PlexTint(PlexStyle.background, PlexStyle.background);
+  const PlexTint.solid(Color color)
+    : topLeft = color,
+      topRight = color,
+      bottomLeft = color,
+      bottomRight = color;
+
+  static const fallback = PlexTint.solid(PlexStyle.background);
+
+  /// The colour at a point of the page, x and y from 0 to 1: the corners
+  /// blended on an eased curve, which reads as one soft wash rather than
+  /// straight ramps.
+  Color at(double x, double y) {
+    final ex = _ease(x), ey = _ease(y);
+    final top = Color.lerp(topLeft, topRight, ex)!;
+    final bottom = Color.lerp(bottomLeft, bottomRight, ex)!;
+    return Color.lerp(top, bottom, ey)!;
+  }
+
+  static double _ease(double t) {
+    final c = t.clamp(0.0, 1.0);
+    return c * c * (3 - 2 * c);
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      other is PlexTint &&
+      other.topLeft == topLeft &&
+      other.topRight == topRight &&
+      other.bottomLeft == bottomLeft &&
+      other.bottomRight == bottomRight;
+
+  @override
+  int get hashCode => Object.hash(topLeft, topRight, bottomLeft, bottomRight);
 }
 
 class PlexTintTween extends Tween<PlexTint> {
@@ -27,9 +70,57 @@ class PlexTintTween extends Tween<PlexTint> {
 
   @override
   PlexTint lerp(double t) => PlexTint(
-    Color.lerp(begin!.left, end!.left, t)!,
-    Color.lerp(begin!.bottom, end!.bottom, t)!,
+    topLeft: Color.lerp(begin!.topLeft, end!.topLeft, t)!,
+    topRight: Color.lerp(begin!.topRight, end!.topRight, t)!,
+    bottomLeft: Color.lerp(begin!.bottomLeft, end!.bottomLeft, t)!,
+    bottomRight: Color.lerp(begin!.bottomRight, end!.bottomRight, t)!,
   );
+}
+
+/// Paints [tint] over its whole box: a fine mesh whose vertices carry the
+/// blended colour, so the GPU fills it in one cheap draw and it can be
+/// repainted on every frame of a tint change.
+class PlexTintPainter extends CustomPainter {
+  final PlexTint tint;
+
+  const PlexTintPainter(this.tint);
+
+  static const _columns = 12;
+  static const _rows = 8;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final positions = <Offset>[];
+    final colors = <Color>[];
+    final indices = <int>[];
+    for (var row = 0; row <= _rows; row++) {
+      for (var col = 0; col <= _columns; col++) {
+        final x = col / _columns, y = row / _rows;
+        positions.add(Offset(x * size.width, y * size.height));
+        colors.add(tint.at(x, y));
+      }
+    }
+    const stride = _columns + 1;
+    for (var row = 0; row < _rows; row++) {
+      for (var col = 0; col < _columns; col++) {
+        final i = row * stride + col;
+        indices.addAll([i, i + 1, i + stride, i + 1, i + stride + 1, i + stride]);
+      }
+    }
+    canvas.drawVertices(
+      ui.Vertices(
+        ui.VertexMode.triangles,
+        positions,
+        colors: colors,
+        indices: indices,
+      ),
+      BlendMode.dst,
+      Paint(),
+    );
+  }
+
+  @override
+  bool shouldRepaint(PlexTintPainter oldDelegate) => oldDelegate.tint != tint;
 }
 
 /// The page tint Plex derives from the backdrop: region averages of the art,
@@ -48,11 +139,9 @@ abstract final class PlexBackdropTint {
   static const _sampleHeight = 9;
   static const _cacheSize = 30;
 
-  /// The page colour behind the header comes from the art's upper two
-  /// thirds (rows above this), the one under the rows from its lower two
-  /// thirds (rows from [_lowerFirstRow]).
-  static const _settingLastRow = 6;
-  static const _lowerFirstRow = 3;
+  /// Where the sample is split into its four quarters.
+  static const _midColumn = _sampleWidth ~/ 2;
+  static const _midRow = 4;
 
   /// Hue families the dominant colour is chosen among (30 degrees each).
   static const _hueBins = 12;
@@ -111,12 +200,42 @@ abstract final class PlexBackdropTint {
   /// to have a colour.
   @visibleForTesting
   static PlexTint? fromSample(ByteData bytes) {
-    final left = _darken(_dominant(bytes, (x, y) => y < _settingLastRow));
-    final bottom = _darken(_dominant(bytes, (x, y) => y >= _lowerFirstRow));
-    if (left == null && bottom == null) return null;
+    // Each corner of the page from the same corner of the art: its quarter,
+    // overlapping the middle a little so no corner rests on a sliver.
+    final raw = [
+      _dominant(bytes, (x, y) => x < _midColumn + 1 && y < _midRow + 1),
+      _dominant(bytes, (x, y) => x >= _midColumn - 1 && y < _midRow + 1),
+      _dominant(bytes, (x, y) => x < _midColumn + 1 && y >= _midRow - 1),
+      _dominant(bytes, (x, y) => x >= _midColumn - 1 && y >= _midRow - 1),
+    ];
+    // Plex's corners differ in brightness as well as colour (the reference
+    // pages run from about 0.01 to 0.06), which is much of what makes them
+    // look lit rather than flat. Each corner keeps some of its brightness
+    // relative to the others, within a range that stays readable.
+    final lums = [for (final c in raw) c.computeLuminance()];
+    final mean = lums.reduce((a, b) => a + b) / lums.length;
+    final corners = [
+      for (var i = 0; i < raw.length; i++)
+        _darken(
+          raw[i],
+          target: mean <= 0
+              ? targetLuminance
+              : (targetLuminance * math.sqrt(lums[i] / mean)).clamp(
+                  targetLuminance * 0.55,
+                  targetLuminance * 1.3,
+                ),
+        ),
+    ];
+    final any = corners.whereType<Color>().firstOrNull;
+    if (any == null) return null;
+    // A corner too dark to have a colour borrows its neighbour's.
+    Color pick(int i, int across, int down) =>
+        corners[i] ?? corners[across] ?? corners[down] ?? any;
     return PlexTint(
-      left ?? bottom ?? PlexStyle.background,
-      bottom ?? left ?? PlexStyle.background,
+      topLeft: pick(0, 1, 2),
+      topRight: pick(1, 0, 3),
+      bottomLeft: pick(2, 3, 0),
+      bottomRight: pick(3, 2, 1),
     );
   }
 
@@ -205,9 +324,9 @@ abstract final class PlexBackdropTint {
     );
   }
 
-  /// Scales the colour (keeping its hue) until its luminance is
-  /// [targetLuminance]. Near-black art has no hue to keep, so it falls back.
-  static Color? _darken(Color color) {
+  /// Scales the colour (keeping its hue) until its luminance is [target].
+  /// Near-black art has no hue to keep, so it falls back.
+  static Color? _darken(Color color, {double target = targetLuminance}) {
     final peak = [color.r, color.g, color.b].reduce((a, b) => a > b ? a : b);
     if (peak < 0.02) return null;
     Color scaled(double k) => Color.from(
@@ -220,7 +339,7 @@ abstract final class PlexBackdropTint {
     var lo = 0.0, hi = 1 / peak;
     for (var i = 0; i < 16; i++) {
       final mid = (lo + hi) / 2;
-      if (scaled(mid).computeLuminance() < targetLuminance) {
+      if (scaled(mid).computeLuminance() < target) {
         lo = mid;
       } else {
         hi = mid;

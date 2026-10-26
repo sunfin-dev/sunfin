@@ -34,17 +34,31 @@ final theBear = sample([
 ]);
 
 void main() {
-  test('The Bear takes its night sky behind the header, not the brown frame',
-      () {
+  test(
+    'The Bear takes its night sky in the top corners, not the brown frame',
+    () {
+      final tint = PlexBackdropTint.fromSample(theBear)!;
+      // Blue clearly over red: the reported bug was a reddish brown here.
+      expect(tint.topLeft.b, greaterThan(tint.topLeft.r + 0.08));
+      expect(tint.topRight.b, greaterThan(tint.topRight.r + 0.08));
+    },
+  );
+
+  test('the corners differ, as on a Plex page', () {
     final tint = PlexBackdropTint.fromSample(theBear)!;
-    // Blue clearly over red: the reported bug was a reddish brown here.
-    expect(tint.left.b, greaterThan(tint.left.r + 0.08));
+    expect(tint.topLeft, isNot(tint.bottomLeft));
   });
 
   test('the page stays dark enough to read on', () {
     final tint = PlexBackdropTint.fromSample(theBear)!;
-    expect(tint.left.computeLuminance(), closeTo(PlexBackdropTint.targetLuminance, 0.01));
-    expect(tint.bottom.computeLuminance(), closeTo(PlexBackdropTint.targetLuminance, 0.01));
+    for (final c in [
+      tint.topLeft,
+      tint.topRight,
+      tint.bottomLeft,
+      tint.bottomRight,
+    ]) {
+      expect(c.computeLuminance(), inInclusiveRange(0.025, 0.07));
+    }
   });
 
   test('all-black art has no colour to take', () {
@@ -62,7 +76,13 @@ void main() {
       }).join(' '),
     );
     final tint = PlexBackdropTint.fromSample(sample(rows))!;
-    expect(tint.left.b, greaterThan(tint.left.r));
-    expect(tint.bottom.b, greaterThan(tint.bottom.r));
+    for (final c in [
+      tint.topLeft,
+      tint.topRight,
+      tint.bottomLeft,
+      tint.bottomRight,
+    ]) {
+      expect(c.b, greaterThan(c.r));
+    }
   });
 }

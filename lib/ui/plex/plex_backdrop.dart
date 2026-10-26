@@ -37,7 +37,9 @@ class _PlexBackdropState extends State<PlexBackdrop> {
 
   void _publishTint() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted && _isOwner) PlexStyle.pageTint.value = _tint.left;
+      if (mounted && _isOwner) {
+        PlexStyle.pageTint.value = (_tint.topLeft, _tint.bottomLeft);
+      }
     });
   }
 
@@ -229,17 +231,10 @@ class _PlexBackdropState extends State<PlexBackdrop> {
           ),
         ),
         builder: (context, tint, artChild) {
-          return DecoratedBox(
-            // Plex tints the page with two of the art's colours: its left part
-            // behind the header, its lower part under the rows on the right.
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [tint.left, tint.left, tint.bottom],
-                stops: const [0, 0.35, 1],
-              ),
-            ),
+          // Plex's four-corner wash: each corner of the page in the colour of
+          // the same corner of the art, blended across the page.
+          return CustomPaint(
+            painter: PlexTintPainter(tint),
             child: Stack(
               fit: StackFit.expand,
               children: [
