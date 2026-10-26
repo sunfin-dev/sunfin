@@ -6742,7 +6742,7 @@ class _PlexPosterCard extends StatelessWidget {
     required this.onLongPress,
   });
 
-  static const _focusDuration = Duration(milliseconds: 150);
+  static const _focusDuration = PlexMotion.focus;
 
   Widget _placeholder() => Center(
     child: Padding(
@@ -6768,7 +6768,7 @@ class _PlexPosterCard extends StatelessWidget {
       child: AnimatedScale(
         scale: isFocused ? PlexStyle.focusedPosterScale : 1.0,
         duration: _focusDuration,
-        curve: Curves.easeOut,
+        curve: PlexMotion.curve,
         child: Container(
           width: PlexStyle.posterWidth,
           height: PlexStyle.posterHeight,

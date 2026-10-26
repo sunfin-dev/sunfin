@@ -9726,6 +9726,21 @@ class AppLocalizationsJa extends AppLocalizations {
   String get settingsPersonalizationSubtitle => 'テーマ、ナビゲーション、ホーム行、ライブラリの表示設定';
 
   @override
+  String get plexPersonalizationSubtitle => 'サイドバー、ホームの行、ライブラリ、詳細ページ、スクリーンセーバー';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'キーボードとゲームコントローラー';
+
+  @override
+  String get plexDetailsScreenSubtitle => 'ボタン、情報、セクション、おすすめ';
+
+  @override
+  String get plexNavigationSubtitle => 'サイドバーの項目と自動選択';
+
+  @override
+  String get plexHomeScreenSubtitle => '行、その並び順、視聴を続ける';
+
+  @override
   String get settingsDynamicContent => '動的コンテンツ';
 
   @override

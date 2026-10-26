@@ -10002,6 +10002,25 @@ class AppLocalizationsLv extends AppLocalizations {
       'Motīvs, navigācija, sākuma rindas un bibliotēkas redzamība';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Sānjosla, sākuma ekrāna rindas, bibliotēkas, detaļu lapas un ekrānsaudzētājs';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Tastatūra un spēļu kontrolieris';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Pogas, informācija, sadaļas un ieteikumi';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Sānjoslas vienumi un automātiska atlase';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Rindas, to secība un Turpināt skatīties';
+
+  @override
   String get settingsDynamicContent => 'Dinamisks saturs';
 
   @override

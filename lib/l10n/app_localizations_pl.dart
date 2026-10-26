@@ -10258,6 +10258,24 @@ class AppLocalizationsPl extends AppLocalizations {
       'Motyw, nawigacja, sekcje ekranu głównego i widoczność bibliotek';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Pasek boczny, wiersze ekranu głównego, biblioteki, strony szczegółów i wygaszacz ekranu';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Klawiatura i kontroler do gier';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Przyciski, informacje, sekcje i rekomendacje';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Elementy paska bocznego i automatyczny wybór';
+
+  @override
+  String get plexHomeScreenSubtitle => 'Wiersze, ich kolejność i Oglądaj dalej';
+
+  @override
   String get settingsDynamicContent => 'Treści dynamiczne';
 
   @override

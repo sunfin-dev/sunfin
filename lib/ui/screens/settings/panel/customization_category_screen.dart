@@ -6,6 +6,8 @@ class _CustomizationCategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
+    // Plexfin: the subtitles name only what the locked look leaves to change.
+    final plex = PlexLocks.active;
     return withCleanSettingsTypography(
       context,
       Scaffold(
@@ -22,14 +24,22 @@ class _CustomizationCategoryScreen extends StatelessWidget {
                   autofocus: true,
                   leading: const Icon(Icons.style),
                   title: Text(l10n.settingsGeneralStyle),
-                  subtitle: Text(l10n.settingsGeneralStyleSubtitle),
+                  subtitle: Text(
+                    plex
+                        ? l10n.plexGeneralStyleSubtitle
+                        : l10n.settingsGeneralStyleSubtitle,
+                  ),
                   onTap: () =>
                       context.pushSettingsScreen(const _GeneralStyleScreen()),
                 ),
                 _TvSettingsListTile(
                   leading: const Icon(Icons.article_outlined),
                   title: Text(l10n.settingsDetailsScreen),
-                  subtitle: Text(l10n.settingsDetailsScreenSubtitle),
+                  subtitle: Text(
+                    plex
+                        ? l10n.plexDetailsScreenSubtitle
+                        : l10n.settingsDetailsScreenSubtitle,
+                  ),
                   onTap: () => context.pushSettingsScreen(
                     const _DetailsScreenSettingsScreen(),
                   ),
@@ -37,7 +47,11 @@ class _CustomizationCategoryScreen extends StatelessWidget {
                 _TvSettingsListTile(
                   leading: const Icon(Icons.view_sidebar),
                   title: Text(l10n.navigation),
-                  subtitle: Text(l10n.navbarStyleToolbarAppearance),
+                  subtitle: Text(
+                    plex
+                        ? l10n.plexNavigationSubtitle
+                        : l10n.navbarStyleToolbarAppearance,
+                  ),
                   onTap: () => context.pushSettingsScreen(
                     const _NavigationCategoryScreen(),
                   ),
@@ -59,7 +73,11 @@ class _CustomizationCategoryScreen extends StatelessWidget {
                 _TvSettingsListTile(
                   leading: const Icon(Icons.home),
                   title: Text(l10n.homeScreen),
-                  subtitle: Text(l10n.settingsHomePageSubtitle),
+                  subtitle: Text(
+                    plex
+                        ? l10n.plexHomeScreenSubtitle
+                        : l10n.settingsHomePageSubtitle,
+                  ),
                   onTap: () => context.pushSettingsScreen(
                     const _HomeScreenCategoryScreen(),
                   ),

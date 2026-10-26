@@ -343,7 +343,10 @@ class _SettingsSidePanelState extends ConsumerState<SettingsSidePanel> {
             _PanelEntry(
               icon: Icons.palette,
               title: l10n.settingsPersonalization,
-              subtitle: l10n.settingsPersonalizationSubtitle,
+              // Plexfin: name only what the locked look leaves to change.
+              subtitle: PlexLocks.active
+                  ? l10n.plexPersonalizationSubtitle
+                  : l10n.settingsPersonalizationSubtitle,
               onTap: () =>
                   context.pushSettingsScreen(const _CustomizationCategoryScreen()),
             ),

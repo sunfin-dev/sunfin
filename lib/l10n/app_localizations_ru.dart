@@ -10023,6 +10023,24 @@ class AppLocalizationsRu extends AppLocalizations {
       'Тема, навигация, домашние строки и видимость библиотеки.';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Боковая панель, ряды главной, библиотеки, страницы с подробностями и заставка';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Клавиатура и игровой контроллер';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Кнопки, сведения, разделы и рекомендации';
+
+  @override
+  String get plexNavigationSubtitle => 'Пункты боковой панели и автовыбор';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Ряды, их порядок и «Продолжить просмотр»';
+
+  @override
   String get settingsDynamicContent => 'Динамический контент';
 
   @override

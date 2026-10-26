@@ -9840,6 +9840,22 @@ class AppLocalizationsHe extends AppLocalizations {
       'ערכת נושא, ניווט, שורות בית ונראות ספרייה';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'סרגל צד, שורות בדף הבית, ספריות, דפי פרטים ושומר מסך';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'מקלדת ובקר משחקים';
+
+  @override
+  String get plexDetailsScreenSubtitle => 'כפתורים, מידע, מקטעים והמלצות';
+
+  @override
+  String get plexNavigationSubtitle => 'פריטי סרגל הצד ובחירה אוטומטית';
+
+  @override
+  String get plexHomeScreenSubtitle => 'שורות, הסדר שלהן והמשך לצפות';
+
+  @override
   String get settingsDynamicContent => 'תוכן דינמי';
 
   @override

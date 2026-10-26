@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:moonfin_design/moonfin_design.dart';
 
+import '../../preference/plex_locks.dart';
 import '../../preference/preference_constants.dart';
 import '../../preference/user_preferences.dart';
 import '../../util/idiom/app_ui_idiom.dart';
+import '../plex/plex_style.dart';
 
 class AppTheme {
   const AppTheme._();
@@ -236,6 +238,9 @@ class _FadeScalePageTransitionsBuilder extends PageTransitionsBuilder {
     final speed = GetIt.I.isRegistered<UserPreferences>()
         ? GetIt.I<UserPreferences>().get(UserPreferences.pageTransitionSpeed)
         : PageTransitionSpeed.medium;
+    // Plexfin: one short fade, the same everywhere (PlexMotion.page).
+    final plex = PlexLocks.active;
+    final duration = plex ? PlexMotion.page : speed.duration;
 
     // The route owns this controller and there is no public way to retime it,
     // so without this a speed change would only take hold on the next route.
@@ -243,9 +248,9 @@ class _FadeScalePageTransitionsBuilder extends PageTransitionsBuilder {
     // the fade but leave the route running for Flutter's 450ms default.
     // ignore: invalid_use_of_protected_member
     final controller = route.controller;
-    if (controller != null && controller.duration != speed.duration) {
-      controller.duration = speed.duration;
-      controller.reverseDuration = speed.duration;
+    if (controller != null && controller.duration != duration) {
+      controller.duration = duration;
+      controller.reverseDuration = duration;
       if (controller.isAnimating) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (controller.isAnimating) {
@@ -253,19 +258,33 @@ class _FadeScalePageTransitionsBuilder extends PageTransitionsBuilder {
             if (animation.status == AnimationStatus.forward) {
               controller.animateTo(
                 1.0,
-                duration: speed.duration * remaining,
+                duration: duration * remaining,
                 curve: Curves.linear,
               );
             } else if (animation.status == AnimationStatus.reverse) {
               controller.animateBack(
                 0.0,
-                duration: speed.duration * controller.value,
+                duration: duration * controller.value,
                 curve: Curves.linear,
               );
             }
           }
         });
       }
+    }
+
+    if (plex) {
+      // No zoom: scaling the whole page is costly on a TV box, and Plex only
+      // fades. The fade holds for its first frames, which go to building the
+      // new page, so what is seen of it runs smooth instead of jumping in.
+      return FadeTransition(
+        opacity: CurvedAnimation(
+          parent: animation,
+          curve: PlexMotion.pageIn,
+          reverseCurve: PlexMotion.pageOut,
+        ),
+        child: child,
+      );
     }
 
     final Animation<double> curved;

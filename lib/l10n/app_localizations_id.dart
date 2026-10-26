@@ -9962,6 +9962,23 @@ class AppLocalizationsId extends AppLocalizations {
       'Tema, navigasi, baris beranda, dan visibilitas pustaka';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Bilah samping, baris beranda, perpustakaan, halaman detail, dan screen saver';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Keyboard dan pengontrol game';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Tombol, info, bagian, dan rekomendasi';
+
+  @override
+  String get plexNavigationSubtitle => 'Item bilah samping dan pilih otomatis';
+
+  @override
+  String get plexHomeScreenSubtitle => 'Baris, urutannya, dan Lanjut Menonton';
+
+  @override
   String get settingsDynamicContent => 'Konten Dinamis';
 
   @override

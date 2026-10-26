@@ -57,6 +57,7 @@ import 'util/http_overrides_stub.dart'
 import 'util/game_core_licenses.dart';
 import 'util/device_performance.dart';
 import 'ui/navigation/app_router.dart';
+import 'ui/plex/plex_frame_log.dart';
 import 'ui/screensaver/screensaver_controller.dart';
 import 'util/platform_detection.dart';
 import 'util/process_exit_reporter.dart';
@@ -1009,6 +1010,18 @@ void main() async {
   try {
     GetIt.instance<AirPlayCommandBridge>().start();
   } catch (_) {}
+
+  if (PlatformDetection.isTV) {
+    PlexFrameLog.start(
+      // The top page, pushed ones included (uri only names the base route).
+      route: () {
+        final config = appRouter.routerDelegate.currentConfiguration;
+        return config.matches.isEmpty
+            ? config.uri.path
+            : config.matches.last.matchedLocation;
+      },
+    );
+  }
 
   runApp(const MoonfinApp());
 }

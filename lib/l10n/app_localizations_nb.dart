@@ -9950,6 +9950,25 @@ class AppLocalizationsNb extends AppLocalizations {
       'Tema, navigasjon, startrader og biblioteksynlighet';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Sidefelt, startrader, biblioteker, detaljsider og skjermsparer';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Tastatur og spillkontroller';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Knapper, info, seksjoner og anbefalinger';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Elementer i sidefeltet og automatisk valg';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Rader, rekkefølgen deres og Fortsett å se';
+
+  @override
   String get settingsDynamicContent => 'Dynamisk innhold';
 
   @override

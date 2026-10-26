@@ -9702,6 +9702,21 @@ class AppLocalizationsKo extends AppLocalizations {
   String get settingsPersonalizationSubtitle => '테마, 탐색, 홈 행 및 라이브러리 가시성';
 
   @override
+  String get plexPersonalizationSubtitle => '사이드바, 홈 행, 라이브러리, 상세 페이지 및 화면 보호기';
+
+  @override
+  String get plexGeneralStyleSubtitle => '키보드 및 게임 컨트롤러';
+
+  @override
+  String get plexDetailsScreenSubtitle => '버튼, 정보, 섹션 및 추천';
+
+  @override
+  String get plexNavigationSubtitle => '사이드바 항목 및 자동 선택';
+
+  @override
+  String get plexHomeScreenSubtitle => '행, 행 순서 및 계속 시청하기';
+
+  @override
   String get settingsDynamicContent => '동적 콘텐츠';
 
   @override

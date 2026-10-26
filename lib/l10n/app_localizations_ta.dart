@@ -10022,6 +10022,25 @@ class AppLocalizationsTa extends AppLocalizations {
       'தீம், வழிசெலுத்தல், முகப்பு வரிசைகள் மற்றும் நூலகத் தெரிவுநிலை';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'பக்கப்பட்டி, முகப்பு வரிசைகள், நூலகங்கள், விவரப் பக்கங்கள் மற்றும் ஸ்கிரீன்சேவர்';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'விசைப்பலகை மற்றும் கேம் கன்ட்ரோலர்';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'பொத்தான்கள், தகவல், பிரிவுகள் மற்றும் பரிந்துரைகள்';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'பக்கப்பட்டி உருப்படிகள் மற்றும் தானியங்கு தேர்வு';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'வரிசைகள், அவற்றின் வரிசைமுறை மற்றும் தொடர்ந்து பார்க்கவும்';
+
+  @override
   String get settingsDynamicContent => 'டைனமிக் உள்ளடக்கம்';
 
   @override

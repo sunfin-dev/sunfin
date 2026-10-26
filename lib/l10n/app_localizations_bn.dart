@@ -9939,6 +9939,23 @@ class AppLocalizationsBn extends AppLocalizations {
       'থিম, নেভিগেশন, হোম সারি, এবং লাইব্রেরি দৃশ্যমানতা';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'সাইডবার, হোম সারি, লাইব্রেরি, বিস্তারিত পৃষ্ঠা ও স্ক্রিনসেভার';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'কীবোর্ড ও গেম কন্ট্রোলার';
+
+  @override
+  String get plexDetailsScreenSubtitle => 'বোতাম, তথ্য, বিভাগ ও সুপারিশ';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'সাইডবারের আইটেম ও স্বয়ংক্রিয় নির্বাচন';
+
+  @override
+  String get plexHomeScreenSubtitle => 'সারি, সেগুলোর ক্রম ও দেখা চালিয়ে যান';
+
+  @override
   String get settingsDynamicContent => 'ডায়নামিক কন্টেন্ট';
 
   @override

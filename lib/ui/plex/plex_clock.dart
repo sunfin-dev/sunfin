@@ -59,6 +59,8 @@ class _PlexClockState extends State<PlexClock> {
         color: Colors.white.withValues(alpha: 0.6),
         fontSize: PlexStyle.s(13),
         fontWeight: FontWeight.w400,
+        // Keeps it readable where it sits on bright backdrop art.
+        shadows: const [Shadow(color: Color(0x99000000), blurRadius: 6)],
       ),
     );
   }

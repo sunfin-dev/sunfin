@@ -10006,6 +10006,25 @@ class AppLocalizationsSl extends AppLocalizations {
       'Tema, navigacija, domače vrstice in vidnost knjižnice';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Stranska vrstica, vrstice začetnega zaslona, knjižnice, strani s podrobnostmi in ohranjevalnik zaslona';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Tipkovnica in igralni plošček';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Gumbi, informacije, razdelki in priporočila';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Elementi stranske vrstice in samodejna izbira';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Vrstice, njihov vrstni red in Nadaljuj z gledanjem';
+
+  @override
   String get settingsDynamicContent => 'Dinamična vsebina';
 
   @override

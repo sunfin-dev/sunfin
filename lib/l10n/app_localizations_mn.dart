@@ -9974,6 +9974,25 @@ class AppLocalizationsMn extends AppLocalizations {
       'Сэдэв, навигаци, гэрийн эгнээ, номын сангийн харагдац';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Хажуугийн самбар, нүүрийн мөрүүд, сангууд, дэлгэрэнгүй хуудас ба дэлгэц амраагч';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Гар ба тоглоомын удирдлага';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Товчлуур, мэдээлэл, хэсэг ба зөвлөмж';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Хажуугийн самбарын зүйлс ба автомат сонголт';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Мөрүүд, тэдгээрийн дараалал ба Үргэлжлүүлэн үзэх';
+
+  @override
   String get settingsDynamicContent => 'Динамик контент';
 
   @override

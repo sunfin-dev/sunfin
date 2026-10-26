@@ -9986,6 +9986,25 @@ class AppLocalizationsCs extends AppLocalizations {
       'Motiv, navigace, domovské řádky a viditelnost knihovny';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Postranní panel, řádky domovské obrazovky, knihovny, stránky s podrobnostmi a spořič obrazovky';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Klávesnice a herní ovladač';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Tlačítka, informace, sekce a doporučení';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Položky postranního panelu a automatický výběr';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Řádky, jejich pořadí a Pokračovat ve sledování';
+
+  @override
   String get settingsDynamicContent => 'Dynamický obsah';
 
   @override

@@ -10014,6 +10014,24 @@ class AppLocalizationsKn extends AppLocalizations {
       'ಥೀಮ್, ನ್ಯಾವಿಗೇಷನ್, ಹೋಮ್ ಸಾಲುಗಳು ಮತ್ತು ಲೈಬ್ರರಿ ಗೋಚರತೆ';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'ಸೈಡ್‌ಬಾರ್, ಹೋಮ್ ಸಾಲುಗಳು, ಲೈಬ್ರರಿಗಳು, ವಿವರ ಪುಟಗಳು ಮತ್ತು ಸ್ಕ್ರೀನ್ ಸೇವರ್';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'ಕೀಬೋರ್ಡ್ ಮತ್ತು ಗೇಮ್ ಕಂಟ್ರೋಲರ್';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'ಬಟನ್‌ಗಳು, ಮಾಹಿತಿ, ವಿಭಾಗಗಳು ಮತ್ತು ಶಿಫಾರಸುಗಳು';
+
+  @override
+  String get plexNavigationSubtitle => 'ಸೈಡ್‌ಬಾರ್ ಐಟಂಗಳು ಮತ್ತು ಸ್ವಯಂ ಆಯ್ಕೆ';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'ಸಾಲುಗಳು, ಅವುಗಳ ಕ್ರಮ ಮತ್ತು ನೋಡುವುದನ್ನು ಮುಂದುವರಿಸಿ';
+
+  @override
   String get settingsDynamicContent => 'ಡೈನಾಮಿಕ್ ವಿಷಯ';
 
   @override

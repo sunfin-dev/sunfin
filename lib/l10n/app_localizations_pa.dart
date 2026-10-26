@@ -9923,6 +9923,23 @@ class AppLocalizationsPa extends AppLocalizations {
       'ਥੀਮ, ਨੈਵੀਗੇਸ਼ਨ, ਘਰੇਲੂ ਕਤਾਰਾਂ, ਅਤੇ ਲਾਇਬ੍ਰੇਰੀ ਦਿੱਖ';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'ਸਾਈਡਬਾਰ, ਹੋਮ ਕਤਾਰਾਂ, ਲਾਇਬ੍ਰੇਰੀਆਂ, ਵੇਰਵਾ ਪੰਨੇ ਅਤੇ ਸਕਰੀਨ ਸੇਵਰ';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'ਕੀਬੋਰਡ ਅਤੇ ਗੇਮ ਕੰਟਰੋਲਰ';
+
+  @override
+  String get plexDetailsScreenSubtitle => 'ਬਟਨ, ਜਾਣਕਾਰੀ, ਭਾਗ ਅਤੇ ਸਿਫ਼ਾਰਸ਼ਾਂ';
+
+  @override
+  String get plexNavigationSubtitle => 'ਸਾਈਡਬਾਰ ਆਈਟਮਾਂ ਅਤੇ ਆਟੋ-ਚੋਣ';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'ਕਤਾਰਾਂ, ਉਨ੍ਹਾਂ ਦਾ ਕ੍ਰਮ ਅਤੇ ਦੇਖਣਾ ਜਾਰੀ ਰੱਖੋ';
+
+  @override
   String get settingsDynamicContent => 'ਗਤੀਸ਼ੀਲ ਸਮੱਗਰੀ';
 
   @override

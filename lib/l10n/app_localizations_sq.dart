@@ -10033,6 +10033,25 @@ class AppLocalizationsSq extends AppLocalizations {
       'Tema, navigimi, rreshtat kryesore dhe dukshmëria e bibliotekës';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Shiriti anësor, rreshtat e faqes kryesore, bibliotekat, faqet e detajeve dhe mbrojtësi i ekranit';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Tastiera dhe kontrolluesi i lojërave';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Butonat, informacioni, seksionet dhe rekomandimet';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Elementet e shiritit anësor dhe zgjedhja automatike';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Rreshtat, renditja e tyre dhe Vazhdo shikimin';
+
+  @override
   String get settingsDynamicContent => 'Përmbajtja dinamike';
 
   @override

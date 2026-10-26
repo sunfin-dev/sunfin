@@ -40,7 +40,7 @@ class PlexHomeHeader extends StatelessWidget {
     this.showCast = true,
   });
 
-  static const _fade = Duration(milliseconds: 180);
+  static const _fade = PlexMotion.fade;
   static final _scale = PlexStyle.s(1);
 
   /// Plex lets the title run past the summary column (a long show name

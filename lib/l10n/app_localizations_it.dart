@@ -10022,6 +10022,25 @@ class AppLocalizationsIt extends AppLocalizations {
       'Tema, navigazione, righe home e visibilità della libreria';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Barra laterale, righe della home, librerie, pagine dei dettagli e salvaschermo';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Tastiera e controller di gioco';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Pulsanti, informazioni, sezioni e consigli';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Voci della barra laterale e selezione automatica';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Righe, il loro ordine e Continua a guardare';
+
+  @override
   String get settingsDynamicContent => 'Contenuto dinamico';
 
   @override

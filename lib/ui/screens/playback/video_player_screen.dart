@@ -4144,26 +4144,40 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                           child: ColoredBox(color: Colors.black),
                         ),
                       _buildPausedDescriptionOverlay(),
-                      if (_controlsVisible &&
-                          !_isOsdLocked &&
-                          !hideOsdForPreroll) ...[
-                        // The chrome stays in the tree while mpv owns its own
-                        // window: both native windows are WS_EX_TRANSPARENT, so
-                        // these widgets are still what gets hit-tested - only
-                        // their pixels are re-sent by HdrOverlayCapture.
-                        _buildTopOverlay(context),
-                        // Plexfin: the clock comes up with the controls, top
-                        // right, where every Plex page has it (user,
-                        // 2026-10-26).
-                        if (PlexStyle.enabled) PlexClock.corner(),
-                        if (!PlatformDetection.useLeanbackUi)
-                          Positioned.fill(
-                            child: Center(
-                              child: _buildCenterTransportControls(),
-                            ),
-                          ),
-                        _buildBottomOverlay(context),
-                      ],
+                      // Plexfin: the controls fade in and out rather than
+                      // popping (user, 2026-10-26); elsewhere they still
+                      // switch at once.
+                      _OsdFade(
+                        visible:
+                            _controlsVisible &&
+                            !_isOsdLocked &&
+                            !hideOsdForPreroll,
+                        duration: PlexStyle.enabled
+                            ? PlexMotion.fade
+                            : Duration.zero,
+                        builder: (context) => Stack(
+                          fit: StackFit.expand,
+                          children: [
+                            // The chrome stays in the tree while mpv owns its
+                            // own window: both native windows are
+                            // WS_EX_TRANSPARENT, so these widgets are still
+                            // what gets hit-tested - only their pixels are
+                            // re-sent by HdrOverlayCapture.
+                            _buildTopOverlay(context),
+                            // Plexfin: the clock comes up with the controls,
+                            // top right, where every Plex page has it (user,
+                            // 2026-10-26).
+                            if (PlexStyle.enabled) PlexClock.corner(),
+                            if (!PlatformDetection.useLeanbackUi)
+                              Positioned.fill(
+                                child: Center(
+                                  child: _buildCenterTransportControls(),
+                                ),
+                              ),
+                            _buildBottomOverlay(context),
+                          ],
+                        ),
+                      ),
                       _buildBufferingIndicator(),
                       _buildVolumeOverlay(),
                       if (PlatformDetection.useMobileUi)
@@ -8216,6 +8230,85 @@ class _CastPersonTileState extends State<_CastPersonTile> {
                   ),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The player's controls, faded in and out over [duration]. While fading out
+/// they stay on screen but take no focus or taps, so the remote is back on
+/// the player at once; once gone they are not built at all, as before.
+class _OsdFade extends StatefulWidget {
+  const _OsdFade({
+    required this.visible,
+    required this.duration,
+    required this.builder,
+  });
+
+  final bool visible;
+  final Duration duration;
+  final WidgetBuilder builder;
+
+  @override
+  State<_OsdFade> createState() => _OsdFadeState();
+}
+
+class _OsdFadeState extends State<_OsdFade>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller = AnimationController(
+    vsync: this,
+    duration: widget.duration,
+    value: widget.visible ? 1 : 0,
+  );
+  late final Animation<double> _opacity = CurvedAnimation(
+    parent: _controller,
+    curve: PlexMotion.curve,
+  );
+
+  @override
+  void didUpdateWidget(_OsdFade oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _controller.duration = widget.duration;
+    if (widget.visible != oldWidget.visible) {
+      if (widget.visible) {
+        _controller.forward();
+      } else {
+        _controller.reverse();
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // Only the end of a fade-out changes what is built; the fade itself is
+    // a repaint.
+    _controller.addStatusListener((_) {
+      if (mounted) setState(() {});
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!widget.visible && _controller.isDismissed) {
+      return const Positioned.fill(child: SizedBox.shrink());
+    }
+    return Positioned.fill(
+      child: ExcludeFocus(
+        excluding: !widget.visible,
+        child: IgnorePointer(
+          ignoring: !widget.visible,
+          child: FadeTransition(
+            opacity: _opacity,
+            child: Builder(builder: widget.builder),
           ),
         ),
       ),

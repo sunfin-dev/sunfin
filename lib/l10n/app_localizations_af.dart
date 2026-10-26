@@ -9959,6 +9959,23 @@ class AppLocalizationsAf extends AppLocalizations {
       'Tema, navigasie, tuisrye en biblioteeksigbaarheid';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Sybalk, tuisrye, biblioteke, besonderhedebladsye en skermbeveiliging';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Sleutelbord en speletjiebeheerder';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Knoppies, inligting, afdelings en aanbevelings';
+
+  @override
+  String get plexNavigationSubtitle => 'Sybalkitems en outomatiese keuse';
+
+  @override
+  String get plexHomeScreenSubtitle => 'Rye, hul volgorde en Hou aan kyk';
+
+  @override
   String get settingsDynamicContent => 'Dinamiese inhoud';
 
   @override

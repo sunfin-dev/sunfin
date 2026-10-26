@@ -10082,6 +10082,25 @@ class AppLocalizationsFr extends AppLocalizations {
       'Thème, navigation, rangées d\'accueil et visibilité des bibliothèques';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Barre latérale, rangées d\'accueil, bibliothèques, pages de détails et économiseur d’écran';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Clavier et manette de jeu';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Boutons, infos, sections et recommandations';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Éléments de la barre latérale et sélection automatique';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Rangées, leur ordre et Continuer de regarder';
+
+  @override
   String get settingsDynamicContent => 'Contenu dynamique';
 
   @override

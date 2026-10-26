@@ -10024,6 +10024,24 @@ class AppLocalizationsUk extends AppLocalizations {
       'Видимість теми, навігації, домашніх рядків і бібліотеки';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Бічна панель, ряди головної, бібліотеки, сторінки з подробицями та заставка';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Клавіатура та ігровий контролер';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Кнопки, відомості, розділи та рекомендації';
+
+  @override
+  String get plexNavigationSubtitle => 'Пункти бічної панелі та автовибір';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Ряди, їхній порядок і «Продовжити перегляд»';
+
+  @override
   String get settingsDynamicContent => 'Динамічний вміст';
 
   @override

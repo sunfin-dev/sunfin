@@ -10037,6 +10037,24 @@ class AppLocalizationsHu extends AppLocalizations {
       'Téma, navigáció, kezdősorok és könyvtár láthatósága';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Oldalsáv, kezdőképernyő-sorok, könyvtárak, részletek oldalak és képernyővédő';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Billentyűzet és játékvezérlő';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Gombok, információk, szakaszok és ajánlások';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Oldalsáv elemei és automatikus kiválasztás';
+
+  @override
+  String get plexHomeScreenSubtitle => 'Sorok, sorrendjük és a Folytatás sor';
+
+  @override
   String get settingsDynamicContent => 'Dinamikus tartalom';
 
   @override

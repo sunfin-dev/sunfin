@@ -9946,6 +9946,23 @@ class AppLocalizationsSi extends AppLocalizations {
       'තේමාව, සංචාලනය, නිවාස පේළි සහ පුස්තකාල දෘශ්‍යතාව';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'පැති තීරුව, මුල් පිටු පේළි, පුස්තකාල, විස්තර පිටු සහ තිර සුරැකුම';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'යතුරුපුවරුව සහ ක්‍රීඩා පාලකය';
+
+  @override
+  String get plexDetailsScreenSubtitle => 'බොත්තම්, තොරතුරු, කොටස් සහ නිර්දේශ';
+
+  @override
+  String get plexNavigationSubtitle => 'පැති තීරු අයිතම සහ ස්වයංක්‍රීය තේරීම';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'පේළි, ඒවායේ අනුපිළිවෙළ සහ නැරඹීම දිගටම කරගෙන යන්න';
+
+  @override
   String get settingsDynamicContent => 'ගතික අන්තර්ගතය';
 
   @override

@@ -9900,6 +9900,23 @@ class AppLocalizationsTh extends AppLocalizations {
       'ธีม การนำทาง แถวบ้าน และการเปิดเผยไลบรารี';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'แถบด้านข้าง แถวหน้าหลัก คลังสื่อ หน้ารายละเอียด และสกรีนเซฟเวอร์';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'แป้นพิมพ์และจอยเกม';
+
+  @override
+  String get plexDetailsScreenSubtitle => 'ปุ่ม ข้อมูล ส่วนต่างๆ และคำแนะนำ';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'รายการในแถบด้านข้างและการเลือกอัตโนมัติ';
+
+  @override
+  String get plexHomeScreenSubtitle => 'แถว ลำดับของแถว และดูต่อ';
+
+  @override
   String get settingsDynamicContent => 'เนื้อหาแบบไดนามิก';
 
   @override

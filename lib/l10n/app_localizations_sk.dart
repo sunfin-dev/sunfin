@@ -10010,6 +10010,25 @@ class AppLocalizationsSk extends AppLocalizations {
       'Téma, navigácia, domovské riadky a viditeľnosť knižnice';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Bočný panel, riadky domovskej obrazovky, knižnice, stránky s podrobnosťami a šetrič obrazovky';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Klávesnica a herný ovládač';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Tlačidlá, informácie, sekcie a odporúčania';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Položky bočného panela a automatický výber';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Riadky, ich poradie a Pokračovať v sledovaní';
+
+  @override
   String get settingsDynamicContent => 'Dynamický obsah';
 
   @override

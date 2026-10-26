@@ -9998,6 +9998,25 @@ class AppLocalizationsFi extends AppLocalizations {
       'Teema, navigointi, etusivun rivit, ja kirjaston näkyvyys';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Sivupalkki, aloitusnäkymän rivit, kirjastot, tietosivut ja näytönsäästäjä';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Näppäimistö ja peliohjain';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Painikkeet, tiedot, osiot ja suositukset';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Sivupalkin kohteet ja automaattinen valinta';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Rivit, niiden järjestys ja Jatka katselua';
+
+  @override
   String get settingsDynamicContent => 'Dynaaminen sisältö';
 
   @override

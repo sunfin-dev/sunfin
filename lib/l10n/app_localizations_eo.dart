@@ -9941,6 +9941,23 @@ class AppLocalizationsEo extends AppLocalizations {
       'Temo, navigado, hejmaj vicoj kaj bibliotekvidebleco';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Flanka breto, hejmaj vicoj, bibliotekoj, detalaj paĝoj kaj ekranŝirmilo';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Klavaro kaj ludregilo';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Butonoj, informoj, sekcioj kaj rekomendoj';
+
+  @override
+  String get plexNavigationSubtitle => 'Flankbretaj eroj kaj aŭtomata elekto';
+
+  @override
+  String get plexHomeScreenSubtitle => 'Vicoj, ilia ordo kaj Daŭre Rigardi';
+
+  @override
   String get settingsDynamicContent => 'Dinamika Enhavo';
 
   @override

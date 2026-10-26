@@ -9982,6 +9982,24 @@ class AppLocalizationsUg extends AppLocalizations {
       'تېما ، يول باشلاش ، ئائىلە قۇرلىرى ۋە كۈتۈپخانىنىڭ كۆرۈنۈشچانلىقى';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'يان بالداق، باش بەت قۇرلىرى، ئامبارلار، تەپسىلات بەتلىرى ۋە ئېكران قوغدىغۇچ';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'كۇنۇپكا تاختىسى ۋە ئويۇن كونترولچىسى';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'كۇنۇپكىلار، ئۇچۇر، بۆلەكلەر ۋە تەۋسىيەلەر';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'يان بالداق تۈرلىرى ۋە ئاپتوماتىك تاللاش';
+
+  @override
+  String get plexHomeScreenSubtitle => 'قۇرلار، تەرتىپى ۋە داۋاملىق كۆرۈش';
+
+  @override
   String get settingsDynamicContent => 'ھەرىكەتچان مەزمۇن';
 
   @override

@@ -17638,6 +17638,36 @@ abstract class AppLocalizations {
   /// **'Theme, navigation, home rows, and library visibility'**
   String get settingsPersonalizationSubtitle;
 
+  /// No description provided for @plexPersonalizationSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sidebar, home rows, libraries, details pages and screensaver'**
+  String get plexPersonalizationSubtitle;
+
+  /// No description provided for @plexGeneralStyleSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Keyboard and game controller'**
+  String get plexGeneralStyleSubtitle;
+
+  /// No description provided for @plexDetailsScreenSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Buttons, info, sections and recommendations'**
+  String get plexDetailsScreenSubtitle;
+
+  /// No description provided for @plexNavigationSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sidebar items and auto-select'**
+  String get plexNavigationSubtitle;
+
+  /// No description provided for @plexHomeScreenSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rows, their order and Continue Watching'**
+  String get plexHomeScreenSubtitle;
+
   /// No description provided for @settingsDynamicContent.
   ///
   /// In en, this message translates to:

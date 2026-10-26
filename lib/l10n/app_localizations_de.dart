@@ -10101,6 +10101,25 @@ class AppLocalizationsDe extends AppLocalizations {
       'Thema, Navigation, Startzeilen und Sichtbarkeit der Bibliothek';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Seitenleiste, Startzeilen, Bibliotheken, Detailseiten und Bildschirmschoner';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Tastatur und Gamecontroller';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Schaltflächen, Infos, Abschnitte und Empfehlungen';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Einträge der Seitenleiste und automatische Auswahl';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Zeilen, ihre Reihenfolge und Weiterschauen';
+
+  @override
   String get settingsDynamicContent => 'Dynamischer Inhalt';
 
   @override

@@ -9950,6 +9950,25 @@ class AppLocalizationsDa extends AppLocalizations {
       'Tema, navigation, startrækker og bibliotekssynlighed';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Sidebjælke, startrækker, biblioteker, detaljesider og pauseskærm';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Tastatur og spilcontroller';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Knapper, info, sektioner og anbefalinger';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Elementer i sidebjælken og automatisk valg';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Rækker, deres rækkefølge og Fortsæt med at se';
+
+  @override
   String get settingsDynamicContent => 'Dynamisk indhold';
 
   @override

@@ -10023,6 +10023,25 @@ class AppLocalizationsSw extends AppLocalizations {
       'Mandhari, urambazaji, safu mlalo za nyumbani na mwonekano wa maktaba';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Upau wa pembeni, safu za mwanzo, maktaba, kurasa za maelezo na kihifadhi skrini';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Kibodi na kidhibiti cha michezo';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Vitufe, maelezo, sehemu na mapendekezo';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Vipengee vya upau wa pembeni na uteuzi wa kiotomatiki';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Safu, mpangilio wake na Endelea Kutazama';
+
+  @override
   String get settingsDynamicContent => 'Maudhui Yanayobadilika';
 
   @override

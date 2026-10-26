@@ -10004,6 +10004,24 @@ class AppLocalizationsLt extends AppLocalizations {
       'Tema, naršymas, pagrindinės eilutės ir bibliotekos matomumas';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Šoninė juosta, pradžios ekrano eilutės, bibliotekos, išsamios informacijos puslapiai ir ekrano užsklanda';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Klaviatūra ir žaidimų valdiklis';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Mygtukai, informacija, skyriai ir rekomendacijos';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Šoninės juostos elementai ir automatinis pasirinkimas';
+
+  @override
+  String get plexHomeScreenSubtitle => 'Eilutės, jų tvarka ir Žiūrėti toliau';
+
+  @override
   String get settingsDynamicContent => 'Dinaminis turinys';
 
   @override

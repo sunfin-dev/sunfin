@@ -10073,6 +10073,25 @@ class AppLocalizationsRo extends AppLocalizations {
       'Tema, navigarea, rândurile din ecranul principal și vizibilitatea bibliotecilor';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Bară laterală, rânduri de pornire, biblioteci, pagini de detalii și screensaver';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Tastatură și controler de jocuri';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Butoane, informații, secțiuni și recomandări';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Elementele barei laterale și selecție automată';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Rânduri, ordinea lor și Continuă vizionarea';
+
+  @override
   String get settingsDynamicContent => 'Conținut dinamic';
 
   @override

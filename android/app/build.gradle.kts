@@ -122,8 +122,11 @@ android {
             // Plexfin: the suffix only keeps this build installable next to
             // stock Moonfin; the name already tells them apart, so no "Test".
             manifestPlaceholders["appName"] = baseAppName
-            // Impeller off on TV: the GLES fallback stutters on TV-box GPUs.
-            manifestPlaceholders["enableImpeller"] = "false"
+            // Plexfin: Impeller (Vulkan) on. Measured on the Shield 2026-10-26:
+            // Skia froze 80-150 ms per remote press on details pages, Impeller
+            // stays near 16 ms; home is smooth on both. Upstream keeps it off
+            // for PowerVR boxes, whose GLES fallback stutters.
+            manifestPlaceholders["enableImpeller"] = "true"
         }
         create("androidTv-beta") {
             dimension = "device"

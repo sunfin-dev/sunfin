@@ -31,7 +31,7 @@ abstract final class PlexStyle {
 
   /// How long the page tint takes to follow a new item (PlexBackdrop); the
   /// rail fades its colour over the same time so the two stay matched.
-  static const tintDuration = Duration(milliseconds: 400);
+  static const tintDuration = PlexMotion.crossfade;
 
   /// Multiplies a 960-wide measurement onto Moonfin's TV canvas.
   static double s(double v960) => v960 * _k;
@@ -91,6 +91,36 @@ abstract final class PlexStyle {
   /// Always on TV, the 10-foot UI it was built for. Not a setting: the look
   /// is fixed, the left rail included (PlexLocks).
   static bool get enabled => PlexLocks.active;
+}
+
+/// Plexfin's one set of motion timings (user, 2026-10-26: quick and steady,
+/// "not overly smooth like Apple", should feel like the app runs well). Short
+/// ease-outs with no overshoot: things start at speed and settle, so the app
+/// answers the remote at once.
+abstract final class PlexMotion {
+  /// A focus ring or poster growing onto the focused item.
+  static const focus = Duration(milliseconds: 120);
+
+  /// Things moving: rows and pages scrolling, the rail opening.
+  static const move = Duration(milliseconds: 200);
+
+  /// Text and controls fading in or out.
+  static const fade = Duration(milliseconds: 160);
+
+  /// Backdrop art and the page tint following the focused item.
+  static const crossfade = Duration(milliseconds: 280);
+
+  /// One page replacing another.
+  static const page = Duration(milliseconds: 240);
+
+  static const curve = Curves.easeOutCubic;
+
+  /// A new page fades in once its first, heavy frames are built, so the
+  /// part of the fade that is seen runs smooth.
+  static const pageIn = Interval(0.25, 1, curve: Curves.easeOutCubic);
+
+  /// A closing page fades straight out.
+  static const pageOut = Curves.easeInCubic;
 }
 
 /// Plex's sidebar icons are thin outlines; Material Symbols drawn at this

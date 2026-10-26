@@ -9632,6 +9632,21 @@ class AppLocalizationsZh extends AppLocalizations {
   String get settingsPersonalizationSubtitle => '主题、导航、首页栏目和媒体库可见性';
 
   @override
+  String get plexPersonalizationSubtitle => '侧边栏、首页行、媒体库、详情页和屏幕保护程序';
+
+  @override
+  String get plexGeneralStyleSubtitle => '键盘和游戏手柄';
+
+  @override
+  String get plexDetailsScreenSubtitle => '按钮、信息、栏目和推荐';
+
+  @override
+  String get plexNavigationSubtitle => '侧边栏项目和自动选择';
+
+  @override
+  String get plexHomeScreenSubtitle => '行、排列顺序和继续观看';
+
+  @override
   String get settingsDynamicContent => '动态内容';
 
   @override
@@ -21160,6 +21175,21 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get settingsPersonalizationSubtitle => '主題、導覽、首頁和媒體庫顯示設定';
+
+  @override
+  String get plexPersonalizationSubtitle => '側邊欄、首頁列、媒體庫、詳細資訊頁面和螢幕保護程式';
+
+  @override
+  String get plexGeneralStyleSubtitle => '鍵盤和遊戲控制器';
+
+  @override
+  String get plexDetailsScreenSubtitle => '按鈕、資訊、區段和推薦';
+
+  @override
+  String get plexNavigationSubtitle => '側邊欄項目和自動選取';
+
+  @override
+  String get plexHomeScreenSubtitle => '列、排列順序和繼續觀看';
 
   @override
   String get settingsDynamicContent => '動態內容';

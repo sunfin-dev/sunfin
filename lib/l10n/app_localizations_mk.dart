@@ -10019,6 +10019,25 @@ class AppLocalizationsMk extends AppLocalizations {
       'Тема, навигација, почетни редови и видливост на библиотеката';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Странична лента, редови на почетната, библиотеки, страници со детали и заштитник на екранот';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Тастатура и контролер за игри';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Копчиња, информации, делови и препораки';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Ставки од страничната лента и автоматски избор';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Редови, нивниот редослед и Продолжи со гледање';
+
+  @override
   String get settingsDynamicContent => 'Динамичка содржина';
 
   @override

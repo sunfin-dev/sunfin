@@ -9965,6 +9965,25 @@ class AppLocalizationsSv extends AppLocalizations {
       'Tema, navigering, hemrader och bibliotekssynlighet';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Sidofält, startrader, bibliotek, detaljsidor och skärmsläckare';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Tangentbord och handkontroll';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Knappar, info, avsnitt och rekommendationer';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Objekt i sidofältet och automatiskt val';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Rader, deras ordning och Fortsätt titta';
+
+  @override
   String get settingsDynamicContent => 'Dynamiskt innehåll';
 
   @override

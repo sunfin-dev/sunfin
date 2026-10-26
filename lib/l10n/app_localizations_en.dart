@@ -9886,6 +9886,24 @@ class AppLocalizationsEn extends AppLocalizations {
       'Theme, navigation, home rows, and library visibility';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Sidebar, home rows, libraries, details pages and screensaver';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Keyboard and game controller';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Buttons, info, sections and recommendations';
+
+  @override
+  String get plexNavigationSubtitle => 'Sidebar items and auto-select';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Rows, their order and Continue Watching';
+
+  @override
   String get settingsDynamicContent => 'Dynamic Content';
 
   @override

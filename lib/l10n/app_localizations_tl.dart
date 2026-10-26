@@ -10048,6 +10048,25 @@ class AppLocalizationsTl extends AppLocalizations {
       'Tema, nabigasyon, home row, at visibility ng library';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Sidebar, mga hilera sa home, mga library, mga pahina ng detalye at screensaver';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Keyboard at game controller';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Mga button, impormasyon, seksyon at rekomendasyon';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Mga item sa sidebar at awtomatikong pagpili';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Mga hilera, ang kanilang pagkakasunod at Magpatuloy sa Panonood';
+
+  @override
   String get settingsDynamicContent => 'Dynamic na Nilalaman';
 
   @override

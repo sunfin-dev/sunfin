@@ -10003,6 +10003,24 @@ class AppLocalizationsNl extends AppLocalizations {
       'Thema, navigatie, startrijen en zichtbaarheid van de bibliotheek';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Zijbalk, startrijen, bibliotheken, detailpagina\'s en schermbeveiliging';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Toetsenbord en gamecontroller';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Knoppen, info, secties en aanbevelingen';
+
+  @override
+  String get plexNavigationSubtitle => 'Zijbalkitems en automatisch selecteren';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Rijen, hun volgorde en Ga door met kijken';
+
+  @override
   String get settingsDynamicContent => 'Dynamische inhoud';
 
   @override

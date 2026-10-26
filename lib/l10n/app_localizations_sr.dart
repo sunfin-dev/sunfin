@@ -10176,6 +10176,24 @@ class AppLocalizationsSr extends AppLocalizations {
       'Тема, навигација, почетни редови и видљивост библиотеке';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Бочна трака, редови почетног екрана, библиотеке, странице са детаљима и чувар екрана';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Тастатура и контролер за игре';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Дугмад, информације, одељци и препоруке';
+
+  @override
+  String get plexNavigationSubtitle => 'Ставке бочне траке и аутоматски избор';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Редови, њихов редослед и Наставите са гледањем';
+
+  @override
   String get settingsDynamicContent => 'Динамиц Цонтент';
 
   @override

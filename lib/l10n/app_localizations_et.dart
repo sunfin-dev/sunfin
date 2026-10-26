@@ -9963,6 +9963,24 @@ class AppLocalizationsEt extends AppLocalizations {
       'Teema, navigeerimine, avaread ja teegi nähtavus';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Külgriba, avalehe read, teegid, üksikasjade lehed ja ekraanisäästja';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Klaviatuur ja mängupult';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Nupud, teave, jaotised ja soovitused';
+
+  @override
+  String get plexNavigationSubtitle => 'Külgriba üksused ja automaatne valik';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Read, nende järjekord ja Jätka vaatamist';
+
+  @override
   String get settingsDynamicContent => 'Dünaamiline sisu';
 
   @override

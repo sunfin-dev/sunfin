@@ -10087,6 +10087,26 @@ class AppLocalizationsEl extends AppLocalizations {
       'Θέμα, πλοήγηση, αρχικές σειρές και ορατότητα βιβλιοθήκης';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Πλαϊνή στήλη, σειρές αρχικής, βιβλιοθήκες, σελίδες λεπτομερειών και προφύλαξη οθόνης';
+
+  @override
+  String get plexGeneralStyleSubtitle =>
+      'Πληκτρολόγιο και χειριστήριο παιχνιδιών';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Κουμπιά, πληροφορίες, ενότητες και προτάσεις';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Στοιχεία πλαϊνής στήλης και αυτόματη επιλογή';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Σειρές, η σειρά τους και Συνεχίστε την παρακολούθηση';
+
+  @override
   String get settingsDynamicContent => 'Δυναμικό περιεχόμενο';
 
   @override

@@ -9940,6 +9940,23 @@ class AppLocalizationsAr extends AppLocalizations {
       'السمة والملاحة والصفوف الرئيسية ورؤية المكتبة';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'الشريط الجانبي وصفوف الصفحة الرئيسية والمكتبات وصفحات التفاصيل وشاشة التوقف';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'لوحة المفاتيح ووحدة تحكم الألعاب';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'الأزرار والمعلومات والأقسام والتوصيات';
+
+  @override
+  String get plexNavigationSubtitle => 'عناصر الشريط الجانبي والتحديد التلقائي';
+
+  @override
+  String get plexHomeScreenSubtitle => 'الصفوف وترتيبها ومواصلة المشاهدة';
+
+  @override
   String get settingsDynamicContent => 'المحتوى الديناميكي';
 
   @override

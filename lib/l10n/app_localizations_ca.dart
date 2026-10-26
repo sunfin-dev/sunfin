@@ -10112,6 +10112,24 @@ class AppLocalizationsCa extends AppLocalizations {
       'Tema, navegació, files d\'inici i visibilitat de la biblioteca';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Barra lateral, files d\'inici, biblioteques, pàgines de detalls i salvapantalles';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Teclat i comandament de joc';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Botons, informació, seccions i recomanacions';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Elements de la barra lateral i selecció automàtica';
+
+  @override
+  String get plexHomeScreenSubtitle => 'Files, el seu ordre i Continuar mirant';
+
+  @override
   String get settingsDynamicContent => 'Contingut dinàmic';
 
   @override

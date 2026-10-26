@@ -9965,6 +9965,24 @@ class AppLocalizationsTr extends AppLocalizations {
       'Tema, gezinme, ana sayfa satırları ve kitaplık görünürlüğü';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Kenar çubuğu, ana sayfa satırları, kitaplıklar, ayrıntı sayfaları ve ekran koruyucu';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Klavye ve oyun kumandası';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Düğmeler, bilgiler, bölümler ve öneriler';
+
+  @override
+  String get plexNavigationSubtitle => 'Kenar çubuğu öğeleri ve otomatik seçim';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Satırlar, sıraları ve İzlemeye Devam Et';
+
+  @override
   String get settingsDynamicContent => 'Dinamik İçerik';
 
   @override

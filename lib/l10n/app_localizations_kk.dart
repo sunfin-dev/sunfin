@@ -9994,6 +9994,25 @@ class AppLocalizationsKk extends AppLocalizations {
       'Тақырып, шарлау, негізгі жолдар және кітапхананың көрінуі';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Бүйірлік панель, басты бет жолдары, кітапханалар, толық ақпарат беттері және скринсейвер';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Пернетақта және ойын контроллері';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Түймелер, ақпарат, бөлімдер және ұсыныстар';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Бүйірлік панель элементтері және автоматты таңдау';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Жолдар, олардың реті және «Көруді жалғастыру»';
+
+  @override
   String get settingsDynamicContent => 'Динамикалық мазмұн';
 
   @override

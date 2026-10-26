@@ -30,6 +30,7 @@ import '../../util/platform_detection.dart';
 import '../navigation/destinations.dart';
 import '../navigation/home_refresh_bus.dart';
 import '../navigation/route_lifecycle_observer.dart';
+import '../plex/plex_icons.dart';
 import '../plex/plex_style.dart';
 import 'navigation_layout.dart';
 import 'settings/settings_panel.dart';
@@ -55,7 +56,7 @@ import 'adaptive/sf_symbol.dart';
 
 const _kExpandedWidthDesktop = 240.0;
 const _kExpandedWidthMobile = 260.0;
-const _kExpandDuration = Duration(milliseconds: 200);
+const _kExpandDuration = PlexMotion.move;
 const _kExpandedWidthTV = 280.0;
 const _kCollapsedWidthTV = 72.0;
 const _kExpandedBackdropWidthTV = _kExpandedWidthTV - 16.0;
@@ -82,7 +83,7 @@ class LeftSidebar extends StatefulWidget {
   );
 
   static const expandDuration = _kExpandDuration;
-  static const expandCurve = Curves.easeInOut;
+  static const expandCurve = PlexMotion.curve;
 
   /// Plex mode: how wide the open rail is. It fits the longest label the
   /// rail shows (a long library name widens it), so the layout reads it here
@@ -1149,9 +1150,12 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
     final seerrPrefs = GetIt.instance<SeerrPreferences>();
     final seerrNavLabel = seerrPrefs.labelOrDefault(l10n.seerr);
     final clockBehavior = _prefs.get(UserPreferences.clockBehavior);
+    // Plexfin: the clock lives in the page's top right, as in Plex, so the
+    // open rail doesn't show a second one.
     final showClock =
-        clockBehavior == ClockBehavior.always ||
-        clockBehavior == ClockBehavior.inMenus;
+        !plexMode &&
+        (clockBehavior == ClockBehavior.always ||
+            clockBehavior == ClockBehavior.inMenus);
     return Column(
       children: [
         Visibility(
@@ -1268,12 +1272,14 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                     key: const ValueKey('sidebar-genres'),
                     autoSelect: true,
                     baseColor: nextMainSidebarColor(),
-                    iconBuilder: (size, color) => Image.asset(
-                      'assets/icons/genres.png',
-                      width: size,
-                      height: size,
-                      color: color,
-                    ),
+                    iconBuilder: plexMode
+                        ? plexGenresIcon
+                        : (size, color) => Image.asset(
+                            'assets/icons/genres.png',
+                            width: size,
+                            height: size,
+                            color: color,
+                          ),
                     label: l10n.genres,
                     showLabel: _showLabels,
                     onPressed: () {
@@ -1874,6 +1880,10 @@ class _SidebarItemState extends State<_SidebarItem> {
                       count: widget.badgeCount,
                       child:
                           widget.iconBuilder?.call(iconSize, fgColor) ??
+                          // Plex's own thin-line drawings (plex_icons.dart).
+                          (PlexStyle.enabled
+                              ? plexRailIcon(widget.icon, iconSize, fgColor)
+                              : null) ??
                           (widget.icon != null
                               ? (PlexStyle.enabled
                                     // Thin outline icons, as in Plex.

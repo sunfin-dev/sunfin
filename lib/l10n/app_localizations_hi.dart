@@ -9931,6 +9931,23 @@ class AppLocalizationsHi extends AppLocalizations {
       'थीम, नेविगेशन, होम पंक्तियाँ और लाइब्रेरी दृश्यता';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'साइडबार, होम पंक्तियाँ, लाइब्रेरी, विवरण पेज और स्क्रीन सेवर';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'कीबोर्ड और गेम कंट्रोलर';
+
+  @override
+  String get plexDetailsScreenSubtitle => 'बटन, जानकारी, अनुभाग और सुझाव';
+
+  @override
+  String get plexNavigationSubtitle => 'साइडबार आइटम और अपने-आप चयन';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'पंक्तियाँ, उनका क्रम और देखना जारी रखें';
+
+  @override
   String get settingsDynamicContent => 'गतिशील सामग्री';
 
   @override

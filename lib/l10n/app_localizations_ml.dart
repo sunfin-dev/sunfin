@@ -10060,6 +10060,24 @@ class AppLocalizationsMl extends AppLocalizations {
       'തീം, നാവിഗേഷൻ, ഹോം വരികൾ, ലൈബ്രറി ദൃശ്യപരത';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'സൈഡ്‌ബാർ, ഹോം വരികൾ, ലൈബ്രറികൾ, വിശദാംശ പേജുകൾ, സ്ക്രീൻ സേവർ';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'കീബോർഡും ഗെയിം കൺട്രോളറും';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'ബട്ടണുകൾ, വിവരങ്ങൾ, വിഭാഗങ്ങൾ, ശുപാർശകൾ';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'സൈഡ്‌ബാർ ഇനങ്ങളും സ്വയമേവയുള്ള തിരഞ്ഞെടുപ്പും';
+
+  @override
+  String get plexHomeScreenSubtitle => 'വരികൾ, അവയുടെ ക്രമം, കാണുന്നത് തുടരുക';
+
+  @override
   String get settingsDynamicContent => 'ഡൈനാമിക് ഉള്ളടക്കം';
 
   @override

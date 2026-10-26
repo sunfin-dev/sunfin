@@ -9954,6 +9954,23 @@ class AppLocalizationsVi extends AppLocalizations {
       'Chủ đề, điều hướng, hàng nhà và khả năng hiển thị thư viện';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Thanh bên, các hàng trang chủ, thư viện, trang chi tiết và trình bảo vệ màn hình';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Bàn phím và tay cầm chơi game';
+
+  @override
+  String get plexDetailsScreenSubtitle => 'Nút, thông tin, mục và đề xuất';
+
+  @override
+  String get plexNavigationSubtitle => 'Mục trên thanh bên và tự động chọn';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Các hàng, thứ tự của chúng và Tiếp tục xem';
+
+  @override
   String get settingsDynamicContent => 'Nội dung động';
 
   @override

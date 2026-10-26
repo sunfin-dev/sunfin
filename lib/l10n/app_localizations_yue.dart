@@ -9670,6 +9670,21 @@ class AppLocalizationsYue extends AppLocalizations {
   String get settingsPersonalizationSubtitle => '主題、導航、主行和庫可見性';
 
   @override
+  String get plexPersonalizationSubtitle => '側邊欄、主頁列、媒體庫、詳情頁同螢幕保護程式';
+
+  @override
+  String get plexGeneralStyleSubtitle => '鍵盤同遊戲手掣';
+
+  @override
+  String get plexDetailsScreenSubtitle => '按鈕、資訊、分區同推薦';
+
+  @override
+  String get plexNavigationSubtitle => '側邊欄項目同自動揀選';
+
+  @override
+  String get plexHomeScreenSubtitle => '列、排列次序同繼續觀看';
+
+  @override
   String get settingsDynamicContent => '動態內容';
 
   @override

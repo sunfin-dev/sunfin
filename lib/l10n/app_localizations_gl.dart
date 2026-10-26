@@ -10074,6 +10074,24 @@ class AppLocalizationsGl extends AppLocalizations {
       'Tema, navegación, filas de inicio e visibilidade da biblioteca';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Barra lateral, filas de inicio, bibliotecas, páxinas de detalles e salvapantallas';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Teclado e mando de xogos';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Botóns, información, seccións e recomendacións';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Elementos da barra lateral e selección automática';
+
+  @override
+  String get plexHomeScreenSubtitle => 'Filas, a súa orde e Seguir vendo';
+
+  @override
   String get settingsDynamicContent => 'Contido dinámico';
 
   @override

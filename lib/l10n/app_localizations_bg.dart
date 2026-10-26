@@ -10040,6 +10040,25 @@ class AppLocalizationsBg extends AppLocalizations {
       'Тема, навигация, начални редове и видимост на библиотеката';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Странична лента, редове на началния екран, библиотеки, страници с подробности и скрийнсейвър';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Клавиатура и геймпад';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Бутони, информация, раздели и препоръки';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Елементи на страничната лента и автоматичен избор';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Редове, тяхната подредба и „Продължете да гледате“';
+
+  @override
   String get settingsDynamicContent => 'Динамично съдържание';
 
   @override

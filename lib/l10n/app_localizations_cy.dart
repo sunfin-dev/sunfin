@@ -10003,6 +10003,23 @@ class AppLocalizationsCy extends AppLocalizations {
       'Thema, llywio, rhesi cartref, a gwelededd llyfrgell';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Bar ochr, rhesi cartref, llyfrgelloedd, tudalennau manylion ac arbedwr sgrin';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Bysellfwrdd a rheolydd gemau';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Botymau, gwybodaeth, adrannau ac argymhellion';
+
+  @override
+  String get plexNavigationSubtitle => 'Eitemau\'r bar ochr a dewis awtomatig';
+
+  @override
+  String get plexHomeScreenSubtitle => 'Rhesi, eu trefn a Parhewch i Wylio';
+
+  @override
   String get settingsDynamicContent => 'Cynnwys Dynamig';
 
   @override

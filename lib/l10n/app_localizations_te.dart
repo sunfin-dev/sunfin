@@ -10015,6 +10015,24 @@ class AppLocalizationsTe extends AppLocalizations {
       'థీమ్, నావిగేషన్, ఇంటి అడ్డు వరుసలు మరియు లైబ్రరీ విజిబిలిటీ';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'సైడ్‌బార్, హోమ్ వరుసలు, లైబ్రరీలు, వివరాల పేజీలు మరియు స్క్రీన్‌సేవర్';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'కీబోర్డ్ మరియు గేమ్ కంట్రోలర్';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'బటన్‌లు, సమాచారం, విభాగాలు మరియు సిఫార్సులు';
+
+  @override
+  String get plexNavigationSubtitle => 'సైడ్‌బార్ అంశాలు మరియు స్వయంచాలక ఎంపిక';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'వరుసలు, వాటి క్రమం మరియు చూడటం కొనసాగించండి';
+
+  @override
   String get settingsDynamicContent => 'డైనమిక్ కంటెంట్';
 
   @override

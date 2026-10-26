@@ -10020,6 +10020,25 @@ class AppLocalizationsPt extends AppLocalizations {
       'Tema, navegação, linhas iniciais e visibilidade da biblioteca';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Barra lateral, linhas iniciais, bibliotecas, páginas de detalhes e proteção de tela';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Teclado e controle de jogo';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Botões, informações, seções e recomendações';
+
+  @override
+  String get plexNavigationSubtitle =>
+      'Itens da barra lateral e seleção automática';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Linhas, sua ordem e Continuar Assistindo';
+
+  @override
   String get settingsDynamicContent => 'Conteúdo Dinâmico';
 
   @override

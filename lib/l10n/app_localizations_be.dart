@@ -10000,6 +10000,24 @@ class AppLocalizationsBe extends AppLocalizations {
       'Тэма, навігацыя, хатнія радкі і бачнасць бібліятэкі';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'Бакавая панэль, радкі галоўнай, бібліятэкі, старонкі падрабязнасцей і застаўка';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'Клавіятура і гульнявы кантролер';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'Кнопкі, інфармацыя, раздзелы і рэкамендацыі';
+
+  @override
+  String get plexNavigationSubtitle => 'Элементы бакавой панэлі і аўтавыбар';
+
+  @override
+  String get plexHomeScreenSubtitle =>
+      'Радкі, іх парадак і «Працягнуць прагляд»';
+
+  @override
   String get settingsDynamicContent => 'Дынамічны кантэнт';
 
   @override

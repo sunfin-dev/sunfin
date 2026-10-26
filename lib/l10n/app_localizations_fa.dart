@@ -9901,6 +9901,23 @@ class AppLocalizationsFa extends AppLocalizations {
       'طرح زمینه، پیمایش، ردیف‌های اصلی و قابلیت مشاهده کتابخانه';
 
   @override
+  String get plexPersonalizationSubtitle =>
+      'نوار کناری، ردیف‌های صفحه اصلی، کتابخانه‌ها، صفحه‌های جزئیات و محافظ صفحه نمایش';
+
+  @override
+  String get plexGeneralStyleSubtitle => 'صفحه‌کلید و دسته بازی';
+
+  @override
+  String get plexDetailsScreenSubtitle =>
+      'دکمه‌ها، اطلاعات، بخش‌ها و پیشنهادها';
+
+  @override
+  String get plexNavigationSubtitle => 'موارد نوار کناری و انتخاب خودکار';
+
+  @override
+  String get plexHomeScreenSubtitle => 'ردیف‌ها، ترتیب آن‌ها و ادامه تماشا';
+
+  @override
   String get settingsDynamicContent => 'محتوای پویا';
 
   @override
