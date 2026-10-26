@@ -6,6 +6,9 @@ import 'shared/nouveau_spacing.dart';
 class NouveauLandscapeLayout extends StatelessWidget {
   final Widget backdrop;
   final Widget hero;
+
+  /// Positioned widgets laid over the top of the hero, scrolling with it.
+  final List<Widget> heroOverlays;
   final List<Widget> sections;
   final ScrollController scrollController;
 
@@ -21,6 +24,7 @@ class NouveauLandscapeLayout extends StatelessWidget {
     super.key,
     required this.backdrop,
     required this.hero,
+    this.heroOverlays = const [],
     required this.sections,
     required this.scrollController,
     this.heroPadding = EdgeInsets.zero,
@@ -65,25 +69,27 @@ class NouveauLandscapeLayout extends StatelessWidget {
           slivers: [
             if (compactFirstFold) ...[
               SliverToBoxAdapter(
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(minHeight: size.height),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: compactHeroFrameHeight,
-                        child: Padding(padding: heroPadding, child: hero),
-                      ),
+                child: _withHeroOverlays(
+                  ConstrainedBox(
+                    constraints: BoxConstraints(minHeight: size.height),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: compactHeroFrameHeight,
+                          child: Padding(padding: heroPadding, child: hero),
+                        ),
 
-                      if (compactHeroToSectionSpacing > 0)
-                        SizedBox(height: compactHeroToSectionSpacing),
+                        if (compactHeroToSectionSpacing > 0)
+                          SizedBox(height: compactHeroToSectionSpacing),
 
-                      Padding(
-                        padding: firstSectionPadding,
-                        child: firstSection,
-                      ),
-                    ],
+                        Padding(
+                          padding: firstSectionPadding,
+                          child: firstSection,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -100,7 +106,9 @@ class NouveauLandscapeLayout extends StatelessWidget {
                 ),
             ] else ...[
               SliverToBoxAdapter(
-                child: Padding(padding: nonCompactHeroPadding, child: hero),
+                child: _withHeroOverlays(
+                  Padding(padding: nonCompactHeroPadding, child: hero),
+                ),
               ),
 
               if (sections.isNotEmpty)
@@ -134,5 +142,10 @@ class NouveauLandscapeLayout extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  Widget _withHeroOverlays(Widget child) {
+    if (heroOverlays.isEmpty) return child;
+    return Stack(children: [child, ...heroOverlays]);
   }
 }

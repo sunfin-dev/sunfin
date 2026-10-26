@@ -8,6 +8,7 @@ import '../../preference/user_preferences.dart';
 import '../../util/focus/dpad_keys.dart';
 import '../../util/platform_detection.dart';
 import '../../util/overlay_color_palette.dart';
+import '../plex/plex_clock.dart';
 import '../plex/plex_style.dart';
 import 'bottom_nav/bottom_navbar.dart';
 import 'download_progress_bar.dart';
@@ -30,6 +31,10 @@ class NavigationLayout extends StatefulWidget {
   /// Keep the top toolbar fixed instead of letting it translate away as the
   /// content scrolls. No effect off-TV, where the toolbar is already fixed.
   final bool pinTopToolbar;
+
+  /// Plex mode: the clock in the top right, fixed to the screen so it stays put
+  /// while the page slides beside the opening rail (Plex home).
+  final bool plexClock;
 
   static bool get allowBottomNavbar =>
       PlatformDetection.useMobileUi && !PlatformDetection.isWeb;
@@ -109,6 +114,7 @@ class NavigationLayout extends StatefulWidget {
     this.showBackButton = false,
     this.showNavigationChrome = true,
     this.pinTopToolbar = false,
+    this.plexClock = false,
   });
 
   @override
@@ -587,6 +593,7 @@ class _NavigationLayoutState extends State<NavigationLayout>
                     child: body,
                   ),
                   Positioned(top: 0, left: 0, bottom: 0, child: sidebar),
+                  if (widget.plexClock) PlexClock.corner(),
                 ],
               );
             },

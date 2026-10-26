@@ -116,7 +116,19 @@ class _PlaybackTimeLayoutScreenState extends State<_PlaybackTimeLayoutScreen> {
       description: l10n.playbackTimeSlotDescription,
       icon: icon,
       autofocus: autofocus,
-      labelOf: (v) => _slotLabel(l10n, v),
+      // Plexfin: the clock has its own place in the player's top right.
+      values: PlexLocks.active
+          ? [
+              for (final slot in PlaybackTimeSlot.values)
+                if (slot != PlaybackTimeSlot.time) slot,
+            ]
+          : null,
+      labelOf: (v) => _slotLabel(
+        l10n,
+        PlexLocks.active && v == PlaybackTimeSlot.time
+            ? PlaybackTimeSlot.none
+            : v,
+      ),
     );
   }
 

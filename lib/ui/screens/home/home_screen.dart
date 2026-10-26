@@ -114,6 +114,41 @@ const _kPlexRowTitleGap = 12.0 * PlexStyle.k;
 /// reference).
 const _kPlexRowPitch = 231.0 * PlexStyle.k;
 
+/// Where a card in a home row opens. In Plex mode a show opens Plex's show
+/// page from every row, as in Plex (user, 2026-10-26), and so does an episode
+/// outside Continue Watching and Next Up, since its card is the show's poster.
+/// Those two rows keep opening the season page at the episode.
+String _homeItemDestination(HomeRow row, AggregatedItem item) {
+  if (PlexStyle.enabled) {
+    if (item.type == 'Series') {
+      return Destinations.item(
+        item.id,
+        serverId: item.serverId,
+        showOverview: true,
+      );
+    }
+    final seriesId = item.seriesId;
+    final resumeRow =
+        row.rowType == HomeRowType.resume || row.rowType == HomeRowType.nextUp;
+    if (item.type == 'Episode' &&
+        !resumeRow &&
+        seriesId != null &&
+        seriesId.isNotEmpty) {
+      return Destinations.item(
+        seriesId,
+        serverId: item.serverId,
+        showOverview: true,
+      );
+    }
+  }
+  return Destinations.itemOrPhoto(
+    item.id,
+    serverId: item.serverId,
+    type: item.type,
+    channelId: item.channelId,
+  );
+}
+
 /// How far a focused card grows past the top of its row. The scale is anchored
 /// at the bottom of the artwork, so all of the growth goes upward.
 double _focusHeadroom(double imageHeight, bool cardExpansion) =>
@@ -578,6 +613,7 @@ class _HomeShellState extends State<_HomeShell>
         backgroundColor: _homeBackground,
         body: NavigationLayout(
           activeRoute: Destinations.home,
+          plexClock: true,
           child: QuickReturnWrapper(
             isAtStart: _isScrolledToTopNotifier,
             onReturn: () => _contentRowsKey.currentState?.returnToTop(),
@@ -5145,14 +5181,7 @@ class _ContentRowsState extends State<_ContentRows>
           } else if (item.serverId == 'seerr') {
             _navigateToSeerrItem(context, item);
           } else {
-            context.push(
-              Destinations.itemOrPhoto(
-                item.id,
-                serverId: item.serverId,
-                type: item.type,
-                channelId: item.channelId,
-              ),
-            );
+            context.push(_homeItemDestination(row, item));
           }
         },
         itemBuilder: (ctx, item, idx, isFocused) {
@@ -5180,14 +5209,7 @@ class _ContentRowsState extends State<_ContentRows>
                 if (item.serverId == 'seerr') {
                   _navigateToSeerrItem(context, item);
                 } else {
-                  context.push(
-                    Destinations.itemOrPhoto(
-                      item.id,
-                      serverId: item.serverId,
-                      type: item.type,
-                      channelId: item.channelId,
-                    ),
-                  );
+                  context.push(_homeItemDestination(row, item));
                 }
               },
               onLongPress: () => showContextMenu(
@@ -5289,14 +5311,7 @@ class _ContentRowsState extends State<_ContentRows>
                     } else if (item.serverId == 'seerr') {
                       _navigateToSeerrItem(context, item);
                     } else {
-                      context.push(
-                        Destinations.itemOrPhoto(
-                          item.id,
-                          serverId: item.serverId,
-                          type: item.type,
-                          channelId: item.channelId,
-                        ),
-                      );
+                      context.push(_homeItemDestination(row, item));
                     }
                   }
 

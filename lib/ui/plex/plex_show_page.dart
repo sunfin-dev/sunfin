@@ -611,11 +611,7 @@ class _PlexShowPageState extends State<PlexShowPage> {
             ),
           ),
         ),
-        Positioned(
-          top: PlexStyle.s(24),
-          right: PlexStyle.s(44),
-          child: const PlexClock(),
-        ),
+        PlexClock.corner(),
         // Only there to play: its playback path queues the rest of the show
         // and handles prerolls and the external player, as on every page.
         Offstage(

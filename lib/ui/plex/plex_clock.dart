@@ -10,6 +10,13 @@ import 'plex_style.dart';
 class PlexClock extends StatefulWidget {
   const PlexClock({super.key});
 
+  /// The clock where Plex puts it on every page, for a page's Stack.
+  static Widget corner() => Positioned(
+    top: PlexStyle.s(24),
+    right: PlexStyle.s(44),
+    child: const IgnorePointer(child: PlexClock()),
+  );
+
   @override
   State<PlexClock> createState() => _PlexClockState();
 }

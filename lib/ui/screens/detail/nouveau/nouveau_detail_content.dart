@@ -16,6 +16,7 @@ import '../../../../preference/user_preferences.dart';
 import '../../../../util/platform_detection.dart';
 import '../../../../util/seerr_credits.dart';
 import '../../../plex/plex_backdrop.dart';
+import '../../../plex/plex_clock.dart';
 import '../../../plex/plex_style.dart';
 import '../../../widgets/fullscreen_backdrop_switcher.dart';
 import '../../../widgets/navigation_layout.dart';
@@ -1031,6 +1032,8 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
     return NouveauLandscapeLayout(
       backdrop: backdrop,
       hero: hero,
+      // Plex's clock sits at the page's top right and scrolls away with it.
+      heroOverlays: [if (PlexStyle.enabled) PlexClock.corner()],
       sections: sections,
       scrollController: _scrollController,
       heroPadding: landscapeContentInsets,

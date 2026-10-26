@@ -22,6 +22,8 @@ import '../../../data/utils/video_range_label.dart';
 import '../../../playback/subtitle_style.dart';
 import '../../../util/fullscreen_helper.dart';
 import '../../../util/scroll_sensitivity_binding.dart';
+import '../../plex/plex_clock.dart';
+import '../../plex/plex_style.dart';
 import '../../widgets/player_volume_control.dart';
 import '../../widgets/playback/playback_time_row.dart';
 import '../../widgets/playback/player_logo.dart';
@@ -2995,6 +2997,13 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
   // After a transport action from a remote key, reveal the OSD and focus the
   // seekbar when it was hidden, or the primary button when it was already up.
   void _revealControlsAfterTransport() {
+    if (PlexStyle.enabled) {
+      // Plexfin: as in Plex, the remote's play/pause key only plays or
+      // pauses. Hidden controls stay hidden and focus stays where it was
+      // (user, 2026-10-26).
+      if (_controlsVisible) _scheduleHide();
+      return;
+    }
     if (!_controlsVisible) {
       _showControls(focusSeekbar: true);
     } else {
@@ -3012,6 +3021,22 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
         Future<void>.delayed(const Duration(milliseconds: 50), () {
           if (!mounted) return;
           _focusTvSeekbar(attempt: attempt + 1);
+        });
+      }
+    });
+  }
+
+  /// The play/pause button, retried like the seek bar while the controls
+  /// that were just shown are still being laid out.
+  void _focusTvPlayPause({int attempt = 0}) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !_controlsVisible || _isOsdLocked) return;
+      _primaryPlayFocus.requestFocus();
+
+      if (!_primaryPlayFocus.hasFocus && attempt < 8) {
+        Future<void>.delayed(const Duration(milliseconds: 50), () {
+          if (!mounted) return;
+          _focusTvPlayPause(attempt: attempt + 1);
         });
       }
     });
@@ -3358,6 +3383,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
       _manager.pause();
     } else {
       _togglePlayPause();
+    }
+    if (PlexStyle.enabled) {
+      _revealControlsAfterTransport();
+      return KeyEventResult.handled;
     }
     _showControls();
     _focusTvPrimaryButton();
@@ -3810,6 +3839,15 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
             return KeyEventResult.ignored;
           }
           if (!_controlsVisible) {
+            if (PlexStyle.enabled &&
+                event.logicalKey == LogicalKeyboardKey.arrowUp &&
+                !_isSkipSegmentButtonVisible) {
+              // Plexfin: up brings the controls with play/pause focused, as
+              // in Plex, not the seek bar (user, 2026-10-26).
+              _showControls();
+              _focusTvPlayPause();
+              return KeyEventResult.handled;
+            }
             _showControls(focusSeekbar: true);
             return KeyEventResult.handled;
           }
@@ -4114,6 +4152,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                         // these widgets are still what gets hit-tested - only
                         // their pixels are re-sent by HdrOverlayCapture.
                         _buildTopOverlay(context),
+                        // Plexfin: the clock comes up with the controls, top
+                        // right, where every Plex page has it (user,
+                        // 2026-10-26).
+                        if (PlexStyle.enabled) PlexClock.corner(),
                         if (!PlatformDetection.useLeanbackUi)
                           Positioned.fill(
                             child: Center(
@@ -4653,6 +4695,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
               ),
             const SizedBox(width: AppSpacing.spaceSm),
             Expanded(child: _buildTitleInfo()),
+            // Keeps a long title clear of the clock.
+            if (PlexStyle.enabled) SizedBox(width: PlexStyle.s(100)),
             if (PlatformDetection.useMobileUi &&
                 _prefs.get(UserPreferences.osdLockEnabled))
               IconButton(
