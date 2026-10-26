@@ -83,7 +83,11 @@ class PlexTintTween extends Tween<PlexTint> {
 class PlexTintPainter extends CustomPainter {
   final PlexTint tint;
 
-  const PlexTintPainter(this.tint);
+  /// Darkens the middle of the box (the page); off for the rail, which only
+  /// continues the page's left edge.
+  final bool shadeMiddle;
+
+  const PlexTintPainter(this.tint, {this.shadeMiddle = true});
 
   static const _columns = 12;
   static const _rows = 8;
@@ -97,14 +101,22 @@ class PlexTintPainter extends CustomPainter {
       for (var col = 0; col <= _columns; col++) {
         final x = col / _columns, y = row / _rows;
         positions.add(Offset(x * size.width, y * size.height));
-        colors.add(tint.at(x, y));
+        final c = tint.at(x, y);
+        colors.add(shadeMiddle ? _shaded(c, x, y) : c);
       }
     }
     const stride = _columns + 1;
     for (var row = 0; row < _rows; row++) {
       for (var col = 0; col < _columns; col++) {
         final i = row * stride + col;
-        indices.addAll([i, i + 1, i + stride, i + 1, i + stride + 1, i + stride]);
+        indices.addAll([
+          i,
+          i + 1,
+          i + stride,
+          i + 1,
+          i + stride + 1,
+          i + stride,
+        ]);
       }
     }
     canvas.drawVertices(
@@ -119,8 +131,24 @@ class PlexTintPainter extends CustomPainter {
     );
   }
 
+  /// Plex's page is darker in the middle, behind the header text, so the
+  /// corners read as lit (about 30% there on the reference screens). The
+  /// edges keep their colour, so the rail still meets the page without a
+  /// seam.
+  static Color _shaded(Color color, double x, double y) {
+    final dx = x - 0.42, dy = y - 0.45;
+    final k = 1 - 0.32 * math.exp(-(dx * dx / 0.07 + dy * dy / 0.1));
+    return Color.from(
+      alpha: color.a,
+      red: color.r * k,
+      green: color.g * k,
+      blue: color.b * k,
+    );
+  }
+
   @override
-  bool shouldRepaint(PlexTintPainter oldDelegate) => oldDelegate.tint != tint;
+  bool shouldRepaint(PlexTintPainter oldDelegate) =>
+      oldDelegate.tint != tint || oldDelegate.shadeMiddle != shadeMiddle;
 }
 
 /// The page tint Plex derives from the backdrop: region averages of the art,
@@ -139,9 +167,9 @@ abstract final class PlexBackdropTint {
   static const _sampleHeight = 9;
   static const _cacheSize = 30;
 
-  /// Where the sample is split into its four quarters.
-  static const _midColumn = _sampleWidth ~/ 2;
-  static const _midRow = 4;
+  /// The size of each corner area of the sample (16x9).
+  static const _cornerColumns = 6;
+  static const _cornerRows = 4;
 
   /// Hue families the dominant colour is chosen among (30 degrees each).
   static const _hueBins = 12;
@@ -200,30 +228,39 @@ abstract final class PlexBackdropTint {
   /// to have a colour.
   @visibleForTesting
   static PlexTint? fromSample(ByteData bytes) {
-    // Each corner of the page from the same corner of the art: its quarter,
-    // overlapping the middle a little so no corner rests on a sliver.
+    // Each corner of the page from the same corner of the art. Corners, not
+    // quarters: on a mostly-sky scene quarters all came out sky blue, where
+    // Plex shows the grass in one corner and a character's hair in another.
     final raw = [
-      _dominant(bytes, (x, y) => x < _midColumn + 1 && y < _midRow + 1),
-      _dominant(bytes, (x, y) => x >= _midColumn - 1 && y < _midRow + 1),
-      _dominant(bytes, (x, y) => x < _midColumn + 1 && y >= _midRow - 1),
-      _dominant(bytes, (x, y) => x >= _midColumn - 1 && y >= _midRow - 1),
+      _dominant(bytes, (x, y) => x < _cornerColumns && y < _cornerRows),
+      _dominant(
+        bytes,
+        (x, y) => x >= _sampleWidth - _cornerColumns && y < _cornerRows,
+      ),
+      _dominant(
+        bytes,
+        (x, y) => x < _cornerColumns && y >= _sampleHeight - _cornerRows,
+      ),
+      _dominant(
+        bytes,
+        (x, y) =>
+            x >= _sampleWidth - _cornerColumns &&
+            y >= _sampleHeight - _cornerRows,
+      ),
     ];
-    // Plex's corners differ in brightness as well as colour (the reference
-    // pages run from about 0.01 to 0.06), which is much of what makes them
-    // look lit rather than flat. Each corner keeps some of its brightness
-    // relative to the others, within a range that stays readable.
-    final lums = [for (final c in raw) c.computeLuminance()];
-    final mean = lums.reduce((a, b) => a + b) / lums.length;
+    // Measured on the Plex TV app (2026-10-26, five titles against the
+    // server's corner colours): each corner keeps the brightness of its
+    // colour in the art, compressed into about 0.018-0.055 luminance, so a
+    // dark scene gives a dark page and a snowy one a lighter one, and the
+    // colours are softer than the art's.
     final corners = [
-      for (var i = 0; i < raw.length; i++)
+      for (final c in raw)
         _darken(
-          raw[i],
-          target: mean <= 0
-              ? targetLuminance
-              : (targetLuminance * math.sqrt(lums[i] / mean)).clamp(
-                  targetLuminance * 0.55,
-                  targetLuminance * 1.3,
-                ),
+          _soften(c),
+          target:
+              (_pageLuminance *
+                      math.sqrt(c.computeLuminance() / _referenceLuminance))
+                  .clamp(_minLuminance, _maxLuminance),
         ),
     ];
     final any = corners.whereType<Color>().firstOrNull;
@@ -322,6 +359,19 @@ abstract final class PlexBackdropTint {
       (g / weight).round(),
       (b / weight).round(),
     );
+  }
+
+  /// Page luminance for a corner whose colour in the art has
+  /// [_referenceLuminance], and the range the corners stay within.
+  static const _pageLuminance = 0.026;
+  static const _referenceLuminance = 0.04;
+  static const _minLuminance = 0.012;
+  static const _maxLuminance = 0.055;
+
+  /// Plex's page colours are less vivid than the art they come from.
+  static Color _soften(Color color) {
+    final hsv = HSVColor.fromColor(color);
+    return hsv.withSaturation(math.min(hsv.saturation * 0.9, 0.72)).toColor();
   }
 
   /// Scales the colour (keeping its hue) until its luminance is [target].

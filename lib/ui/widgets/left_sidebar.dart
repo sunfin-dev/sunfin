@@ -959,7 +959,10 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
           duration: PlexStyle.tintDuration,
           curve: Curves.easeOut,
           builder: (context, value, child) =>
-              CustomPaint(painter: PlexTintPainter(value), child: child),
+              CustomPaint(
+                painter: PlexTintPainter(value, shadeMiddle: false),
+                child: child,
+              ),
           child: child,
         ),
         child: ClipRect(

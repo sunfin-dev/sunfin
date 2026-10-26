@@ -39,8 +39,8 @@ void main() {
     () {
       final tint = PlexBackdropTint.fromSample(theBear)!;
       // Blue clearly over red: the reported bug was a reddish brown here.
-      expect(tint.topLeft.b, greaterThan(tint.topLeft.r + 0.08));
-      expect(tint.topRight.b, greaterThan(tint.topRight.r + 0.08));
+      expect(tint.topLeft.b, greaterThan(tint.topLeft.r + 0.03));
+      expect(tint.topRight.b, greaterThan(tint.topRight.r + 0.03));
     },
   );
 
@@ -57,7 +57,7 @@ void main() {
       tint.bottomLeft,
       tint.bottomRight,
     ]) {
-      expect(c.computeLuminance(), inInclusiveRange(0.025, 0.07));
+      expect(c.computeLuminance(), inInclusiveRange(0.012, 0.06));
     }
   });
 
