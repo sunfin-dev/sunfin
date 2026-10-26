@@ -10000,6 +10000,28 @@ class AppLocalizationsUg extends AppLocalizations {
   String get plexHomeScreenSubtitle => 'قۇرلار، تەرتىپى ۋە داۋاملىق كۆرۈش';
 
   @override
+  String get libraryNicknames => 'ئامبار لەقەملىرى';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'ئامبارلارغا ئۆزىڭىز قويغان ئىسىملار، پەقەت Plexfin دا كۆرۈنىدۇ';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'مۇلازىمېتىردا: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'مۇلازىمېتىردىكى ئىسىمنى ئىشلىتىش ئۈچۈن بوش قالدۇرۇڭ';
+
+  @override
+  String get libraryNicknameNone => 'لەقەم يوق';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'ئامبارلىرىڭىزنى يۈكلىگىلى بولمىدى';
+
+  @override
   String get settingsDynamicContent => 'ھەرىكەتچان مەزمۇن';
 
   @override

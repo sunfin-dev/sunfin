@@ -10042,6 +10042,28 @@ class AppLocalizationsUk extends AppLocalizations {
       'Ряди, їхній порядок і «Продовжити перегляд»';
 
   @override
+  String get libraryNicknames => 'Псевдоніми бібліотек';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Ваші власні назви бібліотек, видимі лише в Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'На сервері: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Залиште порожнім, щоб використати назву із сервера';
+
+  @override
+  String get libraryNicknameNone => 'Без псевдоніма';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Не вдалося завантажити бібліотеки';
+
+  @override
   String get settingsDynamicContent => 'Динамічний вміст';
 
   @override

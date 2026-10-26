@@ -10186,6 +10186,27 @@ class AppLocalizationsHr extends AppLocalizations {
       'Reci, njihov redoslijed i Nastavi gledati';
 
   @override
+  String get libraryNicknames => 'Nadimci knjižnica';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Vaši vlastiti nazivi knjižnica, vidljivi samo u Plexfinu';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Na poslužitelju: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'Ostavite prazno za naziv s poslužitelja';
+
+  @override
+  String get libraryNicknameNone => 'Bez nadimka';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Knjižnice se nisu mogle učitati';
+
+  @override
   String get settingsDynamicContent => 'Dinamički sadržaj';
 
   @override

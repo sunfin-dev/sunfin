@@ -84,7 +84,9 @@ class MediaUnplayedBadge extends StatelessWidget {
     _watchTheme(context);
     final bg = color ?? AppColorScheme.badgeUnplayed;
     final fg = textColor ?? AppColorScheme.onBadge;
-    final text = count > 99 ? '99+' : '$count';
+    // Plexfin: the real count, however large (user, 2026-10-26); the pill
+    // widens to fit it.
+    final text = '$count';
 
     return Container(
       constraints: BoxConstraints(minWidth: height, minHeight: height),

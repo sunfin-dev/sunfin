@@ -9963,6 +9963,27 @@ class AppLocalizationsSi extends AppLocalizations {
       'පේළි, ඒවායේ අනුපිළිවෙළ සහ නැරඹීම දිගටම කරගෙන යන්න';
 
   @override
+  String get libraryNicknames => 'පුස්තකාල අන්වර්ථ නාම';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'පුස්තකාල සඳහා ඔබේම නම්, Plexfin හි පමණක් පෙන්වයි';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'සේවාදායකයේ: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'සේවාදායකයේ නම භාවිතයට හිස්ව තබන්න';
+
+  @override
+  String get libraryNicknameNone => 'අන්වර්ථ නාමයක් නැත';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'ඔබේ පුස්තකාල පූරණය කළ නොහැකි විය';
+
+  @override
   String get settingsDynamicContent => 'ගතික අන්තර්ගතය';
 
   @override

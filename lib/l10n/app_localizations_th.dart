@@ -9917,6 +9917,27 @@ class AppLocalizationsTh extends AppLocalizations {
   String get plexHomeScreenSubtitle => 'แถว ลำดับของแถว และดูต่อ';
 
   @override
+  String get libraryNicknames => 'ชื่อเล่นของคลังสื่อ';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'ชื่อที่คุณตั้งเองให้คลังสื่อ แสดงเฉพาะใน Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'บนเซิร์ฟเวอร์: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'เว้นว่างไว้เพื่อใช้ชื่อจากเซิร์ฟเวอร์';
+
+  @override
+  String get libraryNicknameNone => 'ไม่มีชื่อเล่น';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'โหลดคลังสื่อของคุณไม่ได้';
+
+  @override
   String get settingsDynamicContent => 'เนื้อหาแบบไดนามิก';
 
   @override

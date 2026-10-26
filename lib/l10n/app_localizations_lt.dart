@@ -10022,6 +10022,28 @@ class AppLocalizationsLt extends AppLocalizations {
   String get plexHomeScreenSubtitle => 'Eilutės, jų tvarka ir Žiūrėti toliau';
 
   @override
+  String get libraryNicknames => 'Bibliotekų slapyvardžiai';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Jūsų pačių bibliotekų pavadinimai, rodomi tik Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Serveryje: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Palikite tuščią, kad būtų naudojamas serverio pavadinimas';
+
+  @override
+  String get libraryNicknameNone => 'Slapyvardžio nėra';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Nepavyko įkelti jūsų bibliotekų';
+
+  @override
   String get settingsDynamicContent => 'Dinaminis turinys';
 
   @override

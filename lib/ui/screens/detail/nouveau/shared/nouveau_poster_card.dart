@@ -6,6 +6,7 @@ import 'package:moonfin_design/moonfin_design.dart';
 
 import '../../../../../util/platform_detection.dart';
 import '../../../../widgets/media_badge.dart';
+import '../../../../plex/plex_style.dart';
 import '../../../../widgets/offline_aware_image.dart';
 import 'nouveau_overflow_text.dart';
 
@@ -417,6 +418,26 @@ class _NouveauPosterCardState extends State<NouveauPosterCard> {
     required Color foreground,
     required double overlayHeight,
   }) {
+    // Plexfin: no blur on the TV. Skia redraws a backdrop blur on every frame
+    // of this fade, which froze the details page for 80-150 ms per remote
+    // press on the Shield (2026-10-26); a darker plain panel reads the same.
+    final blur = !PlexStyle.enabled;
+    final panel = Container(
+      width: double.infinity,
+      height: overlayHeight,
+      decoration: BoxDecoration(
+        color: Colors.black.withValues(alpha: blur ? 0.34 : 0.62),
+        border: Border(
+          top: BorderSide(color: foreground.withValues(alpha: 0.08)),
+        ),
+      ),
+      child: _buildInfoContent(
+        context: context,
+        title: title,
+        subtitle: subtitle,
+        foreground: foreground,
+      ),
+    );
     return AnimatedOpacity(
       opacity: _secondaryActive ? 1.0 : 0.0,
       duration: _secondaryActive ? _infoShowDuration : _infoHideDuration,
@@ -425,27 +446,14 @@ class _NouveauPosterCardState extends State<NouveauPosterCard> {
         offset: _secondaryActive ? Offset.zero : const Offset(0, 0.18),
         duration: _secondaryActive ? _infoShowDuration : _infoHideDuration,
         curve: Curves.easeOutCubic,
-        child: ClipRect(
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 7, sigmaY: 7),
-            child: Container(
-              width: double.infinity,
-              height: overlayHeight,
-              decoration: BoxDecoration(
-                color: Colors.black.withValues(alpha: 0.34),
-                border: Border(
-                  top: BorderSide(color: foreground.withValues(alpha: 0.08)),
+        child: blur
+            ? ClipRect(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 7, sigmaY: 7),
+                  child: panel,
                 ),
-              ),
-              child: _buildInfoContent(
-                context: context,
-                title: title,
-                subtitle: subtitle,
-                foreground: foreground,
-              ),
-            ),
-          ),
-        ),
+              )
+            : panel,
       ),
     );
   }

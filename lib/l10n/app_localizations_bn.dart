@@ -9956,6 +9956,27 @@ class AppLocalizationsBn extends AppLocalizations {
   String get plexHomeScreenSubtitle => 'সারি, সেগুলোর ক্রম ও দেখা চালিয়ে যান';
 
   @override
+  String get libraryNicknames => 'লাইব্রেরির ডাকনাম';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'লাইব্রেরির জন্য আপনার নিজের নাম, শুধু Plexfin-এ দেখায়';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'সার্ভারে: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'সার্ভারের নাম ব্যবহার করতে খালি রাখুন';
+
+  @override
+  String get libraryNicknameNone => 'কোনো ডাকনাম নেই';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'আপনার লাইব্রেরি লোড করা যায়নি';
+
+  @override
   String get settingsDynamicContent => 'ডায়নামিক কন্টেন্ট';
 
   @override

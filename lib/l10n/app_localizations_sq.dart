@@ -10052,6 +10052,28 @@ class AppLocalizationsSq extends AppLocalizations {
       'Rreshtat, renditja e tyre dhe Vazhdo shikimin';
 
   @override
+  String get libraryNicknames => 'Nofkat e bibliotekave';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Emrat tuaj për bibliotekat, shfaqen vetëm në Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Në server: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Lëreni bosh për të përdorur emrin e serverit';
+
+  @override
+  String get libraryNicknameNone => 'Pa nofkë';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Bibliotekat nuk u ngarkuan dot';
+
+  @override
   String get settingsDynamicContent => 'Përmbajtja dinamike';
 
   @override

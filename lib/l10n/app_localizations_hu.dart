@@ -10055,6 +10055,29 @@ class AppLocalizationsHu extends AppLocalizations {
   String get plexHomeScreenSubtitle => 'Sorok, sorrendjük és a Folytatás sor';
 
   @override
+  String get libraryNicknames => 'Könyvtárbecenevek';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Saját nevek a könyvtáraknak, csak a Plexfinben látszanak';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'A szerveren: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Hagyja üresen a szerver nevének használatához';
+
+  @override
+  String get libraryNicknameNone => 'Nincs becenév';
+
+  @override
+  String get libraryNicknamesLoadFailed =>
+      'Nem sikerült betölteni a könyvtárakat';
+
+  @override
   String get settingsDynamicContent => 'Dinamikus tartalom';
 
   @override

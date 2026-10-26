@@ -17668,6 +17668,42 @@ abstract class AppLocalizations {
   /// **'Rows, their order and Continue Watching'**
   String get plexHomeScreenSubtitle;
 
+  /// No description provided for @libraryNicknames.
+  ///
+  /// In en, this message translates to:
+  /// **'Library nicknames'**
+  String get libraryNicknames;
+
+  /// No description provided for @libraryNicknamesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your own names for libraries, shown only in Plexfin'**
+  String get libraryNicknamesSubtitle;
+
+  /// No description provided for @libraryNicknameServerName.
+  ///
+  /// In en, this message translates to:
+  /// **'On the server: {name}'**
+  String libraryNicknameServerName(String name);
+
+  /// No description provided for @libraryNicknameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave empty to use the server\'s name'**
+  String get libraryNicknameHint;
+
+  /// No description provided for @libraryNicknameNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No nickname'**
+  String get libraryNicknameNone;
+
+  /// No description provided for @libraryNicknamesLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load your libraries'**
+  String get libraryNicknamesLoadFailed;
+
   /// No description provided for @settingsDynamicContent.
   ///
   /// In en, this message translates to:

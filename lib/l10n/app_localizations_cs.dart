@@ -10005,6 +10005,27 @@ class AppLocalizationsCs extends AppLocalizations {
       'Řádky, jejich pořadí a Pokračovat ve sledování';
 
   @override
+  String get libraryNicknames => 'Přezdívky knihoven';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Vlastní názvy knihoven, zobrazené jen v Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Na serveru: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'Ponechte prázdné pro název ze serveru';
+
+  @override
+  String get libraryNicknameNone => 'Bez přezdívky';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Knihovny se nepodařilo načíst';
+
+  @override
   String get settingsDynamicContent => 'Dynamický obsah';
 
   @override

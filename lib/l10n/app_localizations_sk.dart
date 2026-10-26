@@ -10029,6 +10029,27 @@ class AppLocalizationsSk extends AppLocalizations {
       'Riadky, ich poradie a Pokračovať v sledovaní';
 
   @override
+  String get libraryNicknames => 'Prezývky knižníc';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Vlastné názvy knižníc, zobrazené len v Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Na serveri: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'Nechajte prázdne pre názov zo servera';
+
+  @override
+  String get libraryNicknameNone => 'Bez prezývky';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Knižnice sa nepodarilo načítať';
+
+  @override
   String get settingsDynamicContent => 'Dynamický obsah';
 
   @override

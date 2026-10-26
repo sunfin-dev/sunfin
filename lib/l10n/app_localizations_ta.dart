@@ -10041,6 +10041,28 @@ class AppLocalizationsTa extends AppLocalizations {
       'வரிசைகள், அவற்றின் வரிசைமுறை மற்றும் தொடர்ந்து பார்க்கவும்';
 
   @override
+  String get libraryNicknames => 'நூலகப் புனைப்பெயர்கள்';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'நூலகங்களுக்கு உங்கள் சொந்தப் பெயர்கள், Plexfin இல் மட்டும் காட்டப்படும்';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'சேவையகத்தில்: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'சேவையகப் பெயரைப் பயன்படுத்த காலியாக விடவும்';
+
+  @override
+  String get libraryNicknameNone => 'புனைப்பெயர் இல்லை';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'உங்கள் நூலகங்களை ஏற்ற முடியவில்லை';
+
+  @override
   String get settingsDynamicContent => 'டைனமிக் உள்ளடக்கம்';
 
   @override

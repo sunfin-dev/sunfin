@@ -10092,6 +10092,29 @@ class AppLocalizationsGl extends AppLocalizations {
   String get plexHomeScreenSubtitle => 'Filas, a súa orde e Seguir vendo';
 
   @override
+  String get libraryNicknames => 'Alcumes das bibliotecas';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Os teus propios nomes para as bibliotecas, só en Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'No servidor: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Déixao baleiro para usar o nome do servidor';
+
+  @override
+  String get libraryNicknameNone => 'Sen alcume';
+
+  @override
+  String get libraryNicknamesLoadFailed =>
+      'Non se puideron cargar as túas bibliotecas';
+
+  @override
   String get settingsDynamicContent => 'Contido dinámico';
 
   @override

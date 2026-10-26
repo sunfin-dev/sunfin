@@ -9979,6 +9979,27 @@ class AppLocalizationsId extends AppLocalizations {
   String get plexHomeScreenSubtitle => 'Baris, urutannya, dan Lanjut Menonton';
 
   @override
+  String get libraryNicknames => 'Nama panggilan perpustakaan';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Nama sendiri untuk perpustakaan, hanya tampil di Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Di server: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'Kosongkan untuk memakai nama dari server';
+
+  @override
+  String get libraryNicknameNone => 'Tanpa nama panggilan';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Perpustakaan tidak dapat dimuat';
+
+  @override
   String get settingsDynamicContent => 'Konten Dinamis';
 
   @override

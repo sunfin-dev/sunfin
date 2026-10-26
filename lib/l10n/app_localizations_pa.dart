@@ -9940,6 +9940,28 @@ class AppLocalizationsPa extends AppLocalizations {
       'ਕਤਾਰਾਂ, ਉਨ੍ਹਾਂ ਦਾ ਕ੍ਰਮ ਅਤੇ ਦੇਖਣਾ ਜਾਰੀ ਰੱਖੋ';
 
   @override
+  String get libraryNicknames => 'ਲਾਇਬ੍ਰੇਰੀ ਉਪਨਾਮ';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'ਲਾਇਬ੍ਰੇਰੀਆਂ ਲਈ ਤੁਹਾਡੇ ਆਪਣੇ ਨਾਮ, ਸਿਰਫ਼ Plexfin ਵਿੱਚ ਦਿਖਦੇ ਹਨ';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'ਸਰਵਰ \'ਤੇ: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'ਸਰਵਰ ਦਾ ਨਾਮ ਵਰਤਣ ਲਈ ਖਾਲੀ ਛੱਡੋ';
+
+  @override
+  String get libraryNicknameNone => 'ਕੋਈ ਉਪਨਾਮ ਨਹੀਂ';
+
+  @override
+  String get libraryNicknamesLoadFailed =>
+      'ਤੁਹਾਡੀਆਂ ਲਾਇਬ੍ਰੇਰੀਆਂ ਲੋਡ ਨਹੀਂ ਹੋ ਸਕੀਆਂ';
+
+  @override
   String get settingsDynamicContent => 'ਗਤੀਸ਼ੀਲ ਸਮੱਗਰੀ';
 
   @override

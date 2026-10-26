@@ -9918,6 +9918,27 @@ class AppLocalizationsFa extends AppLocalizations {
   String get plexHomeScreenSubtitle => 'ردیف‌ها، ترتیب آن‌ها و ادامه تماشا';
 
   @override
+  String get libraryNicknames => 'نام مستعار کتابخانه‌ها';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'نام‌های دلخواه شما برای کتابخانه‌ها، فقط در Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'روی سرور: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'برای استفاده از نام سرور خالی بگذارید';
+
+  @override
+  String get libraryNicknameNone => 'بدون نام مستعار';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'بارگیری کتابخانه‌های شما ممکن نشد';
+
+  @override
   String get settingsDynamicContent => 'محتوای پویا';
 
   @override

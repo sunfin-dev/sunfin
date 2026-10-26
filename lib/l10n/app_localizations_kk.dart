@@ -10013,6 +10013,29 @@ class AppLocalizationsKk extends AppLocalizations {
       'Жолдар, олардың реті және «Көруді жалғастыру»';
 
   @override
+  String get libraryNicknames => 'Кітапхана лақап аттары';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Кітапханаларға өз аттарыңыз, тек Plexfin ішінде көрсетіледі';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Серверде: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Сервердегі атауды қолдану үшін бос қалдырыңыз';
+
+  @override
+  String get libraryNicknameNone => 'Лақап ат жоқ';
+
+  @override
+  String get libraryNicknamesLoadFailed =>
+      'Кітапханаларыңызды жүктеу мүмкін болмады';
+
+  @override
   String get settingsDynamicContent => 'Динамикалық мазмұн';
 
   @override

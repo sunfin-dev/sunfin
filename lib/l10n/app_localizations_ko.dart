@@ -9717,6 +9717,26 @@ class AppLocalizationsKo extends AppLocalizations {
   String get plexHomeScreenSubtitle => '행, 행 순서 및 계속 시청하기';
 
   @override
+  String get libraryNicknames => '라이브러리 별명';
+
+  @override
+  String get libraryNicknamesSubtitle => '라이브러리에 붙이는 나만의 이름, Plexfin에서만 표시됨';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return '서버 이름: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => '서버 이름을 쓰려면 비워 두세요';
+
+  @override
+  String get libraryNicknameNone => '별명 없음';
+
+  @override
+  String get libraryNicknamesLoadFailed => '라이브러리를 불러오지 못했습니다';
+
+  @override
   String get settingsDynamicContent => '동적 콘텐츠';
 
   @override

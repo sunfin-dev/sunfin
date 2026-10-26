@@ -640,8 +640,6 @@ class _HomeShellState extends State<_HomeShell>
                       builder: (context, item, _) => PlexHomeHeader(
                         item: item,
                         leftInset: _kPlexPosterLeft,
-                        imageApiFor: (item) =>
-                            _viewModel.imageApiForServer(item.serverId),
                       ),
                     ),
                   ),

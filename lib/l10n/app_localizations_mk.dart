@@ -10038,6 +10038,28 @@ class AppLocalizationsMk extends AppLocalizations {
       'Редови, нивниот редослед и Продолжи со гледање';
 
   @override
+  String get libraryNicknames => 'Прекари за библиотеки';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Ваши сопствени имиња за библиотеките, видливи само во Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'На серверот: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'Оставете празно за името од серверот';
+
+  @override
+  String get libraryNicknameNone => 'Без прекар';
+
+  @override
+  String get libraryNicknamesLoadFailed =>
+      'Библиотеките не можеа да се вчитаат';
+
+  @override
   String get settingsDynamicContent => 'Динамичка содржина';
 
   @override

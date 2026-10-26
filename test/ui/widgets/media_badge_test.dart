@@ -113,10 +113,11 @@ void main() {
       expect(text.style?.fontWeight, FontWeight.bold);
     });
 
-    testWidgets('clamps counts above 99 to 99+', (tester) async {
-      await tester.pumpWidget(wrap(const MediaUnplayedBadge(count: 120)));
+    testWidgets('shows counts above 99 in full', (tester) async {
+      await tester.pumpWidget(wrap(const MediaUnplayedBadge(count: 1204)));
 
-      expect(find.text('99+'), findsOneWidget);
+      expect(find.text('1204'), findsOneWidget);
+      expect(find.text('99+'), findsNothing);
     });
   });
 

@@ -9993,6 +9993,28 @@ class AppLocalizationsMn extends AppLocalizations {
       'Мөрүүд, тэдгээрийн дараалал ба Үргэлжлүүлэн үзэх';
 
   @override
+  String get libraryNicknames => 'Сангийн хоч нэр';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Сангуудад өгөх таны өөрийн нэр, зөвхөн Plexfin-д харагдана';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Сервер дээр: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Серверийн нэрийг ашиглах бол хоосон үлдээнэ үү';
+
+  @override
+  String get libraryNicknameNone => 'Хоч нэргүй';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Сангуудыг ачаалж чадсангүй';
+
+  @override
   String get settingsDynamicContent => 'Динамик контент';
 
   @override

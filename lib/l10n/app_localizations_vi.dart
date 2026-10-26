@@ -9971,6 +9971,27 @@ class AppLocalizationsVi extends AppLocalizations {
       'Các hàng, thứ tự của chúng và Tiếp tục xem';
 
   @override
+  String get libraryNicknames => 'Biệt danh thư viện';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Tên riêng của bạn cho thư viện, chỉ hiện trong Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Trên máy chủ: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'Để trống để dùng tên trên máy chủ';
+
+  @override
+  String get libraryNicknameNone => 'Không có biệt danh';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Không tải được thư viện của bạn';
+
+  @override
   String get settingsDynamicContent => 'Nội dung động';
 
   @override

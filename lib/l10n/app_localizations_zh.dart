@@ -9647,6 +9647,26 @@ class AppLocalizationsZh extends AppLocalizations {
   String get plexHomeScreenSubtitle => '行、排列顺序和继续观看';
 
   @override
+  String get libraryNicknames => '媒体库昵称';
+
+  @override
+  String get libraryNicknamesSubtitle => '你为媒体库起的名字，仅在 Plexfin 中显示';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return '服务器上的名称：$name';
+  }
+
+  @override
+  String get libraryNicknameHint => '留空则使用服务器上的名称';
+
+  @override
+  String get libraryNicknameNone => '无昵称';
+
+  @override
+  String get libraryNicknamesLoadFailed => '无法加载你的媒体库';
+
+  @override
   String get settingsDynamicContent => '动态内容';
 
   @override
@@ -21190,6 +21210,26 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get plexHomeScreenSubtitle => '列、排列順序和繼續觀看';
+
+  @override
+  String get libraryNicknames => '媒體庫暱稱';
+
+  @override
+  String get libraryNicknamesSubtitle => '你為媒體庫取的名稱，僅在 Plexfin 中顯示';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return '伺服器上的名稱：$name';
+  }
+
+  @override
+  String get libraryNicknameHint => '留空即使用伺服器上的名稱';
+
+  @override
+  String get libraryNicknameNone => '無暱稱';
+
+  @override
+  String get libraryNicknamesLoadFailed => '無法載入你的媒體庫';
 
   @override
   String get settingsDynamicContent => '動態內容';

@@ -9948,6 +9948,28 @@ class AppLocalizationsHi extends AppLocalizations {
       'पंक्तियाँ, उनका क्रम और देखना जारी रखें';
 
   @override
+  String get libraryNicknames => 'लाइब्रेरी उपनाम';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'लाइब्रेरी के लिए आपके अपने नाम, केवल Plexfin में दिखते हैं';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'सर्वर पर: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'सर्वर का नाम इस्तेमाल करने के लिए खाली छोड़ें';
+
+  @override
+  String get libraryNicknameNone => 'कोई उपनाम नहीं';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'आपकी लाइब्रेरी लोड नहीं हो सकीं';
+
+  @override
   String get settingsDynamicContent => 'गतिशील सामग्री';
 
   @override

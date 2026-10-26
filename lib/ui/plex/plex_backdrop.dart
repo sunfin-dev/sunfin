@@ -258,8 +258,10 @@ class _PlexBackdropState extends State<PlexBackdrop> {
     );
   }
 
-  /// Fades [child] out towards its left edge (opaque from 42% across) and
-  /// its bottom edge (opaque from halfway up), as Plex does.
+  /// Fades [child] out towards its left edge (opaque from 16% across) and
+  /// its bottom edge (opaque from 20% up) on an eased curve: short, so the
+  /// art keeps its strength, and soft, so its edge never shows (user's pick,
+  /// "B" of five, 2026-10-26; the fade used to reach 42% and 50% in).
   ///
   /// One mask layer: the two fades are multiplied once into a small alpha
   /// image and stretched over the art. Two stacked gradient masks gave the
@@ -297,25 +299,49 @@ class _PlexBackdropState extends State<PlexBackdrop> {
     canvas.drawRect(
       rect,
       Paint()
-        ..shader = const LinearGradient(
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-          colors: [Color(0x00000000), Color(0xFF000000)],
-          stops: [0, 0.42],
+        ..shader = _easedRamp(
+          Alignment.centerLeft,
+          Alignment.centerRight,
+          _leftFade,
         ).createShader(rect),
     );
     canvas.drawRect(
       rect,
       Paint()
         ..blendMode = BlendMode.dstIn
-        ..shader = const LinearGradient(
-          begin: Alignment.bottomCenter,
-          end: Alignment.topCenter,
-          colors: [Color(0x00000000), Color(0xFF000000)],
-          stops: [0, 0.5],
+        ..shader = _easedRamp(
+          Alignment.bottomCenter,
+          Alignment.topCenter,
+          _bottomFade,
         ).createShader(rect),
     );
     canvas.restore();
     return recorder.endRecording().toImageSync(width, height);
   }
+
+  /// How far in from each edge the art reaches full strength (fraction of
+  /// the art box).
+  static const _leftFade = 0.16;
+  static const _bottomFade = 0.20;
+
+  /// Transparent at [begin] to opaque at [length] of the way to [end], on a
+  /// smoothstep curve so both ends of the fade are gentle.
+  static LinearGradient _easedRamp(
+    Alignment begin,
+    Alignment end,
+    double length,
+  ) {
+    const steps = 8;
+    return LinearGradient(
+      begin: begin,
+      end: end,
+      colors: [
+        for (var i = 0; i <= steps; i++)
+          Color.fromRGBO(0, 0, 0, _smoothstep(i / steps)),
+      ],
+      stops: [for (var i = 0; i <= steps; i++) length * i / steps],
+    );
+  }
+
+  static double _smoothstep(double t) => t * t * (3 - 2 * t);
 }

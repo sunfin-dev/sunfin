@@ -10067,6 +10067,29 @@ class AppLocalizationsTl extends AppLocalizations {
       'Mga hilera, ang kanilang pagkakasunod at Magpatuloy sa Panonood';
 
   @override
+  String get libraryNicknames => 'Mga palayaw ng library';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Sarili mong mga pangalan para sa mga library, sa Plexfin lang makikita';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Sa server: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Iwanang blangko para gamitin ang pangalan sa server';
+
+  @override
+  String get libraryNicknameNone => 'Walang palayaw';
+
+  @override
+  String get libraryNicknamesLoadFailed =>
+      'Hindi ma-load ang iyong mga library';
+
+  @override
   String get settingsDynamicContent => 'Dynamic na Nilalaman';
 
   @override

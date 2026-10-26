@@ -645,7 +645,6 @@ class _PlexShowPageState extends State<PlexShowPage> {
           child: PlexHomeHeader(
             item: item,
             leftInset: _inset,
-            imageApiFor: (_) => _vm.imageApi,
             showCast: false,
           ),
         ),

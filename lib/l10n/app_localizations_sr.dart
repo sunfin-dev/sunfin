@@ -10194,6 +10194,28 @@ class AppLocalizationsSr extends AppLocalizations {
       'Редови, њихов редослед и Наставите са гледањем';
 
   @override
+  String get libraryNicknames => 'Надимци библиотека';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Ваши сопствени називи библиотека, видљиви само у Plexfin-у';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'На серверу: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'Оставите празно за назив са сервера';
+
+  @override
+  String get libraryNicknameNone => 'Без надимка';
+
+  @override
+  String get libraryNicknamesLoadFailed =>
+      'Библиотеке није било могуће учитати';
+
+  @override
   String get settingsDynamicContent => 'Динамиц Цонтент';
 
   @override

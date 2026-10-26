@@ -9976,6 +9976,28 @@ class AppLocalizationsAf extends AppLocalizations {
   String get plexHomeScreenSubtitle => 'Rye, hul volgorde en Hou aan kyk';
 
   @override
+  String get libraryNicknames => 'Biblioteek-byname';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Jou eie name vir biblioteke, net in Plexfin gewys';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Op die bediener: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Laat leeg om die bediener se naam te gebruik';
+
+  @override
+  String get libraryNicknameNone => 'Geen bynaam nie';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Kon nie jou biblioteke laai nie';
+
+  @override
   String get settingsDynamicContent => 'Dinamiese inhoud';
 
   @override

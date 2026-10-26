@@ -10021,6 +10021,29 @@ class AppLocalizationsNl extends AppLocalizations {
       'Rijen, hun volgorde en Ga door met kijken';
 
   @override
+  String get libraryNicknames => 'Bijnamen voor bibliotheken';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Je eigen namen voor bibliotheken, alleen zichtbaar in Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Op de server: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Laat leeg om de naam van de server te gebruiken';
+
+  @override
+  String get libraryNicknameNone => 'Geen bijnaam';
+
+  @override
+  String get libraryNicknamesLoadFailed =>
+      'Je bibliotheken konden niet worden geladen';
+
+  @override
   String get settingsDynamicContent => 'Dynamische inhoud';
 
   @override

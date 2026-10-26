@@ -10107,6 +10107,29 @@ class AppLocalizationsEl extends AppLocalizations {
       'Σειρές, η σειρά τους και Συνεχίστε την παρακολούθηση';
 
   @override
+  String get libraryNicknames => 'Ψευδώνυμα βιβλιοθηκών';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Δικά σας ονόματα για τις βιβλιοθήκες, μόνο στο Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Στον διακομιστή: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Αφήστε το κενό για το όνομα του διακομιστή';
+
+  @override
+  String get libraryNicknameNone => 'Χωρίς ψευδώνυμο';
+
+  @override
+  String get libraryNicknamesLoadFailed =>
+      'Δεν ήταν δυνατή η φόρτωση των βιβλιοθηκών σας';
+
+  @override
   String get settingsDynamicContent => 'Δυναμικό περιεχόμενο';
 
   @override

@@ -10092,6 +10092,29 @@ class AppLocalizationsRo extends AppLocalizations {
       'Rânduri, ordinea lor și Continuă vizionarea';
 
   @override
+  String get libraryNicknames => 'Porecle pentru biblioteci';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Numele tale pentru biblioteci, afișate doar în Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Pe server: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Lasă gol pentru a folosi numele de pe server';
+
+  @override
+  String get libraryNicknameNone => 'Fără poreclă';
+
+  @override
+  String get libraryNicknamesLoadFailed =>
+      'Bibliotecile nu au putut fi încărcate';
+
+  @override
   String get settingsDynamicContent => 'Conținut dinamic';
 
   @override

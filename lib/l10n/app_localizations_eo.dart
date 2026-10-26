@@ -9958,6 +9958,28 @@ class AppLocalizationsEo extends AppLocalizations {
   String get plexHomeScreenSubtitle => 'Vicoj, ilia ordo kaj Daŭre Rigardi';
 
   @override
+  String get libraryNicknames => 'Kromnomoj de bibliotekoj';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Viaj propraj nomoj por bibliotekoj, montrataj nur en Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Ĉe la servilo: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Lasu malplena por uzi la nomon de la servilo';
+
+  @override
+  String get libraryNicknameNone => 'Neniu kromnomo';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Ne eblis ŝargi viajn bibliotekojn';
+
+  @override
   String get settingsDynamicContent => 'Dinamika Enhavo';
 
   @override

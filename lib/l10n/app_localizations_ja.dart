@@ -9741,6 +9741,26 @@ class AppLocalizationsJa extends AppLocalizations {
   String get plexHomeScreenSubtitle => '行、その並び順、視聴を続ける';
 
   @override
+  String get libraryNicknames => 'ライブラリのニックネーム';
+
+  @override
+  String get libraryNicknamesSubtitle => 'ライブラリに付ける自分だけの名前。Plexfin でのみ表示されます';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'サーバー上の名前: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => '空欄にするとサーバーの名前を使います';
+
+  @override
+  String get libraryNicknameNone => 'ニックネームなし';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'ライブラリを読み込めませんでした';
+
+  @override
   String get settingsDynamicContent => '動的コンテンツ';
 
   @override

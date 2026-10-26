@@ -401,4 +401,84 @@ void main() {
       );
     });
   });
+
+  group('withRealSeries', () {
+    AggregatedItem episode() {
+      final item = _createItem(
+        id: 'ep1',
+        name: 'Soda',
+        type: 'Episode',
+        seriesId: 'bear',
+        seriesName: 'The Bear',
+      );
+      item.rawData['Overview'] = 'A storm hits.';
+      item.rawData['ProductionYear'] = 2026;
+      return item;
+    }
+
+    test('a show card built from an episode carries none of its details', () {
+      final card = normalizeLatestMediaItems(
+        [episode()],
+        collectionType: 'tvshows',
+        limit: 10,
+      ).single;
+      expect(card.type, 'Series');
+      expect(card.rawData['Overview'], isNull);
+      expect(card.rawData['ProductionYear'], isNull);
+      expect(card.rawData[latestSeriesStandInKey], isTrue);
+    });
+
+    test('swaps the stand-in for the show the server returns', () async {
+      final cards = normalizeLatestMediaItems(
+        [episode()],
+        collectionType: 'tvshows',
+        limit: 10,
+      );
+      List<String>? asked;
+      final result = await withRealSeries(cards, (serverId, ids) async {
+        asked = ids;
+        return {
+          'Items': [
+            {
+              'Id': 'bear',
+              'Name': 'The Bear',
+              'Type': 'Series',
+              'Overview': 'A young chef returns home.',
+              'Genres': ['Drama', 'Comedy'],
+              'ProductionYear': 2022,
+            },
+          ],
+        };
+      });
+      expect(asked, ['bear']);
+      expect(result.single.overview, 'A young chef returns home.');
+      expect(result.single.genres, ['Drama', 'Comedy']);
+      expect(result.single.rawData[latestSeriesStandInKey], isNull);
+    });
+
+    test('keeps the stand-in when the server cannot be asked', () async {
+      final cards = normalizeLatestMediaItems(
+        [episode()],
+        collectionType: 'tvshows',
+        limit: 10,
+      );
+      final result = await withRealSeries(
+        cards,
+        (_, _) async => throw Exception('offline'),
+      );
+      expect(result.single.id, 'bear');
+      expect(result.single.name, 'The Bear');
+    });
+
+    test('asks nothing for rows without stand-ins', () async {
+      final movie = _createItem(id: 'm1', name: 'Dune', type: 'Movie');
+      var calls = 0;
+      final result = await withRealSeries([movie], (_, _) async {
+        calls++;
+        return const {};
+      });
+      expect(calls, 0);
+      expect(result.single, same(movie));
+    });
+  });
 }

@@ -9969,6 +9969,29 @@ class AppLocalizationsDa extends AppLocalizations {
       'Rækker, deres rækkefølge og Fortsæt med at se';
 
   @override
+  String get libraryNicknames => 'Kaldenavne til biblioteker';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Dine egne navne til biblioteker, vises kun i Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'På serveren: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Lad feltet være tomt for at bruge serverens navn';
+
+  @override
+  String get libraryNicknameNone => 'Intet kaldenavn';
+
+  @override
+  String get libraryNicknamesLoadFailed =>
+      'Dine biblioteker kunne ikke indlæses';
+
+  @override
   String get settingsDynamicContent => 'Dynamisk indhold';
 
   @override

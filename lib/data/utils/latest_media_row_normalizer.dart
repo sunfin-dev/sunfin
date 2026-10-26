@@ -130,6 +130,13 @@ AggregatedItem? _seriesCardForLatestTvItem(AggregatedItem item) {
   rawData['Name'] = seriesName;
   rawData.remove('IndexNumber');
   rawData.remove('ParentIndexNumber');
+  // Plexfin: what the episode or season says about itself is wrong for the
+  // show (its summary, date, length, rating), so the card drops it and
+  // [withRealSeries] fills in the show's own details.
+  for (final key in _standInDropKeys) {
+    rawData.remove(key);
+  }
+  rawData[latestSeriesStandInKey] = true;
 
   // A season's parent is the series so its tag fits the id set below, but an
   // episode's parent is the season and that tag would not match the series.
@@ -180,4 +187,69 @@ AggregatedItem? _seriesCardForLatestTvItem(AggregatedItem item) {
     serverId: item.serverId,
     rawData: rawData,
   );
+}
+
+/// Set on a show card [normalizeLatestMediaItems] built from one of the
+/// show's new episodes or seasons, until [withRealSeries] replaces it.
+const latestSeriesStandInKey = 'PlexfinSeriesStandIn';
+
+const _standInDropKeys = [
+  'Overview',
+  'PremiereDate',
+  'ProductionYear',
+  'RunTimeTicks',
+  'CommunityRating',
+  'CriticRating',
+  'OfficialRating',
+  'Genres',
+  'People',
+  'Status',
+];
+
+/// Swaps each show card that [normalizeLatestMediaItems] built from an
+/// episode or season for the show itself, fetched in one request per server,
+/// so the home header has the show's summary, year and genres (user,
+/// 2026-10-26: Recently Added TV showed them only sometimes). A server that
+/// can't be reached leaves its cards as they are.
+///
+/// [itemsFor] gives the server's item lookup: the show ids and the fields to
+/// return, answering with the server's raw item list.
+Future<List<AggregatedItem>> withRealSeries(
+  List<AggregatedItem> items,
+  Future<Map<String, dynamic>> Function(String serverId, List<String> ids)
+  itemsFor,
+) async {
+  final idsByServer = <String, Set<String>>{};
+  for (final item in items) {
+    if (item.rawData[latestSeriesStandInKey] == true) {
+      idsByServer.putIfAbsent(item.serverId, () => {}).add(item.id);
+    }
+  }
+  if (idsByServer.isEmpty) return items;
+
+  final real = <(String, String), Map<String, dynamic>>{};
+  await Future.wait(
+    idsByServer.entries.map((entry) async {
+      try {
+        final response = await itemsFor(entry.key, entry.value.toList());
+        for (final raw in (response['Items'] as List?) ?? const []) {
+          if (raw is! Map) continue;
+          final id = raw['Id']?.toString();
+          if (id != null) {
+            real[(entry.key, id)] = Map<String, dynamic>.from(raw);
+          }
+        }
+      } catch (_) {
+        // The stand-ins stay: a card with less detail beats no row.
+      }
+    }),
+  );
+
+  return [
+    for (final item in items)
+      if (real[(item.serverId, item.id)] case final raw?)
+        AggregatedItem(id: item.id, serverId: item.serverId, rawData: raw)
+      else
+        item,
+  ];
 }

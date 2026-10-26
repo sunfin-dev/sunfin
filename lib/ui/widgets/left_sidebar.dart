@@ -485,7 +485,8 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
   bool _librariesEqual(List<AggregatedLibrary> a, List<AggregatedLibrary> b) {
     if (a.length != b.length) return false;
     for (int i = 0; i < a.length; i++) {
-      if (a[i].id != b[i].id) return false;
+      // Names too: a library nickname renames without changing any id.
+      if (a[i].id != b[i].id || a[i].name != b[i].name) return false;
     }
     return true;
   }

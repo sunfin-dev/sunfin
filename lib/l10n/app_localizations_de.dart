@@ -10120,6 +10120,29 @@ class AppLocalizationsDe extends AppLocalizations {
       'Zeilen, ihre Reihenfolge und Weiterschauen';
 
   @override
+  String get libraryNicknames => 'Spitznamen für Bibliotheken';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Eigene Namen für Bibliotheken, nur in Plexfin sichtbar';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Auf dem Server: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Leer lassen, um den Namen vom Server zu verwenden';
+
+  @override
+  String get libraryNicknameNone => 'Kein Spitzname';
+
+  @override
+  String get libraryNicknamesLoadFailed =>
+      'Bibliotheken konnten nicht geladen werden';
+
+  @override
   String get settingsDynamicContent => 'Dynamischer Inhalt';
 
   @override

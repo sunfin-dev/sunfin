@@ -10033,6 +10033,27 @@ class AppLocalizationsTe extends AppLocalizations {
       'వరుసలు, వాటి క్రమం మరియు చూడటం కొనసాగించండి';
 
   @override
+  String get libraryNicknames => 'లైబ్రరీ మారుపేర్లు';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'లైబ్రరీలకు మీ సొంత పేర్లు, Plexfin లో మాత్రమే కనిపిస్తాయి';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'సర్వర్‌లో: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'సర్వర్ పేరును వాడటానికి ఖాళీగా ఉంచండి';
+
+  @override
+  String get libraryNicknameNone => 'మారుపేరు లేదు';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'మీ లైబ్రరీలను లోడ్ చేయలేకపోయాం';
+
+  @override
   String get settingsDynamicContent => 'డైనమిక్ కంటెంట్';
 
   @override

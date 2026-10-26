@@ -10032,6 +10032,28 @@ class AppLocalizationsKn extends AppLocalizations {
       'ಸಾಲುಗಳು, ಅವುಗಳ ಕ್ರಮ ಮತ್ತು ನೋಡುವುದನ್ನು ಮುಂದುವರಿಸಿ';
 
   @override
+  String get libraryNicknames => 'ಲೈಬ್ರರಿ ಅಡ್ಡಹೆಸರುಗಳು';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'ಲೈಬ್ರರಿಗಳಿಗೆ ನಿಮ್ಮದೇ ಹೆಸರುಗಳು, Plexfin ನಲ್ಲಿ ಮಾತ್ರ ತೋರಿಸಲಾಗುತ್ತದೆ';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'ಸರ್ವರ್‌ನಲ್ಲಿ: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'ಸರ್ವರ್ ಹೆಸರನ್ನು ಬಳಸಲು ಖಾಲಿ ಬಿಡಿ';
+
+  @override
+  String get libraryNicknameNone => 'ಅಡ್ಡಹೆಸರು ಇಲ್ಲ';
+
+  @override
+  String get libraryNicknamesLoadFailed =>
+      'ನಿಮ್ಮ ಲೈಬ್ರರಿಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗಲಿಲ್ಲ';
+
+  @override
   String get settingsDynamicContent => 'ಡೈನಾಮಿಕ್ ವಿಷಯ';
 
   @override

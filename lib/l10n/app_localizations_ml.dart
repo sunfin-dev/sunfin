@@ -10078,6 +10078,28 @@ class AppLocalizationsMl extends AppLocalizations {
   String get plexHomeScreenSubtitle => 'വരികൾ, അവയുടെ ക്രമം, കാണുന്നത് തുടരുക';
 
   @override
+  String get libraryNicknames => 'ലൈബ്രറി വിളിപ്പേരുകൾ';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'ലൈബ്രറികൾക്ക് നിങ്ങളുടെ സ്വന്തം പേരുകൾ, Plexfin-ൽ മാത്രം കാണിക്കും';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'സെർവറിൽ: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'സെർവറിലെ പേര് ഉപയോഗിക്കാൻ ശൂന്യമായി വിടുക';
+
+  @override
+  String get libraryNicknameNone => 'വിളിപ്പേരില്ല';
+
+  @override
+  String get libraryNicknamesLoadFailed =>
+      'നിങ്ങളുടെ ലൈബ്രറികൾ ലോഡ് ചെയ്യാനായില്ല';
+
+  @override
   String get settingsDynamicContent => 'ഡൈനാമിക് ഉള്ളടക്കം';
 
   @override

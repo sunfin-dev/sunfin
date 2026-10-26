@@ -10042,6 +10042,27 @@ class AppLocalizationsSw extends AppLocalizations {
       'Safu, mpangilio wake na Endelea Kutazama';
 
   @override
+  String get libraryNicknames => 'Majina ya utani ya maktaba';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Majina yako mwenyewe ya maktaba, yanaonekana katika Plexfin tu';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Kwenye seva: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'Acha tupu kutumia jina la seva';
+
+  @override
+  String get libraryNicknameNone => 'Hakuna jina la utani';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Imeshindwa kupakia maktaba zako';
+
+  @override
   String get settingsDynamicContent => 'Maudhui Yanayobadilika';
 
   @override

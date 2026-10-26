@@ -292,10 +292,12 @@ class RowDataSource {
       parentId: parentId,
       limit: fetchLimit,
     );
-    final items = normalizeLatestMediaItems(
-      _parseItems(response, serverId),
-      collectionType: collectionType,
-      limit: _defaultLimit,
+    final items = await _withRealSeries(
+      normalizeLatestMediaItems(
+        _parseItems(response, serverId),
+        collectionType: collectionType,
+        limit: _defaultLimit,
+      ),
     );
     return HomeRow(
       id: 'latest_$parentId',
@@ -334,10 +336,12 @@ class RowDataSource {
     );
     final items = _parseItems(response, serverId);
     if (isTv) {
-      return normalizeLatestMediaItems(
-        items,
-        collectionType: 'tvshows',
-        limit: limit,
+      return _withRealSeries(
+        normalizeLatestMediaItems(
+          items,
+          collectionType: 'tvshows',
+          limit: limit,
+        ),
       );
     }
     return items;
@@ -386,10 +390,12 @@ class RowDataSource {
       includeItemTypes: includeItemTypes,
       recursive: includeItemTypes != null,
     );
-    final items = normalizeLatestMediaItems(
-      _parseItems(response, serverId),
-      collectionType: collectionType,
-      limit: _defaultLimit,
+    final items = await _withRealSeries(
+      normalizeLatestMediaItems(
+        _parseItems(response, serverId),
+        collectionType: collectionType,
+        limit: _defaultLimit,
+      ),
     );
     return HomeRow(
       id: 'recently_released_$parentId',
@@ -1640,9 +1646,11 @@ class RowDataSource {
             parentId: parentId,
             limit: currentOffset + _defaultLimit,
           );
-          final items = normalizeLatestMediaItems(
-            _parseItems(response, serverId),
-            limit: currentOffset + _defaultLimit,
+          final items = await _withRealSeries(
+            normalizeLatestMediaItems(
+              _parseItems(response, serverId),
+              limit: currentOffset + _defaultLimit,
+            ),
           );
           final totalCount = items.length <= row.items.length
               ? items.length
@@ -2312,6 +2320,19 @@ class RowDataSource {
         }
     }
   }
+
+  /// Show cards built from a new episode or season, swapped for the show
+  /// itself (latest_media_row_normalizer.dart).
+  Future<List<AggregatedItem>> _withRealSeries(List<AggregatedItem> items) =>
+      withRealSeries(
+        items,
+        (_, ids) => _client.itemsApi.getItems(
+          ids: ids,
+          fields: _fields,
+          enableImageTypes: _imageTypes,
+          imageTypeLimit: _imageTypeLimit,
+        ),
+      );
 
   List<AggregatedItem> _parseItems(
     Map<String, dynamic> response,

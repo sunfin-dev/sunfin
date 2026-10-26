@@ -48,6 +48,7 @@ import 'playback/mpris_service.dart';
 import 'playback/playback_lifecycle_handler.dart';
 import 'platform/background_refresh.dart';
 import 'platform/web_runtime_config.dart';
+import 'preference/library_nicknames.dart';
 import 'preference/preference_constants.dart';
 import 'preference/user_preferences.dart';
 import 'util/fullscreen_helper.dart';
@@ -932,6 +933,8 @@ void main() async {
   }
 
   await configureDependencies();
+  // Before anything asks a server for its libraries.
+  LibraryNicknames.install(GetIt.instance<PreferenceStore>());
   _installCrashHandlers();
   if (PlatformDetection.isAndroid) _startProcessExitReporter();
   // When the system runs the auto-download refresh task against this

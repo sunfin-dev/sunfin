@@ -10020,6 +10020,28 @@ class AppLocalizationsCy extends AppLocalizations {
   String get plexHomeScreenSubtitle => 'Rhesi, eu trefn a Parhewch i Wylio';
 
   @override
+  String get libraryNicknames => 'Llysenwau llyfrgelloedd';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Eich enwau eich hun ar lyfrgelloedd, yn Plexfin yn unig';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Ar y gweinydd: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Gadewch yn wag i ddefnyddio enw\'r gweinydd';
+
+  @override
+  String get libraryNicknameNone => 'Dim llysenw';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Methu llwytho\'ch llyfrgelloedd';
+
+  @override
   String get settingsDynamicContent => 'Cynnwys Dynamig';
 
   @override

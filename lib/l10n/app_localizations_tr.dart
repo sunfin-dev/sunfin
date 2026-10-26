@@ -9983,6 +9983,27 @@ class AppLocalizationsTr extends AppLocalizations {
       'Satırlar, sıraları ve İzlemeye Devam Et';
 
   @override
+  String get libraryNicknames => 'Kitaplık takma adları';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Kitaplıklar için kendi adlarınız, yalnızca Plexfin\'de görünür';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Sunucuda: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'Sunucudaki adı kullanmak için boş bırakın';
+
+  @override
+  String get libraryNicknameNone => 'Takma ad yok';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Kitaplıklarınız yüklenemedi';
+
+  @override
   String get settingsDynamicContent => 'Dinamik İçerik';
 
   @override

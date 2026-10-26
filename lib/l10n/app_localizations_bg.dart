@@ -10059,6 +10059,29 @@ class AppLocalizationsBg extends AppLocalizations {
       'Редове, тяхната подредба и „Продължете да гледате“';
 
   @override
+  String get libraryNicknames => 'Псевдоними на библиотеки';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Ваши собствени имена за библиотеките, видими само в Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'На сървъра: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Оставете празно, за да се ползва името от сървъра';
+
+  @override
+  String get libraryNicknameNone => 'Без псевдоним';
+
+  @override
+  String get libraryNicknamesLoadFailed =>
+      'Библиотеките ви не можаха да се заредят';
+
+  @override
   String get settingsDynamicContent => 'Динамично съдържание';
 
   @override

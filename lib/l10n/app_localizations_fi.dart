@@ -10017,6 +10017,28 @@ class AppLocalizationsFi extends AppLocalizations {
       'Rivit, niiden järjestys ja Jatka katselua';
 
   @override
+  String get libraryNicknames => 'Kirjastojen lempinimet';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Omat nimesi kirjastoille, näkyvät vain Plexfinissä';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Palvelimella: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Jätä tyhjäksi käyttääksesi palvelimen nimeä';
+
+  @override
+  String get libraryNicknameNone => 'Ei lempinimeä';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Kirjastoja ei voitu ladata';
+
+  @override
   String get settingsDynamicContent => 'Dynaaminen sisältö';
 
   @override

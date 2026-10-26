@@ -10025,6 +10025,27 @@ class AppLocalizationsSl extends AppLocalizations {
       'Vrstice, njihov vrstni red in Nadaljuj z gledanjem';
 
   @override
+  String get libraryNicknames => 'Vzdevki knjižnic';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Vaša lastna imena knjižnic, prikazana samo v Plexfinu';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Na strežniku: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'Pustite prazno za ime s strežnika';
+
+  @override
+  String get libraryNicknameNone => 'Brez vzdevka';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Knjižnic ni bilo mogoče naložiti';
+
+  @override
   String get settingsDynamicContent => 'Dinamična vsebina';
 
   @override

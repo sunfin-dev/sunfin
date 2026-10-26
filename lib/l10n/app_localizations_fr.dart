@@ -10101,6 +10101,29 @@ class AppLocalizationsFr extends AppLocalizations {
       'Rangées, leur ordre et Continuer de regarder';
 
   @override
+  String get libraryNicknames => 'Surnoms des bibliothèques';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Vos propres noms pour les bibliothèques, visibles uniquement dans Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Sur le serveur : $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Laissez vide pour utiliser le nom du serveur';
+
+  @override
+  String get libraryNicknameNone => 'Aucun surnom';
+
+  @override
+  String get libraryNicknamesLoadFailed =>
+      'Impossible de charger vos bibliothèques';
+
+  @override
   String get settingsDynamicContent => 'Contenu dynamique';
 
   @override

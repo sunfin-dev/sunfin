@@ -8,6 +8,7 @@ import 'package:dio/io.dart';
 
 import '../diagnostics/server_log_sink.dart';
 import 'insecure_certificates.dart';
+import 'server_response_rewriter.dart';
 import 'server_user_agent.dart';
 
 /// How many requests may be reaching the server at once.
@@ -55,7 +56,22 @@ void configureServerDio(Dio dio, {Duration? idleTimeout}) {
   );
 
   dio.interceptors.add(_retryDeadConnection(dio));
+  dio.interceptors.add(_rewriteResponses);
 }
+
+/// Hands every answer to the app's [serverResponseRewriter], if any. A
+/// rewriter that throws leaves the answer as the server sent it.
+final _rewriteResponses = InterceptorsWrapper(
+  onResponse: (response, handler) {
+    final rewrite = serverResponseRewriter;
+    if (rewrite != null) {
+      try {
+        rewrite(response.data);
+      } catch (_) {}
+    }
+    handler.next(response);
+  },
+);
 
 const _retriedKey = 'moonfin.connectionRetry';
 

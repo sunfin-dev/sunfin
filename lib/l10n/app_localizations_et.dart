@@ -9981,6 +9981,27 @@ class AppLocalizationsEt extends AppLocalizations {
       'Read, nende järjekord ja Jätka vaatamist';
 
   @override
+  String get libraryNicknames => 'Teekide hüüdnimed';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Sinu enda nimed teekidele, näha ainult Plexfinis';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Serveris: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'Jäta tühjaks, et kasutada serveri nime';
+
+  @override
+  String get libraryNicknameNone => 'Hüüdnimi puudub';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Teeke ei õnnestunud laadida';
+
+  @override
   String get settingsDynamicContent => 'Dünaamiline sisu';
 
   @override

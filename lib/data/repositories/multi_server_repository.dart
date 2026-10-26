@@ -857,9 +857,12 @@ class MultiServerRepository {
                     enableImageTypes: _imageTypes,
                     imageTypeLimit: _imageTypeLimit,
                   );
-                  final items = normalizeLatestMediaItems(
-                    _parseItems(response, serverId),
-                    limit: targetLimit,
+                  final items = await _withRealSeries(
+                    normalizeLatestMediaItems(
+                      _parseItems(response, serverId),
+                      limit: targetLimit,
+                    ),
+                    [session],
                   );
                   if (items.length <= existingCount) {
                     _rowTotals[cacheKey] = items.length;
@@ -1132,10 +1135,13 @@ class MultiServerRepository {
               continue;
             }
 
-            final items = normalizeLatestMediaItems(
-              parsed,
-              collectionType: collectionType,
-              limit: _defaultLimit,
+            final items = await _withRealSeries(
+              normalizeLatestMediaItems(
+                parsed,
+                collectionType: collectionType,
+                limit: _defaultLimit,
+              ),
+              [session],
             );
             if (items.isEmpty) continue;
 
@@ -1190,10 +1196,13 @@ class MultiServerRepository {
         return 0;
       });
 
-      final items = normalizeLatestMediaItems(
-        allItems,
-        collectionType: collectionType,
-        limit: _defaultLimit,
+      final items = await _withRealSeries(
+        normalizeLatestMediaItems(
+          allItems,
+          collectionType: collectionType,
+          limit: _defaultLimit,
+        ),
+        sessions,
       );
       if (items.isEmpty) continue;
 
@@ -1374,6 +1383,35 @@ class MultiServerRepository {
       return null;
     }
   }
+
+  /// Show cards built from a new episode or season, swapped for the show
+  /// itself from whichever of [sessions] it came from
+  /// (latest_media_row_normalizer.dart).
+  Future<List<AggregatedItem>> _withRealSeries(
+    List<AggregatedItem> items,
+    List<ServerUserSession> sessions,
+  ) => withRealSeries(items, (serverId, ids) async {
+    final session = sessions
+        .where((s) => s.server.id == serverId)
+        .firstOrNull;
+    if (session == null) return const <String, dynamic>{};
+    final response = await session.client.itemsApi.getItems(
+      ids: ids,
+      fields: _fields,
+      enableImageTypes: _imageTypes,
+      imageTypeLimit: _imageTypeLimit,
+    );
+    // Same filtering as every other card this repository hands out.
+    final kept = {
+      for (final item in _parseItems(response, serverId)) item.id,
+    };
+    return {
+      'Items': [
+        for (final raw in (response['Items'] as List?) ?? const [])
+          if (raw is Map && kept.contains(raw['Id']?.toString())) raw,
+      ],
+    };
+  });
 
   List<AggregatedItem> _parseItems(
     Map<String, dynamic> response,

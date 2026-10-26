@@ -9957,6 +9957,27 @@ class AppLocalizationsAr extends AppLocalizations {
   String get plexHomeScreenSubtitle => 'الصفوف وترتيبها ومواصلة المشاهدة';
 
   @override
+  String get libraryNicknames => 'ألقاب المكتبات';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'أسماؤك الخاصة للمكتبات، تظهر في Plexfin فقط';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'على الخادم: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'اتركه فارغًا لاستخدام اسم الخادم';
+
+  @override
+  String get libraryNicknameNone => 'بدون لقب';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'تعذّر تحميل مكتباتك';
+
+  @override
   String get settingsDynamicContent => 'المحتوى الديناميكي';
 
   @override

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:collection';
+import 'dart:math' as math;
 import 'dart:typed_data';
 
 import 'package:flutter/widgets.dart';
@@ -47,9 +48,14 @@ abstract final class PlexBackdropTint {
   static const _sampleHeight = 9;
   static const _cacheSize = 30;
 
-  /// Left third of the sample (columns) and bottom third (rows).
-  static const _leftColumns = 6;
-  static const _bottomFirstRow = 6;
+  /// The page colour behind the header comes from the art's upper two
+  /// thirds (rows above this), the one under the rows from its lower two
+  /// thirds (rows from [_lowerFirstRow]).
+  static const _settingLastRow = 6;
+  static const _lowerFirstRow = 3;
+
+  /// Hue families the dominant colour is chosen among (30 degrees each).
+  static const _hueBins = 12;
 
   /// Most recently used last; a hit moves the entry to the end.
   static final LinkedHashMap<String, PlexTint> _cache =
@@ -92,19 +98,26 @@ abstract final class PlexBackdropTint {
           interpolation: img.Interpolation.average,
         )
         .getBytes(order: img.ChannelOrder.rgba);
-    final bytes = ByteData.sublistView(pixels);
-    final left = _darken(_average(bytes, (x, y) => x < _leftColumns));
-    final bottom = _darken(_average(bytes, (x, y) => y >= _bottomFirstRow));
-    if (left == null && bottom == null) return null;
-    final tint = PlexTint(
-      left ?? bottom ?? PlexStyle.background,
-      bottom ?? left ?? PlexStyle.background,
-    );
+    final tint = fromSample(ByteData.sublistView(pixels));
+    if (tint == null) return null;
     _cache[url] = tint;
     while (_cache.length > _cacheSize) {
       _cache.remove(_cache.keys.first);
     }
     return tint;
+  }
+
+  /// The tint for a 16x9 RGBA sample of the art, or null when it is too dark
+  /// to have a colour.
+  @visibleForTesting
+  static PlexTint? fromSample(ByteData bytes) {
+    final left = _darken(_dominant(bytes, (x, y) => y < _settingLastRow));
+    final bottom = _darken(_dominant(bytes, (x, y) => y >= _lowerFirstRow));
+    if (left == null && bottom == null) return null;
+    return PlexTint(
+      left ?? bottom ?? PlexStyle.background,
+      bottom ?? left ?? PlexStyle.background,
+    );
   }
 
   static const _fetchTimeout = Duration(seconds: 5);
@@ -132,25 +145,55 @@ abstract final class PlexBackdropTint {
     return uri.replace(queryParameters: query);
   }
 
-  /// Average of the sample pixels [include] accepts, weighted by alpha and
-  /// strongly by saturation: a plain average of varied art comes out grey,
-  /// while Plex's page takes on the art's strong colours.
-  static Color _average(ByteData bytes, bool Function(int x, int y) include) {
-    var r = 0.0, g = 0.0, b = 0.0, weight = 0.0;
+  /// The colour of the art's setting among the sample pixels [include]
+  /// accepts: the hue family that covers the most of it, averaged.
+  ///
+  /// Chosen over a saturation-weighted mean (user, 2026-10-26, after a
+  /// side-by-side on 40 titles): that let small, strong patches of the
+  /// subject (a red shirt, skin, fire) and dark frames around the art win
+  /// over a large background, so The Bear's night sky came out brown.
+  /// Near-black and grey pixels carry no reliable hue and count for nothing;
+  /// skin tones, almost always the subject, count a little.
+  static Color _dominant(ByteData bytes, bool Function(int x, int y) include) {
+    final picked = <_Sample>[];
     for (var i = 0; i + 3 < bytes.lengthInBytes; i += 4) {
       final pixel = i ~/ 4;
       if (!include(pixel % _sampleWidth, pixel ~/ _sampleWidth)) continue;
-      final pr = bytes.getUint8(i);
-      final pg = bytes.getUint8(i + 1);
-      final pb = bytes.getUint8(i + 2);
-      final max = [pr, pg, pb].reduce((a, b) => a > b ? a : b);
-      final min = [pr, pg, pb].reduce((a, b) => a < b ? a : b);
-      final saturation = max == 0 ? 0.0 : (max - min) / max;
-      final w =
-          bytes.getUint8(i + 3) / 255 * (saturation * saturation + 0.02);
-      r += pr * w;
-      g += pg * w;
-      b += pb * w;
+      picked.add(
+        _Sample(
+          bytes.getUint8(i),
+          bytes.getUint8(i + 1),
+          bytes.getUint8(i + 2),
+          bytes.getUint8(i + 3) / 255,
+        ),
+      );
+    }
+    final weights = List<double>.filled(_hueBins, 0);
+    for (final s in picked) {
+      if (s.weight > 0) weights[s.bin] += s.weight;
+    }
+    var best = 0;
+    for (var i = 1; i < _hueBins; i++) {
+      if (weights[i] > weights[best]) best = i;
+    }
+    // Nothing colourful at all: a plain average, which the darkening below
+    // turns into the page colour or, for near-black art, the fallback.
+    final colourless = weights[best] == 0;
+    var r = 0.0, g = 0.0, b = 0.0, weight = 0.0;
+    for (final s in picked) {
+      final double w;
+      if (colourless) {
+        w = s.alpha;
+      } else {
+        // The winning family and its two neighbours, so a hue that sits on a
+        // bin edge still counts in full.
+        final d = (s.bin - best).abs();
+        if (s.weight == 0 || (d > 1 && d != _hueBins - 1)) continue;
+        w = s.weight;
+      }
+      r += s.r * w;
+      g += s.g * w;
+      b += s.b * w;
       weight += w;
     }
     if (weight == 0) return PlexStyle.background;
@@ -185,4 +228,54 @@ abstract final class PlexBackdropTint {
     }
     return scaled(lo);
   }
+}
+
+/// One sample pixel with what [PlexBackdropTint._dominant] needs of it.
+class _Sample {
+  final int r, g, b;
+  final double alpha;
+  late final double _max = math.max(r, math.max(g, b)) / 255;
+  late final double _min = math.min(r, math.min(g, b)) / 255;
+
+  _Sample(this.r, this.g, this.b, this.alpha);
+
+  double get value => _max;
+  double get saturation => _max == 0 ? 0 : (_max - _min) / _max;
+
+  /// 0-360.
+  late final double hue = () {
+    final d = _max - _min;
+    if (d == 0) return 0.0;
+    final rf = r / 255, gf = g / 255, bf = b / 255;
+    final double h;
+    if (_max == rf) {
+      h = ((gf - bf) / d) % 6;
+    } else if (_max == gf) {
+      h = (bf - rf) / d + 2;
+    } else {
+      h = (rf - gf) / d + 4;
+    }
+    return (h * 60 + 360) % 360;
+  }();
+
+  int get bin =>
+      (hue / 360 * PlexBackdropTint._hueBins).floor() %
+      PlexBackdropTint._hueBins;
+
+  static double _ramp(double x, double from, double to) =>
+      ((x - from) / (to - from)).clamp(0.0, 1.0);
+
+  /// Warm and moderately saturated: skin and hair, the subject of most art.
+  bool get _skinLike =>
+      hue <= 50 && saturation >= 0.15 && saturation <= 0.65 && value > 0.25;
+
+  /// How much this pixel speaks for the art's colour: nothing for near-black
+  /// (frames, letterboxing, shadows) or grey, a little for skin tones, more
+  /// the more saturated it is.
+  late final double weight =
+      _ramp(value, 0.12, 0.35) *
+      _ramp(saturation, 0.08, 0.3) *
+      (_skinLike ? 0.15 : 1) *
+      (0.3 + saturation) *
+      alpha;
 }

@@ -10021,6 +10021,28 @@ class AppLocalizationsLv extends AppLocalizations {
       'Rindas, to secība un Turpināt skatīties';
 
   @override
+  String get libraryNicknames => 'Bibliotēku iesaukas';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Jūsu pašu nosaukumi bibliotēkām, redzami tikai Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Serverī: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Atstājiet tukšu, lai izmantotu servera nosaukumu';
+
+  @override
+  String get libraryNicknameNone => 'Nav iesaukas';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Neizdevās ielādēt jūsu bibliotēkas';
+
+  @override
   String get settingsDynamicContent => 'Dinamisks saturs';
 
   @override

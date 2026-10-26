@@ -143,4 +143,8 @@ class UserViewsRepository extends ChangeNotifier {
   }
 
   void invalidateConfigCache() => _cachedConfig = null;
+
+  /// Tells everyone showing the libraries to read them again, for a change
+  /// made on this device (a library nickname) rather than on the server.
+  void viewsChanged() => notifyListeners();
 }

@@ -9969,6 +9969,28 @@ class AppLocalizationsNb extends AppLocalizations {
       'Rader, rekkefølgen deres og Fortsett å se';
 
   @override
+  String get libraryNicknames => 'Kallenavn på biblioteker';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Dine egne navn på bibliotekene, vises bare i Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'På serveren: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'La stå tomt for å bruke navnet fra serveren';
+
+  @override
+  String get libraryNicknameNone => 'Uten kallenavn';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Kunne ikke laste inn bibliotekene';
+
+  @override
   String get settingsDynamicContent => 'Dynamisk innhold';
 
   @override

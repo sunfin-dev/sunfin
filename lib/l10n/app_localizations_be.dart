@@ -10018,6 +10018,29 @@ class AppLocalizationsBe extends AppLocalizations {
       'Радкі, іх парадак і «Працягнуць прагляд»';
 
   @override
+  String get libraryNicknames => 'Мянушкі бібліятэк';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Вашы ўласныя назвы бібліятэк, бачныя толькі ў Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'На серверы: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Пакіньце пустым, каб выкарыстоўваць назву з сервера';
+
+  @override
+  String get libraryNicknameNone => 'Без мянушкі';
+
+  @override
+  String get libraryNicknamesLoadFailed =>
+      'Не ўдалося загрузіць вашы бібліятэкі';
+
+  @override
   String get settingsDynamicContent => 'Дынамічны кантэнт';
 
   @override

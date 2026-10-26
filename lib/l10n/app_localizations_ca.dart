@@ -10130,6 +10130,29 @@ class AppLocalizationsCa extends AppLocalizations {
   String get plexHomeScreenSubtitle => 'Files, el seu ordre i Continuar mirant';
 
   @override
+  String get libraryNicknames => 'Sobrenoms de biblioteques';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Els teus propis noms per a les biblioteques, només a Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'Al servidor: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Deixa-ho buit per fer servir el nom del servidor';
+
+  @override
+  String get libraryNicknameNone => 'Sense sobrenom';
+
+  @override
+  String get libraryNicknamesLoadFailed =>
+      'No s\'han pogut carregar les biblioteques';
+
+  @override
   String get settingsDynamicContent => 'Contingut dinàmic';
 
   @override

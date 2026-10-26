@@ -10041,6 +10041,28 @@ class AppLocalizationsRu extends AppLocalizations {
       'Ряды, их порядок и «Продолжить просмотр»';
 
   @override
+  String get libraryNicknames => 'Псевдонимы библиотек';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'Ваши собственные названия библиотек, видны только в Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'На сервере: $name';
+  }
+
+  @override
+  String get libraryNicknameHint =>
+      'Оставьте пустым, чтобы использовать название с сервера';
+
+  @override
+  String get libraryNicknameNone => 'Без псевдонима';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'Не удалось загрузить библиотеки';
+
+  @override
   String get settingsDynamicContent => 'Динамический контент';
 
   @override

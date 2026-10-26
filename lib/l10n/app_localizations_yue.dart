@@ -9685,6 +9685,26 @@ class AppLocalizationsYue extends AppLocalizations {
   String get plexHomeScreenSubtitle => '列、排列次序同繼續觀看';
 
   @override
+  String get libraryNicknames => '媒體庫暱稱';
+
+  @override
+  String get libraryNicknamesSubtitle => '你自己幫媒體庫改嘅名，只喺 Plexfin 顯示';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return '伺服器上嘅名：$name';
+  }
+
+  @override
+  String get libraryNicknameHint => '留空就用返伺服器嘅名';
+
+  @override
+  String get libraryNicknameNone => '冇暱稱';
+
+  @override
+  String get libraryNicknamesLoadFailed => '載入唔到你嘅媒體庫';
+
+  @override
   String get settingsDynamicContent => '動態內容';
 
   @override

@@ -9856,6 +9856,27 @@ class AppLocalizationsHe extends AppLocalizations {
   String get plexHomeScreenSubtitle => 'שורות, הסדר שלהן והמשך לצפות';
 
   @override
+  String get libraryNicknames => 'כינויים לספריות';
+
+  @override
+  String get libraryNicknamesSubtitle =>
+      'שמות משלך לספריות, מוצגים רק ב-Plexfin';
+
+  @override
+  String libraryNicknameServerName(String name) {
+    return 'בשרת: $name';
+  }
+
+  @override
+  String get libraryNicknameHint => 'השאירו ריק כדי להשתמש בשם מהשרת';
+
+  @override
+  String get libraryNicknameNone => 'ללא כינוי';
+
+  @override
+  String get libraryNicknamesLoadFailed => 'לא ניתן לטעון את הספריות שלך';
+
+  @override
   String get settingsDynamicContent => 'תוכן דינמי';
 
   @override

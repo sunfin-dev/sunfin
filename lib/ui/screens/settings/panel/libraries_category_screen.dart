@@ -27,6 +27,13 @@ class _LibrariesCategoryScreen extends StatelessWidget {
                 onTap: () =>
                     context.pushSettingsScreen(const LibraryOrderScreen()),
               ),
+              _TvSettingsListTile(
+                leading: const Icon(Icons.drive_file_rename_outline),
+                title: Text(l10n.libraryNicknames),
+                subtitle: Text(l10n.libraryNicknamesSubtitle),
+                onTap: () =>
+                    context.pushSettingsScreen(const _LibraryNicknamesScreen()),
+              ),
               SwitchPreferenceTile(
                 preference: UserPreferences.enableMultiServerLibraries,
                 title: l10n.multiServerLibraries,
