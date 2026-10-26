@@ -368,11 +368,22 @@ abstract final class PlexBackdropTint {
   static const _minLuminance = 0.012;
   static const _maxLuminance = 0.055;
 
-  /// Plex's page colours are less vivid than the art they come from.
+  /// Plex's page colours are less vivid than vivid art, but never washed out:
+  /// pale art that still has a hue (snow, a white-blue poster) keeps a clear
+  /// tint of it, as Plex's Interstellar page does (about 0.24), where it used
+  /// to come out flat grey (The Bear, user 2026-10-26). Truly grey art stays
+  /// grey.
   static Color _soften(Color color) {
     final hsv = HSVColor.fromColor(color);
-    return hsv.withSaturation(math.min(hsv.saturation * 0.9, 0.72)).toColor();
+    final s = hsv.saturation;
+    if (s < _greyBelow) return color;
+    return hsv
+        .withSaturation(math.max(math.min(s * 0.9, 0.72), 0.24))
+        .toColor();
   }
+
+  /// Below this saturation a colour has no hue worth keeping.
+  static const _greyBelow = 0.035;
 
   /// Scales the colour (keeping its hue) until its luminance is [target].
   /// Near-black art has no hue to keep, so it falls back.
