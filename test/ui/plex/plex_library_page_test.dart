@@ -5,6 +5,7 @@ import 'package:moonfin/data/models/aggregated_item.dart';
 import 'package:moonfin/ui/plex/plex_library_page.dart';
 import 'package:moonfin/ui/plex/plex_poster.dart';
 import 'package:moonfin/ui/screens/detail/nouveau/nouveau_detail_content.dart';
+import 'package:moonfin/util/platform_detection.dart';
 
 AggregatedItem _item(Map<String, dynamic> data) => AggregatedItem(
   id: data['Id'] as String? ?? 'x',
@@ -32,6 +33,35 @@ void main() {
 
     test('is nothing without a name', () {
       expect(plexLibraryLetter(_item({'Name': ''})), isNull);
+    });
+  });
+
+  group('the routes the library page opens on', () {
+    setUp(() => PlatformDetection.setTvMode(true));
+    tearDown(() => PlatformDetection.setTvMode(false));
+
+    test('are a whole library and a music library', () {
+      expect(
+        PlexLibraryPage.handles(Uri.parse('/library/abc?serverId=s')),
+        isTrue,
+      );
+      expect(PlexLibraryPage.handles(Uri.parse('/music/abc')), isTrue);
+    });
+
+    test('leave type and favourites views and sub-pages alone', () {
+      expect(
+        PlexLibraryPage.handles(Uri.parse('/library/abc?types=Movie')),
+        isFalse,
+      );
+      expect(
+        PlexLibraryPage.handles(Uri.parse('/library/abc?favorites=1')),
+        isFalse,
+      );
+      expect(
+        PlexLibraryPage.handles(Uri.parse('/library/abc/genres')),
+        isFalse,
+      );
+      expect(PlexLibraryPage.handles(Uri.parse('/item/abc')), isFalse);
     });
   });
 

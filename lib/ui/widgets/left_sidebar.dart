@@ -32,6 +32,7 @@ import '../navigation/home_refresh_bus.dart';
 import '../navigation/route_lifecycle_observer.dart';
 import '../plex/plex_backdrop_tint.dart';
 import '../plex/plex_icons.dart';
+import '../plex/plex_library_page.dart';
 import '../plex/plex_style.dart';
 import 'navigation_layout.dart';
 import 'settings/settings_panel.dart';
@@ -732,6 +733,20 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
     }
   }
 
+  /// The page beside the rail is a [PlexLibraryPage], which the query decides
+  /// (a type or favourites view of a library is the upstream grid).
+  bool _onPlexLibraryPage() {
+    final route = widget.activeRoute;
+    if (route != null && route.isNotEmpty) {
+      return PlexLibraryPage.handles(Uri.parse(route));
+    }
+    try {
+      return PlexLibraryPage.handles(GoRouterState.of(context).uri);
+    } catch (_) {
+      return false;
+    }
+  }
+
   bool _isActive(String route) {
     return _currentPath() == _normalizedPath(route);
   }
@@ -930,9 +945,12 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
   Widget _buildPlexRail() {
     final expandedWidth = _plexExpandedWidth();
     final surface = AppColorScheme.surface.withValues(alpha: 1);
-    // Details pages draw the same Plex page as home (user, 2026-10-23).
+    // Details pages draw the same Plex page as home (user, 2026-10-23), and
+    // so do Plex library pages (user, 2026-10-27).
     final onPlexPage =
-        _isActive(Destinations.home) || _currentPath().startsWith('/item/');
+        _isActive(Destinations.home) ||
+        _currentPath().startsWith('/item/') ||
+        _onPlexLibraryPage();
     return AnimatedContainer(
       duration: _kExpandDuration,
       curve: LeftSidebar.expandCurve,

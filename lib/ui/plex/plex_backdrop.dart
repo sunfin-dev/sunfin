@@ -74,6 +74,9 @@ class _PlexBackdropState extends State<PlexBackdrop> {
     if (!_started) {
       _started = true;
       _request(widget.url);
+      // With nothing to show yet the page is the plain colour; say so, or
+      // the rail keeps the colour of the page below until art arrives.
+      if (widget.url == null) _publishTint();
     }
   }
 

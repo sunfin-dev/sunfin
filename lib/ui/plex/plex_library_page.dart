@@ -47,6 +47,20 @@ class PlexLibraryPage extends StatefulWidget {
 
   const PlexLibraryPage({super.key, required this.libraryId, this.serverId});
 
+  /// Whether [uri] opens this page (app_router.dart): a whole library or
+  /// music library. A type or favourites view of one keeps the upstream grid,
+  /// and so do its sub-pages (genres, letters).
+  static bool handles(Uri uri) {
+    if (!PlexStyle.enabled) return false;
+    final segments = uri.pathSegments.where((s) => s.isNotEmpty).toList();
+    if (segments.length != 2) return false;
+    if (segments.first == 'music') return true;
+    final query = uri.queryParameters;
+    return segments.first == 'library' &&
+        !query.containsKey('types') &&
+        query['favorites'] != '1';
+  }
+
   @override
   State<PlexLibraryPage> createState() => _PlexLibraryPageState();
 }
