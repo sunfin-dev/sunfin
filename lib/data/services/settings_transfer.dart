@@ -21,7 +21,41 @@ abstract final class SettingsTransfer {
   static const displayPreferencesId = 'plexfin-settings-transfer';
   static const client = 'plexfin';
 
-  static const formatVersion = 1;
+  /// 2: setting names carry [_serverToken] and [_userToken] instead of the
+  /// exporting device's ids. Version 1 snapshots kept them, so their
+  /// per-account settings landed where no other device looks.
+  static const formatVersion = 2;
+
+  /// Most settings are stored per account, under a name ending in this
+  /// app's id for the server entry and the user's id (UserPreferences). The
+  /// server entry's id is made up by each device, so the snapshot names the
+  /// account with these tokens and import puts its own ids back in.
+  static const _serverToken = '{server}';
+  static const _userToken = '{user}';
+  static const _serverIdKey = 'pref_last_server_id';
+  static const _userIdKey = 'pref_last_user_id';
+
+  static (String, String)? _account(SharedPreferences prefs) {
+    final server = (prefs.getString(_serverIdKey) ?? '').trim();
+    final user = (prefs.getString(_userIdKey) ?? '').trim();
+    return server.isEmpty || user.isEmpty ? null : (server, user);
+  }
+
+  /// [key] with the signed-in account's ids as tokens.
+  static String _toTokens(String key, (String, String)? account) {
+    if (account == null) return key;
+    final (server, user) = account;
+    return key.replaceAll(server, _serverToken).replaceAll(user, _userToken);
+  }
+
+  /// [key] for the account signed in here, or null when it names an
+  /// account and nobody is signed in.
+  static String? _fromTokens(String key, (String, String)? account) {
+    if (!key.contains(_serverToken) && !key.contains(_userToken)) return key;
+    if (account == null) return null;
+    final (server, user) = account;
+    return key.replaceAll(_serverToken, server).replaceAll(_userToken, user);
+  }
 
   /// Display preference values are stored one per row on the server, so a
   /// large snapshot is split over several.
@@ -92,6 +126,7 @@ abstract final class SettingsTransfer {
     DateTime? now,
   }) {
     final values = <String, List<Object?>>{};
+    final account = _account(prefs);
     for (final key in prefs.getKeys().toList()..sort()) {
       if (!travels(key)) continue;
       final value = prefs.get(key);
@@ -103,7 +138,7 @@ abstract final class SettingsTransfer {
         List _ => 'l',
         _ => null,
       };
-      if (type != null) values[key] = [type, value];
+      if (type != null) values[_toTokens(key, account)] = [type, value];
     }
     return {
       'format': formatVersion,
@@ -156,7 +191,12 @@ abstract final class SettingsTransfer {
     SharedPreferences prefs,
     Map<String, Object?> snapshot,
   ) async {
-    final values = (snapshot['values'] as Map).cast<String, Object?>();
+    final account = _account(prefs);
+    final values = <String, Object?>{
+      for (final MapEntry(:key, :value)
+          in (snapshot['values'] as Map).cast<String, Object?>().entries)
+        ?_fromTokens(key, account): value,
+    };
     for (final key in prefs.getKeys().toList()) {
       if (travels(key) && !values.containsKey(key)) await prefs.remove(key);
     }

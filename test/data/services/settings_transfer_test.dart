@@ -134,6 +134,58 @@ void main() {
     },
   );
 
+  test('per-account settings land on the account signed in here', () async {
+    // Each device makes up its own id for the server entry; the user's id
+    // is the server's and the same everywhere.
+    final shield = await _prefs({
+      'pref_last_server_id': 'shield-entry',
+      'pref_last_user_id': 'u1',
+      'home_sections_config_shield-entry_u1': '[resume]',
+      'seerr_enabled_u1': true,
+      'library_sort_by_lib9': 'name',
+    });
+    final snapshot = SettingsTransfer.snapshot(shield, device: 'Android TV');
+    expect(
+      (snapshot['values'] as Map).keys,
+      containsAll([
+        'home_sections_config_{server}_{user}',
+        'seerr_enabled_{user}',
+        'library_sort_by_lib9',
+      ]),
+    );
+
+    final windows = await _prefs({
+      'pref_last_server_id': 'windows-entry',
+      'pref_last_user_id': 'u1',
+      'home_sections_config_windows-entry_u1': '[default]',
+    });
+    await SettingsTransfer.apply(windows, snapshot);
+
+    expect(
+      windows.getString('home_sections_config_windows-entry_u1'),
+      '[resume]',
+    );
+    expect(windows.getBool('seerr_enabled_u1'), isTrue);
+    expect(windows.getString('library_sort_by_lib9'), 'name');
+    expect(
+      windows.containsKey('home_sections_config_shield-entry_u1'),
+      isFalse,
+    );
+    expect(windows.getString('pref_last_server_id'), 'windows-entry');
+  });
+
+  test('per-account settings wait for a sign-in', () async {
+    final prefs = await _prefs({});
+    await SettingsTransfer.apply(prefs, {
+      'format': SettingsTransfer.formatVersion,
+      'values': {
+        'theme_{server}_{user}': ['s', 'plex'],
+        'clock': ['b', true],
+      },
+    });
+    expect(prefs.getKeys(), {'clock'});
+  });
+
   test('Jellyfin\'s own empty entries don\'t break reading the account', () {
     final stored = DisplayPreferences.fromJson({
       'Id': SettingsTransfer.displayPreferencesId,
