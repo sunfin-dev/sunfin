@@ -10062,6 +10062,52 @@ class AppLocalizationsPt extends AppLocalizations {
       'Não foi possível carregar suas bibliotecas';
 
   @override
+  String get settingsTransfer => 'Transferir definições';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Copie as suas definições para outro dispositivo através da sua conta Jellyfin';
+
+  @override
+  String get settingsTransferExport => 'Exportar definições';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Guardar as definições deste dispositivo na sua conta Jellyfin';
+
+  @override
+  String settingsTransferExported(int count) {
+    return '$count definições guardadas na sua conta Jellyfin';
+  }
+
+  @override
+  String get settingsTransferImport => 'Importar definições';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'De $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Ainda nada exportado';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Substituir as definições deste dispositivo por estas? $source\n\nO Plexfin fecha-se a seguir. Abra-o novamente para as usar.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Importar e fechar';
+
+  @override
+  String get settingsTransferFailed =>
+      'Não foi possível contactar a sua conta Jellyfin';
+
+  @override
+  String get settingsTransferNote =>
+      'O início de sessão, a janela e o hardware ficam em cada dispositivo. Inicie sessão primeiro no outro dispositivo e depois importe.';
+
+  @override
   String get settingsDynamicContent => 'Conteúdo Dinâmico';
 
   @override

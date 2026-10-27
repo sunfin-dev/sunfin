@@ -10297,6 +10297,52 @@ class AppLocalizationsPl extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'Nie udało się wczytać bibliotek';
 
   @override
+  String get settingsTransfer => 'Przenieś ustawienia';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Skopiuj ustawienia na inne urządzenie przez swoje konto Jellyfin';
+
+  @override
+  String get settingsTransferExport => 'Eksportuj ustawienia';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Zapisz ustawienia tego urządzenia na koncie Jellyfin';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Zapisano ustawienia na koncie Jellyfin: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'Importuj ustawienia';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'Z $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Nic jeszcze nie wyeksportowano';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Zastąpić ustawienia tego urządzenia tymi? $source\n\nPlexfin zostanie potem zamknięty. Otwórz go ponownie, aby ich użyć.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Importuj i zamknij';
+
+  @override
+  String get settingsTransferFailed =>
+      'Nie można połączyć się z kontem Jellyfin';
+
+  @override
+  String get settingsTransferNote =>
+      'Logowanie, okno i sprzęt pozostają osobne na każdym urządzeniu. Najpierw zaloguj się na drugim urządzeniu, a potem zaimportuj.';
+
+  @override
   String get settingsDynamicContent => 'Treści dynamiczne';
 
   @override

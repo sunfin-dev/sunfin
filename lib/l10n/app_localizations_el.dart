@@ -10130,6 +10130,52 @@ class AppLocalizationsEl extends AppLocalizations {
       'Δεν ήταν δυνατή η φόρτωση των βιβλιοθηκών σας';
 
   @override
+  String get settingsTransfer => 'Μεταφορά ρυθμίσεων';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Αντιγράψτε τις ρυθμίσεις σας σε άλλη συσκευή μέσω του λογαριασμού σας Jellyfin';
+
+  @override
+  String get settingsTransferExport => 'Εξαγωγή ρυθμίσεων';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Αποθήκευση των ρυθμίσεων αυτής της συσκευής στον λογαριασμό σας Jellyfin';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Αποθηκεύτηκαν $count ρυθμίσεις στον λογαριασμό σας Jellyfin';
+  }
+
+  @override
+  String get settingsTransferImport => 'Εισαγωγή ρυθμίσεων';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'Από $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Δεν έχει γίνει ακόμη εξαγωγή';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Αντικατάσταση των ρυθμίσεων αυτής της συσκευής με αυτές; $source\n\nΤο Plexfin κλείνει μετά. Ανοίξτε το ξανά για να τις χρησιμοποιήσετε.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Εισαγωγή και κλείσιμο';
+
+  @override
+  String get settingsTransferFailed =>
+      'Δεν ήταν δυνατή η σύνδεση με τον λογαριασμό σας Jellyfin';
+
+  @override
+  String get settingsTransferNote =>
+      'Η σύνδεση, το παράθυρο και το υλικό μένουν σε κάθε συσκευή. Συνδεθείτε πρώτα στην άλλη συσκευή και μετά κάντε εισαγωγή.';
+
+  @override
   String get settingsDynamicContent => 'Δυναμικό περιεχόμενο';
 
   @override

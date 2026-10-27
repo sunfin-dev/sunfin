@@ -10022,6 +10022,51 @@ class AppLocalizationsUg extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'ئامبارلىرىڭىزنى يۈكلىگىلى بولمىدى';
 
   @override
+  String get settingsTransfer => 'تەڭشەكلەرنى يۆتكەش';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Jellyfin ھېساباتىڭىز ئارقىلىق تەڭشەكلەرنى باشقا ئۈسكۈنىگە كۆچۈرۈڭ';
+
+  @override
+  String get settingsTransferExport => 'تەڭشەكلەرنى چىقىرىش';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'بۇ ئۈسكۈنىنىڭ تەڭشەكلىرىنى Jellyfin ھېساباتىڭىزغا ساقلاش';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Jellyfin ھېساباتىغا ساقلانغان تەڭشەك: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'تەڭشەكلەرنى كىرگۈزۈش';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return '$device دىن، $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'تېخى ھېچنېمە چىقىرىلمىدى';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'بۇ ئۈسكۈنىنىڭ تەڭشەكلىرىنى بۇلار بىلەن ئالماشتۇرامسىز؟ $source\n\nئاندىن Plexfin تاقىلىدۇ. ئىشلىتىش ئۈچۈن قايتا ئېچىڭ.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'كىرگۈزۈپ تاقاش';
+
+  @override
+  String get settingsTransferFailed => 'Jellyfin ھېساباتىڭىزغا ئۇلىنالمىدى';
+
+  @override
+  String get settingsTransferNote =>
+      'كىرىش، كۆزنەك ۋە قاتتىق دېتال ھەر ئۈسكۈنىدە ئۆزىگە قالىدۇ. ئاۋۋال باشقا ئۈسكۈنىدە كىرىپ، ئاندىن كىرگۈزۈڭ.';
+
+  @override
   String get settingsDynamicContent => 'ھەرىكەتچان مەزمۇن';
 
   @override

@@ -10007,6 +10007,52 @@ class AppLocalizationsSv extends AppLocalizations {
       'Det gick inte att läsa in biblioteken';
 
   @override
+  String get settingsTransfer => 'Överför inställningar';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Kopiera dina inställningar till en annan enhet via ditt Jellyfin-konto';
+
+  @override
+  String get settingsTransferExport => 'Exportera inställningar';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Spara den här enhetens inställningar i ditt Jellyfin-konto';
+
+  @override
+  String settingsTransferExported(int count) {
+    return '$count inställningar sparade i ditt Jellyfin-konto';
+  }
+
+  @override
+  String get settingsTransferImport => 'Importera inställningar';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'Från $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Inget exporterat ännu';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Ersätta den här enhetens inställningar med dessa? $source\n\nPlexfin stängs efteråt. Öppna det igen för att använda dem.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Importera och stäng';
+
+  @override
+  String get settingsTransferFailed =>
+      'Det gick inte att nå ditt Jellyfin-konto';
+
+  @override
+  String get settingsTransferNote =>
+      'Inloggning, fönster och hårdvara stannar på varje enhet. Logga in på den andra enheten först och importera sedan.';
+
+  @override
   String get settingsDynamicContent => 'Dynamiskt innehåll';
 
   @override

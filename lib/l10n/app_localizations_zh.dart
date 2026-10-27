@@ -9667,6 +9667,48 @@ class AppLocalizationsZh extends AppLocalizations {
   String get libraryNicknamesLoadFailed => '无法加载你的媒体库';
 
   @override
+  String get settingsTransfer => '迁移设置';
+
+  @override
+  String get settingsTransferSubtitle => '通过你的 Jellyfin 账户将设置复制到另一台设备';
+
+  @override
+  String get settingsTransferExport => '导出设置';
+
+  @override
+  String get settingsTransferExportSubtitle => '将此设备的设置保存到你的 Jellyfin 账户';
+
+  @override
+  String settingsTransferExported(int count) {
+    return '已将 $count 项设置保存到你的 Jellyfin 账户';
+  }
+
+  @override
+  String get settingsTransferImport => '导入设置';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return '来自 $device，$date';
+  }
+
+  @override
+  String get settingsTransferNothing => '尚未导出任何内容';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return '用这些设置替换此设备的设置？$source\n\n之后 Plexfin 会关闭。重新打开即可使用。';
+  }
+
+  @override
+  String get settingsTransferImportAction => '导入并关闭';
+
+  @override
+  String get settingsTransferFailed => '无法连接到你的 Jellyfin 账户';
+
+  @override
+  String get settingsTransferNote => '登录、窗口和硬件设置保留在各自设备上。请先在另一台设备上登录，然后再导入。';
+
+  @override
   String get settingsDynamicContent => '动态内容';
 
   @override
@@ -21230,6 +21272,48 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get libraryNicknamesLoadFailed => '無法載入你的媒體庫';
+
+  @override
+  String get settingsTransfer => '轉移設定';
+
+  @override
+  String get settingsTransferSubtitle => '透過你的 Jellyfin 帳戶將設定複製到另一台裝置';
+
+  @override
+  String get settingsTransferExport => '匯出設定';
+
+  @override
+  String get settingsTransferExportSubtitle => '將此裝置的設定儲存到你的 Jellyfin 帳戶';
+
+  @override
+  String settingsTransferExported(int count) {
+    return '已將 $count 項設定儲存到你的 Jellyfin 帳戶';
+  }
+
+  @override
+  String get settingsTransferImport => '匯入設定';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return '來自 $device，$date';
+  }
+
+  @override
+  String get settingsTransferNothing => '尚未匯出任何內容';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return '要用這些設定取代此裝置的設定嗎？$source\n\n之後 Plexfin 會關閉。重新開啟即可使用。';
+  }
+
+  @override
+  String get settingsTransferImportAction => '匯入並關閉';
+
+  @override
+  String get settingsTransferFailed => '無法連線到你的 Jellyfin 帳戶';
+
+  @override
+  String get settingsTransferNote => '登入、視窗和硬體設定會保留在各自的裝置上。請先在另一台裝置上登入，然後再匯入。';
 
   @override
   String get settingsDynamicContent => '動態內容';

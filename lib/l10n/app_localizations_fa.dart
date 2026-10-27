@@ -9939,6 +9939,51 @@ class AppLocalizationsFa extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'بارگیری کتابخانه‌های شما ممکن نشد';
 
   @override
+  String get settingsTransfer => 'انتقال تنظیمات';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'تنظیمات خود را از طریق حساب Jellyfin به دستگاه دیگری کپی کنید';
+
+  @override
+  String get settingsTransferExport => 'صدور تنظیمات';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'ذخیرهٔ تنظیمات این دستگاه در حساب Jellyfin شما';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'تنظیمات ذخیره‌شده در حساب Jellyfin: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'ورود تنظیمات';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'از $device، $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'هنوز چیزی صادر نشده است';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'تنظیمات این دستگاه با این‌ها جایگزین شود؟ $source\n\nسپس Plexfin بسته می‌شود. برای استفاده دوباره بازش کنید.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'وارد کردن و بستن';
+
+  @override
+  String get settingsTransferFailed => 'دسترسی به حساب Jellyfin شما ممکن نشد';
+
+  @override
+  String get settingsTransferNote =>
+      'ورود، پنجره و سخت‌افزار برای هر دستگاه جداگانه می‌ماند. ابتدا در دستگاه دیگر وارد شوید، سپس وارد کنید.';
+
+  @override
   String get settingsDynamicContent => 'محتوای پویا';
 
   @override

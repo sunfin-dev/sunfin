@@ -9977,6 +9977,52 @@ class AppLocalizationsBn extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'আপনার লাইব্রেরি লোড করা যায়নি';
 
   @override
+  String get settingsTransfer => 'সেটিংস স্থানান্তর';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'আপনার Jellyfin অ্যাকাউন্টের মাধ্যমে সেটিংস অন্য ডিভাইসে কপি করুন';
+
+  @override
+  String get settingsTransferExport => 'সেটিংস রপ্তানি';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'এই ডিভাইসের সেটিংস আপনার Jellyfin অ্যাকাউন্টে সংরক্ষণ করুন';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'আপনার Jellyfin অ্যাকাউন্টে সংরক্ষিত সেটিংস: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'সেটিংস আমদানি';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return '$device থেকে, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'এখনও কিছু রপ্তানি হয়নি';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'এই ডিভাইসের সেটিংস এগুলো দিয়ে বদলাবেন? $source\n\nএরপর Plexfin বন্ধ হবে। ব্যবহার করতে আবার খুলুন।';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'আমদানি করে বন্ধ করুন';
+
+  @override
+  String get settingsTransferFailed =>
+      'আপনার Jellyfin অ্যাকাউন্টে পৌঁছানো যায়নি';
+
+  @override
+  String get settingsTransferNote =>
+      'সাইন-ইন, উইন্ডো ও হার্ডওয়্যার প্রতিটি ডিভাইসে আলাদা থাকে। আগে অন্য ডিভাইসে সাইন ইন করুন, তারপর আমদানি করুন।';
+
+  @override
   String get settingsDynamicContent => 'ডায়নামিক কন্টেন্ট';
 
   @override

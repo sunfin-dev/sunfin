@@ -10074,6 +10074,51 @@ class AppLocalizationsSq extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'Bibliotekat nuk u ngarkuan dot';
 
   @override
+  String get settingsTransfer => 'Transfero cilësimet';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Kopjo cilësimet në një pajisje tjetër përmes llogarisë sate Jellyfin';
+
+  @override
+  String get settingsTransferExport => 'Eksporto cilësimet';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Ruaj cilësimet e kësaj pajisjeje në llogarinë tënde Jellyfin';
+
+  @override
+  String settingsTransferExported(int count) {
+    return '$count cilësime u ruajtën në llogarinë tënde Jellyfin';
+  }
+
+  @override
+  String get settingsTransferImport => 'Importo cilësimet';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'Nga $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Ende asgjë e eksportuar';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Të zëvendësohen cilësimet e kësaj pajisjeje me këto? $source\n\nPlexfin do të mbyllet më pas. Hape sërish për t\'i përdorur.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Importo dhe mbyll';
+
+  @override
+  String get settingsTransferFailed => 'Llogaria jote Jellyfin nuk u arrit';
+
+  @override
+  String get settingsTransferNote =>
+      'Hyrja, dritarja dhe hardueri mbeten në çdo pajisje. Hyr fillimisht në pajisjen tjetër, pastaj importo.';
+
+  @override
   String get settingsDynamicContent => 'Përmbajtja dinamike';
 
   @override

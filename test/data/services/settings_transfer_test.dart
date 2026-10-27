@@ -1,0 +1,168 @@
+import 'package:flutter_test/flutter_test.dart';
+import 'package:moonfin/data/services/settings_transfer.dart';
+import 'package:server_core/server_core.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+Future<SharedPreferences> _prefs(Map<String, Object> values) async {
+  SharedPreferences.setMockInitialValues(values);
+  return SharedPreferences.getInstance();
+}
+
+void main() {
+  group('what goes to another device', () {
+    test('the user\'s choices do', () {
+      for (final key in [
+        'pref_plexfin_library_nicknames',
+        'home_sections_config',
+        'seerr_api_key_u1',
+        'tmdbApiKey',
+        'live_tv_last_channel_id',
+      ]) {
+        expect(SettingsTransfer.travels(key), isTrue, reason: key);
+      }
+    });
+
+    test('the device\'s identity, sign-in, hardware and window stay', () {
+      for (final key in [
+        'device_id',
+        'authentication_store_json',
+        'pref_last_user_id',
+        'window_width',
+        'device_capability_codec',
+        'pref_passthrough_truehd',
+        'pref_audio_passthrough_mode',
+        'last_external_rows_refresh_time',
+        'last_playback_session',
+      ]) {
+        expect(SettingsTransfer.travels(key), isFalse, reason: key);
+      }
+    });
+
+    test('nothing that looks like a login goes', () {
+      for (final key in ['seerr_token_u1', 'trakt_Cookie', 'x_password']) {
+        expect(SettingsTransfer.travels(key), isFalse, reason: key);
+      }
+    });
+  });
+
+  test(
+    'a snapshot keeps every type and leaves the device\'s keys out',
+    () async {
+      final prefs = await _prefs({
+        'device_id': 'shield',
+        'a_bool': true,
+        'an_int': 3,
+        'a_double': 1.5,
+        'a_string': 'x',
+        'a_list': ['p', 'q'],
+      });
+      final snapshot = SettingsTransfer.snapshot(
+        prefs,
+        device: 'Android TV',
+        now: DateTime.utc(2026, 10, 27),
+      );
+      expect(snapshot['device'], 'Android TV');
+      expect(snapshot['values'], {
+        'a_bool': ['b', true],
+        'a_double': ['d', 1.5],
+        'a_list': [
+          'l',
+          ['p', 'q'],
+        ],
+        'a_string': ['s', 'x'],
+        'an_int': ['i', 3],
+      });
+    },
+  );
+
+  test('a large snapshot is split and joined again', () {
+    final snapshot = <String, Object?>{
+      'format': SettingsTransfer.formatVersion,
+      'device': 'Android TV',
+      'values': {
+        'big': ['s', 'x' * (SettingsTransfer.chunkLength * 2 + 5)],
+      },
+    };
+    final stored = SettingsTransfer.encode(snapshot);
+    expect(stored['parts'], '3');
+    expect(SettingsTransfer.decode(stored), snapshot);
+  });
+
+  test('a missing part or another format reads as no snapshot', () {
+    final stored = SettingsTransfer.encode({
+      'format': SettingsTransfer.formatVersion,
+      'values': {
+        'big': ['s', 'x' * (SettingsTransfer.chunkLength + 1)],
+      },
+    });
+    expect(SettingsTransfer.decode(Map.of(stored)..remove('part1')), isNull);
+    expect(
+      SettingsTransfer.decode(
+        SettingsTransfer.encode({'format': 99, 'values': {}}),
+      ),
+      isNull,
+    );
+    expect(SettingsTransfer.decode(const {}), isNull);
+  });
+
+  test(
+    'importing mirrors the snapshot and keeps the device\'s own keys',
+    () async {
+      final shield = await _prefs({
+        'device_id': 'shield',
+        'theme': 'plex',
+        'rows': ['resume', 'latest'],
+        'volume_steps': 5,
+      });
+      final snapshot = SettingsTransfer.snapshot(shield, device: 'Android TV');
+
+      final windows = await _prefs({
+        'device_id': 'windows',
+        'window_width': 1600.0,
+        'theme': 'old',
+        'only_on_windows': true,
+      });
+      final written = await SettingsTransfer.apply(windows, snapshot);
+
+      expect(written, 3);
+      expect(windows.getString('device_id'), 'windows');
+      expect(windows.getDouble('window_width'), 1600.0);
+      expect(windows.getString('theme'), 'plex');
+      expect(windows.getStringList('rows'), ['resume', 'latest']);
+      expect(windows.getInt('volume_steps'), 5);
+      expect(windows.containsKey('only_on_windows'), isFalse);
+    },
+  );
+
+  test('Jellyfin\'s own empty entries don\'t break reading the account', () {
+    final stored = DisplayPreferences.fromJson({
+      'Id': SettingsTransfer.displayPreferencesId,
+      'CustomPrefs': {
+        'tvhome': null,
+        'dashboardTheme': null,
+        'skipForwardLength': '30000',
+        ...SettingsTransfer.encode({
+          'format': SettingsTransfer.formatVersion,
+          'values': {
+            'theme': ['s', 'plex'],
+          },
+        }),
+      },
+    });
+    expect(stored.customPrefs.containsKey('tvhome'), isFalse);
+    expect(SettingsTransfer.decode(stored.customPrefs)?['values'], {
+      'theme': ['s', 'plex'],
+    });
+  });
+
+  test('a snapshot can\'t sneak a device key in', () async {
+    final prefs = await _prefs({'device_id': 'windows'});
+    await SettingsTransfer.apply(prefs, {
+      'format': SettingsTransfer.formatVersion,
+      'values': {
+        'device_id': ['s', 'shield'],
+      },
+    });
+    expect(prefs.getString('device_id'), 'windows');
+  });
+}

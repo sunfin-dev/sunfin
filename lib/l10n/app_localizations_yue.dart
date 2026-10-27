@@ -9705,6 +9705,48 @@ class AppLocalizationsYue extends AppLocalizations {
   String get libraryNicknamesLoadFailed => '載入唔到你嘅媒體庫';
 
   @override
+  String get settingsTransfer => '轉移設定';
+
+  @override
+  String get settingsTransferSubtitle => '經你嘅 Jellyfin 帳戶將設定複製去另一部裝置';
+
+  @override
+  String get settingsTransferExport => '匯出設定';
+
+  @override
+  String get settingsTransferExportSubtitle => '將呢部裝置嘅設定儲存去你嘅 Jellyfin 帳戶';
+
+  @override
+  String settingsTransferExported(int count) {
+    return '已經將 $count 項設定儲存去你嘅 Jellyfin 帳戶';
+  }
+
+  @override
+  String get settingsTransferImport => '匯入設定';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return '來自 $device，$date';
+  }
+
+  @override
+  String get settingsTransferNothing => '仲未匯出任何嘢';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return '要用呢啲設定取代呢部裝置嘅設定嗎？$source\n\n之後 Plexfin 會關閉。再開返就會用到。';
+  }
+
+  @override
+  String get settingsTransferImportAction => '匯入並關閉';
+
+  @override
+  String get settingsTransferFailed => '連唔到你嘅 Jellyfin 帳戶';
+
+  @override
+  String get settingsTransferNote => '登入、視窗同硬件設定會留喺各自嘅裝置。請先喺另一部裝置登入，然後再匯入。';
+
+  @override
   String get settingsDynamicContent => '動態內容';
 
   @override

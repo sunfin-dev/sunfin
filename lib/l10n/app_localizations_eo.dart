@@ -9980,6 +9980,51 @@ class AppLocalizationsEo extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'Ne eblis ŝargi viajn bibliotekojn';
 
   @override
+  String get settingsTransfer => 'Transigi agordojn';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Kopiu viajn agordojn al alia aparato per via Jellyfin-konto';
+
+  @override
+  String get settingsTransferExport => 'Eksporti agordojn';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Konservi la agordojn de ĉi tiu aparato en via Jellyfin-konto';
+
+  @override
+  String settingsTransferExported(int count) {
+    return '$count agordoj konservitaj en via Jellyfin-konto';
+  }
+
+  @override
+  String get settingsTransferImport => 'Importi agordojn';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'De $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Ankoraŭ nenio eksportita';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Ĉu anstataŭigi la agordojn de ĉi tiu aparato per ĉi tiuj? $source\n\nPoste Plexfin fermiĝos. Malfermu ĝin denove por uzi ilin.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Importi kaj fermi';
+
+  @override
+  String get settingsTransferFailed => 'Ne eblis atingi vian Jellyfin-konton';
+
+  @override
+  String get settingsTransferNote =>
+      'Ensaluto, fenestro kaj aparataro restas ĉe ĉiu aparato. Unue ensalutu en la alia aparato, poste importu.';
+
+  @override
   String get settingsDynamicContent => 'Dinamika Enhavo';
 
   @override

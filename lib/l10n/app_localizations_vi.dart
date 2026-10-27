@@ -9992,6 +9992,52 @@ class AppLocalizationsVi extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'Không tải được thư viện của bạn';
 
   @override
+  String get settingsTransfer => 'Chuyển cài đặt';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Sao chép cài đặt sang thiết bị khác qua tài khoản Jellyfin của bạn';
+
+  @override
+  String get settingsTransferExport => 'Xuất cài đặt';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Lưu cài đặt của thiết bị này vào tài khoản Jellyfin của bạn';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Đã lưu $count cài đặt vào tài khoản Jellyfin của bạn';
+  }
+
+  @override
+  String get settingsTransferImport => 'Nhập cài đặt';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'Từ $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Chưa xuất gì';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Thay cài đặt của thiết bị này bằng những cài đặt này? $source\n\nSau đó Plexfin sẽ đóng. Mở lại để sử dụng.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Nhập và đóng';
+
+  @override
+  String get settingsTransferFailed =>
+      'Không thể kết nối tài khoản Jellyfin của bạn';
+
+  @override
+  String get settingsTransferNote =>
+      'Đăng nhập, cửa sổ và phần cứng được giữ riêng trên từng thiết bị. Hãy đăng nhập trên thiết bị kia trước rồi mới nhập.';
+
+  @override
   String get settingsDynamicContent => 'Nội dung động';
 
   @override

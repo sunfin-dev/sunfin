@@ -9761,6 +9761,50 @@ class AppLocalizationsJa extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'ライブラリを読み込めませんでした';
 
   @override
+  String get settingsTransfer => '設定を移行';
+
+  @override
+  String get settingsTransferSubtitle => 'Jellyfin アカウントを通じて設定を別のデバイスにコピーします';
+
+  @override
+  String get settingsTransferExport => '設定をエクスポート';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'このデバイスの設定を Jellyfin アカウントに保存します';
+
+  @override
+  String settingsTransferExported(int count) {
+    return '$count 件の設定を Jellyfin アカウントに保存しました';
+  }
+
+  @override
+  String get settingsTransferImport => '設定をインポート';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return '$device から、$date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'まだエクスポートされていません';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'このデバイスの設定をこれで置き換えますか？$source\n\nその後 Plexfin は終了します。もう一度開くと反映されます。';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'インポートして終了';
+
+  @override
+  String get settingsTransferFailed => 'Jellyfin アカウントに接続できませんでした';
+
+  @override
+  String get settingsTransferNote =>
+      'サインイン、ウィンドウ、ハードウェアの設定は各デバイスに残ります。先にもう一方のデバイスでサインインしてからインポートしてください。';
+
+  @override
   String get settingsDynamicContent => '動的コンテンツ';
 
   @override

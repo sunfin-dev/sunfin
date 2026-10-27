@@ -9991,6 +9991,52 @@ class AppLocalizationsNb extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'Kunne ikke laste inn bibliotekene';
 
   @override
+  String get settingsTransfer => 'Overfør innstillinger';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Kopier innstillingene dine til en annen enhet via Jellyfin-kontoen din';
+
+  @override
+  String get settingsTransferExport => 'Eksporter innstillinger';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Lagre innstillingene for denne enheten på Jellyfin-kontoen din';
+
+  @override
+  String settingsTransferExported(int count) {
+    return '$count innstillinger lagret på Jellyfin-kontoen din';
+  }
+
+  @override
+  String get settingsTransferImport => 'Importer innstillinger';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'Fra $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Ingenting eksportert ennå';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Erstatte innstillingene på denne enheten med disse? $source\n\nPlexfin lukkes etterpå. Åpne det igjen for å bruke dem.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Importer og lukk';
+
+  @override
+  String get settingsTransferFailed =>
+      'Fikk ikke kontakt med Jellyfin-kontoen din';
+
+  @override
+  String get settingsTransferNote =>
+      'Pålogging, vindu og maskinvare blir værende på hver enhet. Logg på den andre enheten først, og importer deretter.';
+
+  @override
   String get settingsDynamicContent => 'Dynamisk innhold';
 
   @override

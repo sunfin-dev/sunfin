@@ -10063,6 +10063,53 @@ class AppLocalizationsTa extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'உங்கள் நூலகங்களை ஏற்ற முடியவில்லை';
 
   @override
+  String get settingsTransfer => 'அமைப்புகளை மாற்றுதல்';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'உங்கள் Jellyfin கணக்கு மூலம் அமைப்புகளை வேறொரு சாதனத்திற்கு நகலெடுக்கவும்';
+
+  @override
+  String get settingsTransferExport => 'அமைப்புகளை ஏற்றுமதி செய்';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'இந்தச் சாதனத்தின் அமைப்புகளை உங்கள் Jellyfin கணக்கில் சேமிக்கவும்';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'உங்கள் Jellyfin கணக்கில் சேமித்த அமைப்புகள்: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'அமைப்புகளை இறக்குமதி செய்';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return '$device இலிருந்து, $date';
+  }
+
+  @override
+  String get settingsTransferNothing =>
+      'இன்னும் எதுவும் ஏற்றுமதி செய்யப்படவில்லை';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'இந்தச் சாதனத்தின் அமைப்புகளை இவற்றால் மாற்றவா? $source\n\nபிறகு Plexfin மூடப்படும். பயன்படுத்த மீண்டும் திறக்கவும்.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'இறக்குமதி செய்து மூடு';
+
+  @override
+  String get settingsTransferFailed =>
+      'உங்கள் Jellyfin கணக்கை அணுக முடியவில்லை';
+
+  @override
+  String get settingsTransferNote =>
+      'உள்நுழைவு, சாளரம், வன்பொருள் ஒவ்வொரு சாதனத்திலும் தனியாக இருக்கும். முதலில் மற்ற சாதனத்தில் உள்நுழைந்து பின் இறக்குமதி செய்யவும்.';
+
+  @override
   String get settingsDynamicContent => 'டைனமிக் உள்ளடக்கம்';
 
   @override

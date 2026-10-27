@@ -9938,6 +9938,52 @@ class AppLocalizationsTh extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'โหลดคลังสื่อของคุณไม่ได้';
 
   @override
+  String get settingsTransfer => 'โอนการตั้งค่า';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'คัดลอกการตั้งค่าไปยังอุปกรณ์อื่นผ่านบัญชี Jellyfin ของคุณ';
+
+  @override
+  String get settingsTransferExport => 'ส่งออกการตั้งค่า';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'บันทึกการตั้งค่าของอุปกรณ์นี้ลงในบัญชี Jellyfin ของคุณ';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'บันทึกการตั้งค่าลงในบัญชี Jellyfin แล้ว $count รายการ';
+  }
+
+  @override
+  String get settingsTransferImport => 'นำเข้าการตั้งค่า';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'จาก $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'ยังไม่มีการส่งออก';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'แทนที่การตั้งค่าของอุปกรณ์นี้ด้วยชุดนี้ไหม $source\n\nจากนั้น Plexfin จะปิดลง เปิดใหม่อีกครั้งเพื่อใช้งาน';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'นำเข้าและปิด';
+
+  @override
+  String get settingsTransferFailed =>
+      'ไม่สามารถเชื่อมต่อบัญชี Jellyfin ของคุณ';
+
+  @override
+  String get settingsTransferNote =>
+      'การลงชื่อเข้าใช้ หน้าต่าง และฮาร์ดแวร์จะแยกกันในแต่ละอุปกรณ์ ลงชื่อเข้าใช้บนอุปกรณ์อีกเครื่องก่อน แล้วจึงนำเข้า';
+
+  @override
   String get settingsDynamicContent => 'เนื้อหาแบบไดนามิก';
 
   @override

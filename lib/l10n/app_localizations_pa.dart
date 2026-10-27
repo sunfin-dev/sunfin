@@ -9962,6 +9962,52 @@ class AppLocalizationsPa extends AppLocalizations {
       'ਤੁਹਾਡੀਆਂ ਲਾਇਬ੍ਰੇਰੀਆਂ ਲੋਡ ਨਹੀਂ ਹੋ ਸਕੀਆਂ';
 
   @override
+  String get settingsTransfer => 'ਸੈਟਿੰਗਾਂ ਤਬਦੀਲ ਕਰੋ';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'ਆਪਣੇ Jellyfin ਖਾਤੇ ਰਾਹੀਂ ਸੈਟਿੰਗਾਂ ਕਿਸੇ ਹੋਰ ਡਿਵਾਈਸ \'ਤੇ ਕਾਪੀ ਕਰੋ';
+
+  @override
+  String get settingsTransferExport => 'ਸੈਟਿੰਗਾਂ ਨਿਰਯਾਤ ਕਰੋ';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'ਇਸ ਡਿਵਾਈਸ ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਆਪਣੇ Jellyfin ਖਾਤੇ ਵਿੱਚ ਸੰਭਾਲੋ';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'ਤੁਹਾਡੇ Jellyfin ਖਾਤੇ ਵਿੱਚ ਸੰਭਾਲੀਆਂ ਸੈਟਿੰਗਾਂ: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'ਸੈਟਿੰਗਾਂ ਆਯਾਤ ਕਰੋ';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return '$device ਤੋਂ, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'ਹਾਲੇ ਕੁਝ ਵੀ ਨਿਰਯਾਤ ਨਹੀਂ ਹੋਇਆ';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'ਕੀ ਇਸ ਡਿਵਾਈਸ ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਇਹਨਾਂ ਨਾਲ ਬਦਲਣੀਆਂ ਹਨ? $source\n\nਇਸ ਤੋਂ ਬਾਅਦ Plexfin ਬੰਦ ਹੋ ਜਾਵੇਗਾ। ਵਰਤਣ ਲਈ ਇਸਨੂੰ ਦੁਬਾਰਾ ਖੋਲ੍ਹੋ।';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'ਆਯਾਤ ਕਰੋ ਅਤੇ ਬੰਦ ਕਰੋ';
+
+  @override
+  String get settingsTransferFailed =>
+      'ਤੁਹਾਡੇ Jellyfin ਖਾਤੇ ਤੱਕ ਪਹੁੰਚ ਨਹੀਂ ਹੋ ਸਕੀ';
+
+  @override
+  String get settingsTransferNote =>
+      'ਸਾਈਨ-ਇਨ, ਵਿੰਡੋ ਅਤੇ ਹਾਰਡਵੇਅਰ ਹਰ ਡਿਵਾਈਸ \'ਤੇ ਵੱਖਰੇ ਰਹਿੰਦੇ ਹਨ। ਪਹਿਲਾਂ ਦੂਜੀ ਡਿਵਾਈਸ \'ਤੇ ਸਾਈਨ ਇਨ ਕਰੋ, ਫਿਰ ਆਯਾਤ ਕਰੋ।';
+
+  @override
   String get settingsDynamicContent => 'ਗਤੀਸ਼ੀਲ ਸਮੱਗਰੀ';
 
   @override

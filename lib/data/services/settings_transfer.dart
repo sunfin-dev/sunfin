@@ -1,0 +1,208 @@
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
+import 'package:server_core/server_core.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+/// Plexfin: copies every setting from one device to another through the
+/// user's own Jellyfin account (user, 2026-10-27: "copy all of my settings
+/// from my shield to the windows build").
+///
+/// Export saves a snapshot of the app's stored settings in the account's
+/// display preferences, which every Jellyfin server keeps per user with no
+/// plugin; import on the other device, signed in to the same account, loads
+/// it. Every stored key travels unless it belongs to this device, so a
+/// setting added later travels without being listed here.
+///
+/// Logins never travel: each device signs in on its own (Quick Connect), and
+/// the snapshot would otherwise be a working key to the account.
+abstract final class SettingsTransfer {
+  /// Where the snapshot lives in the account's display preferences.
+  static const displayPreferencesId = 'plexfin-settings-transfer';
+  static const client = 'plexfin';
+
+  static const formatVersion = 1;
+
+  /// Display preference values are stored one per row on the server, so a
+  /// large snapshot is split over several.
+  @visibleForTesting
+  static const chunkLength = 16000;
+
+  /// Keys that describe this device rather than the user's choices: its
+  /// identity and sign-in, its window, what its hardware can do and how its
+  /// outputs are wired, and its own caches and timers.
+  static const _deviceKeys = {
+    'device_id',
+    'authentication_store_json',
+    'pref_last_server_id',
+    'pref_last_user_id',
+    'last_playback_session',
+    'pending_crash_reports',
+    'pending_ratings_v1',
+    'pref_interface_layout',
+    'pref_performance_mode',
+    'pref_desktop_ui_scale',
+    'pref_use_hardware_rendering',
+    'hardware_decoding',
+    'external_player',
+    'external_player_component',
+    'refresh_rate_switching_behavior',
+    'auto_hdr_switching_behavior',
+    'native_hdr_output',
+    'media3_tunneling_disabled',
+    'tunneling_fallback_disabled',
+    'pref_audio_passthrough_mode',
+    'pref_audio_passthrough_output',
+    'audio_fallback_codec',
+    'player_volume',
+    'image_cache_limit_mb',
+    'download_storage_limit_mb',
+    'download_custom_path',
+    'download_custom_path_bookmark',
+    'auto_download_last_run',
+    'auto_download_storage_notice_shown',
+  };
+
+  static const _devicePrefixes = [
+    'window_',
+    'device_capability_',
+    'pref_passthrough_',
+    'last_',
+  ];
+
+  /// Sign-ins of any service: the Jellyfin token itself is in secure
+  /// storage, but nothing that looks like one may leave the device.
+  static final _login = RegExp(
+    'token|cookie|password|session',
+    caseSensitive: false,
+  );
+
+  /// Whether [key] goes from one device to another.
+  static bool travels(String key) {
+    if (_deviceKeys.contains(key)) return false;
+    if (_devicePrefixes.any(key.startsWith)) return false;
+    return !_login.hasMatch(key);
+  }
+
+  /// Every travelling setting in [prefs], with its type, so an int stays an
+  /// int where JSON would not tell it from a double.
+  static Map<String, Object?> snapshot(
+    SharedPreferences prefs, {
+    required String device,
+    DateTime? now,
+  }) {
+    final values = <String, List<Object?>>{};
+    for (final key in prefs.getKeys().toList()..sort()) {
+      if (!travels(key)) continue;
+      final value = prefs.get(key);
+      final type = switch (value) {
+        bool _ => 'b',
+        int _ => 'i',
+        double _ => 'd',
+        String _ => 's',
+        List _ => 'l',
+        _ => null,
+      };
+      if (type != null) values[key] = [type, value];
+    }
+    return {
+      'format': formatVersion,
+      'device': device,
+      'exportedAt': (now ?? DateTime.now()).toUtc().toIso8601String(),
+      'values': values,
+    };
+  }
+
+  /// [snapshot] as display preference values.
+  static Map<String, String> encode(Map<String, Object?> snapshot) {
+    final json = jsonEncode(snapshot);
+    final parts = <String, String>{};
+    var count = 0;
+    for (var i = 0; i < json.length; i += chunkLength) {
+      final end = i + chunkLength < json.length ? i + chunkLength : json.length;
+      parts['part$count'] = json.substring(i, end);
+      count++;
+    }
+    return {'parts': '$count', ...parts};
+  }
+
+  /// The snapshot stored in [customPrefs], or null when there is none or it
+  /// can't be read.
+  static Map<String, Object?>? decode(Map<String, String> customPrefs) {
+    final count = int.tryParse(customPrefs['parts'] ?? '');
+    if (count == null || count < 1) return null;
+    final buffer = StringBuffer();
+    for (var i = 0; i < count; i++) {
+      final part = customPrefs['part$i'];
+      if (part == null) return null;
+      buffer.write(part);
+    }
+    try {
+      final snapshot = jsonDecode(buffer.toString());
+      if (snapshot is! Map<String, Object?>) return null;
+      if (snapshot['format'] != formatVersion) return null;
+      if (snapshot['values'] is! Map) return null;
+      return snapshot;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// Makes this device's settings match [snapshot]: every setting in it is
+  /// written, and a setting of this device's that it doesn't have goes back
+  /// to its default. What belongs to this device is left alone. Returns how
+  /// many settings were written.
+  static Future<int> apply(
+    SharedPreferences prefs,
+    Map<String, Object?> snapshot,
+  ) async {
+    final values = (snapshot['values'] as Map).cast<String, Object?>();
+    for (final key in prefs.getKeys().toList()) {
+      if (travels(key) && !values.containsKey(key)) await prefs.remove(key);
+    }
+    var written = 0;
+    for (final MapEntry(:key, :value) in values.entries) {
+      if (!travels(key) || value is! List || value.length != 2) continue;
+      final data = value[1];
+      final ok = switch (value[0]) {
+        'b' when data is bool => await prefs.setBool(key, data),
+        'i' when data is num => await prefs.setInt(key, data.toInt()),
+        'd' when data is num => await prefs.setDouble(key, data.toDouble()),
+        's' when data is String => await prefs.setString(key, data),
+        'l' when data is List => await prefs.setStringList(
+          key,
+          data.map((e) => '$e').toList(),
+        ),
+        _ => false,
+      };
+      if (ok) written++;
+    }
+    return written;
+  }
+
+  /// Saves this device's settings to the signed-in account. Returns how
+  /// many settings went.
+  static Future<int> export(
+    DisplayPreferencesApi api, {
+    required String device,
+  }) async {
+    final prefs = await SharedPreferences.getInstance();
+    final data = snapshot(prefs, device: device);
+    await api.saveDisplayPreferences(
+      displayPreferencesId,
+      DisplayPreferences(id: displayPreferencesId, customPrefs: encode(data)),
+      client: client,
+    );
+    return (data['values'] as Map).length;
+  }
+
+  /// The snapshot saved in the signed-in account, or null when there is
+  /// none.
+  static Future<Map<String, Object?>?> fetch(DisplayPreferencesApi api) async {
+    final stored = await api.getDisplayPreferences(
+      displayPreferencesId,
+      client: client,
+    );
+    return decode(stored.customPrefs);
+  }
+}

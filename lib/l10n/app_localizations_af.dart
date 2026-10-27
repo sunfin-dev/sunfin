@@ -9998,6 +9998,52 @@ class AppLocalizationsAf extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'Kon nie jou biblioteke laai nie';
 
   @override
+  String get settingsTransfer => 'Dra instellings oor';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Kopieer jou instellings na \'n ander toestel via jou Jellyfin-rekening';
+
+  @override
+  String get settingsTransferExport => 'Voer instellings uit';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Stoor hierdie toestel se instellings in jou Jellyfin-rekening';
+
+  @override
+  String settingsTransferExported(int count) {
+    return '$count instellings in jou Jellyfin-rekening gestoor';
+  }
+
+  @override
+  String get settingsTransferImport => 'Voer instellings in';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'Van $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Nog niks uitgevoer nie';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Vervang hierdie toestel se instellings met dié? $source\n\nPlexfin sluit daarna. Maak dit weer oop om hulle te gebruik.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Voer in en sluit';
+
+  @override
+  String get settingsTransferFailed =>
+      'Kon nie jou Jellyfin-rekening bereik nie';
+
+  @override
+  String get settingsTransferNote =>
+      'Aanmelding, venster en hardeware bly op elke toestel. Meld eers op die ander toestel aan en voer dan in.';
+
+  @override
   String get settingsDynamicContent => 'Dinamiese inhoud';
 
   @override

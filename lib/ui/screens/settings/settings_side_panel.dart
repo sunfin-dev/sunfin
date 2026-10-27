@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io' show exit;
 
 import 'package:custom_tv_text_field/custom_tv_text_field.dart';
 import 'package:file_picker/file_picker.dart';
@@ -13,11 +14,13 @@ import 'package:jellyfin_preference/jellyfin_preference.dart';
 import 'package:moonfin_design/moonfin_design.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:server_core/server_core.dart' hide ImageType;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../data/services/achievements_service.dart';
 import '../../../data/services/auto_download_service.dart';
 import '../../../data/services/plugin_sync_service.dart';
+import '../../../data/services/settings_transfer.dart';
 import '../../../data/services/custom_external_lists_service.dart';
 import '../../../data/services/topshelf_service.dart';
 import '../../../data/models/media_segment.dart';
@@ -128,6 +131,7 @@ part 'panel/bottom_nav_tabs_screen.dart';
 part 'panel/home_screen_category_screen.dart';
 part 'panel/libraries_category_screen.dart';
 part 'panel/library_nicknames_screen.dart';
+part 'panel/settings_transfer_screen.dart';
 part 'panel/seasonal_effects_screen.dart';
 part 'panel/theme_music_screen.dart';
 part 'panel/loading_animation_screen.dart';
@@ -375,6 +379,13 @@ class _SettingsSidePanelState extends ConsumerState<SettingsSidePanel> {
                 subtitle: l10n.themeEditorSubtitle,
                 onTap: () => unawaited(_openThemeEditor()),
               ),
+            _PanelEntry(
+              icon: Icons.sync_alt,
+              title: l10n.settingsTransfer,
+              subtitle: l10n.settingsTransferSubtitle,
+              onTap: () =>
+                  context.pushSettingsScreen(const _SettingsTransferScreen()),
+            ),
             _PanelEntry(
               icon: Icons.info_outline,
               title: l10n.aboutTitle,

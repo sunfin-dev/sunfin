@@ -10039,6 +10039,51 @@ class AppLocalizationsFi extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'Kirjastoja ei voitu ladata';
 
   @override
+  String get settingsTransfer => 'Siirrä asetukset';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Kopioi asetuksesi toiseen laitteeseen Jellyfin-tilisi kautta';
+
+  @override
+  String get settingsTransferExport => 'Vie asetukset';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Tallenna tämän laitteen asetukset Jellyfin-tilillesi';
+
+  @override
+  String settingsTransferExported(int count) {
+    return '$count asetusta tallennettu Jellyfin-tilillesi';
+  }
+
+  @override
+  String get settingsTransferImport => 'Tuo asetukset';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'Laitteesta $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Mitään ei ole vielä viety';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Korvataanko tämän laitteen asetukset näillä? $source\n\nPlexfin sulkeutuu sen jälkeen. Avaa se uudelleen käyttääksesi niitä.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Tuo ja sulje';
+
+  @override
+  String get settingsTransferFailed => 'Jellyfin-tiliin ei saatu yhteyttä';
+
+  @override
+  String get settingsTransferNote =>
+      'Kirjautuminen, ikkuna ja laitteisto pysyvät laitekohtaisina. Kirjaudu ensin sisään toisella laitteella ja tuo sitten.';
+
+  @override
   String get settingsDynamicContent => 'Dynaaminen sisältö';
 
   @override

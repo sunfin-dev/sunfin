@@ -10090,6 +10090,52 @@ class AppLocalizationsTl extends AppLocalizations {
       'Hindi ma-load ang iyong mga library';
 
   @override
+  String get settingsTransfer => 'Ilipat ang mga setting';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Kopyahin ang iyong mga setting sa ibang device sa pamamagitan ng iyong Jellyfin account';
+
+  @override
+  String get settingsTransferExport => 'I-export ang mga setting';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'I-save ang mga setting ng device na ito sa iyong Jellyfin account';
+
+  @override
+  String settingsTransferExported(int count) {
+    return '$count setting ang na-save sa iyong Jellyfin account';
+  }
+
+  @override
+  String get settingsTransferImport => 'I-import ang mga setting';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'Mula sa $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Wala pang na-export';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Palitan ang mga setting ng device na ito ng mga ito? $source\n\nMagsasara ang Plexfin pagkatapos. Buksan itong muli para magamit ang mga ito.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'I-import at isara';
+
+  @override
+  String get settingsTransferFailed =>
+      'Hindi maabot ang iyong Jellyfin account';
+
+  @override
+  String get settingsTransferNote =>
+      'Nananatili sa bawat device ang pag-sign in, window at hardware. Mag-sign in muna sa kabilang device, saka mag-import.';
+
+  @override
   String get settingsDynamicContent => 'Dynamic na Nilalaman';
 
   @override

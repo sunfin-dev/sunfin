@@ -10115,6 +10115,52 @@ class AppLocalizationsGl extends AppLocalizations {
       'Non se puideron cargar as túas bibliotecas';
 
   @override
+  String get settingsTransfer => 'Transferir axustes';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Copia os teus axustes a outro dispositivo a través da túa conta de Jellyfin';
+
+  @override
+  String get settingsTransferExport => 'Exportar axustes';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Gardar os axustes deste dispositivo na túa conta de Jellyfin';
+
+  @override
+  String settingsTransferExported(int count) {
+    return '$count axustes gardados na túa conta de Jellyfin';
+  }
+
+  @override
+  String get settingsTransferImport => 'Importar axustes';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'Desde $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Aínda non se exportou nada';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Substituír os axustes deste dispositivo por estes? $source\n\nPlexfin pecharase despois. Ábreo de novo para usalos.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Importar e pechar';
+
+  @override
+  String get settingsTransferFailed =>
+      'Non se puido contactar coa túa conta de Jellyfin';
+
+  @override
+  String get settingsTransferNote =>
+      'O inicio de sesión, a xanela e o hardware quedan en cada dispositivo. Inicia sesión primeiro no outro dispositivo e despois importa.';
+
+  @override
   String get settingsDynamicContent => 'Contido dinámico';
 
   @override

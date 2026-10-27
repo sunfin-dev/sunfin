@@ -103,9 +103,14 @@ class DisplayPreferences {
         sortBy: json['SortBy'] as String?,
         sortOrder: json['SortOrder'] as String?,
         viewType: json['ViewType'] as String?,
-        customPrefs: (json['CustomPrefs'] as Map<String, dynamic>?)
-                ?.map((k, v) => MapEntry(k, v as String)) ??
-            const {},
+        // Jellyfin adds its own entries here, some of them null (tvhome,
+        // dashboardTheme), which a plain cast to String threw on.
+        customPrefs: {
+          for (final MapEntry(:key, :value)
+              in (json['CustomPrefs'] as Map<String, dynamic>? ?? const {})
+                  .entries)
+            if (value is String) key: value,
+        },
       );
 
   Map<String, dynamic> toJson() => {

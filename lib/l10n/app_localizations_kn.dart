@@ -10054,6 +10054,51 @@ class AppLocalizationsKn extends AppLocalizations {
       'ನಿಮ್ಮ ಲೈಬ್ರರಿಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗಲಿಲ್ಲ';
 
   @override
+  String get settingsTransfer => 'ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ವರ್ಗಾಯಿಸಿ';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'ನಿಮ್ಮ Jellyfin ಖಾತೆಯ ಮೂಲಕ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಇನ್ನೊಂದು ಸಾಧನಕ್ಕೆ ನಕಲಿಸಿ';
+
+  @override
+  String get settingsTransferExport => 'ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ರಫ್ತು ಮಾಡಿ';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'ಈ ಸಾಧನದ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ನಿಮ್ಮ Jellyfin ಖಾತೆಯಲ್ಲಿ ಉಳಿಸಿ';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'ನಿಮ್ಮ Jellyfin ಖಾತೆಯಲ್ಲಿ ಉಳಿಸಿದ ಸೆಟ್ಟಿಂಗ್‌ಗಳು: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಆಮದು ಮಾಡಿ';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return '$device ನಿಂದ, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'ಇನ್ನೂ ಏನನ್ನೂ ರಫ್ತು ಮಾಡಿಲ್ಲ';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'ಈ ಸಾಧನದ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಇವುಗಳಿಂದ ಬದಲಿಸಬೇಕೆ? $source\n\nನಂತರ Plexfin ಮುಚ್ಚುತ್ತದೆ. ಬಳಸಲು ಮತ್ತೆ ತೆರೆಯಿರಿ.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'ಆಮದು ಮಾಡಿ ಮುಚ್ಚಿ';
+
+  @override
+  String get settingsTransferFailed => 'ನಿಮ್ಮ Jellyfin ಖಾತೆಯನ್ನು ತಲುಪಲಾಗಲಿಲ್ಲ';
+
+  @override
+  String get settingsTransferNote =>
+      'ಸೈನ್-ಇನ್, ವಿಂಡೋ ಮತ್ತು ಹಾರ್ಡ್‌ವೇರ್ ಪ್ರತಿಯೊಂದು ಸಾಧನದಲ್ಲೂ ಪ್ರತ್ಯೇಕವಾಗಿರುತ್ತವೆ. ಮೊದಲು ಇನ್ನೊಂದು ಸಾಧನದಲ್ಲಿ ಸೈನ್ ಇನ್ ಮಾಡಿ, ನಂತರ ಆಮದು ಮಾಡಿ.';
+
+  @override
   String get settingsDynamicContent => 'ಡೈನಾಮಿಕ್ ವಿಷಯ';
 
   @override

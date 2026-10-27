@@ -10041,6 +10041,52 @@ class AppLocalizationsBe extends AppLocalizations {
       'Не ўдалося загрузіць вашы бібліятэкі';
 
   @override
+  String get settingsTransfer => 'Перанос налад';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Скапіруйце налады на іншую прыладу праз уліковы запіс Jellyfin';
+
+  @override
+  String get settingsTransferExport => 'Экспарт налад';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Захаваць налады гэтай прылады ва ўліковым запісе Jellyfin';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Налад захавана ва ўліковым запісе Jellyfin: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'Імпарт налад';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'З $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Пакуль нічога не экспартавана';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Замяніць налады гэтай прылады гэтымі? $source\n\nПасля гэтага Plexfin закрыецца. Адкрыйце яго зноў, каб іх ужыць.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Імпартаваць і закрыць';
+
+  @override
+  String get settingsTransferFailed =>
+      'Не ўдалося звязацца з уліковым запісам Jellyfin';
+
+  @override
+  String get settingsTransferNote =>
+      'Уваход, акно і абсталяванне застаюцца на кожнай прыладзе сваімі. Спачатку ўвайдзіце на іншай прыладзе, потым імпартуйце.';
+
+  @override
   String get settingsDynamicContent => 'Дынамічны кантэнт';
 
   @override

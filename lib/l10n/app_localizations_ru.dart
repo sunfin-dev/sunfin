@@ -10063,6 +10063,52 @@ class AppLocalizationsRu extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'Не удалось загрузить библиотеки';
 
   @override
+  String get settingsTransfer => 'Перенос настроек';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Скопируйте настройки на другое устройство через аккаунт Jellyfin';
+
+  @override
+  String get settingsTransferExport => 'Экспорт настроек';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Сохранить настройки этого устройства в аккаунте Jellyfin';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Настроек сохранено в аккаунте Jellyfin: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'Импорт настроек';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'С $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Пока ничего не экспортировано';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Заменить настройки этого устройства этими? $source\n\nПосле этого Plexfin закроется. Откройте его снова, чтобы их применить.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Импортировать и закрыть';
+
+  @override
+  String get settingsTransferFailed =>
+      'Не удалось связаться с аккаунтом Jellyfin';
+
+  @override
+  String get settingsTransferNote =>
+      'Вход, окно и оборудование остаются у каждого устройства своими. Сначала войдите на другом устройстве, затем импортируйте.';
+
+  @override
   String get settingsDynamicContent => 'Динамический контент';
 
   @override

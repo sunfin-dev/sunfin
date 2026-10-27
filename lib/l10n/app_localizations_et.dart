@@ -10002,6 +10002,52 @@ class AppLocalizationsEt extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'Teeke ei õnnestunud laadida';
 
   @override
+  String get settingsTransfer => 'Seadete ülekandmine';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Kopeeri oma seaded Jellyfini konto kaudu teise seadmesse';
+
+  @override
+  String get settingsTransferExport => 'Ekspordi seaded';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Salvesta selle seadme seaded oma Jellyfini kontole';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Jellyfini kontole salvestatud seadeid: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'Impordi seaded';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'Seadmest $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Midagi pole veel eksporditud';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Kas asendada selle seadme seaded nendega? $source\n\nSeejärel Plexfin sulgub. Ava see uuesti, et neid kasutada.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Impordi ja sulge';
+
+  @override
+  String get settingsTransferFailed =>
+      'Jellyfini kontoga ei õnnestunud ühendust saada';
+
+  @override
+  String get settingsTransferNote =>
+      'Sisselogimine, aken ja riistvara jäävad igale seadmele. Logi esmalt teises seadmes sisse ja impordi siis.';
+
+  @override
   String get settingsDynamicContent => 'Dünaamiline sisu';
 
   @override

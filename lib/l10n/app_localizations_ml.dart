@@ -10100,6 +10100,53 @@ class AppLocalizationsMl extends AppLocalizations {
       'നിങ്ങളുടെ ലൈബ്രറികൾ ലോഡ് ചെയ്യാനായില്ല';
 
   @override
+  String get settingsTransfer => 'ക്രമീകരണങ്ങൾ കൈമാറുക';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'നിങ്ങളുടെ Jellyfin അക്കൗണ്ട് വഴി ക്രമീകരണങ്ങൾ മറ്റൊരു ഉപകരണത്തിലേക്ക് പകർത്തുക';
+
+  @override
+  String get settingsTransferExport => 'ക്രമീകരണങ്ങൾ എക്സ്പോർട്ട് ചെയ്യുക';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'ഈ ഉപകരണത്തിന്റെ ക്രമീകരണങ്ങൾ നിങ്ങളുടെ Jellyfin അക്കൗണ്ടിൽ സംരക്ഷിക്കുക';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'നിങ്ങളുടെ Jellyfin അക്കൗണ്ടിൽ സംരക്ഷിച്ച ക്രമീകരണങ്ങൾ: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'ക്രമീകരണങ്ങൾ ഇമ്പോർട്ട് ചെയ്യുക';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return '$device ൽ നിന്ന്, $date';
+  }
+
+  @override
+  String get settingsTransferNothing =>
+      'ഇതുവരെ ഒന്നും എക്സ്പോർട്ട് ചെയ്തിട്ടില്ല';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'ഈ ഉപകരണത്തിന്റെ ക്രമീകരണങ്ങൾ ഇവ കൊണ്ട് മാറ്റണോ? $source\n\nതുടർന്ന് Plexfin അടയും. ഉപയോഗിക്കാൻ വീണ്ടും തുറക്കുക.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'ഇമ്പോർട്ട് ചെയ്ത് അടയ്ക്കുക';
+
+  @override
+  String get settingsTransferFailed =>
+      'നിങ്ങളുടെ Jellyfin അക്കൗണ്ടിൽ എത്താനായില്ല';
+
+  @override
+  String get settingsTransferNote =>
+      'സൈൻ-ഇൻ, വിൻഡോ, ഹാർഡ്‌വെയർ എന്നിവ ഓരോ ഉപകരണത്തിലും വേറിട്ടുനിൽക്കും. ആദ്യം മറ്റേ ഉപകരണത്തിൽ സൈൻ ഇൻ ചെയ്ത് പിന്നീട് ഇമ്പോർട്ട് ചെയ്യുക.';
+
+  @override
   String get settingsDynamicContent => 'ഡൈനാമിക് ഉള്ളടക്കം';
 
   @override

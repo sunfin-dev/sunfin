@@ -10042,6 +10042,51 @@ class AppLocalizationsCy extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'Methu llwytho\'ch llyfrgelloedd';
 
   @override
+  String get settingsTransfer => 'Trosglwyddo gosodiadau';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Copïo\'ch gosodiadau i ddyfais arall drwy eich cyfrif Jellyfin';
+
+  @override
+  String get settingsTransferExport => 'Allforio gosodiadau';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Cadw gosodiadau\'r ddyfais hon yn eich cyfrif Jellyfin';
+
+  @override
+  String settingsTransferExported(int count) {
+    return '$count gosodiad wedi\'u cadw yn eich cyfrif Jellyfin';
+  }
+
+  @override
+  String get settingsTransferImport => 'Mewnforio gosodiadau';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'O $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Dim wedi\'i allforio eto';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Disodli gosodiadau\'r ddyfais hon â\'r rhain? $source\n\nBydd Plexfin yn cau wedyn. Agorwch ef eto i\'w defnyddio.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Mewnforio a chau';
+
+  @override
+  String get settingsTransferFailed => 'Methu cyrraedd eich cyfrif Jellyfin';
+
+  @override
+  String get settingsTransferNote =>
+      'Mae mewngofnodi, ffenestr a chaledwedd yn aros ar bob dyfais. Mewngofnodwch ar y ddyfais arall yn gyntaf, yna mewnforiwch.';
+
+  @override
   String get settingsDynamicContent => 'Cynnwys Dynamig';
 
   @override

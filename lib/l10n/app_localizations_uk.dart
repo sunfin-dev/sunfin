@@ -10064,6 +10064,52 @@ class AppLocalizationsUk extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'Не вдалося завантажити бібліотеки';
 
   @override
+  String get settingsTransfer => 'Перенесення налаштувань';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Скопіюйте налаштування на інший пристрій через обліковий запис Jellyfin';
+
+  @override
+  String get settingsTransferExport => 'Експорт налаштувань';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Зберегти налаштування цього пристрою в обліковому записі Jellyfin';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Налаштувань збережено в обліковому записі Jellyfin: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'Імпорт налаштувань';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'З $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Ще нічого не експортовано';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Замінити налаштування цього пристрою цими? $source\n\nПісля цього Plexfin закриється. Відкрийте його знову, щоб їх застосувати.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Імпортувати й закрити';
+
+  @override
+  String get settingsTransferFailed =>
+      'Не вдалося зв\'язатися з обліковим записом Jellyfin';
+
+  @override
+  String get settingsTransferNote =>
+      'Вхід, вікно та обладнання лишаються на кожному пристрої своїми. Спершу увійдіть на іншому пристрої, потім імпортуйте.';
+
+  @override
   String get settingsDynamicContent => 'Динамічний вміст';
 
   @override

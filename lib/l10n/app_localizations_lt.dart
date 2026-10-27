@@ -10044,6 +10044,52 @@ class AppLocalizationsLt extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'Nepavyko įkelti jūsų bibliotekų';
 
   @override
+  String get settingsTransfer => 'Perkelti nustatymus';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Nukopijuokite nustatymus į kitą įrenginį per savo Jellyfin paskyrą';
+
+  @override
+  String get settingsTransferExport => 'Eksportuoti nustatymus';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Išsaugoti šio įrenginio nustatymus Jellyfin paskyroje';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Jellyfin paskyroje išsaugota nustatymų: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'Importuoti nustatymus';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'Iš $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Dar nieko neeksportuota';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Pakeisti šio įrenginio nustatymus šiais? $source\n\nPo to Plexfin užsidarys. Atidarykite jį iš naujo, kad juos naudotumėte.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Importuoti ir uždaryti';
+
+  @override
+  String get settingsTransferFailed =>
+      'Nepavyko pasiekti jūsų Jellyfin paskyros';
+
+  @override
+  String get settingsTransferNote =>
+      'Prisijungimas, langas ir aparatinė įranga lieka kiekviename įrenginyje. Pirmiausia prisijunkite kitame įrenginyje, tada importuokite.';
+
+  @override
   String get settingsDynamicContent => 'Dinaminis turinys';
 
   @override

@@ -10004,6 +10004,51 @@ class AppLocalizationsTr extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'Kitaplıklarınız yüklenemedi';
 
   @override
+  String get settingsTransfer => 'Ayarları aktar';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Ayarlarınızı Jellyfin hesabınız üzerinden başka bir cihaza kopyalayın';
+
+  @override
+  String get settingsTransferExport => 'Ayarları dışa aktar';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Bu cihazın ayarlarını Jellyfin hesabınıza kaydedin';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Jellyfin hesabınıza kaydedilen ayar: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'Ayarları içe aktar';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return '$device cihazından, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Henüz dışa aktarılan bir şey yok';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Bu cihazın ayarları bunlarla değiştirilsin mi? $source\n\nPlexfin ardından kapanır. Kullanmak için yeniden açın.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'İçe aktar ve kapat';
+
+  @override
+  String get settingsTransferFailed => 'Jellyfin hesabınıza ulaşılamadı';
+
+  @override
+  String get settingsTransferNote =>
+      'Oturum, pencere ve donanım her cihazda kendine ait kalır. Önce diğer cihazda oturum açın, sonra içe aktarın.';
+
+  @override
   String get settingsDynamicContent => 'Dinamik İçerik';
 
   @override

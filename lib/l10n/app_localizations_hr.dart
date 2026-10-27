@@ -10207,6 +10207,51 @@ class AppLocalizationsHr extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'Knjižnice se nisu mogle učitati';
 
   @override
+  String get settingsTransfer => 'Prenesi postavke';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Kopirajte postavke na drugi uređaj putem svog Jellyfin računa';
+
+  @override
+  String get settingsTransferExport => 'Izvezi postavke';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Spremi postavke ovog uređaja na Jellyfin račun';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Postavke spremljene na Jellyfin račun: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'Uvezi postavke';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'S uređaja $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Još ništa nije izvezeno';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Zamijeniti postavke ovog uređaja ovima? $source\n\nPlexfin se zatim zatvara. Ponovno ga otvorite da biste ih koristili.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Uvezi i zatvori';
+
+  @override
+  String get settingsTransferFailed => 'Jellyfin račun nije dostupan';
+
+  @override
+  String get settingsTransferNote =>
+      'Prijava, prozor i hardver ostaju na svakom uređaju. Najprije se prijavite na drugom uređaju, zatim uvezite.';
+
+  @override
   String get settingsDynamicContent => 'Dinamički sadržaj';
 
   @override

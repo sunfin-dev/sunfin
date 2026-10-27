@@ -10015,6 +10015,52 @@ class AppLocalizationsMn extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'Сангуудыг ачаалж чадсангүй';
 
   @override
+  String get settingsTransfer => 'Тохиргоо шилжүүлэх';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Jellyfin бүртгэлээрээ дамжуулан тохиргоогоо өөр төхөөрөмж рүү хуулна';
+
+  @override
+  String get settingsTransferExport => 'Тохиргоо экспортлох';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Энэ төхөөрөмжийн тохиргоог Jellyfin бүртгэлдээ хадгалах';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Jellyfin бүртгэлд хадгалсан тохиргоо: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'Тохиргоо импортлох';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return '$device-ээс, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Одоогоор юу ч экспортлоогүй';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Энэ төхөөрөмжийн тохиргоог эдгээрээр солих уу? $source\n\nДараа нь Plexfin хаагдана. Ашиглахын тулд дахин нээнэ үү.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Импортлоод хаах';
+
+  @override
+  String get settingsTransferFailed =>
+      'Jellyfin бүртгэлтэй холбогдож чадсангүй';
+
+  @override
+  String get settingsTransferNote =>
+      'Нэвтрэлт, цонх, техник хангамж төхөөрөмж бүрт өөрийнхөөрөө үлдэнэ. Эхлээд нөгөө төхөөрөмж дээр нэвтэрч, дараа нь импортлоно уу.';
+
+  @override
   String get settingsDynamicContent => 'Динамик контент';
 
   @override

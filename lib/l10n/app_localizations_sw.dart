@@ -10063,6 +10063,52 @@ class AppLocalizationsSw extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'Imeshindwa kupakia maktaba zako';
 
   @override
+  String get settingsTransfer => 'Hamisha mipangilio';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Nakili mipangilio yako kwenye kifaa kingine kupitia akaunti yako ya Jellyfin';
+
+  @override
+  String get settingsTransferExport => 'Hamisha nje mipangilio';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Hifadhi mipangilio ya kifaa hiki kwenye akaunti yako ya Jellyfin';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Mipangilio $count imehifadhiwa kwenye akaunti yako ya Jellyfin';
+  }
+
+  @override
+  String get settingsTransferImport => 'Leta mipangilio';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'Kutoka $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Bado hakuna kilichohamishwa';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Badilisha mipangilio ya kifaa hiki kwa hii? $source\n\nPlexfin itafungwa baadaye. Ifungue tena ili uitumie.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Leta na ufunge';
+
+  @override
+  String get settingsTransferFailed =>
+      'Imeshindwa kufikia akaunti yako ya Jellyfin';
+
+  @override
+  String get settingsTransferNote =>
+      'Kuingia, dirisha na maunzi hubaki kwenye kila kifaa. Ingia kwanza kwenye kifaa kingine, kisha leta.';
+
+  @override
   String get settingsDynamicContent => 'Maudhui Yanayobadilika';
 
   @override

@@ -10153,6 +10153,52 @@ class AppLocalizationsCa extends AppLocalizations {
       'No s\'han pogut carregar les biblioteques';
 
   @override
+  String get settingsTransfer => 'Transfereix la configuració';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Copia la configuració a un altre dispositiu mitjançant el compte de Jellyfin';
+
+  @override
+  String get settingsTransferExport => 'Exporta la configuració';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Desa la configuració d\'aquest dispositiu al compte de Jellyfin';
+
+  @override
+  String settingsTransferExported(int count) {
+    return '$count paràmetres desats al compte de Jellyfin';
+  }
+
+  @override
+  String get settingsTransferImport => 'Importa la configuració';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'Des de $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Encara no s\'ha exportat res';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Vols substituir la configuració d\'aquest dispositiu per aquesta? $source\n\nDesprés Plexfin es tancarà. Torna\'l a obrir per fer-la servir.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Importa i tanca';
+
+  @override
+  String get settingsTransferFailed =>
+      'No s\'ha pogut accedir al compte de Jellyfin';
+
+  @override
+  String get settingsTransferNote =>
+      'L\'inici de sessió, la finestra i el maquinari es queden a cada dispositiu. Inicia la sessió primer a l\'altre dispositiu i després importa.';
+
+  @override
   String get settingsDynamicContent => 'Contingut dinàmic';
 
   @override

@@ -10036,6 +10036,52 @@ class AppLocalizationsKk extends AppLocalizations {
       'Кітапханаларыңызды жүктеу мүмкін болмады';
 
   @override
+  String get settingsTransfer => 'Параметрлерді көшіру';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Jellyfin тіркелгісі арқылы параметрлерді басқа құрылғыға көшіріңіз';
+
+  @override
+  String get settingsTransferExport => 'Параметрлерді экспорттау';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Осы құрылғының параметрлерін Jellyfin тіркелгісіне сақтау';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Jellyfin тіркелгісіне сақталған параметрлер: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'Параметрлерді импорттау';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return '$device құрылғысынан, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Әлі ештеңе экспортталмаған';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Осы құрылғының параметрлерін осылармен ауыстыру керек пе? $source\n\nКейін Plexfin жабылады. Оларды қолдану үшін қайта ашыңыз.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Импорттау және жабу';
+
+  @override
+  String get settingsTransferFailed =>
+      'Jellyfin тіркелгісіне қосылу мүмкін болмады';
+
+  @override
+  String get settingsTransferNote =>
+      'Кіру, терезе және жабдық әр құрылғыда өзінікі болып қалады. Алдымен басқа құрылғыда кіріп, содан кейін импорттаңыз.';
+
+  @override
   String get settingsDynamicContent => 'Динамикалық мазмұн';
 
   @override

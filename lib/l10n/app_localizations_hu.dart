@@ -10078,6 +10078,51 @@ class AppLocalizationsHu extends AppLocalizations {
       'Nem sikerült betölteni a könyvtárakat';
 
   @override
+  String get settingsTransfer => 'Beállítások átvitele';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Beállítások másolása másik eszközre a Jellyfin-fiókodon keresztül';
+
+  @override
+  String get settingsTransferExport => 'Beállítások exportálása';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Az eszköz beállításainak mentése a Jellyfin-fiókodba';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Jellyfin-fiókba mentett beállítások: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'Beállítások importálása';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'Innen: $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Még nincs exportálva semmi';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Lecseréled az eszköz beállításait ezekre? $source\n\nA Plexfin ezután bezárul. Nyisd meg újra a használatukhoz.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Importálás és bezárás';
+
+  @override
+  String get settingsTransferFailed => 'Nem érhető el a Jellyfin-fiókod';
+
+  @override
+  String get settingsTransferNote =>
+      'A bejelentkezés, az ablak és a hardver minden eszközön saját marad. Előbb jelentkezz be a másik eszközön, aztán importálj.';
+
+  @override
   String get settingsDynamicContent => 'Dinamikus tartalom';
 
   @override

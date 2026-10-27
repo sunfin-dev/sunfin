@@ -10000,6 +10000,52 @@ class AppLocalizationsId extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'Perpustakaan tidak dapat dimuat';
 
   @override
+  String get settingsTransfer => 'Pindahkan pengaturan';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Salin pengaturan ke perangkat lain melalui akun Jellyfin Anda';
+
+  @override
+  String get settingsTransferExport => 'Ekspor pengaturan';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Simpan pengaturan perangkat ini ke akun Jellyfin Anda';
+
+  @override
+  String settingsTransferExported(int count) {
+    return '$count pengaturan disimpan ke akun Jellyfin Anda';
+  }
+
+  @override
+  String get settingsTransferImport => 'Impor pengaturan';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'Dari $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Belum ada yang diekspor';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Ganti pengaturan perangkat ini dengan yang ini? $source\n\nPlexfin akan ditutup setelahnya. Buka lagi untuk menggunakannya.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Impor dan tutup';
+
+  @override
+  String get settingsTransferFailed =>
+      'Tidak dapat menghubungi akun Jellyfin Anda';
+
+  @override
+  String get settingsTransferNote =>
+      'Masuk, jendela, dan perangkat keras tetap di masing-masing perangkat. Masuk dulu di perangkat lain, lalu impor.';
+
+  @override
   String get settingsDynamicContent => 'Konten Dinamis';
 
   @override

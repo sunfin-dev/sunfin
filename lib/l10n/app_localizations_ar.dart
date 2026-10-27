@@ -9978,6 +9978,51 @@ class AppLocalizationsAr extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'تعذّر تحميل مكتباتك';
 
   @override
+  String get settingsTransfer => 'نقل الإعدادات';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'انسخ إعداداتك إلى جهاز آخر عبر حسابك في Jellyfin';
+
+  @override
+  String get settingsTransferExport => 'تصدير الإعدادات';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'احفظ إعدادات هذا الجهاز في حسابك في Jellyfin';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'الإعدادات المحفوظة في حسابك في Jellyfin: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'استيراد الإعدادات';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'من $device، $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'لم يُصدَّر شيء بعد';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'هل تريد استبدال إعدادات هذا الجهاز بهذه؟ $source\n\nسيُغلق Plexfin بعد ذلك. افتحه مجددًا لاستخدامها.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'استيراد وإغلاق';
+
+  @override
+  String get settingsTransferFailed => 'تعذّر الوصول إلى حسابك في Jellyfin';
+
+  @override
+  String get settingsTransferNote =>
+      'تبقى إعدادات تسجيل الدخول والنافذة والعتاد خاصة بكل جهاز. سجّل الدخول على الجهاز الآخر أولًا ثم استورد.';
+
+  @override
   String get settingsDynamicContent => 'المحتوى الديناميكي';
 
   @override

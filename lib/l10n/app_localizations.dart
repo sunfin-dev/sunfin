@@ -17704,6 +17704,78 @@ abstract class AppLocalizations {
   /// **'Couldn\'t load your libraries'**
   String get libraryNicknamesLoadFailed;
 
+  /// No description provided for @settingsTransfer.
+  ///
+  /// In en, this message translates to:
+  /// **'Transfer settings'**
+  String get settingsTransfer;
+
+  /// No description provided for @settingsTransferSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy your settings to another device through your Jellyfin account'**
+  String get settingsTransferSubtitle;
+
+  /// No description provided for @settingsTransferExport.
+  ///
+  /// In en, this message translates to:
+  /// **'Export settings'**
+  String get settingsTransferExport;
+
+  /// No description provided for @settingsTransferExportSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Save this device\'s settings to your Jellyfin account'**
+  String get settingsTransferExportSubtitle;
+
+  /// No description provided for @settingsTransferExported.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} settings saved to your Jellyfin account'**
+  String settingsTransferExported(int count);
+
+  /// No description provided for @settingsTransferImport.
+  ///
+  /// In en, this message translates to:
+  /// **'Import settings'**
+  String get settingsTransferImport;
+
+  /// No description provided for @settingsTransferFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'From {device}, {date}'**
+  String settingsTransferFrom(String device, String date);
+
+  /// No description provided for @settingsTransferNothing.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing exported yet'**
+  String get settingsTransferNothing;
+
+  /// No description provided for @settingsTransferImportConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Replace this device\'s settings with these? {source}\n\nPlexfin closes afterwards. Open it again to use them.'**
+  String settingsTransferImportConfirm(String source);
+
+  /// No description provided for @settingsTransferImportAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Import and close'**
+  String get settingsTransferImportAction;
+
+  /// No description provided for @settingsTransferFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t reach your Jellyfin account'**
+  String get settingsTransferFailed;
+
+  /// No description provided for @settingsTransferNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign-in, window and device hardware settings stay on each device. Sign in on the other device first, then import.'**
+  String get settingsTransferNote;
+
   /// No description provided for @settingsDynamicContent.
   ///
   /// In en, this message translates to:

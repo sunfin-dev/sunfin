@@ -10115,6 +10115,52 @@ class AppLocalizationsRo extends AppLocalizations {
       'Bibliotecile nu au putut fi încărcate';
 
   @override
+  String get settingsTransfer => 'Transferă setările';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Copiază setările pe alt dispozitiv prin contul tău Jellyfin';
+
+  @override
+  String get settingsTransferExport => 'Exportă setările';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Salvează setările acestui dispozitiv în contul tău Jellyfin';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Setări salvate în contul tău Jellyfin: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'Importă setările';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'De pe $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Nimic exportat încă';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Înlocuiești setările acestui dispozitiv cu acestea? $source\n\nPlexfin se închide apoi. Deschide-l din nou pentru a le folosi.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Importă și închide';
+
+  @override
+  String get settingsTransferFailed =>
+      'Contul tău Jellyfin nu poate fi accesat';
+
+  @override
+  String get settingsTransferNote =>
+      'Conectarea, fereastra și hardware-ul rămân pe fiecare dispozitiv. Conectează-te mai întâi pe celălalt dispozitiv, apoi importă.';
+
+  @override
   String get settingsDynamicContent => 'Conținut dinamic';
 
   @override

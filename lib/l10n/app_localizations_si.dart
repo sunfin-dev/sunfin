@@ -9984,6 +9984,52 @@ class AppLocalizationsSi extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'ඔබේ පුස්තකාල පූරණය කළ නොහැකි විය';
 
   @override
+  String get settingsTransfer => 'සැකසුම් මාරු කරන්න';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'ඔබගේ Jellyfin ගිණුම හරහා සැකසුම් වෙනත් උපාංගයකට පිටපත් කරන්න';
+
+  @override
+  String get settingsTransferExport => 'සැකසුම් අපනයනය';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'මෙම උපාංගයේ සැකසුම් ඔබගේ Jellyfin ගිණුමේ සුරකින්න';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'ඔබගේ Jellyfin ගිණුමේ සුරැකි සැකසුම්: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'සැකසුම් ආනයනය';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return '$device වෙතින්, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'තවම කිසිවක් අපනයනය කර නැත';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'මෙම උපාංගයේ සැකසුම් මේවායින් ප්‍රතිස්ථාපනය කරන්නද? $source\n\nඉන්පසු Plexfin වැසේ. ඒවා භාවිතයට නැවත විවෘත කරන්න.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'ආනයනය කර වසන්න';
+
+  @override
+  String get settingsTransferFailed =>
+      'ඔබගේ Jellyfin ගිණුමට ළඟා විය නොහැකි විය';
+
+  @override
+  String get settingsTransferNote =>
+      'පිවිසුම, කවුළුව සහ දෘඩාංග එක් එක් උපාංගයේ වෙනම පවතී. පළමුව අනෙක් උපාංගයට පිවිස, ඉන්පසු ආනයනය කරන්න.';
+
+  @override
   String get settingsDynamicContent => 'ගතික අන්තර්ගතය';
 
   @override

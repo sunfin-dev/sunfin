@@ -10026,6 +10026,51 @@ class AppLocalizationsCs extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'Knihovny se nepodařilo načíst';
 
   @override
+  String get settingsTransfer => 'Přenést nastavení';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Zkopírujte nastavení na jiné zařízení přes svůj účet Jellyfin';
+
+  @override
+  String get settingsTransferExport => 'Exportovat nastavení';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Uložit nastavení tohoto zařízení do účtu Jellyfin';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Nastavení uložená do účtu Jellyfin: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'Importovat nastavení';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'Z $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Zatím nic exportováno';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Nahradit nastavení tohoto zařízení těmito? $source\n\nPlexfin se poté zavře. Otevřete jej znovu, aby se použila.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Importovat a zavřít';
+
+  @override
+  String get settingsTransferFailed => 'Účet Jellyfin není dostupný';
+
+  @override
+  String get settingsTransferNote =>
+      'Přihlášení, okno a hardware zůstávají na každém zařízení. Nejprve se přihlaste na druhém zařízení a pak importujte.';
+
+  @override
   String get settingsDynamicContent => 'Dynamický obsah';
 
   @override

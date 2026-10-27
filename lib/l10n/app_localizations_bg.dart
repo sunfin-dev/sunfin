@@ -10082,6 +10082,51 @@ class AppLocalizationsBg extends AppLocalizations {
       'Библиотеките ви не можаха да се заредят';
 
   @override
+  String get settingsTransfer => 'Прехвърляне на настройки';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Копирайте настройките си на друго устройство чрез акаунта си в Jellyfin';
+
+  @override
+  String get settingsTransferExport => 'Експорт на настройки';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Запазване на настройките на това устройство в акаунта ви в Jellyfin';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Запазени настройки в акаунта ви в Jellyfin: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'Импорт на настройки';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'От $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Все още няма експорт';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Да се заменят ли настройките на това устройство с тези? $source\n\nPlexfin се затваря след това. Отворете го отново, за да ги използвате.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Импорт и затваряне';
+
+  @override
+  String get settingsTransferFailed => 'Няма връзка с акаунта ви в Jellyfin';
+
+  @override
+  String get settingsTransferNote =>
+      'Влизането, прозорецът и хардуерът остават на всяко устройство. Първо влезте на другото устройство, после импортирайте.';
+
+  @override
   String get settingsDynamicContent => 'Динамично съдържание';
 
   @override

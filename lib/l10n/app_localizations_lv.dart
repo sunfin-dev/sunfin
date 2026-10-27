@@ -10043,6 +10043,51 @@ class AppLocalizationsLv extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'Neizdevās ielādēt jūsu bibliotēkas';
 
   @override
+  String get settingsTransfer => 'Pārsūtīt iestatījumus';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Kopējiet iestatījumus uz citu ierīci, izmantojot savu Jellyfin kontu';
+
+  @override
+  String get settingsTransferExport => 'Eksportēt iestatījumus';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Saglabāt šīs ierīces iestatījumus savā Jellyfin kontā';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Jellyfin kontā saglabāti iestatījumi: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'Importēt iestatījumus';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'No $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Vēl nekas nav eksportēts';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Aizstāt šīs ierīces iestatījumus ar šiem? $source\n\nPēc tam Plexfin aizvērsies. Atveriet to vēlreiz, lai tos izmantotu.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Importēt un aizvērt';
+
+  @override
+  String get settingsTransferFailed => 'Neizdevās sasniegt jūsu Jellyfin kontu';
+
+  @override
+  String get settingsTransferNote =>
+      'Pieteikšanās, logs un aparatūra paliek katrā ierīcē. Vispirms piesakieties otrā ierīcē, tad importējiet.';
+
+  @override
   String get settingsDynamicContent => 'Dinamisks saturs';
 
   @override

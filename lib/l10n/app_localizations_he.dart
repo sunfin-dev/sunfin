@@ -9877,6 +9877,51 @@ class AppLocalizationsHe extends AppLocalizations {
   String get libraryNicknamesLoadFailed => 'לא ניתן לטעון את הספריות שלך';
 
   @override
+  String get settingsTransfer => 'העברת הגדרות';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'העתקת ההגדרות למכשיר אחר דרך חשבון ה-Jellyfin שלך';
+
+  @override
+  String get settingsTransferExport => 'ייצוא הגדרות';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'שמירת ההגדרות של מכשיר זה בחשבון ה-Jellyfin שלך';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'הגדרות שנשמרו בחשבון ה-Jellyfin שלך: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'ייבוא הגדרות';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'מ-$device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'עדיין לא יוצא דבר';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'להחליף את הגדרות המכשיר הזה באלה? $source\n\nPlexfin ייסגר לאחר מכן. יש לפתוח אותו שוב כדי להשתמש בהן.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'ייבוא וסגירה';
+
+  @override
+  String get settingsTransferFailed => 'לא ניתן להגיע לחשבון ה-Jellyfin שלך';
+
+  @override
+  String get settingsTransferNote =>
+      'ההתחברות, החלון והחומרה נשארים בכל מכשיר. יש להתחבר קודם במכשיר השני ואז לייבא.';
+
+  @override
   String get settingsDynamicContent => 'תוכן דינמי';
 
   @override

@@ -10216,6 +10216,51 @@ class AppLocalizationsSr extends AppLocalizations {
       'Библиотеке није било могуће учитати';
 
   @override
+  String get settingsTransfer => 'Пренеси подешавања';
+
+  @override
+  String get settingsTransferSubtitle =>
+      'Копирајте подешавања на други уређај преко свог Jellyfin налога';
+
+  @override
+  String get settingsTransferExport => 'Извези подешавања';
+
+  @override
+  String get settingsTransferExportSubtitle =>
+      'Сачувај подешавања овог уређаја на Jellyfin налог';
+
+  @override
+  String settingsTransferExported(int count) {
+    return 'Подешавања сачувана на Jellyfin налог: $count';
+  }
+
+  @override
+  String get settingsTransferImport => 'Увези подешавања';
+
+  @override
+  String settingsTransferFrom(String device, String date) {
+    return 'Са уређаја $device, $date';
+  }
+
+  @override
+  String get settingsTransferNothing => 'Још ништа није извезено';
+
+  @override
+  String settingsTransferImportConfirm(String source) {
+    return 'Заменити подешавања овог уређаја овим? $source\n\nPlexfin се затим затвара. Поново га отворите да бисте их користили.';
+  }
+
+  @override
+  String get settingsTransferImportAction => 'Увези и затвори';
+
+  @override
+  String get settingsTransferFailed => 'Jellyfin налог није доступан';
+
+  @override
+  String get settingsTransferNote =>
+      'Пријава, прозор и хардвер остају на сваком уређају. Прво се пријавите на другом уређају, па затим увезите.';
+
+  @override
   String get settingsDynamicContent => 'Динамиц Цонтент';
 
   @override
