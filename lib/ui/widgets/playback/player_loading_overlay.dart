@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../../preference/plex_locks.dart';
 import '../../../preference/preference_constants.dart';
 import '../../../preference/user_preferences.dart';
+import '../../plex/plex_spinner.dart';
 import 'loading_animation_widget.dart';
 
 class PlayerLoadingOverlay extends StatefulWidget {
@@ -68,6 +70,9 @@ class _PlayerLoadingOverlayState extends State<PlayerLoadingOverlay>
 
   @override
   Widget build(BuildContext context) {
+    // Plex shows a plain loading circle, no logo and no label.
+    if (PlexLocks.active) return const PlexSpinner();
+
     final prefs = GetIt.instance.isRegistered<UserPreferences>()
         ? GetIt.instance<UserPreferences>()
         : null;

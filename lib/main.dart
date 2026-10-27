@@ -1,7 +1,10 @@
 import 'dart:async';
 
 import 'package:audio_session/audio_session.dart';
+import 'package:flutter/foundation.dart' show kProfileMode;
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart'
+    show debugProfileLayoutsEnabled, debugProfilePaintsEnabled;
 import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get_it/get_it.dart';
@@ -1013,6 +1016,15 @@ void main() async {
   try {
     GetIt.instance<AirPlayCommandBridge>().start();
   } catch (_) {}
+
+  // Plexfin: `build.ps1 -Profile` turns these on, so the timeline names every
+  // widget that builds, lays out and paints. They cost nothing in release.
+  if (kProfileMode &&
+      const bool.fromEnvironment('PLEXFIN_PROFILE_WIDGETS')) {
+    debugProfileBuildsEnabled = true;
+    debugProfileLayoutsEnabled = true;
+    debugProfilePaintsEnabled = true;
+  }
 
   if (PlatformDetection.isTV) {
     PlexFrameLog.start(
