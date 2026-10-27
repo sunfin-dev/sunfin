@@ -36,6 +36,29 @@ import 'person/nouveau_person_content.dart';
 import 'person/nouveau_person_hero.dart';
 import 'shared/nouveau_spacing.dart';
 
+/// Whether a section's inputs are unchanged since it was last built, so the
+/// page can hand back the same widget. Values compare with ==; a list counts
+/// as unchanged while it holds the same entries, since the cast and crew are
+/// filtered afresh on every read.
+@visibleForTesting
+bool nouveauSameSectionInputs(List<Object?> a, List<Object?> b) {
+  if (a.length != b.length) return false;
+  for (var i = 0; i < a.length; i++) {
+    final x = a[i];
+    final y = b[i];
+    if (x == y) continue;
+    if (x is List && y is List && x.length == y.length) {
+      var same = true;
+      for (var j = 0; j < x.length && same; j++) {
+        same = identical(x[j], y[j]);
+      }
+      if (same) continue;
+    }
+    return false;
+  }
+  return true;
+}
+
 class NouveauDetailContent extends StatefulWidget {
   final ItemDetailViewModel viewModel;
   final UserPreferences prefs;
@@ -74,8 +97,7 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
   final GlobalKey<DetailActionButtonsState> _actionButtonsKey =
       GlobalKey<DetailActionButtonsState>();
 
-  final GlobalKey<NouveauHeroState> _heroKey =
-      GlobalKey<NouveauHeroState>();
+  final GlobalKey<NouveauHeroState> _heroKey = GlobalKey<NouveauHeroState>();
 
   final GlobalKey<NouveauEpisodesSectionState> _episodesSectionKey =
       GlobalKey<NouveauEpisodesSectionState>();
@@ -122,6 +144,27 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
   );
 
   ItemDetailViewModel get _vm => widget.viewModel;
+
+  /// Plexfin: every view-model update (ratings, similar titles, extras, the
+  /// collection) used to rebuild and lay out every section again, 33-47 ms on
+  /// the Shield, about four times while a page opens. A section is now built
+  /// again only when what it shows has changed; otherwise the widget from last
+  /// time is handed back and Flutter skips its whole subtree.
+  final Map<GlobalKey, (List<Object?>, Widget)> _sectionMemo = {};
+
+  Widget _memoSection(
+    GlobalKey key,
+    List<Object?> inputs,
+    Widget Function() build,
+  ) {
+    final last = _sectionMemo[key];
+    if (last != null && nouveauSameSectionInputs(last.$1, inputs)) {
+      return last.$2;
+    }
+    final built = build();
+    _sectionMemo[key] = (inputs, built);
+    return built;
+  }
 
   bool _usePortraitLayout(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
@@ -950,7 +993,9 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
       return const SizedBox.shrink();
     }
 
-    _visibility = DetailSectionVisibility.of(widget.prefs);
+    // Kept as the same object while unchanged, so the section memo can tell.
+    final visibility = DetailSectionVisibility.of(widget.prefs);
+    if (visibility != _visibility) _visibility = visibility;
 
     final size = MediaQuery.sizeOf(context);
 
@@ -1147,24 +1192,47 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
       );
     }
 
+    // The collection and discovery sections listen to the view model
+    // themselves, so they only need building again for a new item or setting.
     if (_sectionVisible(_collectionSectionKey, item)) {
-      sectionWidgets[_collectionSectionKey] = _buildCollectionSection();
+      sectionWidgets[_collectionSectionKey] = _memoSection(
+        _collectionSectionKey,
+        [item, _vm, _visibility],
+        _buildCollectionSection,
+      );
     }
 
     if (_sectionVisible(_chaptersSectionKey, item)) {
-      sectionWidgets[_chaptersSectionKey] = _buildChaptersSection(item);
+      sectionWidgets[_chaptersSectionKey] = _memoSection(_chaptersSectionKey, [
+        item,
+        _vm.imageApi,
+      ], () => _buildChaptersSection(item));
     }
 
     if (_sectionVisible(_extrasSectionKey, item)) {
-      sectionWidgets[_extrasSectionKey] = _buildExtrasSection();
+      sectionWidgets[_extrasSectionKey] = _memoSection(_extrasSectionKey, [
+        item,
+        _vm.features,
+        _vm.imageApi,
+      ], _buildExtrasSection);
     }
 
     if (_sectionVisible(_discoverySectionKey, item)) {
-      sectionWidgets[_discoverySectionKey] = _buildDiscoverySection();
+      sectionWidgets[_discoverySectionKey] = _memoSection(
+        _discoverySectionKey,
+        [item, _vm, _visibility],
+        _buildDiscoverySection,
+      );
     }
 
     if (_sectionVisible(_peopleSectionKey, item)) {
-      sectionWidgets[_peopleSectionKey] = _buildCastCrewSection(item);
+      sectionWidgets[_peopleSectionKey] = _memoSection(_peopleSectionKey, [
+        item,
+        _visibleActors,
+        _visibleDirectors,
+        _visibleWriters,
+        _vm.imageApi,
+      ], () => _buildCastCrewSection(item));
     }
 
     for (final key in _orderedMediaSectionKeys(item)) {
@@ -1188,7 +1256,19 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
             delay: Duration(milliseconds: detailsIndex * 40),
             child: KeyedSubtree(
               key: _detailsRevealKey,
-              child: _buildDetailsSection(item, contentInsets),
+              // Everything the details section reads from the view model.
+              child: _memoSection(_detailsSectionKey, [
+                item,
+                _vm,
+                _visibility,
+                contentInsets,
+                widget.selectedMediaSourceId,
+                _vm.selectedAudioIndex,
+                _vm.selectedSubtitleIndex,
+                _vm.episodes,
+                _vm.seriesEpisodes,
+                _vm.nextUp,
+              ], () => _buildDetailsSection(item, contentInsets)),
             ),
           ),
         ),
@@ -1218,13 +1298,13 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
     };
 
     return <GlobalKey>[
-      _episodesSectionKey,
-      _collectionSectionKey,
-      _chaptersSectionKey,
-      _extrasSectionKey,
-      _discoverySectionKey,
-      _peopleSectionKey,
-    ].where((key) => _sectionVisible(key, item)).toList()
+        _episodesSectionKey,
+        _collectionSectionKey,
+        _chaptersSectionKey,
+        _extrasSectionKey,
+        _discoverySectionKey,
+        _peopleSectionKey,
+      ].where((key) => _sectionVisible(key, item)).toList()
       ..sort((a, b) => rankOf(a).compareTo(rankOf(b)));
   }
 

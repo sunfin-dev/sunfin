@@ -13,13 +13,16 @@ import 'plex_style.dart';
 /// CONTRACT (do not change the constructor without the lead):
 /// - Fills its parent (used as the bottom layer of a full-screen Stack).
 /// - [url] is the backdrop URL from BackgroundService (null: colour only).
+/// - [showArt] false paints only the page colour taken from [url] (the
+///   library page, which Plex shows without art).
 ///
 /// The art sits sharp in the top-right corner and fades into the page colour
 /// to the left and bottom. The page colour itself follows the art's tint.
 class PlexBackdrop extends StatefulWidget {
   final String? url;
+  final bool showArt;
 
-  const PlexBackdrop({super.key, required this.url});
+  const PlexBackdrop({super.key, required this.url, this.showArt = true});
 
   @override
   State<PlexBackdrop> createState() => _PlexBackdropState();
@@ -111,6 +114,19 @@ class _PlexBackdropState extends State<PlexBackdrop> {
       return;
     }
     if (url == _shownUrl) return;
+
+    if (!widget.showArt) {
+      // Only the colour is wanted: no art to fetch and decode.
+      _shownUrl = url;
+      final cached = PlexBackdropTint.cached(url);
+      if (cached != null) {
+        // Both callers build next, so no setState.
+        _applyTint(cached);
+      } else {
+        _resolveTint(url);
+      }
+      return;
+    }
 
     final local = isLocalImagePath(url);
     final headers = local

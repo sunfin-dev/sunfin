@@ -388,8 +388,19 @@ class _MoonfinAppState extends State<MoonfinApp> {
                   builder: (context, _) {
                     // Read here rather than hoisted above the builder, so a
                     // change to the interface layout override is picked up.
+                    // Plexfin: any bound accessibility service (on the Shield,
+                    // the Monet launcher's) makes Flutter rebuild the whole
+                    // semantics tree every frame, 4-25 ms on the UI thread.
+                    // Only a screen reader reads that tree, so skip it unless
+                    // one is on. The wrapper always stays, so turning TalkBack
+                    // on or off never restructures the shell.
                     final mainChild = PlatformDetection.isTV
-                        ? TvUiScale(child: overlay)
+                        ? ExcludeSemantics(
+                            excluding: !MediaQuery.accessibleNavigationOf(
+                              context,
+                            ),
+                            child: TvUiScale(child: overlay),
+                          )
                         : overlay;
                     final scale = _prefs
                         .get(UserPreferences.desktopUiScale)
