@@ -312,7 +312,7 @@ class _SettingsSidePanelState extends ConsumerState<SettingsSidePanel> {
     final l10n = AppLocalizations.of(context);
     final kidsMode = ref.watch(kidsModeProvider);
     final showAdmin =
-        !kidsMode && !PlatformDetection.isTV && ref.watch(isAdminProvider);
+        !kidsMode && !PlatformDetection.isRemoteOnly && ref.watch(isAdminProvider);
     final enablePanelAutofocus = !PlatformDetection.useMobileUi;
 
     // Kids Mode leaves one entry standing. Hiding settings outright would

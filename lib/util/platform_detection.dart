@@ -62,6 +62,11 @@ class PlatformDetection {
     };
   }
 
+  /// A TV driven by a remote alone. The TV look on a PC (the forced-TV
+  /// Windows build) still has a mouse, a keyboard and files, so the tools
+  /// held back from a TV, like server administration, stay there.
+  static bool get isRemoteOnly => isTV && !isDesktop;
+
   static bool _isTv = false;
   static void setTvMode(bool value) => _isTv = value;
 

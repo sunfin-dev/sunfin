@@ -609,7 +609,7 @@ class _ActionsSection extends StatelessWidget {
           onChanged:
               (isRestartPending || toggling) ? null : (_) => onToggle(),
         ),
-        if (!PlatformDetection.isTV && onInstallUpdate != null)
+        if (!PlatformDetection.isRemoteOnly && onInstallUpdate != null)
           ListTile(
             contentPadding: const EdgeInsets.symmetric(horizontal: 16),
             leading: Icon(Icons.download, color: theme.colorScheme.primary),

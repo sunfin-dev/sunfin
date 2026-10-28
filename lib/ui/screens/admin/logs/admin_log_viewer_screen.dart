@@ -229,7 +229,7 @@ class _AdminLogViewerScreenState extends State<AdminLogViewerScreen> {
                 onPressed: _copyAll,
                 icon: const Icon(Icons.copy_all),
               ),
-              if (!PlatformDetection.isTV)
+              if (!PlatformDetection.isRemoteOnly)
                 IconButton(
                   tooltip: AppLocalizations.of(context).save,
                   onPressed: _saveToFile,

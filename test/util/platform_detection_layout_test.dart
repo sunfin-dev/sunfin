@@ -49,6 +49,17 @@ void main() {
     expect(PlatformDetection.supportsOfflineDownloads, isFalse);
   });
 
+  test('the TV look on a PC keeps the PC\'s tools', () {
+    debugDefaultTargetPlatformOverride = TargetPlatform.windows;
+    PlatformDetection.setInterfaceLayout(InterfaceLayout.tv);
+    expect(PlatformDetection.isTV, isTrue);
+    expect(PlatformDetection.isRemoteOnly, isFalse);
+
+    debugDefaultTargetPlatformOverride = TargetPlatform.android;
+    PlatformDetection.setTvMode(true);
+    expect(PlatformDetection.isRemoteOnly, isTrue);
+  });
+
   test('desktop keeps a misdetected desktop out of the TV UI', () {
     debugDefaultTargetPlatformOverride = TargetPlatform.linux;
     PlatformDetection.setTvMode(true);

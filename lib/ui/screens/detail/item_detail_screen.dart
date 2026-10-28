@@ -7703,7 +7703,7 @@ class DetailActionButtonsState extends State<DetailActionButtons> {
         isAdministrator:
             GetIt.instance<UserRepository>().currentUser?.isAdministrator ??
             false,
-        isTV: PlatformDetection.isTV,
+        isTV: PlatformDetection.isRemoteOnly,
         itemType: item.type,
         canDelete: item.canDelete,
       );
