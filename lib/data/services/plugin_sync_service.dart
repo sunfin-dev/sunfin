@@ -17,6 +17,7 @@ import 'storage_path_service.dart';
 import 'synced_fields.dart';
 import '../../ui/widgets/navigation_layout.dart';
 import '../../preference/home_section_config.dart';
+import '../../preference/plex_locks.dart';
 import '../../preference/preference_constants.dart' as prefs;
 import '../../preference/seerr_preferences.dart';
 import '../../preference/seerr_row_config.dart';
@@ -411,6 +412,13 @@ class PluginSyncService extends ChangeNotifier {
 
       await _refreshCustomThemes(client, serverId: serverId);
 
+      // Plexfin: the server's settings profile is never read on its own,
+      // only the plugin's services are used.
+      if (PlexLocks.isLocked(UserPreferences.pluginSyncEnabled.key)) {
+        await _prefs.set(syncInitializedPref, true);
+        return;
+      }
+
       final resolved = await _fetchResolvedProfile(client, _profileName);
       if (resolved == null) {
         return;
@@ -553,6 +561,11 @@ class PluginSyncService extends ChangeNotifier {
     }
 
     if (type != 'settingsUpdated') {
+      return;
+    }
+    // Emby delivers this over the session websocket, which runs whether or
+    // not sync is on.
+    if (!_prefs.get(UserPreferences.pluginSyncEnabled)) {
       return;
     }
 

@@ -10088,6 +10088,17 @@ class AppLocalizationsLv extends AppLocalizations {
       'Pieteikšanās, logs un aparatūra paliek katrā ierīcē. Vispirms piesakieties otrā ierīcē, tad importējiet.';
 
   @override
+  String get settingsReset => 'Atiestatīt visus iestatījumus';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Atjaunot šīs ierīces iestatījumiem noklusējuma vērtības';
+
+  @override
+  String get settingsResetConfirm =>
+      'Vai atjaunot katram šīs ierīces iestatījumam noklusējuma vērtību? Jūs paliksiet pierakstījies, un jūsu Jellyfin kontā eksportētie iestatījumi tiks saglabāti.\n\nPēc tam Plexfin aizvērsies. Atveriet to vēlreiz, lai turpinātu.';
+
+  @override
   String get settingsDynamicContent => 'Dinamisks saturs';
 
   @override

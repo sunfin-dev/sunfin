@@ -17776,6 +17776,24 @@ abstract class AppLocalizations {
   /// **'Sign-in, window and device hardware settings stay on each device. Sign in on the other device first, then import.'**
   String get settingsTransferNote;
 
+  /// No description provided for @settingsReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset all settings'**
+  String get settingsReset;
+
+  /// No description provided for @settingsResetSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Put this device\'s settings back to their defaults'**
+  String get settingsResetSubtitle;
+
+  /// No description provided for @settingsResetConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Put every setting on this device back to its default? You stay signed in, and settings exported to your Jellyfin account are kept.\n\nPlexfin closes afterwards. Open it again to continue.'**
+  String get settingsResetConfirm;
+
   /// No description provided for @settingsDynamicContent.
   ///
   /// In en, this message translates to:

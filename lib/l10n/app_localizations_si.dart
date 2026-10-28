@@ -10030,6 +10030,17 @@ class AppLocalizationsSi extends AppLocalizations {
       'පිවිසුම, කවුළුව සහ දෘඩාංග එක් එක් උපාංගයේ වෙනම පවතී. පළමුව අනෙක් උපාංගයට පිවිස, ඉන්පසු ආනයනය කරන්න.';
 
   @override
+  String get settingsReset => 'සියලු සැකසුම් යළි පිහිටුවන්න';
+
+  @override
+  String get settingsResetSubtitle =>
+      'මෙම උපාංගයේ සැකසුම් පෙරනිමියට ආපසු ගෙන එන්න';
+
+  @override
+  String get settingsResetConfirm =>
+      'මෙම උපාංගයේ සෑම සැකසුමක්ම එහි පෙරනිමියට ආපසු ගෙන එන්නද? ඔබ පුරනය වී සිටිනු ඇති අතර, ඔබගේ Jellyfin ගිණුමට අපනයනය කළ සැකසුම් රැඳී පවතී.\n\nඉන්පසු Plexfin වැසේ. දිගටම කරගෙන යාමට එය නැවත විවෘත කරන්න.';
+
+  @override
   String get settingsDynamicContent => 'ගතික අන්තර්ගතය';
 
   @override

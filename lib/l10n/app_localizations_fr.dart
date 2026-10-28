@@ -10170,6 +10170,17 @@ class AppLocalizationsFr extends AppLocalizations {
       'La connexion, la fenêtre et le matériel restent propres à chaque appareil. Connectez-vous d\'abord sur l\'autre appareil, puis importez.';
 
   @override
+  String get settingsReset => 'Réinitialiser tous les paramètres';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Rétablir les valeurs par défaut des paramètres de cet appareil';
+
+  @override
+  String get settingsResetConfirm =>
+      'Rétablir la valeur par défaut de chaque paramètre de cet appareil ? Vous restez connecté et les paramètres exportés vers votre compte Jellyfin sont conservés.\n\nPlexfin se ferme ensuite. Rouvrez-le pour continuer.';
+
+  @override
   String get settingsDynamicContent => 'Contenu dynamique';
 
   @override

@@ -9984,6 +9984,16 @@ class AppLocalizationsFa extends AppLocalizations {
       'ورود، پنجره و سخت‌افزار برای هر دستگاه جداگانه می‌ماند. ابتدا در دستگاه دیگر وارد شوید، سپس وارد کنید.';
 
   @override
+  String get settingsReset => 'بازنشانی همه تنظیمات';
+
+  @override
+  String get settingsResetSubtitle => 'برگرداندن تنظیمات این دستگاه به پیش‌فرض';
+
+  @override
+  String get settingsResetConfirm =>
+      'همه تنظیمات این دستگاه به پیش‌فرض برگردد؟ وارد حساب باقی می‌مانید و تنظیماتی که به حساب Jellyfin شما صادر شده‌اند حفظ می‌شوند.\n\nPlexfin پس از آن بسته می‌شود. برای ادامه دوباره بازش کنید.';
+
+  @override
   String get settingsDynamicContent => 'محتوای پویا';
 
   @override

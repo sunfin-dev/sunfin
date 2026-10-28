@@ -9984,6 +9984,17 @@ class AppLocalizationsTh extends AppLocalizations {
       'การลงชื่อเข้าใช้ หน้าต่าง และฮาร์ดแวร์จะแยกกันในแต่ละอุปกรณ์ ลงชื่อเข้าใช้บนอุปกรณ์อีกเครื่องก่อน แล้วจึงนำเข้า';
 
   @override
+  String get settingsReset => 'รีเซ็ตการตั้งค่าทั้งหมด';
+
+  @override
+  String get settingsResetSubtitle =>
+      'คืนการตั้งค่าของอุปกรณ์นี้เป็นค่าเริ่มต้น';
+
+  @override
+  String get settingsResetConfirm =>
+      'คืนการตั้งค่าทุกอย่างบนอุปกรณ์นี้เป็นค่าเริ่มต้นหรือไม่ คุณยังคงลงชื่อเข้าใช้อยู่ และการตั้งค่าที่ส่งออกไปยังบัญชี Jellyfin ของคุณจะยังอยู่\n\nจากนั้น Plexfin จะปิดลง เปิดอีกครั้งเพื่อดำเนินการต่อ';
+
+  @override
   String get settingsDynamicContent => 'เนื้อหาแบบไดนามิก';
 
   @override

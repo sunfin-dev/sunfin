@@ -10136,6 +10136,17 @@ class AppLocalizationsTl extends AppLocalizations {
       'Nananatili sa bawat device ang pag-sign in, window at hardware. Mag-sign in muna sa kabilang device, saka mag-import.';
 
   @override
+  String get settingsReset => 'I-reset ang lahat ng setting';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Ibalik sa default ang mga setting ng device na ito';
+
+  @override
+  String get settingsResetConfirm =>
+      'Ibalik sa default ang bawat setting sa device na ito? Mananatili kang naka-sign in, at mananatili ang mga setting na na-export sa iyong Jellyfin account.\n\nMagsasara ang Plexfin pagkatapos. Buksan itong muli para magpatuloy.';
+
+  @override
   String get settingsDynamicContent => 'Dynamic na Nilalaman';
 
   @override

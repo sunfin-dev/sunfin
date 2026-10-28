@@ -10037,6 +10037,17 @@ class AppLocalizationsDa extends AppLocalizations {
       'Login, vindue og hardware bliver på hver enhed. Log ind på den anden enhed først, og importér derefter.';
 
   @override
+  String get settingsReset => 'Nulstil alle indstillinger';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Sæt denne enheds indstillinger tilbage til standard';
+
+  @override
+  String get settingsResetConfirm =>
+      'Vil du sætte alle indstillinger på denne enhed tilbage til standard? Du forbliver logget ind, og indstillinger eksporteret til din Jellyfin-konto bevares.\n\nPlexfin lukker bagefter. Åbn den igen for at fortsætte.';
+
+  @override
   String get settingsDynamicContent => 'Dynamisk indhold';
 
   @override

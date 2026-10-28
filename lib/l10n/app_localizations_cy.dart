@@ -10087,6 +10087,17 @@ class AppLocalizationsCy extends AppLocalizations {
       'Mae mewngofnodi, ffenestr a chaledwedd yn aros ar bob dyfais. Mewngofnodwch ar y ddyfais arall yn gyntaf, yna mewnforiwch.';
 
   @override
+  String get settingsReset => 'Ailosod pob gosodiad';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Rhoi gosodiadau\'r ddyfais hon yn ôl i\'w rhagosodiadau';
+
+  @override
+  String get settingsResetConfirm =>
+      'Rhoi pob gosodiad ar y ddyfais hon yn ôl i\'w ragosodiad? Byddwch yn aros wedi mewngofnodi, a bydd gosodiadau a allforiwyd i\'ch cyfrif Jellyfin yn cael eu cadw.\n\nMae Plexfin yn cau wedyn. Agorwch ef eto i barhau.';
+
+  @override
   String get settingsDynamicContent => 'Cynnwys Dynamig';
 
   @override

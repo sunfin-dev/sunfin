@@ -10046,6 +10046,17 @@ class AppLocalizationsId extends AppLocalizations {
       'Masuk, jendela, dan perangkat keras tetap di masing-masing perangkat. Masuk dulu di perangkat lain, lalu impor.';
 
   @override
+  String get settingsReset => 'Atur ulang semua pengaturan';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Kembalikan pengaturan perangkat ini ke default';
+
+  @override
+  String get settingsResetConfirm =>
+      'Kembalikan setiap pengaturan di perangkat ini ke default-nya? Anda tetap masuk, dan pengaturan yang diekspor ke akun Jellyfin Anda tetap tersimpan.\n\nPlexfin akan ditutup setelahnya. Buka lagi untuk melanjutkan.';
+
+  @override
   String get settingsDynamicContent => 'Konten Dinamis';
 
   @override

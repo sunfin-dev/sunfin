@@ -10048,6 +10048,17 @@ class AppLocalizationsEt extends AppLocalizations {
       'Sisselogimine, aken ja riistvara jäävad igale seadmele. Logi esmalt teises seadmes sisse ja impordi siis.';
 
   @override
+  String get settingsReset => 'Lähtesta kõik seaded';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Taasta selle seadme seaded vaikeväärtustele';
+
+  @override
+  String get settingsResetConfirm =>
+      'Kas taastada kõik selle seadme seaded vaikeväärtustele? Jääd sisselogituks ja sinu Jellyfini kontole eksporditud seaded säilivad.\n\nSeejärel Plexfin sulgub. Jätkamiseks ava see uuesti.';
+
+  @override
   String get settingsDynamicContent => 'Dünaamiline sisu';
 
   @override

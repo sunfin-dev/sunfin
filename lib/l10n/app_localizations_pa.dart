@@ -10008,6 +10008,17 @@ class AppLocalizationsPa extends AppLocalizations {
       'ਸਾਈਨ-ਇਨ, ਵਿੰਡੋ ਅਤੇ ਹਾਰਡਵੇਅਰ ਹਰ ਡਿਵਾਈਸ \'ਤੇ ਵੱਖਰੇ ਰਹਿੰਦੇ ਹਨ। ਪਹਿਲਾਂ ਦੂਜੀ ਡਿਵਾਈਸ \'ਤੇ ਸਾਈਨ ਇਨ ਕਰੋ, ਫਿਰ ਆਯਾਤ ਕਰੋ।';
 
   @override
+  String get settingsReset => 'ਸਾਰੀਆਂ ਸੈਟਿੰਗਾਂ ਰੀਸੈੱਟ ਕਰੋ';
+
+  @override
+  String get settingsResetSubtitle =>
+      'ਇਸ ਡਿਵਾਈਸ ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਨੂੰ ਡਿਫੌਲਟ \'ਤੇ ਵਾਪਸ ਲਿਆਓ';
+
+  @override
+  String get settingsResetConfirm =>
+      'ਕੀ ਇਸ ਡਿਵਾਈਸ ਦੀ ਹਰ ਸੈਟਿੰਗ ਨੂੰ ਡਿਫੌਲਟ \'ਤੇ ਵਾਪਸ ਲਿਆਉਣਾ ਹੈ? ਤੁਸੀਂ ਸਾਈਨ ਇਨ ਰਹੋਗੇ, ਅਤੇ ਤੁਹਾਡੇ Jellyfin ਖਾਤੇ ਵਿੱਚ ਐਕਸਪੋਰਟ ਕੀਤੀਆਂ ਸੈਟਿੰਗਾਂ ਰਹਿਣਗੀਆਂ।\n\nਇਸ ਤੋਂ ਬਾਅਦ Plexfin ਬੰਦ ਹੋ ਜਾਵੇਗਾ। ਜਾਰੀ ਰੱਖਣ ਲਈ ਇਸਨੂੰ ਦੁਬਾਰਾ ਖੋਲ੍ਹੋ।';
+
+  @override
   String get settingsDynamicContent => 'ਗਤੀਸ਼ੀਲ ਸਮੱਗਰੀ';
 
   @override

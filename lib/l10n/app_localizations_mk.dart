@@ -10105,6 +10105,17 @@ class AppLocalizationsMk extends AppLocalizations {
       'Најавата, прозорецот и хардверот остануваат на секој уред. Прво најавете се на другиот уред, потоа увезете.';
 
   @override
+  String get settingsReset => 'Ресетирај ги сите поставки';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Врати ги поставките на овој уред на стандардните вредности';
+
+  @override
+  String get settingsResetConfirm =>
+      'Да се врати ли секоја поставка на овој уред на нејзината стандардна вредност? Остануваш најавен, а поставките извезени на твојата Jellyfin сметка се зачувуваат.\n\nPlexfin потоа се затвора. Отвори го повторно за да продолжиш.';
+
+  @override
   String get settingsDynamicContent => 'Динамичка содржина';
 
   @override

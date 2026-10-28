@@ -10123,6 +10123,17 @@ class AppLocalizationsHu extends AppLocalizations {
       'A bejelentkezés, az ablak és a hardver minden eszközön saját marad. Előbb jelentkezz be a másik eszközön, aztán importálj.';
 
   @override
+  String get settingsReset => 'Minden beállítás visszaállítása';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Az eszköz beállításainak visszaállítása az alapértékekre';
+
+  @override
+  String get settingsResetConfirm =>
+      'Visszaállítod az eszköz minden beállítását az alapértékére? Bejelentkezve maradsz, és a Jellyfin-fiókodba exportált beállítások megmaradnak.\n\nA Plexfin ezután bezárul. A folytatáshoz nyisd meg újra.';
+
+  @override
   String get settingsDynamicContent => 'Dinamikus tartalom';
 
   @override

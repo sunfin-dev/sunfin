@@ -10095,6 +10095,17 @@ class AppLocalizationsSk extends AppLocalizations {
       'Prihlásenie, okno a hardvér zostávajú na každom zariadení. Najprv sa prihláste na druhom zariadení a potom importujte.';
 
   @override
+  String get settingsReset => 'Obnoviť všetky nastavenia';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Vrátiť nastavenia tohto zariadenia na predvolené hodnoty';
+
+  @override
+  String get settingsResetConfirm =>
+      'Vrátiť každé nastavenie na tomto zariadení na predvolenú hodnotu? Zostanete prihlásení a nastavenia exportované do vášho účtu Jellyfin sa zachovajú.\n\nPlexfin sa potom zatvorí. Pokračujte jeho opätovným otvorením.';
+
+  @override
   String get settingsDynamicContent => 'Dynamický obsah';
 
   @override

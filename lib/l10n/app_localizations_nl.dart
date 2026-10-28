@@ -10089,6 +10089,17 @@ class AppLocalizationsNl extends AppLocalizations {
       'Aanmelding, venster en hardware blijven per apparaat. Meld je eerst aan op het andere apparaat en importeer dan.';
 
   @override
+  String get settingsReset => 'Alle instellingen herstellen';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Zet de instellingen van dit apparaat terug naar de standaardwaarden';
+
+  @override
+  String get settingsResetConfirm =>
+      'Elke instelling op dit apparaat terugzetten naar de standaardwaarde? Je blijft ingelogd en instellingen die naar je Jellyfin-account zijn geëxporteerd blijven bewaard.\n\nPlexfin sluit daarna. Open het opnieuw om verder te gaan.';
+
+  @override
   String get settingsDynamicContent => 'Dynamische inhoud';
 
   @override

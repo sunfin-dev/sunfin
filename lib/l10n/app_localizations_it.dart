@@ -10108,6 +10108,17 @@ class AppLocalizationsIt extends AppLocalizations {
       'Accesso, finestra e hardware restano su ogni dispositivo. Accedi prima sull\'altro dispositivo, poi importa.';
 
   @override
+  String get settingsReset => 'Ripristina tutte le impostazioni';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Riporta le impostazioni di questo dispositivo ai valori predefiniti';
+
+  @override
+  String get settingsResetConfirm =>
+      'Riportare ogni impostazione di questo dispositivo al valore predefinito? Resterai connesso e le impostazioni esportate nel tuo account Jellyfin verranno conservate.\n\nPlexfin si chiuderà subito dopo. Riaprilo per continuare.';
+
+  @override
   String get settingsDynamicContent => 'Contenuto dinamico';
 
   @override

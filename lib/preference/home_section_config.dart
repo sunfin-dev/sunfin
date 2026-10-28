@@ -181,9 +181,12 @@ class HomeSectionConfig {
   bool get isPluginDynamic => kind == HomeSectionKind.pluginDynamic;
 
   static List<HomeSectionConfig> defaults() => const [
+    // Plexfin: off out of the box. Plex's home has no library tiles (the
+    // rail lists every library) and the tiles have no artwork (user,
+    // 2026-10-28). Kids Mode still brings them back as its way in.
     HomeSectionConfig(
       type: HomeSectionType.libraryTilesSmall,
-      enabled: true,
+      enabled: false,
       order: 0,
     ),
     HomeSectionConfig(type: HomeSectionType.resume, enabled: true, order: 1),

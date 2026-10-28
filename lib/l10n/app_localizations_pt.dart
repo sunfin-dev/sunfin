@@ -10108,6 +10108,17 @@ class AppLocalizationsPt extends AppLocalizations {
       'O início de sessão, a janela e o hardware ficam em cada dispositivo. Inicie sessão primeiro no outro dispositivo e depois importe.';
 
   @override
+  String get settingsReset => 'Repor todas as definições';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Repor as predefinições deste dispositivo';
+
+  @override
+  String get settingsResetConfirm =>
+      'Repor a predefinição de cada definição deste dispositivo? Continua com a sessão iniciada, e as definições exportadas para a sua conta Jellyfin são mantidas.\n\nO Plexfin fecha a seguir. Abra-o novamente para continuar.';
+
+  @override
   String get settingsDynamicContent => 'Conteúdo Dinâmico';
 
   @override

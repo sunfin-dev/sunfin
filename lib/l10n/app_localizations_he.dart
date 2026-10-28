@@ -9922,6 +9922,16 @@ class AppLocalizationsHe extends AppLocalizations {
       'ההתחברות, החלון והחומרה נשארים בכל מכשיר. יש להתחבר קודם במכשיר השני ואז לייבא.';
 
   @override
+  String get settingsReset => 'איפוס כל ההגדרות';
+
+  @override
+  String get settingsResetSubtitle => 'החזרת ההגדרות של מכשיר זה לברירת המחדל';
+
+  @override
+  String get settingsResetConfirm =>
+      'להחזיר כל הגדרה במכשיר זה לברירת המחדל שלה? תישאר מחובר, והגדרות שיוצאו לחשבון Jellyfin שלך יישמרו.\n\nPlexfin ייסגר לאחר מכן. פתח אותו שוב כדי להמשיך.';
+
+  @override
   String get settingsDynamicContent => 'תוכן דינמי';
 
   @override

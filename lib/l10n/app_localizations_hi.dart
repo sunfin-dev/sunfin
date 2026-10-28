@@ -10016,6 +10016,17 @@ class AppLocalizationsHi extends AppLocalizations {
       'साइन-इन, विंडो और हार्डवेयर हर डिवाइस पर अलग रहते हैं। पहले दूसरे डिवाइस पर साइन इन करें, फिर आयात करें।';
 
   @override
+  String get settingsReset => 'सभी सेटिंग्स रीसेट करें';
+
+  @override
+  String get settingsResetSubtitle =>
+      'इस डिवाइस की सेटिंग्स को डिफ़ॉल्ट पर वापस लाएँ';
+
+  @override
+  String get settingsResetConfirm =>
+      'इस डिवाइस की हर सेटिंग को उसके डिफ़ॉल्ट पर वापस लाएँ? आप साइन इन रहेंगे, और आपके Jellyfin खाते में एक्सपोर्ट की गई सेटिंग्स बनी रहेंगी।\n\nइसके बाद Plexfin बंद हो जाएगा। जारी रखने के लिए इसे फिर से खोलें।';
+
+  @override
   String get settingsDynamicContent => 'गतिशील सामग्री';
 
   @override

@@ -10119,6 +10119,17 @@ class AppLocalizationsSq extends AppLocalizations {
       'Hyrja, dritarja dhe hardueri mbeten në çdo pajisje. Hyr fillimisht në pajisjen tjetër, pastaj importo.';
 
   @override
+  String get settingsReset => 'Rivendos të gjitha cilësimet';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Ktheji cilësimet e kësaj pajisjeje te vlerat e parazgjedhura';
+
+  @override
+  String get settingsResetConfirm =>
+      'Të kthehet çdo cilësim në këtë pajisje te vlera e parazgjedhur? Mbetesh i identifikuar dhe cilësimet e eksportuara në llogarinë tënde Jellyfin ruhen.\n\nMë pas Plexfin mbyllet. Hape përsëri për të vazhduar.';
+
+  @override
   String get settingsDynamicContent => 'Përmbajtja dinamike';
 
   @override

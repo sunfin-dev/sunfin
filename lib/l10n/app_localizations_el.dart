@@ -10176,6 +10176,17 @@ class AppLocalizationsEl extends AppLocalizations {
       'Η σύνδεση, το παράθυρο και το υλικό μένουν σε κάθε συσκευή. Συνδεθείτε πρώτα στην άλλη συσκευή και μετά κάντε εισαγωγή.';
 
   @override
+  String get settingsReset => 'Επαναφορά όλων των ρυθμίσεων';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Επαναφορά των ρυθμίσεων αυτής της συσκευής στις προεπιλογές';
+
+  @override
+  String get settingsResetConfirm =>
+      'Να επανέλθει κάθε ρύθμιση αυτής της συσκευής στην προεπιλογή της; Παραμένετε συνδεδεμένοι και οι ρυθμίσεις που εξήχθησαν στον λογαριασμό σας Jellyfin διατηρούνται.\n\nΤο Plexfin κλείνει στη συνέχεια. Ανοίξτε το ξανά για να συνεχίσετε.';
+
+  @override
   String get settingsDynamicContent => 'Δυναμικό περιεχόμενο';
 
   @override

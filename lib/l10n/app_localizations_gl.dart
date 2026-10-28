@@ -10161,6 +10161,17 @@ class AppLocalizationsGl extends AppLocalizations {
       'O inicio de sesión, a xanela e o hardware quedan en cada dispositivo. Inicia sesión primeiro no outro dispositivo e despois importa.';
 
   @override
+  String get settingsReset => 'Restabelecer toda a configuración';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Devolver a configuración deste dispositivo aos valores predeterminados';
+
+  @override
+  String get settingsResetConfirm =>
+      'Devolver cada axuste deste dispositivo ao seu valor predeterminado? Seguirás coa sesión iniciada e conservarase a configuración exportada á túa conta de Jellyfin.\n\nDespois, Plexfin pecharase. Ábreo de novo para continuar.';
+
+  @override
   String get settingsDynamicContent => 'Contido dinámico';
 
   @override

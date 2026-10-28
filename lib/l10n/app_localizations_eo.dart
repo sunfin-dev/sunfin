@@ -10025,6 +10025,17 @@ class AppLocalizationsEo extends AppLocalizations {
       'Ensaluto, fenestro kaj aparataro restas ĉe ĉiu aparato. Unue ensalutu en la alia aparato, poste importu.';
 
   @override
+  String get settingsReset => 'Restarigi ĉiujn agordojn';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Restarigi la agordojn de ĉi tiu aparato al la defaŭltoj';
+
+  @override
+  String get settingsResetConfirm =>
+      'Ĉu restarigi ĉiun agordon de ĉi tiu aparato al ĝia defaŭlto? Vi restos ensalutinta, kaj agordoj eksportitaj al via Jellyfin-konto estos konservitaj.\n\nPlexfin poste fermiĝas. Malfermu ĝin denove por daŭrigi.';
+
+  @override
   String get settingsDynamicContent => 'Dinamika Enhavo';
 
   @override

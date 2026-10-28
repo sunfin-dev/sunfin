@@ -10161,6 +10161,17 @@ class AppLocalizationsRo extends AppLocalizations {
       'Conectarea, fereastra și hardware-ul rămân pe fiecare dispozitiv. Conectează-te mai întâi pe celălalt dispozitiv, apoi importă.';
 
   @override
+  String get settingsReset => 'Resetează toate setările';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Readu setările acestui dispozitiv la valorile implicite';
+
+  @override
+  String get settingsResetConfirm =>
+      'Readuci fiecare setare a acestui dispozitiv la valoarea implicită? Rămâi conectat, iar setările exportate în contul tău Jellyfin se păstrează.\n\nApoi Plexfin se închide. Deschide-l din nou pentru a continua.';
+
+  @override
   String get settingsDynamicContent => 'Conținut dinamic';
 
   @override

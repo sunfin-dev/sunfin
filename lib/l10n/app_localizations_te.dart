@@ -10099,6 +10099,17 @@ class AppLocalizationsTe extends AppLocalizations {
       'సైన్-ఇన్, విండో, హార్డ్‌వేర్ ప్రతి పరికరంలో వేరుగా ఉంటాయి. ముందుగా మరో పరికరంలో సైన్ ఇన్ చేసి, ఆపై దిగుమతి చేయండి.';
 
   @override
+  String get settingsReset => 'అన్ని సెట్టింగ్‌లను రీసెట్ చేయండి';
+
+  @override
+  String get settingsResetSubtitle =>
+      'ఈ పరికరం సెట్టింగ్‌లను డిఫాల్ట్‌కు తిరిగి తీసుకురండి';
+
+  @override
+  String get settingsResetConfirm =>
+      'ఈ పరికరంలోని ప్రతి సెట్టింగ్‌ను డిఫాల్ట్‌కు తిరిగి మార్చాలా? మీరు సైన్ ఇన్ అయ్యే ఉంటారు, మీ Jellyfin ఖాతాకు ఎగుమతి చేసిన సెట్టింగ్‌లు అలాగే ఉంటాయి.\n\nఆ తర్వాత Plexfin మూసివేయబడుతుంది. కొనసాగించడానికి దాన్ని మళ్లీ తెరవండి.';
+
+  @override
   String get settingsDynamicContent => 'డైనమిక్ కంటెంట్';
 
   @override

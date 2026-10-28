@@ -10023,6 +10023,17 @@ class AppLocalizationsAr extends AppLocalizations {
       'تبقى إعدادات تسجيل الدخول والنافذة والعتاد خاصة بكل جهاز. سجّل الدخول على الجهاز الآخر أولًا ثم استورد.';
 
   @override
+  String get settingsReset => 'إعادة ضبط كل الإعدادات';
+
+  @override
+  String get settingsResetSubtitle =>
+      'إعادة إعدادات هذا الجهاز إلى قيمها الافتراضية';
+
+  @override
+  String get settingsResetConfirm =>
+      'هل تريد إعادة كل إعداد على هذا الجهاز إلى قيمته الافتراضية؟ ستبقى مسجّل الدخول، وتُحفظ الإعدادات المصدّرة إلى حساب Jellyfin.\n\nيُغلق Plexfin بعد ذلك. افتحه مجددًا للمتابعة.';
+
+  @override
   String get settingsDynamicContent => 'المحتوى الديناميكي';
 
   @override

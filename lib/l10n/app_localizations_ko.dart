@@ -9780,6 +9780,16 @@ class AppLocalizationsKo extends AppLocalizations {
       '로그인, 창, 하드웨어 설정은 기기마다 따로 유지됩니다. 먼저 다른 기기에서 로그인한 뒤 가져오세요.';
 
   @override
+  String get settingsReset => '모든 설정 초기화';
+
+  @override
+  String get settingsResetSubtitle => '이 기기의 설정을 기본값으로 되돌립니다';
+
+  @override
+  String get settingsResetConfirm =>
+      '이 기기의 모든 설정을 기본값으로 되돌릴까요? 로그인은 유지되며 Jellyfin 계정으로 내보낸 설정도 그대로 남습니다.\n\n그 후 Plexfin이 종료됩니다. 계속하려면 다시 여세요.';
+
+  @override
   String get settingsDynamicContent => '동적 콘텐츠';
 
   @override

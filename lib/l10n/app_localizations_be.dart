@@ -10087,6 +10087,17 @@ class AppLocalizationsBe extends AppLocalizations {
       'Уваход, акно і абсталяванне застаюцца на кожнай прыладзе сваімі. Спачатку ўвайдзіце на іншай прыладзе, потым імпартуйце.';
 
   @override
+  String get settingsReset => 'Скінуць усе налады';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Вярнуць налады гэтай прылады да прадвызначаных';
+
+  @override
+  String get settingsResetConfirm =>
+      'Вярнуць кожную наладу на гэтай прыладзе да прадвызначанай? Вы застаняцеся ўвайшоўшы, а налады, экспартаваныя ў ваш уліковы запіс Jellyfin, захаваюцца.\n\nPlexfin потым закрыецца. Адкрыйце яго зноў, каб працягнуць.';
+
+  @override
   String get settingsDynamicContent => 'Дынамічны кантэнт';
 
   @override

@@ -10109,6 +10109,17 @@ class AppLocalizationsSw extends AppLocalizations {
       'Kuingia, dirisha na maunzi hubaki kwenye kila kifaa. Ingia kwanza kwenye kifaa kingine, kisha leta.';
 
   @override
+  String get settingsReset => 'Weka upya mipangilio yote';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Rudisha mipangilio ya kifaa hiki kwenye chaguomsingi';
+
+  @override
+  String get settingsResetConfirm =>
+      'Rudisha kila mpangilio kwenye kifaa hiki kwenye chaguomsingi lake? Utaendelea kuwa umeingia, na mipangilio iliyohamishwa kwenye akaunti yako ya Jellyfin itabaki.\n\nKisha Plexfin itafungwa. Ifungue tena ili kuendelea.';
+
+  @override
   String get settingsDynamicContent => 'Maudhui Yanayobadilika';
 
   @override

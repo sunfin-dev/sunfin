@@ -9970,6 +9970,17 @@ class AppLocalizationsEn extends AppLocalizations {
       'Sign-in, window and device hardware settings stay on each device. Sign in on the other device first, then import.';
 
   @override
+  String get settingsReset => 'Reset all settings';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Put this device\'s settings back to their defaults';
+
+  @override
+  String get settingsResetConfirm =>
+      'Put every setting on this device back to its default? You stay signed in, and settings exported to your Jellyfin account are kept.\n\nPlexfin closes afterwards. Open it again to continue.';
+
+  @override
   String get settingsDynamicContent => 'Dynamic Content';
 
   @override

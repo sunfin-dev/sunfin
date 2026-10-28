@@ -10044,6 +10044,17 @@ class AppLocalizationsAf extends AppLocalizations {
       'Aanmelding, venster en hardeware bly op elke toestel. Meld eers op die ander toestel aan en voer dan in.';
 
   @override
+  String get settingsReset => 'Stel alle instellings terug';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Stel hierdie toestel se instellings terug na hul verstekwaardes';
+
+  @override
+  String get settingsResetConfirm =>
+      'Stel elke instelling op hierdie toestel terug na sy verstekwaarde? Jy bly aangemeld, en instellings wat na jou Jellyfin-rekening uitgevoer is, bly behoue.\n\nPlexfin sluit daarna. Maak dit weer oop om voort te gaan.';
+
+  @override
   String get settingsDynamicContent => 'Dinamiese inhoud';
 
   @override

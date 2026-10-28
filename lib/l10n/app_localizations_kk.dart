@@ -10082,6 +10082,17 @@ class AppLocalizationsKk extends AppLocalizations {
       'Кіру, терезе және жабдық әр құрылғыда өзінікі болып қалады. Алдымен басқа құрылғыда кіріп, содан кейін импорттаңыз.';
 
   @override
+  String get settingsReset => 'Барлық баптауларды қалпына келтіру';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Осы құрылғының баптауларын әдепкі мәндерге қайтару';
+
+  @override
+  String get settingsResetConfirm =>
+      'Осы құрылғыдағы әр баптауды әдепкі мәніне қайтару керек пе? Сіз жүйеде қаласыз, ал Jellyfin тіркелгіңізге экспортталған баптаулар сақталады.\n\nОсыдан кейін Plexfin жабылады. Жалғастыру үшін оны қайта ашыңыз.';
+
+  @override
   String get settingsDynamicContent => 'Динамикалық мазмұн';
 
   @override

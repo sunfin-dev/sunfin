@@ -118,6 +118,45 @@ abstract final class SettingsTransfer {
     return !_login.hasMatch(key);
   }
 
+  /// What a reset leaves alone: who this device is and who is signed in,
+  /// plus what was recorded rather than chosen (window, detected hardware,
+  /// timers, queued reports and ratings). This device's own settings, its
+  /// hardware ones included, do go back.
+  static const _keptOnResetKeys = {
+    'device_id',
+    'authentication_store_json',
+    'pref_last_server_id',
+    'pref_last_user_id',
+    'last_playback_session',
+    'pending_crash_reports',
+    'pending_ratings_v1',
+  };
+
+  static const _keptOnResetPrefixes = [
+    'window_',
+    'device_capability_',
+    'last_',
+  ];
+
+  /// Whether a reset puts [key] back to its default.
+  @visibleForTesting
+  static bool resets(String key) {
+    if (_keptOnResetKeys.contains(key)) return false;
+    if (_keptOnResetPrefixes.any(key.startsWith)) return false;
+    return !_login.hasMatch(key);
+  }
+
+  /// Plexfin: puts every setting on this device back to its default (user,
+  /// 2026-10-28). Only this device: a snapshot exported to the account
+  /// stays there to import later. Returns how many settings went back.
+  static Future<int> reset(SharedPreferences prefs) async {
+    var removed = 0;
+    for (final key in prefs.getKeys().toList()) {
+      if (resets(key) && await prefs.remove(key)) removed++;
+    }
+    return removed;
+  }
+
   /// Every travelling setting in [prefs], with its type, so an int stays an
   /// int where JSON would not tell it from a double.
   static Map<String, Object?> snapshot(

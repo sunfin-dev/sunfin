@@ -10090,6 +10090,17 @@ class AppLocalizationsLt extends AppLocalizations {
       'Prisijungimas, langas ir aparatinė įranga lieka kiekviename įrenginyje. Pirmiausia prisijunkite kitame įrenginyje, tada importuokite.';
 
   @override
+  String get settingsReset => 'Atkurti visus nustatymus';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Grąžinti šio įrenginio nustatymus į numatytuosius';
+
+  @override
+  String get settingsResetConfirm =>
+      'Grąžinti kiekvieną šio įrenginio nustatymą į numatytąjį? Liksite prisijungę, o į jūsų Jellyfin paskyrą eksportuoti nustatymai išliks.\n\nPo to Plexfin užsidarys. Norėdami tęsti, atidarykite jį iš naujo.';
+
+  @override
   String get settingsDynamicContent => 'Dinaminis turinys';
 
   @override

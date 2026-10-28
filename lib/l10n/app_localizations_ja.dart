@@ -9805,6 +9805,16 @@ class AppLocalizationsJa extends AppLocalizations {
       'サインイン、ウィンドウ、ハードウェアの設定は各デバイスに残ります。先にもう一方のデバイスでサインインしてからインポートしてください。';
 
   @override
+  String get settingsReset => 'すべての設定をリセット';
+
+  @override
+  String get settingsResetSubtitle => 'このデバイスの設定を既定値に戻します';
+
+  @override
+  String get settingsResetConfirm =>
+      'このデバイスのすべての設定を既定値に戻しますか？サインインは維持され、Jellyfin アカウントにエクスポートした設定も残ります。\n\nその後 Plexfin は終了します。続けるにはもう一度開いてください。';
+
+  @override
   String get settingsDynamicContent => '動的コンテンツ';
 
   @override

@@ -10261,6 +10261,17 @@ class AppLocalizationsSr extends AppLocalizations {
       'Пријава, прозор и хардвер остају на сваком уређају. Прво се пријавите на другом уређају, па затим увезите.';
 
   @override
+  String get settingsReset => 'Ресетуј сва подешавања';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Врати подешавања овог уређаја на подразумеване вредности';
+
+  @override
+  String get settingsResetConfirm =>
+      'Вратити свако подешавање на овом уређају на подразумевану вредност? Остајете пријављени, а подешавања извезена на ваш Jellyfin налог се чувају.\n\nPlexfin се затим затвара. Поново га отворите да наставите.';
+
+  @override
   String get settingsDynamicContent => 'Динамиц Цонтент';
 
   @override

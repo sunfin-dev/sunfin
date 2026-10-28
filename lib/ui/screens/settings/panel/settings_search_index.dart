@@ -1881,7 +1881,9 @@ List<_SettingsSearchEntry> _buildSettingsSearchIndex({
       keywords: [
         l10n.settingsTransferExport,
         l10n.settingsTransferImport,
+        l10n.settingsReset,
         'backup',
+        'defaults',
       ],
     ),
     about.screen(keywords: ['version', 'update', 'discord', 'license']),

@@ -10071,6 +10071,17 @@ class AppLocalizationsCs extends AppLocalizations {
       'Přihlášení, okno a hardware zůstávají na každém zařízení. Nejprve se přihlaste na druhém zařízení a pak importujte.';
 
   @override
+  String get settingsReset => 'Obnovit všechna nastavení';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Vrátit nastavení tohoto zařízení na výchozí hodnoty';
+
+  @override
+  String get settingsResetConfirm =>
+      'Vrátit každé nastavení na tomto zařízení na výchozí hodnotu? Zůstanete přihlášeni a nastavení exportovaná do vašeho účtu Jellyfin zůstanou zachována.\n\nPlexfin se poté zavře. Pokračujte jeho opětovným otevřením.';
+
+  @override
   String get settingsDynamicContent => 'Dynamický obsah';
 
   @override

@@ -10061,6 +10061,17 @@ class AppLocalizationsMn extends AppLocalizations {
       'Нэвтрэлт, цонх, техник хангамж төхөөрөмж бүрт өөрийнхөөрөө үлдэнэ. Эхлээд нөгөө төхөөрөмж дээр нэвтэрч, дараа нь импортлоно уу.';
 
   @override
+  String get settingsReset => 'Бүх тохиргоог анхны байдалд нь оруулах';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Энэ төхөөрөмжийн тохиргоог үндсэн утгад нь буцаах';
+
+  @override
+  String get settingsResetConfirm =>
+      'Энэ төхөөрөмжийн бүх тохиргоог үндсэн утгад нь буцаах уу? Та нэвтэрсэн хэвээр үлдэх бөгөөд Jellyfin бүртгэлдээ экспортолсон тохиргоо хадгалагдана.\n\nДараа нь Plexfin хаагдана. Үргэлжлүүлэхийн тулд дахин нээнэ үү.';
+
+  @override
   String get settingsDynamicContent => 'Динамик контент';
 
   @override

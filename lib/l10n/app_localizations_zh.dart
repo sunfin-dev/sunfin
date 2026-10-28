@@ -9709,6 +9709,16 @@ class AppLocalizationsZh extends AppLocalizations {
   String get settingsTransferNote => '登录、窗口和硬件设置保留在各自设备上。请先在另一台设备上登录，然后再导入。';
 
   @override
+  String get settingsReset => '重置所有设置';
+
+  @override
+  String get settingsResetSubtitle => '将此设备的设置恢复为默认值';
+
+  @override
+  String get settingsResetConfirm =>
+      '要将此设备上的每项设置恢复为默认值吗？你将保持登录，导出到 Jellyfin 账户的设置也会保留。\n\n之后 Plexfin 会关闭。重新打开即可继续。';
+
+  @override
   String get settingsDynamicContent => '动态内容';
 
   @override
@@ -21314,6 +21324,16 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get settingsTransferNote => '登入、視窗和硬體設定會保留在各自的裝置上。請先在另一台裝置上登入，然後再匯入。';
+
+  @override
+  String get settingsReset => '重設所有設定';
+
+  @override
+  String get settingsResetSubtitle => '將此裝置的設定還原為預設值';
+
+  @override
+  String get settingsResetConfirm =>
+      '要將此裝置上的每項設定還原為預設值嗎？你將保持登入，匯出到 Jellyfin 帳戶的設定也會保留。\n\n之後 Plexfin 會關閉。重新開啟即可繼續。';
 
   @override
   String get settingsDynamicContent => '動態內容';

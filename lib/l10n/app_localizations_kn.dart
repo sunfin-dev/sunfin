@@ -10099,6 +10099,17 @@ class AppLocalizationsKn extends AppLocalizations {
       'ಸೈನ್-ಇನ್, ವಿಂಡೋ ಮತ್ತು ಹಾರ್ಡ್‌ವೇರ್ ಪ್ರತಿಯೊಂದು ಸಾಧನದಲ್ಲೂ ಪ್ರತ್ಯೇಕವಾಗಿರುತ್ತವೆ. ಮೊದಲು ಇನ್ನೊಂದು ಸಾಧನದಲ್ಲಿ ಸೈನ್ ಇನ್ ಮಾಡಿ, ನಂತರ ಆಮದು ಮಾಡಿ.';
 
   @override
+  String get settingsReset => 'ಎಲ್ಲಾ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಮರುಹೊಂದಿಸಿ';
+
+  @override
+  String get settingsResetSubtitle =>
+      'ಈ ಸಾಧನದ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಡೀಫಾಲ್ಟ್‌ಗೆ ಹಿಂತಿರುಗಿಸಿ';
+
+  @override
+  String get settingsResetConfirm =>
+      'ಈ ಸಾಧನದ ಪ್ರತಿಯೊಂದು ಸೆಟ್ಟಿಂಗ್ ಅನ್ನು ಡೀಫಾಲ್ಟ್‌ಗೆ ಹಿಂತಿರುಗಿಸಬೇಕೇ? ನೀವು ಸೈನ್ ಇನ್ ಆಗಿಯೇ ಇರುತ್ತೀರಿ, ಮತ್ತು ನಿಮ್ಮ Jellyfin ಖಾತೆಗೆ ರಫ್ತು ಮಾಡಿದ ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಉಳಿಯುತ್ತವೆ.\n\nನಂತರ Plexfin ಮುಚ್ಚುತ್ತದೆ. ಮುಂದುವರಿಸಲು ಅದನ್ನು ಮತ್ತೆ ತೆರೆಯಿರಿ.';
+
+  @override
   String get settingsDynamicContent => 'ಡೈನಾಮಿಕ್ ವಿಷಯ';
 
   @override

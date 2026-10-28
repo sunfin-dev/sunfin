@@ -10067,6 +10067,17 @@ class AppLocalizationsUg extends AppLocalizations {
       'كىرىش، كۆزنەك ۋە قاتتىق دېتال ھەر ئۈسكۈنىدە ئۆزىگە قالىدۇ. ئاۋۋال باشقا ئۈسكۈنىدە كىرىپ، ئاندىن كىرگۈزۈڭ.';
 
   @override
+  String get settingsReset => 'بارلىق تەڭشەكلەرنى ئەسلىگە قايتۇرۇش';
+
+  @override
+  String get settingsResetSubtitle =>
+      'بۇ ئۈسكۈنىنىڭ تەڭشەكلىرىنى كۆڭۈلدىكى ھالىتىگە قايتۇرۇش';
+
+  @override
+  String get settingsResetConfirm =>
+      'بۇ ئۈسكۈنىدىكى ھەر بىر تەڭشەكنى كۆڭۈلدىكى قىممىتىگە قايتۇرامسىز؟ تىزىملاتقان ھالىتىڭىز ساقلىنىدۇ، Jellyfin ھېساباتىڭىزغا چىقىرىلغان تەڭشەكلەرمۇ ساقلىنىدۇ.\n\nئاندىن Plexfin تاقىلىدۇ. داۋاملاشتۇرۇش ئۈچۈن ئۇنى قايتا ئېچىڭ.';
+
+  @override
   String get settingsDynamicContent => 'ھەرىكەتچان مەزمۇن';
 
   @override

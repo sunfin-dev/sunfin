@@ -207,6 +207,50 @@ void main() {
     });
   });
 
+  group('reset', () {
+    test('puts the user\'s and the device\'s settings back', () {
+      for (final key in [
+        'home_sections_config',
+        'pref_plexfin_library_nicknames',
+        'hardware_decoding',
+        'pref_audio_passthrough_mode',
+        'player_volume',
+        'pref_plugin_sync_initialized_srv1',
+        'pref_setup_wizard_version_srv1',
+      ]) {
+        expect(SettingsTransfer.resets(key), isTrue, reason: key);
+      }
+    });
+
+    test('keeps who is signed in and what was only recorded', () {
+      for (final key in [
+        'device_id',
+        'authentication_store_json',
+        'pref_last_server_id',
+        'pref_last_user_id',
+        'last_playback_session',
+        'pending_ratings_v1',
+        'window_width',
+        'device_capability_codec',
+        'seerr_token_u1',
+      ]) {
+        expect(SettingsTransfer.resets(key), isFalse, reason: key);
+      }
+    });
+
+    test('removes only what resets', () async {
+      final prefs = await _prefs({
+        'device_id': 'shield',
+        'pref_last_user_id': 'u1',
+        'home_sections_config': '[]',
+        'hardware_decoding': false,
+      });
+
+      expect(await SettingsTransfer.reset(prefs), 2);
+      expect(prefs.getKeys(), {'device_id', 'pref_last_user_id'});
+    });
+  });
+
   test('a snapshot can\'t sneak a device key in', () async {
     final prefs = await _prefs({'device_id': 'windows'});
     await SettingsTransfer.apply(prefs, {

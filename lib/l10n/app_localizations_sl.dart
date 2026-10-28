@@ -10091,6 +10091,17 @@ class AppLocalizationsSl extends AppLocalizations {
       'Prijava, okno in strojna oprema ostanejo na vsaki napravi. Najprej se prijavite v drugi napravi, nato uvozite.';
 
   @override
+  String get settingsReset => 'Ponastavi vse nastavitve';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Povrni nastavitve te naprave na privzete vrednosti';
+
+  @override
+  String get settingsResetConfirm =>
+      'Želite vsako nastavitev v tej napravi povrniti na privzeto vrednost? Ostali boste prijavljeni, nastavitve, izvožene v vaš račun Jellyfin, pa se ohranijo.\n\nPlexfin se nato zapre. Za nadaljevanje ga znova odprite.';
+
+  @override
   String get settingsDynamicContent => 'Dinamična vsebina';
 
   @override

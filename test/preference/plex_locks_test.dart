@@ -66,6 +66,12 @@ void main() {
       expect(prefs.get(UserPreferences.mergeContinueWatchingNextUp), isTrue);
     });
 
+    test('settings never sync through the plugin on their own', () async {
+      final prefs = await _prefs({'pref_plugin_sync_enabled': true});
+
+      expect(prefs.get(UserPreferences.pluginSyncEnabled), isFalse);
+    });
+
     test('per-row image types are locked by prefix', () {
       final pref = UserPreferences.homeRowImageType(HomeSectionType.resume);
       expect(PlexLocks.isLocked(pref.key), isTrue);

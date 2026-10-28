@@ -10038,6 +10038,17 @@ class AppLocalizationsVi extends AppLocalizations {
       'Đăng nhập, cửa sổ và phần cứng được giữ riêng trên từng thiết bị. Hãy đăng nhập trên thiết bị kia trước rồi mới nhập.';
 
   @override
+  String get settingsReset => 'Đặt lại tất cả cài đặt';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Đưa cài đặt của thiết bị này về mặc định';
+
+  @override
+  String get settingsResetConfirm =>
+      'Đưa mọi cài đặt trên thiết bị này về mặc định? Bạn vẫn được đăng nhập, và các cài đặt đã xuất lên tài khoản Jellyfin của bạn vẫn được giữ.\n\nSau đó Plexfin sẽ đóng. Mở lại để tiếp tục.';
+
+  @override
   String get settingsDynamicContent => 'Nội dung động';
 
   @override

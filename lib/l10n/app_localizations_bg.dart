@@ -10127,6 +10127,17 @@ class AppLocalizationsBg extends AppLocalizations {
       'Влизането, прозорецът и хардуерът остават на всяко устройство. Първо влезте на другото устройство, после импортирайте.';
 
   @override
+  String get settingsReset => 'Нулиране на всички настройки';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Връщане на настройките на това устройство към стойностите по подразбиране';
+
+  @override
+  String get settingsResetConfirm =>
+      'Да се върне ли всяка настройка на това устройство към стойността ѝ по подразбиране? Оставате влезли, а настройките, експортирани в профила ви в Jellyfin, се запазват.\n\nPlexfin се затваря след това. Отворете го отново, за да продължите.';
+
+  @override
   String get settingsDynamicContent => 'Динамично съдържание';
 
   @override

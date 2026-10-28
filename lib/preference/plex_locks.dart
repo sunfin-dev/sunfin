@@ -10,10 +10,8 @@ import 'user_preferences.dart';
 /// buttons show up.
 ///
 /// [UserPreferences.get] answers these with the locked value whatever is
-/// stored, so neither an old choice nor a profile synced from the stock
-/// Moonfin app can bring another look back. The stored values themselves
-/// are left alone and are what the plugin sync pushes, so Plexfin never
-/// rewrites the stock app's settings with the Plex ones.
+/// stored, so an old choice can't bring another look back. The stored
+/// values themselves are left alone.
 ///
 /// Screens not reskinned yet are held at their closest match to Plex until
 /// they get their own Plex layout.
@@ -91,6 +89,11 @@ abstract final class PlexLocks {
     lock(UserPreferences.hideBackdropsInLibraries, true);
     lock(UserPreferences.showMediaDetailsOnLibraryPage, false);
     lock(UserPreferences.useDetailedSubHeadings, false);
+
+    // Settings move between devices only when the user says so, through
+    // Transfer settings (user, 2026-10-28: "there shouldnt be auto settings
+    // sync in the first place"). The plugin's other services stay on.
+    lock(UserPreferences.pluginSyncEnabled, false);
 
     return values;
   }();

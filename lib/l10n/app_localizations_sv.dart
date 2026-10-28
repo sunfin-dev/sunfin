@@ -10053,6 +10053,17 @@ class AppLocalizationsSv extends AppLocalizations {
       'Inloggning, fönster och hårdvara stannar på varje enhet. Logga in på den andra enheten först och importera sedan.';
 
   @override
+  String get settingsReset => 'Återställ alla inställningar';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Återställ den här enhetens inställningar till standard';
+
+  @override
+  String get settingsResetConfirm =>
+      'Vill du återställa varje inställning på den här enheten till standard? Du förblir inloggad, och inställningar som exporterats till ditt Jellyfin-konto behålls.\n\nPlexfin stängs sedan. Öppna den igen för att fortsätta.';
+
+  @override
   String get settingsDynamicContent => 'Dynamiskt innehåll';
 
   @override

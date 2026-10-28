@@ -10343,6 +10343,17 @@ class AppLocalizationsPl extends AppLocalizations {
       'Logowanie, okno i sprzęt pozostają osobne na każdym urządzeniu. Najpierw zaloguj się na drugim urządzeniu, a potem zaimportuj.';
 
   @override
+  String get settingsReset => 'Zresetuj wszystkie ustawienia';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Przywróć domyślne ustawienia tego urządzenia';
+
+  @override
+  String get settingsResetConfirm =>
+      'Przywrócić domyślną wartość każdego ustawienia na tym urządzeniu? Pozostaniesz zalogowany, a ustawienia wyeksportowane na Twoje konto Jellyfin zostaną zachowane.\n\nPlexfin zostanie potem zamknięty. Otwórz go ponownie, aby kontynuować.';
+
+  @override
   String get settingsDynamicContent => 'Treści dynamiczne';
 
   @override

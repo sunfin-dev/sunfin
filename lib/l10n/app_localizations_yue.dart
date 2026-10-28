@@ -9747,6 +9747,16 @@ class AppLocalizationsYue extends AppLocalizations {
   String get settingsTransferNote => '登入、視窗同硬件設定會留喺各自嘅裝置。請先喺另一部裝置登入，然後再匯入。';
 
   @override
+  String get settingsReset => '重設所有設定';
+
+  @override
+  String get settingsResetSubtitle => '將呢部裝置嘅設定還原做預設值';
+
+  @override
+  String get settingsResetConfirm =>
+      '要將呢部裝置嘅每個設定還原做預設值？你會保持登入，匯出咗去你 Jellyfin 帳戶嘅設定亦會保留。\n\n之後 Plexfin 會關閉。再開返佢就可以繼續。';
+
+  @override
   String get settingsDynamicContent => '動態內容';
 
   @override

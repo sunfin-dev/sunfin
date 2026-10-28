@@ -10147,6 +10147,17 @@ class AppLocalizationsMl extends AppLocalizations {
       'സൈൻ-ഇൻ, വിൻഡോ, ഹാർഡ്‌വെയർ എന്നിവ ഓരോ ഉപകരണത്തിലും വേറിട്ടുനിൽക്കും. ആദ്യം മറ്റേ ഉപകരണത്തിൽ സൈൻ ഇൻ ചെയ്ത് പിന്നീട് ഇമ്പോർട്ട് ചെയ്യുക.';
 
   @override
+  String get settingsReset => 'എല്ലാ ക്രമീകരണങ്ങളും പുനഃസജ്ജമാക്കുക';
+
+  @override
+  String get settingsResetSubtitle =>
+      'ഈ ഉപകരണത്തിന്റെ ക്രമീകരണങ്ങൾ ഡിഫോൾട്ടിലേക്ക് മാറ്റുക';
+
+  @override
+  String get settingsResetConfirm =>
+      'ഈ ഉപകരണത്തിലെ എല്ലാ ക്രമീകരണങ്ങളും ഡിഫോൾട്ടിലേക്ക് മാറ്റണോ? നിങ്ങൾ സൈൻ ഇൻ ചെയ്‌ത നിലയിൽ തുടരും, നിങ്ങളുടെ Jellyfin അക്കൗണ്ടിലേക്ക് എക്‌സ്‌പോർട്ട് ചെയ്‌ത ക്രമീകരണങ്ങൾ നിലനിൽക്കും.\n\nതുടർന്ന് Plexfin അടയും. തുടരാൻ ഇത് വീണ്ടും തുറക്കുക.';
+
+  @override
   String get settingsDynamicContent => 'ഡൈനാമിക് ഉള്ളടക്കം';
 
   @override

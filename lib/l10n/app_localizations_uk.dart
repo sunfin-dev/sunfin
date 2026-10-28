@@ -10110,6 +10110,17 @@ class AppLocalizationsUk extends AppLocalizations {
       'Вхід, вікно та обладнання лишаються на кожному пристрої своїми. Спершу увійдіть на іншому пристрої, потім імпортуйте.';
 
   @override
+  String get settingsReset => 'Скинути всі налаштування';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Повернути налаштування цього пристрою до типових';
+
+  @override
+  String get settingsResetConfirm =>
+      'Повернути кожне налаштування на цьому пристрої до типового значення? Ви залишитеся в системі, а налаштування, експортовані до вашого облікового запису Jellyfin, збережуться.\n\nПотім Plexfin закриється. Відкрийте його знову, щоб продовжити.';
+
+  @override
   String get settingsDynamicContent => 'Динамічний вміст';
 
   @override

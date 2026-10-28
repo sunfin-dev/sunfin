@@ -10189,6 +10189,17 @@ class AppLocalizationsDe extends AppLocalizations {
       'Anmeldung, Fenster und Geräte-Hardware bleiben auf jedem Gerät eigen. Melde dich zuerst auf dem anderen Gerät an und importiere dann.';
 
   @override
+  String get settingsReset => 'Alle Einstellungen zurücksetzen';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Die Einstellungen dieses Geräts auf ihre Standardwerte zurücksetzen';
+
+  @override
+  String get settingsResetConfirm =>
+      'Jede Einstellung auf diesem Gerät auf ihren Standardwert zurücksetzen? Du bleibst angemeldet, und in dein Jellyfin-Konto exportierte Einstellungen bleiben erhalten.\n\nPlexfin wird danach geschlossen. Öffne es erneut, um weiterzumachen.';
+
+  @override
   String get settingsDynamicContent => 'Dynamischer Inhalt';
 
   @override

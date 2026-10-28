@@ -10023,6 +10023,16 @@ class AppLocalizationsBn extends AppLocalizations {
       'সাইন-ইন, উইন্ডো ও হার্ডওয়্যার প্রতিটি ডিভাইসে আলাদা থাকে। আগে অন্য ডিভাইসে সাইন ইন করুন, তারপর আমদানি করুন।';
 
   @override
+  String get settingsReset => 'সব সেটিংস রিসেট করুন';
+
+  @override
+  String get settingsResetSubtitle => 'এই ডিভাইসের সেটিংস ডিফল্টে ফিরিয়ে দিন';
+
+  @override
+  String get settingsResetConfirm =>
+      'এই ডিভাইসের প্রতিটি সেটিং কি ডিফল্টে ফিরিয়ে দেবেন? আপনি সাইন ইন থাকবেন, এবং আপনার Jellyfin অ্যাকাউন্টে এক্সপোর্ট করা সেটিংস রাখা থাকবে।\n\nএরপর Plexfin বন্ধ হয়ে যাবে। চালিয়ে যেতে আবার খুলুন।';
+
+  @override
   String get settingsDynamicContent => 'ডায়নামিক কন্টেন্ট';
 
   @override

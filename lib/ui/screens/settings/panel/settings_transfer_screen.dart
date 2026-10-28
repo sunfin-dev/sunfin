@@ -141,6 +141,39 @@ class _SettingsTransferScreenState extends State<_SettingsTransferScreen> {
     exit(0);
   }
 
+  Future<void> _reset() async {
+    final l10n = AppLocalizations.of(context);
+    final confirmed = await showFocusRestoringDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog.adaptive(
+        title: Text(l10n.settingsReset),
+        content: Text(l10n.settingsResetConfirm),
+        actions: [
+          adaptiveDialogAction(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: Text(l10n.cancel),
+          ),
+          adaptiveDialogAction(
+            isDestructive: true,
+            onPressed: () => Navigator.pop(ctx, true),
+            child: Text(l10n.reset),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !mounted) return;
+    setState(() {
+      _busy = true;
+      _message = null;
+    });
+    // A write still in flight would land after the reset and bring its
+    // setting back.
+    await GetIt.instance<PreferenceStore>().flushPendingWrites();
+    await SettingsTransfer.reset(await SharedPreferences.getInstance());
+    // As after an import: start again on the defaults.
+    exit(0);
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
@@ -173,6 +206,12 @@ class _SettingsTransferScreenState extends State<_SettingsTransferScreen> {
                         : described ?? l10n.settingsTransferNothing,
                   ),
                   onTap: canImport ? _import : null,
+                ),
+                _TvSettingsListTile(
+                  leading: const Icon(Icons.restart_alt),
+                  title: Text(l10n.settingsReset),
+                  subtitle: Text(l10n.settingsResetSubtitle),
+                  onTap: _busy ? null : _reset,
                 ),
               ],
             ),

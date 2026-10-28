@@ -10049,6 +10049,17 @@ class AppLocalizationsTr extends AppLocalizations {
       'Oturum, pencere ve donanım her cihazda kendine ait kalır. Önce diğer cihazda oturum açın, sonra içe aktarın.';
 
   @override
+  String get settingsReset => 'Tüm ayarları sıfırla';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Bu cihazın ayarlarını varsayılanlara döndür';
+
+  @override
+  String get settingsResetConfirm =>
+      'Bu cihazdaki her ayar varsayılanına döndürülsün mü? Oturumunuz açık kalır ve Jellyfin hesabınıza dışa aktarılan ayarlar korunur.\n\nPlexfin ardından kapanır. Devam etmek için yeniden açın.';
+
+  @override
   String get settingsDynamicContent => 'Dinamik İçerik';
 
   @override

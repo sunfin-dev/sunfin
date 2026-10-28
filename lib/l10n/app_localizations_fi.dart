@@ -10084,6 +10084,17 @@ class AppLocalizationsFi extends AppLocalizations {
       'Kirjautuminen, ikkuna ja laitteisto pysyvät laitekohtaisina. Kirjaudu ensin sisään toisella laitteella ja tuo sitten.';
 
   @override
+  String get settingsReset => 'Palauta kaikki asetukset';
+
+  @override
+  String get settingsResetSubtitle =>
+      'Palauta tämän laitteen asetukset oletuksiin';
+
+  @override
+  String get settingsResetConfirm =>
+      'Palautetaanko jokainen tämän laitteen asetus oletukseensa? Pysyt kirjautuneena, ja Jellyfin-tilillesi viedyt asetukset säilyvät.\n\nPlexfin sulkeutuu sen jälkeen. Jatka avaamalla se uudelleen.';
+
+  @override
   String get settingsDynamicContent => 'Dynaaminen sisältö';
 
   @override
