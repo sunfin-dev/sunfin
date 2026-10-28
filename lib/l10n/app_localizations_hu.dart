@@ -10141,6 +10141,11 @@ class AppLocalizationsHu extends AppLocalizations {
       'Gombot ad a menühöz, amely megnyitja a szerver adminisztrációját';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Rendező: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Dinamikus tartalom';
 
   @override

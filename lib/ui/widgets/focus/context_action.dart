@@ -10,6 +10,7 @@ import '../../../data/models/aggregated_item.dart';
 import '../../../data/repositories/item_mutation_repository.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../util/error_message.dart';
+import '../../../preference/plex_locks.dart';
 import '../../../preference/user_preferences.dart';
 import '../../../util/home_refresh_helper.dart';
 import '../../../util/item_watch_state.dart';
@@ -20,6 +21,7 @@ import '../adaptive/adaptive_dialog.dart';
 import '../change_artwork_dialog.dart';
 import '../identify_dialog.dart';
 import '../overlay_sheet.dart';
+import '../personal_rating_dialog.dart';
 
 class ItemContextAction {
   final IconData icon;
@@ -122,6 +124,41 @@ List<ItemContextAction> contextActionsFor(
         onChanged?.call();
       },
     ));
+
+    // Plexfin: Plex's pages have no Rate button, so their More menus carry
+    // it, for the stars on the rating line.
+    if (PlexLocks.active &&
+        type != 'Audio' &&
+        type != 'MusicAlbum' &&
+        client.userLibraryApi.supportsNumericUserRatings) {
+      actions.add(ItemContextAction(
+        icon: Icons.star_outline,
+        label: l10n.rate,
+        onSelect: () async {
+          if (!context.mounted) return;
+          await PersonalRatingDialog.show(
+            context,
+            style: GetIt.instance<UserPreferences>().get(
+              UserPreferences.personalRatingStyle,
+            ),
+            rating: item.personalRating,
+            likes: item.personalRatingLikes,
+            onSetThumbRating: (likes) async {
+              await mutations.setRating(item.id, likes: likes);
+              onChanged?.call();
+            },
+            onSetNumericRating: (rating) async {
+              await mutations.setNumericRating(item.id, rating: rating);
+              onChanged?.call();
+            },
+            onClearRating: () async {
+              await mutations.clearRating(item.id);
+              onChanged?.call();
+            },
+          );
+        },
+      ));
+    }
 
     final hasProgress = item.playbackPositionTicks != null &&
         item.playbackPositionTicks! > 0 &&

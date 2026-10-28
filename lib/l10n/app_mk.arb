@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "Да се врати ли секоја поставка на овој уред на нејзината стандардна вредност? Остануваш најавен, а поставките извезени на твојата Jellyfin сметка се зачувуваат.\n\nPlexfin потоа се затвора. Отвори го повторно за да продолжиш.",
     "adminShowButton": "Прикажи копче за администрација",
     "adminShowButtonSubtitle": "Додава копче во менито што ја отвора администрацијата на серверот",
+    "plexDirectedBy": "Режија: {names}",
     "settingsDynamicContent": "Динамичка содржина",
     "settingsDynamicContentSubtitle": "Медиумска лента и визуелни преклопувања",
     "settingsPlaybackSyncplay": "Репродукција и SyncPlay",

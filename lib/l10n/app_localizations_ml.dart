@@ -10165,6 +10165,11 @@ class AppLocalizationsMl extends AppLocalizations {
       'സെർവർ അഡ്മിനിസ്ട്രേഷൻ തുറക്കുന്ന ഒരു ബട്ടൺ മെനുവിൽ ചേർക്കുന്നു';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'സംവിധാനം: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'ഡൈനാമിക് ഉള്ളടക്കം';
 
   @override

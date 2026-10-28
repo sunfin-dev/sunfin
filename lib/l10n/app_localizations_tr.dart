@@ -10067,6 +10067,11 @@ class AppLocalizationsTr extends AppLocalizations {
       'Menüye sunucu yönetimini açan bir düğme ekler';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Yönetmen: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Dinamik İçerik';
 
   @override

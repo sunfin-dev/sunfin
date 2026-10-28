@@ -10105,6 +10105,11 @@ class AppLocalizationsCy extends AppLocalizations {
       'Yn ychwanegu botwm i\'r ddewislen sy\'n agor gweinyddu\'r gweinydd';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Cyfarwyddwyd gan $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Cynnwys Dynamig';
 
   @override

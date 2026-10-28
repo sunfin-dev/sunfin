@@ -10071,6 +10071,11 @@ class AppLocalizationsSv extends AppLocalizations {
       'Lägger till en knapp i menyn som öppnar serveradministration';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Regi: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Dynamiskt innehåll';
 
   @override

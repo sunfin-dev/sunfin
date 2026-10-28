@@ -9725,6 +9725,11 @@ class AppLocalizationsZh extends AppLocalizations {
   String get adminShowButtonSubtitle => '在菜单中添加一个打开服务器管理的按钮';
 
   @override
+  String plexDirectedBy(String names) {
+    return '导演：$names';
+  }
+
+  @override
   String get settingsDynamicContent => '动态内容';
 
   @override
@@ -21346,6 +21351,11 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get adminShowButtonSubtitle => '在選單中新增一個開啟伺服器管理的按鈕';
+
+  @override
+  String plexDirectedBy(String names) {
+    return '導演：$names';
+  }
 
   @override
   String get settingsDynamicContent => '動態內容';

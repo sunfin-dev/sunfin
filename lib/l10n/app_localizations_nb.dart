@@ -10055,6 +10055,11 @@ class AppLocalizationsNb extends AppLocalizations {
       'Legger til en knapp i menyen som åpner serveradministrasjon';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Regissert av $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Dynamisk innhold';
 
   @override

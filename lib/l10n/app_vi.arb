@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "Đưa mọi cài đặt trên thiết bị này về mặc định? Bạn vẫn được đăng nhập, và các cài đặt đã xuất lên tài khoản Jellyfin của bạn vẫn được giữ.\n\nSau đó Plexfin sẽ đóng. Mở lại để tiếp tục.",
     "adminShowButton": "Hiện nút quản trị",
     "adminShowButtonSubtitle": "Thêm vào menu một nút mở phần quản trị máy chủ",
+    "plexDirectedBy": "Đạo diễn: {names}",
     "settingsDynamicContent": "Nội dung động",
     "settingsDynamicContentSubtitle": "Media Bar và lớp phủ trực quan",
     "settingsPlaybackSyncplay": "Phát lại & SyncPlay",

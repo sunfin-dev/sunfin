@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "Devolver cada axuste deste dispositivo ao seu valor predeterminado? Seguirás coa sesión iniciada e conservarase a configuración exportada á túa conta de Jellyfin.\n\nDespois, Plexfin pecharase. Ábreo de novo para continuar.",
     "adminShowButton": "Amosar o botón de administración",
     "adminShowButtonSubtitle": "Engade ao menú un botón que abre a administración do servidor",
+    "plexDirectedBy": "Dirixida por {names}",
     "settingsDynamicContent": "Contido dinámico",
     "settingsDynamicContentSubtitle": "Barra multimedia e superposicións visuais",
     "settingsPlaybackSyncplay": "Reprodución e SyncPlay",

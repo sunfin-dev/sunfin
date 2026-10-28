@@ -10109,6 +10109,11 @@ class AppLocalizationsSl extends AppLocalizations {
       'V meni doda gumb, ki odpre skrbništvo strežnika';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Režija: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Dinamična vsebina';
 
   @override

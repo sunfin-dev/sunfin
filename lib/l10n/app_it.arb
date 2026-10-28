@@ -6558,6 +6558,7 @@
     "settingsResetConfirm": "Riportare ogni impostazione di questo dispositivo al valore predefinito? Resterai connesso e le impostazioni esportate nel tuo account Jellyfin verranno conservate.\n\nPlexfin si chiuderà subito dopo. Riaprilo per continuare.",
     "adminShowButton": "Mostra il pulsante Amministrazione",
     "adminShowButtonSubtitle": "Aggiunge al menu un pulsante che apre l'amministrazione del server",
+    "plexDirectedBy": "Diretto da {names}",
     "settingsDynamicContent": "Contenuto dinamico",
     "settingsDynamicContentSubtitle": "Barra multimediale e sovrapposizioni visive",
     "settingsPlaybackSyncplay": "Riproduzione e SyncPlay",

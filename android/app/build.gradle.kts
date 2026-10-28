@@ -99,7 +99,9 @@ android {
         val tvAbis = listOf("arm64-v8a", "armeabi-v7a", "x86_64")
         create("mobile") {
             dimension = "device"
-            applicationId = baseAppId
+            // Plexfin: the same suffix as the TV build, so the phone app
+            // installs next to stock Moonfin instead of over it.
+            applicationId = baseAppId + testIdSuffix
             versionCode = flutter.versionCode
             versionName = flutter.versionName
             ndk { abiFilters += mobileAbis }

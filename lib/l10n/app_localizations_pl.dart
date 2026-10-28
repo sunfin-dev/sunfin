@@ -10361,6 +10361,11 @@ class AppLocalizationsPl extends AppLocalizations {
       'Dodaje do menu przycisk, który otwiera administrację serwera';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Reżyseria: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Treści dynamiczne';
 
   @override

@@ -10040,6 +10040,11 @@ class AppLocalizationsBn extends AppLocalizations {
       'মেনুতে একটি বোতাম যোগ করে যা সার্ভার প্রশাসন খোলে';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'পরিচালনা: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'ডায়নামিক কন্টেন্ট';
 
   @override

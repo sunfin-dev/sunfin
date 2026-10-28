@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "Elke instelling op dit apparaat terugzetten naar de standaardwaarde? Je blijft ingelogd en instellingen die naar je Jellyfin-account zijn geëxporteerd blijven bewaard.\n\nPlexfin sluit daarna. Open het opnieuw om verder te gaan.",
     "adminShowButton": "Beheerknop tonen",
     "adminShowButtonSubtitle": "Voegt een knop aan het menu toe die het serverbeheer opent",
+    "plexDirectedBy": "Geregisseerd door {names}",
     "settingsDynamicContent": "Dynamische inhoud",
     "settingsDynamicContentSubtitle": "Mediabalk en visuele overlays",
     "settingsPlaybackSyncplay": "Afspelen en SyncPlay",

@@ -91,6 +91,7 @@ import '../../widgets/seerr/seerr_status_dot.dart';
 import '../../widgets/seerr/seerr_status_pill.dart';
 import '../../widgets/change_artwork_dialog.dart';
 import '../../plex/plex_season_page.dart';
+import '../../plex/plex_movie_page.dart';
 import '../../plex/plex_show_page.dart';
 import '../../plex/plex_style.dart';
 import '../../widgets/navigation_layout.dart';
@@ -829,6 +830,21 @@ class _ItemDetailScreenState extends State<ItemDetailScreen>
             setState(() => _selectedMediaSourceId = id);
             _viewModel.load(mediaSourceId: id);
           },
+          initialFocusNode: _ensureInitialFocusNode(),
+        ),
+      // Plexfin: movies open Plex's movie page (user, 2026-10-28).
+      ItemDetailState.ready
+          when PlexStyle.enabled && PlexMoviePage.handles(_viewModel.item) =>
+        PlexMoviePage(
+          viewModel: _viewModel,
+          prefs: _prefs,
+          backdropUrl: _backdropUrl,
+          selectedMediaSourceId: _selectedMediaSourceId,
+          onSelectedMediaSourceChanged: (id) {
+            setState(() => _selectedMediaSourceId = id);
+            _viewModel.load(mediaSourceId: id);
+          },
+          autoPlay: widget.autoPlay,
           initialFocusNode: _ensureInitialFocusNode(),
         ),
       // Plexfin: episodes and seasons open Plex's season page (user,
@@ -7033,6 +7049,11 @@ class DetailActionButtonsState extends State<DetailActionButtons> {
         ?cancelByButton[button],
       ],
     ];
+    _lastArranged = [
+      for (final button in _orderedButtons(prefs))
+        for (final built in [byButton[button], cancelByButton[button]])
+          if (built != null) (button, built),
+    ];
 
     if (isNeon) {
       var neonSlot = 0;
@@ -8267,6 +8288,27 @@ class DetailActionButtonsState extends State<DetailActionButtons> {
       resume: resume,
     );
   }
+
+  /// Plexfin: the arranged buttons from the last build, in the user's order,
+  /// for the Plex pages that draw their own row and keep this one offstage.
+  List<(DetailButton, Widget)> _lastArranged = const [];
+
+  /// Plays the title's trailer, local first, as the Trailer button does.
+  Future<void> playTrailer(BuildContext context) {
+    final item = viewModel.item;
+    if (item == null) return Future.value();
+    return _playTrailer(context, item);
+  }
+
+  /// Lists every arranged button except [except] in a menu, the way the
+  /// row's own More does once its buttons stop fitting.
+  Future<void> showMoreMenu(
+    BuildContext context, {
+    Set<DetailButton> except = const {},
+  }) => _showOverflowMenu(context, [
+    for (final (button, built) in _lastArranged)
+      if (!except.contains(button)) built,
+  ]);
 
   void _shuffle(BuildContext context, AggregatedItem item) async {
     if (_playLaunchInFlight) return;

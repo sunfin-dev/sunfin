@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "Осы құрылғыдағы әр баптауды әдепкі мәніне қайтару керек пе? Сіз жүйеде қаласыз, ал Jellyfin тіркелгіңізге экспортталған баптаулар сақталады.\n\nОсыдан кейін Plexfin жабылады. Жалғастыру үшін оны қайта ашыңыз.",
     "adminShowButton": "Әкімшілік түймесін көрсету",
     "adminShowButtonSubtitle": "Мәзірге сервер әкімшілігін ашатын түйме қосады",
+    "plexDirectedBy": "Режиссёр: {names}",
     "settingsDynamicContent": "Динамикалық мазмұн",
     "settingsDynamicContentSubtitle": "Медиа жолағы және көрнекі қабаттасмалар",
     "settingsPlaybackSyncplay": "Ойнату және SyncPlay",

@@ -9938,6 +9938,11 @@ class AppLocalizationsHe extends AppLocalizations {
   String get adminShowButtonSubtitle => 'מוסיף לתפריט לחצן שפותח את ניהול השרת';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'בימוי: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'תוכן דינמי';
 
   @override

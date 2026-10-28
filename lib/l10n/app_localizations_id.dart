@@ -10064,6 +10064,11 @@ class AppLocalizationsId extends AppLocalizations {
       'Menambahkan tombol ke menu yang membuka administrasi server';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Disutradarai oleh $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Konten Dinamis';
 
   @override

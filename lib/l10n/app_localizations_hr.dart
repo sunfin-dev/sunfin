@@ -10270,6 +10270,11 @@ class AppLocalizationsHr extends AppLocalizations {
       'Dodaje u izbornik gumb koji otvara administraciju poslužitelja';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Režija: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Dinamički sadržaj';
 
   @override

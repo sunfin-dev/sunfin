@@ -10279,6 +10279,11 @@ class AppLocalizationsSr extends AppLocalizations {
       'Додаје у мени дугме које отвара администрацију сервера';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Режија: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Динамиц Цонтент';
 
   @override

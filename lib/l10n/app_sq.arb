@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "Të kthehet çdo cilësim në këtë pajisje te vlera e parazgjedhur? Mbetesh i identifikuar dhe cilësimet e eksportuara në llogarinë tënde Jellyfin ruhen.\n\nMë pas Plexfin mbyllet. Hape përsëri për të vazhduar.",
     "adminShowButton": "Shfaq butonin e administrimit",
     "adminShowButtonSubtitle": "Shton në meny një buton që hap administrimin e serverit",
+    "plexDirectedBy": "Me regji të {names}",
     "settingsDynamicContent": "Përmbajtja dinamike",
     "settingsDynamicContentSubtitle": "Shiriti i medias dhe mbivendosja vizuale",
     "settingsPlaybackSyncplay": "Riprodhimi & SyncPlay",

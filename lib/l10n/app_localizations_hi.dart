@@ -10034,6 +10034,11 @@ class AppLocalizationsHi extends AppLocalizations {
       'मेनू में एक बटन जोड़ता है जो सर्वर प्रशासन खोलता है';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'निर्देशक: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'गतिशील सामग्री';
 
   @override

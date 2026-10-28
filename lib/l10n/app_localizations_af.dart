@@ -10062,6 +10062,11 @@ class AppLocalizationsAf extends AppLocalizations {
       'Voeg \'n knoppie by die kieslys wat bedieneradministrasie oopmaak';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Geregisseer deur $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Dinamiese inhoud';
 
   @override

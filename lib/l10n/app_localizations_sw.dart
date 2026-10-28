@@ -10127,6 +10127,11 @@ class AppLocalizationsSw extends AppLocalizations {
       'Huongeza kitufe kwenye menyu kinachofungua usimamizi wa seva';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Imeongozwa na $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Maudhui Yanayobadilika';
 
   @override

@@ -709,6 +709,7 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
     super.initState();
 
     _vm.addListener(_onViewModelChanged);
+    widget.prefs.addListener(_onPrefsChanged);
 
     NavigationLayout.focusDetailsPlayButtonNotifier.value =
         widget.initialFocusNode;
@@ -731,6 +732,40 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
 
     setState(() {});
   }
+
+  /// Counts setting changes, so the hero memo knows to build again.
+  int _prefsRevision = 0;
+
+  void _onPrefsChanged() => _prefsRevision++;
+
+  /// Plexfin: the hero (title, metadata, ratings, buttons) was built again
+  /// on every view-model update, 2-3 heavy frames while a page opens. It's
+  /// handed back unchanged unless something it shows changed: the item and
+  /// everything the hero and its buttons read from the view model.
+  List<Object?> _heroInputs(AggregatedItem item) => [
+    item,
+    _vm.ratings,
+    _vm.episodes,
+    _vm.seasons,
+    _vm.nextUp,
+    _vm.upcomingEpisode,
+    _vm.tracks,
+    _vm.albums,
+    _vm.collectionItems,
+    _vm.features,
+    _vm.seerr?.state,
+    _vm.isSeerrOnly,
+    _vm.effectiveSeasonId,
+    _vm.selectedAudioIndex,
+    _vm.selectedSubtitleIndex,
+    _vm.isRatingMutationInProgress,
+    widget.selectedMediaSourceId,
+    widget.actionsExpanded,
+    widget.autoPlay,
+    widget.initialFocusNode,
+    _visibility,
+    _prefsRevision,
+  ];
 
   bool _focusPersonTabs() {
     final content = _personContentKey.currentState;
@@ -980,6 +1015,7 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
     }
 
     _vm.removeListener(_onViewModelChanged);
+    widget.prefs.removeListener(_onPrefsChanged);
     _scrollController.dispose();
 
     super.dispose();
@@ -1029,7 +1065,7 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
               onNavigateDown: _focusPersonTabs,
               onExternalFocusEntry: _handleExternalPersonHeroFocusEntry,
             )
-          : NouveauHero(
+          : _memoSection(_heroKey, _heroInputs(item), () => NouveauHero(
               key: _heroKey,
               item: item,
               viewModel: _vm,
@@ -1043,7 +1079,7 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
               onNavigateDown: () => _moveDown(_heroKey),
               prefs: widget.prefs,
               visibility: _visibility,
-            ),
+            )),
     );
 
     final sections = isPerson

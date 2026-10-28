@@ -10194,6 +10194,11 @@ class AppLocalizationsEl extends AppLocalizations {
       'Προσθέτει στο μενού ένα κουμπί που ανοίγει τη διαχείριση του διακομιστή';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Σκηνοθεσία: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Δυναμικό περιεχόμενο';
 
   @override

@@ -10048,6 +10048,11 @@ class AppLocalizationsSi extends AppLocalizations {
       'සේවාදායක පරිපාලනය විවෘත කරන බොත්තමක් මෙනුවට එක් කරයි';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'අධ්‍යක්ෂණය: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'ගතික අන්තර්ගතය';
 
   @override

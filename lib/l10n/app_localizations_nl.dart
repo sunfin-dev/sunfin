@@ -10107,6 +10107,11 @@ class AppLocalizationsNl extends AppLocalizations {
       'Voegt een knop aan het menu toe die het serverbeheer opent';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Geregisseerd door $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Dynamische inhoud';
 
   @override

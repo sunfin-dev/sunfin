@@ -10043,6 +10043,11 @@ class AppLocalizationsEo extends AppLocalizations {
       'Aldonas al la menuo butonon, kiu malfermas la servilan administradon';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Reĝisorita de $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Dinamika Enhavo';
 
   @override

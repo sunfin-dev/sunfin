@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "Rudisha kila mpangilio kwenye kifaa hiki kwenye chaguomsingi lake? Utaendelea kuwa umeingia, na mipangilio iliyohamishwa kwenye akaunti yako ya Jellyfin itabaki.\n\nKisha Plexfin itafungwa. Ifungue tena ili kuendelea.",
     "adminShowButton": "Onyesha kitufe cha usimamizi",
     "adminShowButtonSubtitle": "Huongeza kitufe kwenye menyu kinachofungua usimamizi wa seva",
+    "plexDirectedBy": "Imeongozwa na {names}",
     "settingsDynamicContent": "Maudhui Yanayobadilika",
     "settingsDynamicContentSubtitle": "Upau wa Midia na viwekeleo vya kuona",
     "settingsPlaybackSyncplay": "Uchezaji & SyncPlay",

@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "Vrátit každé nastavení na tomto zařízení na výchozí hodnotu? Zůstanete přihlášeni a nastavení exportovaná do vašeho účtu Jellyfin zůstanou zachována.\n\nPlexfin se poté zavře. Pokračujte jeho opětovným otevřením.",
     "adminShowButton": "Zobrazit tlačítko správy",
     "adminShowButtonSubtitle": "Přidá do nabídky tlačítko, které otevře správu serveru",
+    "plexDirectedBy": "Režie: {names}",
     "settingsDynamicContent": "Dynamický obsah",
     "settingsDynamicContentSubtitle": "Panel médií a vizuální překryvy",
     "settingsPlaybackSyncplay": "Přehrávání a SyncPlay",

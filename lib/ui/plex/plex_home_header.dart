@@ -28,11 +28,25 @@ class PlexHomeHeader extends StatelessWidget {
   /// The cast line under the summary; off where the page has its own cast row.
   final bool showCast;
 
+  /// Plex's rating line, under the genres on the details pages; home has
+  /// none.
+  final Widget? ratingLine;
+
+  /// A grey line under the summary, like the movie page's "Directed by".
+  final String? footer;
+
+  /// How tall the header may be before it is cut; [PlexStyle.rowsTop], where
+  /// home's rows start, unless the page puts its own content lower.
+  final double? height;
+
   const PlexHomeHeader({
     super.key,
     required this.item,
     required this.leftInset,
     this.showCast = true,
+    this.ratingLine,
+    this.footer,
+    this.height,
   });
 
   static const _fade = PlexMotion.fade;
@@ -50,7 +64,7 @@ class PlexHomeHeader extends StatelessWidget {
     // together on every focus change, and neither should repaint the other.
     return RepaintBoundary(
       child: SizedBox(
-        height: PlexStyle.rowsTop,
+        height: height ?? PlexStyle.rowsTop,
         // The header never pushes the rows down: whatever does not fit above
         // rowsTop is cut, and OverflowBox keeps the Column from reporting an
         // overflow while it is.
@@ -86,6 +100,8 @@ class PlexHomeHeader extends StatelessWidget {
                             key: ValueKey(current.id),
                             item: current,
                             showCast: showCast,
+                            ratingLine: ratingLine,
+                            footer: footer,
                           ),
                   ),
                 ),
@@ -134,11 +150,15 @@ enum _Kind { movieLike, episode, other }
 class _HeaderText extends StatelessWidget {
   final AggregatedItem item;
   final bool showCast;
+  final Widget? ratingLine;
+  final String? footer;
 
   const _HeaderText({
     super.key,
     required this.item,
     this.showCast = true,
+    this.ratingLine,
+    this.footer,
   });
 
   _Kind get _kind => switch ((item.type ?? '').toLowerCase()) {
@@ -205,6 +225,10 @@ class _HeaderText extends StatelessWidget {
             ),
           ),
         ],
+        if (ratingLine case final line?) ...[
+          const SizedBox(height: 10),
+          _narrow(line),
+        ],
         if (overview.isNotEmpty) ...[
           const SizedBox(height: 10),
           _narrow(
@@ -218,6 +242,18 @@ class _HeaderText extends StatelessWidget {
         ],
         if (kind == _Kind.movieLike && showCast)
           _narrow(_CastLine(item: item, fromItem: cast)),
+        if (footer case final text? when text.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: _narrow(
+              Text(
+                text,
+                style: _castStyle,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ),
       ],
     );
   }

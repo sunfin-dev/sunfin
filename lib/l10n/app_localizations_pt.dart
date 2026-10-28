@@ -10126,6 +10126,11 @@ class AppLocalizationsPt extends AppLocalizations {
       'Adiciona ao menu um botão que abre a administração do servidor';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Dirigido por $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Conteúdo Dinâmico';
 
   @override

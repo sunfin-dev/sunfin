@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "Vratiti svaku postavku na ovom uređaju na zadanu vrijednost? Ostajete prijavljeni, a postavke izvezene na vaš Jellyfin račun se čuvaju.\n\nPlexfin se nakon toga zatvara. Ponovno ga otvorite za nastavak.",
     "adminShowButton": "Prikaži gumb za administraciju",
     "adminShowButtonSubtitle": "Dodaje u izbornik gumb koji otvara administraciju poslužitelja",
+    "plexDirectedBy": "Režija: {names}",
     "settingsDynamicContent": "Dinamički sadržaj",
     "settingsDynamicContentSubtitle": "Medijska traka i vizualni slojevi",
     "settingsPlaybackSyncplay": "Reprodukcija i SyncPlay",

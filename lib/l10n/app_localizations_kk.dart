@@ -10100,6 +10100,11 @@ class AppLocalizationsKk extends AppLocalizations {
       'Мәзірге сервер әкімшілігін ашатын түйме қосады';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Режиссёр: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Динамикалық мазмұн';
 
   @override

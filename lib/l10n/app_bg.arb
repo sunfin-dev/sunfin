@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "Да се върне ли всяка настройка на това устройство към стойността ѝ по подразбиране? Оставате влезли, а настройките, експортирани в профила ви в Jellyfin, се запазват.\n\nPlexfin се затваря след това. Отворете го отново, за да продължите.",
     "adminShowButton": "Показване на бутон за администриране",
     "adminShowButtonSubtitle": "Добавя бутон в менюто, който отваря администрирането на сървъра",
+    "plexDirectedBy": "Режисьор: {names}",
     "settingsDynamicContent": "Динамично съдържание",
     "settingsDynamicContentSubtitle": "Медийна лента и визуални наслагвания",
     "settingsPlaybackSyncplay": "Възпроизвеждане и SyncPlay",

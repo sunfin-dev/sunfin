@@ -10117,6 +10117,11 @@ class AppLocalizationsKn extends AppLocalizations {
       'ಸರ್ವರ್ ಆಡಳಿತವನ್ನು ತೆರೆಯುವ ಬಟನ್ ಅನ್ನು ಮೆನುಗೆ ಸೇರಿಸುತ್ತದೆ';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'ನಿರ್ದೇಶನ: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'ಡೈನಾಮಿಕ್ ವಿಷಯ';
 
   @override

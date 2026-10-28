@@ -10002,6 +10002,11 @@ class AppLocalizationsTh extends AppLocalizations {
       'เพิ่มปุ่มในเมนูที่เปิดการจัดการเซิร์ฟเวอร์';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'กำกับโดย $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'เนื้อหาแบบไดนามิก';
 
   @override

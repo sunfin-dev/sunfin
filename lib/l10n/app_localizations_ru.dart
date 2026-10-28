@@ -10127,6 +10127,11 @@ class AppLocalizationsRu extends AppLocalizations {
       'Добавляет в меню кнопку, открывающую администрирование сервера';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Режиссёр: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Динамический контент';
 
   @override

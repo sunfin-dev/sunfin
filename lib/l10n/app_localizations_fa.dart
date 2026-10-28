@@ -10001,6 +10001,11 @@ class AppLocalizationsFa extends AppLocalizations {
       'دکمه‌ای به منو اضافه می‌کند که مدیریت سرور را باز می‌کند';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'کارگردان: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'محتوای پویا';
 
   @override

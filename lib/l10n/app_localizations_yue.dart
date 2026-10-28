@@ -9763,6 +9763,11 @@ class AppLocalizationsYue extends AppLocalizations {
   String get adminShowButtonSubtitle => '喺選單加一個開啟伺服器管理嘅按鈕';
 
   @override
+  String plexDirectedBy(String names) {
+    return '導演：$names';
+  }
+
+  @override
   String get settingsDynamicContent => '動態內容';
 
   @override

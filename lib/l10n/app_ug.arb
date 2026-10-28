@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "بۇ ئۈسكۈنىدىكى ھەر بىر تەڭشەكنى كۆڭۈلدىكى قىممىتىگە قايتۇرامسىز؟ تىزىملاتقان ھالىتىڭىز ساقلىنىدۇ، Jellyfin ھېساباتىڭىزغا چىقىرىلغان تەڭشەكلەرمۇ ساقلىنىدۇ.\n\nئاندىن Plexfin تاقىلىدۇ. داۋاملاشتۇرۇش ئۈچۈن ئۇنى قايتا ئېچىڭ.",
     "adminShowButton": "باشقۇرۇش كۇنۇپكىسىنى كۆرسەت",
     "adminShowButtonSubtitle": "تىزىملىككە مۇلازىمېتىر باشقۇرۇشنى ئاچىدىغان كۇنۇپكا قوشىدۇ",
+    "plexDirectedBy": "رېژىسسور: {names}",
     "settingsDynamicContent": "ھەرىكەتچان مەزمۇن",
     "settingsDynamicContentSubtitle": "Media Bar ۋە كۆرۈنۈش قاپلاش",
     "settingsPlaybackSyncplay": "قويۇش ۋە SyncPlay",

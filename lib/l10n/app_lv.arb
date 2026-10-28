@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "Vai atjaunot katram šīs ierīces iestatījumam noklusējuma vērtību? Jūs paliksiet pierakstījies, un jūsu Jellyfin kontā eksportētie iestatījumi tiks saglabāti.\n\nPēc tam Plexfin aizvērsies. Atveriet to vēlreiz, lai turpinātu.",
     "adminShowButton": "Rādīt administrēšanas pogu",
     "adminShowButtonSubtitle": "Pievieno izvēlnei pogu, kas atver servera administrēšanu",
+    "plexDirectedBy": "Režisors: {names}",
     "settingsDynamicContent": "Dinamisks saturs",
     "settingsDynamicContentSubtitle": "Multivides josla un vizuālie pārklājumi",
     "settingsPlaybackSyncplay": "Atskaņošana un SyncPlay",

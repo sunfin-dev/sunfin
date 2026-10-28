@@ -6558,6 +6558,7 @@
     "settingsResetConfirm": "Bu cihazdaki her ayar varsayılanına döndürülsün mü? Oturumunuz açık kalır ve Jellyfin hesabınıza dışa aktarılan ayarlar korunur.\n\nPlexfin ardından kapanır. Devam etmek için yeniden açın.",
     "adminShowButton": "Yönetim düğmesini göster",
     "adminShowButtonSubtitle": "Menüye sunucu yönetimini açan bir düğme ekler",
+    "plexDirectedBy": "Yönetmen: {names}",
     "settingsDynamicContent": "Dinamik İçerik",
     "settingsDynamicContentSubtitle": "Medya Çubuğu ve görsel katmanlar",
     "settingsPlaybackSyncplay": "Oynatma & SyncPlay",

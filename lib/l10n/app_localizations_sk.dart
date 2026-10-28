@@ -10113,6 +10113,11 @@ class AppLocalizationsSk extends AppLocalizations {
       'Pridá do ponuky tlačidlo, ktoré otvorí správu servera';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Réžia: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Dynamický obsah';
 
   @override

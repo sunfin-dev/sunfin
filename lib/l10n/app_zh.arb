@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "要将此设备上的每项设置恢复为默认值吗？你将保持登录，导出到 Jellyfin 账户的设置也会保留。\n\n之后 Plexfin 会关闭。重新打开即可继续。",
     "adminShowButton": "显示管理按钮",
     "adminShowButtonSubtitle": "在菜单中添加一个打开服务器管理的按钮",
+    "plexDirectedBy": "导演：{names}",
     "settingsDynamicContent": "动态内容",
     "settingsDynamicContentSubtitle": "媒体栏和视觉浮层",
     "settingsPlaybackSyncplay": "播放与 SyncPlay",

@@ -22,6 +22,69 @@ String _selectionSource(String source) {
   return source == 'tmdb_episode' ? 'tmdb' : source;
 }
 
+/// The scores a ratings row shows, by source, in the viewer's order: the
+/// server's own community and critic scores, the fetched extra ratings when
+/// those are on, and the viewer's own rating under 'personal'.
+List<MapEntry<String, double>> orderedRatings({
+  required Map<String, double> ratings,
+  double? communityRating,
+  int? criticRating,
+  double? personalRating,
+  bool enableAdditionalRatings = false,
+  String enabledRatings = 'stars,imdb,tmdb,tomatoes,metacritic',
+}) {
+  final enabledList = enabledRatings
+      .split(',')
+      .map((s) => s.trim())
+      .where((s) => s.isNotEmpty)
+      .map(_normalizeRatingSource)
+      .toList();
+  final enabled = enabledList.toSet();
+
+  final allRatings = <String, double>{};
+
+  if (personalRating != null) {
+    allRatings['personal'] = personalRating;
+  }
+
+  if (communityRating != null) {
+    allRatings['stars'] = communityRating;
+  }
+
+  for (final entry in ratings.entries) {
+    final source = _normalizeRatingSource(entry.key);
+    // The server's own rating wins over a fetched one for the same slot.
+    if (source == 'tomatoes' && criticRating != null) continue;
+    if (source == 'stars' && communityRating != null) continue;
+    allRatings[source] = entry.value;
+  }
+
+  if (!allRatings.containsKey('tomatoes') && criticRating != null) {
+    allRatings['tomatoes'] = criticRating.toDouble();
+  }
+
+  final filtered = allRatings.entries.where((e) {
+    final source = _selectionSource(e.key);
+    // The picker belongs to the extra ratings, so with those off it stops
+    // applying and the server's own ratings still show.
+    if (!enableAdditionalRatings) return _coreRatingSources.contains(source);
+    return enabled.contains(source);
+  }).toList();
+
+  final enabledOrder = {
+    for (var i = 0; i < enabledList.length; i++) enabledList[i]: i,
+  };
+  // A personal rating outside the picker order leads the row rather than
+  // trailing it, since the viewer's own score is the one they chose to set.
+  int orderOf(String key) {
+    final source = _selectionSource(key);
+    return enabledOrder[source] ?? (source == 'personal' ? -1 : 999);
+  }
+
+  filtered.sort((a, b) => orderOf(a.key).compareTo(orderOf(b.key)));
+  return filtered;
+}
+
 class RatingsRow extends StatelessWidget {
   final Map<String, double> ratings;
   final double? communityRating;
@@ -106,62 +169,14 @@ class RatingsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final enabled = enabledRatings
-        .split(',')
-        .map((s) => s.trim())
-        .where((s) => s.isNotEmpty)
-        .map(_normalizeRatingSource)
-        .toSet();
-
-    final allRatings = <String, double>{};
-
-    if (personalRating != null) {
-      allRatings['personal'] = personalRating!;
-    }
-
-    if (communityRating != null) {
-      allRatings['stars'] = communityRating!;
-    }
-
-    for (final entry in ratings.entries) {
-      final source = _normalizeRatingSource(entry.key);
-      // The server's own rating wins over a fetched one for the same slot.
-      if (source == 'tomatoes' && criticRating != null) continue;
-      if (source == 'stars' && communityRating != null) continue;
-      allRatings[source] = entry.value;
-    }
-
-    if (!allRatings.containsKey('tomatoes') && criticRating != null) {
-      allRatings['tomatoes'] = criticRating!.toDouble();
-    }
-
-    if (allRatings.isEmpty) return const SizedBox.shrink();
-
-    final filtered = allRatings.entries.where((e) {
-      final source = _selectionSource(e.key);
-      // The picker belongs to the extra ratings, so with those off it stops
-      // applying and the server's own ratings still show.
-      if (!enableAdditionalRatings) return _coreRatingSources.contains(source);
-      return enabled.contains(source);
-    }).toList();
-
-    final enabledList = enabledRatings
-        .split(',')
-        .map((s) => s.trim())
-        .where((s) => s.isNotEmpty)
-      .map(_normalizeRatingSource)
-        .toList();
-    final enabledOrder = {
-      for (var i = 0; i < enabledList.length; i++) enabledList[i]: i,
-    };
-    // A personal rating outside the picker order leads the row rather than
-    // trailing it, since the viewer's own score is the one they chose to set.
-    int orderOf(String key) {
-      final source = _selectionSource(key);
-      return enabledOrder[source] ?? (source == 'personal' ? -1 : 999);
-    }
-
-    filtered.sort((a, b) => orderOf(a.key).compareTo(orderOf(b.key)));
+    final filtered = orderedRatings(
+      ratings: ratings,
+      communityRating: communityRating,
+      criticRating: criticRating,
+      personalRating: personalRating,
+      enableAdditionalRatings: enableAdditionalRatings,
+      enabledRatings: enabledRatings,
+    );
 
     if (filtered.isEmpty) return const SizedBox.shrink();
 

@@ -10117,6 +10117,11 @@ class AppLocalizationsTe extends AppLocalizations {
       'సర్వర్ నిర్వహణను తెరిచే బటన్‌ను మెనూకు జోడిస్తుంది';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'దర్శకత్వం: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'డైనమిక్ కంటెంట్';
 
   @override

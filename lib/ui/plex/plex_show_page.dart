@@ -27,7 +27,9 @@ import '../widgets/image_source.dart';
 import '../widgets/navigation_layout.dart';
 import 'plex_backdrop.dart';
 import 'plex_clock.dart';
+import 'plex_detail_parts.dart';
 import 'plex_home_header.dart';
+import 'plex_rating_line.dart';
 import 'plex_style.dart';
 
 /// Plex's show page, where Plex goes when a show is picked in its library
@@ -123,6 +125,11 @@ class _PlexShowPageState extends State<PlexShowPage> {
   int _lastButton = 0;
   int _lastSeason = 0;
 
+  /// The top and each section are handed back unchanged unless what they
+  /// show changed; the page builds again on every view-model update.
+  final _memo = PlexMemo();
+  int _prefsRevision = 0;
+
   ItemDetailViewModel get _vm => widget.viewModel;
   AggregatedItem? get _item => _vm.item;
   bool get _played => _playedOverride ?? _item?.isPlayed ?? false;
@@ -142,6 +149,7 @@ class _PlexShowPageState extends State<PlexShowPage> {
   void initState() {
     super.initState();
     _vm.addListener(_onViewModelChanged);
+    widget.prefs.addListener(_onPrefsChanged);
     NavigationLayout.focusDetailsPlayButtonNotifier.value = _entryNode;
     unawaited(_load());
   }
@@ -149,6 +157,7 @@ class _PlexShowPageState extends State<PlexShowPage> {
   @override
   void dispose() {
     _vm.removeListener(_onViewModelChanged);
+    widget.prefs.removeListener(_onPrefsChanged);
     if (NavigationLayout.focusDetailsPlayButtonNotifier.value == _entryNode) {
       NavigationLayout.focusDetailsPlayButtonNotifier.value = null;
     }
@@ -163,6 +172,10 @@ class _PlexShowPageState extends State<PlexShowPage> {
 
   void _onViewModelChanged() {
     if (mounted) setState(() => _playedOverride = null);
+  }
+
+  void _onPrefsChanged() {
+    if (mounted) setState(() => _prefsRevision++);
   }
 
   // --- Data ---------------------------------------------------------------
@@ -461,42 +474,55 @@ class _PlexShowPageState extends State<PlexShowPage> {
           rank: [rank[DetailSection.cast]!, rank[DetailSection.crew]!].reduce(
             (a, b) => a < b ? a : b,
           ),
-          child: NouveauPeopleSection(
-            key: _peopleKey,
-            actors: actors,
-            directors: directors,
-            writers: writers,
-            imageApi: _vm.imageApi,
-            serverId: item.serverId,
-            onNavigateUp: () => _sectionUp(_peopleKey),
-            onNavigateDown: () => _sectionDown(_peopleKey),
+          child: _memo(
+            _peopleKey,
+            [item.id, actors, directors, writers, _vm.imageApi],
+            () => NouveauPeopleSection(
+              key: _peopleKey,
+              actors: actors,
+              directors: directors,
+              writers: writers,
+              imageApi: _vm.imageApi,
+              serverId: item.serverId,
+              onNavigateUp: () => _sectionUp(_peopleKey),
+              onNavigateDown: () => _sectionDown(_peopleKey),
+            ),
           ),
         ),
       if (visibility.shows(DetailSection.extras) && _vm.features.isNotEmpty)
         (
           key: _extrasKey,
           rank: rank[DetailSection.extras]!,
-          child: NouveauExtrasSection(
-            key: _extrasKey,
-            items: _vm.features,
-            imageApi: _vm.imageApi,
-            prefs: widget.prefs,
-            onNavigateUp: () => _sectionUp(_extrasKey),
-            onNavigateDown: () => _sectionDown(_extrasKey),
+          child: _memo(
+            _extrasKey,
+            [item.id, _vm.features, _vm.imageApi, _prefsRevision],
+            () => NouveauExtrasSection(
+              key: _extrasKey,
+              items: _vm.features,
+              imageApi: _vm.imageApi,
+              prefs: widget.prefs,
+              onNavigateUp: () => _sectionUp(_extrasKey),
+              onNavigateDown: () => _sectionDown(_extrasKey),
+            ),
           ),
         ),
       if (NouveauDiscoverySection.shouldInclude(_vm, visibility))
         (
           key: _discoveryKey,
           rank: rank[DetailSection.moreLikeThis]!,
-          child: NouveauDiscoverySection(
-            key: _discoveryKey,
-            viewModel: _vm,
-            prefs: widget.prefs,
-            visibility: visibility,
-            onNavigateUp: () => _sectionUp(_discoveryKey),
-            onNavigateDown: () => _sectionDown(_discoveryKey),
-            onRevealRequested: _revealSection,
+          // It listens to the view model itself.
+          child: _memo(
+            _discoveryKey,
+            [item.id, visibility, _prefsRevision],
+            () => NouveauDiscoverySection(
+              key: _discoveryKey,
+              viewModel: _vm,
+              prefs: widget.prefs,
+              visibility: visibility,
+              onNavigateUp: () => _sectionUp(_discoveryKey),
+              onNavigateDown: () => _sectionDown(_discoveryKey),
+              onRevealRequested: _revealSection,
+            ),
           ),
         ),
     ]..sort((a, b) => a.rank.compareTo(b.rank));
@@ -595,7 +621,21 @@ class _PlexShowPageState extends State<PlexShowPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: _foldHeight, child: _buildFold(item)),
+                SizedBox(
+                  height: _foldHeight,
+                  child: _memo(
+                    #fold,
+                    [
+                      item,
+                      _vm.ratings,
+                      _seasons,
+                      _upTo,
+                      _played,
+                      _prefsRevision,
+                    ],
+                    () => _buildFold(item),
+                  ),
+                ),
                 for (final section in sections)
                   Padding(
                     padding: EdgeInsets.fromLTRB(
@@ -646,6 +686,12 @@ class _PlexShowPageState extends State<PlexShowPage> {
             item: item,
             leftInset: _inset,
             showCast: false,
+            height: _buttonsTop - PlexStyle.s(8),
+            ratingLine: PlexRatingLine.of(
+              item: item,
+              extraRatings: _vm.ratings,
+              prefs: widget.prefs,
+            ),
           ),
         ),
         Positioned(
@@ -699,12 +745,12 @@ class _PlexShowPageState extends State<PlexShowPage> {
               child: ListenableBuilder(
                 listenable: _buttonNodes[i],
                 builder: (context, _) => i == 0
-                    ? _PlayButton(
+                    ? PlexPlayButton(
                         label: playLabel,
                         focused: _buttonNodes[i].hasFocus,
                         size: _buttonSize,
                       )
-                    : _RoundButton(
+                    : PlexRoundButton(
                         icon: i == 1 ? Symbols.check_circle : Symbols.more_horiz,
                         filled: i == 1 && _played,
                         focused: _buttonNodes[i].hasFocus,
@@ -908,93 +954,6 @@ class _CornerBadge extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-    );
-  }
-}
-
-/// Plex's Play: a round button that opens into a white "Play" pill when
-/// focused (reference 12 focused, 13 not).
-class _PlayButton extends StatelessWidget {
-  final String label;
-  final bool focused;
-  final double size;
-
-  const _PlayButton({
-    required this.label,
-    required this.focused,
-    required this.size,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final color = focused ? Colors.black : Colors.white;
-    return AnimatedSize(
-      duration: const Duration(milliseconds: 120),
-      curve: Curves.easeOut,
-      alignment: Alignment.centerLeft,
-      child: Container(
-        height: size,
-        constraints: BoxConstraints(minWidth: size),
-        padding: focused
-            ? EdgeInsets.only(left: PlexStyle.s(10), right: PlexStyle.s(14))
-            : EdgeInsets.zero,
-        decoration: BoxDecoration(
-          color: focused ? Colors.white : Colors.white.withValues(alpha: 0.12),
-          borderRadius: BorderRadius.circular(size / 2),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Symbols.play_arrow, size: size * 0.6, fill: 1, color: color),
-            if (focused) ...[
-              SizedBox(width: PlexStyle.s(4)),
-              Text(
-                label,
-                maxLines: 1,
-                style: TextStyle(
-                  color: color,
-                  fontSize: PlexStyle.s(12.5),
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _RoundButton extends StatelessWidget {
-  final IconData icon;
-  final bool filled;
-  final bool focused;
-  final double size;
-
-  const _RoundButton({
-    required this.icon,
-    required this.filled,
-    required this.focused,
-    required this.size,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 120),
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: focused ? Colors.white : Colors.white.withValues(alpha: 0.12),
-      ),
-      child: Icon(
-        icon,
-        size: size * 0.55,
-        fill: filled ? 1 : 0,
-        color: focused ? Colors.black : Colors.white,
-      ),
     );
   }
 }

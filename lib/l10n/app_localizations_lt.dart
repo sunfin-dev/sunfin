@@ -10108,6 +10108,11 @@ class AppLocalizationsLt extends AppLocalizations {
       'Prideda į meniu mygtuką, kuris atidaro serverio administravimą';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Režisierius: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Dinaminis turinys';
 
   @override

@@ -10145,6 +10145,11 @@ class AppLocalizationsBg extends AppLocalizations {
       'Добавя бутон в менюто, който отваря администрирането на сървъра';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Режисьор: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Динамично съдържание';
 
   @override

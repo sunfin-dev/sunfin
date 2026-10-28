@@ -10079,6 +10079,11 @@ class AppLocalizationsMn extends AppLocalizations {
       'Серверийн удирдлагыг нээх товчийг цэсэнд нэмнэ';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Найруулагч: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Динамик контент';
 
   @override

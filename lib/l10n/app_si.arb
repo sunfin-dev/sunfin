@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "මෙම උපාංගයේ සෑම සැකසුමක්ම එහි පෙරනිමියට ආපසු ගෙන එන්නද? ඔබ පුරනය වී සිටිනු ඇති අතර, ඔබගේ Jellyfin ගිණුමට අපනයනය කළ සැකසුම් රැඳී පවතී.\n\nඉන්පසු Plexfin වැසේ. දිගටම කරගෙන යාමට එය නැවත විවෘත කරන්න.",
     "adminShowButton": "පරිපාලන බොත්තම පෙන්වන්න",
     "adminShowButtonSubtitle": "සේවාදායක පරිපාලනය විවෘත කරන බොත්තමක් මෙනුවට එක් කරයි",
+    "plexDirectedBy": "අධ්‍යක්ෂණය: {names}",
     "settingsDynamicContent": "ගතික අන්තර්ගතය",
     "settingsDynamicContentSubtitle": "මාධ්‍ය තීරුව සහ දෘශ්‍ය ආවරණ",
     "settingsPlaybackSyncplay": "පසුධාවනය සහ SyncPlay",

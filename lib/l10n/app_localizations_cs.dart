@@ -10089,6 +10089,11 @@ class AppLocalizationsCs extends AppLocalizations {
       'Přidá do nabídky tlačítko, které otevře správu serveru';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Režie: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Dynamický obsah';
 
   @override

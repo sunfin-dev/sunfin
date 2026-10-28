@@ -10085,6 +10085,11 @@ class AppLocalizationsUg extends AppLocalizations {
       'تىزىملىككە مۇلازىمېتىر باشقۇرۇشنى ئاچىدىغان كۇنۇپكا قوشىدۇ';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'رېژىسسور: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'ھەرىكەتچان مەزمۇن';
 
   @override

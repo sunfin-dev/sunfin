@@ -10154,6 +10154,11 @@ class AppLocalizationsTl extends AppLocalizations {
       'Nagdaragdag ng button sa menu na nagbubukas ng administrasyon ng server';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Idinirek ni $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Dynamic na Nilalaman';
 
   @override

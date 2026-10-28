@@ -10137,6 +10137,11 @@ class AppLocalizationsSq extends AppLocalizations {
       'Shton në meny një buton që hap administrimin e serverit';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Me regji të $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Përmbajtja dinamike';
 
   @override

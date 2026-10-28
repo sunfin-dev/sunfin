@@ -10041,6 +10041,11 @@ class AppLocalizationsAr extends AppLocalizations {
       'يضيف زرًا إلى القائمة يفتح إدارة الخادم';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'إخراج $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'المحتوى الديناميكي';
 
   @override

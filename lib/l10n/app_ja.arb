@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "このデバイスのすべての設定を既定値に戻しますか？サインインは維持され、Jellyfin アカウントにエクスポートした設定も残ります。\n\nその後 Plexfin は終了します。続けるにはもう一度開いてください。",
     "adminShowButton": "管理ボタンを表示",
     "adminShowButtonSubtitle": "サーバー管理を開くボタンをメニューに追加します",
+    "plexDirectedBy": "監督: {names}",
     "settingsDynamicContent": "動的コンテンツ",
     "settingsDynamicContentSubtitle": "メディアバーとビジュアルオーバーレイ",
     "settingsPlaybackSyncplay": "再生と SyncPlay",

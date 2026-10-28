@@ -10066,6 +10066,11 @@ class AppLocalizationsEt extends AppLocalizations {
       'Lisab menüüsse nupu, mis avab serveri halduse';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Režissöör: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Dünaamiline sisu';
 
   @override

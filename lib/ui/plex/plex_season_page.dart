@@ -15,8 +15,6 @@ import '../../preference/detail_section_layout.dart';
 import '../../preference/user_preferences.dart';
 import '../../util/focus/dpad_keys.dart';
 import '../../util/image_fetch_priority.dart';
-import '../../util/language_codes.dart';
-import '../../util/language_matching.dart';
 import '../screens/detail/item_detail_screen.dart';
 import '../screens/detail/nouveau/discovery/nouveau_discovery_section.dart';
 import '../screens/detail/nouveau/extras/nouveau_extras_section.dart';
@@ -26,7 +24,9 @@ import '../widgets/image_source.dart';
 import '../widgets/navigation_layout.dart';
 import 'plex_backdrop.dart';
 import 'plex_clock.dart';
+import 'plex_detail_parts.dart';
 import 'plex_home_header.dart';
+import 'plex_rating_line.dart';
 import 'plex_style.dart';
 
 /// Plex's season page, which is where Plex sends you for an episode too
@@ -82,7 +82,7 @@ AggregatedItem? plexNextToWatch(List<AggregatedItem> episodes) =>
 /// A media chip's text, e.g. "English (EAC3 5.1)".
 @visibleForTesting
 String plexStreamLabel(Map<String, dynamic> stream, {bool audio = false}) =>
-    _MediaChips._streamLabel(stream, audio: audio);
+    PlexMediaChips.streamLabel(stream, audio: audio);
 
 enum _Region { tabs, row, buttons, sections }
 
@@ -819,8 +819,23 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
           right: 0,
           child: ValueListenableBuilder<AggregatedItem?>(
             valueListenable: _focusedNotifier,
-            builder: (context, focused, _) =>
-                PlexHomeHeader(item: focused, leftInset: _inset),
+            builder: (context, focused, _) => PlexHomeHeader(
+              item: focused,
+              leftInset: _inset,
+              // Down to the episode row, which Plex's rating line leaves room
+              // for (reference 14).
+              height: _rowTop - PlexStyle.s(8),
+              ratingLine: focused == null
+                  ? null
+                  : PlexRatingLine.of(
+                      item: focused,
+                      // The page's fetched ratings are the opened item's.
+                      extraRatings: focused.id == _vm.item?.id
+                          ? _vm.ratings
+                          : const {},
+                      prefs: widget.prefs,
+                    ),
+            ),
           ),
         ),
         if (_seasons.length > 1)
@@ -851,7 +866,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
             valueListenable: _focusedNotifier,
             builder: (context, focused, _) => focused == null
                 ? const SizedBox.shrink()
-                : _MediaChips(episode: focused),
+                : PlexMediaChips(item: focused),
           ),
         ),
       ],
@@ -946,7 +961,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
                 listenable: i == 1
                     ? Listenable.merge([_buttonNodes[i], _focusedNotifier])
                     : _buttonNodes[i],
-                builder: (context, _) => _RoundButton(
+                builder: (context, _) => PlexRoundButton(
                   icon: icons[i],
                   filled: i == 1 && (_focused?.isPlayed ?? false),
                   focused: _buttonNodes[i].hasFocus,
@@ -1135,161 +1150,6 @@ class _EpisodeBadge extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _RoundButton extends StatelessWidget {
-  final IconData icon;
-  final bool filled;
-  final bool focused;
-  final double size;
-
-  const _RoundButton({
-    required this.icon,
-    required this.filled,
-    required this.focused,
-    required this.size,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 120),
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: focused ? Colors.white : Colors.white.withValues(alpha: 0.12),
-      ),
-      child: Icon(
-        icon,
-        size: size * 0.55,
-        fill: filled ? 1 : 0,
-        color: focused ? Colors.black : Colors.white,
-      ),
-    );
-  }
-}
-
-/// The focused episode's resolution, audio and subtitle, as Plex shows them
-/// at the right of the buttons: "1080p", "English (EAC3 5.1)", "English (SRT)".
-class _MediaChips extends StatelessWidget {
-  final AggregatedItem episode;
-
-  const _MediaChips({required this.episode});
-
-  @override
-  Widget build(BuildContext context) {
-    final streams = episode.mediaStreams;
-    Map<String, dynamic>? pick(String type) {
-      final ofType = streams.where((s) => s['Type'] == type).toList();
-      if (ofType.isEmpty) return null;
-      return ofType.where((s) => s['IsDefault'] == true).firstOrNull ??
-          (type == 'Subtitle' ? null : ofType.first);
-    }
-
-    final audio = pick('Audio');
-    final subtitle = pick('Subtitle');
-    final chips = <Widget>[
-      if (episode.videoResolution case final resolution?)
-        _Chip(text: resolution),
-      if (audio != null)
-        _Chip(icon: Icons.volume_up_rounded, text: _streamLabel(audio, audio: true)),
-      if (subtitle != null)
-        _Chip(icon: Icons.subtitles_outlined, text: _streamLabel(subtitle)),
-    ];
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        for (var i = 0; i < chips.length; i++) ...[
-          if (i > 0) SizedBox(width: PlexStyle.s(8)),
-          chips[i],
-        ],
-      ],
-    );
-  }
-
-  /// "English (EAC3 5.1)", "German Forced (PGS)": the language, then the
-  /// codec and, for audio, the channel layout.
-  static String _streamLabel(Map<String, dynamic> stream, {bool audio = false}) {
-    final forced = !audio && stream['IsForced'] == true;
-    final language = '${_languageName(stream['Language'] as String?)}'
-        '${forced ? ' Forced' : ''}';
-    var codec = (stream['Codec'] as String?)?.toUpperCase() ?? '';
-    codec = _codecNames[codec] ?? codec;
-    final parts = [
-      codec,
-      if (audio) _layout(stream),
-    ].where((p) => p.isNotEmpty).join(' ');
-    return parts.isEmpty ? language : '$language ($parts)';
-  }
-
-  static const _codecNames = {'SUBRIP': 'SRT', 'PGSSUB': 'PGS'};
-
-  /// The server's DisplayTitle doesn't reliably start with the language (a
-  /// track titled "Stereo" puts that first), so the name comes from the code.
-  static String _languageName(String? code) {
-    final iso3 = toIso3Language(normalizeLanguage(code));
-    if (iso3.isEmpty) return 'Unknown';
-    final terminology = _bibliographicCodes[iso3] ?? iso3;
-    return kIso6392Languages[terminology] ?? iso3.toUpperCase();
-  }
-
-  /// Older ISO 639-2/B codes, which files often carry, to the /T codes the
-  /// name table uses.
-  static const _bibliographicCodes = {
-    'alb': 'sqi', 'arm': 'hye', 'baq': 'eus', 'bur': 'mya', 'chi': 'zho',
-    'cze': 'ces', 'dut': 'nld', 'fre': 'fra', 'geo': 'kat', 'ger': 'deu',
-    'gre': 'ell', 'ice': 'isl', 'mac': 'mkd', 'mao': 'mri', 'may': 'msa',
-    'per': 'fas', 'rum': 'ron', 'slo': 'slk', 'tib': 'bod', 'wel': 'cym',
-  };
-
-  static String _layout(Map<String, dynamic> stream) {
-    final layout = (stream['ChannelLayout'] as String?)?.trim() ?? '';
-    if (layout.isNotEmpty) {
-      return layout.toLowerCase() == 'stereo' ? 'Stereo' : layout;
-    }
-    final channels = stream['Channels'];
-    if (channels is int) return channels == 2 ? 'Stereo' : '$channels ch';
-    return '';
-  }
-}
-
-class _Chip extends StatelessWidget {
-  final IconData? icon;
-  final String text;
-
-  const _Chip({this.icon, required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    final size = PlexStyle.s(10);
-    return Center(
-      child: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: PlexStyle.s(5),
-          vertical: PlexStyle.s(2),
-        ),
-        decoration: BoxDecoration(
-          color: Colors.black.withValues(alpha: 0.45),
-          borderRadius: BorderRadius.circular(PlexStyle.s(3)),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (icon != null) ...[
-              Icon(icon, size: size * 1.2, color: Colors.white),
-              SizedBox(width: PlexStyle.s(4)),
-            ],
-            Text(
-              text,
-              maxLines: 1,
-              style: TextStyle(color: Colors.white, fontSize: size),
-            ),
-          ],
-        ),
       ),
     );
   }

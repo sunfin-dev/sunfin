@@ -10179,6 +10179,11 @@ class AppLocalizationsGl extends AppLocalizations {
       'Engade ao menú un botón que abre a administración do servidor';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Dirixida por $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Contido dinámico';
 
   @override

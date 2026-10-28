@@ -17806,6 +17806,12 @@ abstract class AppLocalizations {
   /// **'Adds a button to the menu that opens server administration'**
   String get adminShowButtonSubtitle;
 
+  /// Plex movie page line under the summary
+  ///
+  /// In en, this message translates to:
+  /// **'Directed by {names}'**
+  String plexDirectedBy(String names);
+
   /// No description provided for @settingsDynamicContent.
   ///
   /// In en, this message translates to:

@@ -10179,6 +10179,11 @@ class AppLocalizationsRo extends AppLocalizations {
       'Adaugă în meniu un buton care deschide administrarea serverului';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Regia: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Conținut dinamic';
 
   @override

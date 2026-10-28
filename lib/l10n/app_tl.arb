@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "Ibalik sa default ang bawat setting sa device na ito? Mananatili kang naka-sign in, at mananatili ang mga setting na na-export sa iyong Jellyfin account.\n\nMagsasara ang Plexfin pagkatapos. Buksan itong muli para magpatuloy.",
     "adminShowButton": "Ipakita ang button ng administrasyon",
     "adminShowButtonSubtitle": "Nagdaragdag ng button sa menu na nagbubukas ng administrasyon ng server",
+    "plexDirectedBy": "Idinirek ni {names}",
     "settingsDynamicContent": "Dynamic na Nilalaman",
     "settingsDynamicContentSubtitle": "Media Bar at mga visual na overlay",
     "settingsPlaybackSyncplay": "Playback at SyncPlay",

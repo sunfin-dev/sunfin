@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "คืนการตั้งค่าทุกอย่างบนอุปกรณ์นี้เป็นค่าเริ่มต้นหรือไม่ คุณยังคงลงชื่อเข้าใช้อยู่ และการตั้งค่าที่ส่งออกไปยังบัญชี Jellyfin ของคุณจะยังอยู่\n\nจากนั้น Plexfin จะปิดลง เปิดอีกครั้งเพื่อดำเนินการต่อ",
     "adminShowButton": "แสดงปุ่มการจัดการ",
     "adminShowButtonSubtitle": "เพิ่มปุ่มในเมนูที่เปิดการจัดการเซิร์ฟเวอร์",
+    "plexDirectedBy": "กำกับโดย {names}",
     "settingsDynamicContent": "เนื้อหาแบบไดนามิก",
     "settingsDynamicContentSubtitle": "แถบสื่อและการซ้อนทับภาพ",
     "settingsPlaybackSyncplay": "การเล่น & SyncPlay",

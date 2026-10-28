@@ -10128,6 +10128,11 @@ class AppLocalizationsTa extends AppLocalizations {
       'சேவையக நிர்வாகத்தைத் திறக்கும் பொத்தானை மெனுவில் சேர்க்கிறது';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'இயக்கம்: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'டைனமிக் உள்ளடக்கம்';
 
   @override

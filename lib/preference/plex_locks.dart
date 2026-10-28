@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:jellyfin_preference/jellyfin_preference.dart';
 
 import '../util/platform_detection.dart';
@@ -90,21 +91,36 @@ abstract final class PlexLocks {
     lock(UserPreferences.showMediaDetailsOnLibraryPage, false);
     lock(UserPreferences.useDetailedSubHeadings, false);
 
-    // Settings move between devices only when the user says so, through
-    // Transfer settings (user, 2026-10-28: "there shouldnt be auto settings
-    // sync in the first place"). The plugin's other services stay on.
-    lock(UserPreferences.pluginSyncEnabled, false);
-
     return values;
   }();
 
+  /// Plexfin's own rules rather than its look, so they hold on every device,
+  /// the phone and the PC included.
+  static final Map<String, Object?> _everywhere = {
+    // Settings move between devices only when the user says so, through
+    // Transfer settings (user, 2026-10-28: "there shouldnt be auto settings
+    // sync in the first place"). The plugin's other services stay on.
+    UserPreferences.pluginSyncEnabled.key: false,
+  };
+
+  /// Lets the tests of the plugin's own settings sync turn it on.
+  @visibleForTesting
+  static bool debugSyncAllowed = false;
+
+  static bool _heldEverywhere(String key) =>
+      !debugSyncAllowed && _everywhere.containsKey(key);
+
   /// True when [key] is held at its Plex value.
   static bool isLocked(String key) =>
-      active &&
-      (_values.containsKey(key) ||
-          _lockedPrefixes.any((prefix) => key.startsWith(prefix)));
+      _heldEverywhere(key) ||
+      (active &&
+          (_values.containsKey(key) ||
+              _lockedPrefixes.any((prefix) => key.startsWith(prefix))));
 
   /// The Plex value for [pref]; only meaningful when [isLocked].
-  static T valueOf<T>(Preference<T> pref) =>
-      _values.containsKey(pref.key) ? _values[pref.key] as T : pref.defaultValue;
+  static T valueOf<T>(Preference<T> pref) => _heldEverywhere(pref.key)
+      ? _everywhere[pref.key] as T
+      : _values.containsKey(pref.key)
+      ? _values[pref.key] as T
+      : pref.defaultValue;
 }

@@ -10207,6 +10207,11 @@ class AppLocalizationsDe extends AppLocalizations {
       'Fügt dem Menü eine Schaltfläche hinzu, die die Serververwaltung öffnet';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Regie: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Dynamischer Inhalt';
 
   @override

@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "Ĉu restarigi ĉiun agordon de ĉi tiu aparato al ĝia defaŭlto? Vi restos ensalutinta, kaj agordoj eksportitaj al via Jellyfin-konto estos konservitaj.\n\nPlexfin poste fermiĝas. Malfermu ĝin denove por daŭrigi.",
     "adminShowButton": "Montri butonon de administrado",
     "adminShowButtonSubtitle": "Aldonas al la menuo butonon, kiu malfermas la servilan administradon",
+    "plexDirectedBy": "Reĝisorita de {names}",
     "settingsDynamicContent": "Dinamika Enhavo",
     "settingsDynamicContentSubtitle": "Media Trinkejo kaj vidaj supermetaĵoj",
     "settingsPlaybackSyncplay": "Reproduktado & SyncPlay",

@@ -9827,6 +9827,8 @@
   "settingsResetConfirm": "Put every setting on this device back to its default? You stay signed in, and settings exported to your Jellyfin account are kept.\n\nPlexfin closes afterwards. Open it again to continue.",
   "adminShowButton": "Show administration button",
   "adminShowButtonSubtitle": "Adds a button to the menu that opens server administration",
+  "plexDirectedBy": "Directed by {names}",
+  "@plexDirectedBy": {"description": "Plex movie page line under the summary", "placeholders": {"names": {"type": "String"}}},
   "settingsDynamicContent": "Dynamic Content",
   "settingsDynamicContentSubtitle": "Media Bar and visual overlays",
   "settingsPlaybackSyncplay": "Playback & SyncPlay",

@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "Grąžinti kiekvieną šio įrenginio nustatymą į numatytąjį? Liksite prisijungę, o į jūsų Jellyfin paskyrą eksportuoti nustatymai išliks.\n\nPo to Plexfin užsidarys. Norėdami tęsti, atidarykite jį iš naujo.",
     "adminShowButton": "Rodyti administravimo mygtuką",
     "adminShowButtonSubtitle": "Prideda į meniu mygtuką, kuris atidaro serverio administravimą",
+    "plexDirectedBy": "Režisierius: {names}",
     "settingsDynamicContent": "Dinaminis turinys",
     "settingsDynamicContentSubtitle": "Medijos juosta ir vaizdinės perdangos",
     "settingsPlaybackSyncplay": "Atkūrimas ir SyncPlay",

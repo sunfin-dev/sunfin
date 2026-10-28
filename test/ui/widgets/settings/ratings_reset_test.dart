@@ -13,7 +13,8 @@ import 'package:moonfin/l10n/app_localizations.dart';
 import 'package:moonfin/preference/seerr_preferences.dart';
 import 'package:moonfin/preference/user_preferences.dart';
 import 'package:moonfin/ui/screens/settings/ratings_config_screen.dart';
-import 'package:moonfin/ui/theme/app_theme.dart';
+import 'package:moonfin/ui/theme/app_theme.dart';
+import 'package:moonfin/preference/plex_locks.dart';
 import 'package:moonfin_design/moonfin_design.dart';
 import 'package:server_core/server_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -98,6 +99,8 @@ void main() {
     dio.httpClientAdapter = adapter;
     final sync = PluginSyncService(prefs, store, dio: dio);
     await prefs.set(UserPreferences.pluginSyncEnabled, true);
+    PlexLocks.debugSyncAllowed = true;
+    addTearDown(() => PlexLocks.debugSyncAllowed = false);
     expect(await sync.refreshAvailability(client), isTrue);
     GetIt.instance.registerSingleton<PluginSyncService>(sync);
 

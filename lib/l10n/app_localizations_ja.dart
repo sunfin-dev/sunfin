@@ -9821,6 +9821,11 @@ class AppLocalizationsJa extends AppLocalizations {
   String get adminShowButtonSubtitle => 'サーバー管理を開くボタンをメニューに追加します';
 
   @override
+  String plexDirectedBy(String names) {
+    return '監督: $names';
+  }
+
+  @override
   String get settingsDynamicContent => '動的コンテンツ';
 
   @override

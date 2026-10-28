@@ -10026,6 +10026,11 @@ class AppLocalizationsPa extends AppLocalizations {
       'ਮੀਨੂ ਵਿੱਚ ਇੱਕ ਬਟਨ ਜੋੜਦਾ ਹੈ ਜੋ ਸਰਵਰ ਪ੍ਰਸ਼ਾਸਨ ਖੋਲ੍ਹਦਾ ਹੈ';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'ਨਿਰਦੇਸ਼ਕ: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'ਗਤੀਸ਼ੀਲ ਸਮੱਗਰੀ';
 
   @override

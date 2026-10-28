@@ -6545,6 +6545,7 @@
     "settingsResetConfirm": "이 기기의 모든 설정을 기본값으로 되돌릴까요? 로그인은 유지되며 Jellyfin 계정으로 내보낸 설정도 그대로 남습니다.\n\n그 후 Plexfin이 종료됩니다. 계속하려면 다시 여세요.",
     "adminShowButton": "관리 버튼 표시",
     "adminShowButtonSubtitle": "서버 관리를 여는 버튼을 메뉴에 추가합니다",
+    "plexDirectedBy": "감독: {names}",
     "settingsDynamicContent": "동적 콘텐츠",
     "settingsDynamicContentSubtitle": "미디어 바와 시각적 오버레이",
     "settingsPlaybackSyncplay": "재생 및 SyncPlay",

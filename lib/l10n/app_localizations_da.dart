@@ -10055,6 +10055,11 @@ class AppLocalizationsDa extends AppLocalizations {
       'Tilføjer en knap i menuen, der åbner serveradministration';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Instrueret af $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Dynamisk indhold';
 
   @override

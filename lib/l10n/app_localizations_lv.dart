@@ -10106,6 +10106,11 @@ class AppLocalizationsLv extends AppLocalizations {
       'Pievieno izvēlnei pogu, kas atver servera administrēšanu';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Režisors: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Dinamisks saturs';
 
   @override

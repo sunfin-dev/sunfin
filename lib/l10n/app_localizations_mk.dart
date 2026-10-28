@@ -10123,6 +10123,11 @@ class AppLocalizationsMk extends AppLocalizations {
       'Додава копче во менито што ја отвора администрацијата на серверот';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Режија: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Динамичка содржина';
 
   @override

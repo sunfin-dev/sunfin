@@ -9796,6 +9796,11 @@ class AppLocalizationsKo extends AppLocalizations {
   String get adminShowButtonSubtitle => '서버 관리를 여는 버튼을 메뉴에 추가합니다';
 
   @override
+  String plexDirectedBy(String names) {
+    return '감독: $names';
+  }
+
+  @override
   String get settingsDynamicContent => '동적 콘텐츠';
 
   @override

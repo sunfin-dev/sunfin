@@ -10056,6 +10056,11 @@ class AppLocalizationsVi extends AppLocalizations {
       'Thêm vào menu một nút mở phần quản trị máy chủ';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Đạo diễn: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Nội dung động';
 
   @override

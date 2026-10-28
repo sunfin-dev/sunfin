@@ -78,10 +78,16 @@ void main() {
     });
   });
 
-  test('off TV nothing is locked', () async {
+  test('off TV the look is free', () async {
     final prefs = await _prefs({'pref_navbar_position': 'top'});
 
     expect(PlexLocks.isLocked(UserPreferences.navbarPosition.key), isFalse);
     expect(prefs.get(UserPreferences.navbarPosition), NavbarPosition.top);
+  });
+
+  test('on a phone or PC settings still never sync on their own', () async {
+    final prefs = await _prefs({'pref_plugin_sync_enabled': true});
+
+    expect(prefs.get(UserPreferences.pluginSyncEnabled), isFalse);
   });
 }

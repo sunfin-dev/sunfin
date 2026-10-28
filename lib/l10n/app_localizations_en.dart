@@ -9988,6 +9988,11 @@ class AppLocalizationsEn extends AppLocalizations {
       'Adds a button to the menu that opens server administration';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Directed by $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Dynamic Content';
 
   @override

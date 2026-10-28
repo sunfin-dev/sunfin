@@ -10102,6 +10102,11 @@ class AppLocalizationsFi extends AppLocalizations {
       'Lisää valikkoon painikkeen, joka avaa palvelimen hallinnan';
 
   @override
+  String plexDirectedBy(String names) {
+    return 'Ohjaus: $names';
+  }
+
+  @override
   String get settingsDynamicContent => 'Dynaaminen sisältö';
 
   @override
