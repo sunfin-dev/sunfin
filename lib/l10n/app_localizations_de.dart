@@ -10200,6 +10200,13 @@ class AppLocalizationsDe extends AppLocalizations {
       'Jede Einstellung auf diesem Gerät auf ihren Standardwert zurücksetzen? Du bleibst angemeldet, und in dein Jellyfin-Konto exportierte Einstellungen bleiben erhalten.\n\nPlexfin wird danach geschlossen. Öffne es erneut, um weiterzumachen.';
 
   @override
+  String get adminShowButton => 'Verwaltungsschaltfläche anzeigen';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Fügt dem Menü eine Schaltfläche hinzu, die die Serververwaltung öffnet';
+
+  @override
   String get settingsDynamicContent => 'Dynamischer Inhalt';
 
   @override

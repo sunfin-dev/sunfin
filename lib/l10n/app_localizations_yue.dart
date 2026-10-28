@@ -9757,6 +9757,12 @@ class AppLocalizationsYue extends AppLocalizations {
       '要將呢部裝置嘅每個設定還原做預設值？你會保持登入，匯出咗去你 Jellyfin 帳戶嘅設定亦會保留。\n\n之後 Plexfin 會關閉。再開返佢就可以繼續。';
 
   @override
+  String get adminShowButton => '顯示管理按鈕';
+
+  @override
+  String get adminShowButtonSubtitle => '喺選單加一個開啟伺服器管理嘅按鈕';
+
+  @override
   String get settingsDynamicContent => '動態內容';
 
   @override

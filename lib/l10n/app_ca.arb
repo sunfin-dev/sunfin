@@ -6543,6 +6543,8 @@
     "settingsReset": "Restableix tota la configuració",
     "settingsResetSubtitle": "Torna la configuració d'aquest dispositiu als valors per defecte",
     "settingsResetConfirm": "Vols tornar cada opció d'aquest dispositiu al seu valor per defecte? Continuaràs amb la sessió iniciada i es conservarà la configuració exportada al teu compte de Jellyfin.\n\nDesprés, Plexfin es tancarà. Torna'l a obrir per continuar.",
+    "adminShowButton": "Mostra el botó d'administració",
+    "adminShowButtonSubtitle": "Afegeix al menú un botó que obre l'administració del servidor",
     "settingsDynamicContent": "Contingut dinàmic",
     "settingsDynamicContentSubtitle": "Barra multimèdia i superposicions visuals",
     "settingsPlaybackSyncplay": "Reproducció i SyncPlay",

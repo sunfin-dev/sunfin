@@ -10263,6 +10263,13 @@ class AppLocalizationsHr extends AppLocalizations {
       'Vratiti svaku postavku na ovom uređaju na zadanu vrijednost? Ostajete prijavljeni, a postavke izvezene na vaš Jellyfin račun se čuvaju.\n\nPlexfin se nakon toga zatvara. Ponovno ga otvorite za nastavak.';
 
   @override
+  String get adminShowButton => 'Prikaži gumb za administraciju';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Dodaje u izbornik gumb koji otvara administraciju poslužitelja';
+
+  @override
   String get settingsDynamicContent => 'Dinamički sadržaj';
 
   @override

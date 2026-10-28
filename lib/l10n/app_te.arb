@@ -6543,6 +6543,8 @@
     "settingsReset": "అన్ని సెట్టింగ్‌లను రీసెట్ చేయండి",
     "settingsResetSubtitle": "ఈ పరికరం సెట్టింగ్‌లను డిఫాల్ట్‌కు తిరిగి తీసుకురండి",
     "settingsResetConfirm": "ఈ పరికరంలోని ప్రతి సెట్టింగ్‌ను డిఫాల్ట్‌కు తిరిగి మార్చాలా? మీరు సైన్ ఇన్ అయ్యే ఉంటారు, మీ Jellyfin ఖాతాకు ఎగుమతి చేసిన సెట్టింగ్‌లు అలాగే ఉంటాయి.\n\nఆ తర్వాత Plexfin మూసివేయబడుతుంది. కొనసాగించడానికి దాన్ని మళ్లీ తెరవండి.",
+    "adminShowButton": "నిర్వహణ బటన్‌ను చూపించు",
+    "adminShowButtonSubtitle": "సర్వర్ నిర్వహణను తెరిచే బటన్‌ను మెనూకు జోడిస్తుంది",
     "settingsDynamicContent": "డైనమిక్ కంటెంట్",
     "settingsDynamicContentSubtitle": "మీడియా బార్ మరియు విజువల్ ఓవర్‌లేలు",
     "settingsPlaybackSyncplay": "ప్లేబ్యాక్ & SyncPlay",

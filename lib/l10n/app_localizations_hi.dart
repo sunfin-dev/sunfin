@@ -10027,6 +10027,13 @@ class AppLocalizationsHi extends AppLocalizations {
       'इस डिवाइस की हर सेटिंग को उसके डिफ़ॉल्ट पर वापस लाएँ? आप साइन इन रहेंगे, और आपके Jellyfin खाते में एक्सपोर्ट की गई सेटिंग्स बनी रहेंगी।\n\nइसके बाद Plexfin बंद हो जाएगा। जारी रखने के लिए इसे फिर से खोलें।';
 
   @override
+  String get adminShowButton => 'प्रशासन बटन दिखाएँ';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'मेनू में एक बटन जोड़ता है जो सर्वर प्रशासन खोलता है';
+
+  @override
   String get settingsDynamicContent => 'गतिशील सामग्री';
 
   @override

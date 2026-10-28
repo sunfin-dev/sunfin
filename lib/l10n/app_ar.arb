@@ -6543,6 +6543,8 @@
     "settingsReset": "إعادة ضبط كل الإعدادات",
     "settingsResetSubtitle": "إعادة إعدادات هذا الجهاز إلى قيمها الافتراضية",
     "settingsResetConfirm": "هل تريد إعادة كل إعداد على هذا الجهاز إلى قيمته الافتراضية؟ ستبقى مسجّل الدخول، وتُحفظ الإعدادات المصدّرة إلى حساب Jellyfin.\n\nيُغلق Plexfin بعد ذلك. افتحه مجددًا للمتابعة.",
+    "adminShowButton": "إظهار زر الإدارة",
+    "adminShowButtonSubtitle": "يضيف زرًا إلى القائمة يفتح إدارة الخادم",
     "settingsDynamicContent": "المحتوى الديناميكي",
     "settingsDynamicContentSubtitle": "شريط الوسائط والتراكبات المرئية",
     "settingsPlaybackSyncplay": "التشغيل وSyncPlay",

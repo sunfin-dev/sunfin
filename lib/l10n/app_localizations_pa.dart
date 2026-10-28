@@ -10019,6 +10019,13 @@ class AppLocalizationsPa extends AppLocalizations {
       'ਕੀ ਇਸ ਡਿਵਾਈਸ ਦੀ ਹਰ ਸੈਟਿੰਗ ਨੂੰ ਡਿਫੌਲਟ \'ਤੇ ਵਾਪਸ ਲਿਆਉਣਾ ਹੈ? ਤੁਸੀਂ ਸਾਈਨ ਇਨ ਰਹੋਗੇ, ਅਤੇ ਤੁਹਾਡੇ Jellyfin ਖਾਤੇ ਵਿੱਚ ਐਕਸਪੋਰਟ ਕੀਤੀਆਂ ਸੈਟਿੰਗਾਂ ਰਹਿਣਗੀਆਂ।\n\nਇਸ ਤੋਂ ਬਾਅਦ Plexfin ਬੰਦ ਹੋ ਜਾਵੇਗਾ। ਜਾਰੀ ਰੱਖਣ ਲਈ ਇਸਨੂੰ ਦੁਬਾਰਾ ਖੋਲ੍ਹੋ।';
 
   @override
+  String get adminShowButton => 'ਪ੍ਰਸ਼ਾਸਨ ਬਟਨ ਦਿਖਾਓ';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'ਮੀਨੂ ਵਿੱਚ ਇੱਕ ਬਟਨ ਜੋੜਦਾ ਹੈ ਜੋ ਸਰਵਰ ਪ੍ਰਸ਼ਾਸਨ ਖੋਲ੍ਹਦਾ ਹੈ';
+
+  @override
   String get settingsDynamicContent => 'ਗਤੀਸ਼ੀਲ ਸਮੱਗਰੀ';
 
   @override

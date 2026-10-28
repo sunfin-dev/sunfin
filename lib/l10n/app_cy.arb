@@ -6543,6 +6543,8 @@
     "settingsReset": "Ailosod pob gosodiad",
     "settingsResetSubtitle": "Rhoi gosodiadau'r ddyfais hon yn ôl i'w rhagosodiadau",
     "settingsResetConfirm": "Rhoi pob gosodiad ar y ddyfais hon yn ôl i'w ragosodiad? Byddwch yn aros wedi mewngofnodi, a bydd gosodiadau a allforiwyd i'ch cyfrif Jellyfin yn cael eu cadw.\n\nMae Plexfin yn cau wedyn. Agorwch ef eto i barhau.",
+    "adminShowButton": "Dangos botwm gweinyddu",
+    "adminShowButtonSubtitle": "Yn ychwanegu botwm i'r ddewislen sy'n agor gweinyddu'r gweinydd",
     "settingsDynamicContent": "Cynnwys Dynamig",
     "settingsDynamicContentSubtitle": "Bar Cyfryngau a throshaenau gweledol",
     "settingsPlaybackSyncplay": "Chwarae a SyncPlay",

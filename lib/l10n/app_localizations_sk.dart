@@ -10106,6 +10106,13 @@ class AppLocalizationsSk extends AppLocalizations {
       'Vrátiť každé nastavenie na tomto zariadení na predvolenú hodnotu? Zostanete prihlásení a nastavenia exportované do vášho účtu Jellyfin sa zachovajú.\n\nPlexfin sa potom zatvorí. Pokračujte jeho opätovným otvorením.';
 
   @override
+  String get adminShowButton => 'Zobraziť tlačidlo správy';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Pridá do ponuky tlačidlo, ktoré otvorí správu servera';
+
+  @override
   String get settingsDynamicContent => 'Dynamický obsah';
 
   @override

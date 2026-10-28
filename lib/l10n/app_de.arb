@@ -6556,6 +6556,8 @@
     "settingsReset": "Alle Einstellungen zurücksetzen",
     "settingsResetSubtitle": "Die Einstellungen dieses Geräts auf ihre Standardwerte zurücksetzen",
     "settingsResetConfirm": "Jede Einstellung auf diesem Gerät auf ihren Standardwert zurücksetzen? Du bleibst angemeldet, und in dein Jellyfin-Konto exportierte Einstellungen bleiben erhalten.\n\nPlexfin wird danach geschlossen. Öffne es erneut, um weiterzumachen.",
+    "adminShowButton": "Verwaltungsschaltfläche anzeigen",
+    "adminShowButtonSubtitle": "Fügt dem Menü eine Schaltfläche hinzu, die die Serververwaltung öffnet",
     "settingsDynamicContent": "Dynamischer Inhalt",
     "settingsDynamicContentSubtitle": "Medienleiste und visuelle Overlays",
     "settingsPlaybackSyncplay": "Wiedergabe und SyncPlay",

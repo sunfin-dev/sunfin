@@ -10057,6 +10057,13 @@ class AppLocalizationsId extends AppLocalizations {
       'Kembalikan setiap pengaturan di perangkat ini ke default-nya? Anda tetap masuk, dan pengaturan yang diekspor ke akun Jellyfin Anda tetap tersimpan.\n\nPlexfin akan ditutup setelahnya. Buka lagi untuk melanjutkan.';
 
   @override
+  String get adminShowButton => 'Tampilkan tombol administrasi';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Menambahkan tombol ke menu yang membuka administrasi server';
+
+  @override
   String get settingsDynamicContent => 'Konten Dinamis';
 
   @override

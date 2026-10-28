@@ -6543,6 +6543,8 @@
     "settingsReset": "بازنشانی همه تنظیمات",
     "settingsResetSubtitle": "برگرداندن تنظیمات این دستگاه به پیش‌فرض",
     "settingsResetConfirm": "همه تنظیمات این دستگاه به پیش‌فرض برگردد؟ وارد حساب باقی می‌مانید و تنظیماتی که به حساب Jellyfin شما صادر شده‌اند حفظ می‌شوند.\n\nPlexfin پس از آن بسته می‌شود. برای ادامه دوباره بازش کنید.",
+    "adminShowButton": "نمایش دکمه مدیریت",
+    "adminShowButtonSubtitle": "دکمه‌ای به منو اضافه می‌کند که مدیریت سرور را باز می‌کند",
     "settingsDynamicContent": "محتوای پویا",
     "settingsDynamicContentSubtitle": "نوار رسانه و پوشش های بصری",
     "settingsPlaybackSyncplay": "پخش و SyncPlay",

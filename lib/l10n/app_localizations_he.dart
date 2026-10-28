@@ -9932,6 +9932,12 @@ class AppLocalizationsHe extends AppLocalizations {
       'להחזיר כל הגדרה במכשיר זה לברירת המחדל שלה? תישאר מחובר, והגדרות שיוצאו לחשבון Jellyfin שלך יישמרו.\n\nPlexfin ייסגר לאחר מכן. פתח אותו שוב כדי להמשיך.';
 
   @override
+  String get adminShowButton => 'הצגת לחצן ניהול';
+
+  @override
+  String get adminShowButtonSubtitle => 'מוסיף לתפריט לחצן שפותח את ניהול השרת';
+
+  @override
   String get settingsDynamicContent => 'תוכן דינמי';
 
   @override

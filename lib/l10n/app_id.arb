@@ -6543,6 +6543,8 @@
     "settingsReset": "Atur ulang semua pengaturan",
     "settingsResetSubtitle": "Kembalikan pengaturan perangkat ini ke default",
     "settingsResetConfirm": "Kembalikan setiap pengaturan di perangkat ini ke default-nya? Anda tetap masuk, dan pengaturan yang diekspor ke akun Jellyfin Anda tetap tersimpan.\n\nPlexfin akan ditutup setelahnya. Buka lagi untuk melanjutkan.",
+    "adminShowButton": "Tampilkan tombol administrasi",
+    "adminShowButtonSubtitle": "Menambahkan tombol ke menu yang membuka administrasi server",
     "settingsDynamicContent": "Konten Dinamis",
     "settingsDynamicContentSubtitle": "Media Bar dan overlay visual",
     "settingsPlaybackSyncplay": "Pemutaran & SyncPlay",

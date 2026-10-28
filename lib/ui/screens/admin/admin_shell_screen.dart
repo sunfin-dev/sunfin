@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:moonfin_design/moonfin_design.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../l10n/app_localizations.dart';
 import '../../navigation/destinations.dart';
 import 'providers/admin_websocket_handler.dart';
 import 'widgets/admin_drawer.dart';
+import 'widgets/admin_look.dart';
 
 class AdminShellScreen extends StatelessWidget {
   final Widget child;
@@ -19,7 +19,7 @@ class AdminShellScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final theme = Theme.of(context);
+    final theme = AdminLook.theme(Theme.of(context));
     final width = MediaQuery.sizeOf(context).width;
     final isWide = MediaQuery.sizeOf(context).width >= 900;
     final isCompact = width < 430;
@@ -30,24 +30,7 @@ class AdminShellScreen extends StatelessWidget {
     // comes from the router rather than the navigator, which is a child of
     // this widget and still holds the previous stack while this builds.
     final canGoBack = _stackDepth(context) > 1;
-    // Blended over the scaffold up front so the gradient is opaque, since
-    // every page also paints it over the page it replaces.
-    final backdrop = BoxDecoration(
-      gradient: LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [
-          Color.alphaBlend(
-            theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.45),
-            theme.scaffoldBackgroundColor,
-          ),
-          Color.alphaBlend(
-            theme.colorScheme.surface,
-            theme.scaffoldBackgroundColor,
-          ),
-        ],
-      ),
-    );
+    const backdrop = BoxDecoration(color: AdminLook.page);
     // Admin pages draw no background of their own, so each one carries what
     // sits behind it. Otherwise the page being left stays readable under the
     // one fading in.
@@ -56,106 +39,93 @@ class AdminShellScreen extends StatelessWidget {
         pageTransitionsTheme: _BackedPageTransitions(
           theme.pageTransitionsTheme,
           backdrop: backdrop,
-          panel: isWide ? theme.colorScheme.surface : null,
         ),
       ),
       child: child,
     );
 
-    return AdminWebSocketHandler(
-      child: Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          surfaceTintColor: Colors.transparent,
-          // The area sits over the home screen, so an empty slot would get an
-          // implied arrow that leaves it, which is what the close button is for.
-          automaticallyImplyLeading: false,
-          backgroundColor: theme.colorScheme.surface,
-          toolbarHeight: isCompact ? kToolbarHeight : 64,
-          leading: canGoBack
-              ? IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  onPressed: context.pop,
-                )
-              : isWide
-              ? null
-              : Builder(
-                  builder: (ctx) => IconButton(
-                    icon: const Icon(Icons.menu),
-                    onPressed: () => Scaffold.of(ctx).openDrawer(),
+    return Theme(
+      data: theme,
+      child: AdminWebSocketHandler(
+        child: Scaffold(
+          appBar: AppBar(
+            // The area sits over the home screen, so an empty slot would get
+            // an implied arrow that leaves it, which is what the close button
+            // is for.
+            automaticallyImplyLeading: false,
+            shape: const Border(bottom: BorderSide(color: AdminLook.line)),
+            toolbarHeight: isCompact ? kToolbarHeight : 56,
+            leading: canGoBack
+                ? IconButton(
+                    icon: const Icon(Icons.arrow_back),
+                    onPressed: context.pop,
+                  )
+                : isWide
+                ? null
+                : Builder(
+                    builder: (ctx) => IconButton(
+                      icon: const Icon(Icons.menu),
+                      onPressed: () => Scaffold.of(ctx).openDrawer(),
+                    ),
                   ),
-                ),
-          titleSpacing: 12,
-          title: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                l10n.adminServerAdministrationTitle,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: isCompact ? theme.textTheme.titleMedium : theme.textTheme.titleLarge,
+            titleSpacing: 20,
+            title: Text(
+              l10n.adminServerAdministrationTitle,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style:
+                  (isCompact
+                          ? theme.textTheme.titleMedium
+                          : theme.textTheme.titleLarge)
+                      ?.copyWith(fontWeight: FontWeight.w500),
+            ),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.close),
+                color: AdminLook.muted,
+                tooltip: l10n.adminExitTooltip,
+                onPressed: () => context.go(Destinations.home),
               ),
+              const SizedBox(width: 8),
             ],
           ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.close),
-              tooltip: l10n.adminExitTooltip,
-              onPressed: () => context.go(Destinations.home),
-            ),
-          ],
-        ),
-        drawer: isWide ? null : AdminDrawer(currentPath: currentPath),
-        body: DecoratedBox(
-          decoration: backdrop,
-          child: isWide
-              ? Row(
-                  children: [
-                    Container(
-                      width: 280,
-                      decoration: BoxDecoration(
-                        color: theme.colorScheme.surface.scaleAlpha(0.92),
-                        border: Border(
-                          right: BorderSide(
-                            color: theme.colorScheme.outlineVariant,
+          drawer: isWide ? null : AdminDrawer(currentPath: currentPath),
+          body: DecoratedBox(
+            decoration: backdrop,
+            child: isWide
+                ? Row(
+                    children: [
+                      Container(
+                        width: 250,
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            right: BorderSide(color: AdminLook.line),
                           ),
                         ),
-                      ),
-                      child: AdminDrawer(
-                        currentPath: currentPath,
-                        isEmbedded: true,
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 14, 16, 16),
-                        child: Material(
-                          color: theme.colorScheme.surface,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: AppRadius.circular(18),
-                            side: BorderSide(
-                              color: theme.colorScheme.outlineVariant,
-                            ),
-                          ),
-                          clipBehavior: Clip.antiAlias,
-                          child: ScrollConfiguration(
-                            behavior: const _AdminShellScrollBehavior(),
-                            child: pages,
-                          ),
+                        child: AdminDrawer(
+                          currentPath: currentPath,
+                          isEmbedded: true,
                         ),
                       ),
-                    ),
-                  ],
-                )
-              : pages,
+                      Expanded(
+                        child: ScrollConfiguration(
+                          behavior: const _AdminShellScrollBehavior(),
+                          child: pages,
+                        ),
+                      ),
+                    ],
+                  )
+                : pages,
+          ),
         ),
       ),
     );
   }
 
   static int _stackDepth(BuildContext context) {
-    final configuration = GoRouter.of(context).routerDelegate.currentConfiguration;
+    final configuration = GoRouter.of(context)
+        .routerDelegate
+        .currentConfiguration;
     for (final match in configuration.matches) {
       if (match is ShellRouteMatch && match.navigatorKey == navigatorKey) {
         return match.matches.length;
@@ -166,15 +136,11 @@ class AdminShellScreen extends StatelessWidget {
 }
 
 class _BackedPageTransitions extends PageTransitionsTheme {
-  _BackedPageTransitions(this._base, {required this.backdrop, this.panel})
+  _BackedPageTransitions(this._base, {required this.backdrop})
     : super(builders: _base.builders);
 
   final PageTransitionsTheme _base;
   final Decoration backdrop;
-
-  /// The wide layout's panel color, painted over [backdrop] the way the panel
-  /// sits over the body.
-  final Color? panel;
 
   @override
   Widget buildTransitions<T>(
@@ -188,10 +154,7 @@ class _BackedPageTransitions extends PageTransitionsTheme {
     context,
     animation,
     secondaryAnimation,
-    DecoratedBox(
-      decoration: backdrop,
-      child: panel == null ? child : ColoredBox(color: panel!, child: child),
-    ),
+    DecoratedBox(decoration: backdrop, child: child),
   );
 }
 

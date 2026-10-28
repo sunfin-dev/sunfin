@@ -9981,6 +9981,13 @@ class AppLocalizationsEn extends AppLocalizations {
       'Put every setting on this device back to its default? You stay signed in, and settings exported to your Jellyfin account are kept.\n\nPlexfin closes afterwards. Open it again to continue.';
 
   @override
+  String get adminShowButton => 'Show administration button';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Adds a button to the menu that opens server administration';
+
+  @override
   String get settingsDynamicContent => 'Dynamic Content';
 
   @override

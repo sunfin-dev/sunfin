@@ -6556,6 +6556,8 @@
     "settingsReset": "Repor todas as definições",
     "settingsResetSubtitle": "Repor as predefinições deste dispositivo",
     "settingsResetConfirm": "Repor a predefinição de cada definição deste dispositivo? Continua com a sessão iniciada, e as definições exportadas para a sua conta Jellyfin são mantidas.\n\nO Plexfin fecha a seguir. Abra-o novamente para continuar.",
+    "adminShowButton": "Mostrar botão de administração",
+    "adminShowButtonSubtitle": "Adiciona ao menu um botão que abre a administração do servidor",
     "settingsDynamicContent": "Conteúdo Dinâmico",
     "settingsDynamicContentSubtitle": "Barra de mídia e sobreposições visuais",
     "settingsPlaybackSyncplay": "Reprodução e SyncPlay",

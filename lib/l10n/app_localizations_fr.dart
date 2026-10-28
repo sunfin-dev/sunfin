@@ -10181,6 +10181,13 @@ class AppLocalizationsFr extends AppLocalizations {
       'Rétablir la valeur par défaut de chaque paramètre de cet appareil ? Vous restez connecté et les paramètres exportés vers votre compte Jellyfin sont conservés.\n\nPlexfin se ferme ensuite. Rouvrez-le pour continuer.';
 
   @override
+  String get adminShowButton => 'Afficher le bouton Administration';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Ajoute au menu un bouton qui ouvre l\'administration du serveur';
+
+  @override
   String get settingsDynamicContent => 'Contenu dynamique';
 
   @override

@@ -6556,6 +6556,8 @@
     "settingsReset": "Réinitialiser tous les paramètres",
     "settingsResetSubtitle": "Rétablir les valeurs par défaut des paramètres de cet appareil",
     "settingsResetConfirm": "Rétablir la valeur par défaut de chaque paramètre de cet appareil ? Vous restez connecté et les paramètres exportés vers votre compte Jellyfin sont conservés.\n\nPlexfin se ferme ensuite. Rouvrez-le pour continuer.",
+    "adminShowButton": "Afficher le bouton Administration",
+    "adminShowButtonSubtitle": "Ajoute au menu un bouton qui ouvre l'administration du serveur",
     "settingsDynamicContent": "Contenu dynamique",
     "settingsDynamicContentSubtitle": "Barre média et superpositions visuelles",
     "settingsPlaybackSyncplay": "Lecture & SyncPlay",

@@ -10134,6 +10134,13 @@ class AppLocalizationsHu extends AppLocalizations {
       'Visszaállítod az eszköz minden beállítását az alapértékére? Bejelentkezve maradsz, és a Jellyfin-fiókodba exportált beállítások megmaradnak.\n\nA Plexfin ezután bezárul. A folytatáshoz nyisd meg újra.';
 
   @override
+  String get adminShowButton => 'Adminisztráció gomb megjelenítése';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Gombot ad a menühöz, amely megnyitja a szerver adminisztrációját';
+
+  @override
   String get settingsDynamicContent => 'Dinamikus tartalom';
 
   @override

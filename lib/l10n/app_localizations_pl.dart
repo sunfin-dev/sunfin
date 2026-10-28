@@ -10354,6 +10354,13 @@ class AppLocalizationsPl extends AppLocalizations {
       'Przywrócić domyślną wartość każdego ustawienia na tym urządzeniu? Pozostaniesz zalogowany, a ustawienia wyeksportowane na Twoje konto Jellyfin zostaną zachowane.\n\nPlexfin zostanie potem zamknięty. Otwórz go ponownie, aby kontynuować.';
 
   @override
+  String get adminShowButton => 'Pokaż przycisk administracji';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Dodaje do menu przycisk, który otwiera administrację serwera';
+
+  @override
   String get settingsDynamicContent => 'Treści dynamiczne';
 
   @override

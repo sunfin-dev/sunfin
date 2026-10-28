@@ -10158,6 +10158,13 @@ class AppLocalizationsMl extends AppLocalizations {
       'ഈ ഉപകരണത്തിലെ എല്ലാ ക്രമീകരണങ്ങളും ഡിഫോൾട്ടിലേക്ക് മാറ്റണോ? നിങ്ങൾ സൈൻ ഇൻ ചെയ്‌ത നിലയിൽ തുടരും, നിങ്ങളുടെ Jellyfin അക്കൗണ്ടിലേക്ക് എക്‌സ്‌പോർട്ട് ചെയ്‌ത ക്രമീകരണങ്ങൾ നിലനിൽക്കും.\n\nതുടർന്ന് Plexfin അടയും. തുടരാൻ ഇത് വീണ്ടും തുറക്കുക.';
 
   @override
+  String get adminShowButton => 'അഡ്മിനിസ്ട്രേഷൻ ബട്ടൺ കാണിക്കുക';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'സെർവർ അഡ്മിനിസ്ട്രേഷൻ തുറക്കുന്ന ഒരു ബട്ടൺ മെനുവിൽ ചേർക്കുന്നു';
+
+  @override
   String get settingsDynamicContent => 'ഡൈനാമിക് ഉള്ളടക്കം';
 
   @override

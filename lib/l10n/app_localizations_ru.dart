@@ -10120,6 +10120,13 @@ class AppLocalizationsRu extends AppLocalizations {
       'Вернуть каждую настройку на этом устройстве к значению по умолчанию? Вы останетесь в системе, а настройки, экспортированные в вашу учётную запись Jellyfin, сохранятся.\n\nЗатем Plexfin закроется. Откройте его снова, чтобы продолжить.';
 
   @override
+  String get adminShowButton => 'Показывать кнопку администрирования';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Добавляет в меню кнопку, открывающую администрирование сервера';
+
+  @override
   String get settingsDynamicContent => 'Динамический контент';
 
   @override

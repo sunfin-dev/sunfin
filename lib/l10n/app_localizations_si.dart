@@ -10041,6 +10041,13 @@ class AppLocalizationsSi extends AppLocalizations {
       'මෙම උපාංගයේ සෑම සැකසුමක්ම එහි පෙරනිමියට ආපසු ගෙන එන්නද? ඔබ පුරනය වී සිටිනු ඇති අතර, ඔබගේ Jellyfin ගිණුමට අපනයනය කළ සැකසුම් රැඳී පවතී.\n\nඉන්පසු Plexfin වැසේ. දිගටම කරගෙන යාමට එය නැවත විවෘත කරන්න.';
 
   @override
+  String get adminShowButton => 'පරිපාලන බොත්තම පෙන්වන්න';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'සේවාදායක පරිපාලනය විවෘත කරන බොත්තමක් මෙනුවට එක් කරයි';
+
+  @override
   String get settingsDynamicContent => 'ගතික අන්තර්ගතය';
 
   @override

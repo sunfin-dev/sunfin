@@ -10082,6 +10082,13 @@ class AppLocalizationsCs extends AppLocalizations {
       'Vrátit každé nastavení na tomto zařízení na výchozí hodnotu? Zůstanete přihlášeni a nastavení exportovaná do vašeho účtu Jellyfin zůstanou zachována.\n\nPlexfin se poté zavře. Pokračujte jeho opětovným otevřením.';
 
   @override
+  String get adminShowButton => 'Zobrazit tlačítko správy';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Přidá do nabídky tlačítko, které otevře správu serveru';
+
+  @override
   String get settingsDynamicContent => 'Dynamický obsah';
 
   @override

@@ -10049,6 +10049,13 @@ class AppLocalizationsVi extends AppLocalizations {
       'Đưa mọi cài đặt trên thiết bị này về mặc định? Bạn vẫn được đăng nhập, và các cài đặt đã xuất lên tài khoản Jellyfin của bạn vẫn được giữ.\n\nSau đó Plexfin sẽ đóng. Mở lại để tiếp tục.';
 
   @override
+  String get adminShowButton => 'Hiện nút quản trị';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Thêm vào menu một nút mở phần quản trị máy chủ';
+
+  @override
   String get settingsDynamicContent => 'Nội dung động';
 
   @override

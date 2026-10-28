@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:moonfin_design/moonfin_design.dart';
 
-import '../../../widgets/adaptive/adaptive_glass.dart';
+import 'admin_look.dart';
 
-/// Shared presentation helpers for the admin form screens. They wrap the
-/// existing raw-map form logic in an inset-grouped glass aesthetic without
+/// Shared presentation helpers for the admin form screens. They put the
+/// existing raw-map form logic in Plexfin's admin look (AdminLook) without
 /// changing how callers read or write their config maps.
 
 Widget adminScreenHeader(
@@ -13,82 +13,59 @@ Widget adminScreenHeader(
   String? subtitle,
   IconData? icon,
 }) {
-  final onSurface = AppColorScheme.onSurface;
+  // Plex titles its settings pages with plain text; [icon] stays in the
+  // signature for the callers, which pass one each.
   return Padding(
     padding: const EdgeInsets.only(bottom: AppSpacing.spaceLg),
-    child: Row(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        if (icon != null) ...[
-          _accentIconChip(icon),
-          const SizedBox(width: AppSpacing.spaceMd),
-        ],
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: -0.5,
-                  color: onSurface,
-                ),
-              ),
-              if (subtitle != null) ...[
-                const SizedBox(height: 2),
-                Text(
-                  subtitle,
-                  style: TextStyle(
-                    fontSize: 13,
-                    height: 1.3,
-                    color: onSurface.withValues(alpha: 0.55),
-                  ),
-                ),
-              ],
-            ],
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.w700,
+            color: AdminLook.text,
           ),
         ),
+        if (subtitle != null) ...[
+          const SizedBox(height: 4),
+          Text(
+            subtitle,
+            style: const TextStyle(
+              fontSize: 13,
+              height: 1.4,
+              color: AdminLook.muted,
+            ),
+          ),
+        ],
       ],
     ),
   );
 }
 
-Widget adminSectionLabel(
-  BuildContext context,
-  String text, {
-  IconData? icon,
-}) {
-  final accent = AppColorScheme.accent;
+Widget adminSectionLabel(BuildContext context, String text, {IconData? icon}) {
   return Padding(
     padding: const EdgeInsets.fromLTRB(
-      AppSpacing.spaceXs,
+      0,
       AppSpacing.spaceXl,
-      AppSpacing.spaceXs,
+      0,
       AppSpacing.spaceSm,
     ),
     child: Row(
       children: [
         if (icon != null) ...[
-          Icon(icon, size: 15, color: accent),
+          Icon(icon, size: 14, color: AdminLook.muted),
           const SizedBox(width: 6),
         ],
-        Text(
-          text.toUpperCase(),
-          style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 1.1,
-            color: accent.withValues(alpha: 0.9),
-          ),
-        ),
+        Text(text.toUpperCase(), style: AdminLook.sectionStyle),
       ],
     ),
   );
 }
 
-/// A [adminSectionLabel] followed by a glass card grouping [children].
+/// A [adminSectionLabel] followed by [adminGlassGroup] of [children].
 Widget adminSection(
   BuildContext context, {
   required String title,
@@ -104,66 +81,45 @@ Widget adminSection(
   );
 }
 
-/// A solid (non-blurred) translucent rounded card. Use for rows inside a
-/// scrollable `ListView.builder` instead of [adminGlassGroup], which would add
-/// a `BackdropFilter` per row and janks long lists on glass themes.
+/// One row of a scrolling list, set off by a thin outline.
 Widget adminListCard({required Widget child, EdgeInsetsGeometry? margin}) {
   return Container(
     margin: margin,
     clipBehavior: Clip.antiAlias,
     decoration: BoxDecoration(
-      color: AppColorScheme.onSurface.withValues(alpha: 0.04),
-      borderRadius: AppRadius.circular(18),
-      border: Border.all(
-        color: AppColorScheme.onSurface.withValues(alpha: 0.08),
-        width: 0.5,
-      ),
+      borderRadius: AdminLook.borderRadius,
+      border: Border.all(color: AdminLook.line),
     ),
     child: child,
   );
 }
 
-/// Groups [children] into a rounded translucent card with hairline dividers.
-Widget adminGlassGroup(
-  BuildContext context, {
-  required List<Widget> children,
-}) {
+/// Groups [children] straight on the page, with thin lines above, between
+/// and below them, as Plex lists its settings. (The name is upstream's, from
+/// when the group was a glass card.)
+Widget adminGlassGroup(BuildContext context, {required List<Widget> children}) {
   final rows = <Widget>[];
   for (var i = 0; i < children.length; i++) {
     if (i > 0) rows.add(_hairline());
     rows.add(children[i]);
   }
-  return adaptiveGlass(
-    cornerRadius: 18,
-    blur: 22,
-    tint: AppColorScheme.onSurface.withValues(alpha: 0.04),
-    fallbackColor: AppColorScheme.surface.withValues(alpha: 0.55),
+  return DecoratedBox(
+    decoration: const BoxDecoration(
+      border: Border.symmetric(horizontal: BorderSide(color: AdminLook.line)),
+    ),
     // Rows paint their hover and press highlight on the nearest Material.
-    // Without this one, that's the panel under the pane, and the square
-    // highlight shows through past the rounded corners.
     child: Material(
       type: MaterialType.transparency,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-      clipBehavior: Clip.antiAlias,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: AppSpacing.spaceXs),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: rows,
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: rows,
       ),
     ),
   );
 }
 
-Widget _hairline() => Padding(
-      padding: const EdgeInsets.only(left: AppSpacing.spaceLg),
-      child: Divider(
-        height: 0.5,
-        thickness: 0.5,
-        color: AppColorScheme.onSurface.withValues(alpha: 0.10),
-      ),
-    );
+Widget _hairline() =>
+    const Divider(height: 1, thickness: 1, color: AdminLook.line);
 
 InputDecoration adminInputDecoration({
   String? label,
@@ -172,28 +128,29 @@ InputDecoration adminInputDecoration({
   String? suffixText,
   Widget? suffixIcon,
 }) {
-  final onSurface = AppColorScheme.onSurface;
-  final accent = AppColorScheme.accent;
   OutlineInputBorder border(Color color, double width) => OutlineInputBorder(
-        borderRadius: AppRadius.circular(14),
-        borderSide: BorderSide(color: color, width: width),
-      );
+    borderRadius: AdminLook.borderRadius,
+    borderSide: BorderSide(color: color, width: width),
+  );
   return InputDecoration(
     labelText: label,
     hintText: hint,
     helperText: helper,
     helperMaxLines: 3,
     filled: true,
-    fillColor: onSurface.withValues(alpha: 0.05),
+    fillColor: AdminLook.raised,
     isDense: true,
     contentPadding: const EdgeInsets.symmetric(
       horizontal: AppSpacing.spaceLg,
       vertical: 16,
     ),
-    floatingLabelStyle: TextStyle(color: accent, fontWeight: FontWeight.w600),
-    border: border(Colors.transparent, 0),
-    enabledBorder: border(onSurface.withValues(alpha: 0.08), 1),
-    focusedBorder: border(accent, 1.6),
+    floatingLabelStyle: const TextStyle(
+      color: AdminLook.gold,
+      fontWeight: FontWeight.w600,
+    ),
+    border: border(AdminLook.line, 1),
+    enabledBorder: border(AdminLook.line, 1),
+    focusedBorder: border(AdminLook.gold, 1.5),
     suffixText: suffixText,
     suffixIcon: suffixIcon,
   );
@@ -255,10 +212,7 @@ Widget adminSwitchRow({
         ? null
         : Text(
             subtitle,
-            style: TextStyle(
-              fontSize: 12,
-              color: AppColorScheme.onSurface.withValues(alpha: 0.55),
-            ),
+            style: TextStyle(fontSize: 12, color: AdminLook.muted),
           ),
     value: value,
     contentPadding: const EdgeInsets.symmetric(
@@ -269,51 +223,36 @@ Widget adminSwitchRow({
   );
 }
 
-/// Full-width accent action button with a spinner while [saving].
+/// Plex's gold Save button, at the start of the row, with a spinner while
+/// [saving].
 Widget adminSaveButton({
   required String label,
   required bool saving,
   required VoidCallback onPressed,
 }) {
-  return SizedBox(
-    width: double.infinity,
+  return Align(
+    alignment: AlignmentDirectional.centerStart,
     child: FilledButton(
       onPressed: saving ? null : onPressed,
       style: FilledButton.styleFrom(
-        backgroundColor: AppColorScheme.accent,
-        foregroundColor: AppColorScheme.onAccent,
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        shape: RoundedRectangleBorder(borderRadius: AppRadius.circular(14)),
+        backgroundColor: AdminLook.gold,
+        foregroundColor: AdminLook.onGold,
+        padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
+        shape: RoundedRectangleBorder(borderRadius: AdminLook.borderRadius),
       ),
       child: saving
           ? const SizedBox(
               width: 20,
               height: 20,
-              child: CircularProgressIndicator(strokeWidth: 2),
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                color: AdminLook.onGold,
+              ),
             )
-          : Text(label,
-              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
+          : Text(
+              label,
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
+            ),
     ),
-  );
-}
-
-Widget _accentIconChip(IconData icon) {
-  final accent = AppColorScheme.accent;
-  return Container(
-    width: 44,
-    height: 44,
-    decoration: BoxDecoration(
-      borderRadius: AppRadius.circular(13),
-      gradient: LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [
-          accent.withValues(alpha: 0.30),
-          accent.withValues(alpha: 0.14),
-        ],
-      ),
-      border: Border.all(color: accent.withValues(alpha: 0.35), width: 1),
-    ),
-    child: Icon(icon, size: 24, color: accent),
   );
 }

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:moonfin_design/moonfin_design.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../l10n/app_localizations.dart';
 import '../../../../preference/user_preferences.dart';
 import '../../../navigation/destinations.dart';
+import '../../../plex/plex_style.dart';
+import 'admin_look.dart';
 
 class AdminDrawer extends StatefulWidget {
   final String currentPath;
@@ -95,7 +97,9 @@ class _AdminDrawerState extends State<AdminDrawer> {
         onReorder: _onReorder,
         itemBuilder: (context, index) {
           final entry = _entries[index];
-          final previousSection = index > 0 ? _entries[index - 1].section : null;
+          final previousSection = index > 0
+              ? _entries[index - 1].section
+              : null;
           final showSection = index == 0 || previousSection != entry.section;
           return Column(
             key: ValueKey('admin-drawer-${entry.id}'),
@@ -116,82 +120,63 @@ class _AdminDrawerState extends State<AdminDrawer> {
 
   Widget _section(BuildContext context, String title) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 4),
-      child: Text(
-        title,
-        style: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.w600,
-          color: Theme.of(context).colorScheme.primary,
-        ),
-      ),
+      padding: const EdgeInsets.fromLTRB(24, 18, 16, 6),
+      child: Text(title.toUpperCase(), style: AdminLook.sectionStyle),
     );
   }
 
-  Widget _tile(
-    BuildContext context,
-    _AdminNavEntry entry,
-    int index,
-  ) {
+  /// A plain row; the open page sits in Plexfin's white pill. Dragging a
+  /// row after a long press still reorders the menu.
+  Widget _tile(BuildContext context, _AdminNavEntry entry, int index) {
     final theme = Theme.of(context);
     final selected = widget.currentPath == entry.destination;
-    final iconColor = selected
-        ? theme.colorScheme.onPrimaryContainer
-        : theme.colorScheme.onSurface;
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(12, 3, 12, 3),
-      child: Material(
-        color: selected
-            ? theme.colorScheme.primaryContainer.withValues(alpha: 0.85)
-            : theme.colorScheme.surfaceContainerLow,
-        borderRadius: AppRadius.circular(9),
-        child: InkWell(
-          borderRadius: AppRadius.circular(9),
-          onTap: () {
-            if (!widget.isEmbedded) {
-              Navigator.of(context).pop();
-            }
-            if (!selected) {
-              context.go(entry.destination);
-            }
-          },
-          child: Container(
-            height: 40,
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            decoration: BoxDecoration(
-              borderRadius: AppRadius.circular(9),
-              border: Border.all(
-                color: selected
-                    ? theme.colorScheme.primary.withValues(alpha: 0.35)
-                    : theme.colorScheme.outlineVariant.withValues(alpha: 0.55),
-              ),
-            ),
-            child: Row(
-              children: [
-                entry.iconBuilder != null
-                    ? entry.iconBuilder!(18, iconColor)
-                    : Icon(entry.icon, size: 18, color: iconColor),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Text(
-                    entry.title,
-                    style: theme.textTheme.labelLarge?.copyWith(
-                      color: iconColor,
-                      fontWeight: selected ? FontWeight.w700 : FontWeight.w600,
+    final color = selected ? AdminLook.onPill : const Color(0xFFD8D8D8);
+    return ReorderableDelayedDragStartListener(
+      index: index,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 1),
+        child: Material(
+          color: selected ? AdminLook.pill : Colors.transparent,
+          borderRadius: AdminLook.borderRadius,
+          child: InkWell(
+            borderRadius: AdminLook.borderRadius,
+            onTap: () {
+              if (!widget.isEmbedded) {
+                Navigator.of(context).pop();
+              }
+              if (!selected) {
+                context.go(entry.destination);
+              }
+            },
+            child: SizedBox(
+              height: 38,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: Row(
+                  children: [
+                    Icon(
+                      entry.icon,
+                      size: 19,
+                      weight: plexIconWeight,
+                      color: color,
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Text(
+                        entry.title,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: color,
+                          fontWeight: selected
+                              ? FontWeight.w500
+                              : FontWeight.w400,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
                 ),
-                ReorderableDragStartListener(
-                  index: index,
-                  child: Icon(
-                    Icons.drag_indicator,
-                    size: 18,
-                    color: theme.colorScheme.onSurfaceVariant,
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ),
@@ -204,9 +189,8 @@ class _AdminNavEntry {
   final String id;
   final String section;
   final String title;
-  final IconData? icon;
+  final IconData icon;
   final String destination;
-  final Widget Function(double size, Color color)? iconBuilder;
 
   const _AdminNavEntry({
     required this.id,
@@ -214,7 +198,6 @@ class _AdminNavEntry {
     required this.title,
     required this.icon,
     required this.destination,
-    this.iconBuilder,
   });
 }
 
@@ -223,172 +206,161 @@ List<_AdminNavEntry> _buildDefaultEntries(AppLocalizations l10n) => [
     id: 'dashboard',
     section: l10n.adminDrawerSectionServer,
     title: l10n.adminDrawerDashboard,
-    icon: Icons.dashboard,
+    icon: Symbols.dashboard,
     destination: Destinations.admin,
   ),
   _AdminNavEntry(
     id: 'analytics',
     section: l10n.adminDrawerSectionServer,
     title: l10n.adminDrawerAnalytics,
-    icon: Icons.insights,
+    icon: Symbols.insights,
     destination: Destinations.adminAnalytics,
   ),
   _AdminNavEntry(
     id: 'settings',
     section: l10n.adminDrawerSectionServer,
     title: l10n.adminDrawerSettings,
-    icon: Icons.settings,
+    icon: Symbols.settings,
     destination: Destinations.adminSettings,
   ),
   _AdminNavEntry(
     id: 'branding',
     section: l10n.adminDrawerSectionServer,
     title: l10n.adminDrawerBranding,
-    icon: Icons.brush,
+    icon: Symbols.brush,
     destination: Destinations.adminSettingsBranding,
   ),
   _AdminNavEntry(
     id: 'users',
     section: l10n.adminDrawerSectionServer,
     title: l10n.adminDrawerUsers,
-    icon: Icons.people,
+    icon: Symbols.group,
     destination: Destinations.adminUsers,
   ),
   _AdminNavEntry(
     id: 'libraries',
     section: l10n.adminDrawerSectionServer,
     title: l10n.adminDrawerLibraries,
-    icon: null,
+    icon: Symbols.video_library,
     destination: Destinations.adminLibraries,
-    iconBuilder: _librariesIcon,
   ),
   _AdminNavEntry(
     id: 'display',
     section: l10n.adminDrawerSectionServer,
     title: l10n.adminDrawerDisplay,
-    icon: Icons.grid_view,
+    icon: Symbols.grid_view,
     destination: Destinations.adminSettingsDisplay,
   ),
   _AdminNavEntry(
     id: 'metadata',
     section: l10n.adminDrawerSectionServer,
     title: l10n.adminDrawerMetadata,
-    icon: Icons.description_outlined,
+    icon: Symbols.description,
     destination: Destinations.adminSettingsMetadata,
   ),
   _AdminNavEntry(
     id: 'nfo',
     section: l10n.adminDrawerSectionServer,
     title: l10n.adminDrawerNfo,
-    icon: Icons.text_snippet_outlined,
+    icon: Symbols.text_snippet,
     destination: Destinations.adminSettingsNfo,
   ),
   _AdminNavEntry(
     id: 'transcoding',
     section: l10n.adminDrawerSectionPlayback,
     title: l10n.adminDrawerTranscoding,
-    icon: Icons.swap_horiz,
+    icon: Symbols.swap_horiz,
     destination: Destinations.adminSettingsPlayback,
   ),
   _AdminNavEntry(
     id: 'resume',
     section: l10n.adminDrawerSectionPlayback,
     title: l10n.adminDrawerResume,
-    icon: Icons.play_circle_outline,
+    icon: Symbols.play_circle,
     destination: Destinations.adminSettingsResume,
   ),
   _AdminNavEntry(
     id: 'streaming',
     section: l10n.adminDrawerSectionPlayback,
     title: l10n.adminDrawerStreaming,
-    icon: Icons.stream,
+    icon: Symbols.stream,
     destination: Destinations.adminSettingsStreaming,
   ),
   _AdminNavEntry(
     id: 'trickplay',
     section: l10n.adminDrawerSectionPlayback,
     title: l10n.adminDrawerTrickplay,
-    icon: Icons.view_comfy,
+    icon: Symbols.view_comfy,
     destination: Destinations.adminSettingsTrickplay,
   ),
   _AdminNavEntry(
     id: 'devices',
     section: l10n.adminDrawerSectionDevices,
     title: l10n.adminDrawerDevices,
-    icon: Icons.devices,
+    icon: Symbols.devices,
     destination: Destinations.adminDevices,
   ),
   _AdminNavEntry(
     id: 'activity',
     section: l10n.adminDrawerSectionDevices,
     title: l10n.adminDrawerActivity,
-    icon: Icons.history,
+    icon: Symbols.history,
     destination: Destinations.adminActivity,
   ),
   _AdminNavEntry(
     id: 'networking',
     section: l10n.adminDrawerSectionAdvanced,
     title: l10n.adminDrawerNetworking,
-    icon: Icons.language,
+    icon: Symbols.language,
     destination: Destinations.adminSettingsNetworking,
   ),
   _AdminNavEntry(
     id: 'api-keys',
     section: l10n.adminDrawerSectionAdvanced,
     title: l10n.adminDrawerApiKeys,
-    icon: Icons.vpn_key,
+    icon: Symbols.vpn_key,
     destination: Destinations.adminKeys,
   ),
   _AdminNavEntry(
     id: 'backups',
     section: l10n.adminDrawerSectionAdvanced,
     title: l10n.adminDrawerBackups,
-    icon: Icons.backup,
+    icon: Symbols.backup,
     destination: Destinations.adminBackups,
   ),
   _AdminNavEntry(
     id: 'logs',
     section: l10n.adminDrawerSectionAdvanced,
     title: l10n.adminDrawerLogs,
-    icon: Icons.article,
+    icon: Symbols.article,
     destination: Destinations.adminLogs,
   ),
   _AdminNavEntry(
     id: 'scheduled-tasks',
     section: l10n.adminDrawerSectionAdvanced,
     title: l10n.adminDrawerScheduledTasks,
-    icon: Icons.schedule,
+    icon: Symbols.schedule,
     destination: Destinations.adminTasks,
   ),
   _AdminNavEntry(
     id: 'plugins',
     section: l10n.adminDrawerSectionPlugins,
     title: l10n.adminDrawerPlugins,
-    icon: Icons.extension,
+    icon: Symbols.extension,
     destination: Destinations.adminPlugins,
   ),
   _AdminNavEntry(
     id: 'repositories',
     section: l10n.adminDrawerSectionPlugins,
     title: l10n.adminDrawerRepositories,
-    icon: Icons.source,
+    icon: Symbols.source,
     destination: Destinations.adminRepositories,
   ),
   _AdminNavEntry(
     id: 'live-tv',
     section: l10n.adminDrawerSectionLiveTv,
     title: l10n.adminDrawerLiveTv,
-    icon: Icons.live_tv,
+    icon: Symbols.live_tv,
     destination: Destinations.adminLiveTv,
   ),
 ];
-
-Widget _librariesIcon(double size, Color color) {
-  return Image.asset(
-    'assets/icons/clapperboard.png',
-    width: size,
-    height: size,
-    color: color,
-    fit: BoxFit.contain,
-  );
-}

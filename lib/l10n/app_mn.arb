@@ -6543,6 +6543,8 @@
     "settingsReset": "Бүх тохиргоог анхны байдалд нь оруулах",
     "settingsResetSubtitle": "Энэ төхөөрөмжийн тохиргоог үндсэн утгад нь буцаах",
     "settingsResetConfirm": "Энэ төхөөрөмжийн бүх тохиргоог үндсэн утгад нь буцаах уу? Та нэвтэрсэн хэвээр үлдэх бөгөөд Jellyfin бүртгэлдээ экспортолсон тохиргоо хадгалагдана.\n\nДараа нь Plexfin хаагдана. Үргэлжлүүлэхийн тулд дахин нээнэ үү.",
+    "adminShowButton": "Удирдлагын товчийг харуулах",
+    "adminShowButtonSubtitle": "Серверийн удирдлагыг нээх товчийг цэсэнд нэмнэ",
     "settingsDynamicContent": "Динамик контент",
     "settingsDynamicContentSubtitle": "Медиа мөр ба визуал давхаргууд",
     "settingsPlaybackSyncplay": "Тоглуулах & SyncPlay",

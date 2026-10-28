@@ -6543,6 +6543,8 @@
     "settingsReset": "Obnovit všechna nastavení",
     "settingsResetSubtitle": "Vrátit nastavení tohoto zařízení na výchozí hodnoty",
     "settingsResetConfirm": "Vrátit každé nastavení na tomto zařízení na výchozí hodnotu? Zůstanete přihlášeni a nastavení exportovaná do vašeho účtu Jellyfin zůstanou zachována.\n\nPlexfin se poté zavře. Pokračujte jeho opětovným otevřením.",
+    "adminShowButton": "Zobrazit tlačítko správy",
+    "adminShowButtonSubtitle": "Přidá do nabídky tlačítko, které otevře správu serveru",
     "settingsDynamicContent": "Dynamický obsah",
     "settingsDynamicContentSubtitle": "Panel médií a vizuální překryvy",
     "settingsPlaybackSyncplay": "Přehrávání a SyncPlay",

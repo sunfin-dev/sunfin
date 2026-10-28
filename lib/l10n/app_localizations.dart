@@ -17794,6 +17794,18 @@ abstract class AppLocalizations {
   /// **'Put every setting on this device back to its default? You stay signed in, and settings exported to your Jellyfin account are kept.\n\nPlexfin closes afterwards. Open it again to continue.'**
   String get settingsResetConfirm;
 
+  /// No description provided for @adminShowButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Show administration button'**
+  String get adminShowButton;
+
+  /// No description provided for @adminShowButtonSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Adds a button to the menu that opens server administration'**
+  String get adminShowButtonSubtitle;
+
   /// No description provided for @settingsDynamicContent.
   ///
   /// In en, this message translates to:

@@ -6543,6 +6543,8 @@
     "settingsReset": "איפוס כל ההגדרות",
     "settingsResetSubtitle": "החזרת ההגדרות של מכשיר זה לברירת המחדל",
     "settingsResetConfirm": "להחזיר כל הגדרה במכשיר זה לברירת המחדל שלה? תישאר מחובר, והגדרות שיוצאו לחשבון Jellyfin שלך יישמרו.\n\nPlexfin ייסגר לאחר מכן. פתח אותו שוב כדי להמשיך.",
+    "adminShowButton": "הצגת לחצן ניהול",
+    "adminShowButtonSubtitle": "מוסיף לתפריט לחצן שפותח את ניהול השרת",
     "settingsDynamicContent": "תוכן דינמי",
     "settingsDynamicContentSubtitle": "סרגל מדיה ושכבות-על חזותיות",
     "settingsPlaybackSyncplay": "השמעה ו-SyncPlay",

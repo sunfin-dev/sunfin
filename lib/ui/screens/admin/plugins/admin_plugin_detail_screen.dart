@@ -9,6 +9,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import '../admin_plugin_version_utils.dart';
+import 'admin_plugin_web_page.dart';
 import '../../../widgets/adaptive/adaptive_dialog.dart';
 import '../providers/admin_user_providers.dart';
 import '../widgets/admin_form_styles.dart';
@@ -242,9 +243,9 @@ class _AdminPluginDetailScreenState
     }
   }
 
-  /// A plugin's settings page is the server's own web client, written for a
-  /// desktop browser and signed in by its own session, so it opens in the
-  /// browser rather than a web view the app would have to sign into itself.
+  /// A plugin's settings page is the server's own web client, signed in by
+  /// its own session. Plexfin opens it in a web view of its own (sign in there
+  /// once), or in the browser where there is no web view.
   Future<void> _openHtmlSettings(PluginInfo plugin) async {
     final token = GetIt.instance<MediaServerClient>().accessToken;
     if (token == null || token.isEmpty) {
@@ -267,6 +268,10 @@ class _AdminPluginDetailScreenState
     }
 
     final uri = _pluginHtmlSettingsUri(configPageName);
+    if (adminPluginWebPageSupported) {
+      await openAdminPluginWebPage(context, title: plugin.name, uri: uri);
+      return;
+    }
     final opened = await launchUrl(uri, mode: LaunchMode.externalApplication);
     if (!opened && mounted) {
       ScaffoldMessenger.of(context).showSnackBar(

@@ -294,6 +294,21 @@ class _NavigationCategoryScreenState extends State<_NavigationCategoryScreen> {
                     icon: Icons.info_outline_rounded,
                     onChanged: _pushPersonalizationSync,
                   ),
+                  if (adminAreaOffered(
+                    isAdministrator:
+                        GetIt.instance<UserRepository>()
+                            .currentUser
+                            ?.isAdministrator ??
+                        false,
+                    kidsMode: prefs.get(UserPreferences.kidsModeEnabled),
+                  ))
+                    SwitchPreferenceTile(
+                      preference: UserPreferences.showAdminButton,
+                      title: l10n.adminShowButton,
+                      subtitle: l10n.adminShowButtonSubtitle,
+                      icon: Icons.admin_panel_settings,
+                      onChanged: _pushPersonalizationSync,
+                    ),
                   // Only where the plugin has friends on, so nobody is offered
                   // a button that would never show.
                   if (GetIt.instance<AchievementsService>().socialAvailable)

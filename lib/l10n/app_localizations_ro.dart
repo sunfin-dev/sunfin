@@ -10172,6 +10172,13 @@ class AppLocalizationsRo extends AppLocalizations {
       'Readuci fiecare setare a acestui dispozitiv la valoarea implicită? Rămâi conectat, iar setările exportate în contul tău Jellyfin se păstrează.\n\nApoi Plexfin se închide. Deschide-l din nou pentru a continua.';
 
   @override
+  String get adminShowButton => 'Afișează butonul de administrare';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Adaugă în meniu un buton care deschide administrarea serverului';
+
+  @override
   String get settingsDynamicContent => 'Conținut dinamic';
 
   @override

@@ -9994,6 +9994,13 @@ class AppLocalizationsFa extends AppLocalizations {
       'همه تنظیمات این دستگاه به پیش‌فرض برگردد؟ وارد حساب باقی می‌مانید و تنظیماتی که به حساب Jellyfin شما صادر شده‌اند حفظ می‌شوند.\n\nPlexfin پس از آن بسته می‌شود. برای ادامه دوباره بازش کنید.';
 
   @override
+  String get adminShowButton => 'نمایش دکمه مدیریت';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'دکمه‌ای به منو اضافه می‌کند که مدیریت سرور را باز می‌کند';
+
+  @override
   String get settingsDynamicContent => 'محتوای پویا';
 
   @override

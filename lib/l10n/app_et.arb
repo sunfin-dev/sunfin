@@ -6543,6 +6543,8 @@
     "settingsReset": "Lähtesta kõik seaded",
     "settingsResetSubtitle": "Taasta selle seadme seaded vaikeväärtustele",
     "settingsResetConfirm": "Kas taastada kõik selle seadme seaded vaikeväärtustele? Jääd sisselogituks ja sinu Jellyfini kontole eksporditud seaded säilivad.\n\nSeejärel Plexfin sulgub. Jätkamiseks ava see uuesti.",
+    "adminShowButton": "Näita haldusnuppu",
+    "adminShowButtonSubtitle": "Lisab menüüsse nupu, mis avab serveri halduse",
     "settingsDynamicContent": "Dünaamiline sisu",
     "settingsDynamicContentSubtitle": "Meediumiriba ja visuaalsed ülekatted",
     "settingsPlaybackSyncplay": "Taasesitus ja SyncPlay",

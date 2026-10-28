@@ -10110,6 +10110,13 @@ class AppLocalizationsKn extends AppLocalizations {
       'ಈ ಸಾಧನದ ಪ್ರತಿಯೊಂದು ಸೆಟ್ಟಿಂಗ್ ಅನ್ನು ಡೀಫಾಲ್ಟ್‌ಗೆ ಹಿಂತಿರುಗಿಸಬೇಕೇ? ನೀವು ಸೈನ್ ಇನ್ ಆಗಿಯೇ ಇರುತ್ತೀರಿ, ಮತ್ತು ನಿಮ್ಮ Jellyfin ಖಾತೆಗೆ ರಫ್ತು ಮಾಡಿದ ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಉಳಿಯುತ್ತವೆ.\n\nನಂತರ Plexfin ಮುಚ್ಚುತ್ತದೆ. ಮುಂದುವರಿಸಲು ಅದನ್ನು ಮತ್ತೆ ತೆರೆಯಿರಿ.';
 
   @override
+  String get adminShowButton => 'ಆಡಳಿತ ಬಟನ್ ತೋರಿಸಿ';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'ಸರ್ವರ್ ಆಡಳಿತವನ್ನು ತೆರೆಯುವ ಬಟನ್ ಅನ್ನು ಮೆನುಗೆ ಸೇರಿಸುತ್ತದೆ';
+
+  @override
   String get settingsDynamicContent => 'ಡೈನಾಮಿಕ್ ವಿಷಯ';
 
   @override

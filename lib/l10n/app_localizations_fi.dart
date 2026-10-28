@@ -10095,6 +10095,13 @@ class AppLocalizationsFi extends AppLocalizations {
       'Palautetaanko jokainen tämän laitteen asetus oletukseensa? Pysyt kirjautuneena, ja Jellyfin-tilillesi viedyt asetukset säilyvät.\n\nPlexfin sulkeutuu sen jälkeen. Jatka avaamalla se uudelleen.';
 
   @override
+  String get adminShowButton => 'Näytä hallintapainike';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Lisää valikkoon painikkeen, joka avaa palvelimen hallinnan';
+
+  @override
   String get settingsDynamicContent => 'Dynaaminen sisältö';
 
   @override

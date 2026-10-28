@@ -10138,6 +10138,13 @@ class AppLocalizationsBg extends AppLocalizations {
       'Да се върне ли всяка настройка на това устройство към стойността ѝ по подразбиране? Оставате влезли, а настройките, експортирани в профила ви в Jellyfin, се запазват.\n\nPlexfin се затваря след това. Отворете го отново, за да продължите.';
 
   @override
+  String get adminShowButton => 'Показване на бутон за администриране';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Добавя бутон в менюто, който отваря администрирането на сървъра';
+
+  @override
   String get settingsDynamicContent => 'Динамично съдържание';
 
   @override

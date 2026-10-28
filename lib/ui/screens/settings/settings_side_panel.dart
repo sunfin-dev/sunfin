@@ -60,7 +60,9 @@ import '../../../playback/letterbox_croppers.dart';
 import '../../../preference/bottom_nav_tabs.dart';
 import '../../../preference/plex_locks.dart';
 import '../../../preference/preference_constants.dart';
+import '../../../auth/repositories/user_repository.dart';
 import '../../../preference/user_preferences.dart';
+import '../admin/admin_access.dart';
 import '../../../preference/library_nicknames.dart';
 import '../../../data/models/aggregated_library.dart';
 import '../../../data/repositories/user_views_repository.dart';
@@ -311,8 +313,10 @@ class _SettingsSidePanelState extends ConsumerState<SettingsSidePanel> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final kidsMode = ref.watch(kidsModeProvider);
-    final showAdmin =
-        !kidsMode && !PlatformDetection.isRemoteOnly && ref.watch(isAdminProvider);
+    final showAdmin = adminAreaOffered(
+      isAdministrator: ref.watch(isAdminProvider),
+      kidsMode: kidsMode,
+    );
     final enablePanelAutofocus = !PlatformDetection.useMobileUi;
 
     // Kids Mode leaves one entry standing. Hiding settings outright would

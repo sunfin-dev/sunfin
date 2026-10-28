@@ -6543,6 +6543,8 @@
     "settingsReset": "Ресетуј сва подешавања",
     "settingsResetSubtitle": "Врати подешавања овог уређаја на подразумеване вредности",
     "settingsResetConfirm": "Вратити свако подешавање на овом уређају на подразумевану вредност? Остајете пријављени, а подешавања извезена на ваш Jellyfin налог се чувају.\n\nPlexfin се затим затвара. Поново га отворите да наставите.",
+    "adminShowButton": "Прикажи дугме за администрацију",
+    "adminShowButtonSubtitle": "Додаје у мени дугме које отвара администрацију сервера",
     "settingsDynamicContent": "Динамиц Цонтент",
     "settingsDynamicContentSubtitle": "Медиа Бар и визуелни слојеви",
     "settingsPlaybackSyncplay": "Репродукција и SyncPlay",

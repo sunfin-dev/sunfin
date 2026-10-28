@@ -10072,6 +10072,13 @@ class AppLocalizationsMn extends AppLocalizations {
       'Энэ төхөөрөмжийн бүх тохиргоог үндсэн утгад нь буцаах уу? Та нэвтэрсэн хэвээр үлдэх бөгөөд Jellyfin бүртгэлдээ экспортолсон тохиргоо хадгалагдана.\n\nДараа нь Plexfin хаагдана. Үргэлжлүүлэхийн тулд дахин нээнэ үү.';
 
   @override
+  String get adminShowButton => 'Удирдлагын товчийг харуулах';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Серверийн удирдлагыг нээх товчийг цэсэнд нэмнэ';
+
+  @override
   String get settingsDynamicContent => 'Динамик контент';
 
   @override

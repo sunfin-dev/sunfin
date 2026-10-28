@@ -6543,6 +6543,8 @@
     "settingsReset": "Nulstil alle indstillinger",
     "settingsResetSubtitle": "Sæt denne enheds indstillinger tilbage til standard",
     "settingsResetConfirm": "Vil du sætte alle indstillinger på denne enhed tilbage til standard? Du forbliver logget ind, og indstillinger eksporteret til din Jellyfin-konto bevares.\n\nPlexfin lukker bagefter. Åbn den igen for at fortsætte.",
+    "adminShowButton": "Vis administrationsknap",
+    "adminShowButtonSubtitle": "Tilføjer en knap i menuen, der åbner serveradministration",
     "settingsDynamicContent": "Dynamisk indhold",
     "settingsDynamicContentSubtitle": "Media Bar og visuelle overlejringer",
     "settingsPlaybackSyncplay": "Afspilning og SyncPlay",

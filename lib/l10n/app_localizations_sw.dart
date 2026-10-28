@@ -10120,6 +10120,13 @@ class AppLocalizationsSw extends AppLocalizations {
       'Rudisha kila mpangilio kwenye kifaa hiki kwenye chaguomsingi lake? Utaendelea kuwa umeingia, na mipangilio iliyohamishwa kwenye akaunti yako ya Jellyfin itabaki.\n\nKisha Plexfin itafungwa. Ifungue tena ili kuendelea.';
 
   @override
+  String get adminShowButton => 'Onyesha kitufe cha usimamizi';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Huongeza kitufe kwenye menyu kinachofungua usimamizi wa seva';
+
+  @override
   String get settingsDynamicContent => 'Maudhui Yanayobadilika';
 
   @override

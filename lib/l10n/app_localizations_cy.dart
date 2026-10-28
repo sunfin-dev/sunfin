@@ -10098,6 +10098,13 @@ class AppLocalizationsCy extends AppLocalizations {
       'Rhoi pob gosodiad ar y ddyfais hon yn ôl i\'w ragosodiad? Byddwch yn aros wedi mewngofnodi, a bydd gosodiadau a allforiwyd i\'ch cyfrif Jellyfin yn cael eu cadw.\n\nMae Plexfin yn cau wedyn. Agorwch ef eto i barhau.';
 
   @override
+  String get adminShowButton => 'Dangos botwm gweinyddu';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Yn ychwanegu botwm i\'r ddewislen sy\'n agor gweinyddu\'r gweinydd';
+
+  @override
   String get settingsDynamicContent => 'Cynnwys Dynamig';
 
   @override

@@ -6543,6 +6543,8 @@
     "settingsReset": "Minden beállítás visszaállítása",
     "settingsResetSubtitle": "Az eszköz beállításainak visszaállítása az alapértékekre",
     "settingsResetConfirm": "Visszaállítod az eszköz minden beállítását az alapértékére? Bejelentkezve maradsz, és a Jellyfin-fiókodba exportált beállítások megmaradnak.\n\nA Plexfin ezután bezárul. A folytatáshoz nyisd meg újra.",
+    "adminShowButton": "Adminisztráció gomb megjelenítése",
+    "adminShowButtonSubtitle": "Gombot ad a menühöz, amely megnyitja a szerver adminisztrációját",
     "settingsDynamicContent": "Dinamikus tartalom",
     "settingsDynamicContentSubtitle": "Médiasáv és vizuális fedvények",
     "settingsPlaybackSyncplay": "Lejátszás és SyncPlay",

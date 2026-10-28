@@ -10059,6 +10059,13 @@ class AppLocalizationsEt extends AppLocalizations {
       'Kas taastada kõik selle seadme seaded vaikeväärtustele? Jääd sisselogituks ja sinu Jellyfini kontole eksporditud seaded säilivad.\n\nSeejärel Plexfin sulgub. Jätkamiseks ava see uuesti.';
 
   @override
+  String get adminShowButton => 'Näita haldusnuppu';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Lisab menüüsse nupu, mis avab serveri halduse';
+
+  @override
   String get settingsDynamicContent => 'Dünaamiline sisu';
 
   @override

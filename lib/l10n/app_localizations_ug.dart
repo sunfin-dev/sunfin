@@ -10078,6 +10078,13 @@ class AppLocalizationsUg extends AppLocalizations {
       'بۇ ئۈسكۈنىدىكى ھەر بىر تەڭشەكنى كۆڭۈلدىكى قىممىتىگە قايتۇرامسىز؟ تىزىملاتقان ھالىتىڭىز ساقلىنىدۇ، Jellyfin ھېساباتىڭىزغا چىقىرىلغان تەڭشەكلەرمۇ ساقلىنىدۇ.\n\nئاندىن Plexfin تاقىلىدۇ. داۋاملاشتۇرۇش ئۈچۈن ئۇنى قايتا ئېچىڭ.';
 
   @override
+  String get adminShowButton => 'باشقۇرۇش كۇنۇپكىسىنى كۆرسەت';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'تىزىملىككە مۇلازىمېتىر باشقۇرۇشنى ئاچىدىغان كۇنۇپكا قوشىدۇ';
+
+  @override
   String get settingsDynamicContent => 'ھەرىكەتچان مەزمۇن';
 
   @override

@@ -10093,6 +10093,13 @@ class AppLocalizationsKk extends AppLocalizations {
       'Осы құрылғыдағы әр баптауды әдепкі мәніне қайтару керек пе? Сіз жүйеде қаласыз, ал Jellyfin тіркелгіңізге экспортталған баптаулар сақталады.\n\nОсыдан кейін Plexfin жабылады. Жалғастыру үшін оны қайта ашыңыз.';
 
   @override
+  String get adminShowButton => 'Әкімшілік түймесін көрсету';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Мәзірге сервер әкімшілігін ашатын түйме қосады';
+
+  @override
   String get settingsDynamicContent => 'Динамикалық мазмұн';
 
   @override

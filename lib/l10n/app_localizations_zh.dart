@@ -9719,6 +9719,12 @@ class AppLocalizationsZh extends AppLocalizations {
       '要将此设备上的每项设置恢复为默认值吗？你将保持登录，导出到 Jellyfin 账户的设置也会保留。\n\n之后 Plexfin 会关闭。重新打开即可继续。';
 
   @override
+  String get adminShowButton => '显示管理按钮';
+
+  @override
+  String get adminShowButtonSubtitle => '在菜单中添加一个打开服务器管理的按钮';
+
+  @override
   String get settingsDynamicContent => '动态内容';
 
   @override
@@ -21334,6 +21340,12 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   @override
   String get settingsResetConfirm =>
       '要將此裝置上的每項設定還原為預設值嗎？你將保持登入，匯出到 Jellyfin 帳戶的設定也會保留。\n\n之後 Plexfin 會關閉。重新開啟即可繼續。';
+
+  @override
+  String get adminShowButton => '顯示管理按鈕';
+
+  @override
+  String get adminShowButtonSubtitle => '在選單中新增一個開啟伺服器管理的按鈕';
 
   @override
   String get settingsDynamicContent => '動態內容';

@@ -10102,6 +10102,13 @@ class AppLocalizationsSl extends AppLocalizations {
       'Želite vsako nastavitev v tej napravi povrniti na privzeto vrednost? Ostali boste prijavljeni, nastavitve, izvožene v vaš račun Jellyfin, pa se ohranijo.\n\nPlexfin se nato zapre. Za nadaljevanje ga znova odprite.';
 
   @override
+  String get adminShowButton => 'Prikaži gumb za skrbništvo';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'V meni doda gumb, ki odpre skrbništvo strežnika';
+
+  @override
   String get settingsDynamicContent => 'Dinamična vsebina';
 
   @override

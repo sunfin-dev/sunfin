@@ -6543,6 +6543,8 @@
     "settingsReset": "重設所有設定",
     "settingsResetSubtitle": "將呢部裝置嘅設定還原做預設值",
     "settingsResetConfirm": "要將呢部裝置嘅每個設定還原做預設值？你會保持登入，匯出咗去你 Jellyfin 帳戶嘅設定亦會保留。\n\n之後 Plexfin 會關閉。再開返佢就可以繼續。",
+    "adminShowButton": "顯示管理按鈕",
+    "adminShowButtonSubtitle": "喺選單加一個開啟伺服器管理嘅按鈕",
     "settingsDynamicContent": "動態內容",
     "settingsDynamicContentSubtitle": "媒體欄和視覺覆蓋",
     "settingsPlaybackSyncplay": "回放 & SyncPlay",

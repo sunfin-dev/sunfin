@@ -6543,6 +6543,8 @@
     "settingsReset": "Resetează toate setările",
     "settingsResetSubtitle": "Readu setările acestui dispozitiv la valorile implicite",
     "settingsResetConfirm": "Readuci fiecare setare a acestui dispozitiv la valoarea implicită? Rămâi conectat, iar setările exportate în contul tău Jellyfin se păstrează.\n\nApoi Plexfin se închide. Deschide-l din nou pentru a continua.",
+    "adminShowButton": "Afișează butonul de administrare",
+    "adminShowButtonSubtitle": "Adaugă în meniu un buton care deschide administrarea serverului",
     "settingsDynamicContent": "Conținut dinamic",
     "settingsDynamicContentSubtitle": "Bara media și suprapuneri vizuale",
     "settingsPlaybackSyncplay": "Redare și SyncPlay",

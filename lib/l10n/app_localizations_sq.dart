@@ -10130,6 +10130,13 @@ class AppLocalizationsSq extends AppLocalizations {
       'Të kthehet çdo cilësim në këtë pajisje te vlera e parazgjedhur? Mbetesh i identifikuar dhe cilësimet e eksportuara në llogarinë tënde Jellyfin ruhen.\n\nMë pas Plexfin mbyllet. Hape përsëri për të vazhduar.';
 
   @override
+  String get adminShowButton => 'Shfaq butonin e administrimit';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Shton në meny një buton që hap administrimin e serverit';
+
+  @override
   String get settingsDynamicContent => 'Përmbajtja dinamike';
 
   @override

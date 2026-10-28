@@ -10100,6 +10100,13 @@ class AppLocalizationsNl extends AppLocalizations {
       'Elke instelling op dit apparaat terugzetten naar de standaardwaarde? Je blijft ingelogd en instellingen die naar je Jellyfin-account zijn geëxporteerd blijven bewaard.\n\nPlexfin sluit daarna. Open het opnieuw om verder te gaan.';
 
   @override
+  String get adminShowButton => 'Beheerknop tonen';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Voegt een knop aan het menu toe die het serverbeheer opent';
+
+  @override
   String get settingsDynamicContent => 'Dynamische inhoud';
 
   @override

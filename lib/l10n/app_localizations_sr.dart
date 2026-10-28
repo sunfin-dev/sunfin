@@ -10272,6 +10272,13 @@ class AppLocalizationsSr extends AppLocalizations {
       'Вратити свако подешавање на овом уређају на подразумевану вредност? Остајете пријављени, а подешавања извезена на ваш Jellyfin налог се чувају.\n\nPlexfin се затим затвара. Поново га отворите да наставите.';
 
   @override
+  String get adminShowButton => 'Прикажи дугме за администрацију';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Додаје у мени дугме које отвара администрацију сервера';
+
+  @override
   String get settingsDynamicContent => 'Динамиц Цонтент';
 
   @override

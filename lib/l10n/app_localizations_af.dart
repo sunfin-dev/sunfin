@@ -10055,6 +10055,13 @@ class AppLocalizationsAf extends AppLocalizations {
       'Stel elke instelling op hierdie toestel terug na sy verstekwaarde? Jy bly aangemeld, en instellings wat na jou Jellyfin-rekening uitgevoer is, bly behoue.\n\nPlexfin sluit daarna. Maak dit weer oop om voort te gaan.';
 
   @override
+  String get adminShowButton => 'Wys administrasieknoppie';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Voeg \'n knoppie by die kieslys wat bedieneradministrasie oopmaak';
+
+  @override
   String get settingsDynamicContent => 'Dinamiese inhoud';
 
   @override

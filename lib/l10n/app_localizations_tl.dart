@@ -10147,6 +10147,13 @@ class AppLocalizationsTl extends AppLocalizations {
       'Ibalik sa default ang bawat setting sa device na ito? Mananatili kang naka-sign in, at mananatili ang mga setting na na-export sa iyong Jellyfin account.\n\nMagsasara ang Plexfin pagkatapos. Buksan itong muli para magpatuloy.';
 
   @override
+  String get adminShowButton => 'Ipakita ang button ng administrasyon';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Nagdaragdag ng button sa menu na nagbubukas ng administrasyon ng server';
+
+  @override
   String get settingsDynamicContent => 'Dynamic na Nilalaman';
 
   @override

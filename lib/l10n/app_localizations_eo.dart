@@ -10036,6 +10036,13 @@ class AppLocalizationsEo extends AppLocalizations {
       'Ĉu restarigi ĉiun agordon de ĉi tiu aparato al ĝia defaŭlto? Vi restos ensalutinta, kaj agordoj eksportitaj al via Jellyfin-konto estos konservitaj.\n\nPlexfin poste fermiĝas. Malfermu ĝin denove por daŭrigi.';
 
   @override
+  String get adminShowButton => 'Montri butonon de administrado';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Aldonas al la menuo butonon, kiu malfermas la servilan administradon';
+
+  @override
   String get settingsDynamicContent => 'Dinamika Enhavo';
 
   @override

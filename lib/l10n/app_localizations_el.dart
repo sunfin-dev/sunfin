@@ -10187,6 +10187,13 @@ class AppLocalizationsEl extends AppLocalizations {
       'Να επανέλθει κάθε ρύθμιση αυτής της συσκευής στην προεπιλογή της; Παραμένετε συνδεδεμένοι και οι ρυθμίσεις που εξήχθησαν στον λογαριασμό σας Jellyfin διατηρούνται.\n\nΤο Plexfin κλείνει στη συνέχεια. Ανοίξτε το ξανά για να συνεχίσετε.';
 
   @override
+  String get adminShowButton => 'Εμφάνιση κουμπιού διαχείρισης';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Προσθέτει στο μενού ένα κουμπί που ανοίγει τη διαχείριση του διακομιστή';
+
+  @override
   String get settingsDynamicContent => 'Δυναμικό περιεχόμενο';
 
   @override

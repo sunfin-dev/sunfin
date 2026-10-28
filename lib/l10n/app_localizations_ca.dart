@@ -10210,6 +10210,13 @@ class AppLocalizationsCa extends AppLocalizations {
       'Vols tornar cada opció d\'aquest dispositiu al seu valor per defecte? Continuaràs amb la sessió iniciada i es conservarà la configuració exportada al teu compte de Jellyfin.\n\nDesprés, Plexfin es tancarà. Torna\'l a obrir per continuar.';
 
   @override
+  String get adminShowButton => 'Mostra el botó d\'administració';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Afegeix al menú un botó que obre l\'administració del servidor';
+
+  @override
   String get settingsDynamicContent => 'Contingut dinàmic';
 
   @override

@@ -10119,6 +10119,13 @@ class AppLocalizationsIt extends AppLocalizations {
       'Riportare ogni impostazione di questo dispositivo al valore predefinito? Resterai connesso e le impostazioni esportate nel tuo account Jellyfin verranno conservate.\n\nPlexfin si chiuderà subito dopo. Riaprilo per continuare.';
 
   @override
+  String get adminShowButton => 'Mostra il pulsante Amministrazione';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Aggiunge al menu un pulsante che apre l\'amministrazione del server';
+
+  @override
   String get settingsDynamicContent => 'Contenuto dinamico';
 
   @override

@@ -10060,6 +10060,13 @@ class AppLocalizationsTr extends AppLocalizations {
       'Bu cihazdaki her ayar varsayılanına döndürülsün mü? Oturumunuz açık kalır ve Jellyfin hesabınıza dışa aktarılan ayarlar korunur.\n\nPlexfin ardından kapanır. Devam etmek için yeniden açın.';
 
   @override
+  String get adminShowButton => 'Yönetim düğmesini göster';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Menüye sunucu yönetimini açan bir düğme ekler';
+
+  @override
   String get settingsDynamicContent => 'Dinamik İçerik';
 
   @override

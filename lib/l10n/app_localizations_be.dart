@@ -10098,6 +10098,13 @@ class AppLocalizationsBe extends AppLocalizations {
       'Вярнуць кожную наладу на гэтай прыладзе да прадвызначанай? Вы застаняцеся ўвайшоўшы, а налады, экспартаваныя ў ваш уліковы запіс Jellyfin, захаваюцца.\n\nPlexfin потым закрыецца. Адкрыйце яго зноў, каб працягнуць.';
 
   @override
+  String get adminShowButton => 'Паказваць кнопку адміністравання';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Дадае ў меню кнопку, якая адкрывае адміністраванне сервера';
+
+  @override
   String get settingsDynamicContent => 'Дынамічны кантэнт';
 
   @override

@@ -9815,6 +9815,12 @@ class AppLocalizationsJa extends AppLocalizations {
       'このデバイスのすべての設定を既定値に戻しますか？サインインは維持され、Jellyfin アカウントにエクスポートした設定も残ります。\n\nその後 Plexfin は終了します。続けるにはもう一度開いてください。';
 
   @override
+  String get adminShowButton => '管理ボタンを表示';
+
+  @override
+  String get adminShowButtonSubtitle => 'サーバー管理を開くボタンをメニューに追加します';
+
+  @override
   String get settingsDynamicContent => '動的コンテンツ';
 
   @override

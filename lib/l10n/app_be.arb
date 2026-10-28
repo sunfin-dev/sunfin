@@ -6543,6 +6543,8 @@
     "settingsReset": "Скінуць усе налады",
     "settingsResetSubtitle": "Вярнуць налады гэтай прылады да прадвызначаных",
     "settingsResetConfirm": "Вярнуць кожную наладу на гэтай прыладзе да прадвызначанай? Вы застаняцеся ўвайшоўшы, а налады, экспартаваныя ў ваш уліковы запіс Jellyfin, захаваюцца.\n\nPlexfin потым закрыецца. Адкрыйце яго зноў, каб працягнуць.",
+    "adminShowButton": "Паказваць кнопку адміністравання",
+    "adminShowButtonSubtitle": "Дадае ў меню кнопку, якая адкрывае адміністраванне сервера",
     "settingsDynamicContent": "Дынамічны кантэнт",
     "settingsDynamicContentSubtitle": "Медыяпанэль і візуальныя накладкі",
     "settingsPlaybackSyncplay": "Прайграванне і SyncPlay",

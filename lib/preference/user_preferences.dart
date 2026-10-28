@@ -1773,6 +1773,13 @@ class UserPreferences extends ChangeNotifier {
     defaultValue: false,
   );
 
+  /// Off by default. Puts server administration in the sidebar for an
+  /// administrator who opens it often (Plexfin, user request 2026-10-28).
+  static final showAdminButton = Preference(
+    key: 'pref_show_admin_button',
+    defaultValue: false,
+  );
+
   /// Off by default. Friends and chat stay reachable from the achievements
   /// screen, so this only adds a shortcut for people who use them.
   static final showFriendsButton = Preference(

@@ -10116,6 +10116,13 @@ class AppLocalizationsMk extends AppLocalizations {
       'Да се врати ли секоја поставка на овој уред на нејзината стандардна вредност? Остануваш најавен, а поставките извезени на твојата Jellyfin сметка се зачувуваат.\n\nPlexfin потоа се затвора. Отвори го повторно за да продолжиш.';
 
   @override
+  String get adminShowButton => 'Прикажи копче за администрација';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Додава копче во менито што ја отвора администрацијата на серверот';
+
+  @override
   String get settingsDynamicContent => 'Динамичка содржина';
 
   @override

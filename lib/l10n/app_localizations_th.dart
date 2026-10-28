@@ -9995,6 +9995,13 @@ class AppLocalizationsTh extends AppLocalizations {
       'คืนการตั้งค่าทุกอย่างบนอุปกรณ์นี้เป็นค่าเริ่มต้นหรือไม่ คุณยังคงลงชื่อเข้าใช้อยู่ และการตั้งค่าที่ส่งออกไปยังบัญชี Jellyfin ของคุณจะยังอยู่\n\nจากนั้น Plexfin จะปิดลง เปิดอีกครั้งเพื่อดำเนินการต่อ';
 
   @override
+  String get adminShowButton => 'แสดงปุ่มการจัดการ';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'เพิ่มปุ่มในเมนูที่เปิดการจัดการเซิร์ฟเวอร์';
+
+  @override
   String get settingsDynamicContent => 'เนื้อหาแบบไดนามิก';
 
   @override

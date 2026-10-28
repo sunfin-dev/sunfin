@@ -10099,6 +10099,13 @@ class AppLocalizationsLv extends AppLocalizations {
       'Vai atjaunot katram šīs ierīces iestatījumam noklusējuma vērtību? Jūs paliksiet pierakstījies, un jūsu Jellyfin kontā eksportētie iestatījumi tiks saglabāti.\n\nPēc tam Plexfin aizvērsies. Atveriet to vēlreiz, lai turpinātu.';
 
   @override
+  String get adminShowButton => 'Rādīt administrēšanas pogu';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Pievieno izvēlnei pogu, kas atver servera administrēšanu';
+
+  @override
   String get settingsDynamicContent => 'Dinamisks saturs';
 
   @override

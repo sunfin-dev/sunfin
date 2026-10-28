@@ -11,6 +11,7 @@ import 'package:moonfin_design/moonfin_design.dart';
 import 'package:server_core/server_core.dart';
 
 import '../../auth/repositories/user_repository.dart';
+import '../screens/admin/admin_access.dart';
 import '../../data/models/aggregated_library.dart';
 import '../../data/repositories/multi_server_repository.dart';
 import '../../data/repositories/user_views_repository.dart';
@@ -1506,6 +1507,27 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                   _serverMessagesSidebarItem(
                     navColor: nextMainSidebarColor(),
                     label: l10n.serverMessages,
+                  ),
+                if (_prefs.get(UserPreferences.showAdminButton) &&
+                    adminAreaOffered(
+                      isAdministrator:
+                          _userRepo.currentUser?.isAdministrator ?? false,
+                      kidsMode: kidsMode,
+                    ))
+                  _SidebarItem(
+                    key: const ValueKey('sidebar-admin'),
+                    autoSelect: true,
+                    baseColor: nextMainSidebarColor(),
+                    icon: plexMode
+                        ? Symbols.admin_panel_settings
+                        : Icons.admin_panel_settings,
+                    label: l10n.administration,
+                    showLabel: _showLabels,
+                    onPressed: () {
+                      _onNavigate();
+                      _markNavigationAwayFromSidebar();
+                      context.navigateTopLevel(Destinations.admin);
+                    },
                   ),
                 // Plex pins Settings to the bottom; see below the list.
                 if (!plexMode) _settingsItem(l10n, nextMainSidebarColor()),

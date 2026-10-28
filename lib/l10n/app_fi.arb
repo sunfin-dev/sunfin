@@ -6542,6 +6542,8 @@
     "settingsReset": "Palauta kaikki asetukset",
     "settingsResetSubtitle": "Palauta tämän laitteen asetukset oletuksiin",
     "settingsResetConfirm": "Palautetaanko jokainen tämän laitteen asetus oletukseensa? Pysyt kirjautuneena, ja Jellyfin-tilillesi viedyt asetukset säilyvät.\n\nPlexfin sulkeutuu sen jälkeen. Jatka avaamalla se uudelleen.",
+    "adminShowButton": "Näytä hallintapainike",
+    "adminShowButtonSubtitle": "Lisää valikkoon painikkeen, joka avaa palvelimen hallinnan",
     "settingsDynamicContent": "Dynaaminen sisältö",
     "settingsDynamicContentSubtitle": "Mediapalkki ja visuaaliset peittokuvat",
     "settingsPlaybackSyncplay": "Toisto ja SyncPlay",

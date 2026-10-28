@@ -10121,6 +10121,13 @@ class AppLocalizationsTa extends AppLocalizations {
       'இந்தச் சாதனத்தின் ஒவ்வொரு அமைப்பையும் இயல்புநிலைக்குத் திருப்பவா? நீங்கள் உள்நுழைந்தபடியே இருப்பீர்கள், உங்கள் Jellyfin கணக்கிற்கு ஏற்றுமதி செய்த அமைப்புகள் வைக்கப்படும்.\n\nபின்னர் Plexfin மூடப்படும். தொடர அதை மீண்டும் திறக்கவும்.';
 
   @override
+  String get adminShowButton => 'நிர்வாகப் பொத்தானைக் காட்டு';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'சேவையக நிர்வாகத்தைத் திறக்கும் பொத்தானை மெனுவில் சேர்க்கிறது';
+
+  @override
   String get settingsDynamicContent => 'டைனமிக் உள்ளடக்கம்';
 
   @override

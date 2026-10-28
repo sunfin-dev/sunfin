@@ -10119,6 +10119,13 @@ class AppLocalizationsPt extends AppLocalizations {
       'Repor a predefinição de cada definição deste dispositivo? Continua com a sessão iniciada, e as definições exportadas para a sua conta Jellyfin são mantidas.\n\nO Plexfin fecha a seguir. Abra-o novamente para continuar.';
 
   @override
+  String get adminShowButton => 'Mostrar botão de administração';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Adiciona ao menu um botão que abre a administração do servidor';
+
+  @override
   String get settingsDynamicContent => 'Conteúdo Dinâmico';
 
   @override

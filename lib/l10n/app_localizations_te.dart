@@ -10110,6 +10110,13 @@ class AppLocalizationsTe extends AppLocalizations {
       'ఈ పరికరంలోని ప్రతి సెట్టింగ్‌ను డిఫాల్ట్‌కు తిరిగి మార్చాలా? మీరు సైన్ ఇన్ అయ్యే ఉంటారు, మీ Jellyfin ఖాతాకు ఎగుమతి చేసిన సెట్టింగ్‌లు అలాగే ఉంటాయి.\n\nఆ తర్వాత Plexfin మూసివేయబడుతుంది. కొనసాగించడానికి దాన్ని మళ్లీ తెరవండి.';
 
   @override
+  String get adminShowButton => 'నిర్వహణ బటన్‌ను చూపించు';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'సర్వర్ నిర్వహణను తెరిచే బటన్‌ను మెనూకు జోడిస్తుంది';
+
+  @override
   String get settingsDynamicContent => 'డైనమిక్ కంటెంట్';
 
   @override

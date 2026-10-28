@@ -10172,6 +10172,13 @@ class AppLocalizationsGl extends AppLocalizations {
       'Devolver cada axuste deste dispositivo ao seu valor predeterminado? Seguirás coa sesión iniciada e conservarase a configuración exportada á túa conta de Jellyfin.\n\nDespois, Plexfin pecharase. Ábreo de novo para continuar.';
 
   @override
+  String get adminShowButton => 'Amosar o botón de administración';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Engade ao menú un botón que abre a administración do servidor';
+
+  @override
   String get settingsDynamicContent => 'Contido dinámico';
 
   @override

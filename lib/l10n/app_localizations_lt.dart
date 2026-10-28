@@ -10101,6 +10101,13 @@ class AppLocalizationsLt extends AppLocalizations {
       'Grąžinti kiekvieną šio įrenginio nustatymą į numatytąjį? Liksite prisijungę, o į jūsų Jellyfin paskyrą eksportuoti nustatymai išliks.\n\nPo to Plexfin užsidarys. Norėdami tęsti, atidarykite jį iš naujo.';
 
   @override
+  String get adminShowButton => 'Rodyti administravimo mygtuką';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Prideda į meniu mygtuką, kuris atidaro serverio administravimą';
+
+  @override
   String get settingsDynamicContent => 'Dinaminis turinys';
 
   @override

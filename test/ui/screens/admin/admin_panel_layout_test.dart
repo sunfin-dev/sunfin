@@ -14,6 +14,7 @@ import 'package:moonfin/ui/screens/admin/libraries/admin_library_add_screen.dart
 import 'package:moonfin/ui/screens/admin/plugins/admin_plugin_detail_screen.dart';
 import 'package:moonfin/ui/screens/admin/providers/admin_user_providers.dart';
 import 'package:moonfin/ui/screens/admin/widgets/admin_form_styles.dart';
+import 'package:moonfin/ui/screens/admin/widgets/admin_look.dart';
 import 'package:server_core/server_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -96,9 +97,7 @@ void main() {
     expect(tester.getSize(tile).height, 64);
   });
 
-  testWidgets('a glass group row highlights inside the rounded corners', (
-    tester,
-  ) async {
+  testWidgets('a group row highlights on the group itself', (tester) async {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
@@ -112,19 +111,15 @@ void main() {
       ),
     );
 
-    // The row's ink lands on the nearest Material, which has to be one that
-    // clips to the group's corners.
+    // The row's ink lands on the nearest Material, which has to be the
+    // group's own, not the page under it.
     final inkLayer = tester.widget<Material>(
       find
           .ancestor(of: find.byType(ListTile), matching: find.byType(Material))
           .first,
     );
 
-    expect(inkLayer.clipBehavior, Clip.antiAlias);
-    expect(
-      inkLayer.shape,
-      RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-    );
+    expect(inkLayer.type, MaterialType.transparency);
   });
 
   testWidgets('a plugin page leaves going back to the admin bar', (
@@ -167,7 +162,7 @@ void main() {
               (widget) =>
                   widget is DecoratedBox &&
                   widget.decoration is BoxDecoration &&
-                  (widget.decoration as BoxDecoration).gradient != null,
+                  (widget.decoration as BoxDecoration).color == AdminLook.page,
             ),
           )
           .first,
@@ -182,28 +177,5 @@ void main() {
 
     await tester.pumpAndSettle();
     expect(find.text('one'), findsNothing);
-  });
-
-  testWidgets('a page takes the new backing when the window changes layout', (
-    tester,
-  ) async {
-    setWindow(tester, const Size(1400, 900));
-    await pumpShell(tester, ['one']);
-
-    // The panel color sits between the backdrop and the page only in the
-    // wide layout.
-    final surface = ThemeData().colorScheme.surface;
-    final panelBacking = find.ancestor(
-      of: find.text('one'),
-      matching: find.byWidgetPredicate(
-        (widget) => widget is ColoredBox && widget.color == surface,
-      ),
-    );
-    expect(panelBacking, findsOneWidget);
-
-    tester.view.physicalSize = const Size(500, 900);
-    await tester.pumpAndSettle();
-
-    expect(panelBacking, findsNothing);
   });
 }

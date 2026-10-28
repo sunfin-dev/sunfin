@@ -10034,6 +10034,13 @@ class AppLocalizationsAr extends AppLocalizations {
       'هل تريد إعادة كل إعداد على هذا الجهاز إلى قيمته الافتراضية؟ ستبقى مسجّل الدخول، وتُحفظ الإعدادات المصدّرة إلى حساب Jellyfin.\n\nيُغلق Plexfin بعد ذلك. افتحه مجددًا للمتابعة.';
 
   @override
+  String get adminShowButton => 'إظهار زر الإدارة';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'يضيف زرًا إلى القائمة يفتح إدارة الخادم';
+
+  @override
   String get settingsDynamicContent => 'المحتوى الديناميكي';
 
   @override

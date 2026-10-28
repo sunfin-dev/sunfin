@@ -10048,6 +10048,13 @@ class AppLocalizationsNb extends AppLocalizations {
       'Vil du sette alle innstillinger på denne enheten tilbake til standard? Du forblir pålogget, og innstillinger eksportert til Jellyfin-kontoen din beholdes.\n\nPlexfin lukkes etterpå. Åpne den igjen for å fortsette.';
 
   @override
+  String get adminShowButton => 'Vis administrasjonsknapp';
+
+  @override
+  String get adminShowButtonSubtitle =>
+      'Legger til en knapp i menyen som åpner serveradministrasjon';
+
+  @override
   String get settingsDynamicContent => 'Dynamisk innhold';
 
   @override

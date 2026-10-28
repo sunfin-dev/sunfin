@@ -6543,6 +6543,8 @@
     "settingsReset": "Zresetuj wszystkie ustawienia",
     "settingsResetSubtitle": "Przywróć domyślne ustawienia tego urządzenia",
     "settingsResetConfirm": "Przywrócić domyślną wartość każdego ustawienia na tym urządzeniu? Pozostaniesz zalogowany, a ustawienia wyeksportowane na Twoje konto Jellyfin zostaną zachowane.\n\nPlexfin zostanie potem zamknięty. Otwórz go ponownie, aby kontynuować.",
+    "adminShowButton": "Pokaż przycisk administracji",
+    "adminShowButtonSubtitle": "Dodaje do menu przycisk, który otwiera administrację serwera",
     "settingsDynamicContent": "Treści dynamiczne",
     "settingsDynamicContentSubtitle": "Pasek multimediów i nakładki wizualne",
     "settingsPlaybackSyncplay": "Odtwarzanie i SyncPlay",
