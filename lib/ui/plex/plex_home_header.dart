@@ -39,6 +39,10 @@ class PlexHomeHeader extends StatelessWidget {
   /// home's rows start, unless the page puts its own content lower.
   final double? height;
 
+  /// Grows past [height] to fit everything instead of cutting it, for a page
+  /// whose content follows the header rather than sitting at a fixed place.
+  final bool grow;
+
   const PlexHomeHeader({
     super.key,
     required this.item,
@@ -47,6 +51,7 @@ class PlexHomeHeader extends StatelessWidget {
     this.ratingLine,
     this.footer,
     this.height,
+    this.grow = false,
   });
 
   static const _fade = PlexMotion.fade;
@@ -60,6 +65,45 @@ class PlexHomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final current = item;
+    final text = AnimatedSwitcher(
+      duration: _fade,
+      layoutBuilder: (currentChild, previousChildren) => Stack(
+        alignment: Alignment.topLeft,
+        children: [...previousChildren, ?currentChild],
+      ),
+      child: current == null
+          ? const SizedBox.shrink()
+          : _HeaderText(
+              key: ValueKey(current.id),
+              item: current,
+              showCast: showCast,
+              ratingLine: ratingLine,
+              footer: footer,
+            ),
+    );
+    if (grow) {
+      // Scaled through layout, unlike the Transform below, so the header
+      // takes up as much room as its text is drawn over.
+      return RepaintBoundary(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: height ?? PlexStyle.rowsTop),
+          child: Padding(
+            padding: EdgeInsets.only(left: leftInset, top: PlexStyle.headerTop),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: SizedBox(
+                width: _titleWidth * _scale,
+                child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  alignment: Alignment.topLeft,
+                  child: SizedBox(width: _titleWidth, child: text),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+    }
     // Its own layer: the header's text fade and the backdrop's tint fade run
     // together on every focus change, and neither should repaint the other.
     return RepaintBoundary(
@@ -86,25 +130,7 @@ class PlexHomeHeader extends StatelessWidget {
               child: Transform.scale(
                 scale: _scale,
                 alignment: Alignment.topLeft,
-                child: SizedBox(
-                  width: _titleWidth,
-                  child: AnimatedSwitcher(
-                    duration: _fade,
-                    layoutBuilder: (currentChild, previousChildren) => Stack(
-                      alignment: Alignment.topLeft,
-                      children: [...previousChildren, ?currentChild],
-                    ),
-                    child: current == null
-                        ? const SizedBox.shrink()
-                        : _HeaderText(
-                            key: ValueKey(current.id),
-                            item: current,
-                            showCast: showCast,
-                            ratingLine: ratingLine,
-                            footer: footer,
-                          ),
-                  ),
-                ),
+                child: SizedBox(width: _titleWidth, child: text),
               ),
             ),
           ),

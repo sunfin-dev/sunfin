@@ -73,13 +73,15 @@ class PlexMoviePage extends StatefulWidget {
 
 enum _Button { play, favorite, watched, trailer, more }
 
-// Layout, in Plex's 960-wide units (reference 05).
+// Layout, in Plex's 960-wide units (reference 05). The buttons sit at
+// _buttonsTop, or lower when a long summary and "Directed by" need the room.
 final _buttonsTop = PlexStyle.s(267);
+final _headerGap = PlexStyle.s(20);
 final _buttonSize = PlexStyle.s(32);
 final _buttonGap = PlexStyle.s(12);
-final _chipsTop = PlexStyle.s(303);
+final _chipsGap = PlexStyle.s(4);
+final _foldBottom = PlexStyle.s(11);
 final _rightInset = PlexStyle.s(40);
-final _foldHeight = PlexStyle.s(330);
 
 const _move = Duration(milliseconds: 180);
 
@@ -401,13 +403,10 @@ class _PlexMoviePageState extends State<PlexMoviePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: _foldHeight,
-                  child: _memo(
-                    #fold,
-                    [item, _vm.ratings, directors, _hasTrailer, _prefsRevision],
-                    () => _buildFold(item, directors),
-                  ),
+                _memo(
+                  #fold,
+                  [item, _vm.ratings, directors, _hasTrailer, _prefsRevision],
+                  () => _buildFold(item, directors),
                 ),
                 for (final section in sections)
                   Padding(
@@ -459,38 +458,38 @@ class _PlexMoviePageState extends State<PlexMoviePage> {
             when name.isNotEmpty)
           name,
     ];
-    return Stack(
-      clipBehavior: Clip.none,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Positioned(
-          top: 0,
-          left: 0,
-          right: 0,
-          child: PlexHomeHeader(
+        PlexHomeHeader(
+          item: item,
+          leftInset: _inset,
+          showCast: false,
+          height: _buttonsTop - _headerGap,
+          grow: true,
+          ratingLine: PlexRatingLine.of(
             item: item,
-            leftInset: _inset,
-            showCast: false,
-            height: _buttonsTop - PlexStyle.s(8),
-            ratingLine: PlexRatingLine.of(
-              item: item,
-              extraRatings: _vm.ratings,
-              prefs: widget.prefs,
-            ),
-            footer: names.isEmpty
-                ? null
-                : l10n.plexDirectedBy(names.take(2).join(', ')),
+            extraRatings: _vm.ratings,
+            prefs: widget.prefs,
           ),
+          footer: names.isEmpty
+              ? null
+              : l10n.plexDirectedBy(names.take(2).join(', ')),
         ),
-        Positioned(
-          top: _buttonsTop,
-          left: _inset,
+        SizedBox(height: _headerGap),
+        Padding(
+          padding: EdgeInsets.only(left: _inset),
           child: _buildButtons(item),
         ),
-        Positioned(
-          top: _chipsTop,
-          right: _rightInset,
-          child: PlexMediaChips(item: item),
+        SizedBox(height: _chipsGap),
+        Align(
+          alignment: Alignment.centerRight,
+          child: Padding(
+            padding: EdgeInsets.only(right: _rightInset),
+            child: PlexMediaChips(item: item),
+          ),
         ),
+        SizedBox(height: _foldBottom),
       ],
     );
   }
