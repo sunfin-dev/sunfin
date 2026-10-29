@@ -401,9 +401,14 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
     for (final label in labels) {
       widest = math.max(widest, measure(label, FontWeight.w500));
     }
+    // An app started while the display is off sees a zero-width screen, and
+    // a cap under the floor would throw.
     final width = (widest + _plexLabelChrome + _plexLabelMargin).clamp(
       PlexStyle.railCollapsedWidth,
-      MediaQuery.sizeOf(context).width * 0.4,
+      math.max<double>(
+        PlexStyle.railCollapsedWidth,
+        MediaQuery.sizeOf(context).width * 0.4,
+      ),
     );
     _plexWidthKey = key;
     // Published after the frame: listeners rebuild the layout.

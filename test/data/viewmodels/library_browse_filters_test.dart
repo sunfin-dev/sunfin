@@ -157,6 +157,8 @@ Future<LibraryBrowseViewModel> _viewModel(
   String? genreId,
   List<String>? includeItemTypes,
   bool groupCollections = false,
+  bool statusFiltersOnly = false,
+  void Function(UserPreferences prefs)? saved,
 }) async {
   SharedPreferences.setMockInitialValues(<String, Object>{});
   final store = PreferenceStore();
@@ -165,6 +167,7 @@ Future<LibraryBrowseViewModel> _viewModel(
   if (groupCollections) {
     prefs.set(UserPreferences.groupItemsIntoCollections, true);
   }
+  saved?.call(prefs);
   return LibraryBrowseViewModel(
     libraryId: libraryId,
     client: _FakeClient(api, serverType: serverType),
@@ -172,6 +175,7 @@ Future<LibraryBrowseViewModel> _viewModel(
     mdbListRepository: _FakeMdbListRepository(),
     genreId: genreId,
     includeItemTypes: includeItemTypes,
+    statusFiltersOnly: statusFiltersOnly,
   );
 }
 
@@ -294,6 +298,70 @@ void main() {
     expect(api.isHd, isNull);
     expect(api.tags, <String>['imax']);
     expect(api.hasSubtitles, isTrue);
+  });
+
+  // A 4K-only filter saved by the full Sort & filter screen hid every 1080p
+  // movie from the Plex library page, whose menu still read "All".
+  group('a browse limited to status filters', () {
+    void savedFilters(UserPreferences prefs) {
+      prefs.set(UserPreferences.libraryVideoQualityFilters('movies'), ['uhd']);
+      prefs.set(UserPreferences.libraryTagFilters('movies'), ['imax']);
+      prefs.set(
+        UserPreferences.libraryLikedFilter('movies'),
+        LikedStatusFilter.liked,
+      );
+      prefs.set(
+        UserPreferences.libraryPlayedFilter('movies'),
+        PlayedStatusFilter.unwatched,
+      );
+      prefs.set(UserPreferences.libraryFavoriteFilter('movies'), true);
+    }
+
+    test('applies every saved filter on the full browse', () async {
+      final api = _RecordingItemsApi();
+      final vm = await _viewModel(api, saved: savedFilters);
+      addTearDown(vm.dispose);
+
+      await vm.load();
+
+      expect(api.is4K, isTrue);
+      expect(api.tags, <String>['imax']);
+      expect(api.filters, containsAll(<String>['IsUnplayed', 'Likes']));
+    });
+
+    test('keeps watched status and favorites, and nothing else', () async {
+      final api = _RecordingItemsApi();
+      final vm = await _viewModel(
+        api,
+        saved: savedFilters,
+        statusFiltersOnly: true,
+      );
+      addTearDown(vm.dispose);
+
+      await vm.load();
+
+      expect(api.is4K, isNull);
+      expect(api.tags, isNull);
+      expect(api.filters, <String>['IsUnplayed']);
+      expect(vm.favoriteFilter, isTrue);
+    });
+
+    test('leaves the saved filters for the full browse', () async {
+      late UserPreferences prefs;
+      final vm = await _viewModel(
+        _RecordingItemsApi(),
+        saved: (p) => savedFilters(prefs = p),
+        statusFiltersOnly: true,
+      );
+      addTearDown(vm.dispose);
+
+      await vm.load();
+
+      expect(
+        prefs.get(UserPreferences.libraryVideoQualityFilters('movies')),
+        <String>['uhd'],
+      );
+    });
   });
 
   test('the facet values are only read once per browse', () async {

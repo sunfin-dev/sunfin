@@ -52,6 +52,13 @@ class LibraryBrowseViewModel extends ChangeNotifier {
   /// to the ordinary browse of the same library.
   final bool favoritesOnly;
 
+  /// Leaves out every saved filter but watched status and favorites, for a
+  /// screen whose filter menu offers only those. Anything else it would apply
+  /// out of sight: a 4K-only quality filter left over from the full Sort &
+  /// filter screen made most of a movie library vanish under a menu that
+  /// still read "All" (user, 2026-10-29). The saved values stay untouched.
+  final bool statusFiltersOnly;
+
   static const _pageSize = 48;
   static const _firstPageSize = 75;
   // Name and CollectionType come back as default fields, so the library lookup
@@ -428,17 +435,49 @@ class LibraryBrowseViewModel extends ChangeNotifier {
     this.overrideName,
     this.includeItemTypes,
     this.favoritesOnly = false,
+    this.statusFiltersOnly = false,
   }) : _client = client,
        _prefs = prefs,
        _mdbListRepository = mdbListRepository {
     _sortBy = _prefs.get(UserPreferences.librarySortBy(_prefKey));
     _sortDirection = _prefs.get(UserPreferences.librarySortDirection(_prefKey));
     _playedFilter = _prefs.get(UserPreferences.libraryPlayedFilter(_prefKey));
-    _likedFilter = _prefs.get(UserPreferences.libraryLikedFilter(_prefKey));
-    _seriesFilter = _prefs.get(UserPreferences.librarySeriesFilter(_prefKey));
     _favoriteFilter =
         favoritesOnly ||
         _prefs.get(UserPreferences.libraryFavoriteFilter(_prefKey));
+    if (statusFiltersOnly) {
+      _likedFilter = LikedStatusFilter.all;
+      _seriesFilter = SeriesStatusFilter.all;
+      _featureFilters = {};
+      _videoQualityFilters = {};
+      _videoSourceFilters = {};
+      _genreFilters = {};
+      _officialRatingFilters = {};
+      _tagFilters = {};
+      _yearFilters = {};
+      _audioLanguageFilters = {};
+      _subtitleLanguageFilters = {};
+    } else {
+      _readFacetFilters();
+    }
+    _letterFilter = '';
+    _groupByType = _prefs.get(UserPreferences.playlistsGroupByType);
+    _imageType = _prefs.get(UserPreferences.libraryImageType(_imagePrefKey));
+    _posterSize = _readScopedPosterSize();
+    _lastGroupCollectionsValue = _prefs.get(UserPreferences.groupItemsIntoCollections);
+    _scrollDirection = _prefs.get(
+      UserPreferences.libraryScrollDirection(_imagePrefKey),
+    );
+    _groupBy = _prefs.get(
+      UserPreferences.libraryGroupBy(_imagePrefKey),
+    );
+    _prefs.addListener(_onPrefsChanged);
+    userDataSync.addListener(_onUserDataChanged);
+  }
+
+  void _readFacetFilters() {
+    _likedFilter = _prefs.get(UserPreferences.libraryLikedFilter(_prefKey));
+    _seriesFilter = _prefs.get(UserPreferences.librarySeriesFilter(_prefKey));
     _featureFilters = _readEnumSet(
       UserPreferences.libraryFeatureFilters(_prefKey),
       LibraryFeatureFilter.values,
@@ -469,19 +508,6 @@ class LibraryBrowseViewModel extends ChangeNotifier {
     _subtitleLanguageFilters = _prefs
         .get(UserPreferences.librarySubtitleLanguageFilters(_prefKey))
         .toSet();
-    _letterFilter = '';
-    _groupByType = _prefs.get(UserPreferences.playlistsGroupByType);
-    _imageType = _prefs.get(UserPreferences.libraryImageType(_imagePrefKey));
-    _posterSize = _readScopedPosterSize();
-    _lastGroupCollectionsValue = _prefs.get(UserPreferences.groupItemsIntoCollections);
-    _scrollDirection = _prefs.get(
-      UserPreferences.libraryScrollDirection(_imagePrefKey),
-    );
-    _groupBy = _prefs.get(
-      UserPreferences.libraryGroupBy(_imagePrefKey),
-    );
-    _prefs.addListener(_onPrefsChanged);
-    userDataSync.addListener(_onUserDataChanged);
   }
 
   /// Whether anything the grid shows has been watched, favourited or rated

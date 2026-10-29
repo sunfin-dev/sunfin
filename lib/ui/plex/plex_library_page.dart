@@ -357,6 +357,8 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
       prefs: _prefs,
       mdbListRepository: GetIt.instance<MdbListRepository>(),
       includeItemTypes: _type.types,
+      // The filter menu here offers watched status and favorites only.
+      statusFiltersOnly: true,
     );
     vm.addListener(_onVm);
     _vm = vm;
