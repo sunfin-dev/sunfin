@@ -40,6 +40,15 @@ class CustomTVTextField extends StatefulWidget {
     _openKeyboardCloseHandles.last();
     return true;
   }
+
+  /// Closes every open on-screen keyboard without submitting, for something
+  /// that takes over the whole screen, such as a screensaver.
+  static void closeAllKeyboards() {
+    // Closing a keyboard removes its own handle, so walk a copy.
+    for (final close in List<VoidCallback>.of(_openKeyboardCloseHandles).reversed) {
+      close();
+    }
+  }
   final TextEditingController controller;
   final bool isFocused;
   final String hint;

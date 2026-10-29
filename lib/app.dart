@@ -937,10 +937,15 @@ class _GlobalShortcutScopeState extends State<_GlobalShortcutScope>
     super.dispose();
   }
 
-  // When the screensaver comes up, silence the theme song playing under it.
+  // When the screensaver comes up, silence the theme song playing under it and
+  // close any keyboard left open, which stayed up over the screensaver (user,
+  // 2026-10-29). Nothing is submitted; the system keyboard goes too in case it
+  // was the one in use.
   void _onScreensaverVisibleChanged() {
     if (_screensaverController.visible.value) {
       GetIt.instance<ThemeMusicService>().forceStop();
+      CustomTVTextField.closeAllKeyboards();
+      unawaited(SystemChannels.textInput.invokeMethod<void>('TextInput.hide'));
     }
   }
 

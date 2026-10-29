@@ -102,7 +102,7 @@ class _FakeItemsApi extends Fake implements ItemsApi {
   dynamic noSuchMethod(Invocation invocation) => Future.value(const {
     'Items': [
       {'Id': 'm1', 'Name': 'Movie One', 'Type': 'Movie'},
-      {'Id': 'f1', 'Name': 'Folder One', 'Type': 'Folder'},
+      {'Id': 'c1', 'Name': 'Collection One', 'Type': 'BoxSet'},
     ],
   });
 }
@@ -185,13 +185,13 @@ void main() {
     tester,
   ) async {
     await searchWithPeoplePending(tester);
-    await tester.tap(find.text('Folders: 1'));
+    await tester.tap(find.text('Collections: 1'));
     await tester.pumpAndSettle();
-    expect(find.text('Folder One'), findsOneWidget);
+    expect(find.text('Collection One'), findsOneWidget);
 
     await peopleAnswer(tester);
 
-    expect(find.text('Folder One'), findsOneWidget);
+    expect(find.text('Collection One'), findsOneWidget);
     expect(find.text('Person One'), findsNothing);
   });
 
@@ -199,7 +199,7 @@ void main() {
     tester,
   ) async {
     await searchWithPeoplePending(tester);
-    Focus.of(tester.element(find.text('Folder One').first)).requestFocus();
+    Focus.of(tester.element(find.text('Collection One').first)).requestFocus();
     await tester.pumpAndSettle();
 
     await peopleAnswer(tester);
@@ -207,7 +207,7 @@ void main() {
     expect(find.text('Person One'), findsOneWidget);
     expect(
       FocusManager.instance.primaryFocus,
-      Focus.of(tester.element(find.text('Folder One').first)),
+      Focus.of(tester.element(find.text('Collection One').first)),
     );
   });
 }

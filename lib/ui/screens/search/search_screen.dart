@@ -1002,10 +1002,18 @@ class _SearchScreenState extends State<SearchScreen>
                                 color: searchTextColor,
                                 fontSize: 20,
                               ),
+                              // The accent caret vanished on the focused
+                              // field's light fill, and the hint stayed, so a
+                              // click seemed to do nothing (user,
+                              // 2026-10-29). The caret takes the text colour
+                              // and the hint goes once the field has focus.
+                              cursorColor: searchTextColor,
+                              cursorWidth: 2,
                               decoration: InputDecoration(
-                                hintText:
-                                    widget.scopedLibraryId != null &&
-                                        widget.scopedLibraryId!.isNotEmpty
+                                hintText: searchHasFocus
+                                    ? null
+                                    : widget.scopedLibraryId != null &&
+                                          widget.scopedLibraryId!.isNotEmpty
                                     ? l10n.searchThisLibrary
                                     : l10n.searchEllipsis,
                                 hintStyle: TextStyle(color: searchHintColor),

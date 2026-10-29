@@ -77,7 +77,7 @@ void main() {
 
   test('a slow people search fills in after the other results are up', () {
     fakeAsync((async) {
-      itemsFor('alien', [('m1', 'Movie'), ('f1', 'Folder')]);
+      itemsFor('alien', [('m1', 'Movie'), ('c1', 'BoxSet')]);
       final people = peopleFor('alien');
       final vm = SearchViewModel(SearchRepository(client), client);
 
@@ -85,12 +85,12 @@ void main() {
       async.elapse(const Duration(seconds: 1));
 
       expect(vm.state, SearchState.ready);
-      expect(groupTypes(vm), ['Movie', 'Folder']);
+      expect(groupTypes(vm), ['Movie', 'BoxSet']);
 
       people.complete(person('p1'));
       async.flushMicrotasks();
 
-      expect(groupTypes(vm), ['Movie', 'Person', 'Folder']);
+      expect(groupTypes(vm), ['Movie', 'BoxSet', 'Person']);
       vm.dispose();
     });
   });

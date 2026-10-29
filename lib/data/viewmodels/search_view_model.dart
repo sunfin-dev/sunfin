@@ -99,7 +99,6 @@ class SearchViewModel extends ChangeNotifier {
 
   static const _debounceMs = 600;
   static const _resultLimit = 24;
-  static const _globalFetchLimit = 240;
   // Some servers answer a people search far slower than everything else, so
   // the rest of the results only wait a moment for it and it's dropped if it
   // takes too long.
@@ -117,13 +116,15 @@ class SearchViewModel extends ChangeNotifier {
     ];
   }
 
+  /// Seasons and folders stay out, as in jellyfin-web: their names are
+  /// "Season 1", "Specials" or a disk folder, so a one-letter search listed
+  /// hundreds of them and none says what it belongs to (user, 2026-10-29).
   static List<SearchResultGroup> _searchGroups() {
     final l10n = currentAppLocalizations();
     return [
       SearchResultGroup(title: l10n.books, itemTypes: const ['Book']),
       SearchResultGroup(title: l10n.movies, itemTypes: const ['Movie']),
       SearchResultGroup(title: l10n.series, itemTypes: const ['Series']),
-      SearchResultGroup(title: l10n.seasons, itemTypes: const ['Season']),
       SearchResultGroup(title: l10n.episodes, itemTypes: const ['Episode']),
       SearchResultGroup(title: l10n.videos, itemTypes: const ['Video']),
       SearchResultGroup(title: l10n.musicVideos, itemTypes: const ['MusicVideo']),
@@ -144,10 +145,6 @@ class SearchViewModel extends ChangeNotifier {
       SearchResultGroup(title: l10n.photos, itemTypes: const ['Photo']),
       SearchResultGroup(title: l10n.collections, itemTypes: const ['BoxSet']),
       SearchResultGroup(title: l10n.people, itemTypes: const ['Person']),
-      SearchResultGroup(
-        title: l10n.folders,
-        itemTypes: const ['Folder', 'CollectionFolder', 'UserView'],
-      ),
     ];
   }
 
@@ -273,32 +270,31 @@ class SearchViewModel extends ChangeNotifier {
       label: 'people search',
     ).then(_interleave).catchError((_) => <AggregatedItem>[]);
     final channelsFuture = _channelMatches(query);
-    final perServerItems = await _searchEachServer(
-      (repository) => repository.search(
-        query,
-        parentId: _scopedParentId,
-        limit: _globalFetchLimit,
-      ),
-      label: 'search',
+    // One request per group: a single untyped request shared its cap between
+    // every type, so whatever the server ranked first (seasons, episodes)
+    // filled it and a search for "a" found one movie out of hundreds.
+    final grouped = await Future.wait(
+      activeGroups.map((group) async {
+        if (group.itemTypes.contains('Person')) return group;
+        if (group.itemTypes.contains('LiveTvChannel')) {
+          return group.copyWith(items: await channelsFuture);
+        }
+        final perServer = await _searchEachServer(
+          (repository) => repository.search(
+            query,
+            includeItemTypes: group.itemTypes,
+            parentId: _scopedParentId,
+            limit: _resultLimit,
+          ),
+          label: 'search',
+        );
+        final matched = _interleave([
+          for (final items in perServer)
+            items.where((item) => group.itemTypes.contains(item.type)).toList(),
+        ]).take(_resultLimit).toList();
+        return group.copyWith(items: matched);
+      }),
     );
-    final channels = await channelsFuture;
-
-    final grouped = <SearchResultGroup>[];
-    for (final group in activeGroups) {
-      if (group.itemTypes.contains('Person')) {
-        grouped.add(group);
-        continue;
-      }
-      if (group.itemTypes.contains('LiveTvChannel')) {
-        grouped.add(group.copyWith(items: channels));
-        continue;
-      }
-      final matched = _interleave([
-        for (final items in perServerItems)
-          items.where((item) => group.itemTypes.contains(item.type)).toList(),
-      ]).take(_resultLimit).toList();
-      grouped.add(group.copyWith(items: matched));
-    }
 
     return (grouped, peopleFuture);
   }
