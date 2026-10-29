@@ -22,6 +22,7 @@ import '../navigation/playback_launcher.dart';
 import '../navigation/route_lifecycle_observer.dart';
 import '../screens/detail/item_detail_screen.dart' show TrackTile;
 import '../widgets/focus/context_menu_sheet.dart';
+import '../widgets/overlay_sheet.dart';
 import 'plex_backdrop.dart';
 import 'plex_clock.dart';
 import 'plex_nav.dart';
@@ -254,6 +255,30 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
     _tab = _lastTab[widget.libraryId] ?? _Tab.library;
     _typeIndex = _lastType[widget.libraryId] ?? 0;
     unawaited(_resolveKind());
+    InlineBackInterceptor.push(_onBack);
+  }
+
+  /// Back from deep in the grid returns to its first title, and from a
+  /// Recommended row to the tabs, before it leaves the page. It has to run
+  /// ahead of the app's own Back, which pops the page before the focused
+  /// card ever sees the key.
+  bool _onBack() {
+    if (!mounted || ModalRoute.of(context)?.isCurrent != true) return false;
+    final focus = FocusManager.instance.primaryFocus;
+    if (focus == null) return false;
+    final gridIndex = _gridNodes.indexOf(focus);
+    if (gridIndex >= _columns) {
+      _focusCard(0, animate: false);
+      return true;
+    }
+    final inHubRow =
+        focus.context?.findAncestorStateOfType<_HubRowState>() != null;
+    if (_tab == _Tab.recommended && inHubRow) {
+      if (_scroll.hasClients) _scroll.jumpTo(0);
+      _tabNodes[_tab]!.requestFocus();
+      return true;
+    }
+    return false;
   }
 
   @override
@@ -273,6 +298,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
 
   @override
   void dispose() {
+    InlineBackInterceptor.remove(_onBack);
     if (_observedRoute != null) routeLifecycleObserver.unsubscribe(this);
     _tintDebounce?.cancel();
     _vm?.removeListener(_onVm);
@@ -1008,11 +1034,6 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
         _pendingFocus = below;
         if (!vm.loadingMore) unawaited(vm.loadMore());
       }
-      return KeyEventResult.handled;
-    }
-    if (key.isBackKey && event is KeyDownEvent && index >= columns) {
-      // Back from deep in the grid returns to the top first.
-      _focusCard(0, animate: false);
       return KeyEventResult.handled;
     }
     return KeyEventResult.ignored;
