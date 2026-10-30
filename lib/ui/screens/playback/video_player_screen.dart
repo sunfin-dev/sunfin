@@ -2972,7 +2972,11 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
 
   void _scheduleHide() {
     _hideTimer?.cancel();
-    final hideDelay = PlatformDetection.useMobileUi
+    // The chapters row is read before it is used, so it gets longer than the
+    // plain controls before both fade.
+    final hideDelay = _chapterRowOpen
+        ? const Duration(seconds: 15)
+        : PlatformDetection.useMobileUi
         ? const Duration(seconds: 8)
         : const Duration(seconds: 5);
     _hideTimer = Timer(hideDelay, () {

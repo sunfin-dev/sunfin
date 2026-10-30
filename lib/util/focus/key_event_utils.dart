@@ -136,9 +136,16 @@ class LongPressSelectKeyHandler {
         return KeyEventResult.handled;
       }
       if (event is KeyRepeatEvent) {
-        return _selectDownSeen
-            ? KeyEventResult.handled
-            : KeyEventResult.ignored;
+        if (!_selectDownSeen) return KeyEventResult.ignored;
+        // The first repeat is where Android calls a press long, which can
+        // come before the timer; whichever is first opens the menu, once.
+        if (!_longPressFired) {
+          _longPressTimer?.cancel();
+          _longPressTimer = null;
+          _longPressFired = true;
+          onLongPress();
+        }
+        return KeyEventResult.handled;
       }
       if (event is KeyUpEvent) {
         if (!_selectDownSeen) return KeyEventResult.ignored;
