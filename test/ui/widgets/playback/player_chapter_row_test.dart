@@ -35,6 +35,7 @@ void main() {
   Future<({List<Duration> picked, List<String> left})> pumpRow(
     WidgetTester tester, {
     Duration position = Duration.zero,
+    Widget? Function(Duration at)? frameAt,
   }) async {
     final imageApi = _MockImageApi();
     when(
@@ -63,6 +64,7 @@ void main() {
             onPick: picked.add,
             onLeave: () => left.add('leave'),
             onActivity: () {},
+            frameAt: frameAt,
           ),
         ),
       ),
@@ -92,6 +94,24 @@ void main() {
     await tester.pump();
 
     expect(calls.picked, [Duration.zero]);
+  });
+
+  testWidgets('chapters without a server image show the video frame', (
+    tester,
+  ) async {
+    final asked = <Duration>[];
+    await pumpRow(
+      tester,
+      frameAt: (at) {
+        asked.add(at);
+        return SizedBox(key: ValueKey('frame ${at.inSeconds}'));
+      },
+    );
+
+    // Just inside each chapter, past a fade from the one before.
+    expect(asked, contains(const Duration(seconds: 2)));
+    expect(asked, contains(const Duration(minutes: 2, seconds: 2)));
+    expect(find.byKey(const ValueKey('frame 2')), findsOneWidget);
   });
 
   testWidgets('up leaves the row without jumping', (tester) async {

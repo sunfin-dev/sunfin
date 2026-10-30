@@ -5725,6 +5725,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
         position: _state.position,
         focusNode: _tvChapterRowFocus,
         onActivity: _scheduleHide,
+        frameAt: (at) {
+          final tile = _getTrickplayTile(at);
+          return tile == null ? null : _trickplayTileImage(tile);
+        },
         onLeave: _closeChapterRow,
         onPick: (start) {
           unawaited(_seekDirect(start));

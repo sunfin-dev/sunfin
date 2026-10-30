@@ -31,6 +31,11 @@ class PlayerChapterRow extends StatefulWidget {
   /// Any key in the row, so the controls stay up while it is used.
   final VoidCallback onActivity;
 
+  /// The video's own frame at a time, from its trickplay images, for the
+  /// chapters the server made no picture of (user, 2026-10-30). Null when
+  /// the item has none.
+  final Widget? Function(Duration at)? frameAt;
+
   const PlayerChapterRow({
     super.key,
     required this.chapters,
@@ -41,7 +46,12 @@ class PlayerChapterRow extends StatefulWidget {
     required this.onPick,
     required this.onLeave,
     required this.onActivity,
+    this.frameAt,
   });
+
+  /// How far into a chapter its frame is taken: the very first frame of one
+  /// is often still the fade from the last.
+  static const frameOffset = Duration(seconds: 2);
 
   /// The chapter [position] falls in: the last one starting at or before it.
   static int chapterAt(List<Map<String, dynamic>> chapters, Duration position) {
@@ -150,18 +160,25 @@ class _PlayerChapterRowState extends State<PlayerChapterRow> {
           itemBuilder: (context, index) {
             final chapter = widget.chapters[index];
             final name = (chapter['Name'] as String?)?.trim();
+            final start = PlayerChapterRow.startOf(chapter);
+            final imageTag = chapter['ImageTag'] as String?;
+            final hasOwnImage = imageTag != null && imageTag.isNotEmpty;
             return _ChapterCard(
               width: _cardWidth,
               title: name == null || name.isEmpty
                   ? l10n.chapterNumber(index + 1)
                   : name,
-              start: PlayerChapterRow.startOf(chapter),
-              imageUrl: widget.imageApi.getChapterImageUrl(
-                widget.itemId,
-                index: index,
-                maxWidth: decodeWidth,
-                tag: chapter['ImageTag'] as String?,
-              ),
+              start: start,
+              imageUrl: hasOwnImage
+                  ? widget.imageApi.getChapterImageUrl(
+                      widget.itemId,
+                      index: index,
+                      maxWidth: decodeWidth,
+                      tag: imageTag,
+                    )
+                  : null,
+              // Also the stand-in when the server's own image fails.
+              frame: widget.frameAt?.call(start + PlayerChapterRow.frameOffset),
               highlighted: focused && index == _index,
               onTap: () => widget.onPick(PlayerChapterRow.startOf(chapter)),
             );
@@ -176,7 +193,8 @@ class _ChapterCard extends StatelessWidget {
   final double width;
   final String title;
   final Duration start;
-  final String imageUrl;
+  final String? imageUrl;
+  final Widget? frame;
   final bool highlighted;
   final VoidCallback onTap;
 
@@ -185,6 +203,7 @@ class _ChapterCard extends StatelessWidget {
     required this.title,
     required this.start,
     required this.imageUrl,
+    required this.frame,
     required this.highlighted,
     required this.onTap,
   });
@@ -194,6 +213,22 @@ class _ChapterCard extends StatelessWidget {
     final m = d.inMinutes.remainder(60).toString().padLeft(h > 0 ? 2 : 1, '0');
     final s = d.inSeconds.remainder(60).toString().padLeft(2, '0');
     return h > 0 ? '$h:$m:$s' : '$m:$s';
+  }
+
+  /// The server's chapter image, else the trickplay frame, else the start
+  /// time on its own.
+  Widget _picture(TextStyle caption) {
+    final placeholder = Center(child: Text(_clock(start), style: caption));
+    final url = imageUrl;
+    if (url != null) {
+      return Image.network(
+        url,
+        headers: serverImageHeaders,
+        fit: BoxFit.cover,
+        errorBuilder: (_, _, _) => frame ?? placeholder,
+      );
+    }
+    return frame ?? placeholder;
   }
 
   @override
@@ -230,14 +265,7 @@ class _ChapterCard extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: radius,
-                    child: Image.network(
-                      imageUrl,
-                      headers: serverImageHeaders,
-                      fit: BoxFit.cover,
-                      errorBuilder: (_, _, _) => Center(
-                        child: Text(_clock(start), style: caption),
-                      ),
-                    ),
+                    child: _picture(caption),
                   ),
                 ),
               ),
