@@ -45,6 +45,7 @@ AggregatedItem _preroll(String id) => AggregatedItem(
 );
 
 void main() {
+  episodeListHoldingTests();
   group('resolveQueueSeason', () {
     test('reads season 1 from a queue an airs-before special leads', () {
       final season = resolveQueueSeason([
@@ -296,6 +297,69 @@ void main() {
         ),
         _season1Id,
       );
+    });
+  });
+}
+
+void episodeListHoldingTests() {
+  group('episodeListHolding', () {
+    final s1 = [_episode('s1e1'), _episode('s1e2')];
+    final s2 = [
+      _episode('s2e1', seasonId: _season2Id, seasonNumber: 2),
+      _episode('s2e2', seasonId: _season2Id, seasonNumber: 2),
+    ];
+    Future<List<AggregatedItem>> load(String? seasonId) async =>
+        seasonId == _season2Id ? s2 : s1;
+
+    test('keeps the list on screen when it holds the pick', () async {
+      final requested = <String?>[];
+      final list = await episodeListHolding(
+        s2.first,
+        onScreen: s2,
+        seasonIds: const [_season2Id],
+        loadSeason: (id) {
+          requested.add(id);
+          return load(id);
+        },
+      );
+      expect(list, same(s2));
+      expect(requested, isEmpty);
+    });
+
+    // The Plex season page opened from S2E1, then a season 1 episode
+    // picked: the browsed season is 2, the pick lives in 1.
+    test('falls back to the pick\'s own season, never a list without it',
+        () async {
+      final list = await episodeListHolding(
+        s1.last,
+        onScreen: s2,
+        seasonIds: const [_season2Id, _season1Id],
+        loadSeason: load,
+      );
+      expect(list.map((e) => e.id), ['s1e1', 's1e2']);
+    });
+
+    test('comes back empty when no season holds the pick', () async {
+      final list = await episodeListHolding(
+        _episode('elsewhere'),
+        onScreen: s2,
+        seasonIds: const [_season2Id, _season1Id],
+        loadSeason: load,
+      );
+      expect(list, isEmpty);
+    });
+
+    test('a season that fails to load is skipped', () async {
+      final list = await episodeListHolding(
+        s1.first,
+        onScreen: const [],
+        seasonIds: const [_season2Id, _season1Id],
+        loadSeason: (id) async {
+          if (id == _season2Id) throw Exception('offline');
+          return s1;
+        },
+      );
+      expect(list.map((e) => e.id), ['s1e1', 's1e2']);
     });
   });
 }

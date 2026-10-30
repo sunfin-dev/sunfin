@@ -81,6 +81,7 @@ import '../../widgets/track_selector_dialog.dart';
 import '../../widgets/playback/player_loading_overlay.dart';
 import '../../widgets/playback/loading_animation_widget.dart';
 import '../../widgets/playback/chapter_marker_track.dart';
+import '../../widgets/playback/player_chapter_row.dart';
 import '../../widgets/playback/skip_segment_overlay.dart';
 import '../../widgets/playback/next_up_overlay.dart';
 import '../../widgets/playback/still_watching_dialog.dart';
@@ -345,6 +346,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
 
   final _overlayFocus = FocusNode();
   final _tvSeekbarFocus = FocusNode(debugLabel: 'video_player_tv_seekbar');
+
+  /// The TV chapters row under the controls, opened with down.
+  bool _chapterRowOpen = false;
+  final _tvChapterRowFocus = FocusNode(debugLabel: 'video_player_tv_chapters');
   final _tvSkipSegmentFocus = FocusNode(
     debugLabel: 'video_player_tv_skip_segment',
   );
@@ -1103,6 +1108,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
     FocusManager.instance.removeListener(_restoreOverlayFocus);
     _overlayFocus.dispose();
     _tvSeekbarFocus.dispose();
+    _tvChapterRowFocus.dispose();
     _tvSkipSegmentFocus.dispose();
     _tvNextUpPlayFocus.dispose();
     _tvNextUpDismissFocus.dispose();
@@ -2203,7 +2209,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
         unawaited(
           _runSinglePlayerMutation(
             'native_activity_previous',
-            () async => _manager.previous(),
+            () async => _manager.previousInQueue(),
             suppressBackFor: const Duration(milliseconds: 500),
           ),
         );
@@ -3076,7 +3082,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
       return;
     }
     final wasVisible = _controlsVisible;
-    setState(() => _controlsVisible = true);
+    setState(() {
+      _controlsVisible = true;
+      if (!wasVisible) _chapterRowOpen = false;
+    });
     if (!wasVisible) {
       _prefetchTrickplayDirectional(_state.position, forward: true);
     }
@@ -3839,6 +3848,13 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
             return KeyEventResult.ignored;
           }
           if (!_controlsVisible) {
+            if (event.logicalKey == LogicalKeyboardKey.arrowDown &&
+                !_isSkipSegmentButtonVisible &&
+                _currentChapters.isNotEmpty) {
+              _showControls();
+              _openChapterRow();
+              return KeyEventResult.handled;
+            }
             if (PlexStyle.enabled &&
                 event.logicalKey == LogicalKeyboardKey.arrowUp &&
                 !_isSkipSegmentButtonVisible) {
@@ -3880,10 +3896,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
           _exitPlayback();
           return KeyEventResult.handled;
         case LogicalKeyboardKey.mediaTrackNext:
-          unawaited(_manager.next());
+          unawaited(_manager.nextInQueue());
           return KeyEventResult.handled;
         case LogicalKeyboardKey.mediaTrackPrevious:
-          unawaited(_manager.previous());
+          unawaited(_manager.previousInQueue());
           return KeyEventResult.handled;
         case LogicalKeyboardKey.mediaFastForward:
           _seekRelative(_prefs.get(UserPreferences.skipForwardLength));
@@ -3927,10 +3943,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
         }
         return KeyEventResult.handled;
       case PlayerAction.next:
-        unawaited(_manager.next());
+        unawaited(_manager.nextInQueue());
         return KeyEventResult.handled;
       case PlayerAction.previous:
-        unawaited(_manager.previous());
+        unawaited(_manager.previousInQueue());
         return KeyEventResult.handled;
       case PlayerAction.skipForward:
         _seekRelative(_prefs.get(UserPreferences.skipForwardLength));
@@ -5038,6 +5054,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                 _buildSeekbar(),
                 const SizedBox(height: AppSpacing.spaceXs),
                 _buildTvBottomControlsRow(),
+                if (_chapterRowOpen) ?_buildTvChapterRow(),
               ],
             ),
           ),
@@ -5592,7 +5609,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
           children: [
             _controlButton(
               Icons.skip_previous_rounded,
-              onPressed: _manager.previous,
+              onPressed: _manager.previousInQueue,
               size: buttonIconSize,
               extent: buttonExtent,
               focusNode: _tvTransportFirstFocus,
@@ -5644,11 +5661,13 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
               ),
             ),
             const SizedBox(width: 4),
-            // Always here, because it steps chapters before it steps the
-            // queue, so it has something to do on a lone movie too.
+            // The next episode, never the next chapter: a file without
+            // chapters turned a chapter skip into an episode skip (user,
+            // 2026-10-30). Chapters have their own row, down from here. On a
+            // lone movie it runs the item to its end.
             _controlButton(
               Icons.skip_next_rounded,
-              onPressed: _manager.next,
+              onPressed: _manager.nextInQueue,
               size: buttonIconSize,
               extent: buttonExtent,
               focusNode: _tvTransportLastFocus,
@@ -5656,6 +5675,57 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  /// The current item's chapters as the server sent them, image tags
+  /// included, in the order their thumbnails are numbered.
+  List<Map<String, dynamic>> get _currentChapters {
+    final item = _queue.currentItem;
+    return item is AggregatedItem ? item.chapters : const [];
+  }
+
+  void _openChapterRow() {
+    if (_currentChapters.isEmpty) return;
+    setState(() => _chapterRowOpen = true);
+    _scheduleHide();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted && _chapterRowOpen && _tvChapterRowFocus.context != null) {
+        _tvChapterRowFocus.requestFocus();
+      }
+    });
+  }
+
+  void _closeChapterRow() {
+    if (!_chapterRowOpen) return;
+    setState(() => _chapterRowOpen = false);
+    _scheduleHide();
+    _focusTvPlayPause();
+  }
+
+  Widget? _buildTvChapterRow() {
+    final item = _queue.currentItem;
+    final chapters = _currentChapters;
+    final itemId = _itemIdForQueueItem(item);
+    if (item is! AggregatedItem || chapters.isEmpty || itemId == null) {
+      return null;
+    }
+    return Padding(
+      padding: const EdgeInsets.only(top: AppSpacing.spaceSm),
+      child: PlayerChapterRow(
+        key: ValueKey(itemId),
+        chapters: chapters,
+        itemId: itemId,
+        imageApi: _clientForQueueItem(item).imageApi,
+        position: _state.position,
+        focusNode: _tvChapterRowFocus,
+        onActivity: _scheduleHide,
+        onLeave: _closeChapterRow,
+        onPick: (start) {
+          unawaited(_seekDirect(start));
+          _closeChapterRow();
+        },
       ),
     );
   }
@@ -5670,6 +5740,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
         }
         if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
           _tvSeekbarFocus.requestFocus();
+          return KeyEventResult.handled;
+        }
+        if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
+          _openChapterRow();
           return KeyEventResult.handled;
         }
         return KeyEventResult.ignored;
@@ -5807,7 +5881,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                   : Colors.white,
             ),
           OsdButton.speed: ?speedButton,
-          if (hasChapters && shows(OsdButton.chapters))
+          if (hasChapters &&
+              OsdButton.chapters.isOffered &&
+              shows(OsdButton.chapters))
             OsdButton.chapters: _controlButton(
               Icons.bookmark_outline_rounded,
               onPressed: _showChapters,
@@ -6792,7 +6868,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                   children: [
                     _controlButton(
                       Icons.skip_previous_rounded,
-                      onPressed: _manager.previous,
+                      onPressed: _manager.previousInQueue,
                       size: 40 * scale,
                       extent: 72 * scale,
                       tooltip: l10n.playerTooltipPrevious,
@@ -6847,7 +6923,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                     ),
                     _controlButton(
                       Icons.skip_next_rounded,
-                      onPressed: _manager.next,
+                      onPressed: _manager.nextInQueue,
                       size: 40 * scale,
                       extent: 72 * scale,
                       tooltip: l10n.next,

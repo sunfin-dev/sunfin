@@ -14,6 +14,7 @@ import '../../data/viewmodels/item_detail_view_model.dart';
 import '../../preference/detail_section_layout.dart';
 import '../../preference/user_preferences.dart';
 import '../../util/focus/dpad_keys.dart';
+import '../../util/focus/key_event_utils.dart';
 import '../../util/image_fetch_priority.dart';
 import '../screens/detail/item_detail_screen.dart';
 import '../screens/detail/nouveau/discovery/nouveau_discovery_section.dart';
@@ -116,6 +117,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
       widget.initialFocusNode ?? FocusNode(debugLabel: 'plexSeasonEntry');
   final _tabNodes = <String, FocusNode>{};
   final _cardNodes = <String, FocusNode>{};
+  final _selectKeys = LongPressSelectKeyHandler();
   final _buttonNodes = List.generate(
     3,
     (i) => FocusNode(debugLabel: 'plexSeasonButton$i'),
@@ -177,6 +179,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
     for (final node in [..._tabNodes.values, ..._cardNodes.values]) {
       node.dispose();
     }
+    _selectKeys.dispose();
     for (final node in _buttonNodes) {
       node.dispose();
     }
@@ -301,6 +304,24 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
   }
 
   /// Fetches the season on screen again, e.g. after marking one watched.
+  /// Every loaded season again, and the tabs' unwatched counts, after a whole
+  /// season changed.
+  Future<void> _refreshSeasons() async {
+    final seriesId = _seriesId;
+    if (seriesId == null) return;
+    try {
+      final data = await _client.itemsApi.getSeasons(
+        seriesId,
+        fields: 'ChildCount,UserData',
+      );
+      if (mounted) setState(() => _seasons = _mapItems(data));
+    } catch (e) {
+      debugPrint('[PlexSeasonPage] seasons for $seriesId: $e');
+    }
+    _episodesBySeason.clear();
+    await _refreshSeason();
+  }
+
   Future<void> _refreshSeason() async {
     final seasonId = _seasonId;
     if (seasonId == null) return;
@@ -437,13 +458,19 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
   // --- Keys ---------------------------------------------------------------
 
   KeyEventResult _onTabKey(String seasonId, KeyEvent event) {
-    if (!event.isActionable) return KeyEventResult.ignored;
     final index = _seasons.indexWhere((s) => s.id == seasonId);
+    // OK picks the season on release; held, it brings the season's menu, so
+    // a watched season can be marked unwatched from here (user, 2026-10-30).
+    final select = _selectKeys.handleKeyEvent(
+      event,
+      onTap: () => _selectSeasonNow(seasonId),
+      onLongPress: () {
+        if (index >= 0) _showMenu(_seasons[index]);
+      },
+    );
+    if (select != KeyEventResult.ignored) return select;
+    if (!event.isActionable) return KeyEventResult.ignored;
     final key = event.logicalKey;
-    if (isActivateKey(event)) {
-      _selectSeasonNow(seasonId);
-      return KeyEventResult.handled;
-    }
     if (key.isLeftKey) {
       if (index > 0) {
         _tabNode(_seasons[index - 1].id).requestFocus();
@@ -490,13 +517,15 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
   }
 
   KeyEventResult _onCardKey(int index, KeyEvent event) {
-    if (!event.isActionable) return KeyEventResult.ignored;
     final episodes = _episodes;
+    final select = _selectKeys.handleKeyEvent(
+      event,
+      onTap: () => _play(episodes[index]),
+      onLongPress: () => _showMenu(episodes[index]),
+    );
+    if (select != KeyEventResult.ignored) return select;
+    if (!event.isActionable) return KeyEventResult.ignored;
     final key = event.logicalKey;
-    if (isActivateKey(event)) {
-      if (event is KeyDownEvent) _play(episodes[index]);
-      return KeyEventResult.handled;
-    }
     if (key.isLeftKey) {
       if (index > 0) {
         _focusEpisode(episodes[index - 1]);
@@ -515,10 +544,6 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
     }
     if (key.isDownKey) {
       _buttonNodes[0].requestFocus();
-      return KeyEventResult.handled;
-    }
-    if (key.isContextMenuKey) {
-      _showMenu(episodes[index]);
       return KeyEventResult.handled;
     }
     return KeyEventResult.ignored;
@@ -600,12 +625,16 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
     await _refreshSeason();
   }
 
-  void _showMenu(AggregatedItem episode) {
+  /// The menu for an episode or a season tab. A season's change reaches its
+  /// episodes too, so every loaded season is fetched again.
+  void _showMenu(AggregatedItem item) {
     unawaited(
       showContextMenu(
         context,
-        episode,
-        onChanged: () => unawaited(_refreshSeason()),
+        item,
+        onChanged: () => unawaited(
+          item.type == 'Season' ? _refreshSeasons() : _refreshSeason(),
+        ),
       ),
     );
   }
@@ -888,6 +917,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
               onKeyEvent: (_, event) => _onTabKey(season.id, event),
               child: GestureDetector(
                 onTap: () => _selectSeasonNow(season.id),
+                onLongPress: () => _showMenu(season),
                 child: ListenableBuilder(
                   listenable: _tabNode(season.id),
                   builder: (context, _) => _SeasonTab(
@@ -923,6 +953,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
             onKeyEvent: (_, event) => _onCardKey(index, event),
             child: GestureDetector(
               onTap: () => _play(episode),
+              onLongPress: () => _showMenu(episode),
               child: ListenableBuilder(
                 listenable: node,
                 builder: (context, _) => _EpisodeCard(

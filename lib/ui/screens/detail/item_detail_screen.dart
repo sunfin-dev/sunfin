@@ -9095,28 +9095,26 @@ class DetailActionButtonsState extends State<DetailActionButtons> {
             );
 
           case 'Episode':
-            var episodes = viewModel.episodes;
-            if (episodes.isEmpty || !episodes.any((e) => e.id == item.id)) {
-              final seriesId = item.seriesId;
-              // Matches the list on screen, which for an inlined special is the
-              // season being browsed rather than Specials.
-              final seasonId = viewModel.effectiveSeasonId ?? item.seasonId;
-              if (seriesId != null && seriesId.isNotEmpty) {
-                try {
-                  const episodeQueueFields = 'Overview,RunTimeTicks,UserData';
-                  final client = _clientForItem(item);
-                  final data = await client.itemsApi.getEpisodes(
-                    seriesId,
-                    seasonId: seasonId,
-                    fields: episodeQueueFields,
-                  );
-                  episodes = _mapRawItemsForServer(
-                    data['Items'],
-                    item.serverId,
-                  );
-                } catch (_) {}
-              }
-            }
+            final seriesId = item.seriesId;
+            // The list on screen first, which for an inlined special is the
+            // season being browsed rather than Specials, then the episode's
+            // own season.
+            final episodes = await episodeListHolding(
+              item,
+              onScreen: viewModel.episodes,
+              seasonIds: seriesId == null || seriesId.isEmpty
+                  ? const []
+                  : [viewModel.effectiveSeasonId ?? item.seasonId, item.seasonId],
+              loadSeason: (seasonId) async {
+                const episodeQueueFields = 'Overview,RunTimeTicks,UserData';
+                final data = await _clientForItem(item).itemsApi.getEpisodes(
+                  seriesId!,
+                  seasonId: seasonId,
+                  fields: episodeQueueFields,
+                );
+                return _mapRawItemsForServer(data['Items'], item.serverId);
+              },
+            );
             ensureLaunchStillWanted(launchSession);
 
             if (episodes.length > 1) {

@@ -138,3 +138,30 @@ bool isSeasonFinale(
 
   return maxEpisodeIndex != null && completedIndex >= maxEpisodeIndex;
 }
+
+/// The episode list a picked episode plays from: [onScreen] when it holds
+/// [picked], else the first season in [seasonIds] whose episodes do, else an
+/// empty list, so the pick plays on its own.
+///
+/// A page opened on one season can play an episode of another (the Plex
+/// season page's tabs). Queueing the browsed season then started its first
+/// episode instead of the one picked (user, 2026-10-30).
+Future<List<AggregatedItem>> episodeListHolding(
+  AggregatedItem picked, {
+  required List<AggregatedItem> onScreen,
+  required Iterable<String?> seasonIds,
+  required Future<List<AggregatedItem>> Function(String? seasonId) loadSeason,
+}) async {
+  bool holds(List<AggregatedItem> list) => list.any((e) => e.id == picked.id);
+  if (holds(onScreen)) return onScreen;
+  for (final seasonId in seasonIds.toSet()) {
+    List<AggregatedItem> episodes;
+    try {
+      episodes = await loadSeason(seasonId);
+    } catch (_) {
+      continue;
+    }
+    if (holds(episodes)) return episodes;
+  }
+  return const [];
+}

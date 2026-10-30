@@ -3228,6 +3228,22 @@ class PlaybackManager implements AudioOwnable {
     await _playCurrentItem();
   }
 
+  /// Straight to the previous item, without stepping chapters first, for a
+  /// control that always means the previous episode. With nothing before
+  /// this one, it starts over.
+  Future<void> previousInQueue() async {
+    if (await _maybeIntercept(TransportAction.previous)) return;
+    if (!queueService.hasPrevious) {
+      await seekTo(Duration.zero);
+      return;
+    }
+    _mediaSourceId = null;
+    await _stopAndReportCurrent(skipQueueChange: true);
+    _resetBackendSelectionLock();
+    queueService.previous();
+    await _playCurrentItem();
+  }
+
   Future<void> playFromQueue(int index) async {
     _mediaSourceId = null;
     await _stopAndReportCurrent(skipQueueChange: true);

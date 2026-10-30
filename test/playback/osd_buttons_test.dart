@@ -28,7 +28,7 @@ void main() {
       OsdButton.syncPlay.id,
       OsdButton.favorite.id,
       OsdButton.speed.id,
-      OsdButton.chapters.id,
+      // Chapters open with down from the controls on a TV instead.
       OsdButton.subtitles.id,
       OsdButton.audio.id,
       OsdButton.castAndCrew.id,
@@ -62,7 +62,6 @@ void main() {
       expect(visibleOsdButtonIds(prefs), [
         // Never placed and declared before anything that was, so they stay put.
         OsdButton.syncPlay.id,
-        OsdButton.chapters.id,
         OsdButton.info.id,
         OsdButton.subtitles.id,
         // These follow the button they were declared after.

@@ -16,6 +16,7 @@ import '../../l10n/app_localizations.dart';
 import '../../preference/detail_section_layout.dart';
 import '../../preference/user_preferences.dart';
 import '../../util/focus/dpad_keys.dart';
+import '../../util/focus/key_event_utils.dart';
 import '../../util/image_fetch_priority.dart';
 import '../navigation/destinations.dart';
 import '../screens/detail/item_detail_screen.dart';
@@ -107,6 +108,7 @@ class _PlexShowPageState extends State<PlexShowPage> {
   late final FocusNode _entryNode =
       widget.initialFocusNode ?? FocusNode(debugLabel: 'plexShowEntry');
   final _seasonNodes = <String, FocusNode>{};
+  final _seasonSelectKeys = LongPressSelectKeyHandler();
   final _buttonNodes = List.generate(
     3,
     (i) => FocusNode(debugLabel: 'plexShowButton$i'),
@@ -165,6 +167,7 @@ class _PlexShowPageState extends State<PlexShowPage> {
     for (final node in [..._seasonNodes.values, ..._buttonNodes]) {
       node.dispose();
     }
+    _seasonSelectKeys.dispose();
     _scroll.dispose();
     _rowScroll.dispose();
     super.dispose();
@@ -355,12 +358,18 @@ class _PlexShowPageState extends State<PlexShowPage> {
   }
 
   KeyEventResult _onSeasonKey(int index, KeyEvent event) {
+    // OK opens the season on release, held it brings the season's menu, as
+    // on every other poster (user, 2026-10-30: mark a watched season
+    // unwatched to see it again).
+    final season = _seasons[index];
+    final select = _seasonSelectKeys.handleKeyEvent(
+      event,
+      onTap: () => unawaited(_openSeason(season)),
+      onLongPress: () => _showSeasonMenu(season),
+    );
+    if (select != KeyEventResult.ignored) return select;
     if (!event.isActionable) return KeyEventResult.ignored;
     final key = event.logicalKey;
-    if (isActivateKey(event)) {
-      if (event is KeyDownEvent) unawaited(_openSeason(_seasons[index]));
-      return KeyEventResult.handled;
-    }
     if (key.isLeftKey) {
       if (index > 0) {
         _focusSeason(index - 1);
@@ -381,17 +390,13 @@ class _PlexShowPageState extends State<PlexShowPage> {
       _focusSection(0);
       return KeyEventResult.handled;
     }
-    if (key.isContextMenuKey) {
-      unawaited(
-        showContextMenu(
-          context,
-          _seasons[index],
-          onChanged: () => unawaited(_load()),
-        ),
-      );
-      return KeyEventResult.handled;
-    }
     return KeyEventResult.ignored;
+  }
+
+  void _showSeasonMenu(AggregatedItem season) {
+    unawaited(
+      showContextMenu(context, season, onChanged: () => unawaited(_load())),
+    );
   }
 
   // --- Actions ------------------------------------------------------------
@@ -789,6 +794,7 @@ class _PlexShowPageState extends State<PlexShowPage> {
             onKeyEvent: (_, event) => _onSeasonKey(index, event),
             child: GestureDetector(
               onTap: () => unawaited(_openSeason(season)),
+              onLongPress: () => _showSeasonMenu(season),
               child: ListenableBuilder(
                 listenable: node,
                 builder: (context, _) => _SeasonCard(
