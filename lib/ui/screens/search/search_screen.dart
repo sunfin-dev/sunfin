@@ -729,6 +729,13 @@ class _SearchScreenState extends State<SearchScreen>
     if (event is! KeyDownEvent && event is! KeyRepeatEvent) {
       return KeyEventResult.ignored;
     }
+    // While typing from a real keyboard, Enter, Left and Right belong to the
+    // field: Enter submits, the arrows move the caret.
+    if (_searchTvFieldKey.currentState?.isTyping == true &&
+        !event.logicalKey.isUpKey &&
+        !event.logicalKey.isDownKey) {
+      return KeyEventResult.ignored;
+    }
     if (event.logicalKey.isUpKey) {
       if (_userPreferences.get(UserPreferences.navbarPosition) ==
           NavbarPosition.top) {

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -152,6 +153,22 @@ class CustomTVTextFieldState extends State<CustomTVTextField>
   bool _nativeSystemImePending = false;
 
   bool get _isSystemImeActive => _useSystemImeSession;
+
+  /// Whether the field is taking typing from the system keyboard (a real
+  /// caret, the physical keyboard on a computer) rather than the on-screen
+  /// one, so a parent's key handling can leave the editing keys alone.
+  bool get isTyping => _isSystemImeActive;
+
+  /// A computer has a keyboard of its own. A click there types straight into
+  /// the field with a real caret, never the on-screen keyboard meant for a
+  /// remote (user, 2026-10-30: the Windows build draws the TV fields).
+  static bool get _isDesktop =>
+      !kIsWeb &&
+      (defaultTargetPlatform == TargetPlatform.windows ||
+          defaultTargetPlatform == TargetPlatform.linux ||
+          defaultTargetPlatform == TargetPlatform.macOS);
+
+  bool get _prefersSystemIme => widget.preferSystemIme || _isDesktop;
 
   bool get isKeyboardVisible =>
       _keyboardController.isVisible || _isSystemImeActive;
@@ -359,7 +376,7 @@ class CustomTVTextFieldState extends State<CustomTVTextField>
       }
     }
 
-    if (!widget.preferSystemIme && oldWidget.preferSystemIme) {
+    if (!_isDesktop && !widget.preferSystemIme && oldWidget.preferSystemIme) {
       _deactivateSystemIme();
     }
   }
@@ -368,7 +385,7 @@ class CustomTVTextFieldState extends State<CustomTVTextField>
       _keyboardController.isVisible ? closeKeyboard() : openKeyboard();
 
   void openKeyboard() {
-    if (widget.preferSystemIme) {
+    if (_prefersSystemIme) {
       _activateSystemIme();
       return;
     }
@@ -807,13 +824,22 @@ class _FieldDisplay extends StatelessWidget {
                     ? _maskText(afterRaw)
                     : afterRaw;
 
+                // With the caret up the hint goes, so the field reads as
+                // ready to type; it stays laid out, clear, to keep the
+                // field's height.
+                final hidesHint = isEmpty && showCursor;
                 final textSpan = TextSpan(
                   children: [
-                    if (isEmpty)
+                    if (isEmpty && !hidesHint)
                       TextSpan(text: widget.hint, style: hintStyle)
                     else if (before.isNotEmpty)
                       TextSpan(text: before, style: textStyle),
                     cursorSpan,
+                    if (hidesHint)
+                      TextSpan(
+                        text: widget.hint,
+                        style: hintStyle.copyWith(color: Colors.transparent),
+                      ),
                     if (after.isNotEmpty)
                       TextSpan(text: after, style: textStyle),
                   ],
