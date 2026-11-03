@@ -2,7 +2,7 @@
   <img src=".github/banner.png" alt="Sunfin: a Jellyfin client for Android TV, Mobile and Desktop" width="1280">
 </p>
 
-> **DISCLAIMER:** This is a Jellyfin client inspired by the Plex UI and heavily catered to those who are used to the Plex UI with all the benefits of Jellyfin's Open Source Server. If you would like a more customisable experience see [Moonfin](https://github.com/Moonfin-Client/Moonfin-Core) which this Client is forked off of.
+> **DISCLAIMER:** This is a Jellyfin client inspired by the Plex UI and heavily catered to those who are used to the Plex UI with all the benefits of Jellyfin's Open Source Server. If you would like a more customisable experience see the awesome [Moonfin](https://github.com/Moonfin-Client/Moonfin-Core) which this Client is forked off of.
 
 ---
 
