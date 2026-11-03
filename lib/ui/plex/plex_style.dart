@@ -68,11 +68,11 @@ abstract final class PlexStyle {
   static const headerTextWidth = 400.0 * _k;
 
   /// The sharp backdrop: right-aligned to the screen, 16:9, fades out to the
-  /// left and bottom.
-  /// Plex's art reaches about two thirds down the screen with a long fade
-  /// into the rows (reference 15-home-episode-mirror.png).
-  static const backdropWidth = 600.0 * _k;
-  static const backdropHeight = 372.0 * _k;
+  /// left and bottom. Plex's box is 1232 x 693 of a 1920 x 1080 screen, the
+  /// same on home and every details page (measured 2026-11-03 by matching
+  /// Plex's own art to its screenshots).
+  static const backdropWidth = 616.0 * _k;
+  static const backdropHeight = 346.5 * _k;
 
   /// Portrait poster cards on every home row (episodes use the series poster).
   static const posterWidth = 110.0 * _k;

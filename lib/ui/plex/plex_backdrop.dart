@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
@@ -26,6 +27,56 @@ class PlexBackdrop extends StatefulWidget {
 
   @override
   State<PlexBackdrop> createState() => _PlexBackdropState();
+
+  /// How much of the art shows at ([u], [v]) of the art box, 0-1 from its
+  /// top-left corner.
+  ///
+  /// Measured on the Plex TV app (2026-11-03): the movie page, show page and
+  /// home of three titles, each solved per pixel against Plex's own copy of
+  /// the art, agree on one box and one mask. The art never shows at full
+  /// strength, only [_artOpacity] of it over the page colour. It fades out
+  /// to the left and bottom with a rounded corner between the two, and
+  /// softly towards the top and right edges.
+  @visibleForTesting
+  static double artMaskAt(double u, double v) {
+    final left = math.max(0.0, (_leftOpaque - u) / (_leftOpaque - _leftClear));
+    final bottom = math.max(
+      0.0,
+      (v - _bottomOpaque) / (_bottomClear - _bottomOpaque),
+    );
+    final corner = math
+        .pow(
+          math.pow(left, _cornerNorm) + math.pow(bottom, _cornerNorm),
+          1 / _cornerNorm,
+        )
+        .toDouble();
+    return _artOpacity *
+        (1 - _ease(corner)) *
+        _ease((v - _topClear) / (_topOpaque - _topClear)) *
+        (1 - _ease((u - _rightFrom) / (_rightTo - _rightFrom)));
+  }
+
+  static const _artOpacity = 0.59;
+
+  /// Fractions of the art box: clear at the first, full at the second.
+  static const _leftClear = 0.076;
+  static const _leftOpaque = 0.289;
+  static const _bottomOpaque = 0.643;
+  static const _bottomClear = 1.019;
+
+  /// 1 cuts the bottom-left corner straight across, 2 rounds it as a circle.
+  static const _cornerNorm = 1.2;
+
+  /// The top edge keeps about a third, the right edge about a half.
+  static const _topClear = -0.146;
+  static const _topOpaque = 0.221;
+  static const _rightFrom = 0.85;
+  static const _rightTo = 1.13;
+
+  static double _ease(double t) {
+    final c = t.clamp(0.0, 1.0);
+    return c * c * (3 - 2 * c);
+  }
 }
 
 class _PlexBackdropState extends State<PlexBackdrop> {
@@ -272,14 +323,11 @@ class _PlexBackdropState extends State<PlexBackdrop> {
     );
   }
 
-  /// Fades [child] out towards its left edge (opaque from 16% across) and
-  /// its bottom edge (opaque from 20% up) on an eased curve: short, so the
-  /// art keeps its strength, and soft, so its edge never shows (user's pick,
-  /// "B" of five, 2026-10-26; the fade used to reach 42% and 50% in).
+  /// Fades [child] as Plex does ([PlexBackdrop.artMaskAt]).
   ///
-  /// One mask layer: the two fades are multiplied once into a small alpha
-  /// image and stretched over the art. Two stacked gradient masks gave the
-  /// same picture for two offscreen layers on every frame of a crossfade.
+  /// One mask layer: the mask is drawn once into a small alpha image and
+  /// stretched over the art. Stacked gradient masks gave the same picture
+  /// for several offscreen layers on every frame of a crossfade.
   static Widget _fadeMask({required Widget child}) {
     final mask = _maskImage;
     return ShaderMask(
@@ -301,61 +349,25 @@ class _PlexBackdropState extends State<PlexBackdrop> {
 
   static final ui.Image _maskImage = _buildMaskImage();
 
-  /// Both fades drawn once into a small image; bilinear sampling keeps the
-  /// stretched ramps smooth.
+  /// The mask drawn once, a pixel at a time, into a small image (16:9 like
+  /// the box); bilinear sampling keeps it smooth when stretched.
   static ui.Image _buildMaskImage() {
     const width = 192;
-    const height = 120;
-    const rect = Rect.fromLTWH(0, 0, width + 0.0, height + 0.0);
+    const height = 108;
     final recorder = ui.PictureRecorder();
     final canvas = Canvas(recorder);
-    canvas.saveLayer(rect, Paint());
-    canvas.drawRect(
-      rect,
-      Paint()
-        ..shader = _easedRamp(
-          Alignment.centerLeft,
-          Alignment.centerRight,
-          _leftFade,
-        ).createShader(rect),
-    );
-    canvas.drawRect(
-      rect,
-      Paint()
-        ..blendMode = BlendMode.dstIn
-        ..shader = _easedRamp(
-          Alignment.bottomCenter,
-          Alignment.topCenter,
-          _bottomFade,
-        ).createShader(rect),
-    );
-    canvas.restore();
+    final paint = Paint()..isAntiAlias = false;
+    for (var y = 0; y < height; y++) {
+      for (var x = 0; x < width; x++) {
+        final alpha = PlexBackdrop.artMaskAt(
+          (x + 0.5) / width,
+          (y + 0.5) / height,
+        );
+        if (alpha <= 0) continue;
+        paint.color = Color.fromRGBO(0, 0, 0, alpha);
+        canvas.drawRect(Rect.fromLTWH(x + 0.0, y + 0.0, 1, 1), paint);
+      }
+    }
     return recorder.endRecording().toImageSync(width, height);
   }
-
-  /// How far in from each edge the art reaches full strength (fraction of
-  /// the art box).
-  static const _leftFade = 0.16;
-  static const _bottomFade = 0.20;
-
-  /// Transparent at [begin] to opaque at [length] of the way to [end], on a
-  /// smoothstep curve so both ends of the fade are gentle.
-  static LinearGradient _easedRamp(
-    Alignment begin,
-    Alignment end,
-    double length,
-  ) {
-    const steps = 8;
-    return LinearGradient(
-      begin: begin,
-      end: end,
-      colors: [
-        for (var i = 0; i <= steps; i++)
-          Color.fromRGBO(0, 0, 0, _smoothstep(i / steps)),
-      ],
-      stops: [for (var i = 0; i <= steps; i++) length * i / steps],
-    );
-  }
-
-  static double _smoothstep(double t) => t * t * (3 - 2 * t);
 }

@@ -231,23 +231,28 @@ abstract final class PlexBackdropTint {
     // Each corner of the page from the same corner of the art. Corners, not
     // quarters: on a mostly-sky scene quarters all came out sky blue, where
     // Plex shows the grass in one corner and a character's hair in another.
-    final raw = [
-      _dominant(bytes, (x, y) => x < _cornerColumns && y < _cornerRows),
+    final samples = _samples(bytes);
+    final picks = [
+      _dominant(samples, (x, y) => x < _cornerColumns && y < _cornerRows),
       _dominant(
-        bytes,
+        samples,
         (x, y) => x >= _sampleWidth - _cornerColumns && y < _cornerRows,
       ),
       _dominant(
-        bytes,
+        samples,
         (x, y) => x < _cornerColumns && y >= _sampleHeight - _cornerRows,
       ),
       _dominant(
-        bytes,
+        samples,
         (x, y) =>
             x >= _sampleWidth - _cornerColumns &&
             y >= _sampleHeight - _cornerRows,
       ),
     ];
+    if (_secondColour(samples, picks) case (final corner, final pick)) {
+      picks[corner] = pick;
+    }
+    final raw = [for (final p in picks) p.color];
     // Measured on the Plex TV app (2026-10-26, five titles against the
     // server's corner colours): each corner keeps the brightness of its
     // colour in the art, compressed into about 0.018-0.055 luminance, so a
@@ -260,7 +265,7 @@ abstract final class PlexBackdropTint {
           target:
               (_pageLuminance *
                       math.sqrt(c.computeLuminance() / _referenceLuminance))
-                  .clamp(_minLuminance, _maxLuminance),
+                  .clamp(_minLuminance, _ceilingFor(c)),
         ),
     ];
     final any = corners.whereType<Color>().firstOrNull;
@@ -301,8 +306,44 @@ abstract final class PlexBackdropTint {
     return uri.replace(queryParameters: query);
   }
 
+  static List<_Sample> _samples(ByteData bytes) => [
+    for (var i = 0; i + 3 < bytes.lengthInBytes; i += 4)
+      _Sample(
+        (i ~/ 4) % _sampleWidth,
+        (i ~/ 4) ~/ _sampleWidth,
+        bytes.getUint8(i),
+        bytes.getUint8(i + 1),
+        bytes.getUint8(i + 2),
+        bytes.getUint8(i + 3) / 255,
+      ),
+  ];
+
+  static bool _sameFamily(int bin, int family) {
+    final d = (bin - family).abs();
+    return d <= 1 || d == _hueBins - 1;
+  }
+
+  /// How much of each hue family the [include]d pixels hold.
+  static List<double> _familyWeights(
+    List<_Sample> samples,
+    bool Function(int x, int y) include,
+  ) {
+    final weights = List<double>.filled(_hueBins, 0);
+    for (final s in samples) {
+      if (s.weight > 0 && include(s.x, s.y)) weights[s.bin] += s.weight;
+    }
+    return weights;
+  }
+
+  /// A hue family with its two neighbours, as the corners count it.
+  static double _familyWeight(List<double> weights, int family) =>
+      weights[(family - 1) % _hueBins] +
+      weights[family] +
+      weights[(family + 1) % _hueBins];
+
   /// The colour of the art's setting among the sample pixels [include]
-  /// accepts: the hue family that covers the most of it, averaged.
+  /// accepts: the hue family that covers the most of it, averaged, and that
+  /// family (null when nothing there has a colour).
   ///
   /// Chosen over a saturation-weighted mean (user, 2026-10-26, after a
   /// side-by-side on 40 titles): that let small, strong patches of the
@@ -310,49 +351,48 @@ abstract final class PlexBackdropTint {
   /// over a large background, so The Bear's night sky came out brown.
   /// Near-black and grey pixels carry no reliable hue and count for nothing;
   /// skin tones, almost always the subject, count a little.
-  static Color _dominant(ByteData bytes, bool Function(int x, int y) include) {
-    final picked = <_Sample>[];
-    for (var i = 0; i + 3 < bytes.lengthInBytes; i += 4) {
-      final pixel = i ~/ 4;
-      if (!include(pixel % _sampleWidth, pixel ~/ _sampleWidth)) continue;
-      picked.add(
-        _Sample(
-          bytes.getUint8(i),
-          bytes.getUint8(i + 1),
-          bytes.getUint8(i + 2),
-          bytes.getUint8(i + 3) / 255,
-        ),
-      );
-    }
-    final weights = List<double>.filled(_hueBins, 0);
-    for (final s in picked) {
-      if (s.weight > 0) weights[s.bin] += s.weight;
-    }
+  static ({Color color, int? family}) _dominant(
+    List<_Sample> samples,
+    bool Function(int x, int y) include,
+  ) {
+    final weights = _familyWeights(samples, include);
     var best = 0;
     for (var i = 1; i < _hueBins; i++) {
       if (weights[i] > weights[best]) best = i;
     }
     // Nothing colourful at all: a plain average, which the darkening below
     // turns into the page colour or, for near-black art, the fallback.
-    final colourless = weights[best] == 0;
+    if (weights[best] == 0) {
+      final plain = _average(samples, include, (s) => s.alpha);
+      return (color: plain ?? PlexStyle.background, family: null);
+    }
+    // The winning family and its two neighbours, so a hue that sits on a bin
+    // edge still counts in full.
+    final color = _average(
+      samples,
+      include,
+      (s) => _sameFamily(s.bin, best) ? s.weight : 0,
+    );
+    return (color: color ?? PlexStyle.background, family: best);
+  }
+
+  /// The [weightOf]-weighted average of the pixels [include] accepts.
+  static Color? _average(
+    List<_Sample> samples,
+    bool Function(int x, int y) include,
+    double Function(_Sample s) weightOf,
+  ) {
     var r = 0.0, g = 0.0, b = 0.0, weight = 0.0;
-    for (final s in picked) {
-      final double w;
-      if (colourless) {
-        w = s.alpha;
-      } else {
-        // The winning family and its two neighbours, so a hue that sits on a
-        // bin edge still counts in full.
-        final d = (s.bin - best).abs();
-        if (s.weight == 0 || (d > 1 && d != _hueBins - 1)) continue;
-        w = s.weight;
-      }
+    for (final s in samples) {
+      if (!include(s.x, s.y)) continue;
+      final w = weightOf(s);
+      if (w == 0) continue;
       r += s.r * w;
       g += s.g * w;
       b += s.b * w;
       weight += w;
     }
-    if (weight == 0) return PlexStyle.background;
+    if (weight == 0) return null;
     return Color.fromARGB(
       255,
       (r / weight).round(),
@@ -361,12 +401,80 @@ abstract final class PlexBackdropTint {
     );
   }
 
+  /// Share of the art's colour a second colour needs before it takes a
+  /// corner from the one that fills them all.
+  static const _secondShare = 0.25;
+
+  /// Art with one colour all around and a second, large one in the middle
+  /// (Ali G: a yellow wall, a blue jacket; user, 2026-10-29) came out the
+  /// same colour in every corner. The second colour then takes the corner
+  /// where it is strongest. Art whose corners already differ is left alone.
+  /// Returns that corner (0-3, as in [fromSample]) and its pick.
+  static (int, ({Color color, int? family}))? _secondColour(
+    List<_Sample> samples,
+    List<({Color color, int? family})> picks,
+  ) {
+    final main = picks.first.family;
+    if (main == null || picks.any((p) => p.family != main)) return null;
+    final whole = _familyWeights(samples, (_, _) => true);
+    final total = whole.fold(0.0, (a, b) => a + b);
+    if (total == 0) return null;
+    // The strongest family clear of the main colour and its neighbours.
+    int? second;
+    var secondWeight = 0.0;
+    for (var bin = 0; bin < _hueBins; bin++) {
+      final d = (bin - main).abs();
+      if (d <= 2 || d >= _hueBins - 2) continue;
+      final w = _familyWeight(whole, bin);
+      if (w > secondWeight) {
+        second = bin;
+        secondWeight = w;
+      }
+    }
+    if (second == null || secondWeight < total * _secondShare) return null;
+    // The quarter of the art holding most of it; ties go to the corners
+    // away from the header text, which sits top left.
+    bool quarter(int corner, int x, int y) =>
+        (corner.isOdd ? x >= _sampleWidth ~/ 2 : x < _sampleWidth ~/ 2) &&
+        (corner >= 2 ? y >= _sampleHeight ~/ 2 : y < (_sampleHeight + 1) ~/ 2);
+    var corner = 3;
+    var bestShare = -1.0;
+    for (final c in const [3, 2, 1, 0]) {
+      final share = _familyWeight(
+        _familyWeights(samples, (x, y) => quarter(c, x, y)),
+        second,
+      );
+      if (share > bestShare + 1e-9) {
+        corner = c;
+        bestShare = share;
+      }
+    }
+    final family = second;
+    final color = _average(
+      samples,
+      (x, y) => quarter(corner, x, y),
+      (s) => _sameFamily(s.bin, family) ? s.weight : 0,
+    );
+    return color == null ? null : (corner, (color: color, family: family));
+  }
+
   /// Page luminance for a corner whose colour in the art has
   /// [_referenceLuminance], and the range the corners stay within.
   static const _pageLuminance = 0.026;
   static const _referenceLuminance = 0.04;
   static const _minLuminance = 0.012;
   static const _maxLuminance = 0.055;
+
+  /// A bright, strong colour (a painted wall, a yellow poster) turns muddy
+  /// when darkened that far, yellow most of all, so it may stay brighter.
+  static const _vividMaxLuminance = 0.11;
+
+  static double _ceilingFor(Color c) {
+    final hsv = HSVColor.fromColor(c);
+    return hsv.saturation >= 0.6 && hsv.value >= 0.8
+        ? _vividMaxLuminance
+        : _maxLuminance;
+  }
 
   /// Plex's page colours are less vivid than vivid art, but never washed out:
   /// pale art that still has a hue (snow, a white-blue poster) keeps a clear
@@ -412,12 +520,13 @@ abstract final class PlexBackdropTint {
 
 /// One sample pixel with what [PlexBackdropTint._dominant] needs of it.
 class _Sample {
+  final int x, y;
   final int r, g, b;
   final double alpha;
   late final double _max = math.max(r, math.max(g, b)) / 255;
   late final double _min = math.min(r, math.min(g, b)) / 255;
 
-  _Sample(this.r, this.g, this.b, this.alpha);
+  _Sample(this.x, this.y, this.r, this.g, this.b, this.alpha);
 
   double get value => _max;
   double get saturation => _max == 0 ? 0 : (_max - _min) / _max;
