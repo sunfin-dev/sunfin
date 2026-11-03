@@ -656,6 +656,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  flutter_secure_storage_tvos:
+    dependency: "direct main"
+    description:
+      name: flutter_secure_storage_tvos
+      sha256: "4a6a82255d5068ea7e548aecf85da7a2a80d88db8be9032b4983469925736bf8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   flutter_secure_storage_web:
     dependency: transitive
     description:
@@ -763,12 +771,11 @@ packages:
     source: hosted
     version: "0.1.3+3"
   gamepads_linux:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: gamepads_linux
-      sha256: "80bf70df6da6185926e6d8b2feb98e725e6fe99290afafaea91dba471e8c1c1e"
-      url: "https://pub.dev"
-    source: hosted
+      path: "packages/gamepads_linux"
+      relative: true
+    source: path
     version: "0.1.2"
   gamepads_platform_interface:
     dependency: transitive
@@ -1063,6 +1070,14 @@ packages:
       relative: true
     source: path
     version: "1.3.8"
+  media_kit_libs_linux:
+    dependency: "direct main"
+    description:
+      name: media_kit_libs_linux
+      sha256: "2b473399a49ec94452c4d4ae51cfc0f6585074398d74216092bf3d54aac37ecf"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.1"
   media_kit_libs_windows_video:
     dependency: "direct main"
     description:
@@ -1231,6 +1246,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  path_provider_tvos:
+    dependency: "direct main"
+    description:
+      name: path_provider_tvos
+      sha256: "5c530b18f0cc9ebc63249b29fb48455eb9bd9ee9f1608dd2086847f75ff02ea0"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   path_provider_windows:
     dependency: transitive
     description:
@@ -1507,6 +1530,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.3"
+  screen_brightness_ios:
+    dependency: "direct main"
+    description:
+      name: screen_brightness_ios
+      sha256: "2493953340ecfe8f4f13f61db50ce72533a55b0bbd58ba1402893feecf3727f5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.2"
   screen_brightness_platform_interface:
     dependency: "direct main"
     description:
@@ -1616,6 +1647,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.2"
+  shared_preferences_tvos:
+    dependency: "direct main"
+    description:
+      name: shared_preferences_tvos
+      sha256: a7890624e9321fbc4a2567107eeda84fd40235be2521342257f3ed4ff5c769a7
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   shared_preferences_web:
     dependency: transitive
     description:
@@ -1741,6 +1780,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.1"
+  sqflite_tvos:
+    dependency: "direct main"
+    description:
+      name: sqflite_tvos
+      sha256: "027c90b688d6b6342b3fa0b37e418bf47ca6f52e88e1ede1185c39d40023d8e8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.1"
   sqlite3:
     dependency: "direct main"
     description:
