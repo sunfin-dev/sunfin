@@ -16,7 +16,7 @@ body:
     id: proposal
     attributes:
       label: Proposed solution
-      description: How should Moonfin handle this?
+      description: How should Sunfin handle this?
       placeholder: It would be great if...
     validations:
       required: true

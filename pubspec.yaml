@@ -1,11 +1,11 @@
 name: moonfin
 description: "Sunfin - Jellyfin client for Android TV, phones and Windows (a fork of Moonfin)"
 publish_to: 'none'
-version: 0.12.2+30000200
+version: 0.12.3+30000201
 
 moonfin:
-  android_tv_version: 0.12.2
-  android_tv_build_number: 2000100
+  android_tv_version: 0.12.3
+  android_tv_build_number: 2000101
   beta: false
   beta_number: 1
 
