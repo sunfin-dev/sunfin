@@ -2,6 +2,8 @@
   <img src=".github/banner.png" alt="Sunfin: a Jellyfin client for Android TV, Mobile and Desktop" width="1280">
 </p>
 
+> **DISCLAIMER:** This is a Jellyfin client inspired by the Plex UI and heavily catered to those who are used to the Plex UI with all the benefits of Jellyfin's Open Source Server. If you would like a more customisable experience see [Moonfin](https://github.com/Moonfin-Client/Moonfin-Core) which this Client is forked off of.
+
 ---
 
 Sunfin is a Jellyfin client built with Flutter. It is made first for the living room: a slim left rail, a header that describes whatever you are focused on, portrait poster rows, and backdrop art that fades into a page tinted with the art's own colours. Every screen is built for a remote, with a D-pad path to everything.
@@ -59,4 +61,4 @@ Issues and pull requests are welcome at <https://github.com/sunfin-dev/sunfin>. 
 
 Sunfin is licensed under the **GNU General Public License v2.0**, the same license as Moonfin. See [LICENSE](LICENSE). Copyright for the original code stays with the Moonfin authors, and for the changes with the Sunfin contributors.
 
-Jellyfin and Emby are trademarks of their respective owners. Sunfin is not affiliated with them.
+Plex, Jellyfin and Emby are trademarks of their respective owners. Sunfin is not affiliated with or endorsed by any of them.
