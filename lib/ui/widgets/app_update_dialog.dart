@@ -1,11 +1,14 @@
-import 'dart:io';
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../data/services/app_update_installer.dart';
 import '../../data/services/app_update_service.dart';
 import '../../l10n/app_localizations.dart';
+import '../../preference/user_preferences.dart';
 import '../../util/platform_detection.dart';
 import 'track_selector_dialog.dart';
 
@@ -37,11 +40,32 @@ Future<void> checkAndShowUpdateResult(BuildContext context) async {
   );
 }
 
+bool _startupPromptDone = false;
+
+/// Sunfin: once per app start, when the home screen first shows, checks
+/// GitHub and offers a newer release. Declining keeps the prompt for that
+/// version away for a day; Settings > About can still install it.
+Future<void> promptForAppUpdateAtStartup(BuildContext context) async {
+  if (_startupPromptDone) return;
+  _startupPromptDone = true;
+  DesktopUpdateInfo? update;
+  try {
+    update = await GetIt.instance<AppUpdateService>().checkForUpdateIfDue();
+  } catch (_) {
+    return;
+  }
+  if (update == null || !context.mounted) return;
+  // Something opened on top in the meantime (a player, a dialog): don't cut in.
+  if (ModalRoute.of(context)?.isCurrent == false) return;
+  await showAppUpdateDialog(context, update);
+}
+
 Future<void> showAppUpdateDialog(
   BuildContext context,
   DesktopUpdateInfo update,
 ) async {
   final l10n = AppLocalizations.of(context);
+  final canInstall = update.installable && AppUpdateInstaller.supported;
 
   final choice = await showStyledPlayerDialog<String>(
     context,
@@ -50,16 +74,25 @@ Future<void> showAppUpdateDialog(
     builder: (ctx) => Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (!PlatformDetection.isTV)
+        if (canInstall)
+          _UpdateOption(
+            icon: Icons.system_update_alt_rounded,
+            label: l10n.install,
+            value: 'install',
+            autofocus: true,
+          )
+        else if (!PlatformDetection.isTV)
           _UpdateOption(
             icon: Icons.download_rounded,
             label: l10n.download,
             value: 'download',
+            autofocus: true,
           ),
         _UpdateOption(
           icon: Icons.article_outlined,
           label: l10n.readReleaseNotes,
           value: 'notes',
+          autofocus: !canInstall && PlatformDetection.isTV,
         ),
       ],
     ),
@@ -67,10 +100,8 @@ Future<void> showAppUpdateDialog(
 
   if (choice == null || !context.mounted) return;
 
-  if (choice == 'download' &&
-      Platform.isWindows &&
-      update.downloadUri.isScheme('https')) {
-    await _downloadAndInstallWindowsUpdate(context, update);
+  if (choice == 'install') {
+    await installAppUpdate(context, update);
     return;
   }
 
@@ -79,15 +110,20 @@ Future<void> showAppUpdateDialog(
   await launchUrl(uri, mode: LaunchMode.externalApplication);
 }
 
-Future<void> _downloadAndInstallWindowsUpdate(
+/// Downloads and installs [update] behind a progress dialog. On Android the
+/// dialog closes once the system installer is open; on Windows Sunfin exits
+/// and restarts updated. A Windows folder Sunfin can't write to sends the user
+/// to the release page instead.
+Future<void> installAppUpdate(
   BuildContext context,
   DesktopUpdateInfo update,
 ) async {
   final l10n = AppLocalizations.of(context);
-  final valueNotifier = ValueNotifier<double>(0.0);
+  final navigator = Navigator.of(context, rootNavigator: true);
+  final progressNotifier = ValueNotifier<double>(0.0);
   final errorNotifier = ValueNotifier<String?>(null);
 
-  showStyledPlayerDialog<void>(
+  unawaited(showStyledPlayerDialog<void>(
     context,
     title: l10n.updating,
     barrierDismissible: false,
@@ -96,7 +132,7 @@ Future<void> _downloadAndInstallWindowsUpdate(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         child: AnimatedBuilder(
-          animation: Listenable.merge([valueNotifier, errorNotifier]),
+          animation: Listenable.merge([progressNotifier, errorNotifier]),
           builder: (context, child) {
             final error = errorNotifier.value;
             if (error != null) {
@@ -112,6 +148,7 @@ Future<void> _downloadAndInstallWindowsUpdate(
                   Align(
                     alignment: Alignment.bottomRight,
                     child: TextButton(
+                      autofocus: true,
                       onPressed: () => Navigator.of(dialogContext).pop(),
                       child: Text(
                         l10n.close,
@@ -123,7 +160,7 @@ Future<void> _downloadAndInstallWindowsUpdate(
               );
             }
 
-            final progress = valueNotifier.value;
+            final progress = progressNotifier.value;
             return Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -143,81 +180,114 @@ Future<void> _downloadAndInstallWindowsUpdate(
         ),
       ),
     ),
-  );
+  ));
 
   try {
-    final tempDir = await getTemporaryDirectory();
-    final file = File('${tempDir.path}${Platform.pathSeparator}moonfin_updater.exe');
-    if (await file.exists()) {
-      await file.delete();
-    }
-
-    final client = HttpClient()
-      ..connectionTimeout = const Duration(seconds: 15);
-
-    try {
-      final request = await client.getUrl(update.downloadUri);
-      final response = await request.close();
-
-      if (response.statusCode != 200) {
-        throw Exception('Server returned status code ${response.statusCode}');
-      }
-
-      final contentLength = response.contentLength;
-      var downloaded = 0;
-      final sink = file.openWrite();
-
-      await for (final chunk in response) {
-        sink.add(chunk);
-        downloaded += chunk.length;
-        if (contentLength > 0) {
-          valueNotifier.value = downloaded / contentLength;
-        }
-      }
-      await sink.flush();
-      await sink.close();
-    } finally {
-      client.close();
-    }
-
-    await Process.start(
-      file.path,
-      [],
-      mode: ProcessStartMode.detached,
+    await AppUpdateInstaller.install(
+      update,
+      onProgress: (value) => progressNotifier.value = value,
     );
-    exit(0);
+    if (navigator.mounted) navigator.pop();
+  } on AppUpdateException catch (e) {
+    debugPrint('In-app update failed: $e');
+    if (e.failure == AppUpdateFailure.folderNotWritable) {
+      if (navigator.mounted) navigator.pop();
+      await launchUrl(
+        Uri.parse(update.releaseNotesUrl),
+        mode: LaunchMode.externalApplication,
+      );
+      return;
+    }
+    errorNotifier.value = l10n.updateDownloadFailed;
   } catch (e) {
-    debugPrint('Windows in-app update failed: $e');
+    debugPrint('In-app update failed: $e');
     errorNotifier.value = l10n.updateDownloadFailed;
   }
 }
 
-class _UpdateOption extends StatelessWidget {
+// Sunfin: drawn like the track picker's rows, so keyboard and remote focus
+// shows (upstream's InkWell had no visible focus state here).
+class _UpdateOption extends StatefulWidget {
   final IconData icon;
   final String label;
   final String value;
+  final bool autofocus;
 
   const _UpdateOption({
     required this.icon,
     required this.label,
     required this.value,
+    this.autofocus = false,
   });
 
   @override
+  State<_UpdateOption> createState() => _UpdateOptionState();
+}
+
+class _UpdateOptionState extends State<_UpdateOption> {
+  final _focusNode = FocusNode();
+  bool _isFocused = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode.addListener(
+      () => setState(() => _isFocused = _focusNode.hasFocus),
+    );
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  void _choose() => Navigator.of(context).pop(widget.value);
+
+  @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => Navigator.of(context).pop(value),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-        child: Row(
-          children: [
-            Icon(icon, size: 22, color: Colors.white70),
-            const SizedBox(width: 16),
-            Text(
-              label,
-              style: const TextStyle(fontSize: 15, color: Colors.white),
-            ),
-          ],
+    final focusColor = Color(
+      GetIt.instance<UserPreferences>().get(UserPreferences.focusColor).colorValue,
+    );
+    return Focus(
+      focusNode: _focusNode,
+      autofocus: widget.autofocus,
+      onKeyEvent: (_, event) {
+        if (event is KeyDownEvent &&
+            (event.logicalKey == LogicalKeyboardKey.select ||
+                event.logicalKey == LogicalKeyboardKey.enter ||
+                event.logicalKey == LogicalKeyboardKey.numpadEnter ||
+                event.logicalKey == LogicalKeyboardKey.gameButtonA)) {
+          _choose();
+          return KeyEventResult.handled;
+        }
+        return KeyEventResult.ignored;
+      },
+      child: GestureDetector(
+        onTap: _choose,
+        child: Container(
+          width: double.infinity,
+          color: _isFocused
+              ? focusColor.withValues(alpha: 0.2)
+              : Colors.transparent,
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          child: Row(
+            children: [
+              Icon(
+                widget.icon,
+                size: 22,
+                color: _isFocused ? Colors.white : Colors.white70,
+              ),
+              const SizedBox(width: 16),
+              Text(
+                widget.label,
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.white.withValues(alpha: _isFocused ? 1 : 0.85),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

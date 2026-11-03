@@ -184,6 +184,8 @@ dependencies {
     implementation("eu.simonbinder:sqlite3-native-library:3.52.0")
     implementation("androidx.tvprovider:tvprovider:1.1.0")
     implementation("androidx.work:work-runtime-ktx:2.10.1")
+    // FileProvider for the in-app updater (AppUpdateInstall.kt).
+    implementation("androidx.core:core-ktx:1.13.1")
 }
 
 val flutterApkOutputDir = layout.buildDirectory.dir("app/outputs/flutter-apk")

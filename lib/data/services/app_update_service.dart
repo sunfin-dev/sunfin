@@ -36,11 +36,24 @@ class DesktopUpdateInfo {
   final Uri downloadUri;
   final String releaseNotesUrl;
 
+  /// File name of the matching release asset; null when [downloadUri] is the
+  /// releases page.
+  final String? assetName;
+
+  /// The release's SHA256SUMS.txt, which the in-app installer checks the
+  /// download against. Null when the release has none.
+  final Uri? checksumsUri;
+
   const DesktopUpdateInfo({
     required this.version,
     required this.downloadUri,
     required this.releaseNotesUrl,
+    this.assetName,
+    this.checksumsUri,
   });
+
+  /// Whether the app can download and install this update itself.
+  bool get installable => assetName != null && checksumsUri != null;
 }
 
 class AppUpdateService {
@@ -48,9 +61,10 @@ class AppUpdateService {
 
   static const _latestReleaseHost = 'api.github.com';
   static const _latestReleasePath = '/repos/sunfin-dev/sunfin/releases/latest';
-  static const _checkCooldown = Duration(hours: 24);
+  /// How long a declined prompt for one version stays quiet.
+  static const _promptCooldown = Duration(hours: 24);
 
-  static const _lastCheckMsKey = 'app_update_last_check_ms';
+  static const _lastPromptMsKey = 'app_update_last_prompt_ms';
   static const _lastNotifiedVersionKey = 'app_update_last_notified_version';
 
   /// Installers that deliver their own updates. The distribution channel only
@@ -77,7 +91,6 @@ class AppUpdateService {
 
   Future<DesktopUpdateInfo?> checkForUpdateIfDue() async {
     final result = await _checkForUpdate(
-      enforceCooldown: true,
       respectNotificationPreference: true,
       suppressIfAlreadyNotified: true,
     );
@@ -91,14 +104,12 @@ class AppUpdateService {
 
   Future<DesktopUpdateCheckResult> checkForUpdateNowDetailed() {
     return _checkForUpdate(
-      enforceCooldown: false,
       respectNotificationPreference: false,
       suppressIfAlreadyNotified: false,
     );
   }
 
   Future<DesktopUpdateCheckResult> _checkForUpdate({
-    required bool enforceCooldown,
     required bool respectNotificationPreference,
     required bool suppressIfAlreadyNotified,
   }) async {
@@ -123,19 +134,9 @@ class AppUpdateService {
       }
     }
 
+    // Sunfin: every start checks GitHub; the cooldown only keeps the prompt
+    // for one version from coming back within a day (below).
     final now = DateTime.now().toUtc();
-    final lastCheckMs = _store.getInt(_lastCheckMsKey);
-    if (enforceCooldown && lastCheckMs != null && lastCheckMs > 0) {
-      final lastCheckAt = DateTime.fromMillisecondsSinceEpoch(lastCheckMs, isUtc: true);
-      if (now.difference(lastCheckAt) < _checkCooldown) {
-        return const DesktopUpdateCheckResult(
-          status: DesktopUpdateCheckStatus.rateLimited,
-        );
-      }
-    }
-
-    await _store.setInt(_lastCheckMsKey, now.millisecondsSinceEpoch);
-
     final release = await _fetchLatestRelease();
     if (release == null) {
       return const DesktopUpdateCheckResult(
@@ -151,7 +152,13 @@ class AppUpdateService {
     }
 
     final lastNotified = _store.getString(_lastNotifiedVersionKey);
+    final lastPromptMs = _store.getInt(_lastPromptMsKey) ?? 0;
+    final promptedRecently = now.difference(
+          DateTime.fromMillisecondsSinceEpoch(lastPromptMs, isUtc: true),
+        ) <
+        _promptCooldown;
     if (suppressIfAlreadyNotified &&
+        promptedRecently &&
         _normalizeVersion(lastNotified) == _normalizeVersion(release.version)) {
       return const DesktopUpdateCheckResult(
         status: DesktopUpdateCheckStatus.alreadyNotified,
@@ -159,8 +166,18 @@ class AppUpdateService {
     }
 
     await _store.setString(_lastNotifiedVersionKey, release.version);
+    await _store.setInt(_lastPromptMsKey, now.millisecondsSinceEpoch);
 
-    final asset = _selectAsset(release.assets);
+    final assetName = pickAssetName(
+      AppDistribution.channel,
+      [for (final asset in release.assets) asset.name],
+    );
+    _ReleaseAsset? asset;
+    _ReleaseAsset? checksums;
+    for (final candidate in release.assets) {
+      if (candidate.name == assetName) asset = candidate;
+      if (candidate.name == checksumsAssetName) checksums = candidate;
+    }
     return DesktopUpdateCheckResult(
       status: DesktopUpdateCheckStatus.updateAvailable,
       update: DesktopUpdateInfo(
@@ -169,6 +186,9 @@ class AppUpdateService {
             ? Uri.parse(asset.downloadUrl)
             : Uri.parse(release.releaseNotesUrl),
         releaseNotesUrl: release.releaseNotesUrl,
+        assetName: asset?.name,
+        checksumsUri:
+            checksums != null ? Uri.parse(checksums.downloadUrl) : null,
       ),
     );
   }
@@ -203,7 +223,7 @@ class AppUpdateService {
 
   Future<_LatestRelease?> _fetchLatestRelease() async {
     final client = HttpClient()
-      ..userAgent = 'MoonfinUpdateChecker/1.0'
+      ..userAgent = 'SunfinUpdateChecker/1.0'
       ..connectionTimeout = const Duration(seconds: 10);
 
     try {
@@ -254,56 +274,39 @@ class AppUpdateService {
     }
   }
 
-  /// Asset to download for this build's channel, or null when there is no
-  /// single asset to pick (Linux) or none matched.
-  _ReleaseAsset? _selectAsset(List<_ReleaseAsset> assets) {
-    if (assets.isEmpty) return null;
+  /// Name of the release file every Sunfin release ships its checksums in.
+  static const checksumsAssetName = 'SHA256SUMS.txt';
 
-    switch (AppDistribution.channel) {
-      case DistributionChannel.apk:
-        return _firstWhere(assets, '.apk', excludeSubstring: 'tv') ??
-            _firstByExtension(assets, const ['.apk']);
-      case DistributionChannel.androidTvApk:
-        return _firstWhere(assets, '.apk', requireSubstring: 'tv') ??
-            _firstByExtension(assets, const ['.apk']);
-      case DistributionChannel.macosDmg:
-        return _firstByExtension(assets, const ['.dmg']);
-      case DistributionChannel.windows:
-        final isArm64 = Platform.version.toLowerCase().contains('windows_arm64');
-        if (isArm64) {
-          return _firstWhere(assets, '.exe', requireSubstring: 'arm64') ??
-              _firstByExtension(assets, const ['.exe']);
-        } else {
-          return _firstWhere(assets, '.exe', excludeSubstring: 'arm64') ??
-              _firstByExtension(assets, const ['.exe']);
-        }
-      default:
-        return null;
-    }
-  }
-
-  _ReleaseAsset? _firstWhere(
-    List<_ReleaseAsset> assets,
-    String extension, {
-    String? requireSubstring,
-    String? excludeSubstring,
-  }) {
-    for (final asset in assets) {
-      final lower = asset.name.toLowerCase();
-      if (!lower.endsWith(extension)) continue;
-      if (requireSubstring != null && !lower.contains(requireSubstring)) continue;
-      if (excludeSubstring != null && lower.contains(excludeSubstring)) continue;
-      return asset;
+  /// Release asset for a build of [channel], or null when none fits.
+  ///
+  /// Sunfin releases name their files `Sunfin-<ver>-android-tv.apk`,
+  /// `Sunfin-<ver>-android-phone.apk` and `Sunfin-<ver>-windows-x64.zip`; the
+  /// installer needs exactly that kind of file, so there is no looser fallback.
+  static String? pickAssetName(
+    DistributionChannel channel,
+    List<String> names,
+  ) {
+    bool Function(String) wanted = switch (channel) {
+      DistributionChannel.apk => (n) => n.endsWith('.apk') && !n.contains('tv'),
+      DistributionChannel.androidTvApk =>
+        (n) => n.endsWith('.apk') && n.contains('tv'),
+      DistributionChannel.windows =>
+        (n) => n.endsWith('.zip') && n.contains('windows-x64'),
+      _ => (_) => false,
+    };
+    for (final name in names) {
+      if (wanted(name.toLowerCase())) return name;
     }
     return null;
   }
 
-  _ReleaseAsset? _firstByExtension(List<_ReleaseAsset> assets, List<String> preferredExtensions) {
-    for (final extension in preferredExtensions) {
-      for (final asset in assets) {
-        if (asset.name.toLowerCase().endsWith(extension)) {
-          return asset;
-        }
+  /// The SHA-256 that [sums] (SHA256SUMS.txt: `<hex>  <name>` per line) lists
+  /// for [fileName], lower-case, or null when it lists none.
+  static String? checksumFor(String sums, String fileName) {
+    for (final line in const LineSplitter().convert(sums)) {
+      final match = RegExp(r'^([0-9a-fA-F]{64})\s+\*?(.+?)\s*$').firstMatch(line);
+      if (match != null && match.group(2) == fileName) {
+        return match.group(1)!.toLowerCase();
       }
     }
     return null;

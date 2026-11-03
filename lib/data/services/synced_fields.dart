@@ -352,6 +352,7 @@ final List<SyncedField> syncedFields = <SyncedField>[
   SyncedField('sinceYouWatched5Enabled', UserPreferences.sinceYouWatched5Enabled, SyncCodec.boolean),
   SyncedField('skipBackLength', UserPreferences.skipBackLength, SyncCodec.integer),
   SyncedField('skipForwardLength', UserPreferences.skipForwardLength, SyncCodec.integer),
+  SyncedField('showSkipButtons', UserPreferences.showSkipButtons, SyncCodec.boolean),
   SyncedField('sonarrCalendarShowDate', UserPreferences.sonarrCalendarShowDate, SyncCodec.boolean),
   SyncedField('sonarrCalendarShowEpisodeInfo', UserPreferences.sonarrCalendarShowEpisodeInfo, SyncCodec.boolean),
   SyncedField('stillWatchingBehavior', UserPreferences.stillWatchingBehavior, SyncCodec.enumName, enumValues: prefs.StillWatchingBehavior.values),

@@ -127,6 +127,14 @@ class _VideoPlaybackScreen extends StatelessWidget {
                   60000: l10n.settingsSixtySeconds,
                 },
               ),
+              // Sunfin: English only for now, like the other Sunfin-only settings.
+              SwitchPreferenceTile(
+                preference: UserPreferences.showSkipButtons,
+                title: 'Show skip buttons',
+                subtitle: 'Skip back and forward buttons in the player. Left '
+                    'and right on the remote or keyboard skip either way.',
+                icon: Icons.fast_forward_outlined,
+              ),
               SwitchPreferenceTile(
                 preference: UserPreferences.showChapterMarkers,
                 title: l10n.showChapterMarkers,

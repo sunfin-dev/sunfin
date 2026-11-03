@@ -1422,6 +1422,11 @@ List<_SettingsSearchEntry> _buildSettingsSearchIndex({
       keywords: ['seek forward'],
     ),
     video.leaf(
+      'showSkipButtons',
+      'Show skip buttons',
+      keywords: ['seek', 'skip', 'rewind', 'fast forward', 'buttons'],
+    ),
+    video.leaf(
       'showChapterMarkers',
       l10n.showChapterMarkers,
       subtitle: l10n.showChapterMarkersDescription,

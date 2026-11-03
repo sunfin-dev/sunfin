@@ -2172,6 +2172,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
       chapters: chapters,
       skipBackMs: _prefs.get(UserPreferences.skipBackLength),
       skipForwardMs: _prefs.get(UserPreferences.skipForwardLength),
+      showSkipButtons: _prefs.get(UserPreferences.showSkipButtons),
       topTitle: topTitle,
       topSubtitle: topSubtitle,
       artworkUrl: artworkUrl,
@@ -5594,6 +5595,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
       ? 1.0
       : _prefs.get(UserPreferences.desktopUiScale).scaleFactor;
 
+  // Sunfin: the skip back/forward buttons are opt-in; left and right on the
+  // remote or keyboard skip either way.
+  bool get _showSkipButtons => _prefs.get(UserPreferences.showSkipButtons);
+
   Widget _buildTvTransportRow() {
     final l10n = AppLocalizations.of(context);
     final isLandscape =
@@ -5619,17 +5624,18 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
               tooltip: l10n.playerTooltipPrevious,
             ),
             const SizedBox(width: 4),
-            _controlButton(
-              seekBackIcon(_prefs.get(UserPreferences.skipBackLength)),
-              onPressed: () =>
-                  _seekRelative(-_prefs.get(UserPreferences.skipBackLength)),
-              size: buttonIconSize,
-              extent: buttonExtent,
-              tooltip: _tooltipMessage(
-                l10n.playerTooltipSeekBack,
-                shortcut: 'Left',
+            if (_showSkipButtons)
+              _controlButton(
+                seekBackIcon(_prefs.get(UserPreferences.skipBackLength)),
+                onPressed: () =>
+                    _seekRelative(-_prefs.get(UserPreferences.skipBackLength)),
+                size: buttonIconSize,
+                extent: buttonExtent,
+                tooltip: _tooltipMessage(
+                  l10n.playerTooltipSeekBack,
+                  shortcut: 'Left',
+                ),
               ),
-            ),
             const SizedBox(width: 8),
             StreamBuilder<bool>(
               stream: _state.playingStream,
@@ -5652,17 +5658,18 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
               },
             ),
             const SizedBox(width: 8),
-            _controlButton(
-              seekForwardIcon(_prefs.get(UserPreferences.skipForwardLength)),
-              onPressed: () =>
-                  _seekRelative(_prefs.get(UserPreferences.skipForwardLength)),
-              size: buttonIconSize,
-              extent: buttonExtent,
-              tooltip: _tooltipMessage(
-                l10n.playerTooltipSeekForward,
-                shortcut: 'Right',
+            if (_showSkipButtons)
+              _controlButton(
+                seekForwardIcon(_prefs.get(UserPreferences.skipForwardLength)),
+                onPressed: () =>
+                    _seekRelative(_prefs.get(UserPreferences.skipForwardLength)),
+                size: buttonIconSize,
+                extent: buttonExtent,
+                tooltip: _tooltipMessage(
+                  l10n.playerTooltipSeekForward,
+                  shortcut: 'Right',
+                ),
               ),
-            ),
             const SizedBox(width: 4),
             // The next episode, never the next chapter: a file without
             // chapters turned a chapter skip into an episode skip.
@@ -6880,18 +6887,19 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                       extent: 72 * scale,
                       tooltip: l10n.playerTooltipPrevious,
                     ),
-                    _controlButton(
-                      seekBackIcon(_prefs.get(UserPreferences.skipBackLength)),
-                      onPressed: () => _seekRelative(
-                        -_prefs.get(UserPreferences.skipBackLength),
+                    if (_showSkipButtons)
+                      _controlButton(
+                        seekBackIcon(_prefs.get(UserPreferences.skipBackLength)),
+                        onPressed: () => _seekRelative(
+                          -_prefs.get(UserPreferences.skipBackLength),
+                        ),
+                        size: 46 * scale,
+                        extent: 78 * scale,
+                        tooltip: _tooltipMessage(
+                          l10n.playerTooltipSeekBack,
+                          shortcut: 'Left',
+                        ),
                       ),
-                      size: 46 * scale,
-                      extent: 78 * scale,
-                      tooltip: _tooltipMessage(
-                        l10n.playerTooltipSeekBack,
-                        shortcut: 'Left',
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -6914,20 +6922,21 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    _controlButton(
-                      seekForwardIcon(
-                        _prefs.get(UserPreferences.skipForwardLength),
+                    if (_showSkipButtons)
+                      _controlButton(
+                        seekForwardIcon(
+                          _prefs.get(UserPreferences.skipForwardLength),
+                        ),
+                        onPressed: () => _seekRelative(
+                          _prefs.get(UserPreferences.skipForwardLength),
+                        ),
+                        size: 46 * scale,
+                        extent: 78 * scale,
+                        tooltip: _tooltipMessage(
+                          l10n.playerTooltipSeekForward,
+                          shortcut: 'Right',
+                        ),
                       ),
-                      onPressed: () => _seekRelative(
-                        _prefs.get(UserPreferences.skipForwardLength),
-                      ),
-                      size: 46 * scale,
-                      extent: 78 * scale,
-                      tooltip: _tooltipMessage(
-                        l10n.playerTooltipSeekForward,
-                        shortcut: 'Right',
-                      ),
-                    ),
                     _controlButton(
                       Icons.skip_next_rounded,
                       onPressed: _manager.nextInQueue,

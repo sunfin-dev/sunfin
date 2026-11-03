@@ -428,6 +428,10 @@ class MainActivity : AudioServiceActivity(), GamepadsCompatibleActivity {
                 "deviceMemory" -> {
                     result.success(deviceMemory())
                 }
+                "installApk" -> {
+                    val path = call.argument<String>("path")
+                    result.success(path != null && AppUpdateInstall.open(this, java.io.File(path)))
+                }
                 "exitApp" -> {
                     result.success(true)
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

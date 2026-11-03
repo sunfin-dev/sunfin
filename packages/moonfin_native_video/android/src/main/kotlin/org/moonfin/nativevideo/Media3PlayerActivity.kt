@@ -264,14 +264,17 @@ class Media3PlayerActivity : ComponentActivity() {
                                 Spacer(modifier = Modifier.width(10.dp))
                             }
 
-                            TransportButton(
-                                icon = Icons.Rounded.FastRewind,
-                                contentDescription = "Seek back ${formatSkipSeconds(metadataState.skipBackMs)} seconds",
-                                size = 68.dp,
-                                onClick = {
-                                    seekRelative(uiState, -metadataState.skipBackMs.toLong())
-                                },
-                            )
+                            // Sunfin: opt-in; left and right on the remote skip either way.
+                            if (metadataState.showSkipButtons) {
+                                TransportButton(
+                                    icon = Icons.Rounded.FastRewind,
+                                    contentDescription = "Seek back ${formatSkipSeconds(metadataState.skipBackMs)} seconds",
+                                    size = 68.dp,
+                                    onClick = {
+                                        seekRelative(uiState, -metadataState.skipBackMs.toLong())
+                                    },
+                                )
+                            }
 
                             TransportButton(
                                 icon = if (uiState.isPlaying) {
@@ -288,14 +291,16 @@ class Media3PlayerActivity : ComponentActivity() {
                                 },
                             )
 
-                            TransportButton(
-                                icon = Icons.Rounded.FastForward,
-                                contentDescription = "Seek forward ${formatSkipSeconds(metadataState.skipForwardMs)} seconds",
-                                size = 68.dp,
-                                onClick = {
-                                    seekRelative(uiState, metadataState.skipForwardMs.toLong())
-                                },
-                            )
+                            if (metadataState.showSkipButtons) {
+                                TransportButton(
+                                    icon = Icons.Rounded.FastForward,
+                                    contentDescription = "Seek forward ${formatSkipSeconds(metadataState.skipForwardMs)} seconds",
+                                    size = 68.dp,
+                                    onClick = {
+                                        seekRelative(uiState, metadataState.skipForwardMs.toLong())
+                                    },
+                                )
+                            }
 
                             if (metadataState.hasNext) {
                                 Spacer(modifier = Modifier.width(10.dp))
@@ -941,6 +946,7 @@ private data class Media3UiMetadataState(
     val selectedBitrateMbps: Int? = null,
     val skipBackMs: Int = 10000,
     val skipForwardMs: Int = 10000,
+    val showSkipButtons: Boolean = true,
     val topTitle: String = "",
     val topSubtitle: String = "",
     val showClock: Boolean = false,
@@ -962,6 +968,7 @@ private data class Media3UiMetadataState(
             val selectedBitrateMbps = (map["selectedBitrateMbps"] as? Number)?.toInt()
             val skipBackMs = (map["skipBackMs"] as? Number)?.toInt() ?: 10000
             val skipForwardMs = (map["skipForwardMs"] as? Number)?.toInt() ?: 10000
+            val showSkipButtons = map["showSkipButtons"] as? Boolean ?: true
             val topTitle = map["topTitle"]?.toString() ?: ""
             val topSubtitle = map["topSubtitle"]?.toString() ?: ""
             val showClock = map["showClock"] as? Boolean ?: false
@@ -1035,6 +1042,7 @@ private data class Media3UiMetadataState(
                 selectedBitrateMbps = selectedBitrateMbps,
                 skipBackMs = skipBackMs,
                 skipForwardMs = skipForwardMs,
+                showSkipButtons = showSkipButtons,
                 topTitle = topTitle,
                 topSubtitle = topSubtitle,
                 showClock = showClock,
