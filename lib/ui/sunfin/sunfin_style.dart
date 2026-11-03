@@ -46,7 +46,7 @@ abstract final class SunfinStyle {
 
   /// Expanded rail: the starting guess only. The rail measures its labels
   /// and fits the longest one (LeftSidebar.sunfinExpandedWidthNotifier); the
-  /// user found the reference design's fixed ~400 px twice too wide (2026-10-22).
+  /// reference design's fixed ~400 px is about twice too wide for these labels.
   static const railExpandedWidth = 145.0;
 
   // Home layout contract (sunfin_home_header.dart, sunfin_backdrop.dart and the
@@ -94,8 +94,8 @@ abstract final class SunfinStyle {
   static bool get enabled => SunfinLocks.active;
 }
 
-/// Sunfin's one set of motion timings (user, 2026-10-26: quick and steady,
-/// "not overly smooth like Apple", should feel like the app runs well). Short
+/// Sunfin's one set of motion timings: quick and steady rather than floaty,
+/// so the app feels like it runs well. Short
 /// ease-outs with no overshoot: things start at speed and settle, so the app
 /// answers the remote at once.
 abstract final class SunfinMotion {
@@ -128,7 +128,7 @@ abstract final class SunfinMotion {
 /// weight match them (plain Material Icons ignore it).
 const double sunfinIconWeight = 300;
 
-/// The Movies icon the user picked (round 2, option 3): the reference design's film strip
+/// The Movies icon: the reference design's film strip
 /// with a middle frame line and two sprocket ticks per half. Drawn black and
 /// recoloured, so it follows the row's colour like the font icons.
 const _sunfinMoviesSvg =

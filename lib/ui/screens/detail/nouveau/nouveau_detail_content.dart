@@ -1405,7 +1405,7 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
   ) {
     // Sunfin: The reference design's page, as on home: the art sharp in the top right over a
     // colour taken from it, which the rail beside the page also takes, so
-    // there is no seam (user, 2026-10-23).
+    // there is no seam.
     if (SunfinStyle.enabled) {
       return SunfinBackdrop(
         url: backdropUrl != null && backdropUrl.isNotEmpty ? backdropUrl : null,

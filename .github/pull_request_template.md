@@ -28,15 +28,11 @@ List the key changes included in this PR.
 - 
 
 ## Platform
-- [ ] Android
 - [ ] Android TV
-- [ ] iOS
-- [ ] tvOS
-- [ ] Web
-- [ ] macOS
+- [ ] Android (phone/tablet)
 - [ ] Windows
-- [ ] Linux
 - [ ] All / Shared code
+- [ ] iOS, macOS, Linux, tvOS or web (target the `experimental` branch)
 
 ## Testing
 Describe how this change was tested.

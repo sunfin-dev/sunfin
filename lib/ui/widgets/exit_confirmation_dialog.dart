@@ -118,7 +118,7 @@ class _ExitConfirmationContentState extends State<_ExitConfirmationContent> {
 
   static const _appName = 'Sunfin';
 
-  /// Sunfin's exit card (user, 2026-10-23, option B): the fin mark, a thin
+  /// Sunfin's exit card: the fin mark, a thin
   /// gold top edge, and gold pill buttons.
   @override
   Widget build(BuildContext context) {

@@ -387,7 +387,7 @@ class _SunfinLibraryPageState extends State<SunfinLibraryPage> with RouteAware {
         focused.findAncestorStateOfType<_SunfinLibraryPageState>() == this;
   }
 
-  /// A library opens on its first title, as in the reference design (user, 2026-10-23), unless
+  /// A library opens on its first title, as in the reference design, unless
   /// the user has already moved somewhere on the page.
   void _maybeOpenOnFirstTitle() {
     if (_openedOnFirstTitle || _gridItems.isEmpty) return;

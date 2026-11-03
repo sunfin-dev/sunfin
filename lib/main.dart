@@ -56,6 +56,7 @@ import 'util/fullscreen_helper.dart';
 import 'util/window_geometry.dart';
 import 'util/http_overrides_stub.dart'
     if (dart.library.io) 'util/http_overrides_io.dart';
+import 'util/font_licenses.dart';
 import 'util/game_core_licenses.dart';
 import 'util/device_performance.dart';
 import 'ui/navigation/app_router.dart';
@@ -845,6 +846,7 @@ void main() async {
   await LiquidGlassWidgets.initialize();
 
   registerGameCoreLicenses();
+  registerFontLicenses();
 
   if (!PlatformDetection.isWeb && PlatformDetection.isWindows) {
     try {

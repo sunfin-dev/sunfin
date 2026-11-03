@@ -951,8 +951,8 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
   Widget _buildPlexRail() {
     final expandedWidth = _sunfinExpandedWidth();
     final surface = AppColorScheme.surface.withValues(alpha: 1);
-    // Details pages draw the same Sunfin page as home (user, 2026-10-23), and
-    // so do Sunfin library pages (user, 2026-10-27).
+    // Details pages draw the same Sunfin page as home, and so do Sunfin
+    // library pages.
     final onPlexPage =
         _isActive(Destinations.home) ||
         _currentPath().startsWith('/item/') ||
@@ -962,8 +962,8 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
       curve: LeftSidebar.expandCurve,
       width: _isExpanded ? expandedWidth : SunfinStyle.railCollapsedWidth,
       // On home and details pages the rail, open or collapsed, takes the
-      // page's tint beside it and fades with it, so there is no seam (user,
-      // 2026-10-22). Elsewhere it is the theme's surface.
+      // page's tint beside it and fades with it, so there is no seam.
+      // Elsewhere it is the theme's surface.
       // The page's tint runs from one colour at the top of its left edge to
       // another at the bottom (the reference design's four-corner wash), so the rail draws the
       // same blend.

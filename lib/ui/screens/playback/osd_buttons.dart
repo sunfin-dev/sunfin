@@ -39,8 +39,8 @@ enum OsdButton {
   /// never gets drawn here isn't worth offering a switch for.
   bool get isOffered => switch (this) {
     OsdButton.castControls => false,
-    // A TV opens chapters with down from the controls instead (user,
-    // 2026-10-30), so the button and its switch are gone there.
+    // A TV opens chapters with down from the controls instead,
+    // so the button and its switch are gone there.
     OsdButton.chapters => !PlatformDetection.isTV,
     OsdButton.cast => !PlatformDetection.isTV,
     OsdButton.volume => PlatformDetection.useDesktopUi,

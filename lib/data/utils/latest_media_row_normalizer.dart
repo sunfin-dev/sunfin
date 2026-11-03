@@ -208,8 +208,8 @@ const _standInDropKeys = [
 
 /// Swaps each show card that [normalizeLatestMediaItems] built from an
 /// episode or season for the show itself, fetched in one request per server,
-/// so the home header has the show's summary, year and genres (user,
-/// 2026-10-26: Recently Added TV showed them only sometimes). A server that
+/// so the home header has the show's summary, year and genres (Recently
+/// Added TV otherwise showed them only sometimes). A server that
 /// can't be reached leaves its cards as they are.
 ///
 /// [itemsFor] gives the server's item lookup: the show ids and the fields to

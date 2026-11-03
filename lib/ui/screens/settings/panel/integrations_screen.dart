@@ -66,11 +66,9 @@ class _IntegrationsScreenState extends State<_IntegrationsScreen> {
           children: [
             _TvSettingsListTile(
               autofocus: true,
-              leading: Image.asset(
-                'assets/icons/moonfin.png',
-                width: 30,
-                height: 30,
-              ),
+              // The Moonfin server plugin, shown with a generic icon rather
+              // than Moonfin's own logo.
+              leading: const Icon(Icons.extension_outlined),
               title: Text(l10n.pluginLabel),
               subtitle: Text(l10n.serverSyncAndPluginStatus),
               onTap: () =>

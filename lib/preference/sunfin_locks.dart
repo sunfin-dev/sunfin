@@ -6,7 +6,7 @@ import 'preference_constants.dart';
 import 'user_preferences.dart';
 
 /// Sunfin: the look is the product, so every setting that changes how the
-/// app looks is fixed to its Sunfin value (user, 2026-10-23). What the user
+/// app looks is fixed to its Sunfin value. What the user
 /// sees stays theirs: which sidebar items, libraries, home rows and detail
 /// buttons show up.
 ///
@@ -98,8 +98,8 @@ abstract final class SunfinLocks {
   /// the phone and the PC included.
   static final Map<String, Object?> _everywhere = {
     // Settings move between devices only when the user says so, through
-    // Transfer settings (user, 2026-10-28: "there shouldnt be auto settings
-    // sync in the first place"). The plugin's other services stay on.
+    // Transfer settings; nothing syncs them on its own. The plugin's other
+    // services stay on.
     UserPreferences.pluginSyncEnabled.key: false,
   };
 

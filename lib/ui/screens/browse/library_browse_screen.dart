@@ -235,7 +235,7 @@ class _LibraryBrowseScreenState extends State<LibraryBrowseScreen>
   bool _firstItemFocusDone = false;
 
   /// Sunfin: a library opens on its first title, as in the reference design, rather than on
-  /// the home button in the toolbar (user, 2026-10-23). Once only, and only
+  /// the home button in the toolbar. Once only, and only
   /// while focus is still where the page opening left it, so a user who has
   /// already moved keeps their place.
   void _maybeFocusFirstItem({int attempt = 0}) {

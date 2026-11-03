@@ -278,7 +278,7 @@ class ItemDetailScreen extends StatefulWidget {
   final String? contextSeasonId;
 
   /// Sunfin: a show opened from its library lands on the reference design's show page with
-  /// its seasons, rather than at the episode it's up to (user, 2026-10-23).
+  /// its seasons, rather than at the episode it's up to.
   final bool showOverview;
 
   const ItemDetailScreen({
@@ -832,7 +832,7 @@ class _ItemDetailScreenState extends State<ItemDetailScreen>
           },
           initialFocusNode: _ensureInitialFocusNode(),
         ),
-      // Sunfin: movies open the reference design's movie page (user, 2026-10-28).
+      // Sunfin: movies open the Sunfin movie page.
       ItemDetailState.ready
           when SunfinStyle.enabled && SunfinMoviePage.handles(_viewModel.item) =>
         SunfinMoviePage(
@@ -847,8 +847,8 @@ class _ItemDetailScreenState extends State<ItemDetailScreen>
           autoPlay: widget.autoPlay,
           initialFocusNode: _ensureInitialFocusNode(),
         ),
-      // Sunfin: episodes and seasons open the reference design's season page (user,
-      // 2026-10-23).
+      // Sunfin: episodes and seasons open the reference design's season page.
+      // 
       ItemDetailState.ready
           when SunfinStyle.enabled && SunfinSeasonPage.handles(_viewModel.item) =>
         SunfinSeasonPage(

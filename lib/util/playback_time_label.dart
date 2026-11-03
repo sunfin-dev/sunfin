@@ -85,8 +85,8 @@ String formatPlaybackTimeSlot(
         playbackSpeed: playbackSpeed,
       );
     case PlaybackTimeSlot.time:
-      // Sunfin: the clock sits in the player's top right instead (user,
-      // 2026-10-26), so a slot still set to it from before stays empty.
+      // Sunfin: the clock sits in the player's top right instead,
+      // so a slot still set to it from before stays empty.
       if (SunfinLocks.active) return '';
       return formatClockTime(
         DateTime.now(),

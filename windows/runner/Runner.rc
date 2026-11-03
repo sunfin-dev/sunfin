@@ -93,7 +93,7 @@ BEGIN
             VALUE "FileDescription", "Sunfin" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "sunfin" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2026 org.moonfin. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2026 Sunfin contributors and the Moonfin authors. Licensed under the GNU GPL v2." "\0"
             VALUE "OriginalFilename", "sunfin.exe" "\0"
             VALUE "ProductName", "Sunfin" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"

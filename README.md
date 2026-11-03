@@ -2,6 +2,13 @@
   <img src=".github/banner.png" alt="Sunfin: a Jellyfin client for Android TV, Mobile and Desktop" width="1280">
 </p>
 
+<p align="center">
+  <a href="https://github.com/sunfin-dev/sunfin/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/sunfin-dev/sunfin?label=release&color=E5A00D"></a>
+  <a href="LICENSE"><img alt="License: GPL-2.0" src="https://img.shields.io/github/license/sunfin-dev/sunfin?color=4a5a6a"></a>
+  <a href="https://github.com/sunfin-dev/sunfin/releases"><img alt="Downloads" src="https://img.shields.io/github/downloads/sunfin-dev/sunfin/total?color=4a5a6a"></a>
+  <img alt="Platforms: Android TV, Android, Windows" src="https://img.shields.io/badge/platforms-Android%20TV%20%7C%20Android%20%7C%20Windows-4a5a6a">
+</p>
+
 > **DISCLAIMER:** This is a Jellyfin client inspired by the Plex UI and heavily catered to those who are used to the Plex UI with all the benefits of Jellyfin's Open Source Server. If you would like a more customisable experience see the awesome project [Moonfin](https://github.com/Moonfin-Client/Moonfin-Core) which this Client is forked off of.
 
 ---
@@ -55,10 +62,10 @@ The Android app id is `dev.sunfin.app`. Release builds are signed with `android/
 
 ## Contributing
 
-Issues and pull requests are welcome at <https://github.com/sunfin-dev/sunfin>. Changes that are not specific to Sunfin's look are often better sent to [Moonfin](https://github.com/Moonfin-Client/Moonfin-Core) first, so that both projects benefit.
+Issues and pull requests are welcome at <https://github.com/sunfin-dev/sunfin>; see [CONTRIBUTING.md](CONTRIBUTING.md) and the [code of conduct](CODE_OF_CONDUCT.md). Report security problems privately as described in [SECURITY.md](SECURITY.md). Changes that are not specific to Sunfin's look are often better sent to [Moonfin](https://github.com/Moonfin-Client/Moonfin-Core) first, so that both projects benefit.
 
 ## License
 
-Sunfin is licensed under the **GNU General Public License v2.0**, the same license as Moonfin. See [LICENSE](LICENSE). Copyright for the original code stays with the Moonfin authors, and for the changes with the Sunfin contributors.
+Sunfin is licensed under the **GNU General Public License v2.0**, the same license as Moonfin. See [LICENSE](LICENSE) and [NOTICE](NOTICE). Changes between versions are listed in [CHANGELOG.md](CHANGELOG.md). Copyright for the original code stays with the Moonfin authors, and for the changes with the Sunfin contributors.
 
 Plex, Jellyfin and Emby are trademarks of their respective owners. Sunfin is not affiliated with or endorsed by any of them.

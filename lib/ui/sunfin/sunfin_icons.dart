@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 /// Sunfin rail icons, drawn to the reference design's sidebar (reference 01): thin 1.5
-/// outlines on a 24 grid like the Movies icon the user picked, with the reference design's
-/// solid gear for Settings (user, 2026-10-26: "redraw the rest to match").
+/// outlines on a 24 grid matching the Movies icon, with the reference design's
+/// solid gear for Settings.
 /// Drawn black and recoloured, so they follow the row's colour like the font
 /// icons did.
 

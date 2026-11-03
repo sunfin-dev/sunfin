@@ -182,8 +182,8 @@ class HomeSectionConfig {
 
   static List<HomeSectionConfig> defaults() => const [
     // Sunfin: off out of the box. The reference design's home has no library tiles (the
-    // rail lists every library) and the tiles have no artwork (user,
-    // 2026-10-28). Kids Mode still brings them back as its way in.
+    // rail lists every library) and the tiles have no artwork.
+    // Kids Mode still brings them back as its way in.
     HomeSectionConfig(
       type: HomeSectionType.libraryTilesSmall,
       enabled: false,

@@ -146,8 +146,8 @@ class _NavigationCategoryScreenState extends State<_NavigationCategoryScreen> {
               ],
             ),
           ],
-          // Sunfin: opening a sidebar row by resting on it (user,
-          // 2026-10-23). The rail is TV only, and so is this.
+          // Sunfin: opening a sidebar row by resting on it.
+          // The rail is TV only, and so is this.
           if (PlatformDetection.isTV) ...[
             const _SectionHeader('Sidebar'),
             ListenableBuilder(

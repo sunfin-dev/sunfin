@@ -56,7 +56,7 @@ class LibraryBrowseViewModel extends ChangeNotifier {
   /// screen whose filter menu offers only those. Anything else it would apply
   /// out of sight: a 4K-only quality filter left over from the full Sort &
   /// filter screen made most of a movie library vanish under a menu that
-  /// still read "All" (user, 2026-10-29). The saved values stay untouched.
+  /// still read "All". The saved values stay untouched.
   final bool statusFiltersOnly;
 
   static const _pageSize = 48;

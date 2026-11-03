@@ -118,7 +118,7 @@ class SearchViewModel extends ChangeNotifier {
 
   /// Seasons and folders stay out, as in jellyfin-web: their names are
   /// "Season 1", "Specials" or a disk folder, so a one-letter search listed
-  /// hundreds of them and none says what it belongs to (user, 2026-10-29).
+  /// hundreds of them and none says what it belongs to.
   static List<SearchResultGroup> _searchGroups() {
     final l10n = currentAppLocalizations();
     return [

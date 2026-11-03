@@ -115,7 +115,7 @@ const _kPlexRowTitleGap = 12.0 * SunfinStyle.k;
 const _kPlexRowPitch = 231.0 * SunfinStyle.k;
 
 /// Where a card in a home row opens. In Sunfin mode a show opens the reference design's show
-/// page from every row, as in the reference design (user, 2026-10-26), and so does an episode
+/// page from every row, as in the reference design, and so does an episode
 /// outside Continue Watching and Next Up, since its card is the show's poster.
 /// Those two rows keep opening the season page at the episode.
 String _homeItemDestination(HomeRow row, AggregatedItem item) {
