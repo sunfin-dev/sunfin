@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../../preference/plex_locks.dart';
+import '../../../preference/sunfin_locks.dart';
 import '../../../preference/preference_constants.dart';
 import '../../../preference/user_preferences.dart';
-import '../../plex/plex_spinner.dart';
+import '../../sunfin/sunfin_spinner.dart';
 import 'loading_animation_widget.dart';
 
 class PlayerLoadingOverlay extends StatefulWidget {
@@ -38,7 +38,7 @@ class _PlayerLoadingOverlayState extends State<PlayerLoadingOverlay>
   static const _labelGradient = LinearGradient(
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
-    // The Plexfin logo's two golds.
+    // The Sunfin logo's two golds.
     colors: [Color(0xFFF4B93A), Color(0xFFD9620F)],
   );
 
@@ -70,8 +70,8 @@ class _PlayerLoadingOverlayState extends State<PlayerLoadingOverlay>
 
   @override
   Widget build(BuildContext context) {
-    // Plex shows a plain loading circle, no logo and no label.
-    if (PlexLocks.active) return const PlexSpinner();
+    // The reference design shows a plain loading circle, no logo and no label.
+    if (SunfinLocks.active) return const SunfinSpinner();
 
     final prefs = GetIt.instance.isRegistered<UserPreferences>()
         ? GetIt.instance<UserPreferences>()

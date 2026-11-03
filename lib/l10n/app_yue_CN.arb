@@ -1,6 +1,6 @@
 {
     "@@locale": "yue_CN",
-    "appTitle": "Plexfin",
+    "appTitle": "Sunfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -78,7 +78,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Plexfin 版本{version}",
+    "appVersionFooter": "Sunfin 版本{version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -152,7 +152,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Plexfin 无法访问您的系统密钥环。登录可以继续，但在密钥环解锁之前，安全令牌存储可能不可用。",
+    "secureStorageUnavailableMessage": "Sunfin 无法访问您的系统密钥环。登录可以继续，但在密钥环解锁之前，安全令牌存储可能不可用。",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -164,17 +164,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "在 Plexfin 和 Neon Pulse 之间切换，无需重新启动应用程序",
+    "settingsAppearanceThemeSubtitle": "在 Sunfin 和 Neon Pulse 之间切换，无需重新启动应用程序",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Plexfin",
+    "themeMoonfin": "Sunfin",
     "@themeMoonfin": {
-        "description": "Display name for the Plexfin theme"
+        "description": "Display name for the Sunfin theme"
     },
-    "themeMoonfinSubtitle": "目前的 Plexfin 外观你们都喜欢",
+    "themeMoonfinSubtitle": "目前的 Sunfin 外观你们都喜欢",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Plexfin theme"
+        "description": "Preview description for the Sunfin theme"
     },
     "themeNeonPulse": "Neon Pulse",
     "@themeNeonPulse": {
@@ -245,7 +245,7 @@
             }
         }
     },
-    "exitApp": "退出Plexfin？",
+    "exitApp": "退出Sunfin？",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3101,7 +3101,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "未设置。 Plexfin 将尝试应用程序/数据文件夹中的默认 mpv.conf。",
+    "notSetMpvConf": "未设置。 Sunfin 将尝试应用程序/数据文件夹中的默认 mpv.conf。",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3504,7 +3504,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "切换每个库的主页可见性。重新启动 Plexfin 以使更改生效。",
+    "libraryVisibilityDescription": "切换每个库的主页可见性。重新启动 Sunfin 以使更改生效。",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3549,13 +3549,13 @@
     "@mediaBarMode": {
         "description": "Setting for choosing media bar style"
     },
-    "mediaBarModeDescription": "在 Plexfin、MakD 之间进行选择，或关闭媒体栏",
+    "mediaBarModeDescription": "在 Sunfin、MakD 之间进行选择，或关闭媒体栏",
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Plexfin",
+    "mediaBarModeMoonfin": "Sunfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Plexfin"
+        "description": "Media bar style option: Sunfin"
     },
     "mediaBarModeMakd": "马克D",
     "@mediaBarModeMakd": {
@@ -4057,8 +4057,8 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
-    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
-    "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
+    "aboutBasedOnMoonfin": "Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
+    "sourceCodeUrl": "https://github.com/sunfin-dev/sunfin",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
     },
@@ -4226,9 +4226,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "玩 Plexfin",
+    "playInMoonfin": "玩 Sunfin",
     "@playInMoonfin": {
-        "description": "Button to play available media in Plexfin"
+        "description": "Button to play available media in Sunfin"
     },
     "requestedByName": "Requested by {name}",
     "@requestedByName": {
@@ -4280,7 +4280,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "在您的 Plexfin 库中找不到项目",
+    "itemNotFoundInLibrary": "在您的 Sunfin 库中找不到项目",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4582,7 +4582,7 @@
         }
     },
     "adminServerRebootInProgress": "服务器正在重启",
-    "adminServerRebootMessage": "服务器正在重新启动，请重新启动 Plexfin",
+    "adminServerRebootMessage": "服务器正在重新启动，请重新启动 Sunfin",
     "adminActiveSessions": "活跃会话",
     "adminSessionsLoadFailed": "无法加载会话",
     "adminNoActiveSessions": "没有活动会话",
@@ -6458,7 +6458,7 @@
     "settingsShowGenresButtonInNavigation": "在导航栏中显示流派按钮",
     "settingsShowFavoritesButtonInNavigation": "在导航栏中显示收藏夹按钮",
     "settingsShowLibrariesButtonInNavigation": "在导航栏中显示库按钮",
-    "settingsLibraryVisibilitySubtitle": "切换每个库的主页可见性。重新启动 Plexfin 以使更改生效。",
+    "settingsLibraryVisibilitySubtitle": "切换每个库的主页可见性。重新启动 Sunfin 以使更改生效。",
     "settingsMediaBarAndLocalPreviews": "媒体栏和本地预览",
     "settingsVisualOverlays": "视觉叠加",
     "settingsSeasonalSurprise": "季节性惊喜",
@@ -6477,14 +6477,14 @@
     "settingsJoinDiscord": "加入 Discord",
     "settingsJoinDiscordSubtitle": "与社区聊天",
     "settingsJoinTheDiscord": "加入 Discord",
-    "settingsSupportMoonfin": "支持Plexfin",
+    "settingsSupportMoonfin": "支持Sunfin",
     "settingsLegal": "合法的",
     "settingsLicenses": "许可证",
     "settingsOpenSourceLicenseNotices": "开源许可声明",
     "settingsPrivacyPolicy": "隐私政策",
-    "settingsPrivacyPolicySubtitle": "Plexfin 如何处理您的数据",
+    "settingsPrivacyPolicySubtitle": "Sunfin 如何处理您的数据",
     "settingsCheckForUpdates": "检查更新",
-    "settingsCheckForUpdatesSubtitle": "检查最新的 Plexfin 版本",
+    "settingsCheckForUpdatesSubtitle": "检查最新的 Sunfin 版本",
     "settingsPoweredByFlutter": "由颤动提供支持",
     "settingsLicenseNoticesCount": "{count, plural, one {# license notice} other {# license notices}}",
     "@settingsLicenseNoticesCount": {
@@ -7013,12 +7013,12 @@
     "preferSdhSubtitles": "Prefer SDH subtitles",
     "preferSdhSubtitlesSubtitle": "Prioritize SDH/CC subtitle tracks when auto-selecting.",
     "webDiagnostics": "Web diagnostics",
-    "webDiagnosticsTitle": "Plexfin Web Diagnostics",
+    "webDiagnosticsTitle": "Sunfin Web Diagnostics",
     "webDiagnosticsIntro": "Use this page to diagnose browser connectivity issues (CORS, mixed content, and discovery settings).",
     "webDiagnosticsDetectedMixedContentFailure": "Detected Mixed-Content Failure",
     "webDiagnosticsDetectedCorsPreflightFailure": "Detected CORS/Preflight Failure",
-    "webDiagnosticsMixedContentFailureBody": "Plexfin detected an HTTPS page trying to call an HTTP server URL. Browsers block this request before it reaches your server.",
-    "webDiagnosticsCorsFailureBody": "Plexfin detected a browser-level request failure that is commonly caused by missing CORS or preflight headers on the media server.",
+    "webDiagnosticsMixedContentFailureBody": "Sunfin detected an HTTPS page trying to call an HTTP server URL. Browsers block this request before it reaches your server.",
+    "webDiagnosticsCorsFailureBody": "Sunfin detected a browser-level request failure that is commonly caused by missing CORS or preflight headers on the media server.",
     "webDiagnosticsTargetUrl": "Target URL: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7048,7 +7048,7 @@
     "notConfigured": "not configured",
     "webDiagnosticsMixedContent": "Mixed Content",
     "webDiagnosticsMixedContentDetected": "This page is loaded over HTTPS, but one or more configured URLs are HTTP. Browsers block HTTPS pages from calling HTTP APIs.",
-    "webDiagnosticsMixedContentFix": "Fix: serve your media server or proxy endpoint via HTTPS, or load Plexfin over HTTP on trusted local networks only.",
+    "webDiagnosticsMixedContentFix": "Fix: serve your media server or proxy endpoint via HTTPS, or load Sunfin over HTTP on trusted local networks only.",
     "webDiagnosticsNoMixedContentDetected": "No obvious mixed-content configuration detected from current runtime settings.",
     "webDiagnosticsCorsChecklist": "CORS Checklist",
     "webDiagnosticsCorsChecklistItem1": "• Allow the browser origin in Access-Control-Allow-Origin.",

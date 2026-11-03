@@ -1,11 +1,11 @@
 # Privacy Policy
 
-**Moonfin**
-Last updated: March 30, 2026
+**Sunfin**
+Last updated: November 3, 2026
 
 ## Overview
 
-Moonfin is a third-party client application for Jellyfin media servers. Moonfin does not operate any servers, collect user data, or track usage. All media data stays between your device and your self-hosted Jellyfin server.
+Sunfin is a third-party client application for Jellyfin media servers. Sunfin does not operate any servers, collect user data, or track usage. All media data stays between your device and your self-hosted Jellyfin server.
 
 ## Data Collection
 
@@ -19,7 +19,7 @@ Moonfin is a third-party client application for Jellyfin media servers. Moonfin 
 
 ### Data Stored Locally on Your Device
 
-Moonfin stores the following data locally on your device only:
+Sunfin stores the following data locally on your device only:
 
 - **Server addresses** — The URLs of Jellyfin servers you connect to
 - **Authentication tokens** — Used to maintain your session with your Jellyfin server
@@ -30,7 +30,7 @@ This data never leaves your device except when communicating directly with your 
 
 ### Crash Reports (Optional)
 
-Moonfin can send crash reports to **your own server** when the app encounters an error. This feature:
+Sunfin can send crash reports to **your own server** when the app encounters an error. This feature:
 
 - Is **on by default** and can be turned off in Settings > About > Diagnostics & Logging
 - Sends crash data **only to your own server**, never to us or any third party
@@ -42,29 +42,29 @@ Capture always stays on the device. The setting controls only whether a captured
 
 ### Network Communication
 
-Moonfin communicates only with:
+Sunfin communicates only with:
 
 - **Your Jellyfin server(s)** — To stream media, authenticate, and sync settings
 - **Your Seerr server** (if configured) — To browse and request media
 - **GitHub API** (libre/sideloaded builds only) — To check for app updates
 
-Moonfin supports cleartext (HTTP) connections because many self-hosted Jellyfin servers run on local networks without HTTPS. No data is sent to any Moonfin-operated servers.
+Sunfin supports cleartext (HTTP) connections because many self-hosted Jellyfin servers run on local networks without HTTPS. No data is sent to any Sunfin-operated servers.
 
 ### Voice Search
 
-Moonfin may request microphone access for voice search functionality on supported platforms. Audio is processed by the device's speech recognizer and is not recorded, stored, or transmitted by Moonfin.
+Sunfin may request microphone access for voice search functionality on supported platforms. Audio is processed by the device's speech recognizer and is not recorded, stored, or transmitted by Sunfin.
 
 ## Data Security
 
-All sensitive data (authentication tokens, server credentials) is stored in the app's private storage on your device, protected by platform security mechanisms and app sandboxing where available. Moonfin supports HTTPS connections to your servers for encrypted communication.
+All sensitive data (authentication tokens, server credentials) is stored in the app's private storage on your device, protected by platform security mechanisms and app sandboxing where available. Sunfin supports HTTPS connections to your servers for encrypted communication.
 
 ## Children's Privacy
 
-Moonfin is not directed at children under the age of 13. We do not knowingly collect any information from children.
+Sunfin is not directed at children under the age of 13. We do not knowingly collect any information from children.
 
 ## Third-Party Services
 
-Moonfin does not integrate with any third-party analytics, advertising, or tracking services. The only external services Moonfin communicates with are the servers you explicitly configure (Jellyfin, Seerr).
+Sunfin does not integrate with any third-party analytics, advertising, or tracking services. The only external services Sunfin communicates with are the servers you explicitly configure (Jellyfin, Seerr).
 
 ## Changes to This Policy
 
@@ -73,9 +73,9 @@ We may update this privacy policy from time to time. Changes will be posted to t
 ## Contact
 
 If you have questions about this privacy policy, you can open an issue on our GitHub repository:
-https://github.com/Moonfin-Client/Moonfin-Core/issues
+https://github.com/sunfin-dev/sunfin/issues
 
 ## Open Source
 
-Moonfin is open-source software. You can review the complete source code to verify our privacy practices:
-https://github.com/Moonfin-Client/Moonfin-Core
+Sunfin is open-source software. You can review the complete source code to verify our privacy practices:
+https://github.com/sunfin-dev/sunfin

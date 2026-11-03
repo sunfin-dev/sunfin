@@ -6,8 +6,8 @@ import '../../util/platform_detection.dart';
 
 /// The folder holding the offline database, created if missing.
 ///
-/// Plexfin: Windows keeps it with the app's own data (%APPDATA%\Plexfin\
-/// Plexfin) instead of Documents. Windows Defender's Controlled Folder Access
+/// Sunfin: Windows keeps it with the app's own data (%APPDATA%\Sunfin\
+/// Sunfin) instead of Documents. Windows Defender's Controlled Folder Access
 /// blocks unknown apps from writing to Documents, which left the app hanging
 /// before its first frame, and Documents\Moonfin would be shared with a stock
 /// Moonfin install.

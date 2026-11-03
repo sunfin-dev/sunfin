@@ -36,8 +36,8 @@ class _GeneralStyleScreenState extends State<_GeneralStyleScreen> {
           builder: (context, _) => ListView(
             padding: EdgeInsets.only(bottom: bottomPad),
             children: [
-              // Plexfin: no themes; the look is fixed (PlexLocks).
-              if (!PlexLocks.active) ...[
+              // Sunfin: no themes; the look is fixed (SunfinLocks).
+              if (!SunfinLocks.active) ...[
                 _SectionHeader(l10n.theme),
                 adaptiveListSection(
                   children: [
@@ -124,8 +124,8 @@ class _GeneralStyleScreenState extends State<_GeneralStyleScreen> {
                 adaptiveListSection(
                   children: [
                     SwitchPreferenceTile(
-                      // Plexfin: the theme tiles that took focus are locked away.
-                      autofocus: PlexLocks.active,
+                      // Sunfin: the theme tiles that took focus are locked away.
+                      autofocus: SunfinLocks.active,
                       preference: UserPreferences.preferSystemImeKeyboard,
                       title: l10n.keyboardPreferSystemIme,
                       subtitle: l10n.keyboardPreferSystemImeDescription,
@@ -160,8 +160,8 @@ class _GeneralStyleScreenState extends State<_GeneralStyleScreen> {
                   ],
                 ),
               ],
-              // Plexfin: clock, display and animations are part of the fixed look.
-              if (!PlexLocks.active) ...[
+              // Sunfin: clock, display and animations are part of the fixed look.
+              if (!SunfinLocks.active) ...[
                 _SectionHeader(l10n.clock),
                 adaptiveListSection(
                   children: [

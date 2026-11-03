@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "appTitle": "Plexfin",
+    "appTitle": "Sunfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Plexfin バージョン {version}",
+    "appVersionFooter": "Sunfin バージョン {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Plexfin はシステム キーリングにアクセスできませんでした。ログインは続行できますが、キーリングのロックが解除されるまで安全なトークン ストレージを利用できなくなる可能性があります。",
+    "secureStorageUnavailableMessage": "Sunfin はシステム キーリングにアクセスできませんでした。ログインは続行できますが、キーリングのロックが解除されるまで安全なトークン ストレージを利用できなくなる可能性があります。",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -168,17 +168,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "アプリを再起動せずに Plexfin と Neon Pulse を切り替える",
+    "settingsAppearanceThemeSubtitle": "アプリを再起動せずに Sunfin と Neon Pulse を切り替える",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Plexfin",
+    "themeMoonfin": "Sunfin",
     "@themeMoonfin": {
-        "description": "Display name for the Plexfin theme"
+        "description": "Display name for the Sunfin theme"
     },
-    "themeMoonfinSubtitle": "皆さんが気に入った現在の Plexfin の外観",
+    "themeMoonfinSubtitle": "皆さんが気に入った現在の Sunfin の外観",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Plexfin theme"
+        "description": "Preview description for the Sunfin theme"
     },
     "themeNeonPulse": "Neon Pulse",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Plexfin を終了しますか?",
+    "exitApp": "Sunfin を終了しますか?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "設定されていません。 Plexfin は、app/data フォルダー内のデフォルトの mpv.conf を試行します。",
+    "notSetMpvConf": "設定されていません。 Sunfin は、app/data フォルダー内のデフォルトの mpv.conf を試行します。",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "ライブラリごとにホームページの表示を切り替えます。変更を有効にするには、Plexfin を再起動します。",
+    "libraryVisibilityDescription": "ライブラリごとにホームページの表示を切り替えます。変更を有効にするには、Sunfin を再起動します。",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3561,9 +3561,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Plexfin",
+    "mediaBarModeMoonfin": "Sunfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Plexfin"
+        "description": "Media bar style option: Sunfin"
     },
     "mediaBarModeMakd": "マクド",
     "@mediaBarModeMakd": {
@@ -4121,8 +4121,8 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
-    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
-    "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
+    "aboutBasedOnMoonfin": "Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
+    "sourceCodeUrl": "https://github.com/sunfin-dev/sunfin",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
     },
@@ -4294,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Plexfin でプレイする",
+    "playInMoonfin": "Sunfin でプレイする",
     "@playInMoonfin": {
-        "description": "Button to play available media in Plexfin"
+        "description": "Button to play available media in Sunfin"
     },
     "requestedByName": "{name} がリクエスト",
     "@requestedByName": {
@@ -4348,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "Plexfin ライブラリにアイテムが見つかりません",
+    "itemNotFoundInLibrary": "Sunfin ライブラリにアイテムが見つかりません",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4652,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "サーバーの再起動が進行中です",
-    "adminServerRebootMessage": "サーバーの再起動が進行中です。Plexfin を再起動してください。",
+    "adminServerRebootMessage": "サーバーの再起動が進行中です。Sunfin を再起動してください。",
     "adminActiveSessions": "アクティブなセッション",
     "adminSessionsLoadFailed": "セッションのロードに失敗しました",
     "adminNoActiveSessions": "アクティブなセッションはありません",
@@ -6517,13 +6517,13 @@
     "settingsAccountSecuritySubtitle": "認証、PINコード、ペアレンタルコントロール",
     "settingsPersonalization": "パーソナライゼーション",
     "settingsPersonalizationSubtitle": "テーマ、ナビゲーション、ホーム行、ライブラリの表示設定",
-    "plexPersonalizationSubtitle": "サイドバー、ホームの行、ライブラリ、詳細ページ、スクリーンセーバー",
-    "plexGeneralStyleSubtitle": "キーボードとゲームコントローラー",
-    "plexDetailsScreenSubtitle": "ボタン、情報、セクション、おすすめ",
-    "plexNavigationSubtitle": "サイドバーの項目と自動選択",
-    "plexHomeScreenSubtitle": "行、その並び順、視聴を続ける",
+    "sunfinPersonalizationSubtitle": "サイドバー、ホームの行、ライブラリ、詳細ページ、スクリーンセーバー",
+    "sunfinGeneralStyleSubtitle": "キーボードとゲームコントローラー",
+    "sunfinDetailsScreenSubtitle": "ボタン、情報、セクション、おすすめ",
+    "sunfinNavigationSubtitle": "サイドバーの項目と自動選択",
+    "sunfinHomeScreenSubtitle": "行、その並び順、視聴を続ける",
     "libraryNicknames": "ライブラリのニックネーム",
-    "libraryNicknamesSubtitle": "ライブラリに付ける自分だけの名前。Plexfin でのみ表示されます",
+    "libraryNicknamesSubtitle": "ライブラリに付ける自分だけの名前。Sunfin でのみ表示されます",
     "libraryNicknameServerName": "サーバー上の名前: {name}",
     "libraryNicknameHint": "空欄にするとサーバーの名前を使います",
     "libraryNicknameNone": "ニックネームなし",
@@ -6536,16 +6536,16 @@
     "settingsTransferImport": "設定をインポート",
     "settingsTransferFrom": "{device} から、{date}",
     "settingsTransferNothing": "まだエクスポートされていません",
-    "settingsTransferImportConfirm": "このデバイスの設定をこれで置き換えますか？{source}\n\nその後 Plexfin は終了します。もう一度開くと反映されます。",
+    "settingsTransferImportConfirm": "このデバイスの設定をこれで置き換えますか？{source}\n\nその後 Sunfin は終了します。もう一度開くと反映されます。",
     "settingsTransferImportAction": "インポートして終了",
     "settingsTransferFailed": "Jellyfin アカウントに接続できませんでした",
     "settingsTransferNote": "サインイン、ウィンドウ、ハードウェアの設定は各デバイスに残ります。先にもう一方のデバイスでサインインしてからインポートしてください。",
     "settingsReset": "すべての設定をリセット",
     "settingsResetSubtitle": "このデバイスの設定を既定値に戻します",
-    "settingsResetConfirm": "このデバイスのすべての設定を既定値に戻しますか？サインインは維持され、Jellyfin アカウントにエクスポートした設定も残ります。\n\nその後 Plexfin は終了します。続けるにはもう一度開いてください。",
+    "settingsResetConfirm": "このデバイスのすべての設定を既定値に戻しますか？サインインは維持され、Jellyfin アカウントにエクスポートした設定も残ります。\n\nその後 Sunfin は終了します。続けるにはもう一度開いてください。",
     "adminShowButton": "管理ボタンを表示",
     "adminShowButtonSubtitle": "サーバー管理を開くボタンをメニューに追加します",
-    "plexDirectedBy": "監督: {names}",
+    "sunfinDirectedBy": "監督: {names}",
     "settingsDynamicContent": "動的コンテンツ",
     "settingsDynamicContentSubtitle": "メディアバーとビジュアルオーバーレイ",
     "settingsPlaybackSyncplay": "再生と SyncPlay",
@@ -6569,7 +6569,7 @@
     "settingsShowGenresButtonInNavigation": "ナビゲーションバーにジャンルボタンを表示する",
     "settingsShowFavoritesButtonInNavigation": "ナビゲーションバーにお気に入りボタンを表示する",
     "settingsShowLibrariesButtonInNavigation": "ナビゲーション バーにライブラリ ボタンを表示する",
-    "settingsLibraryVisibilitySubtitle": "ライブラリごとにホームページの表示を切り替えます。変更を有効にするには、Plexfin を再起動します。",
+    "settingsLibraryVisibilitySubtitle": "ライブラリごとにホームページの表示を切り替えます。変更を有効にするには、Sunfin を再起動します。",
     "settingsMediaBarAndLocalPreviews": "メディアバーとローカルプレビュー",
     "settingsVisualOverlays": "ビジュアルオーバーレイ",
     "settingsSeasonalSurprise": "季節のサプライズ",
@@ -6588,14 +6588,14 @@
     "settingsJoinDiscord": "Discord に参加する",
     "settingsJoinDiscordSubtitle": "コミュニティとチャットする",
     "settingsJoinTheDiscord": "Discord に参加する",
-    "settingsSupportMoonfin": "Plexfin をサポート",
+    "settingsSupportMoonfin": "Sunfin をサポート",
     "settingsLegal": "法律上の",
     "settingsLicenses": "ライセンス",
     "settingsOpenSourceLicenseNotices": "オープンソースライセンスに関する通知",
     "settingsPrivacyPolicy": "プライバシーポリシー",
-    "settingsPrivacyPolicySubtitle": "Plexfin によるデータの処理方法",
+    "settingsPrivacyPolicySubtitle": "Sunfin によるデータの処理方法",
     "settingsCheckForUpdates": "アップデートをチェックする",
-    "settingsCheckForUpdatesSubtitle": "最新の Plexfin リリースを確認してください",
+    "settingsCheckForUpdatesSubtitle": "最新の Sunfin リリースを確認してください",
     "settingsPoweredByFlutter": "フラッター搭載",
     "settingsLicenseNoticesCount": "{count, plural, one {# 件のライセンス表記} other {# 件のライセンス表記}}",
     "@settingsLicenseNoticesCount": {
@@ -7128,12 +7128,12 @@
     "preferSdhSubtitles": "SDH 字幕を優先",
     "preferSdhSubtitlesSubtitle": "自動選択時に SDH / CC の字幕トラックを優先します。",
     "webDiagnostics": "Web 診断",
-    "webDiagnosticsTitle": "Plexfin Web 診断",
+    "webDiagnosticsTitle": "Sunfin Web 診断",
     "webDiagnosticsIntro": "このページでは、ブラウザーの接続に関する問題 (CORS、混在コンテンツ、検出設定) を診断できます。",
     "webDiagnosticsDetectedMixedContentFailure": "混在コンテンツによるエラーを検出しました",
     "webDiagnosticsDetectedCorsPreflightFailure": "CORS / プリフライトのエラーを検出しました",
-    "webDiagnosticsMixedContentFailureBody": "Plexfin は、HTTPS のページから HTTP のサーバー URL を呼び出そうとしているのを検出しました。ブラウザーはこのリクエストをサーバーに届く前にブロックします。",
-    "webDiagnosticsCorsFailureBody": "Plexfin はブラウザーレベルのリクエスト失敗を検出しました。多くの場合、メディアサーバー側で CORS やプリフライトのヘッダーが不足していることが原因です。",
+    "webDiagnosticsMixedContentFailureBody": "Sunfin は、HTTPS のページから HTTP のサーバー URL を呼び出そうとしているのを検出しました。ブラウザーはこのリクエストをサーバーに届く前にブロックします。",
+    "webDiagnosticsCorsFailureBody": "Sunfin はブラウザーレベルのリクエスト失敗を検出しました。多くの場合、メディアサーバー側で CORS やプリフライトのヘッダーが不足していることが原因です。",
     "webDiagnosticsTargetUrl": "対象 URL: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7163,7 +7163,7 @@
     "notConfigured": "未設定",
     "webDiagnosticsMixedContent": "混在コンテンツ",
     "webDiagnosticsMixedContentDetected": "このページは HTTPS で読み込まれていますが、設定された URL に HTTP のものが含まれています。ブラウザーは HTTPS のページから HTTP の API を呼び出すことをブロックします。",
-    "webDiagnosticsMixedContentFix": "対処法: メディアサーバーまたはプロキシのエンドポイントを HTTPS で公開するか、信頼できるローカルネットワークでのみ Plexfin を HTTP で読み込んでください。",
+    "webDiagnosticsMixedContentFix": "対処法: メディアサーバーまたはプロキシのエンドポイントを HTTPS で公開するか、信頼できるローカルネットワークでのみ Sunfin を HTTP で読み込んでください。",
     "webDiagnosticsNoMixedContentDetected": "現在の実行時設定からは、明らかな混在コンテンツの構成は検出されませんでした。",
     "webDiagnosticsCorsChecklist": "CORS チェックリスト",
     "webDiagnosticsCorsChecklistItem1": "• Access-Control-Allow-Origin でブラウザーのオリジンを許可する。",
@@ -7360,7 +7360,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "クラシックは従来の Plexfin の中央寄せレイアウトです。モダンはレスポンシブなシネマティックレイアウトです。",
+    "detailScreenStyleSubtitle": "クラシックは従来の Sunfin の中央寄せレイアウトです。モダンはレスポンシブなシネマティックレイアウトです。",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7392,13 +7392,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "Plexfin Recommends のローカルライブラリ用アルゴリズム、またはオンラインの TMDb 類似度指標を使用します。注: オンラインのおすすめには Seerr 連携が必要です。",
+    "recommendationSystemSubtitle": "Sunfin Recommends のローカルライブラリ用アルゴリズム、またはオンラインの TMDb 類似度指標を使用します。注: オンラインのおすすめには Seerr 連携が必要です。",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Plexfin Recommends",
+    "recommendationSystemMoonfin": "Sunfin Recommends",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Plexfin Recommends"
+        "description": "Recommendation system option: Sunfin Recommends"
     },
     "recommendationSystemTmdb": "TMDb 類似度",
     "@recommendationSystemTmdb": {
@@ -7408,7 +7408,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "Plexfin Recommends のおすすめを対象作品の視聴年齢制限で絞り込みます",
+    "recommendationsApplyParentalRatingCapSubtitle": "Sunfin Recommends のおすすめを対象作品の視聴年齢制限で絞り込みます",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7456,7 +7456,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "カスタムテーマは Plexfin 全体の見た目を変更します。好みに合わせて選択してください。",
+    "customThemeSubtitle": "カスタムテーマは Sunfin 全体の見た目を変更します。好みに合わせて選択してください。",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7629,7 +7629,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "スマートフォンで Plexfin にサインインしてください",
+    "carSignInPrompt": "スマートフォンで Sunfin にサインインしてください",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8966,7 +8966,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller は Flutter の新しい GPU レンダラーで、アニメーションが滑らかになり、カクつきが減ります。一部の TV ボックスや古い GPU では表示の乱れや映像が黒くなることがあり、その場合はオフにしてください。自動はお使いのデバイスに最適な設定を選びます。適用するには Plexfin を再起動してください。",
+    "impellerRenderingSubtitle": "Impeller は Flutter の新しい GPU レンダラーで、アニメーションが滑らかになり、カクつきが減ります。一部の TV ボックスや古い GPU では表示の乱れや映像が黒くなることがあり、その場合はオフにしてください。自動はお使いのデバイスに最適な設定を選びます。適用するには Sunfin を再起動してください。",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8977,7 +8977,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "レンダリングエンジンを変更するには Plexfin の再起動が必要です。アプリをいったん終了し、開き直すと適用されます。",
+    "impellerRestartMessage": "レンダリングエンジンを変更するには Sunfin の再起動が必要です。アプリをいったん終了し、開き直すと適用されます。",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },

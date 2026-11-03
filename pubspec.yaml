@@ -71,7 +71,7 @@ dependencies:
   # Direct because the image cache wraps the cache manager's file service in a
   # client of its own. Keep in step with what flutter_cache_manager resolves.
   http: ^1.6.0
-  # Fork (Plex mode): decodes the tiny backdrop sample for the page tint on
+  # Fork (Sunfin mode): decodes the tiny backdrop sample for the page tint on
   # the CPU; the GPU readback route never completed on the Shield. Already
   # resolved transitively at this version.
   image: ^4.8.0

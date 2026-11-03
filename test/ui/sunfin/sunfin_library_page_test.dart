@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:moonfin/data/models/aggregated_item.dart';
-import 'package:moonfin/ui/plex/plex_library_page.dart';
-import 'package:moonfin/ui/plex/plex_poster.dart';
+import 'package:moonfin/ui/sunfin/sunfin_library_page.dart';
+import 'package:moonfin/ui/sunfin/sunfin_poster.dart';
 import 'package:moonfin/ui/screens/detail/nouveau/nouveau_detail_content.dart';
 import 'package:moonfin/util/platform_detection.dart';
 
@@ -19,20 +19,20 @@ void main() {
   group('the letter a library title files under', () {
     test('is its sort name\'s first letter', () {
       final item = _item({'Name': 'The Matrix', 'SortName': 'Matrix'});
-      expect(plexLibraryLetter(item), 'M');
+      expect(sunfinLibraryLetter(item), 'M');
     });
 
     test('ignores accents', () {
-      expect(plexLibraryLetter(_item({'Name': 'Ángel'})), 'A');
+      expect(sunfinLibraryLetter(_item({'Name': 'Ángel'})), 'A');
     });
 
     test('is # for digits and symbols', () {
-      expect(plexLibraryLetter(_item({'Name': '2001'})), '#');
-      expect(plexLibraryLetter(_item({'Name': '(500) Days'})), '#');
+      expect(sunfinLibraryLetter(_item({'Name': '2001'})), '#');
+      expect(sunfinLibraryLetter(_item({'Name': '(500) Days'})), '#');
     });
 
     test('is nothing without a name', () {
-      expect(plexLibraryLetter(_item({'Name': ''})), isNull);
+      expect(sunfinLibraryLetter(_item({'Name': ''})), isNull);
     });
   });
 
@@ -42,26 +42,26 @@ void main() {
 
     test('are a whole library and a music library', () {
       expect(
-        PlexLibraryPage.handles(Uri.parse('/library/abc?serverId=s')),
+        SunfinLibraryPage.handles(Uri.parse('/library/abc?serverId=s')),
         isTrue,
       );
-      expect(PlexLibraryPage.handles(Uri.parse('/music/abc')), isTrue);
+      expect(SunfinLibraryPage.handles(Uri.parse('/music/abc')), isTrue);
     });
 
     test('leave type and favourites views and sub-pages alone', () {
       expect(
-        PlexLibraryPage.handles(Uri.parse('/library/abc?types=Movie')),
+        SunfinLibraryPage.handles(Uri.parse('/library/abc?types=Movie')),
         isFalse,
       );
       expect(
-        PlexLibraryPage.handles(Uri.parse('/library/abc?favorites=1')),
+        SunfinLibraryPage.handles(Uri.parse('/library/abc?favorites=1')),
         isFalse,
       );
       expect(
-        PlexLibraryPage.handles(Uri.parse('/library/abc/genres')),
+        SunfinLibraryPage.handles(Uri.parse('/library/abc/genres')),
         isFalse,
       );
-      expect(PlexLibraryPage.handles(Uri.parse('/item/abc')), isFalse);
+      expect(SunfinLibraryPage.handles(Uri.parse('/item/abc')), isFalse);
     });
   });
 
@@ -72,7 +72,7 @@ void main() {
         'Type': 'Movie',
         'ProductionYear': 2007,
       });
-      expect(plexLibraryCaptions(item, itemCount: _count), ('Zodiac', '2007'));
+      expect(sunfinLibraryCaptions(item, itemCount: _count), ('Zodiac', '2007'));
     });
 
     test('an episode shows its show and number', () {
@@ -83,7 +83,7 @@ void main() {
         'ParentIndexNumber': 2,
         'IndexNumber': 13,
       });
-      expect(plexLibraryCaptions(item, itemCount: _count), (
+      expect(sunfinLibraryCaptions(item, itemCount: _count), (
         'Jujutsu Kaisen',
         'S2 · E13',
       ));
@@ -95,7 +95,7 @@ void main() {
         'Type': 'Season',
         'SeriesName': 'The Bear',
       });
-      expect(plexLibraryCaptions(item, itemCount: _count), (
+      expect(sunfinLibraryCaptions(item, itemCount: _count), (
         'The Bear',
         'Season 1',
       ));
@@ -107,7 +107,7 @@ void main() {
         'Type': 'MusicAlbum',
         'AlbumArtist': 'Joni Mitchell',
       });
-      expect(plexLibraryCaptions(item, itemCount: _count), (
+      expect(sunfinLibraryCaptions(item, itemCount: _count), (
         'Blue',
         'Joni Mitchell',
       ));
@@ -115,7 +115,7 @@ void main() {
 
     test('a collection counts its titles', () {
       final item = _item({'Name': 'Alien', 'Type': 'BoxSet', 'ChildCount': 4});
-      expect(plexLibraryCaptions(item, itemCount: _count), (
+      expect(sunfinLibraryCaptions(item, itemCount: _count), (
         'Alien',
         '4 items',
       ));
@@ -185,7 +185,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Center(
-            child: PlexPosterCard(
+            child: SunfinPosterCard(
               item: item,
               imageUrl: null,
               width: 120,
@@ -213,7 +213,7 @@ void main() {
           'UserData': {'UnplayedItemCount': 10, 'Played': false},
         }),
       );
-      expect(find.byType(PlexCornerBadge), findsOneWidget);
+      expect(find.byType(SunfinCornerBadge), findsOneWidget);
       expect(find.text('10'), findsOneWidget);
     });
 
@@ -231,7 +231,7 @@ void main() {
 
     testWidgets('leaves an unwatched movie bare', (tester) async {
       await pump(tester, _item({'Name': 'Zodiac', 'Type': 'Movie'}));
-      expect(find.byType(PlexCornerBadge), findsNothing);
+      expect(find.byType(SunfinCornerBadge), findsNothing);
     });
 
     testWidgets('can leave the captions out', (tester) async {

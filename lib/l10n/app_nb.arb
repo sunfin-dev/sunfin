@@ -1,6 +1,6 @@
 {
     "@@locale": "nb",
-    "appTitle": "Plexfin",
+    "appTitle": "Sunfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Plexfin versjon {version}",
+    "appVersionFooter": "Sunfin versjon {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Plexfin fikk ikke tilgang til systemets nøkkelring. Påloggingen kan fortsette, men sikker tokenlagring kan være utilgjengelig før nøkkelringen er låst opp.",
+    "secureStorageUnavailableMessage": "Sunfin fikk ikke tilgang til systemets nøkkelring. Påloggingen kan fortsette, men sikker tokenlagring kan være utilgjengelig før nøkkelringen er låst opp.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -172,13 +172,13 @@
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Plexfin",
+    "themeMoonfin": "Sunfin",
     "@themeMoonfin": {
-        "description": "Display name for the Plexfin theme"
+        "description": "Display name for the Sunfin theme"
     },
-    "themeMoonfinSubtitle": "Det originale og stilrene Plexfin-standarden.",
+    "themeMoonfinSubtitle": "Det originale og stilrene Sunfin-standarden.",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Plexfin theme"
+        "description": "Preview description for the Sunfin theme"
     },
     "themeNeonPulse": "Neon Pulse",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Vil du avslutte Plexfin?",
+    "exitApp": "Vil du avslutte Sunfin?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "Ikke satt. Plexfin vil prøve en standard mpv.conf i app/data-mapper.",
+    "notSetMpvConf": "Ikke satt. Sunfin vil prøve en standard mpv.conf i app/data-mapper.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "Slå av og på hjemmesidens synlighet per bibliotek. Start Plexfin på nytt for at endringer skal tre i kraft.",
+    "libraryVisibilityDescription": "Slå av og på hjemmesidens synlighet per bibliotek. Start Sunfin på nytt for at endringer skal tre i kraft.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3561,9 +3561,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Plexfin",
+    "mediaBarModeMoonfin": "Sunfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Plexfin"
+        "description": "Media bar style option: Sunfin"
     },
     "mediaBarModeMakd": "MakD",
     "@mediaBarModeMakd": {
@@ -4121,8 +4121,8 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
-    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
-    "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
+    "aboutBasedOnMoonfin": "Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
+    "sourceCodeUrl": "https://github.com/sunfin-dev/sunfin",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
     },
@@ -4294,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Spill i Plexfin",
+    "playInMoonfin": "Spill i Sunfin",
     "@playInMoonfin": {
-        "description": "Button to play available media in Plexfin"
+        "description": "Button to play available media in Sunfin"
     },
     "requestedByName": "Forespurt av {name}",
     "@requestedByName": {
@@ -4348,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "Elementet ble ikke funnet i Plexfin-biblioteket",
+    "itemNotFoundInLibrary": "Elementet ble ikke funnet i Sunfin-biblioteket",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4652,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "Server omstart pågår",
-    "adminServerRebootMessage": "Server omstart pågår, vennligst start Plexfin på nytt",
+    "adminServerRebootMessage": "Server omstart pågår, vennligst start Sunfin på nytt",
     "adminActiveSessions": "Aktive økter",
     "adminSessionsLoadFailed": "Kunne ikke laste inn økter",
     "adminNoActiveSessions": "Ingen aktive økter",
@@ -6517,13 +6517,13 @@
     "settingsAccountSecuritySubtitle": "Autentisering, PIN-kode og foreldrekontroll",
     "settingsPersonalization": "Personalisering",
     "settingsPersonalizationSubtitle": "Tema, navigasjon, startrader og biblioteksynlighet",
-    "plexPersonalizationSubtitle": "Sidefelt, startrader, biblioteker, detaljsider og skjermsparer",
-    "plexGeneralStyleSubtitle": "Tastatur og spillkontroller",
-    "plexDetailsScreenSubtitle": "Knapper, info, seksjoner og anbefalinger",
-    "plexNavigationSubtitle": "Elementer i sidefeltet og automatisk valg",
-    "plexHomeScreenSubtitle": "Rader, rekkefølgen deres og Fortsett å se",
+    "sunfinPersonalizationSubtitle": "Sidefelt, startrader, biblioteker, detaljsider og skjermsparer",
+    "sunfinGeneralStyleSubtitle": "Tastatur og spillkontroller",
+    "sunfinDetailsScreenSubtitle": "Knapper, info, seksjoner og anbefalinger",
+    "sunfinNavigationSubtitle": "Elementer i sidefeltet og automatisk valg",
+    "sunfinHomeScreenSubtitle": "Rader, rekkefølgen deres og Fortsett å se",
     "libraryNicknames": "Kallenavn på biblioteker",
-    "libraryNicknamesSubtitle": "Dine egne navn på bibliotekene, vises bare i Plexfin",
+    "libraryNicknamesSubtitle": "Dine egne navn på bibliotekene, vises bare i Sunfin",
     "libraryNicknameServerName": "På serveren: {name}",
     "libraryNicknameHint": "La stå tomt for å bruke navnet fra serveren",
     "libraryNicknameNone": "Uten kallenavn",
@@ -6536,16 +6536,16 @@
     "settingsTransferImport": "Importer innstillinger",
     "settingsTransferFrom": "Fra {device}, {date}",
     "settingsTransferNothing": "Ingenting eksportert ennå",
-    "settingsTransferImportConfirm": "Erstatte innstillingene på denne enheten med disse? {source}\n\nPlexfin lukkes etterpå. Åpne det igjen for å bruke dem.",
+    "settingsTransferImportConfirm": "Erstatte innstillingene på denne enheten med disse? {source}\n\nSunfin lukkes etterpå. Åpne det igjen for å bruke dem.",
     "settingsTransferImportAction": "Importer og lukk",
     "settingsTransferFailed": "Fikk ikke kontakt med Jellyfin-kontoen din",
     "settingsTransferNote": "Pålogging, vindu og maskinvare blir værende på hver enhet. Logg på den andre enheten først, og importer deretter.",
     "settingsReset": "Tilbakestill alle innstillinger",
     "settingsResetSubtitle": "Sett denne enhetens innstillinger tilbake til standard",
-    "settingsResetConfirm": "Vil du sette alle innstillinger på denne enheten tilbake til standard? Du forblir pålogget, og innstillinger eksportert til Jellyfin-kontoen din beholdes.\n\nPlexfin lukkes etterpå. Åpne den igjen for å fortsette.",
+    "settingsResetConfirm": "Vil du sette alle innstillinger på denne enheten tilbake til standard? Du forblir pålogget, og innstillinger eksportert til Jellyfin-kontoen din beholdes.\n\nSunfin lukkes etterpå. Åpne den igjen for å fortsette.",
     "adminShowButton": "Vis administrasjonsknapp",
     "adminShowButtonSubtitle": "Legger til en knapp i menyen som åpner serveradministrasjon",
-    "plexDirectedBy": "Regissert av {names}",
+    "sunfinDirectedBy": "Regissert av {names}",
     "settingsDynamicContent": "Dynamisk innhold",
     "settingsDynamicContentSubtitle": "Media Bar og visuelle overlegg",
     "settingsPlaybackSyncplay": "Avspilling og SyncPlay",
@@ -6569,7 +6569,7 @@
     "settingsShowGenresButtonInNavigation": "Vis sjangerknappen i navigasjonslinjen",
     "settingsShowFavoritesButtonInNavigation": "Vis favorittknappen i navigasjonslinjen",
     "settingsShowLibrariesButtonInNavigation": "Vis bibliotek-knappen i navigasjonslinjen",
-    "settingsLibraryVisibilitySubtitle": "Slå av og på hjemmesidens synlighet per bibliotek. Start Plexfin på nytt for at endringer skal tre i kraft.",
+    "settingsLibraryVisibilitySubtitle": "Slå av og på hjemmesidens synlighet per bibliotek. Start Sunfin på nytt for at endringer skal tre i kraft.",
     "settingsMediaBarAndLocalPreviews": "Media Bar og lokale forhåndsvisninger",
     "settingsVisualOverlays": "Visuelle overlegg",
     "settingsSeasonalSurprise": "Sesongmessig overraskelse",
@@ -6588,14 +6588,14 @@
     "settingsJoinDiscord": "Bli med i Discord",
     "settingsJoinDiscordSubtitle": "Chat med fellesskapet",
     "settingsJoinTheDiscord": "Bli med i Discord",
-    "settingsSupportMoonfin": "Støtt Plexfin",
+    "settingsSupportMoonfin": "Støtt Sunfin",
     "settingsLegal": "LOVLIG",
     "settingsLicenses": "Lisenser",
     "settingsOpenSourceLicenseNotices": "Lisensmerknader for åpen kildekode",
     "settingsPrivacyPolicy": "Personvernerklæring",
-    "settingsPrivacyPolicySubtitle": "Hvordan Plexfin håndterer dataene dine",
+    "settingsPrivacyPolicySubtitle": "Hvordan Sunfin håndterer dataene dine",
     "settingsCheckForUpdates": "Se etter oppdateringer",
-    "settingsCheckForUpdatesSubtitle": "Se etter den siste Plexfin-utgivelsen",
+    "settingsCheckForUpdatesSubtitle": "Se etter den siste Sunfin-utgivelsen",
     "settingsPoweredByFlutter": "Drevet av Flutter",
     "settingsLicenseNoticesCount": "{count, plural, one {# lisensmerknad} other {# lisensmerknader}}",
     "@settingsLicenseNoticesCount": {
@@ -7128,12 +7128,12 @@
     "preferSdhSubtitles": "Foretrekk SDH-undertekster",
     "preferSdhSubtitlesSubtitle": "Prioriter SDH-/CC-undertekstspor ved automatisk valg.",
     "webDiagnostics": "Nettdiagnostikk",
-    "webDiagnosticsTitle": "Plexfin nettdiagnostikk",
+    "webDiagnosticsTitle": "Sunfin nettdiagnostikk",
     "webDiagnosticsIntro": "Bruk denne siden til å diagnostisere tilkoblingsproblemer i nettleseren (CORS, blandet innhold og oppdagelsesinnstillinger).",
     "webDiagnosticsDetectedMixedContentFailure": "Oppdaget feil med blandet innhold",
     "webDiagnosticsDetectedCorsPreflightFailure": "Oppdaget CORS-/preflight-feil",
-    "webDiagnosticsMixedContentFailureBody": "Plexfin oppdaget en HTTPS-side som prøver å kalle en HTTP-server-URL. Nettlesere blokkerer denne forespørselen før den når serveren din.",
-    "webDiagnosticsCorsFailureBody": "Plexfin oppdaget en forespørselsfeil på nettlesernivå som vanligvis skyldes manglende CORS- eller preflight-hoder på medieserveren.",
+    "webDiagnosticsMixedContentFailureBody": "Sunfin oppdaget en HTTPS-side som prøver å kalle en HTTP-server-URL. Nettlesere blokkerer denne forespørselen før den når serveren din.",
+    "webDiagnosticsCorsFailureBody": "Sunfin oppdaget en forespørselsfeil på nettlesernivå som vanligvis skyldes manglende CORS- eller preflight-hoder på medieserveren.",
     "webDiagnosticsTargetUrl": "Mål-URL: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7163,7 +7163,7 @@
     "notConfigured": "ikke konfigurert",
     "webDiagnosticsMixedContent": "Blandet innhold",
     "webDiagnosticsMixedContentDetected": "Denne siden lastes over HTTPS, men én eller flere konfigurerte URL-er bruker HTTP. Nettlesere blokkerer HTTPS-sider fra å kalle HTTP-API-er.",
-    "webDiagnosticsMixedContentFix": "Løsning: server medieserveren eller proxy-endepunktet via HTTPS, eller last Plexfin over HTTP bare på klarerte lokale nettverk.",
+    "webDiagnosticsMixedContentFix": "Løsning: server medieserveren eller proxy-endepunktet via HTTPS, eller last Sunfin over HTTP bare på klarerte lokale nettverk.",
     "webDiagnosticsNoMixedContentDetected": "Ingen åpenbar konfigurasjon med blandet innhold ble oppdaget ut fra gjeldende kjøretidsinnstillinger.",
     "webDiagnosticsCorsChecklist": "CORS-sjekkliste",
     "webDiagnosticsCorsChecklistItem1": "• Tillat nettleserens origin i Access-Control-Allow-Origin.",
@@ -7360,7 +7360,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "Klassisk er den opprinnelige, midtstilte Plexfin-layouten. Moderne er en responsiv, filmatisk layout.",
+    "detailScreenStyleSubtitle": "Klassisk er den opprinnelige, midtstilte Sunfin-layouten. Moderne er en responsiv, filmatisk layout.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7392,13 +7392,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "Bruk den lokale bibliotekalgoritmen Plexfin anbefaler, eller TMDb-likhetsmålinger på nett. Merk: Anbefalinger på nett krever Seerr-integrasjon.",
+    "recommendationSystemSubtitle": "Bruk den lokale bibliotekalgoritmen Sunfin anbefaler, eller TMDb-likhetsmålinger på nett. Merk: Anbefalinger på nett krever Seerr-integrasjon.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Plexfin anbefaler",
+    "recommendationSystemMoonfin": "Sunfin anbefaler",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Plexfin Recommends"
+        "description": "Recommendation system option: Sunfin Recommends"
     },
     "recommendationSystemTmdb": "TMDb-likhet",
     "@recommendationSystemTmdb": {
@@ -7408,7 +7408,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "Begrens forslag fra Plexfin anbefaler etter aldersgrensen til det aktuelle innholdet",
+    "recommendationsApplyParentalRatingCapSubtitle": "Begrens forslag fra Sunfin anbefaler etter aldersgrensen til det aktuelle innholdet",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7456,7 +7456,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "Egendefinerte temaer endrer visuelle elementer i hele Plexfin. Velg et av disse alternativene som passer din stil.",
+    "customThemeSubtitle": "Egendefinerte temaer endrer visuelle elementer i hele Sunfin. Velg et av disse alternativene som passer din stil.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7629,7 +7629,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "Logg på Plexfin på telefonen",
+    "carSignInPrompt": "Logg på Sunfin på telefonen",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8970,7 +8970,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller er Flutters moderne GPU-gjengiver som gir jevnere animasjoner og mindre hakking. På enkelte TV-bokser og eldre GPU-er kan den forårsake feil eller svart video – slå den av hvis du opplever det. Automatisk velger den beste standardinnstillingen for enheten din. Start Plexfin på nytt for å ta i bruk endringen.",
+    "impellerRenderingSubtitle": "Impeller er Flutters moderne GPU-gjengiver som gir jevnere animasjoner og mindre hakking. På enkelte TV-bokser og eldre GPU-er kan den forårsake feil eller svart video – slå den av hvis du opplever det. Automatisk velger den beste standardinnstillingen for enheten din. Start Sunfin på nytt for å ta i bruk endringen.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8981,7 +8981,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "Plexfin må startes på nytt for å endre gjengivelsesmotoren. Lukk appen nå, og åpne den igjen for å ta i bruk endringen.",
+    "impellerRestartMessage": "Sunfin må startes på nytt for å endre gjengivelsesmotoren. Lukk appen nå, og åpne den igjen for å ta i bruk endringen.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },
@@ -9181,7 +9181,7 @@
     "@interfaceLayout": {
         "description": "Setting to override which UI layout the app uses"
     },
-    "interfaceLayoutSubtitle": "Overstyr oppsettet dersom enheten gjenkjennes feil. Start Plexfin på nytt for å ta i bruk endringene.",
+    "interfaceLayoutSubtitle": "Overstyr oppsettet dersom enheten gjenkjennes feil. Start Sunfin på nytt for å ta i bruk endringene.",
     "@interfaceLayoutSubtitle": {
         "description": "Subtitle for the interface layout setting"
     },

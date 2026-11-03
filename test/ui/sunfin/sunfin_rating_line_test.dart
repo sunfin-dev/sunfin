@@ -4,9 +4,9 @@ import 'package:jellyfin_preference/jellyfin_preference.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:moonfin/data/models/aggregated_item.dart';
 import 'package:moonfin/preference/user_preferences.dart';
-import 'package:moonfin/ui/plex/plex_detail_parts.dart';
-import 'package:moonfin/ui/plex/plex_movie_page.dart';
-import 'package:moonfin/ui/plex/plex_rating_line.dart';
+import 'package:moonfin/ui/sunfin/sunfin_detail_parts.dart';
+import 'package:moonfin/ui/sunfin/sunfin_movie_page.dart';
+import 'package:moonfin/ui/sunfin/sunfin_rating_line.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 AggregatedItem _movie({double? community, int? critic, double? mine}) =>
@@ -37,7 +37,7 @@ void main() {
       tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: PlexRatingLine(item: item, extraRatings: const {}, prefs: prefs),
+            body: SunfinRatingLine(item: item, extraRatings: const {}, prefs: prefs),
           ),
         ),
       );
@@ -47,7 +47,7 @@ void main() {
       .where((i) => i.icon == Symbols.star || i.icon == Symbols.star_half)
       .skip(1);
 
-  testWidgets('the community score reads as a percentage, as in Plex', (
+  testWidgets('the community score reads as a percentage, as in the reference design', (
     tester,
   ) async {
     await pump(tester, _movie(community: 8.4, critic: 73));
@@ -76,7 +76,7 @@ void main() {
   test('Kids Mode shows no rating line', () async {
     await prefs.set(UserPreferences.kidsModeEnabled, true);
     expect(
-      PlexRatingLine.of(item: _movie(), extraRatings: const {}, prefs: prefs),
+      SunfinRatingLine.of(item: _movie(), extraRatings: const {}, prefs: prefs),
       isNull,
     );
   });
@@ -85,9 +85,9 @@ void main() {
     final cast = [
       {'Name': 'A'},
     ];
-    expect(PlexMemo.sameInputs([1, cast], [1, List.of(cast)]), isTrue);
+    expect(SunfinMemo.sameInputs([1, cast], [1, List.of(cast)]), isTrue);
     expect(
-      PlexMemo.sameInputs(
+      SunfinMemo.sameInputs(
         [1, cast],
         [
           1,
@@ -98,7 +98,7 @@ void main() {
       ),
       isFalse,
     );
-    expect(PlexMemo.sameInputs([1], [2]), isFalse);
+    expect(SunfinMemo.sameInputs([1], [2]), isFalse);
   });
 
   test('movies and videos open the movie page', () {
@@ -107,9 +107,9 @@ void main() {
       serverId: 's',
       rawData: {'Id': 'x', 'Type': type},
     );
-    expect(PlexMoviePage.handles(of('Movie')), isTrue);
-    expect(PlexMoviePage.handles(of('Video')), isTrue);
-    expect(PlexMoviePage.handles(of('Series')), isFalse);
-    expect(PlexMoviePage.handles(of('Episode')), isFalse);
+    expect(SunfinMoviePage.handles(of('Movie')), isTrue);
+    expect(SunfinMoviePage.handles(of('Video')), isTrue);
+    expect(SunfinMoviePage.handles(of('Series')), isFalse);
+    expect(SunfinMoviePage.handles(of('Episode')), isFalse);
   });
 }

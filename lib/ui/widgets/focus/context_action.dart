@@ -10,7 +10,7 @@ import '../../../data/models/aggregated_item.dart';
 import '../../../data/repositories/item_mutation_repository.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../util/error_message.dart';
-import '../../../preference/plex_locks.dart';
+import '../../../preference/sunfin_locks.dart';
 import '../../../preference/user_preferences.dart';
 import '../../../util/home_refresh_helper.dart';
 import '../../../util/item_watch_state.dart';
@@ -125,9 +125,9 @@ List<ItemContextAction> contextActionsFor(
       },
     ));
 
-    // Plexfin: Plex's pages have no Rate button, so their More menus carry
+    // Sunfin: The reference design's pages have no Rate button, so their More menus carry
     // it, for the stars on the rating line.
-    if (PlexLocks.active &&
+    if (SunfinLocks.active &&
         type != 'Audio' &&
         type != 'MusicAlbum' &&
         client.userLibraryApi.supportsNumericUserRatings) {

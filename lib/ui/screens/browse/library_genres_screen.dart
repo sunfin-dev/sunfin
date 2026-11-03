@@ -20,10 +20,10 @@ import '../../widgets/genre_grid_card.dart';
 import '../../widgets/focus/context_menu_sheet.dart';
 import '../../widgets/skeleton/skeleton_library_grid.dart';
 import '../../../l10n/app_localizations.dart';
-import '../../plex/plex_nav.dart';
+import '../../sunfin/sunfin_nav.dart';
 
 Color get _navyBackground => AppColorScheme.background;
-double get _horizontalPadding => plexBrowseMargin(60.0);
+double get _horizontalPadding => sunfinBrowseMargin(60.0);
 const _mobileHorizontalPadding = 16.0;
 const _kCompactBreakpoint = 600.0;
 const _initialArtworkBatch = 12;
@@ -415,7 +415,7 @@ class _LibraryGenresScreenState extends State<LibraryGenresScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => plexNavShell(
+  Widget build(BuildContext context) => sunfinNavShell(
     background: _navyBackground,
     child: RequestInitialFocus(child: _buildContent(context)),
   );

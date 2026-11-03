@@ -789,7 +789,7 @@ class _AutoDownloadSettings extends StatefulWidget {
 class _AutoDownloadSettingsState extends State<_AutoDownloadSettings> {
   static const _keepChoices = [1, 2, 3, 5, 10, 0];
 
-  /// Never, right away, a day, a week: the choices Plex offers.
+  /// Never, right away, a day, a week: the choices media apps usually offer.
   static const _deleteAfterChoices = [-1, 0, 24, 24 * 7];
 
   late Future<String> _refreshStatus;

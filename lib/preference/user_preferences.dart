@@ -14,7 +14,7 @@ import '../util/idiom/app_ui_idiom.dart';
 import '../util/language_matching.dart';
 import '../util/platform_detection.dart';
 import 'home_section_config.dart';
-import 'plex_locks.dart';
+import 'sunfin_locks.dart';
 import 'preference_constants.dart';
 import 'seerr_row_config.dart';
 
@@ -702,11 +702,11 @@ class UserPreferences extends ChangeNotifier {
   }
 
   T get<T>(Preference<T> pref) {
-    if (PlexLocks.isLocked(pref.key)) return PlexLocks.valueOf(pref);
+    if (SunfinLocks.isLocked(pref.key)) return SunfinLocks.valueOf(pref);
     return getStored(pref);
   }
 
-  /// What is stored for [pref], ignoring [PlexLocks]. Only for code that
+  /// What is stored for [pref], ignoring [SunfinLocks]. Only for code that
   /// carries the user's own values elsewhere, i.e. the plugin sync.
   T getStored<T>(Preference<T> pref) {
     if (_isScopedPreference(pref)) {
@@ -1738,7 +1738,7 @@ class UserPreferences extends ChangeNotifier {
     defaultValue: true,
   );
 
-  // Plexfin (user, 2026-10-23): a sidebar row opens its page once focus has
+  // Sunfin (user, 2026-10-23): a sidebar row opens its page once focus has
   // rested on it this long, as if OK had been pressed. Device-local, so the
   // stock Moonfin app never sees either.
   static final sidebarAutoSelect = Preference(
@@ -1774,7 +1774,7 @@ class UserPreferences extends ChangeNotifier {
   );
 
   /// Off by default. Puts server administration in the sidebar for an
-  /// administrator who opens it often (Plexfin, user request 2026-10-28).
+  /// administrator who opens it often (Sunfin, user request 2026-10-28).
   static final showAdminButton = Preference(
     key: 'pref_show_admin_button',
     defaultValue: false,
@@ -1995,7 +1995,7 @@ class UserPreferences extends ChangeNotifier {
     key: 'pref_screensaver_excluded_genres',
     defaultValue: '',
   );
-  // Plexfin (user, 2026-10-23): items carrying any of these tags never show
+  // Sunfin (user, 2026-10-23): items carrying any of these tags never show
   // on the screensaver, for art that isn't fit for children. Device-local,
   // since the stock Moonfin app has no such setting.
   static final screensaverExcludedTags = Preference(
@@ -2597,7 +2597,7 @@ class UserPreferences extends ChangeNotifier {
     key: 'hiddenDetailSectionsDesktop',
     defaultValue: '',
   );
-  // Plexfin: the order of the Details screen's sections (user, 2026-10-23).
+  // Sunfin: the order of the Details screen's sections (user, 2026-10-23).
   // Not synced, so the stock Moonfin app never sees it.
   static final detailSectionOrderTv = Preference(
     key: 'detailSectionOrderTv',

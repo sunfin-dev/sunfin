@@ -4,7 +4,7 @@ import 'package:moonfin_design/moonfin_design.dart';
 import 'admin_look.dart';
 
 /// Shared presentation helpers for the admin form screens. They put the
-/// existing raw-map form logic in Plexfin's admin look (AdminLook) without
+/// existing raw-map form logic in Sunfin's admin look (AdminLook) without
 /// changing how callers read or write their config maps.
 
 Widget adminScreenHeader(
@@ -13,7 +13,7 @@ Widget adminScreenHeader(
   String? subtitle,
   IconData? icon,
 }) {
-  // Plex titles its settings pages with plain text; [icon] stays in the
+  // The reference design titles its settings pages with plain text; [icon] stays in the
   // signature for the callers, which pass one each.
   return Padding(
     padding: const EdgeInsets.only(bottom: AppSpacing.spaceLg),
@@ -95,7 +95,7 @@ Widget adminListCard({required Widget child, EdgeInsetsGeometry? margin}) {
 }
 
 /// Groups [children] straight on the page, with thin lines above, between
-/// and below them, as Plex lists its settings. (The name is upstream's, from
+/// and below them, as the reference design lists its settings. (The name is upstream's, from
 /// when the group was a glass card.)
 Widget adminGlassGroup(BuildContext context, {required List<Widget> children}) {
   final rows = <Widget>[];
@@ -223,7 +223,7 @@ Widget adminSwitchRow({
   );
 }
 
-/// Plex's gold Save button, at the start of the row, with a spinner while
+/// The reference design's gold Save button, at the start of the row, with a spinner while
 /// [saving].
 Widget adminSaveButton({
   required String label,

@@ -43,21 +43,21 @@ bool _legacyStereoAacFallbackDefaultForPlatform() {
 }
 
 String _clientName() {
-  if (PlatformDetection.isAppleTV) return 'Plexfin for tvOS';
+  if (PlatformDetection.isAppleTV) return 'Sunfin for tvOS';
   if (PlatformDetection.isAndroid && PlatformDetection.isTV) {
-    return 'Plexfin for Android TV';
+    return 'Sunfin for Android TV';
   }
   if (PlatformDetection.isWeb) {
     return webRuntimeConfig.pluginMode
-        ? 'Plexfin for Web'
-        : 'Plexfin on Github';
+        ? 'Sunfin for Web'
+        : 'Sunfin on Github';
   }
-  if (PlatformDetection.isAndroid) return 'Plexfin for Android';
-  if (PlatformDetection.isIOS) return 'Plexfin for iOS';
-  if (PlatformDetection.isMacOS) return 'Plexfin for macOS';
-  if (PlatformDetection.isWindows) return 'Plexfin for Windows';
-  if (PlatformDetection.isLinux) return 'Plexfin for Linux';
-  return 'Plexfin';
+  if (PlatformDetection.isAndroid) return 'Sunfin for Android';
+  if (PlatformDetection.isIOS) return 'Sunfin for iOS';
+  if (PlatformDetection.isMacOS) return 'Sunfin for macOS';
+  if (PlatformDetection.isWindows) return 'Sunfin for Windows';
+  if (PlatformDetection.isLinux) return 'Sunfin for Linux';
+  return 'Sunfin';
 }
 
 String _joinNonEmpty(List<String?> parts, String separator) {

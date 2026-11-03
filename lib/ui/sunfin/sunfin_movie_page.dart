@@ -18,27 +18,27 @@ import '../screens/detail/nouveau/discovery/nouveau_discovery_section.dart';
 import '../screens/detail/nouveau/extras/nouveau_extras_section.dart';
 import '../screens/detail/nouveau/people/nouveau_people_section.dart';
 import '../widgets/navigation_layout.dart';
-import 'plex_backdrop.dart';
-import 'plex_clock.dart';
-import 'plex_detail_parts.dart';
-import 'plex_home_header.dart';
-import 'plex_rating_line.dart';
-import 'plex_style.dart';
+import 'sunfin_backdrop.dart';
+import 'sunfin_clock.dart';
+import 'sunfin_detail_parts.dart';
+import 'sunfin_home_header.dart';
+import 'sunfin_rating_line.dart';
+import 'sunfin_style.dart';
 
-/// Plex's movie page (references 05 to 07; the user's picks from
+/// The reference design's movie page (references 05 to 07; the user's picks from
 /// https://claude.ai/artifact/TnMTJm3n8J2xrCyoWmfYcz, 2026-10-28):
 ///
 /// - the title, year, runtime and age rating, genres, the rating line, the
 ///   summary and "Directed by";
-/// - Play, Favorite (Plex's Watchlist spot), Watched, Trailer (Plex's Share
+/// - Play, Favorite (the reference design's Watchlist spot), Watched, Trailer (the reference design's Share
 ///   spot, when there is one) and More, which lists every other button the
 ///   user arranged for the details screen;
 /// - the quality, audio and subtitle chips at the right;
 /// - the page's sections below, in the user's order: Cast & Crew first in
-///   Plex, then extras and More Like This in Plex's "Related Movies" spot.
+///   The reference design, then extras and More Like This in the reference design's "Related Movies" spot.
 ///
-/// Plex's Ratings & Reviews and Share have nothing behind them in Jellyfin.
-class PlexMoviePage extends StatefulWidget {
+/// The reference design's Ratings & Reviews and Share have nothing behind them in Jellyfin.
+class SunfinMoviePage extends StatefulWidget {
   final ItemDetailViewModel viewModel;
   final UserPreferences prefs;
   final ValueListenable<String?> backdropUrl;
@@ -50,7 +50,7 @@ class PlexMoviePage extends StatefulWidget {
   /// user last was on this page.
   final FocusNode? initialFocusNode;
 
-  const PlexMoviePage({
+  const SunfinMoviePage({
     super.key,
     required this.viewModel,
     required this.prefs,
@@ -68,24 +68,24 @@ class PlexMoviePage extends StatefulWidget {
       item?.type == 'MusicVideo';
 
   @override
-  State<PlexMoviePage> createState() => _PlexMoviePageState();
+  State<SunfinMoviePage> createState() => _SunfinMoviePageState();
 }
 
 enum _Button { play, favorite, watched, trailer, more }
 
-// Layout, in Plex's 960-wide units (reference 05). The buttons sit at
+// Layout, in the reference design's 960-wide units (reference 05). The buttons sit at
 // _buttonsTop, or lower when a long summary and "Directed by" need the room.
-final _buttonsTop = PlexStyle.s(267);
-final _headerGap = PlexStyle.s(20);
-final _buttonSize = PlexStyle.s(32);
-final _buttonGap = PlexStyle.s(12);
-final _chipsGap = PlexStyle.s(4);
-final _foldBottom = PlexStyle.s(11);
-final _rightInset = PlexStyle.s(40);
+final _buttonsTop = SunfinStyle.s(267);
+final _headerGap = SunfinStyle.s(20);
+final _buttonSize = SunfinStyle.s(32);
+final _buttonGap = SunfinStyle.s(12);
+final _chipsGap = SunfinStyle.s(4);
+final _foldBottom = SunfinStyle.s(11);
+final _rightInset = SunfinStyle.s(40);
 
 const _move = Duration(milliseconds: 180);
 
-class _PlexMoviePageState extends State<PlexMoviePage> {
+class _SunfinMoviePageState extends State<SunfinMoviePage> {
   final _actionsKey = GlobalKey<DetailActionButtonsState>();
   final _scroll = ScrollController();
 
@@ -94,9 +94,9 @@ class _PlexMoviePageState extends State<PlexMoviePage> {
   final _discoveryKey = GlobalKey<NouveauDiscoverySectionState>();
 
   late final FocusNode _entryNode =
-      widget.initialFocusNode ?? FocusNode(debugLabel: 'plexMovieEntry');
+      widget.initialFocusNode ?? FocusNode(debugLabel: 'sunfinMovieEntry');
   final _buttonNodes = {
-    for (final b in _Button.values) b: FocusNode(debugLabel: 'plexMovie $b'),
+    for (final b in _Button.values) b: FocusNode(debugLabel: 'sunfinMovie $b'),
   };
 
   _Button _lastButton = _Button.play;
@@ -104,12 +104,12 @@ class _PlexMoviePageState extends State<PlexMoviePage> {
   /// A page builds again on every view-model update while it opens (ratings,
   /// extras, similar titles), so the top and each section are handed back
   /// unchanged unless what they show changed.
-  final _memo = PlexMemo();
+  final _memo = SunfinMemo();
   int _prefsRevision = 0;
 
   ItemDetailViewModel get _vm => widget.viewModel;
   AggregatedItem? get _item => _vm.item;
-  double get _inset => PlexStyle.contentInset;
+  double get _inset => SunfinStyle.contentInset;
 
   @override
   void initState() {
@@ -214,7 +214,7 @@ class _PlexMoviePageState extends State<PlexMoviePage> {
         unawaited(
           actions
               .playItem(context, item, resume: _inProgress(item))
-              .catchError((Object e) => debugPrint('[PlexMoviePage] play: $e')),
+              .catchError((Object e) => debugPrint('[SunfinMoviePage] play: $e')),
         );
       case _Button.favorite:
         unawaited(_vm.toggleFavorite());
@@ -386,7 +386,7 @@ class _PlexMoviePageState extends State<PlexMoviePage> {
         Positioned.fill(
           child: ValueListenableBuilder<String?>(
             valueListenable: widget.backdropUrl,
-            builder: (context, url, _) => PlexBackdrop(
+            builder: (context, url, _) => SunfinBackdrop(
               url: url != null && url.isNotEmpty ? url : null,
             ),
           ),
@@ -412,18 +412,18 @@ class _PlexMoviePageState extends State<PlexMoviePage> {
                   Padding(
                     padding: EdgeInsets.fromLTRB(
                       _inset,
-                      PlexStyle.s(24),
+                      SunfinStyle.s(24),
                       _rightInset,
                       0,
                     ),
                     child: section.child,
                   ),
-                SizedBox(height: PlexStyle.s(48)),
+                SizedBox(height: SunfinStyle.s(48)),
               ],
             ),
           ),
         ),
-        PlexClock.corner(),
+        SunfinClock.corner(),
         // Only there for what it does: playback (prerolls, resume, the
         // external player), the trailer and the menu behind More.
         Offstage(
@@ -461,20 +461,20 @@ class _PlexMoviePageState extends State<PlexMoviePage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        PlexHomeHeader(
+        SunfinHomeHeader(
           item: item,
           leftInset: _inset,
           showCast: false,
           height: _buttonsTop - _headerGap,
           grow: true,
-          ratingLine: PlexRatingLine.of(
+          ratingLine: SunfinRatingLine.of(
             item: item,
             extraRatings: _vm.ratings,
             prefs: widget.prefs,
           ),
           footer: names.isEmpty
               ? null
-              : l10n.plexDirectedBy(names.take(2).join(', ')),
+              : l10n.sunfinDirectedBy(names.take(2).join(', ')),
         ),
         SizedBox(height: _headerGap),
         Padding(
@@ -486,7 +486,7 @@ class _PlexMoviePageState extends State<PlexMoviePage> {
           alignment: Alignment.centerRight,
           child: Padding(
             padding: EdgeInsets.only(right: _rightInset),
-            child: PlexMediaChips(item: item),
+            child: SunfinMediaChips(item: item),
           ),
         ),
         SizedBox(height: _foldBottom),
@@ -523,12 +523,12 @@ class _PlexMoviePageState extends State<PlexMoviePage> {
         child: ListenableBuilder(
           listenable: node,
           builder: (context, _) => switch (button) {
-            _Button.play => PlexPlayButton(
+            _Button.play => SunfinPlayButton(
               label: playLabel,
               focused: node.hasFocus,
               size: _buttonSize,
             ),
-            _ => PlexRoundButton(
+            _ => SunfinRoundButton(
               icon: switch (button) {
                 _Button.favorite => Symbols.favorite,
                 _Button.watched => Symbols.check_circle,

@@ -4,9 +4,9 @@ import 'package:material_symbols_icons/symbols.dart';
 import '../../data/models/aggregated_item.dart';
 import '../../util/language_codes.dart';
 import '../../util/language_matching.dart';
-import 'plex_style.dart';
+import 'sunfin_style.dart';
 
-// The pieces Plex's details pages share: the Play pill, the round buttons
+// The pieces the reference design's details pages share: the Play pill, the round buttons
 // beside it, the media chips on the right, and the memo that keeps a page's
 // parts from being built again for nothing.
 
@@ -18,7 +18,7 @@ import 'plex_style.dart';
 ///
 /// Inputs compare with ==, and a list counts as unchanged while it holds the
 /// same entries, since the cast and crew are filtered afresh on every read.
-class PlexMemo {
+class SunfinMemo {
   final _last = <Object, (List<Object?>, Widget)>{};
 
   Widget call(Object key, List<Object?> inputs, Widget Function() build) {
@@ -48,14 +48,14 @@ class PlexMemo {
   }
 }
 
-/// Plex's Play: a round button that opens into a white "Play" pill when
+/// The reference design's Play: a round button that opens into a white "Play" pill when
 /// focused (reference 12 focused, 13 not).
-class PlexPlayButton extends StatelessWidget {
+class SunfinPlayButton extends StatelessWidget {
   final String label;
   final bool focused;
   final double size;
 
-  const PlexPlayButton({
+  const SunfinPlayButton({
     super.key,
     required this.label,
     required this.focused,
@@ -73,7 +73,7 @@ class PlexPlayButton extends StatelessWidget {
         height: size,
         constraints: BoxConstraints(minWidth: size),
         padding: focused
-            ? EdgeInsets.only(left: PlexStyle.s(10), right: PlexStyle.s(14))
+            ? EdgeInsets.only(left: SunfinStyle.s(10), right: SunfinStyle.s(14))
             : EdgeInsets.zero,
         decoration: BoxDecoration(
           color: focused ? Colors.white : Colors.white.withValues(alpha: 0.12),
@@ -85,13 +85,13 @@ class PlexPlayButton extends StatelessWidget {
           children: [
             Icon(Symbols.play_arrow, size: size * 0.6, fill: 1, color: color),
             if (focused) ...[
-              SizedBox(width: PlexStyle.s(4)),
+              SizedBox(width: SunfinStyle.s(4)),
               Text(
                 label,
                 maxLines: 1,
                 style: TextStyle(
                   color: color,
-                  fontSize: PlexStyle.s(12.5),
+                  fontSize: SunfinStyle.s(12.5),
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -103,13 +103,13 @@ class PlexPlayButton extends StatelessWidget {
   }
 }
 
-class PlexRoundButton extends StatelessWidget {
+class SunfinRoundButton extends StatelessWidget {
   final IconData icon;
   final bool filled;
   final bool focused;
   final double size;
 
-  const PlexRoundButton({
+  const SunfinRoundButton({
     super.key,
     required this.icon,
     required this.filled,
@@ -137,12 +137,12 @@ class PlexRoundButton extends StatelessWidget {
   }
 }
 
-/// A title's resolution, audio and subtitle, as Plex shows them at the right
+/// A title's resolution, audio and subtitle, as the reference design shows them at the right
 /// of the buttons: "1080p", "English (EAC3 5.1)", "English (SRT)".
-class PlexMediaChips extends StatelessWidget {
+class SunfinMediaChips extends StatelessWidget {
   final AggregatedItem item;
 
-  const PlexMediaChips({super.key, required this.item});
+  const SunfinMediaChips({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -158,17 +158,17 @@ class PlexMediaChips extends StatelessWidget {
     final subtitle = pick('Subtitle');
     final chips = <Widget>[
       if (item.videoResolution case final resolution?)
-        PlexChip(text: resolution),
+        SunfinChip(text: resolution),
       if (audio != null)
-        PlexChip(icon: Icons.volume_up_rounded, text: streamLabel(audio, audio: true)),
+        SunfinChip(icon: Icons.volume_up_rounded, text: streamLabel(audio, audio: true)),
       if (subtitle != null)
-        PlexChip(icon: Icons.subtitles_outlined, text: streamLabel(subtitle)),
+        SunfinChip(icon: Icons.subtitles_outlined, text: streamLabel(subtitle)),
     ];
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         for (var i = 0; i < chips.length; i++) ...[
-          if (i > 0) SizedBox(width: PlexStyle.s(8)),
+          if (i > 0) SizedBox(width: SunfinStyle.s(8)),
           chips[i],
         ],
       ],
@@ -221,31 +221,31 @@ class PlexMediaChips extends StatelessWidget {
   }
 }
 
-class PlexChip extends StatelessWidget {
+class SunfinChip extends StatelessWidget {
   final IconData? icon;
   final String text;
 
-  const PlexChip({super.key, this.icon, required this.text});
+  const SunfinChip({super.key, this.icon, required this.text});
 
   @override
   Widget build(BuildContext context) {
-    final size = PlexStyle.s(10);
+    final size = SunfinStyle.s(10);
     return Center(
       child: Container(
         padding: EdgeInsets.symmetric(
-          horizontal: PlexStyle.s(5),
-          vertical: PlexStyle.s(2),
+          horizontal: SunfinStyle.s(5),
+          vertical: SunfinStyle.s(2),
         ),
         decoration: BoxDecoration(
           color: Colors.black.withValues(alpha: 0.45),
-          borderRadius: BorderRadius.circular(PlexStyle.s(3)),
+          borderRadius: BorderRadius.circular(SunfinStyle.s(3)),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             if (icon != null) ...[
               Icon(icon, size: size * 1.2, color: Colors.white),
-              SizedBox(width: PlexStyle.s(4)),
+              SizedBox(width: SunfinStyle.s(4)),
             ],
             Text(
               text,

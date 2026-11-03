@@ -5,12 +5,12 @@ import 'package:get_it/get_it.dart';
 import '../../data/models/aggregated_item.dart';
 import '../../data/services/media_server_client_factory.dart';
 
-/// Top-billed cast for the Plex home header.
+/// Top-billed cast for the Sunfin home header.
 ///
 /// Home rows don't ask Jellyfin for People: a full cast list on every row
 /// item would slow each home load on the Shield. Instead the header asks for
 /// the one item focus settles on, once, and keeps the answer.
-abstract final class PlexHeaderCast {
+abstract final class SunfinHeaderCast {
   static const _maxEntries = 100;
   static const _maxNames = 3;
 

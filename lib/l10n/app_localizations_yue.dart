@@ -10,7 +10,7 @@ class AppLocalizationsYue extends AppLocalizations {
   AppLocalizationsYue([String locale = 'yue']) : super(locale);
 
   @override
-  String get appTitle => 'Plexfin';
+  String get appTitle => 'Sunfin';
 
   @override
   String get animeMarkerFiller => 'Filler';
@@ -107,7 +107,7 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String appVersionFooter(String version) {
-    return 'Plexfin 版本 $version';
+    return 'Sunfin 版本 $version';
   }
 
   @override
@@ -159,7 +159,7 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String get secureStorageUnavailableMessage =>
-      'Plexfin 無法存取您的系統金鑰環。登入可以繼續，但在密鑰環解鎖之前，安全令牌儲存可能不可用。';
+      'Sunfin 無法存取您的系統金鑰環。登入可以繼續，但在密鑰環解鎖之前，安全令牌儲存可能不可用。';
 
   @override
   String get ok => '好的';
@@ -172,7 +172,7 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String get detailScreenStyleSubtitle =>
-      '「經典」係 Plexfin 原本嘅置中版面。「現代」係自適應嘅電影感版面。';
+      '「經典」係 Sunfin 原本嘅置中版面。「現代」係自適應嘅電影感版面。';
 
   @override
   String get detailScreenStyleMoonfin => '經典';
@@ -407,10 +407,10 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String get recommendationSystemSubtitle =>
-      '用 Plexfin Recommends 嘅本機媒體庫演算法，或者網上 TMDb 嘅相似度指標。注意：網上推薦需要整合 Seerr。';
+      '用 Sunfin Recommends 嘅本機媒體庫演算法，或者網上 TMDb 嘅相似度指標。注意：網上推薦需要整合 Seerr。';
 
   @override
-  String get recommendationSystemMoonfin => 'Plexfin Recommends';
+  String get recommendationSystemMoonfin => 'Sunfin Recommends';
 
   @override
   String get recommendationSystemJellyfin => 'Jellyfin Recommends';
@@ -423,7 +423,7 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String get recommendationsApplyParentalRatingCapSubtitle =>
-      '根據目標媒體嘅家長分級嚟限制 Plexfin Recommends 嘅建議';
+      '根據目標媒體嘅家長分級嚟限制 Sunfin Recommends 嘅建議';
 
   @override
   String get interfaceStyle => '介面風格';
@@ -446,7 +446,7 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String get interfaceLayoutSubtitle =>
-      'Override the detected layout when this device is read wrong. Restart Plexfin for changes to take effect.';
+      'Override the detected layout when this device is read wrong. Restart Sunfin for changes to take effect.';
 
   @override
   String get interfaceLayoutAutomatic => 'Automatic';
@@ -511,13 +511,13 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String get settingsAppearanceThemeSubtitle =>
-      '在 Plexfin 和 Neon Pulse 之間切換，無需重新啟動應用程式';
+      '在 Sunfin 和 Neon Pulse 之間切換，無需重新啟動應用程式';
 
   @override
   String get customThemeTitle => '自訂主題';
 
   @override
-  String get customThemeSubtitle => '自訂主題會改變成個 Plexfin 嘅視覺元素。揀一個啱你風格嘅選項啦。';
+  String get customThemeSubtitle => '自訂主題會改變成個 Sunfin 嘅視覺元素。揀一個啱你風格嘅選項啦。';
 
   @override
   String get keyboardPreferSystemIme => '優先用系統鍵盤';
@@ -536,10 +536,10 @@ class AppLocalizationsYue extends AppLocalizations {
       'Let a connected game controller move focus and select items';
 
   @override
-  String get themeMoonfin => 'Plexfin';
+  String get themeMoonfin => 'Sunfin';
 
   @override
-  String get themeMoonfinSubtitle => '目前的 Plexfin 外觀你們都喜歡';
+  String get themeMoonfinSubtitle => '目前的 Sunfin 外觀你們都喜歡';
 
   @override
   String get themeNeonPulse => '霓虹脈動';
@@ -604,7 +604,7 @@ class AppLocalizationsYue extends AppLocalizations {
   }
 
   @override
-  String get exitApp => '退出Plexfin？';
+  String get exitApp => '退出Sunfin？';
 
   @override
   String get exitAppConfirmation => '您確定要退出嗎？';
@@ -1727,7 +1727,7 @@ class AppLocalizationsYue extends AppLocalizations {
   String get shuffleAllMusic => '隨機播放所有音樂';
 
   @override
-  String get carSignInPrompt => '用你部電話登入 Plexfin';
+  String get carSignInPrompt => '用你部電話登入 Sunfin';
 
   @override
   String get carServerUnreachable => '連唔到你個伺服器';
@@ -2011,7 +2011,7 @@ class AppLocalizationsYue extends AppLocalizations {
   String get shortcutToggleFullscreen => 'Fullscreen on or off';
 
   @override
-  String get shortcutQuit => 'Quit Plexfin';
+  String get shortcutQuit => 'Quit Sunfin';
 
   @override
   String get shortcutPlayPause => 'Play or pause';
@@ -2953,7 +2953,7 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String get loadingAnimationDescription =>
-      'Customize the loading animations used throughout Plexfin';
+      'Customize the loading animations used throughout Sunfin';
 
   @override
   String get loadingAnimationConfiguration => 'Loading Animation Configuration';
@@ -2962,7 +2962,7 @@ class AppLocalizationsYue extends AppLocalizations {
   String get loadingAnimationImage => 'Image';
 
   @override
-  String get loadingAnimationImageMoonfinLogo => 'Plexfin Logo';
+  String get loadingAnimationImageMoonfinLogo => 'Sunfin Logo';
 
   @override
   String get loadingAnimationImageSpinner => 'Spinner';
@@ -2974,7 +2974,7 @@ class AppLocalizationsYue extends AppLocalizations {
   String get loadingAnimationImageMoonPhases => 'Moon Phases';
 
   @override
-  String get loadingAnimationImageMoonfinPhases => 'Plexfin Phases';
+  String get loadingAnimationImageMoonfinPhases => 'Sunfin Phases';
 
   @override
   String get loadingAnimationImageNeonfinPhases => 'Neonfin Phases';
@@ -3960,7 +3960,7 @@ class AppLocalizationsYue extends AppLocalizations {
   String get customMpvConfPath => '自訂 mpv.conf 路徑';
 
   @override
-  String get notSetMpvConf => '未設定。 Plexfin 將嘗試應用程式/資料資料夾中的預設 mpv.conf。';
+  String get notSetMpvConf => '未設定。 Sunfin 將嘗試應用程式/資料資料夾中的預設 mpv.conf。';
 
   @override
   String get selectMpvConf => '選擇mpv.conf';
@@ -4230,7 +4230,7 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String get downloadLocationLimitedByAndroid =>
-      'Android only lets Plexfin write to the folders it owns, and this device has no removable storage. Turn on Save to Downloads folder above to keep downloads somewhere other apps can reach.';
+      'Android only lets Sunfin write to the folders it owns, and this device has no removable storage. Turn on Save to Downloads folder above to keep downloads somewhere other apps can reach.';
 
   @override
   String get saveToDownloadsFolder => '儲存到下載資料夾';
@@ -4409,7 +4409,7 @@ class AppLocalizationsYue extends AppLocalizations {
   String get libraryVisibility => '圖書館可見性';
 
   @override
-  String get libraryVisibilityDescription => '切換每個庫的主頁可見性。重新啟動 Plexfin 以使變更生效。';
+  String get libraryVisibilityDescription => '切換每個庫的主頁可見性。重新啟動 Sunfin 以使變更生效。';
 
   @override
   String get showInNavigation => '在導航中顯示';
@@ -4473,10 +4473,10 @@ class AppLocalizationsYue extends AppLocalizations {
   String get mediaBarMode => '媒體欄風格';
 
   @override
-  String get mediaBarModeDescription => '在 Plexfin、MakD 之間進行選擇，或關閉媒體列';
+  String get mediaBarModeDescription => '在 Sunfin、MakD 之間進行選擇，或關閉媒體列';
 
   @override
-  String get mediaBarModeMoonfin => 'Plexfin';
+  String get mediaBarModeMoonfin => 'Sunfin';
 
   @override
   String get mediaBarModeMakd => '馬克D';
@@ -4795,7 +4795,7 @@ class AppLocalizationsYue extends AppLocalizations {
   String get screensaverBackdropBlack => 'Black';
 
   @override
-  String get screensaverBackdropMoonfin => 'Plexfin';
+  String get screensaverBackdropMoonfin => 'Sunfin';
 
   @override
   String get screensaverBackdropCalm => 'Calm';
@@ -4810,7 +4810,7 @@ class AppLocalizationsYue extends AppLocalizations {
   String get screensaverAdditionalComponent => 'Additional Component';
 
   @override
-  String get screensaverComponentMoonfinLogo => 'Plexfin Logo';
+  String get screensaverComponentMoonfinLogo => 'Sunfin Logo';
 
   @override
   String get screensaverComponentRunner => 'Runner';
@@ -5072,10 +5072,10 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String get aboutBasedOnMoonfin =>
-      'Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core';
+      'Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core';
 
   @override
-  String get sourceCodeUrl => 'https://github.com/Moonfin-Client/Moonfin-Core';
+  String get sourceCodeUrl => 'https://github.com/sunfin-dev/sunfin';
 
   @override
   String get checkForUpdatesNow => '立即檢查更新';
@@ -5249,7 +5249,7 @@ class AppLocalizationsYue extends AppLocalizations {
   String get cancelRequest4k => 'Cancel 4K Request';
 
   @override
-  String get playInMoonfin => '玩 Plexfin';
+  String get playInMoonfin => '玩 Sunfin';
 
   @override
   String get requestedByLabel => 'Requested by';
@@ -5294,7 +5294,7 @@ class AppLocalizationsYue extends AppLocalizations {
   String get keep => '保持';
 
   @override
-  String get itemNotFoundInLibrary => '在您的 Plexfin 庫中找不到項目';
+  String get itemNotFoundInLibrary => '在您的 Sunfin 庫中找不到項目';
 
   @override
   String get errorSearchingLibrary => '搜尋庫時出錯';
@@ -5882,7 +5882,7 @@ class AppLocalizationsYue extends AppLocalizations {
   String get adminServerRebootInProgress => '伺服器正在重啟';
 
   @override
-  String get adminServerRebootMessage => '伺服器正在重新啟動，請重新啟動 Plexfin';
+  String get adminServerRebootMessage => '伺服器正在重新啟動，請重新啟動 Sunfin';
 
   @override
   String get adminActiveSessions => '活躍會話';
@@ -9670,25 +9670,25 @@ class AppLocalizationsYue extends AppLocalizations {
   String get settingsPersonalizationSubtitle => '主題、導航、主行和庫可見性';
 
   @override
-  String get plexPersonalizationSubtitle => '側邊欄、主頁列、媒體庫、詳情頁同螢幕保護程式';
+  String get sunfinPersonalizationSubtitle => '側邊欄、主頁列、媒體庫、詳情頁同螢幕保護程式';
 
   @override
-  String get plexGeneralStyleSubtitle => '鍵盤同遊戲手掣';
+  String get sunfinGeneralStyleSubtitle => '鍵盤同遊戲手掣';
 
   @override
-  String get plexDetailsScreenSubtitle => '按鈕、資訊、分區同推薦';
+  String get sunfinDetailsScreenSubtitle => '按鈕、資訊、分區同推薦';
 
   @override
-  String get plexNavigationSubtitle => '側邊欄項目同自動揀選';
+  String get sunfinNavigationSubtitle => '側邊欄項目同自動揀選';
 
   @override
-  String get plexHomeScreenSubtitle => '列、排列次序同繼續觀看';
+  String get sunfinHomeScreenSubtitle => '列、排列次序同繼續觀看';
 
   @override
   String get libraryNicknames => '媒體庫暱稱';
 
   @override
-  String get libraryNicknamesSubtitle => '你自己幫媒體庫改嘅名，只喺 Plexfin 顯示';
+  String get libraryNicknamesSubtitle => '你自己幫媒體庫改嘅名，只喺 Sunfin 顯示';
 
   @override
   String libraryNicknameServerName(String name) {
@@ -9734,7 +9734,7 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String settingsTransferImportConfirm(String source) {
-    return '要用呢啲設定取代呢部裝置嘅設定嗎？$source\n\n之後 Plexfin 會關閉。再開返就會用到。';
+    return '要用呢啲設定取代呢部裝置嘅設定嗎？$source\n\n之後 Sunfin 會關閉。再開返就會用到。';
   }
 
   @override
@@ -9754,7 +9754,7 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String get settingsResetConfirm =>
-      '要將呢部裝置嘅每個設定還原做預設值？你會保持登入，匯出咗去你 Jellyfin 帳戶嘅設定亦會保留。\n\n之後 Plexfin 會關閉。再開返佢就可以繼續。';
+      '要將呢部裝置嘅每個設定還原做預設值？你會保持登入，匯出咗去你 Jellyfin 帳戶嘅設定亦會保留。\n\n之後 Sunfin 會關閉。再開返佢就可以繼續。';
 
   @override
   String get adminShowButton => '顯示管理按鈕';
@@ -9763,7 +9763,7 @@ class AppLocalizationsYue extends AppLocalizations {
   String get adminShowButtonSubtitle => '喺選單加一個開啟伺服器管理嘅按鈕';
 
   @override
-  String plexDirectedBy(String names) {
+  String sunfinDirectedBy(String names) {
     return '導演：$names';
   }
 
@@ -9878,7 +9878,7 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String get settingsLibraryVisibilitySubtitle =>
-      '切換每個庫的主頁可見性。重新啟動 Plexfin 以使變更生效。';
+      '切換每個庫的主頁可見性。重新啟動 Sunfin 以使變更生效。';
 
   @override
   String get settingsMediaBarAndLocalPreviews => '媒體欄和本地預覽';
@@ -10006,7 +10006,7 @@ class AppLocalizationsYue extends AppLocalizations {
   String get settingsJoinTheDiscord => '加入 Discord';
 
   @override
-  String get settingsSupportMoonfin => '支援Plexfin';
+  String get settingsSupportMoonfin => '支援Sunfin';
 
   @override
   String get settingsSupportMoonfinSubtitle => '請開發者飲杯咖啡';
@@ -10024,13 +10024,13 @@ class AppLocalizationsYue extends AppLocalizations {
   String get settingsPrivacyPolicy => '隱私權政策';
 
   @override
-  String get settingsPrivacyPolicySubtitle => 'Plexfin 如何處理您的數據';
+  String get settingsPrivacyPolicySubtitle => 'Sunfin 如何處理您的數據';
 
   @override
   String get settingsCheckForUpdates => '檢查更新';
 
   @override
-  String get settingsCheckForUpdatesSubtitle => '檢查最新的 Plexfin 版本';
+  String get settingsCheckForUpdatesSubtitle => '檢查最新的 Sunfin 版本';
 
   @override
   String get settingsPoweredByFlutter => '由顫動提供支持';
@@ -10791,7 +10791,7 @@ class AppLocalizationsYue extends AppLocalizations {
   String get webDiagnostics => '網頁診斷';
 
   @override
-  String get webDiagnosticsTitle => 'Plexfin 網頁診斷';
+  String get webDiagnosticsTitle => 'Sunfin 網頁診斷';
 
   @override
   String get webDiagnosticsIntro => '用呢版嚟診斷瀏覽器嘅連線問題（CORS、混合內容同探索設定）。';
@@ -10804,11 +10804,11 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String get webDiagnosticsMixedContentFailureBody =>
-      'Plexfin 偵測到有 HTTPS 網頁想呼叫 HTTP 嘅伺服器 URL。瀏覽器會喺要求去到你部伺服器之前就封鎖咗佢。';
+      'Sunfin 偵測到有 HTTPS 網頁想呼叫 HTTP 嘅伺服器 URL。瀏覽器會喺要求去到你部伺服器之前就封鎖咗佢。';
 
   @override
   String get webDiagnosticsCorsFailureBody =>
-      'Plexfin 偵測到瀏覽器層面嘅要求失敗，通常係因為媒體伺服器度缺少咗 CORS 或者預檢標頭。';
+      'Sunfin 偵測到瀏覽器層面嘅要求失敗，通常係因為媒體伺服器度缺少咗 CORS 或者預檢標頭。';
 
   @override
   String webDiagnosticsTargetUrl(String url) {
@@ -10856,7 +10856,7 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String get webDiagnosticsMixedContentFix =>
-      '解決方法：用 HTTPS 提供你嘅媒體伺服器或者代理端點，又或者淨係喺可信嘅本地網路度用 HTTP 載入 Plexfin。';
+      '解決方法：用 HTTPS 提供你嘅媒體伺服器或者代理端點，又或者淨係喺可信嘅本地網路度用 HTTP 載入 Sunfin。';
 
   @override
   String get webDiagnosticsNoMixedContentDetected =>
@@ -12549,7 +12549,7 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String get impellerRenderingSubtitle =>
-      'Impeller 係 Flutter 新一代嘅 GPU 算圖器，動畫會順啲、少啲窒。喺部分電視盒同舊 GPU 上面可能會有花屏或者黑畫面；如果你見到咁就閂咗佢。「自動」會為你部裝置揀最啱嘅預設值。要重新啟動 Plexfin 先生效。';
+      'Impeller 係 Flutter 新一代嘅 GPU 算圖器，動畫會順啲、少啲窒。喺部分電視盒同舊 GPU 上面可能會有花屏或者黑畫面；如果你見到咁就閂咗佢。「自動」會為你部裝置揀最啱嘅預設值。要重新啟動 Sunfin 先生效。';
 
   @override
   String get impellerAuto => '自動';
@@ -12565,7 +12565,7 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String get impellerRestartMessage =>
-      'Plexfin 要重新啟動先可以更改算圖引擎。而家閂咗個應用程式，再開返就會生效。';
+      'Sunfin 要重新啟動先可以更改算圖引擎。而家閂咗個應用程式，再開返就會生效。';
 
   @override
   String get impellerCloseNow => '而家閂咗應用程式';
@@ -13080,7 +13080,7 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String get autoDownloadTranscodedForegroundNote =>
-      'Transcoded qualities only download while Plexfin is open. Original quality also downloads in the background.';
+      'Transcoded qualities only download while Sunfin is open. Original quality also downloads in the background.';
 
   @override
   String get autoDownloadTranscodedRunningNote =>
@@ -13088,7 +13088,7 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String get autoDownloadForegroundOnly =>
-      'Downloads only while Plexfin is open';
+      'Downloads only while Sunfin is open';
 
   @override
   String get autoDownloadQualityTitle => 'Auto-download quality';
@@ -13143,15 +13143,15 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String get autoDownloadBackgroundRefreshSubtitle =>
-      'Allow the system to check for new episodes periodically while Plexfin is closed';
+      'Allow the system to check for new episodes periodically while Sunfin is closed';
 
   @override
   String get autoDownloadBackgroundRefreshDenied =>
-      'Background App Refresh is disabled for Plexfin. Enable it in iOS Settings.';
+      'Background App Refresh is disabled for Sunfin. Enable it in iOS Settings.';
 
   @override
   String get autoDownloadBackgroundRestrictedAndroid =>
-      'Background usage is restricted for Plexfin in Android Settings.';
+      'Background usage is restricted for Sunfin in Android Settings.';
 
   @override
   String get autoDownloadCheckNow => 'Check now';
@@ -13372,13 +13372,13 @@ class AppLocalizationsYue extends AppLocalizations {
 
   @override
   String get topShelfDescription =>
-      'What the Apple TV home screen shows above the Plexfin icon when it is selected. This setting stays on this device.';
+      'What the Apple TV home screen shows above the Sunfin icon when it is selected. This setting stays on this device.';
 
   @override
   String get topShelfLatestMedia => 'Latest media';
 
   @override
-  String get topShelfAppBanner => 'Plexfin banner';
+  String get topShelfAppBanner => 'Sunfin banner';
 
   @override
   String get keepVideoClearOfDynamicIsland =>
@@ -13443,7 +13443,7 @@ class AppLocalizationsYueCn extends AppLocalizationsYue {
   AppLocalizationsYueCn() : super('yue_CN');
 
   @override
-  String get appTitle => 'Plexfin';
+  String get appTitle => 'Sunfin';
 
   @override
   String get signIn => '登入';
@@ -13498,7 +13498,7 @@ class AppLocalizationsYueCn extends AppLocalizationsYue {
 
   @override
   String appVersionFooter(String version) {
-    return 'Plexfin 版本$version';
+    return 'Sunfin 版本$version';
   }
 
   @override
@@ -13550,7 +13550,7 @@ class AppLocalizationsYueCn extends AppLocalizationsYue {
 
   @override
   String get secureStorageUnavailableMessage =>
-      'Plexfin 无法访问您的系统密钥环。登录可以继续，但在密钥环解锁之前，安全令牌存储可能不可用。';
+      'Sunfin 无法访问您的系统密钥环。登录可以继续，但在密钥环解锁之前，安全令牌存储可能不可用。';
 
   @override
   String get ok => '好的';
@@ -13560,7 +13560,7 @@ class AppLocalizationsYueCn extends AppLocalizationsYue {
 
   @override
   String get settingsAppearanceThemeSubtitle =>
-      '在 Plexfin 和 Neon Pulse 之间切换，无需重新启动应用程序';
+      '在 Sunfin 和 Neon Pulse 之间切换，无需重新启动应用程序';
 
   @override
   String get keyboardPreferSystemIme => '更喜欢系统键盘';
@@ -13569,10 +13569,10 @@ class AppLocalizationsYueCn extends AppLocalizationsYue {
   String get keyboardPreferSystemImeDescription => '默认情况下使用您的设备输入法进行文本输入';
 
   @override
-  String get themeMoonfin => 'Plexfin';
+  String get themeMoonfin => 'Sunfin';
 
   @override
-  String get themeMoonfinSubtitle => '目前的 Plexfin 外观你们都喜欢';
+  String get themeMoonfinSubtitle => '目前的 Sunfin 外观你们都喜欢';
 
   @override
   String get themeNeonPulse => 'Neon Pulse';
@@ -13625,7 +13625,7 @@ class AppLocalizationsYueCn extends AppLocalizationsYue {
   }
 
   @override
-  String get exitApp => '退出Plexfin？';
+  String get exitApp => '退出Sunfin？';
 
   @override
   String get exitAppConfirmation => '您确定要退出吗？';
@@ -15742,7 +15742,7 @@ class AppLocalizationsYueCn extends AppLocalizationsYue {
   String get customMpvConfPath => '自定义 mpv.conf 路径';
 
   @override
-  String get notSetMpvConf => '未设置。 Plexfin 将尝试应用程序/数据文件夹中的默认 mpv.conf。';
+  String get notSetMpvConf => '未设置。 Sunfin 将尝试应用程序/数据文件夹中的默认 mpv.conf。';
 
   @override
   String get selectMpvConf => '选择mpv.conf';
@@ -16043,7 +16043,7 @@ class AppLocalizationsYueCn extends AppLocalizationsYue {
   String get libraryVisibility => '图书馆可见性';
 
   @override
-  String get libraryVisibilityDescription => '切换每个库的主页可见性。重新启动 Plexfin 以使更改生效。';
+  String get libraryVisibilityDescription => '切换每个库的主页可见性。重新启动 Sunfin 以使更改生效。';
 
   @override
   String get showInNavigation => '在导航中显示';
@@ -16090,10 +16090,10 @@ class AppLocalizationsYueCn extends AppLocalizationsYue {
   String get mediaBarMode => '媒体栏风格';
 
   @override
-  String get mediaBarModeDescription => '在 Plexfin、MakD 之间进行选择，或关闭媒体栏';
+  String get mediaBarModeDescription => '在 Sunfin、MakD 之间进行选择，或关闭媒体栏';
 
   @override
-  String get mediaBarModeMoonfin => 'Plexfin';
+  String get mediaBarModeMoonfin => 'Sunfin';
 
   @override
   String get mediaBarModeMakd => '马克D';
@@ -16468,10 +16468,10 @@ class AppLocalizationsYueCn extends AppLocalizationsYue {
 
   @override
   String get aboutBasedOnMoonfin =>
-      'Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core';
+      'Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core';
 
   @override
-  String get sourceCodeUrl => 'https://github.com/Moonfin-Client/Moonfin-Core';
+  String get sourceCodeUrl => 'https://github.com/sunfin-dev/sunfin';
 
   @override
   String get checkForUpdatesNow => '立即检查更新';
@@ -16590,7 +16590,7 @@ class AppLocalizationsYueCn extends AppLocalizationsYue {
   String get cancelRequest => '取消请求';
 
   @override
-  String get playInMoonfin => '玩 Plexfin';
+  String get playInMoonfin => '玩 Sunfin';
 
   @override
   String requestedByName(String name) {
@@ -16623,7 +16623,7 @@ class AppLocalizationsYueCn extends AppLocalizationsYue {
   String get keep => '保持';
 
   @override
-  String get itemNotFoundInLibrary => '在您的 Plexfin 库中找不到项目';
+  String get itemNotFoundInLibrary => '在您的 Sunfin 库中找不到项目';
 
   @override
   String get errorSearchingLibrary => '搜索库时出错';
@@ -17045,7 +17045,7 @@ class AppLocalizationsYueCn extends AppLocalizationsYue {
   String get adminServerRebootInProgress => '服务器正在重启';
 
   @override
-  String get adminServerRebootMessage => '服务器正在重新启动，请重新启动 Plexfin';
+  String get adminServerRebootMessage => '服务器正在重新启动，请重新启动 Sunfin';
 
   @override
   String get adminActiveSessions => '活跃会话';
@@ -19856,7 +19856,7 @@ class AppLocalizationsYueCn extends AppLocalizationsYue {
 
   @override
   String get settingsLibraryVisibilitySubtitle =>
-      '切换每个库的主页可见性。重新启动 Plexfin 以使更改生效。';
+      '切换每个库的主页可见性。重新启动 Sunfin 以使更改生效。';
 
   @override
   String get settingsMediaBarAndLocalPreviews => '媒体栏和本地预览';
@@ -19914,7 +19914,7 @@ class AppLocalizationsYueCn extends AppLocalizationsYue {
   String get settingsJoinTheDiscord => '加入 Discord';
 
   @override
-  String get settingsSupportMoonfin => '支持Plexfin';
+  String get settingsSupportMoonfin => '支持Sunfin';
 
   @override
   String get settingsSupportMoonfinSubtitle =>
@@ -19933,13 +19933,13 @@ class AppLocalizationsYueCn extends AppLocalizationsYue {
   String get settingsPrivacyPolicy => '隐私政策';
 
   @override
-  String get settingsPrivacyPolicySubtitle => 'Plexfin 如何处理您的数据';
+  String get settingsPrivacyPolicySubtitle => 'Sunfin 如何处理您的数据';
 
   @override
   String get settingsCheckForUpdates => '检查更新';
 
   @override
-  String get settingsCheckForUpdatesSubtitle => '检查最新的 Plexfin 版本';
+  String get settingsCheckForUpdatesSubtitle => '检查最新的 Sunfin 版本';
 
   @override
   String get settingsPoweredByFlutter => '由颤动提供支持';
@@ -20443,7 +20443,7 @@ class AppLocalizationsYueCn extends AppLocalizationsYue {
   String get webDiagnostics => 'Web diagnostics';
 
   @override
-  String get webDiagnosticsTitle => 'Plexfin Web Diagnostics';
+  String get webDiagnosticsTitle => 'Sunfin Web Diagnostics';
 
   @override
   String get webDiagnosticsIntro =>
@@ -20459,11 +20459,11 @@ class AppLocalizationsYueCn extends AppLocalizationsYue {
 
   @override
   String get webDiagnosticsMixedContentFailureBody =>
-      'Plexfin detected an HTTPS page trying to call an HTTP server URL. Browsers block this request before it reaches your server.';
+      'Sunfin detected an HTTPS page trying to call an HTTP server URL. Browsers block this request before it reaches your server.';
 
   @override
   String get webDiagnosticsCorsFailureBody =>
-      'Plexfin detected a browser-level request failure that is commonly caused by missing CORS or preflight headers on the media server.';
+      'Sunfin detected a browser-level request failure that is commonly caused by missing CORS or preflight headers on the media server.';
 
   @override
   String webDiagnosticsTargetUrl(String url) {
@@ -20511,7 +20511,7 @@ class AppLocalizationsYueCn extends AppLocalizationsYue {
 
   @override
   String get webDiagnosticsMixedContentFix =>
-      'Fix: serve your media server or proxy endpoint via HTTPS, or load Plexfin over HTTP on trusted local networks only.';
+      'Fix: serve your media server or proxy endpoint via HTTPS, or load Sunfin over HTTP on trusted local networks only.';
 
   @override
   String get webDiagnosticsNoMixedContentDetected =>
@@ -20892,7 +20892,7 @@ class AppLocalizationsYueHk extends AppLocalizationsYue {
   AppLocalizationsYueHk() : super('yue_HK');
 
   @override
-  String get appTitle => 'Plexfin';
+  String get appTitle => 'Sunfin';
 
   @override
   String get signIn => '登入';
@@ -20947,7 +20947,7 @@ class AppLocalizationsYueHk extends AppLocalizationsYue {
 
   @override
   String appVersionFooter(String version) {
-    return 'Plexfin version $version';
+    return 'Sunfin version $version';
   }
 
   @override
@@ -20999,7 +20999,7 @@ class AppLocalizationsYueHk extends AppLocalizationsYue {
 
   @override
   String get secureStorageUnavailableMessage =>
-      'Plexfin 無法存取您的系統金鑰環。登入可以繼續，但在密鑰環解鎖之前，安全令牌儲存可能不可用。';
+      'Sunfin 無法存取您的系統金鑰環。登入可以繼續，但在密鑰環解鎖之前，安全令牌儲存可能不可用。';
 
   @override
   String get ok => '好的';
@@ -21009,7 +21009,7 @@ class AppLocalizationsYueHk extends AppLocalizationsYue {
 
   @override
   String get settingsAppearanceThemeSubtitle =>
-      '在 Plexfin 和 Neon Pulse 之間切換，無需重新啟動應用程式';
+      '在 Sunfin 和 Neon Pulse 之間切換，無需重新啟動應用程式';
 
   @override
   String get keyboardPreferSystemIme => 'Prefer system keyboard';
@@ -21019,10 +21019,10 @@ class AppLocalizationsYueHk extends AppLocalizationsYue {
       'Use your device input method by default for text entry';
 
   @override
-  String get themeMoonfin => 'Plexfin';
+  String get themeMoonfin => 'Sunfin';
 
   @override
-  String get themeMoonfinSubtitle => '目前的 Plexfin 外觀你們都喜歡';
+  String get themeMoonfinSubtitle => '目前的 Sunfin 外觀你們都喜歡';
 
   @override
   String get themeNeonPulse => 'Neon Pulse';
@@ -21075,7 +21075,7 @@ class AppLocalizationsYueHk extends AppLocalizationsYue {
   }
 
   @override
-  String get exitApp => '退出Plexfin？';
+  String get exitApp => '退出Sunfin？';
 
   @override
   String get exitAppConfirmation => '您確定要退出嗎？';
@@ -23192,7 +23192,7 @@ class AppLocalizationsYueHk extends AppLocalizationsYue {
   String get customMpvConfPath => '自訂 mpv.conf 路徑';
 
   @override
-  String get notSetMpvConf => '未設定。 Plexfin 將嘗試應用程式/資料資料夾中的預設 mpv.conf。';
+  String get notSetMpvConf => '未設定。 Sunfin 將嘗試應用程式/資料資料夾中的預設 mpv.conf。';
 
   @override
   String get selectMpvConf => '選擇mpv.conf';
@@ -23493,7 +23493,7 @@ class AppLocalizationsYueHk extends AppLocalizationsYue {
   String get libraryVisibility => '圖書館可見性';
 
   @override
-  String get libraryVisibilityDescription => '切換每個庫的主頁可見性。重新啟動 Plexfin 以使變更生效。';
+  String get libraryVisibilityDescription => '切換每個庫的主頁可見性。重新啟動 Sunfin 以使變更生效。';
 
   @override
   String get showInNavigation => '在導航中顯示';
@@ -23540,10 +23540,10 @@ class AppLocalizationsYueHk extends AppLocalizationsYue {
   String get mediaBarMode => '媒體欄風格';
 
   @override
-  String get mediaBarModeDescription => '在 Plexfin、MakD 之間進行選擇，或關閉媒體列';
+  String get mediaBarModeDescription => '在 Sunfin、MakD 之間進行選擇，或關閉媒體列';
 
   @override
-  String get mediaBarModeMoonfin => 'Plexfin';
+  String get mediaBarModeMoonfin => 'Sunfin';
 
   @override
   String get mediaBarModeMakd => '馬克D';
@@ -23918,10 +23918,10 @@ class AppLocalizationsYueHk extends AppLocalizationsYue {
 
   @override
   String get aboutBasedOnMoonfin =>
-      'Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core';
+      'Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core';
 
   @override
-  String get sourceCodeUrl => 'https://github.com/Moonfin-Client/Moonfin-Core';
+  String get sourceCodeUrl => 'https://github.com/sunfin-dev/sunfin';
 
   @override
   String get checkForUpdatesNow => '立即檢查更新';
@@ -24040,7 +24040,7 @@ class AppLocalizationsYueHk extends AppLocalizationsYue {
   String get cancelRequest => '取消請求';
 
   @override
-  String get playInMoonfin => '玩 Plexfin';
+  String get playInMoonfin => '玩 Sunfin';
 
   @override
   String requestedByName(String name) {
@@ -24073,7 +24073,7 @@ class AppLocalizationsYueHk extends AppLocalizationsYue {
   String get keep => '保持';
 
   @override
-  String get itemNotFoundInLibrary => '在您的 Plexfin 庫中找不到項目';
+  String get itemNotFoundInLibrary => '在您的 Sunfin 庫中找不到項目';
 
   @override
   String get errorSearchingLibrary => '搜尋庫時出錯';
@@ -24495,7 +24495,7 @@ class AppLocalizationsYueHk extends AppLocalizationsYue {
   String get adminServerRebootInProgress => '伺服器正在重啟';
 
   @override
-  String get adminServerRebootMessage => '伺服器正在重新啟動，請重新啟動 Plexfin';
+  String get adminServerRebootMessage => '伺服器正在重新啟動，請重新啟動 Sunfin';
 
   @override
   String get adminActiveSessions => '活躍會話';
@@ -27306,7 +27306,7 @@ class AppLocalizationsYueHk extends AppLocalizationsYue {
 
   @override
   String get settingsLibraryVisibilitySubtitle =>
-      '切換每個庫的主頁可見性。重新啟動 Plexfin 以使變更生效。';
+      '切換每個庫的主頁可見性。重新啟動 Sunfin 以使變更生效。';
 
   @override
   String get settingsMediaBarAndLocalPreviews => '媒體欄和本地預覽';
@@ -27364,7 +27364,7 @@ class AppLocalizationsYueHk extends AppLocalizationsYue {
   String get settingsJoinTheDiscord => '加入 Discord';
 
   @override
-  String get settingsSupportMoonfin => '支援Plexfin';
+  String get settingsSupportMoonfin => '支援Sunfin';
 
   @override
   String get settingsSupportMoonfinSubtitle =>
@@ -27383,13 +27383,13 @@ class AppLocalizationsYueHk extends AppLocalizationsYue {
   String get settingsPrivacyPolicy => '隱私權政策';
 
   @override
-  String get settingsPrivacyPolicySubtitle => 'Plexfin 如何處理您的數據';
+  String get settingsPrivacyPolicySubtitle => 'Sunfin 如何處理您的數據';
 
   @override
   String get settingsCheckForUpdates => '檢查更新';
 
   @override
-  String get settingsCheckForUpdatesSubtitle => '檢查最新的 Plexfin 版本';
+  String get settingsCheckForUpdatesSubtitle => '檢查最新的 Sunfin 版本';
 
   @override
   String get settingsPoweredByFlutter => '由顫動提供支持';
@@ -27892,7 +27892,7 @@ class AppLocalizationsYueHk extends AppLocalizationsYue {
   String get webDiagnostics => 'Web diagnostics';
 
   @override
-  String get webDiagnosticsTitle => 'Plexfin Web Diagnostics';
+  String get webDiagnosticsTitle => 'Sunfin Web Diagnostics';
 
   @override
   String get webDiagnosticsIntro =>
@@ -27908,11 +27908,11 @@ class AppLocalizationsYueHk extends AppLocalizationsYue {
 
   @override
   String get webDiagnosticsMixedContentFailureBody =>
-      'Plexfin detected an HTTPS page trying to call an HTTP server URL. Browsers block this request before it reaches your server.';
+      'Sunfin detected an HTTPS page trying to call an HTTP server URL. Browsers block this request before it reaches your server.';
 
   @override
   String get webDiagnosticsCorsFailureBody =>
-      'Plexfin detected a browser-level request failure that is commonly caused by missing CORS or preflight headers on the media server.';
+      'Sunfin detected a browser-level request failure that is commonly caused by missing CORS or preflight headers on the media server.';
 
   @override
   String webDiagnosticsTargetUrl(String url) {
@@ -27960,7 +27960,7 @@ class AppLocalizationsYueHk extends AppLocalizationsYue {
 
   @override
   String get webDiagnosticsMixedContentFix =>
-      'Fix: serve your media server or proxy endpoint via HTTPS, or load Plexfin over HTTP on trusted local networks only.';
+      'Fix: serve your media server or proxy endpoint via HTTPS, or load Sunfin over HTTP on trusted local networks only.';
 
   @override
   String get webDiagnosticsNoMixedContentDetected =>

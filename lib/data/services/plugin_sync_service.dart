@@ -17,7 +17,7 @@ import 'storage_path_service.dart';
 import 'synced_fields.dart';
 import '../../ui/widgets/navigation_layout.dart';
 import '../../preference/home_section_config.dart';
-import '../../preference/plex_locks.dart';
+import '../../preference/sunfin_locks.dart';
 import '../../preference/preference_constants.dart' as prefs;
 import '../../preference/seerr_preferences.dart';
 import '../../preference/seerr_row_config.dart';
@@ -412,9 +412,9 @@ class PluginSyncService extends ChangeNotifier {
 
       await _refreshCustomThemes(client, serverId: serverId);
 
-      // Plexfin: the server's settings profile is never read on its own,
+      // Sunfin: the server's settings profile is never read on its own,
       // only the plugin's services are used.
-      if (PlexLocks.isLocked(UserPreferences.pluginSyncEnabled.key)) {
+      if (SunfinLocks.isLocked(UserPreferences.pluginSyncEnabled.key)) {
         await _prefs.set(syncInitializedPref, true);
         return;
       }
@@ -1710,8 +1710,8 @@ class PluginSyncService extends ChangeNotifier {
 
   /// Serializes one table-driven field for the outgoing profile.
   ///
-  /// Plexfin: reads what is stored rather than the Plex-locked value, so a
-  /// push never rewrites the stock Moonfin app's look with Plexfin's.
+  /// Sunfin: reads what is stored rather than the look-locked value, so a
+  /// push never rewrites the stock Moonfin app's look with Sunfin's.
   dynamic _encodeSyncedField(SyncedField field) {
     switch (field.codec) {
       case SyncCodec.boolean:

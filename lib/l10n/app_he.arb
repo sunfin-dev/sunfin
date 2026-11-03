@@ -1,6 +1,6 @@
 {
     "@@locale": "he",
-    "appTitle": "Plexfin",
+    "appTitle": "Sunfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Plexfin גרסה {version}",
+    "appVersionFooter": "Sunfin גרסה {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Plexfin לא הצליח לגשת למחזיק המפתחות של המערכת שלך. הכניסה יכולה להמשיך, אך ייתכן שאחסון אסימונים מאובטח לא יהיה זמין עד לביטול הנעילה של מחזיק המפתחות.",
+    "secureStorageUnavailableMessage": "Sunfin לא הצליח לגשת למחזיק המפתחות של המערכת שלך. הכניסה יכולה להמשיך, אך ייתכן שאחסון אסימונים מאובטח לא יהיה זמין עד לביטול הנעילה של מחזיק המפתחות.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -168,17 +168,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "מעבר בין Plexfin ל-Neon Pulse מבלי להפעיל מחדש את האפליקציה",
+    "settingsAppearanceThemeSubtitle": "מעבר בין Sunfin ל-Neon Pulse מבלי להפעיל מחדש את האפליקציה",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Plexfin",
+    "themeMoonfin": "Sunfin",
     "@themeMoonfin": {
-        "description": "Display name for the Plexfin theme"
+        "description": "Display name for the Sunfin theme"
     },
-    "themeMoonfinSubtitle": "מראה Plexfin נוכחי שכולכם למדתם לאהוב",
+    "themeMoonfinSubtitle": "מראה Sunfin נוכחי שכולכם למדתם לאהוב",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Plexfin theme"
+        "description": "Preview description for the Sunfin theme"
     },
     "themeNeonPulse": "דופק ניאון",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "לצאת מ- Plexfin?",
+    "exitApp": "לצאת מ- Sunfin?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "לא מוגדר. Plexfin ינסה ברירת מחדל mpv.conf בתיקיות אפליקציות/נתונים.",
+    "notSetMpvConf": "לא מוגדר. Sunfin ינסה ברירת מחדל mpv.conf בתיקיות אפליקציות/נתונים.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "החלף את נראות דף הבית לכל ספריה. הפעל מחדש את Plexfin כדי שהשינויים ייכנסו לתוקף.",
+    "libraryVisibilityDescription": "החלף את נראות דף הבית לכל ספריה. הפעל מחדש את Sunfin כדי שהשינויים ייכנסו לתוקף.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3561,9 +3561,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Plexfin",
+    "mediaBarModeMoonfin": "Sunfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Plexfin"
+        "description": "Media bar style option: Sunfin"
     },
     "mediaBarModeMakd": "MakD",
     "@mediaBarModeMakd": {
@@ -4121,8 +4121,8 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
-    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
-    "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
+    "aboutBasedOnMoonfin": "Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
+    "sourceCodeUrl": "https://github.com/sunfin-dev/sunfin",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
     },
@@ -4294,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "שחקו ב- Plexfin",
+    "playInMoonfin": "שחקו ב- Sunfin",
     "@playInMoonfin": {
-        "description": "Button to play available media in Plexfin"
+        "description": "Button to play available media in Sunfin"
     },
     "requestedByName": "התבקש על ידי {name}",
     "@requestedByName": {
@@ -4348,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "הפריט לא נמצא בספריית Plexfin שלך",
+    "itemNotFoundInLibrary": "הפריט לא נמצא בספריית Sunfin שלך",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4652,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "אתחול השרת מתבצע",
-    "adminServerRebootMessage": "אתחול השרת מתבצע, אנא הפעל מחדש את Plexfin",
+    "adminServerRebootMessage": "אתחול השרת מתבצע, אנא הפעל מחדש את Sunfin",
     "adminActiveSessions": "הפעלות פעילות",
     "adminSessionsLoadFailed": "טעינת ההפעלות נכשלה",
     "adminNoActiveSessions": "אין הפעלות פעילות",
@@ -6517,13 +6517,13 @@
     "settingsAccountSecuritySubtitle": "אימות, קוד PIN ובקרת הורים",
     "settingsPersonalization": "התאמה אישית",
     "settingsPersonalizationSubtitle": "ערכת נושא, ניווט, שורות בית ונראות ספרייה",
-    "plexPersonalizationSubtitle": "סרגל צד, שורות בדף הבית, ספריות, דפי פרטים ושומר מסך",
-    "plexGeneralStyleSubtitle": "מקלדת ובקר משחקים",
-    "plexDetailsScreenSubtitle": "כפתורים, מידע, מקטעים והמלצות",
-    "plexNavigationSubtitle": "פריטי סרגל הצד ובחירה אוטומטית",
-    "plexHomeScreenSubtitle": "שורות, הסדר שלהן והמשך לצפות",
+    "sunfinPersonalizationSubtitle": "סרגל צד, שורות בדף הבית, ספריות, דפי פרטים ושומר מסך",
+    "sunfinGeneralStyleSubtitle": "מקלדת ובקר משחקים",
+    "sunfinDetailsScreenSubtitle": "כפתורים, מידע, מקטעים והמלצות",
+    "sunfinNavigationSubtitle": "פריטי סרגל הצד ובחירה אוטומטית",
+    "sunfinHomeScreenSubtitle": "שורות, הסדר שלהן והמשך לצפות",
     "libraryNicknames": "כינויים לספריות",
-    "libraryNicknamesSubtitle": "שמות משלך לספריות, מוצגים רק ב-Plexfin",
+    "libraryNicknamesSubtitle": "שמות משלך לספריות, מוצגים רק ב-Sunfin",
     "libraryNicknameServerName": "בשרת: {name}",
     "libraryNicknameHint": "השאירו ריק כדי להשתמש בשם מהשרת",
     "libraryNicknameNone": "ללא כינוי",
@@ -6536,16 +6536,16 @@
     "settingsTransferImport": "ייבוא הגדרות",
     "settingsTransferFrom": "מ-{device}, {date}",
     "settingsTransferNothing": "עדיין לא יוצא דבר",
-    "settingsTransferImportConfirm": "להחליף את הגדרות המכשיר הזה באלה? {source}\n\nPlexfin ייסגר לאחר מכן. יש לפתוח אותו שוב כדי להשתמש בהן.",
+    "settingsTransferImportConfirm": "להחליף את הגדרות המכשיר הזה באלה? {source}\n\nSunfin ייסגר לאחר מכן. יש לפתוח אותו שוב כדי להשתמש בהן.",
     "settingsTransferImportAction": "ייבוא וסגירה",
     "settingsTransferFailed": "לא ניתן להגיע לחשבון ה-Jellyfin שלך",
     "settingsTransferNote": "ההתחברות, החלון והחומרה נשארים בכל מכשיר. יש להתחבר קודם במכשיר השני ואז לייבא.",
     "settingsReset": "איפוס כל ההגדרות",
     "settingsResetSubtitle": "החזרת ההגדרות של מכשיר זה לברירת המחדל",
-    "settingsResetConfirm": "להחזיר כל הגדרה במכשיר זה לברירת המחדל שלה? תישאר מחובר, והגדרות שיוצאו לחשבון Jellyfin שלך יישמרו.\n\nPlexfin ייסגר לאחר מכן. פתח אותו שוב כדי להמשיך.",
+    "settingsResetConfirm": "להחזיר כל הגדרה במכשיר זה לברירת המחדל שלה? תישאר מחובר, והגדרות שיוצאו לחשבון Jellyfin שלך יישמרו.\n\nSunfin ייסגר לאחר מכן. פתח אותו שוב כדי להמשיך.",
     "adminShowButton": "הצגת לחצן ניהול",
     "adminShowButtonSubtitle": "מוסיף לתפריט לחצן שפותח את ניהול השרת",
-    "plexDirectedBy": "בימוי: {names}",
+    "sunfinDirectedBy": "בימוי: {names}",
     "settingsDynamicContent": "תוכן דינמי",
     "settingsDynamicContentSubtitle": "סרגל מדיה ושכבות-על חזותיות",
     "settingsPlaybackSyncplay": "השמעה ו-SyncPlay",
@@ -6569,7 +6569,7 @@
     "settingsShowGenresButtonInNavigation": "הצג את לחצן הז'אנרים בסרגל הניווט",
     "settingsShowFavoritesButtonInNavigation": "הצג את לחצן המועדפים בסרגל הניווט",
     "settingsShowLibrariesButtonInNavigation": "הצג את לחצן הספריות בסרגל הניווט",
-    "settingsLibraryVisibilitySubtitle": "החלף את נראות דף הבית לכל ספריה. הפעל מחדש את Plexfin כדי שהשינויים ייכנסו לתוקף.",
+    "settingsLibraryVisibilitySubtitle": "החלף את נראות דף הבית לכל ספריה. הפעל מחדש את Sunfin כדי שהשינויים ייכנסו לתוקף.",
     "settingsMediaBarAndLocalPreviews": "סרגל מדיה ותצוגות מקדימות מקומיות",
     "settingsVisualOverlays": "שכבות חזותיות",
     "settingsSeasonalSurprise": "הפתעה עונתית",
@@ -6588,14 +6588,14 @@
     "settingsJoinDiscord": "הצטרף ל-Discord",
     "settingsJoinDiscordSubtitle": "צ'אט עם הקהילה",
     "settingsJoinTheDiscord": "הצטרף ל-Discord",
-    "settingsSupportMoonfin": "תמכו ב- Plexfin",
+    "settingsSupportMoonfin": "תמכו ב- Sunfin",
     "settingsLegal": "מִשׁפָּטִי",
     "settingsLicenses": "רישיונות",
     "settingsOpenSourceLicenseNotices": "הודעות רישיון קוד פתוח",
     "settingsPrivacyPolicy": "מדיניות פרטיות",
-    "settingsPrivacyPolicySubtitle": "כיצד Plexfin מטפל בנתונים שלך",
+    "settingsPrivacyPolicySubtitle": "כיצד Sunfin מטפל בנתונים שלך",
     "settingsCheckForUpdates": "בדוק אם קיימים עדכונים",
-    "settingsCheckForUpdatesSubtitle": "בדוק את המהדורה האחרונה של Plexfin",
+    "settingsCheckForUpdatesSubtitle": "בדוק את המהדורה האחרונה של Sunfin",
     "settingsPoweredByFlutter": "מופעל על ידי Flutter",
     "settingsLicenseNoticesCount": "{count, plural, one {# הודעת רישיון} two {# הודעות רישיון} other {# הודעות רישיון}}",
     "@settingsLicenseNoticesCount": {
@@ -7128,12 +7128,12 @@
     "preferSdhSubtitles": "העדף כתוביות SDH",
     "preferSdhSubtitlesSubtitle": "תעדף רצועות כתוביות SDH/CC בבחירה אוטומטית.",
     "webDiagnostics": "אבחון ווב",
-    "webDiagnosticsTitle": "אבחון ווב של Plexfin",
+    "webDiagnosticsTitle": "אבחון ווב של Sunfin",
     "webDiagnosticsIntro": "השתמש בעמוד זה כדי לאבחן בעיות קישוריות בדפדפן (CORS, תוכן מעורב והגדרות איתור).",
     "webDiagnosticsDetectedMixedContentFailure": "זוהה כשל תוכן מעורב",
     "webDiagnosticsDetectedCorsPreflightFailure": "זוהה כשל CORS/Preflight",
-    "webDiagnosticsMixedContentFailureBody": "Plexfin זיהה עמוד HTTPS שמנסה לפנות לכתובת שרת HTTP. דפדפנים חוסמים בקשה זו עוד לפני שהיא מגיעה לשרת שלך.",
-    "webDiagnosticsCorsFailureBody": "Plexfin זיהה כשל בקשה ברמת הדפדפן, שנגרם בדרך כלל מכותרות CORS או preflight חסרות בשרת המדיה.",
+    "webDiagnosticsMixedContentFailureBody": "Sunfin זיהה עמוד HTTPS שמנסה לפנות לכתובת שרת HTTP. דפדפנים חוסמים בקשה זו עוד לפני שהיא מגיעה לשרת שלך.",
+    "webDiagnosticsCorsFailureBody": "Sunfin זיהה כשל בקשה ברמת הדפדפן, שנגרם בדרך כלל מכותרות CORS או preflight חסרות בשרת המדיה.",
     "webDiagnosticsTargetUrl": "כתובת יעד: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7163,7 +7163,7 @@
     "notConfigured": "לא מוגדר",
     "webDiagnosticsMixedContent": "תוכן מעורב",
     "webDiagnosticsMixedContentDetected": "עמוד זה נטען דרך HTTPS, אך אחת או יותר מהכתובות המוגדרות הן HTTP. דפדפנים חוסמים פנייה של עמודי HTTPS לממשקי API מסוג HTTP.",
-    "webDiagnosticsMixedContentFix": "פתרון: הגש את שרת המדיה או את נקודת הקצה של הפרוקסי דרך HTTPS, או טען את Plexfin דרך HTTP ברשתות מקומיות מהימנות בלבד.",
+    "webDiagnosticsMixedContentFix": "פתרון: הגש את שרת המדיה או את נקודת הקצה של הפרוקסי דרך HTTPS, או טען את Sunfin דרך HTTP ברשתות מקומיות מהימנות בלבד.",
     "webDiagnosticsNoMixedContentDetected": "לא זוהתה תצורת תוכן מעורב מובהקת מהגדרות זמן הריצה הנוכחיות.",
     "webDiagnosticsCorsChecklist": "רשימת בדיקה ל-CORS",
     "webDiagnosticsCorsChecklistItem1": "• אפשר את מקור הדפדפן ב-Access-Control-Allow-Origin.",
@@ -7360,7 +7360,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "קלאסי הוא הפריסה הממורכזת המקורית של Plexfin. מודרני הוא פריסה קולנועית רספונסיבית.",
+    "detailScreenStyleSubtitle": "קלאסי הוא הפריסה הממורכזת המקורית של Sunfin. מודרני הוא פריסה קולנועית רספונסיבית.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7392,13 +7392,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "השתמש באלגוריתם הספרייה המקומית של Plexfin Recommends או במדדי הדמיון המקוונים של TMDb. לתשומת לבך: המלצות מקוונות מחייבות שילוב עם Seerr.",
+    "recommendationSystemSubtitle": "השתמש באלגוריתם הספרייה המקומית של Sunfin Recommends או במדדי הדמיון המקוונים של TMDb. לתשומת לבך: המלצות מקוונות מחייבות שילוב עם Seerr.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Plexfin Recommends",
+    "recommendationSystemMoonfin": "Sunfin Recommends",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Plexfin Recommends"
+        "description": "Recommendation system option: Sunfin Recommends"
     },
     "recommendationSystemTmdb": "דמיון TMDb",
     "@recommendationSystemTmdb": {
@@ -7408,7 +7408,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "הגבל את ההצעות של Plexfin Recommends לפי דירוג ההורים של המדיה",
+    "recommendationsApplyParentalRatingCapSubtitle": "הגבל את ההצעות של Sunfin Recommends לפי דירוג ההורים של המדיה",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7456,7 +7456,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "ערכות נושא מותאמות משנות רכיבים חזותיים ברחבי Plexfin. בחר אחת מהאפשרויות כדי להתאים לסגנון שלך.",
+    "customThemeSubtitle": "ערכות נושא מותאמות משנות רכיבים חזותיים ברחבי Sunfin. בחר אחת מהאפשרויות כדי להתאים לסגנון שלך.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7629,7 +7629,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "היכנס ל-Plexfin בטלפון שלך",
+    "carSignInPrompt": "היכנס ל-Sunfin בטלפון שלך",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8970,7 +8970,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller הוא מנוע ה-GPU המודרני של Flutter, לאנימציות חלקות יותר ולפחות קפיצות. בחלק ממכשירי הטלוויזיה ובמעבדים גרפיים ישנים הוא עלול לגרום לתקלות תצוגה או לווידאו שחור; כבה אותו אם אתה נתקל בכך. אוטומטי בוחר את ברירת המחדל הטובה ביותר עבור המכשיר שלך. הפעל מחדש את Plexfin כדי להחיל.",
+    "impellerRenderingSubtitle": "Impeller הוא מנוע ה-GPU המודרני של Flutter, לאנימציות חלקות יותר ולפחות קפיצות. בחלק ממכשירי הטלוויזיה ובמעבדים גרפיים ישנים הוא עלול לגרום לתקלות תצוגה או לווידאו שחור; כבה אותו אם אתה נתקל בכך. אוטומטי בוחר את ברירת המחדל הטובה ביותר עבור המכשיר שלך. הפעל מחדש את Sunfin כדי להחיל.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8981,7 +8981,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "יש להפעיל מחדש את Plexfin כדי לשנות את מנוע הרינדור. סגור את האפליקציה עכשיו ופתח אותה שוב כדי להחיל.",
+    "impellerRestartMessage": "יש להפעיל מחדש את Sunfin כדי לשנות את מנוע הרינדור. סגור את האפליקציה עכשיו ופתח אותה שוב כדי להחיל.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },

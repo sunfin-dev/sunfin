@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:moonfin/data/models/aggregated_item.dart';
-import 'package:moonfin/ui/plex/plex_season_page.dart';
+import 'package:moonfin/ui/sunfin/sunfin_season_page.dart';
 
 AggregatedItem _episode(int number, {bool played = false, int position = 0}) =>
     AggregatedItem(
@@ -22,21 +22,21 @@ void main() {
         _episode(2),
         _episode(3, position: 1000),
       ];
-      expect(plexNextToWatch(episodes)?.id, 'e3');
+      expect(sunfinNextToWatch(episodes)?.id, 'e3');
     });
 
     test('else the first one not watched', () {
       final episodes = [_episode(1, played: true), _episode(2), _episode(3)];
-      expect(plexNextToWatch(episodes)?.id, 'e2');
+      expect(sunfinNextToWatch(episodes)?.id, 'e2');
     });
 
     test('else the first, once everything is watched', () {
       final episodes = [_episode(1, played: true), _episode(2, played: true)];
-      expect(plexNextToWatch(episodes)?.id, 'e1');
+      expect(sunfinNextToWatch(episodes)?.id, 'e1');
     });
 
     test('is nothing for an empty season', () {
-      expect(plexNextToWatch(const []), isNull);
+      expect(sunfinNextToWatch(const []), isNull);
     });
   });
 
@@ -51,7 +51,7 @@ void main() {
         'Codec': 'truehd',
         'ChannelLayout': 'stereo',
       };
-      expect(plexStreamLabel(audio, audio: true), 'Japanese (TRUEHD Stereo)');
+      expect(sunfinStreamLabel(audio, audio: true), 'Japanese (TRUEHD Stereo)');
     });
 
     test('read the older language codes files often carry', () {
@@ -61,7 +61,7 @@ void main() {
         'Codec': 'eac3',
         'ChannelLayout': '5.1',
       };
-      expect(plexStreamLabel(audio, audio: true), 'German (EAC3 5.1)');
+      expect(sunfinStreamLabel(audio, audio: true), 'German (EAC3 5.1)');
     });
 
     test('mark forced subtitles and use the short codec names', () {
@@ -71,16 +71,16 @@ void main() {
         'Codec': 'PGSSUB',
         'IsForced': true,
       };
-      expect(plexStreamLabel(subtitle), 'German Forced (PGS)');
+      expect(sunfinStreamLabel(subtitle), 'German Forced (PGS)');
       expect(
-        plexStreamLabel({'Type': 'Subtitle', 'Language': 'eng', 'Codec': 'subrip'}),
+        sunfinStreamLabel({'Type': 'Subtitle', 'Language': 'eng', 'Codec': 'subrip'}),
         'English (SRT)',
       );
     });
 
     test('fall back when the language is missing', () {
       expect(
-        plexStreamLabel({'Type': 'Audio', 'Codec': 'aac', 'Channels': 2}, audio: true),
+        sunfinStreamLabel({'Type': 'Audio', 'Codec': 'aac', 'Channels': 2}, audio: true),
         'Unknown (AAC Stereo)',
       );
     });

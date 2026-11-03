@@ -1,6 +1,6 @@
 {
     "@@locale": "fa",
-    "appTitle": "Plexfin",
+    "appTitle": "Sunfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Plexfin نسخه {version}",
+    "appVersionFooter": "Sunfin نسخه {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Plexfin نمی‌تواند به کلید سیستم شما دسترسی پیدا کند. ورود به سیستم می‌تواند ادامه یابد، اما ذخیره رمز ایمن ممکن است تا زمانی که قفل کلید باز نشود، در دسترس نباشد.",
+    "secureStorageUnavailableMessage": "Sunfin نمی‌تواند به کلید سیستم شما دسترسی پیدا کند. ورود به سیستم می‌تواند ادامه یابد، اما ذخیره رمز ایمن ممکن است تا زمانی که قفل کلید باز نشود، در دسترس نباشد.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -168,17 +168,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "جابه‌جایی بین Plexfin و Neon Pulse بدون راه‌اندازی مجدد برنامه",
+    "settingsAppearanceThemeSubtitle": "جابه‌جایی بین Sunfin و Neon Pulse بدون راه‌اندازی مجدد برنامه",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Plexfin",
+    "themeMoonfin": "Sunfin",
     "@themeMoonfin": {
-        "description": "Display name for the Plexfin theme"
+        "description": "Display name for the Sunfin theme"
     },
-    "themeMoonfinSubtitle": "ظاهر Plexfin کنونی که همه شما عاشق آن شده اید",
+    "themeMoonfinSubtitle": "ظاهر Sunfin کنونی که همه شما عاشق آن شده اید",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Plexfin theme"
+        "description": "Preview description for the Sunfin theme"
     },
     "themeNeonPulse": "نئون پالس",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "از Plexfin خارج شوید؟",
+    "exitApp": "از Sunfin خارج شوید؟",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "تنظیم نشده است. Plexfin یک mpv.conf پیش‌فرض را در پوشه‌های برنامه/داده امتحان می‌کند.",
+    "notSetMpvConf": "تنظیم نشده است. Sunfin یک mpv.conf پیش‌فرض را در پوشه‌های برنامه/داده امتحان می‌کند.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "قابلیت مشاهده صفحه اصلی در هر کتابخانه را تغییر دهید. برای اعمال تغییرات Plexfin را مجددا راه اندازی کنید.",
+    "libraryVisibilityDescription": "قابلیت مشاهده صفحه اصلی در هر کتابخانه را تغییر دهید. برای اعمال تغییرات Sunfin را مجددا راه اندازی کنید.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3561,9 +3561,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Plexfin",
+    "mediaBarModeMoonfin": "Sunfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Plexfin"
+        "description": "Media bar style option: Sunfin"
     },
     "mediaBarModeMakd": "MakD",
     "@mediaBarModeMakd": {
@@ -4121,8 +4121,8 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
-    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
-    "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
+    "aboutBasedOnMoonfin": "Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
+    "sourceCodeUrl": "https://github.com/sunfin-dev/sunfin",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
     },
@@ -4294,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "بازی در Plexfin",
+    "playInMoonfin": "بازی در Sunfin",
     "@playInMoonfin": {
-        "description": "Button to play available media in Plexfin"
+        "description": "Button to play available media in Sunfin"
     },
     "requestedByName": "درخواست شده توسط {name}",
     "@requestedByName": {
@@ -4348,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "موردی در کتابخانه Plexfin شما یافت نشد",
+    "itemNotFoundInLibrary": "موردی در کتابخانه Sunfin شما یافت نشد",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4652,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "راه اندازی مجدد سرور در حال انجام است",
-    "adminServerRebootMessage": "راه اندازی مجدد سرور در حال انجام است، لطفاً Plexfin را مجددا راه اندازی کنید",
+    "adminServerRebootMessage": "راه اندازی مجدد سرور در حال انجام است، لطفاً Sunfin را مجددا راه اندازی کنید",
     "adminActiveSessions": "جلسات فعال",
     "adminSessionsLoadFailed": "جلسات بارگیری نشد",
     "adminNoActiveSessions": "بدون جلسه فعال",
@@ -6517,13 +6517,13 @@
     "settingsAccountSecuritySubtitle": "احراز هویت، کد پین و کنترل‌های والدین",
     "settingsPersonalization": "شخصی سازی",
     "settingsPersonalizationSubtitle": "طرح زمینه، پیمایش، ردیف‌های اصلی و قابلیت مشاهده کتابخانه",
-    "plexPersonalizationSubtitle": "نوار کناری، ردیف‌های صفحه اصلی، کتابخانه‌ها، صفحه‌های جزئیات و محافظ صفحه نمایش",
-    "plexGeneralStyleSubtitle": "صفحه‌کلید و دسته بازی",
-    "plexDetailsScreenSubtitle": "دکمه‌ها، اطلاعات، بخش‌ها و پیشنهادها",
-    "plexNavigationSubtitle": "موارد نوار کناری و انتخاب خودکار",
-    "plexHomeScreenSubtitle": "ردیف‌ها، ترتیب آن‌ها و ادامه تماشا",
+    "sunfinPersonalizationSubtitle": "نوار کناری، ردیف‌های صفحه اصلی، کتابخانه‌ها، صفحه‌های جزئیات و محافظ صفحه نمایش",
+    "sunfinGeneralStyleSubtitle": "صفحه‌کلید و دسته بازی",
+    "sunfinDetailsScreenSubtitle": "دکمه‌ها، اطلاعات، بخش‌ها و پیشنهادها",
+    "sunfinNavigationSubtitle": "موارد نوار کناری و انتخاب خودکار",
+    "sunfinHomeScreenSubtitle": "ردیف‌ها، ترتیب آن‌ها و ادامه تماشا",
     "libraryNicknames": "نام مستعار کتابخانه‌ها",
-    "libraryNicknamesSubtitle": "نام‌های دلخواه شما برای کتابخانه‌ها، فقط در Plexfin",
+    "libraryNicknamesSubtitle": "نام‌های دلخواه شما برای کتابخانه‌ها، فقط در Sunfin",
     "libraryNicknameServerName": "روی سرور: {name}",
     "libraryNicknameHint": "برای استفاده از نام سرور خالی بگذارید",
     "libraryNicknameNone": "بدون نام مستعار",
@@ -6536,16 +6536,16 @@
     "settingsTransferImport": "ورود تنظیمات",
     "settingsTransferFrom": "از {device}، {date}",
     "settingsTransferNothing": "هنوز چیزی صادر نشده است",
-    "settingsTransferImportConfirm": "تنظیمات این دستگاه با این‌ها جایگزین شود؟ {source}\n\nسپس Plexfin بسته می‌شود. برای استفاده دوباره بازش کنید.",
+    "settingsTransferImportConfirm": "تنظیمات این دستگاه با این‌ها جایگزین شود؟ {source}\n\nسپس Sunfin بسته می‌شود. برای استفاده دوباره بازش کنید.",
     "settingsTransferImportAction": "وارد کردن و بستن",
     "settingsTransferFailed": "دسترسی به حساب Jellyfin شما ممکن نشد",
     "settingsTransferNote": "ورود، پنجره و سخت‌افزار برای هر دستگاه جداگانه می‌ماند. ابتدا در دستگاه دیگر وارد شوید، سپس وارد کنید.",
     "settingsReset": "بازنشانی همه تنظیمات",
     "settingsResetSubtitle": "برگرداندن تنظیمات این دستگاه به پیش‌فرض",
-    "settingsResetConfirm": "همه تنظیمات این دستگاه به پیش‌فرض برگردد؟ وارد حساب باقی می‌مانید و تنظیماتی که به حساب Jellyfin شما صادر شده‌اند حفظ می‌شوند.\n\nPlexfin پس از آن بسته می‌شود. برای ادامه دوباره بازش کنید.",
+    "settingsResetConfirm": "همه تنظیمات این دستگاه به پیش‌فرض برگردد؟ وارد حساب باقی می‌مانید و تنظیماتی که به حساب Jellyfin شما صادر شده‌اند حفظ می‌شوند.\n\nSunfin پس از آن بسته می‌شود. برای ادامه دوباره بازش کنید.",
     "adminShowButton": "نمایش دکمه مدیریت",
     "adminShowButtonSubtitle": "دکمه‌ای به منو اضافه می‌کند که مدیریت سرور را باز می‌کند",
-    "plexDirectedBy": "کارگردان: {names}",
+    "sunfinDirectedBy": "کارگردان: {names}",
     "settingsDynamicContent": "محتوای پویا",
     "settingsDynamicContentSubtitle": "نوار رسانه و پوشش های بصری",
     "settingsPlaybackSyncplay": "پخش و SyncPlay",
@@ -6569,7 +6569,7 @@
     "settingsShowGenresButtonInNavigation": "دکمه ژانرها را در نوار پیمایش نشان دهید",
     "settingsShowFavoritesButtonInNavigation": "نمایش دکمه علاقه مندی ها در نوار ناوبری",
     "settingsShowLibrariesButtonInNavigation": "نمایش دکمه کتابخانه ها در نوار پیمایش",
-    "settingsLibraryVisibilitySubtitle": "قابلیت مشاهده صفحه اصلی در هر کتابخانه را تغییر دهید. برای اعمال تغییرات Plexfin را مجددا راه اندازی کنید.",
+    "settingsLibraryVisibilitySubtitle": "قابلیت مشاهده صفحه اصلی در هر کتابخانه را تغییر دهید. برای اعمال تغییرات Sunfin را مجددا راه اندازی کنید.",
     "settingsMediaBarAndLocalPreviews": "نوار رسانه و پیش‌نمایش‌های محلی",
     "settingsVisualOverlays": "پوشش های بصری",
     "settingsSeasonalSurprise": "سورپرایز فصلی",
@@ -6588,14 +6588,14 @@
     "settingsJoinDiscord": "به Discord بپیوندید",
     "settingsJoinDiscordSubtitle": "با جامعه چت کنید",
     "settingsJoinTheDiscord": "به Discord بپیوندید",
-    "settingsSupportMoonfin": "پشتیبانی Plexfin",
+    "settingsSupportMoonfin": "پشتیبانی Sunfin",
     "settingsLegal": "قانونی",
     "settingsLicenses": "مجوزها",
     "settingsOpenSourceLicenseNotices": "اعلامیه های مجوز منبع باز",
     "settingsPrivacyPolicy": "سیاست حفظ حریم خصوصی",
-    "settingsPrivacyPolicySubtitle": "چگونه Plexfin داده‌های شما را مدیریت می‌کند",
+    "settingsPrivacyPolicySubtitle": "چگونه Sunfin داده‌های شما را مدیریت می‌کند",
     "settingsCheckForUpdates": "به روز رسانی ها را بررسی کنید",
-    "settingsCheckForUpdatesSubtitle": "آخرین نسخه Plexfin را بررسی کنید",
+    "settingsCheckForUpdatesSubtitle": "آخرین نسخه Sunfin را بررسی کنید",
     "settingsPoweredByFlutter": "پشتیبانی شده توسط فلاتر",
     "settingsLicenseNoticesCount": "{count, plural, one {# اعلان مجوز} other {# اعلان مجوز}}",
     "@settingsLicenseNoticesCount": {
@@ -7128,12 +7128,12 @@
     "preferSdhSubtitles": "زیرنویس SDH را ترجیح دهید",
     "preferSdhSubtitlesSubtitle": "هنگام انتخاب خودکار، آهنگ‌های زیرنویس SDH/CC را اولویت‌بندی کنید.",
     "webDiagnostics": "تشخیص وب",
-    "webDiagnosticsTitle": "Plexfin عیب‌یابی وب",
+    "webDiagnosticsTitle": "Sunfin عیب‌یابی وب",
     "webDiagnosticsIntro": "از این صفحه برای تشخیص مشکلات اتصال مرورگر (CORS، محتوای مختلط و تنظیمات کشف) استفاده کنید.",
     "webDiagnosticsDetectedMixedContentFailure": "خطای محتوای مختلط شناسایی شد",
     "webDiagnosticsDetectedCorsPreflightFailure": "تشخیص CORS/شکست قبل از پرواز",
-    "webDiagnosticsMixedContentFailureBody": "Plexfin یک صفحه HTTPS را شناسایی کرد که سعی در فراخوانی URL سرور HTTP داشت. مرورگرها این درخواست را قبل از رسیدن به سرور شما مسدود می کنند.",
-    "webDiagnosticsCorsFailureBody": "Plexfin یک شکست درخواست در سطح مرورگر را شناسایی کرد که معمولاً به دلیل فقدان CORS یا سرصفحه‌های پیش از پرواز در سرور رسانه ایجاد می‌شود.",
+    "webDiagnosticsMixedContentFailureBody": "Sunfin یک صفحه HTTPS را شناسایی کرد که سعی در فراخوانی URL سرور HTTP داشت. مرورگرها این درخواست را قبل از رسیدن به سرور شما مسدود می کنند.",
+    "webDiagnosticsCorsFailureBody": "Sunfin یک شکست درخواست در سطح مرورگر را شناسایی کرد که معمولاً به دلیل فقدان CORS یا سرصفحه‌های پیش از پرواز در سرور رسانه ایجاد می‌شود.",
     "webDiagnosticsTargetUrl": "URL هدف: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7163,7 +7163,7 @@
     "notConfigured": "پیکربندی نشده است",
     "webDiagnosticsMixedContent": "محتوای ترکیبی",
     "webDiagnosticsMixedContentDetected": "این صفحه از طریق HTTPS بارگیری می شود، اما یک یا چند URL پیکربندی شده HTTP هستند. مرورگرها صفحات HTTPS را از تماس با APIهای HTTP مسدود می کنند.",
-    "webDiagnosticsMixedContentFix": "رفع: سرور رسانه یا نقطه پایانی پراکسی خود را از طریق HTTPS ارائه دهید، یا Plexfin را از طریق HTTP فقط در شبکه‌های محلی مورد اعتماد بارگیری کنید.",
+    "webDiagnosticsMixedContentFix": "رفع: سرور رسانه یا نقطه پایانی پراکسی خود را از طریق HTTPS ارائه دهید، یا Sunfin را از طریق HTTP فقط در شبکه‌های محلی مورد اعتماد بارگیری کنید.",
     "webDiagnosticsNoMixedContentDetected": "هیچ پیکربندی محتوای مختلط آشکاری از تنظیمات زمان اجرا فعلی شناسایی نشده است.",
     "webDiagnosticsCorsChecklist": "چک لیست CORS",
     "webDiagnosticsCorsChecklistItem1": "• اجازه دادن به مبدأ مرورگر در Access-Control-Allow-Origin.",
@@ -7360,7 +7360,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "کلاسیک همان چیدمان وسط‌چین اصلی Plexfin است. مدرن یک چیدمان سینمایی واکنش‌گراست.",
+    "detailScreenStyleSubtitle": "کلاسیک همان چیدمان وسط‌چین اصلی Sunfin است. مدرن یک چیدمان سینمایی واکنش‌گراست.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7392,13 +7392,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "از الگوریتم کتابخانه محلی Plexfin Recommends یا سنجه‌های شباهت آنلاین TMDb استفاده کنید. توجه: پیشنهادهای آنلاین به یکپارچه‌سازی Seerr نیاز دارند.",
+    "recommendationSystemSubtitle": "از الگوریتم کتابخانه محلی Sunfin Recommends یا سنجه‌های شباهت آنلاین TMDb استفاده کنید. توجه: پیشنهادهای آنلاین به یکپارچه‌سازی Seerr نیاز دارند.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Plexfin Recommends",
+    "recommendationSystemMoonfin": "Sunfin Recommends",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Plexfin Recommends"
+        "description": "Recommendation system option: Sunfin Recommends"
     },
     "recommendationSystemTmdb": "شباهت TMDb",
     "@recommendationSystemTmdb": {
@@ -7408,7 +7408,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "محدود کردن پیشنهادهای Plexfin Recommends بر اساس رده‌بندی سنی رسانه هدف",
+    "recommendationsApplyParentalRatingCapSubtitle": "محدود کردن پیشنهادهای Sunfin Recommends بر اساس رده‌بندی سنی رسانه هدف",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7456,7 +7456,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "تم‌های سفارشی عناصر بصری را در سراسر Plexfin تغییر می‌دهند. یکی از این گزینه‌ها را متناسب با سلیقه خود انتخاب کنید.",
+    "customThemeSubtitle": "تم‌های سفارشی عناصر بصری را در سراسر Sunfin تغییر می‌دهند. یکی از این گزینه‌ها را متناسب با سلیقه خود انتخاب کنید.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7629,7 +7629,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "در گوشی خود وارد Plexfin شوید",
+    "carSignInPrompt": "در گوشی خود وارد Sunfin شوید",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8970,7 +8970,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller موتور رندر مدرن GPU در Flutter است که انیمیشن‌های روان‌تر و پرش کمتری ارائه می‌دهد. در برخی تی‌وی‌باکس‌ها و GPUهای قدیمی ممکن است باعث اشکال تصویری یا ویدیوی سیاه شود؛ در این صورت آن را خاموش کنید. خودکار بهترین حالت پیش‌فرض را برای دستگاه شما انتخاب می‌کند. برای اعمال، Plexfin را دوباره راه‌اندازی کنید.",
+    "impellerRenderingSubtitle": "Impeller موتور رندر مدرن GPU در Flutter است که انیمیشن‌های روان‌تر و پرش کمتری ارائه می‌دهد. در برخی تی‌وی‌باکس‌ها و GPUهای قدیمی ممکن است باعث اشکال تصویری یا ویدیوی سیاه شود؛ در این صورت آن را خاموش کنید. خودکار بهترین حالت پیش‌فرض را برای دستگاه شما انتخاب می‌کند. برای اعمال، Sunfin را دوباره راه‌اندازی کنید.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8981,7 +8981,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "برای تغییر موتور رندر، Plexfin باید دوباره راه‌اندازی شود. اکنون برنامه را ببندید و سپس دوباره باز کنید تا اعمال شود.",
+    "impellerRestartMessage": "برای تغییر موتور رندر، Sunfin باید دوباره راه‌اندازی شود. اکنون برنامه را ببندید و سپس دوباره باز کنید تا اعمال شود.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },

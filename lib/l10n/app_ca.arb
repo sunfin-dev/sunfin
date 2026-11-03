@@ -1,6 +1,6 @@
 {
     "@@locale": "ca",
-    "appTitle": "Plexfin",
+    "appTitle": "Sunfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Plexfin versió {version}",
+    "appVersionFooter": "Sunfin versió {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Plexfin no ha pogut accedir al teu gestor de claus del sistema. L'inici de sessió pot continuar, però és possible que l'emmagatzematge de testimoni segur no estigui disponible fins que no es desbloquegi el gestor de claus.",
+    "secureStorageUnavailableMessage": "Sunfin no ha pogut accedir al teu gestor de claus del sistema. L'inici de sessió pot continuar, però és possible que l'emmagatzematge de testimoni segur no estigui disponible fins que no es desbloquegi el gestor de claus.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -172,13 +172,13 @@
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Plexfin",
+    "themeMoonfin": "Sunfin",
     "@themeMoonfin": {
-        "description": "Display name for the Plexfin theme"
+        "description": "Display name for the Sunfin theme"
     },
-    "themeMoonfinSubtitle": "L'aspecte original de Plexfin.",
+    "themeMoonfinSubtitle": "L'aspecte original de Sunfin.",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Plexfin theme"
+        "description": "Preview description for the Sunfin theme"
     },
     "themeNeonPulse": "Neon Pulse",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Sortir de Plexfin?",
+    "exitApp": "Sortir de Sunfin?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "No configurat. Plexfin provarà un mpv.conf predeterminat a les carpetes d'aplicacions/dades.",
+    "notSetMpvConf": "No configurat. Sunfin provarà un mpv.conf predeterminat a les carpetes d'aplicacions/dades.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "Commuta la visibilitat de la pàgina d'inici per biblioteca. Reinicieu Plexfin perquè els canvis tinguin efecte.",
+    "libraryVisibilityDescription": "Commuta la visibilitat de la pàgina d'inici per biblioteca. Reinicieu Sunfin perquè els canvis tinguin efecte.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3557,13 +3557,13 @@
     "@mediaBarMode": {
         "description": "Setting for choosing media bar style"
     },
-    "mediaBarModeDescription": "Trieu entre Plexfin, MakD o desactiva la barra multimèdia",
+    "mediaBarModeDescription": "Trieu entre Sunfin, MakD o desactiva la barra multimèdia",
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Plexfin",
+    "mediaBarModeMoonfin": "Sunfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Plexfin"
+        "description": "Media bar style option: Sunfin"
     },
     "mediaBarModeMakd": "MakD",
     "@mediaBarModeMakd": {
@@ -4121,8 +4121,8 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
-    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
-    "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
+    "aboutBasedOnMoonfin": "Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
+    "sourceCodeUrl": "https://github.com/sunfin-dev/sunfin",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
     },
@@ -4294,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Reprodueix a Plexfin",
+    "playInMoonfin": "Reprodueix a Sunfin",
     "@playInMoonfin": {
-        "description": "Button to play available media in Plexfin"
+        "description": "Button to play available media in Sunfin"
     },
     "requestedByName": "Sol·licitat per {name}",
     "@requestedByName": {
@@ -4348,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "No s'ha trobat l'element a la vostra biblioteca de Plexfin",
+    "itemNotFoundInLibrary": "No s'ha trobat l'element a la vostra biblioteca de Sunfin",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4652,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "Reinici del servidor en curs",
-    "adminServerRebootMessage": "S'està reiniciant el servidor, reinicieu Plexfin",
+    "adminServerRebootMessage": "S'està reiniciant el servidor, reinicieu Sunfin",
     "adminActiveSessions": "Sessions actives",
     "adminSessionsLoadFailed": "No s'han pogut carregar les sessions",
     "adminNoActiveSessions": "No hi ha sessions actives",
@@ -6517,13 +6517,13 @@
     "settingsAccountSecuritySubtitle": "Autenticació, codi PIN i controls parentals",
     "settingsPersonalization": "Personalització",
     "settingsPersonalizationSubtitle": "Tema, navegació, files d'inici i visibilitat de la biblioteca",
-    "plexPersonalizationSubtitle": "Barra lateral, files d'inici, biblioteques, pàgines de detalls i salvapantalles",
-    "plexGeneralStyleSubtitle": "Teclat i comandament de joc",
-    "plexDetailsScreenSubtitle": "Botons, informació, seccions i recomanacions",
-    "plexNavigationSubtitle": "Elements de la barra lateral i selecció automàtica",
-    "plexHomeScreenSubtitle": "Files, el seu ordre i Continuar mirant",
+    "sunfinPersonalizationSubtitle": "Barra lateral, files d'inici, biblioteques, pàgines de detalls i salvapantalles",
+    "sunfinGeneralStyleSubtitle": "Teclat i comandament de joc",
+    "sunfinDetailsScreenSubtitle": "Botons, informació, seccions i recomanacions",
+    "sunfinNavigationSubtitle": "Elements de la barra lateral i selecció automàtica",
+    "sunfinHomeScreenSubtitle": "Files, el seu ordre i Continuar mirant",
     "libraryNicknames": "Sobrenoms de biblioteques",
-    "libraryNicknamesSubtitle": "Els teus propis noms per a les biblioteques, només a Plexfin",
+    "libraryNicknamesSubtitle": "Els teus propis noms per a les biblioteques, només a Sunfin",
     "libraryNicknameServerName": "Al servidor: {name}",
     "libraryNicknameHint": "Deixa-ho buit per fer servir el nom del servidor",
     "libraryNicknameNone": "Sense sobrenom",
@@ -6536,16 +6536,16 @@
     "settingsTransferImport": "Importa la configuració",
     "settingsTransferFrom": "Des de {device}, {date}",
     "settingsTransferNothing": "Encara no s'ha exportat res",
-    "settingsTransferImportConfirm": "Vols substituir la configuració d'aquest dispositiu per aquesta? {source}\n\nDesprés Plexfin es tancarà. Torna'l a obrir per fer-la servir.",
+    "settingsTransferImportConfirm": "Vols substituir la configuració d'aquest dispositiu per aquesta? {source}\n\nDesprés Sunfin es tancarà. Torna'l a obrir per fer-la servir.",
     "settingsTransferImportAction": "Importa i tanca",
     "settingsTransferFailed": "No s'ha pogut accedir al compte de Jellyfin",
     "settingsTransferNote": "L'inici de sessió, la finestra i el maquinari es queden a cada dispositiu. Inicia la sessió primer a l'altre dispositiu i després importa.",
     "settingsReset": "Restableix tota la configuració",
     "settingsResetSubtitle": "Torna la configuració d'aquest dispositiu als valors per defecte",
-    "settingsResetConfirm": "Vols tornar cada opció d'aquest dispositiu al seu valor per defecte? Continuaràs amb la sessió iniciada i es conservarà la configuració exportada al teu compte de Jellyfin.\n\nDesprés, Plexfin es tancarà. Torna'l a obrir per continuar.",
+    "settingsResetConfirm": "Vols tornar cada opció d'aquest dispositiu al seu valor per defecte? Continuaràs amb la sessió iniciada i es conservarà la configuració exportada al teu compte de Jellyfin.\n\nDesprés, Sunfin es tancarà. Torna'l a obrir per continuar.",
     "adminShowButton": "Mostra el botó d'administració",
     "adminShowButtonSubtitle": "Afegeix al menú un botó que obre l'administració del servidor",
-    "plexDirectedBy": "Dirigida per {names}",
+    "sunfinDirectedBy": "Dirigida per {names}",
     "settingsDynamicContent": "Contingut dinàmic",
     "settingsDynamicContentSubtitle": "Barra multimèdia i superposicions visuals",
     "settingsPlaybackSyncplay": "Reproducció i SyncPlay",
@@ -6569,7 +6569,7 @@
     "settingsShowGenresButtonInNavigation": "Mostra el botó de gèneres a la barra de navegació",
     "settingsShowFavoritesButtonInNavigation": "Mostra el botó de preferits a la barra de navegació",
     "settingsShowLibrariesButtonInNavigation": "Mostra el botó de biblioteques a la barra de navegació",
-    "settingsLibraryVisibilitySubtitle": "Commuta la visibilitat de la pàgina d'inici per biblioteca. Reinicieu Plexfin perquè els canvis tinguin efecte.",
+    "settingsLibraryVisibilitySubtitle": "Commuta la visibilitat de la pàgina d'inici per biblioteca. Reinicieu Sunfin perquè els canvis tinguin efecte.",
     "settingsMediaBarAndLocalPreviews": "Barra multimèdia i visualitzacions prèvies locals",
     "settingsVisualOverlays": "Superposicions visuals",
     "settingsSeasonalSurprise": "Sorpresa de temporada",
@@ -6588,14 +6588,14 @@
     "settingsJoinDiscord": "Uneix-te a Discord",
     "settingsJoinDiscordSubtitle": "Xateja amb la comunitat",
     "settingsJoinTheDiscord": "Uneix-te al Discord",
-    "settingsSupportMoonfin": "Suport Plexfin",
+    "settingsSupportMoonfin": "Suport Sunfin",
     "settingsLegal": "LEGAL",
     "settingsLicenses": "Llicències",
     "settingsOpenSourceLicenseNotices": "Avisos de llicència de codi obert",
     "settingsPrivacyPolicy": "Política de privadesa",
-    "settingsPrivacyPolicySubtitle": "Com Plexfin gestiona les vostres dades",
+    "settingsPrivacyPolicySubtitle": "Com Sunfin gestiona les vostres dades",
     "settingsCheckForUpdates": "Comproveu si hi ha actualitzacions",
-    "settingsCheckForUpdatesSubtitle": "Comproveu l'últim llançament de Plexfin",
+    "settingsCheckForUpdatesSubtitle": "Comproveu l'últim llançament de Sunfin",
     "settingsPoweredByFlutter": "Desenvolupat per Flutter",
     "settingsLicenseNoticesCount": "{count, plural, one {# avís de llicència} other {# avisos de llicència}}",
     "@settingsLicenseNoticesCount": {
@@ -7128,12 +7128,12 @@
     "preferSdhSubtitles": "Preferiu els subtítols SDH",
     "preferSdhSubtitlesSubtitle": "Doneu prioritat a les pistes de subtítols SDH/CC quan feu la selecció automàtica.",
     "webDiagnostics": "Diagnòstic web",
-    "webDiagnosticsTitle": "Plexfin Diagnòstic web",
+    "webDiagnosticsTitle": "Sunfin Diagnòstic web",
     "webDiagnosticsIntro": "Utilitzeu aquesta pàgina per diagnosticar problemes de connectivitat del navegador (CORS, contingut mixt i configuració de descobriment).",
     "webDiagnosticsDetectedMixedContentFailure": "S'ha detectat un error de contingut mixt",
     "webDiagnosticsDetectedCorsPreflightFailure": "S'ha detectat una fallada CORS/preflight",
-    "webDiagnosticsMixedContentFailureBody": "Plexfin ha detectat una pàgina HTTPS que intentava trucar a un URL de servidor HTTP. Els navegadors bloquegen aquesta sol·licitud abans que arribi al vostre servidor.",
-    "webDiagnosticsCorsFailureBody": "Plexfin ha detectat un error de sol·licitud a nivell de navegador que sol ser causat per la falta de capçaleres CORS o de comprovació prèvia al servidor multimèdia.",
+    "webDiagnosticsMixedContentFailureBody": "Sunfin ha detectat una pàgina HTTPS que intentava trucar a un URL de servidor HTTP. Els navegadors bloquegen aquesta sol·licitud abans que arribi al vostre servidor.",
+    "webDiagnosticsCorsFailureBody": "Sunfin ha detectat un error de sol·licitud a nivell de navegador que sol ser causat per la falta de capçaleres CORS o de comprovació prèvia al servidor multimèdia.",
     "webDiagnosticsTargetUrl": "URL de destinació: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7163,7 +7163,7 @@
     "notConfigured": "no configurat",
     "webDiagnosticsMixedContent": "Contingut mixt",
     "webDiagnosticsMixedContentDetected": "Aquesta pàgina es carrega mitjançant HTTPS, però un o més URL configurats són HTTP. Els navegadors impedeixen que les pàgines HTTPS cridin a les API HTTP.",
-    "webDiagnosticsMixedContentFix": "Solució: doneu servei al vostre servidor multimèdia o punt final del servidor intermediari mitjançant HTTPS o carregueu Plexfin mitjançant HTTP només a xarxes locals de confiança.",
+    "webDiagnosticsMixedContentFix": "Solució: doneu servei al vostre servidor multimèdia o punt final del servidor intermediari mitjançant HTTPS o carregueu Sunfin mitjançant HTTP només a xarxes locals de confiança.",
     "webDiagnosticsNoMixedContentDetected": "No s'ha detectat cap configuració òbvia de contingut mixt des de la configuració actual del temps d'execució.",
     "webDiagnosticsCorsChecklist": "Llista de verificació CORS",
     "webDiagnosticsCorsChecklistItem1": "• Permet l'origen del navegador a Access-Control-Allow-Origin.",
@@ -7590,7 +7590,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "Clàssic és la disposició original centrada de Plexfin. Modern és una disposició cinematogràfica adaptativa. Spotlight és una disposició que posa la il·lustració al davant, amb targetes de contingut emergents. Nouveau és una disposició a pantalla completa amb les seccions apilades al llarg de la pàgina. Minimalista és la il·lustració, un botó de reproducció i els episodis.",
+    "detailScreenStyleSubtitle": "Clàssic és la disposició original centrada de Sunfin. Modern és una disposició cinematogràfica adaptativa. Spotlight és una disposició que posa la il·lustració al davant, amb targetes de contingut emergents. Nouveau és una disposició a pantalla completa amb les seccions apilades al llarg de la pàgina. Minimalista és la il·lustració, un botó de reproducció i els episodis.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7602,13 +7602,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "Fes servir l'algorisme de biblioteca local Recomanacions Plexfin, el motor del servidor Recomanacions Jellyfin o les mètriques de similitud en línia de TMDb. Nota: les recomanacions en línia requereixen la integració amb Seerr.",
+    "recommendationSystemSubtitle": "Fes servir l'algorisme de biblioteca local Recomanacions Sunfin, el motor del servidor Recomanacions Jellyfin o les mètriques de similitud en línia de TMDb. Nota: les recomanacions en línia requereixen la integració amb Seerr.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Recomanacions Plexfin",
+    "recommendationSystemMoonfin": "Recomanacions Sunfin",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Plexfin Recommends"
+        "description": "Recommendation system option: Sunfin Recommends"
     },
     "gameMenu": "Menú",
     "@gameMenu": {
@@ -7689,7 +7689,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "Limita els suggeriments de Recomanacions Plexfin segons la classificació per edats del contingut de destinació",
+    "recommendationsApplyParentalRatingCapSubtitle": "Limita els suggeriments de Recomanacions Sunfin segons la classificació per edats del contingut de destinació",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7713,7 +7713,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "Els temes personalitzats modifiquen els elements visuals de tot Plexfin. Tria una d'aquestes opcions segons el teu estil.",
+    "customThemeSubtitle": "Els temes personalitzats modifiquen els elements visuals de tot Sunfin. Tria una d'aquestes opcions segons el teu estil.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7825,7 +7825,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "Inicia la sessió a Plexfin al teu telèfon",
+    "carSignInPrompt": "Inicia la sessió a Sunfin al teu telèfon",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8970,7 +8970,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller és el renderitzador de GPU modern de Flutter, per a animacions més fluides i menys interrupcions. En alguns descodificadors de TV i GPU antigues pot provocar defectes visuals o vídeo en negre; desactiva'l si en detectes. Automàtic tria el millor valor predeterminat per al teu dispositiu. Reinicia Plexfin per aplicar-ho.",
+    "impellerRenderingSubtitle": "Impeller és el renderitzador de GPU modern de Flutter, per a animacions més fluides i menys interrupcions. En alguns descodificadors de TV i GPU antigues pot provocar defectes visuals o vídeo en negre; desactiva'l si en detectes. Automàtic tria el millor valor predeterminat per al teu dispositiu. Reinicia Sunfin per aplicar-ho.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8981,7 +8981,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "Plexfin s'ha de reiniciar per canviar el motor de renderització. Tanca l'aplicació ara i torna a obrir-la per aplicar-ho.",
+    "impellerRestartMessage": "Sunfin s'ha de reiniciar per canviar el motor de renderització. Tanca l'aplicació ara i torna a obrir-la per aplicar-ho.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },
@@ -9503,7 +9503,7 @@
     "@sdCard": {
         "description": "Download location option for a removable storage volume"
     },
-    "downloadLocationLimitedByAndroid": "Android només permet que Plexfin escrigui a les carpetes que posseeix, i aquest dispositiu no té emmagatzematge extraïble. Activa la carpeta «Desar a Baixades» anterior per guardar les baixades en un lloc al qual les altres aplicacions puguin accedir.",
+    "downloadLocationLimitedByAndroid": "Android només permet que Sunfin escrigui a les carpetes que posseeix, i aquest dispositiu no té emmagatzematge extraïble. Activa la carpeta «Desar a Baixades» anterior per guardar les baixades en un lloc al qual les altres aplicacions puguin accedir.",
     "@downloadLocationLimitedByAndroid": {
         "description": "Note shown when the only download location Android allows is the default one"
     },
@@ -9665,7 +9665,7 @@
     "@scrollSensitivitySubtitle": {
         "description": "Explains the desktop scroll sensitivity slider."
     },
-    "interfaceLayoutSubtitle": "Canvia el tipus de disposicó detectada si el teu dispositiu no es reconeix correctament. Reinicia Plexfin per aplicar els canvis.",
+    "interfaceLayoutSubtitle": "Canvia el tipus de disposicó detectada si el teu dispositiu no es reconeix correctament. Reinicia Sunfin per aplicar els canvis.",
     "@interfaceLayoutSubtitle": {
         "description": "Subtitle for the interface layout setting"
     },
@@ -10315,7 +10315,7 @@
     "@loadingAnimationConfiguration": {
         "description": "Subtitle header for loading animation settings"
     },
-    "loadingAnimationDescription": "Personalitza les animacions de càrrega que utilitza Plexfin",
+    "loadingAnimationDescription": "Personalitza les animacions de càrrega que utilitza Sunfin",
     "@loadingAnimationDescription": {
         "description": "Description for loading animation customization settings"
     },
@@ -10327,9 +10327,9 @@
     "@loadingAnimationImage": {
         "description": "Title for loading animation image selection"
     },
-    "loadingAnimationImageMoonfinLogo": "Logotip de Plexfin",
+    "loadingAnimationImageMoonfinLogo": "Logotip de Sunfin",
     "@loadingAnimationImageMoonfinLogo": {
-        "description": "Loading animation image option: Plexfin Logo"
+        "description": "Loading animation image option: Sunfin Logo"
     },
     "loadingAnimationImageSpinner": "Roda de càrrega",
     "@loadingAnimationImageSpinner": {
@@ -10347,9 +10347,9 @@
     "@loadingAnimationImageNeonfinPhases": {
         "description": "Loading animation image option: Neonfin Phases in neon colors"
     },
-    "loadingAnimationImageMoonfinPhases": "Fases de Plexfin",
+    "loadingAnimationImageMoonfinPhases": "Fases de Sunfin",
     "@loadingAnimationImageMoonfinPhases": {
-        "description": "Loading animation image option: Plexfin Phases in brand gradient"
+        "description": "Loading animation image option: Sunfin Phases in brand gradient"
     },
     "loadingAnimationSize": "Mida de l'animació",
     "@loadingAnimationSize": {
@@ -10463,9 +10463,9 @@
     "@screensaverBackdropBlack": {
         "description": "Screensaver backdrop: Black"
     },
-    "screensaverBackdropMoonfin": "Plexfin",
+    "screensaverBackdropMoonfin": "Sunfin",
     "@screensaverBackdropMoonfin": {
-        "description": "Screensaver backdrop: Plexfin"
+        "description": "Screensaver backdrop: Sunfin"
     },
     "screensaverBackdropCalm": "Calma",
     "@screensaverBackdropCalm": {
@@ -10483,9 +10483,9 @@
     "@screensaverAdditionalComponent": {
         "description": "Setting for screensaver additional component"
     },
-    "screensaverComponentMoonfinLogo": "Logotip de Plexfin",
+    "screensaverComponentMoonfinLogo": "Logotip de Sunfin",
     "@screensaverComponentMoonfinLogo": {
-        "description": "Screensaver component: Plexfin Logo"
+        "description": "Screensaver component: Sunfin Logo"
     },
     "screensaverComponentRunner": "Corredor",
     "@screensaverComponentRunner": {
@@ -10662,7 +10662,7 @@
             }
         }
     },
-    "autoDownloadTranscodedForegroundNote": "Les qualitats transcodificades només es baixen mentre Plexfin està obert. La qualitat original també es baixa en segon pla.",
+    "autoDownloadTranscodedForegroundNote": "Les qualitats transcodificades només es baixen mentre Sunfin està obert. La qualitat original també es baixa en segon pla.",
     "@autoDownloadTranscodedForegroundNote": {
         "description": "Shown under transcoded options when choosing the quality of an auto-download subscription"
     },
@@ -10670,7 +10670,7 @@
     "@autoDownloadTranscodedRunningNote": {
         "description": "Shown under a running transcoded download that a subscription queued"
     },
-    "autoDownloadForegroundOnly": "Només es baixa mentre Plexfin està obert",
+    "autoDownloadForegroundOnly": "Només es baixa mentre Sunfin està obert",
     "@autoDownloadForegroundOnly": {
         "description": "Short note next to a followed series in a transcoded quality"
     },
@@ -10744,15 +10744,15 @@
     "@autoDownloadBackgroundRefresh": {
         "description": "Setting that lets the system wake the app to check for new episodes"
     },
-    "autoDownloadBackgroundRefreshSubtitle": "Permet que el sistema comprovi periòdicament si hi ha episodis nous mentre Plexfin està tancat",
+    "autoDownloadBackgroundRefreshSubtitle": "Permet que el sistema comprovi periòdicament si hi ha episodis nous mentre Sunfin està tancat",
     "@autoDownloadBackgroundRefreshSubtitle": {
         "description": "Explains the background refresh setting"
     },
-    "autoDownloadBackgroundRefreshDenied": "Background App Refresh està desactivat per a Plexfin. Activa'l a iOS Settings.",
+    "autoDownloadBackgroundRefreshDenied": "Background App Refresh està desactivat per a Sunfin. Activa'l a iOS Settings.",
     "@autoDownloadBackgroundRefreshDenied": {
         "description": "Shown when iOS forbids background refresh for the app"
     },
-    "autoDownloadBackgroundRestrictedAndroid": "L'ús en segon pla està restringit per a Plexfin a Android Settings.",
+    "autoDownloadBackgroundRestrictedAndroid": "L'ús en segon pla està restringit per a Sunfin a Android Settings.",
     "@autoDownloadBackgroundRestrictedAndroid": {
         "description": "Shown when Android restricts the app from running in the background"
     },
@@ -11251,7 +11251,7 @@
     "@shortcutToggleFullscreen": {
         "description": "F11 and Alt+Enter anywhere, F in the player"
     },
-    "shortcutQuit": "Surt de Plexfin",
+    "shortcutQuit": "Surt de Sunfin",
     "@shortcutQuit": {
         "description": "What Ctrl+Q does on desktop"
     },

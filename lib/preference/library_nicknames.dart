@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:jellyfin_preference/jellyfin_preference.dart';
 import 'package:server_core/server_core.dart' show serverResponseRewriter;
 
-/// Plexfin: the user's own names for their libraries, e.g. "4K Movies" for a
+/// Sunfin: the user's own names for their libraries, e.g. "4K Movies" for a
 /// server library called "movies_4k" (user, 2026-10-26).
 ///
 /// Display only: nothing is renamed on the server. The names are applied to
@@ -14,7 +14,7 @@ class LibraryNicknames {
   LibraryNicknames._();
 
   static final preference = Preference(
-    key: 'pref_plexfin_library_nicknames',
+    key: 'pref_sunfin_library_nicknames',
     defaultValue: '{}',
   );
 

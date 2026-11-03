@@ -3,17 +3,17 @@ import 'dart:ui';
 
 import 'package:flutter/scheduler.dart';
 
-/// Plexfin: frame timing on the device, for tuning how smooth the app feels
+/// Sunfin: frame timing on the device, for tuning how smooth the app feels
 /// (user, 2026-10-26). Writes one line per second of animation to logcat
-/// (`adb logcat -s flutter`), tagged `PlexfinFrames`, and stays silent while
+/// (`adb logcat -s flutter`), tagged `SunfinFrames`, and stays silent while
 /// nothing moves:
 ///
-///   PlexfinFrames /home n=58 slow=3 build<=9.1 raster<=21.4 span<=25.0 p90=14.2
+///   SunfinFrames /home n=58 slow=3 build<=9.1 raster<=21.4 span<=25.0 p90=14.2
 ///
 /// slow = frames that missed the display's frame budget in build or raster.
 /// The max values say which thread was late: build is the UI thread (layout,
 /// rebuilds), raster the GPU thread (painting, images, shaders).
-abstract final class PlexFrameLog {
+abstract final class SunfinFrameLog {
   static bool _started = false;
   static String Function()? _route;
   static final List<FrameTiming> _window = [];
@@ -79,7 +79,7 @@ abstract final class PlexFrameLog {
     }
     // ignore: avoid_print
     print(
-      'PlexfinFrames $route n=${frames.length} slow=$slow '
+      'SunfinFrames $route n=${frames.length} slow=$slow '
       'build<=${f1(maxBuild)} raster<=${f1(maxRaster)} '
       'span<=${f1(maxSpan)} p90=${f1(p90)} budget=${f1(budget)}',
     );

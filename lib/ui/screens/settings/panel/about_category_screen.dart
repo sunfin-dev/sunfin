@@ -1,9 +1,11 @@
 part of '../settings_side_panel.dart';
 
-/// Plexfin: upstream's donation, privacy-policy, Discord and issue-tracker
-/// links point at the Moonfin project, so this fork hides them. The licence
-/// and source links stay (GPL).
+/// Sunfin: upstream's donation, privacy-policy and Discord links point at the
+/// Moonfin project, so this fork hides them. Source, licence and the issue
+/// tracker point at Sunfin's own repository.
 const bool _showUpstreamLinks = false;
+
+const _repository = 'https://github.com/sunfin-dev/sunfin';
 
 class _AboutCategoryScreen extends StatelessWidget {
   const _AboutCategoryScreen();
@@ -57,22 +59,21 @@ class _AboutCategoryScreen extends StatelessWidget {
                 subtitle: Text(l10n.sourceCodeUrl),
                 onTap: () => showQrOrLaunch(
                   context,
-                  url: 'https://github.com/Moonfin-Client/Moonfin-Core',
+                  url: _repository,
                   title: l10n.sourceCode,
                 ),
               ),
-              // Plexfin: bugs in this fork don't belong in upstream's tracker.
-              if (_showUpstreamLinks)
-                _TvSettingsListTile(
-                  leading: const Icon(Icons.bug_report),
-                  title: Text(l10n.settingsReportAnIssue),
-                  subtitle: Text(l10n.settingsReportAnIssueSubtitle),
-                  onTap: () => showQrOrLaunch(
-                    context,
-                    url: 'https://github.com/Moonfin-Client/Moonfin-Core/issues',
-                    title: l10n.settingsReportAnIssue,
-                  ),
+              // Sunfin: bugs in this fork go to its own tracker, not upstream's.
+              _TvSettingsListTile(
+                leading: const Icon(Icons.bug_report),
+                title: Text(l10n.settingsReportAnIssue),
+                subtitle: Text(l10n.settingsReportAnIssueSubtitle),
+                onTap: () => showQrOrLaunch(
+                  context,
+                  url: '$_repository/issues',
+                  title: l10n.settingsReportAnIssue,
                 ),
+              ),
               _TvSettingsListTile(
                 leading: const Icon(Icons.troubleshoot),
                 title: const Text('Diagnostics & Logging'),
@@ -93,8 +94,8 @@ class _AboutCategoryScreen extends StatelessWidget {
                     const _KeyboardShortcutsScreen(),
                   ),
                 ),
-              // Plexfin: every setup question is about the fixed look.
-              if (!PlexLocks.active)
+              // Sunfin: every setup question is about the fixed look.
+              if (!SunfinLocks.active)
                 _TvSettingsListTile(
                   leading: const Icon(Icons.auto_awesome),
                   title: Text(l10n.runSetupAgain),
@@ -105,7 +106,7 @@ class _AboutCategoryScreen extends StatelessWidget {
                     context.navigateTopLevel(Destinations.setup);
                   },
                 ),
-              // Plexfin: upstream's community Discord is not this fork's.
+              // Sunfin: upstream's community Discord is not this fork's.
               if (_showUpstreamLinks)
                 _TvSettingsListTile(
                   leading: const Icon(Icons.forum),
@@ -117,7 +118,7 @@ class _AboutCategoryScreen extends StatelessWidget {
                     title: l10n.settingsJoinTheDiscord,
                   ),
                 ),
-              // Plexfin: the upstream donation tile is hidden in this fork.
+              // Sunfin: the upstream donation tile is hidden in this fork.
               if (_showUpstreamLinks)
                 _TvSettingsListTile(
                   leading: const Icon(Icons.favorite),
@@ -136,12 +137,11 @@ class _AboutCategoryScreen extends StatelessWidget {
                 subtitle: Text(l10n.settingsOpenSourceLicenseNotices),
                 onTap: () => showQrOrLaunch(
                   context,
-                  url:
-                      'https://github.com/Moonfin-Client/Moonfin-Core/blob/main/LICENSE',
+                  url: '$_repository/blob/main/LICENSE',
                   title: l10n.settingsLicenses,
                 ),
               ),
-              // Plexfin: upstream's privacy policy does not cover this fork.
+              // Sunfin: upstream's privacy policy does not cover this fork.
               if (_showUpstreamLinks)
                 _TvSettingsListTile(
                   leading: const Icon(Icons.privacy_tip),

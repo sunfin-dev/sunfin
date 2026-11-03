@@ -1,6 +1,6 @@
 import 'dart:ui' as ui;
 
-import '../plex/plex_style.dart';
+import '../sunfin/sunfin_style.dart';
 import 'offline_aware_image.dart';
 import 'package:flutter/material.dart';
 import 'package:moonfin_design/moonfin_design.dart';
@@ -39,10 +39,10 @@ class LogoView extends StatelessWidget {
       errorBuilder: (_, _, _) => const SizedBox.shrink(),
     );
 
-    // Plexfin: no blurred shadow copy on the TV. Skia redraws the blur every
+    // Sunfin: no blurred shadow copy on the TV. Skia redraws the blur every
     // frame the logo moves, so each scroll of a details page paid for it
     // (2026-10-26); the logo alone reads fine on the tinted page.
-    if (PlexStyle.enabled) {
+    if (SunfinStyle.enabled) {
       return ConstrainedBox(
         constraints: BoxConstraints(maxHeight: maxHeight, maxWidth: maxWidth),
         child: RepaintBoundary(child: image),

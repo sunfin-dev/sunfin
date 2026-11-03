@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:server_core/server_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-/// Plexfin: copies every setting from one device to another through the
+/// Sunfin: copies every setting from one device to another through the
 /// user's own Jellyfin account (user, 2026-10-27: "copy all of my settings
 /// from my shield to the windows build").
 ///
@@ -18,8 +18,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// the snapshot would otherwise be a working key to the account.
 abstract final class SettingsTransfer {
   /// Where the snapshot lives in the account's display preferences.
-  static const displayPreferencesId = 'plexfin-settings-transfer';
-  static const client = 'plexfin';
+  static const displayPreferencesId = 'sunfin-settings-transfer';
+  static const client = 'sunfin';
+
+  /// Where the app kept the snapshot under its earlier name, and the part of
+  /// setting names that changed with it, so a snapshot exported before the
+  /// rename (2026-11-03) still imports. Can go once no account holds one.
+  static const _legacyDisplayPreferencesId = 'plexfin-settings-transfer';
+  static const _legacyClient = 'plexfin';
+  static const _legacyName = 'plexfin';
+  static const _name = 'sunfin';
 
   /// 2: setting names carry [_serverToken] and [_userToken] instead of the
   /// exporting device's ids. Version 1 snapshots kept them, so their
@@ -146,7 +154,7 @@ abstract final class SettingsTransfer {
     return !_login.hasMatch(key);
   }
 
-  /// Plexfin: puts every setting on this device back to its default (user,
+  /// Sunfin: puts every setting on this device back to its default (user,
   /// 2026-10-28). Only this device: a snapshot exported to the account
   /// stays there to import later. Returns how many settings went back.
   static Future<int> reset(SharedPreferences prefs) async {
@@ -234,7 +242,7 @@ abstract final class SettingsTransfer {
     final values = <String, Object?>{
       for (final MapEntry(:key, :value)
           in (snapshot['values'] as Map).cast<String, Object?>().entries)
-        ?_fromTokens(key, account): value,
+        ?_fromTokens(key.replaceAll(_legacyName, _name), account): value,
     };
     for (final key in prefs.getKeys().toList()) {
       if (travels(key) && !values.containsKey(key)) await prefs.remove(key);
@@ -282,6 +290,16 @@ abstract final class SettingsTransfer {
       displayPreferencesId,
       client: client,
     );
-    return decode(stored.customPrefs);
+    final current = decode(stored.customPrefs);
+    if (current != null) return current;
+    try {
+      final legacy = await api.getDisplayPreferences(
+        _legacyDisplayPreferencesId,
+        client: _legacyClient,
+      );
+      return decode(legacy.customPrefs);
+    } catch (_) {
+      return null;
+    }
   }
 }

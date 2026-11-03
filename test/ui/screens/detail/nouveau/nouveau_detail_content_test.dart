@@ -608,7 +608,7 @@ void main() {
       );
       await pumpContent(tester, vm, initialFocusNode: play, size: tvSize);
 
-      // Plexfin's default order puts the cast right under the hero, as Plex
+      // Sunfin's default order puts the cast right under the hero, as the reference design
       // does, with the chapters after it.
       await focusPlay(tester);
       await press(tester, LogicalKeyboardKey.arrowDown);

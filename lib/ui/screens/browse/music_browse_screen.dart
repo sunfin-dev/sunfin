@@ -26,12 +26,12 @@ import '../../../l10n/app_localizations.dart';
 import '../../util/home_row_title_localizer.dart';
 import '../../widgets/overlay_sheet.dart';
 import '../../widgets/skeleton/skeleton_music_browse.dart';
-import '../../plex/plex_nav.dart';
+import '../../sunfin/sunfin_nav.dart';
 
 Color get _navyBackground => AppColorScheme.background;
 
 double get _horizontalPadding =>
-    PlatformDetection.useMobileUi ? 20.0 : plexBrowseMargin(60.0);
+    PlatformDetection.useMobileUi ? 20.0 : sunfinBrowseMargin(60.0);
 double get _cardSize => PlatformDetection.useMobileUi
     ? 112.0
     : (PlatformDetection.isTV ? 168.0 : 148.0);
@@ -210,7 +210,7 @@ class _MusicBrowseScreenState extends State<MusicBrowseScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => plexNavShell(
+  Widget build(BuildContext context) => sunfinNavShell(
     background: _navyBackground,
     child: RequestInitialFocus(child: _buildContent(context)),
   );
@@ -834,8 +834,8 @@ class _CategoryButtonState extends State<_CategoryButton> with FocusStateMixin {
           }
           if (event.isActionable && !widget.vertical) {
             if (widget.isFirst && event.logicalKey.isLeftKey) {
-              // Plex mode: the start of the row opens the rail.
-              if (event is KeyDownEvent) plexFocusRailFromEdge();
+              // Sunfin mode: the start of the row opens the rail.
+              if (event is KeyDownEvent) sunfinFocusRailFromEdge();
               return KeyEventResult.handled;
             }
             if (widget.isLast && event.logicalKey.isRightKey) {
@@ -1118,8 +1118,8 @@ class _MusicSquareCardState extends State<_MusicSquareCard>
             }
             if (event.isActionable) {
               if (widget.isFirst && event.logicalKey.isLeftKey) {
-                // Plex mode: the start of the row opens the rail.
-                if (event is KeyDownEvent) plexFocusRailFromEdge();
+                // Sunfin mode: the start of the row opens the rail.
+                if (event is KeyDownEvent) sunfinFocusRailFromEdge();
                 return KeyEventResult.handled;
               }
               if (widget.isLast && event.logicalKey.isRightKey) {

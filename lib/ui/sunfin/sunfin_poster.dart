@@ -7,23 +7,23 @@ import '../../util/focus/key_event_utils.dart';
 import '../../util/image_fetch_priority.dart';
 import '../../util/item_watch_state.dart';
 import '../widgets/image_source.dart';
-import 'plex_style.dart';
+import 'sunfin_style.dart';
 
-/// Plex's corner tag on a poster: the episodes left to watch, or a check once
+/// The reference design's corner tag on a poster: the episodes left to watch, or a check once
 /// there are none (references 09-11 and 13).
-class PlexCornerBadge extends StatelessWidget {
+class SunfinCornerBadge extends StatelessWidget {
   final int? count;
 
-  const PlexCornerBadge({super.key, required this.count});
+  const SunfinCornerBadge({super.key, required this.count});
 
   @override
   Widget build(BuildContext context) {
-    final size = PlexStyle.s(11);
+    final size = SunfinStyle.s(11);
     return Container(
-      constraints: BoxConstraints(minWidth: PlexStyle.s(20)),
+      constraints: BoxConstraints(minWidth: SunfinStyle.s(20)),
       padding: EdgeInsets.symmetric(
-        horizontal: PlexStyle.s(5),
-        vertical: PlexStyle.s(2),
+        horizontal: SunfinStyle.s(5),
+        vertical: SunfinStyle.s(2),
       ),
       alignment: Alignment.center,
       color: Colors.black.withValues(alpha: 0.8),
@@ -41,14 +41,14 @@ class PlexCornerBadge extends StatelessWidget {
   }
 }
 
-/// One title in a Plex library grid or row (references 09-11): the artwork,
+/// One title in a Sunfin library grid or row (references 09-11): the artwork,
 /// its corner badge and progress bar, and the title and a second line centred
 /// under it. Focus scales the artwork up from its centre with a thin white
 /// border and moves the captions down by as much as it grew.
 ///
 /// It follows its own [focusNode], so moving focus rebuilds the two cards
 /// involved and nothing else on the page.
-class PlexPosterCard extends StatefulWidget {
+class SunfinPosterCard extends StatefulWidget {
   final AggregatedItem item;
   final String? imageUrl;
   final double width;
@@ -64,7 +64,7 @@ class PlexPosterCard extends StatefulWidget {
   final ValueChanged<bool>? onFocusChange;
   final FocusOnKeyEventCallback? onKeyEvent;
 
-  const PlexPosterCard({
+  const SunfinPosterCard({
     super.key,
     required this.item,
     required this.imageUrl,
@@ -80,11 +80,11 @@ class PlexPosterCard extends StatefulWidget {
     this.onKeyEvent,
   });
 
-  /// Plex grows the focused poster by about a tenth (240 to 264 px wide).
+  /// The reference design grows the focused poster by about a tenth (240 to 264 px wide).
   static const focusScale = 1.1;
 
   /// Height under the artwork for the two caption lines.
-  static final captionHeight = PlexStyle.s(45);
+  static final captionHeight = SunfinStyle.s(45);
 
   /// Height a card needs in a grid or row: the artwork, the captions, and
   /// the half of the focus growth that pushes the captions down.
@@ -101,10 +101,10 @@ class PlexPosterCard extends StatefulWidget {
       );
 
   @override
-  State<PlexPosterCard> createState() => _PlexPosterCardState();
+  State<SunfinPosterCard> createState() => _SunfinPosterCardState();
 }
 
-class _PlexPosterCardState extends State<PlexPosterCard> {
+class _SunfinPosterCardState extends State<SunfinPosterCard> {
   final _selectKeys = LongPressSelectKeyHandler();
   late bool _focused = widget.focusNode.hasFocus;
 
@@ -141,13 +141,13 @@ class _PlexPosterCardState extends State<PlexPosterCard> {
 
   Widget _placeholder() => Center(
     child: Padding(
-      padding: EdgeInsets.all(PlexStyle.s(8)),
+      padding: EdgeInsets.all(SunfinStyle.s(8)),
       child: Text(
         widget.title,
         textAlign: TextAlign.center,
         maxLines: 4,
         overflow: TextOverflow.ellipsis,
-        style: TextStyle(color: Colors.white70, fontSize: PlexStyle.s(11)),
+        style: TextStyle(color: Colors.white70, fontSize: SunfinStyle.s(11)),
       ),
     ),
   );
@@ -157,10 +157,10 @@ class _PlexPosterCardState extends State<PlexPosterCard> {
     final item = widget.item;
     final width = widget.width;
     final height = width / widget.aspectRatio;
-    final grow = height * (PlexPosterCard.focusScale - 1) / 2;
-    final radius = BorderRadius.circular(PlexStyle.s(2));
+    final grow = height * (SunfinPosterCard.focusScale - 1) / 2;
+    final radius = BorderRadius.circular(SunfinStyle.s(2));
     final url = widget.imageUrl;
-    final decodeWidth = PlexPosterCard.decodeWidth(context, width);
+    final decodeWidth = SunfinPosterCard.decodeWidth(context, width);
     final unplayed = item.unplayedItemCount ?? 0;
     final container =
         item.type == 'Series' || item.type == 'Season' || item.type == 'BoxSet';
@@ -181,7 +181,7 @@ class _PlexPosterCardState extends State<PlexPosterCard> {
               borderRadius: radius,
               border: Border.all(
                 color: Colors.white,
-                width: PlexStyle.focusBorderWidth,
+                width: SunfinStyle.focusBorderWidth,
               ),
             )
           : null,
@@ -205,20 +205,20 @@ class _PlexPosterCardState extends State<PlexPosterCard> {
             Positioned(
               top: 0,
               right: 0,
-              child: PlexCornerBadge(count: showCount ? unplayed : null),
+              child: SunfinCornerBadge(count: showCount ? unplayed : null),
             ),
           if (progress > 0 && progress < 1)
             Positioned(
               left: 0,
               right: 0,
               bottom: 0,
-              height: PlexStyle.s(3),
+              height: SunfinStyle.s(3),
               child: ColoredBox(
                 color: Colors.black.withValues(alpha: 0.6),
                 child: FractionallySizedBox(
                   alignment: Alignment.centerLeft,
                   widthFactor: progress,
-                  child: const ColoredBox(color: PlexStyle.accent),
+                  child: const ColoredBox(color: SunfinStyle.accent),
                 ),
               ),
             ),
@@ -241,18 +241,18 @@ class _PlexPosterCardState extends State<PlexPosterCard> {
             children: [
               RepaintBoundary(
                 child: AnimatedScale(
-                  scale: _focused ? PlexPosterCard.focusScale : 1,
-                  duration: PlexMotion.focus,
-                  curve: PlexMotion.curve,
+                  scale: _focused ? SunfinPosterCard.focusScale : 1,
+                  duration: SunfinMotion.focus,
+                  curve: SunfinMotion.curve,
                   child: poster,
                 ),
               ),
               if (widget.showCaptions)
                 AnimatedPadding(
-                  duration: PlexMotion.focus,
-                  curve: PlexMotion.curve,
+                  duration: SunfinMotion.focus,
+                  curve: SunfinMotion.curve,
                   padding: EdgeInsets.only(
-                    top: PlexStyle.s(7) + (_focused ? grow : 0),
+                    top: SunfinStyle.s(7) + (_focused ? grow : 0),
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -264,7 +264,7 @@ class _PlexPosterCardState extends State<PlexPosterCard> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white.withValues(alpha: 0.92),
-                          fontSize: PlexStyle.s(12.5),
+                          fontSize: SunfinStyle.s(12.5),
                         ),
                       ),
                       if (subtitle != null && subtitle.isNotEmpty)
@@ -275,7 +275,7 @@ class _PlexPosterCardState extends State<PlexPosterCard> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.white.withValues(alpha: 0.6),
-                            fontSize: PlexStyle.s(11.5),
+                            fontSize: SunfinStyle.s(11.5),
                           ),
                         ),
                     ],

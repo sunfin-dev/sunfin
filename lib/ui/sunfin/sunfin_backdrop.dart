@@ -6,33 +6,33 @@ import 'package:flutter/material.dart';
 import '../../util/image_fetch_priority.dart';
 import '../theme/vibrance.dart';
 import '../widgets/image_source.dart';
-import 'plex_backdrop_tint.dart';
-import 'plex_style.dart';
+import 'sunfin_backdrop_tint.dart';
+import 'sunfin_style.dart';
 
-/// Plex home/detail background: page colour plus the sharp backdrop art.
+/// Sunfin home/detail background: page colour plus the sharp backdrop art.
 ///
 /// CONTRACT (do not change the constructor without the lead):
 /// - Fills its parent (used as the bottom layer of a full-screen Stack).
 /// - [url] is the backdrop URL from BackgroundService (null: colour only).
 /// - [showArt] false paints only the page colour taken from [url] (the
-///   library page, which Plex shows without art).
+///   library page, which the reference design shows without art).
 ///
 /// The art sits sharp in the top-right corner and fades into the page colour
 /// to the left and bottom. The page colour itself follows the art's tint.
-class PlexBackdrop extends StatefulWidget {
+class SunfinBackdrop extends StatefulWidget {
   final String? url;
   final bool showArt;
 
-  const PlexBackdrop({super.key, required this.url, this.showArt = true});
+  const SunfinBackdrop({super.key, required this.url, this.showArt = true});
 
   @override
-  State<PlexBackdrop> createState() => _PlexBackdropState();
+  State<SunfinBackdrop> createState() => _SunfinBackdropState();
 
   /// How much of the art shows at ([u], [v]) of the art box, 0-1 from its
   /// top-left corner.
   ///
-  /// Measured on the Plex TV app (2026-11-03): the movie page, show page and
-  /// home of three titles, each solved per pixel against Plex's own copy of
+  /// Measured on the reference TV app (2026-11-03): the movie page, show page and
+  /// home of three titles, each solved per pixel against the reference design's own copy of
   /// the art, agree on one box and one mask. The art never shows at full
   /// strength, only [_artOpacity] of it over the page colour. It fades out
   /// to the left and bottom with a rounded corner between the two, and
@@ -79,20 +79,20 @@ class PlexBackdrop extends StatefulWidget {
   }
 }
 
-class _PlexBackdropState extends State<PlexBackdrop> {
-  static const _crossfade = PlexStyle.tintDuration;
+class _SunfinBackdropState extends State<SunfinBackdrop> {
+  static const _crossfade = SunfinStyle.tintDuration;
 
   /// Every mounted backdrop, oldest first. A details page stacks its own on
   /// top of home's, and only the newest one, the page on screen, sets the
   /// rail's colour. Closing it hands the colour back to the one below.
-  static final List<_PlexBackdropState> _owners = [];
+  static final List<_SunfinBackdropState> _owners = [];
 
   bool get _isOwner => _owners.isNotEmpty && identical(_owners.last, this);
 
   void _publishTint() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted && _isOwner) {
-        PlexStyle.pageTint.value = (_tint.topLeft, _tint.bottomLeft);
+        SunfinStyle.pageTint.value = (_tint.topLeft, _tint.bottomLeft);
       }
     });
   }
@@ -112,7 +112,7 @@ class _PlexBackdropState extends State<PlexBackdrop> {
   String? _shownUrl;
   ImageProvider? _shownProvider;
 
-  PlexTint _tint = PlexTint.fallback;
+  SunfinTint _tint = SunfinTint.fallback;
 
   ImageStream? _stream;
   ImageStreamListener? _listener;
@@ -132,7 +132,7 @@ class _PlexBackdropState extends State<PlexBackdrop> {
   }
 
   @override
-  void didUpdateWidget(PlexBackdrop oldWidget) {
+  void didUpdateWidget(SunfinBackdrop oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.url != oldWidget.url) _request(widget.url);
   }
@@ -149,7 +149,7 @@ class _PlexBackdropState extends State<PlexBackdrop> {
   /// Sets the page tint and, after this frame, publishes its left colour for
   /// the collapsed rail (publishing mid-build would rebuild another widget
   /// during this one's build). Call inside setState.
-  void _applyTint(PlexTint tint) {
+  void _applyTint(SunfinTint tint) {
     _tint = tint;
     _publishTint();
   }
@@ -162,7 +162,7 @@ class _PlexBackdropState extends State<PlexBackdrop> {
         setState(() {
           _shownUrl = null;
           _shownProvider = null;
-          _applyTint(PlexTint.fallback);
+          _applyTint(SunfinTint.fallback);
         });
       }
       return;
@@ -172,7 +172,7 @@ class _PlexBackdropState extends State<PlexBackdrop> {
     if (!widget.showArt) {
       // Only the colour is wanted: no art to fetch and decode.
       _shownUrl = url;
-      final cached = PlexBackdropTint.cached(url);
+      final cached = SunfinBackdropTint.cached(url);
       if (cached != null) {
         // Both callers build next, so no setState.
         _applyTint(cached);
@@ -189,9 +189,9 @@ class _PlexBackdropState extends State<PlexBackdrop> {
     final provider = ArtworkDecode.provider(
       url,
       width: ArtworkDecode.widthFor(
-        PlexStyle.backdropWidth,
+        SunfinStyle.backdropWidth,
         MediaQuery.devicePixelRatioOf(context),
-        layoutHeight: PlexStyle.backdropHeight,
+        layoutHeight: SunfinStyle.backdropHeight,
         sourceAspectRatio: 16 / 9,
       ),
       headers: headers,
@@ -202,7 +202,7 @@ class _PlexBackdropState extends State<PlexBackdrop> {
         info.dispose();
         _stopLoading();
         if (!mounted || _wanted != url) return;
-        final cached = PlexBackdropTint.cached(url);
+        final cached = SunfinBackdropTint.cached(url);
         setState(() {
           _shownUrl = url;
           _shownProvider = provider;
@@ -217,7 +217,7 @@ class _PlexBackdropState extends State<PlexBackdrop> {
         setState(() {
           _shownUrl = null;
           _shownProvider = null;
-          _applyTint(PlexTint.fallback);
+          _applyTint(SunfinTint.fallback);
         });
       },
     );
@@ -227,14 +227,14 @@ class _PlexBackdropState extends State<PlexBackdrop> {
   }
 
   void _resolveTint(String url) {
-    PlexBackdropTint.resolve(url).then(
+    SunfinBackdropTint.resolve(url).then(
       (tint) {
         if (!mounted || _shownUrl != url) return;
-        setState(() => _applyTint(tint ?? PlexTint.fallback));
+        setState(() => _applyTint(tint ?? SunfinTint.fallback));
       },
       onError: (Object e) {
         // A failed sample only costs the tint; say why in the log.
-        debugPrint('[PlexTint] $url: $e');
+        debugPrint('[SunfinTint] $url: $e');
       },
     );
   }
@@ -267,15 +267,15 @@ class _PlexBackdropState extends State<PlexBackdrop> {
     // Its own layer: each frame of a tint fade repaints only the page colour
     // and art, not the header and rows laid over it.
     return RepaintBoundary(
-      child: TweenAnimationBuilder<PlexTint>(
-        tween: PlexTintTween(end: _tint),
+      child: TweenAnimationBuilder<SunfinTint>(
+        tween: SunfinTintTween(end: _tint),
         duration: _crossfade,
         curve: Curves.easeOut,
         // The art subtree is built once per url; only the page gradient below
         // rebuilds on each tint frame.
         child: RepaintBoundary(
           // The art fades to transparent (not to one colour) so the two-tone
-          // page shows through its edges, as in Plex.
+          // page shows through its edges, as in the reference design.
           child: _fadeMask(
             child: Vibrance.wrap(
               AnimatedSwitcher(
@@ -301,18 +301,18 @@ class _PlexBackdropState extends State<PlexBackdrop> {
           ),
         ),
         builder: (context, tint, artChild) {
-          // Plex's four-corner wash: each corner of the page in the colour of
+          // The reference design's four-corner wash: each corner of the page in the colour of
           // the same corner of the art, blended across the page.
           return CustomPaint(
-            painter: PlexTintPainter(tint),
+            painter: SunfinTintPainter(tint),
             child: Stack(
               fit: StackFit.expand,
               children: [
                 Positioned(
                   top: 0,
                   right: 0,
-                  width: PlexStyle.backdropWidth,
-                  height: PlexStyle.backdropHeight,
+                  width: SunfinStyle.backdropWidth,
+                  height: SunfinStyle.backdropHeight,
                   child: artChild!,
                 ),
               ],
@@ -323,7 +323,7 @@ class _PlexBackdropState extends State<PlexBackdrop> {
     );
   }
 
-  /// Fades [child] as Plex does ([PlexBackdrop.artMaskAt]).
+  /// Fades [child] as the reference design does ([SunfinBackdrop.artMaskAt]).
   ///
   /// One mask layer: the mask is drawn once into a small alpha image and
   /// stretched over the art. Stacked gradient masks gave the same picture
@@ -359,7 +359,7 @@ class _PlexBackdropState extends State<PlexBackdrop> {
     final paint = Paint()..isAntiAlias = false;
     for (var y = 0; y < height; y++) {
       for (var x = 0; x < width; x++) {
-        final alpha = PlexBackdrop.artMaskAt(
+        final alpha = SunfinBackdrop.artMaskAt(
           (x + 0.5) / width,
           (y + 0.5) / height,
         );

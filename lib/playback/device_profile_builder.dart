@@ -1052,15 +1052,15 @@ class DeviceProfileBuilder {
   static String _profileName() {
     if (PlatformDetection.isWeb) {
       return webRuntimeConfig.pluginMode
-          ? 'Plexfin for Web'
-          : 'Plexfin on Github';
+          ? 'Sunfin for Web'
+          : 'Sunfin on Github';
     }
-    if (PlatformDetection.isAndroid) return 'Plexfin for Android';
-    if (PlatformDetection.isIOS) return 'Plexfin iOS';
-    if (PlatformDetection.isMacOS) return 'Plexfin macOS';
-    if (PlatformDetection.isWindows) return 'Plexfin Windows';
-    if (PlatformDetection.isLinux) return 'Plexfin Linux';
-    return 'Plexfin';
+    if (PlatformDetection.isAndroid) return 'Sunfin for Android';
+    if (PlatformDetection.isIOS) return 'Sunfin iOS';
+    if (PlatformDetection.isMacOS) return 'Sunfin macOS';
+    if (PlatformDetection.isWindows) return 'Sunfin Windows';
+    if (PlatformDetection.isLinux) return 'Sunfin Linux';
+    return 'Sunfin';
   }
 
   static List<Map<String, dynamic>> _codecProfiles({

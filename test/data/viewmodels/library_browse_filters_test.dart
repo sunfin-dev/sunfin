@@ -301,7 +301,7 @@ void main() {
   });
 
   // A 4K-only filter saved by the full Sort & filter screen hid every 1080p
-  // movie from the Plex library page, whose menu still read "All".
+  // movie from the Sunfin library page, whose menu still read "All".
   group('a browse limited to status filters', () {
     void savedFilters(UserPreferences prefs) {
       prefs.set(UserPreferences.libraryVideoQualityFilters('movies'), ['uhd']);

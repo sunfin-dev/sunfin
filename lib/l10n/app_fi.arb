@@ -1,6 +1,6 @@
 {
     "@@locale": "fi",
-    "appTitle": "Plexfin",
+    "appTitle": "Sunfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Plexfin versio {version}",
+    "appVersionFooter": "Sunfin versio {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Plexfin ei voinut käyttää järjestelmän avainketjua. \tVoit kirjautua, mutta suojatun tunnuksen tallennus ei välttämättä ole käytettävissä, ennen kuin avainketju on avattu.",
+    "secureStorageUnavailableMessage": "Sunfin ei voinut käyttää järjestelmän avainketjua. \tVoit kirjautua, mutta suojatun tunnuksen tallennus ei välttämättä ole käytettävissä, ennen kuin avainketju on avattu.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -172,13 +172,13 @@
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Plexfin",
+    "themeMoonfin": "Sunfin",
     "@themeMoonfin": {
-        "description": "Display name for the Plexfin theme"
+        "description": "Display name for the Sunfin theme"
     },
-    "themeMoonfinSubtitle": "Alkuperäinen puhdas Plexfin oletusasetus.",
+    "themeMoonfinSubtitle": "Alkuperäinen puhdas Sunfin oletusasetus.",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Plexfin theme"
+        "description": "Preview description for the Sunfin theme"
     },
     "themeNeonPulse": "Neon pulssi",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Poistutko Plexfinista?",
+    "exitApp": "Poistutko Sunfinista?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "Ei asetettu. Plexfin yrittää oletusarvoista mpv.conf-tiedostoa app/data-kansioissa.",
+    "notSetMpvConf": "Ei asetettu. Sunfin yrittää oletusarvoista mpv.conf-tiedostoa app/data-kansioissa.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "Vaihda etusivun näkyvyys kirjastoittain. Käynnistä Plexfin uudelleen, jotta muutokset tulevat voimaan.",
+    "libraryVisibilityDescription": "Vaihda etusivun näkyvyys kirjastoittain. Käynnistä Sunfin uudelleen, jotta muutokset tulevat voimaan.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3561,9 +3561,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Plexfin",
+    "mediaBarModeMoonfin": "Sunfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Plexfin"
+        "description": "Media bar style option: Sunfin"
     },
     "mediaBarModeMakd": "MakD",
     "@mediaBarModeMakd": {
@@ -4121,8 +4121,8 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
-    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
-    "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
+    "aboutBasedOnMoonfin": "Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
+    "sourceCodeUrl": "https://github.com/sunfin-dev/sunfin",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
     },
@@ -4294,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Toista Plexfinissä",
+    "playInMoonfin": "Toista Sunfinissä",
     "@playInMoonfin": {
-        "description": "Button to play available media in Plexfin"
+        "description": "Button to play available media in Sunfin"
     },
     "requestedByName": "Pyytäjä {name}",
     "@requestedByName": {
@@ -4348,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "Kohdetta ei löydy Plexfin-kirjastostasi",
+    "itemNotFoundInLibrary": "Kohdetta ei löydy Sunfin-kirjastostasi",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4652,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "Palvelimen uudelleenkäynnistys käynnissä",
-    "adminServerRebootMessage": "Palvelimen uudelleenkäynnistys käynnissä, käynnistä Plexfin uudelleen",
+    "adminServerRebootMessage": "Palvelimen uudelleenkäynnistys käynnissä, käynnistä Sunfin uudelleen",
     "adminActiveSessions": "Aktiiviset istunnot",
     "adminSessionsLoadFailed": "Istuntojen lataaminen epäonnistui",
     "adminNoActiveSessions": "Ei aktiivisia istuntoja",
@@ -6516,13 +6516,13 @@
     "settingsAccountSecuritySubtitle": "Todennus, PIN-koodi ja lapsilukko",
     "settingsPersonalization": "Personointi",
     "settingsPersonalizationSubtitle": "Teema, navigointi, etusivun rivit, ja kirjaston näkyvyys",
-    "plexPersonalizationSubtitle": "Sivupalkki, aloitusnäkymän rivit, kirjastot, tietosivut ja näytönsäästäjä",
-    "plexGeneralStyleSubtitle": "Näppäimistö ja peliohjain",
-    "plexDetailsScreenSubtitle": "Painikkeet, tiedot, osiot ja suositukset",
-    "plexNavigationSubtitle": "Sivupalkin kohteet ja automaattinen valinta",
-    "plexHomeScreenSubtitle": "Rivit, niiden järjestys ja Jatka katselua",
+    "sunfinPersonalizationSubtitle": "Sivupalkki, aloitusnäkymän rivit, kirjastot, tietosivut ja näytönsäästäjä",
+    "sunfinGeneralStyleSubtitle": "Näppäimistö ja peliohjain",
+    "sunfinDetailsScreenSubtitle": "Painikkeet, tiedot, osiot ja suositukset",
+    "sunfinNavigationSubtitle": "Sivupalkin kohteet ja automaattinen valinta",
+    "sunfinHomeScreenSubtitle": "Rivit, niiden järjestys ja Jatka katselua",
     "libraryNicknames": "Kirjastojen lempinimet",
-    "libraryNicknamesSubtitle": "Omat nimesi kirjastoille, näkyvät vain Plexfinissä",
+    "libraryNicknamesSubtitle": "Omat nimesi kirjastoille, näkyvät vain Sunfinissä",
     "libraryNicknameServerName": "Palvelimella: {name}",
     "libraryNicknameHint": "Jätä tyhjäksi käyttääksesi palvelimen nimeä",
     "libraryNicknameNone": "Ei lempinimeä",
@@ -6535,16 +6535,16 @@
     "settingsTransferImport": "Tuo asetukset",
     "settingsTransferFrom": "Laitteesta {device}, {date}",
     "settingsTransferNothing": "Mitään ei ole vielä viety",
-    "settingsTransferImportConfirm": "Korvataanko tämän laitteen asetukset näillä? {source}\n\nPlexfin sulkeutuu sen jälkeen. Avaa se uudelleen käyttääksesi niitä.",
+    "settingsTransferImportConfirm": "Korvataanko tämän laitteen asetukset näillä? {source}\n\nSunfin sulkeutuu sen jälkeen. Avaa se uudelleen käyttääksesi niitä.",
     "settingsTransferImportAction": "Tuo ja sulje",
     "settingsTransferFailed": "Jellyfin-tiliin ei saatu yhteyttä",
     "settingsTransferNote": "Kirjautuminen, ikkuna ja laitteisto pysyvät laitekohtaisina. Kirjaudu ensin sisään toisella laitteella ja tuo sitten.",
     "settingsReset": "Palauta kaikki asetukset",
     "settingsResetSubtitle": "Palauta tämän laitteen asetukset oletuksiin",
-    "settingsResetConfirm": "Palautetaanko jokainen tämän laitteen asetus oletukseensa? Pysyt kirjautuneena, ja Jellyfin-tilillesi viedyt asetukset säilyvät.\n\nPlexfin sulkeutuu sen jälkeen. Jatka avaamalla se uudelleen.",
+    "settingsResetConfirm": "Palautetaanko jokainen tämän laitteen asetus oletukseensa? Pysyt kirjautuneena, ja Jellyfin-tilillesi viedyt asetukset säilyvät.\n\nSunfin sulkeutuu sen jälkeen. Jatka avaamalla se uudelleen.",
     "adminShowButton": "Näytä hallintapainike",
     "adminShowButtonSubtitle": "Lisää valikkoon painikkeen, joka avaa palvelimen hallinnan",
-    "plexDirectedBy": "Ohjaus: {names}",
+    "sunfinDirectedBy": "Ohjaus: {names}",
     "settingsDynamicContent": "Dynaaminen sisältö",
     "settingsDynamicContentSubtitle": "Mediapalkki ja visuaaliset peittokuvat",
     "settingsPlaybackSyncplay": "Toisto ja SyncPlay",
@@ -6568,7 +6568,7 @@
     "settingsShowGenresButtonInNavigation": "Näytä genre-painike navigointipalkissa",
     "settingsShowFavoritesButtonInNavigation": "Näytä suosikit-painike navigointipalkissa",
     "settingsShowLibrariesButtonInNavigation": "Näytä kirjastot-painike navigointipalkissa",
-    "settingsLibraryVisibilitySubtitle": "Vaihda etusivun näkyvyys kirjastoittain. Käynnistä Plexfin uudelleen, jotta muutokset tulevat voimaan.",
+    "settingsLibraryVisibilitySubtitle": "Vaihda etusivun näkyvyys kirjastoittain. Käynnistä Sunfin uudelleen, jotta muutokset tulevat voimaan.",
     "settingsMediaBarAndLocalPreviews": "Mediapalkki ja paikalliset esikatselut",
     "settingsVisualOverlays": "Visuaaliset peittokuvat",
     "settingsSeasonalSurprise": "Kauden yllätys",
@@ -6587,14 +6587,14 @@
     "settingsJoinDiscord": "Liity Discordiin",
     "settingsJoinDiscordSubtitle": "Keskustele yhteisön kanssa",
     "settingsJoinTheDiscord": "Liity Discordiin",
-    "settingsSupportMoonfin": "Tue Plexfin:ä",
+    "settingsSupportMoonfin": "Tue Sunfin:ä",
     "settingsLegal": "OIKEUDELLISET JUTUT",
     "settingsLicenses": "Lisenssit",
     "settingsOpenSourceLicenseNotices": "Avoimen lähdekoodin lisenssi-ilmoitukset",
     "settingsPrivacyPolicy": "Tietosuojakäytäntö",
-    "settingsPrivacyPolicySubtitle": "Kuinka Plexfin käsittelee tietojasi",
+    "settingsPrivacyPolicySubtitle": "Kuinka Sunfin käsittelee tietojasi",
     "settingsCheckForUpdates": "Tarkista päivitykset",
-    "settingsCheckForUpdatesSubtitle": "Tarkista viimeisin Plexfin-julkaisu",
+    "settingsCheckForUpdatesSubtitle": "Tarkista viimeisin Sunfin-julkaisu",
     "settingsPoweredByFlutter": "Toteutettu Flutter-alustalla",
     "settingsLicenseNoticesCount": "{count, plural, one {# lisenssi-ilmoitus} other {# lisenssi-ilmoitusta}}",
     "@settingsLicenseNoticesCount": {
@@ -7127,12 +7127,12 @@
     "preferSdhSubtitles": "Suosi SDH-tekstitystä",
     "preferSdhSubtitlesSubtitle": "Priorisoi SDH/CC-tekstitysraidat, kun valitset automaattisen valinnan.",
     "webDiagnostics": "Verkkodiagnostiikka",
-    "webDiagnosticsTitle": "Plexfin Verkkodiagnostiikka",
+    "webDiagnosticsTitle": "Sunfin Verkkodiagnostiikka",
     "webDiagnosticsIntro": "Tämän sivun avulla voit diagnosoida selaimen yhteysongelmia (CORS, sekasisältö ja etsintäasetukset).",
     "webDiagnosticsDetectedMixedContentFailure": "Havaittu sekasisällön virhe",
     "webDiagnosticsDetectedCorsPreflightFailure": "Havaittu CORS/Preflight Failure",
-    "webDiagnosticsMixedContentFailureBody": "Plexfin havaitsi HTTPS-sivun, joka yritti kutsua HTTP-palvelimen URL-osoitetta. Selaimet estävät tämän pyynnön ennen kuin se saavuttaa palvelimesi.",
-    "webDiagnosticsCorsFailureBody": "Plexfin havaitsi selaintason pyyntövirheen, joka johtuu yleensä puuttuvista CORS- tai esitarkastusotsikoista mediapalvelimelta.",
+    "webDiagnosticsMixedContentFailureBody": "Sunfin havaitsi HTTPS-sivun, joka yritti kutsua HTTP-palvelimen URL-osoitetta. Selaimet estävät tämän pyynnön ennen kuin se saavuttaa palvelimesi.",
+    "webDiagnosticsCorsFailureBody": "Sunfin havaitsi selaintason pyyntövirheen, joka johtuu yleensä puuttuvista CORS- tai esitarkastusotsikoista mediapalvelimelta.",
     "webDiagnosticsTargetUrl": "Kohde-URL-osoite: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7162,7 +7162,7 @@
     "notConfigured": "ei ole määritetty",
     "webDiagnosticsMixedContent": "Sekoitettu sisältö",
     "webDiagnosticsMixedContentDetected": "Tämä sivu ladataan HTTPS:n kautta, mutta yksi tai useampi määritetty URL-osoite on HTTP. Selaimet estävät HTTPS-sivuja kutsumasta HTTP API:ita.",
-    "webDiagnosticsMixedContentFix": "Korjaus: palvele mediapalvelinta tai välityspalvelinta HTTPS:n kautta tai lataa Plexfin HTTP:n kautta vain luotetuissa paikallisverkoissa.",
+    "webDiagnosticsMixedContentFix": "Korjaus: palvele mediapalvelinta tai välityspalvelinta HTTPS:n kautta tai lataa Sunfin HTTP:n kautta vain luotetuissa paikallisverkoissa.",
     "webDiagnosticsNoMixedContentDetected": "Nykyisistä ajonaikaisista asetuksista ei havaittu ilmeisiä sekasisällön määrityksiä.",
     "webDiagnosticsCorsChecklist": "CORS-tarkistuslista",
     "webDiagnosticsCorsChecklistItem1": "• Salli selaimen alkuperä kohdassa Access-Control-Allow-Origin.",
@@ -7359,7 +7359,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "Classic on alkuperäinen, keskitetyn Plexfin-asettelun versio. Modern on responsiivinen, elokuvamainen asettelu. Spotlight on hero-first-asettelu, jossa on ponnahdusikkunoina avautuvia sisältökortteja. Nouveau on koko näytön asettelu, jossa osiot on pinottu sivun alaspäin. Minimalist koostuu kuvamateriaalista, yhdestä toistopainikkeesta ja jaksoista.",
+    "detailScreenStyleSubtitle": "Classic on alkuperäinen, keskitetyn Sunfin-asettelun versio. Modern on responsiivinen, elokuvamainen asettelu. Spotlight on hero-first-asettelu, jossa on ponnahdusikkunoina avautuvia sisältökortteja. Nouveau on koko näytön asettelu, jossa osiot on pinottu sivun alaspäin. Minimalist koostuu kuvamateriaalista, yhdestä toistopainikkeesta ja jaksoista.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7391,13 +7391,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "Käytä Plexfin Recommends -sovelluksen paikalliskirjastoalgoritmia, Jellyfin Recommends -palvelinmoottoria tai TMDb:n verkkopalvelun samankaltaisuusmittareita. Huomautus: Verkkosuositukset edellyttävät Seerr-integraatiota.",
+    "recommendationSystemSubtitle": "Käytä Sunfin Recommends -sovelluksen paikalliskirjastoalgoritmia, Jellyfin Recommends -palvelinmoottoria tai TMDb:n verkkopalvelun samankaltaisuusmittareita. Huomautus: Verkkosuositukset edellyttävät Seerr-integraatiota.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Plexfin Suositukset",
+    "recommendationSystemMoonfin": "Sunfin Suositukset",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Plexfin Recommends"
+        "description": "Recommendation system option: Sunfin Recommends"
     },
     "recommendationSystemTmdb": "TMDb Samankaltaisuus",
     "@recommendationSystemTmdb": {
@@ -7407,7 +7407,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "Rajoita Plexfin suosittelee ehdotuksia kohdemedian ikärajan mukaan",
+    "recommendationsApplyParentalRatingCapSubtitle": "Rajoita Sunfin suosittelee ehdotuksia kohdemedian ikärajan mukaan",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7455,7 +7455,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "Mukautetut teemat muuttavat Plexfinin ulkoasua kauttaaltaan. Valitse tyyliisi sopiva vaihtoehto.",
+    "customThemeSubtitle": "Mukautetut teemat muuttavat Sunfinin ulkoasua kauttaaltaan. Valitse tyyliisi sopiva vaihtoehto.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7628,7 +7628,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "Kirjaudu Plexfiniin puhelimellasi",
+    "carSignInPrompt": "Kirjaudu Sunfiniin puhelimellasi",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8965,7 +8965,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller on Flutterin moderni GPU-renderöijä, joka tuo sulavammat animaatiot ja vähemmän nykimistä. Joissakin TV-bokseissa ja vanhemmissa GPU:issa se voi aiheuttaa häiriöitä tai mustan kuvan; valitse silloin Ei käytössä. Automaattinen valitsee laitteellesi parhaan oletuksen. Ota muutos käyttöön käynnistämällä Plexfin uudelleen.",
+    "impellerRenderingSubtitle": "Impeller on Flutterin moderni GPU-renderöijä, joka tuo sulavammat animaatiot ja vähemmän nykimistä. Joissakin TV-bokseissa ja vanhemmissa GPU:issa se voi aiheuttaa häiriöitä tai mustan kuvan; valitse silloin Ei käytössä. Automaattinen valitsee laitteellesi parhaan oletuksen. Ota muutos käyttöön käynnistämällä Sunfin uudelleen.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8976,7 +8976,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "Plexfin on käynnistettävä uudelleen renderöintimoottorin vaihtamiseksi. Sulje sovellus nyt ja avaa se uudelleen, niin muutos tulee voimaan.",
+    "impellerRestartMessage": "Sunfin on käynnistettävä uudelleen renderöintimoottorin vaihtamiseksi. Sulje sovellus nyt ja avaa se uudelleen, niin muutos tulee voimaan.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },
@@ -9209,7 +9209,7 @@
     "@sdCard": {
         "description": "Download location option for a removable storage volume"
     },
-    "downloadLocationLimitedByAndroid": "Android sallii Plexfinin kirjoittaa vain niihin kansioihin, jotka se omistaa, eikä tässä laitteessa ole irrotettavaa tallennustilaa. Ota yllä oleva ”Tallenna Lataukset-kansioon” -vaihtoehto käyttöön, jotta lataukset tallennetaan paikkaan, johon muut sovellukset pääsevät käsiksi.",
+    "downloadLocationLimitedByAndroid": "Android sallii Sunfinin kirjoittaa vain niihin kansioihin, jotka se omistaa, eikä tässä laitteessa ole irrotettavaa tallennustilaa. Ota yllä oleva ”Tallenna Lataukset-kansioon” -vaihtoehto käyttöön, jotta lataukset tallennetaan paikkaan, johon muut sovellukset pääsevät käsiksi.",
     "@downloadLocationLimitedByAndroid": {
         "description": "Note shown when the only download location Android allows is the default one"
     },
@@ -9455,7 +9455,7 @@
     "@interfaceLayout": {
         "description": "Setting to override which UI layout the app uses"
     },
-    "interfaceLayoutSubtitle": "Ohita havaittu asettelu, jos laitteen tiedot on luettu virheellisesti. Käynnistä Plexfin uudelleen, jotta muutokset astuvat voimaan.",
+    "interfaceLayoutSubtitle": "Ohita havaittu asettelu, jos laitteen tiedot on luettu virheellisesti. Käynnistä Sunfin uudelleen, jotta muutokset astuvat voimaan.",
     "@interfaceLayoutSubtitle": {
         "description": "Subtitle for the interface layout setting"
     },
@@ -10315,7 +10315,7 @@
     "@loadingAnimation": {
         "description": "Setting title for custom loading animation"
     },
-    "loadingAnimationDescription": "Mukauta Plexfin sovelluksessa käytettyjä latausanimaatioita",
+    "loadingAnimationDescription": "Mukauta Sunfin sovelluksessa käytettyjä latausanimaatioita",
     "@loadingAnimationDescription": {
         "description": "Description for loading animation customization settings"
     },
@@ -10327,9 +10327,9 @@
     "@loadingAnimationImage": {
         "description": "Title for loading animation image selection"
     },
-    "loadingAnimationImageMoonfinLogo": "Plexfin Logo",
+    "loadingAnimationImageMoonfinLogo": "Sunfin Logo",
     "@loadingAnimationImageMoonfinLogo": {
-        "description": "Loading animation image option: Plexfin Logo"
+        "description": "Loading animation image option: Sunfin Logo"
     },
     "loadingAnimationImageSpinner": "Pyörivä",
     "@loadingAnimationImageSpinner": {
@@ -10343,9 +10343,9 @@
     "@loadingAnimationImageMoonPhases": {
         "description": "Loading animation image option: Moon Phases"
     },
-    "loadingAnimationImageMoonfinPhases": "Plexfin Sykli",
+    "loadingAnimationImageMoonfinPhases": "Sunfin Sykli",
     "@loadingAnimationImageMoonfinPhases": {
-        "description": "Loading animation image option: Plexfin Phases in brand gradient"
+        "description": "Loading animation image option: Sunfin Phases in brand gradient"
     },
     "loadingAnimationImageNeonfinPhases": "Neonfin Sykli",
     "@loadingAnimationImageNeonfinPhases": {
@@ -10463,9 +10463,9 @@
     "@screensaverBackdropBlack": {
         "description": "Screensaver backdrop: Black"
     },
-    "screensaverBackdropMoonfin": "Plexfin",
+    "screensaverBackdropMoonfin": "Sunfin",
     "@screensaverBackdropMoonfin": {
-        "description": "Screensaver backdrop: Plexfin"
+        "description": "Screensaver backdrop: Sunfin"
     },
     "screensaverBackdropCalm": "Rauhallinen",
     "@screensaverBackdropCalm": {
@@ -10483,9 +10483,9 @@
     "@screensaverAdditionalComponent": {
         "description": "Setting for screensaver additional component"
     },
-    "screensaverComponentMoonfinLogo": "Plexfin Logo",
+    "screensaverComponentMoonfinLogo": "Sunfin Logo",
     "@screensaverComponentMoonfinLogo": {
-        "description": "Screensaver component: Plexfin Logo"
+        "description": "Screensaver component: Sunfin Logo"
     },
     "screensaverComponentRunner": "Juokseva",
     "@screensaverComponentRunner": {
@@ -10662,7 +10662,7 @@
             }
         }
     },
-    "autoDownloadTranscodedForegroundNote": "Transkoodatut versiot ladataan vain silloin, kun Plexfin on auki. Alkuperäinen versio ladataan myös taustalla.",
+    "autoDownloadTranscodedForegroundNote": "Transkoodatut versiot ladataan vain silloin, kun Sunfin on auki. Alkuperäinen versio ladataan myös taustalla.",
     "@autoDownloadTranscodedForegroundNote": {
         "description": "Shown under transcoded options when choosing the quality of an auto-download subscription"
     },
@@ -10670,7 +10670,7 @@
     "@autoDownloadTranscodedRunningNote": {
         "description": "Shown under a running transcoded download that a subscription queued"
     },
-    "autoDownloadForegroundOnly": "Lataaminen on mahdollista vain, kun Plexfin on auki",
+    "autoDownloadForegroundOnly": "Lataaminen on mahdollista vain, kun Sunfin on auki",
     "@autoDownloadForegroundOnly": {
         "description": "Short note next to a followed series in a transcoded quality"
     },
@@ -10744,15 +10744,15 @@
     "@autoDownloadBackgroundRefresh": {
         "description": "Setting that lets the system wake the app to check for new episodes"
     },
-    "autoDownloadBackgroundRefreshSubtitle": "Salli järjestelmän tarkistaa säännöllisesti uusien jaksojen saatavuuden, vaikka Plexfin-sovellus olisi suljettuna",
+    "autoDownloadBackgroundRefreshSubtitle": "Salli järjestelmän tarkistaa säännöllisesti uusien jaksojen saatavuuden, vaikka Sunfin-sovellus olisi suljettuna",
     "@autoDownloadBackgroundRefreshSubtitle": {
         "description": "Explains the background refresh setting"
     },
-    "autoDownloadBackgroundRefreshDenied": "Sovelluksen taustapäivitys on poistettu käytöstä Plexfin-sovelluksessa. Ota se käyttöön iOS:n Asetuksissa.",
+    "autoDownloadBackgroundRefreshDenied": "Sovelluksen taustapäivitys on poistettu käytöstä Sunfin-sovelluksessa. Ota se käyttöön iOS:n Asetuksissa.",
     "@autoDownloadBackgroundRefreshDenied": {
         "description": "Shown when iOS forbids background refresh for the app"
     },
-    "autoDownloadBackgroundRestrictedAndroid": "Plexfinin taustakäyttö on rajoitettu Androidin asetuksissa.",
+    "autoDownloadBackgroundRestrictedAndroid": "Sunfinin taustakäyttö on rajoitettu Androidin asetuksissa.",
     "@autoDownloadBackgroundRestrictedAndroid": {
         "description": "Shown when Android restricts the app from running in the background"
     },
@@ -11251,7 +11251,7 @@
     "@shortcutToggleFullscreen": {
         "description": "F11 and Alt+Enter anywhere, F in the player"
     },
-    "shortcutQuit": "Poistu Plexfinistä",
+    "shortcutQuit": "Poistu Sunfinistä",
     "@shortcutQuit": {
         "description": "What Ctrl+Q does on desktop"
     },

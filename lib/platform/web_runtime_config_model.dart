@@ -22,7 +22,7 @@ class WebRuntimeConfig {
     defaultServerUrl: null,
     discoveryProxyUrl: null,
     enableWebRtcScan: true,
-    brandingName: 'Plexfin',
+    brandingName: 'Sunfin',
     pluginMode: false,
     forcedServerUrl: null,
   );

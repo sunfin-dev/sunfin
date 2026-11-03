@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Plexfin loading mark (fin play), rendered by branding/render.ps1 -->
+<!-- Sunfin loading mark (fin play), rendered by branding/render.ps1 -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <linearGradient id="plexfinGold" gradientUnits="userSpaceOnUse" x1="20" y1="20" x2="73" y2="80">
+    <linearGradient id="sunfinGold" gradientUnits="userSpaceOnUse" x1="20" y1="20" x2="73" y2="80">
       <stop offset="0" stop-color="#F4B93A"/>
       <stop offset="1" stop-color="#D9620F"/>
     </linearGradient>
   </defs>
-  <path fill="url(#plexfinGold)" d="M28.5 22 C47.5 29 63.5 39 71.5 50 C63.5 61 47.5 71 28.5 78 C35.5 61 35.5 39 28.5 22 Z"/>
+  <path fill="url(#sunfinGold)" d="M28.5 22 C47.5 29 63.5 39 71.5 50 C63.5 61 47.5 71 28.5 78 C35.5 61 35.5 39 28.5 22 Z"/>
 </svg>

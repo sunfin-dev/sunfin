@@ -1,6 +1,6 @@
 {
     "@@locale": "lv",
-    "appTitle": "Plexfin",
+    "appTitle": "Sunfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Plexfin versija {version}",
+    "appVersionFooter": "Sunfin versija {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Plexfin nevarēja piekļūt jūsu sistēmas atslēgu piekariņam. Pieteikšanos var turpināt, taču droša marķiera krātuve var nebūt pieejama, kamēr atslēgu piekariņš nav atbloķēts.",
+    "secureStorageUnavailableMessage": "Sunfin nevarēja piekļūt jūsu sistēmas atslēgu piekariņam. Pieteikšanos var turpināt, taču droša marķiera krātuve var nebūt pieejama, kamēr atslēgu piekariņš nav atbloķēts.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -168,17 +168,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "Pārslēdzieties starp Plexfin un Neon Pulse, nerestartējot lietotni",
+    "settingsAppearanceThemeSubtitle": "Pārslēdzieties starp Sunfin un Neon Pulse, nerestartējot lietotni",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Plexfin",
+    "themeMoonfin": "Sunfin",
     "@themeMoonfin": {
-        "description": "Display name for the Plexfin theme"
+        "description": "Display name for the Sunfin theme"
     },
-    "themeMoonfinSubtitle": "Pašreizējais Plexfin izskats, ko jūs visi esat iemīlējuši",
+    "themeMoonfinSubtitle": "Pašreizējais Sunfin izskats, ko jūs visi esat iemīlējuši",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Plexfin theme"
+        "description": "Preview description for the Sunfin theme"
     },
     "themeNeonPulse": "Neona pulss",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Vai iziet no Plexfin?",
+    "exitApp": "Vai iziet no Sunfin?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "Nav iestatīts. Plexfin izmēģinās noklusējuma mpv.conf lietotņu/datu mapēs.",
+    "notSetMpvConf": "Nav iestatīts. Sunfin izmēģinās noklusējuma mpv.conf lietotņu/datu mapēs.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "Pārslēgt mājas lapas redzamību katrai bibliotēkai. Restartējiet Plexfin, lai izmaiņas stātos spēkā.",
+    "libraryVisibilityDescription": "Pārslēgt mājas lapas redzamību katrai bibliotēkai. Restartējiet Sunfin, lai izmaiņas stātos spēkā.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3561,9 +3561,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Plexfin",
+    "mediaBarModeMoonfin": "Sunfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Plexfin"
+        "description": "Media bar style option: Sunfin"
     },
     "mediaBarModeMakd": "MakD",
     "@mediaBarModeMakd": {
@@ -4121,8 +4121,8 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
-    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
-    "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
+    "aboutBasedOnMoonfin": "Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
+    "sourceCodeUrl": "https://github.com/sunfin-dev/sunfin",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
     },
@@ -4294,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Spēlē Plexfin",
+    "playInMoonfin": "Spēlē Sunfin",
     "@playInMoonfin": {
-        "description": "Button to play available media in Plexfin"
+        "description": "Button to play available media in Sunfin"
     },
     "requestedByName": "Pieprasīja {name}",
     "@requestedByName": {
@@ -4348,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "Vienums nav atrasts jūsu Plexfin bibliotēkā",
+    "itemNotFoundInLibrary": "Vienums nav atrasts jūsu Sunfin bibliotēkā",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4652,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "Notiek servera atsāknēšana",
-    "adminServerRebootMessage": "Notiek servera atsāknēšana, lūdzu, restartējiet Plexfin",
+    "adminServerRebootMessage": "Notiek servera atsāknēšana, lūdzu, restartējiet Sunfin",
     "adminActiveSessions": "Aktīvās sesijas",
     "adminSessionsLoadFailed": "Neizdevās ielādēt sesijas",
     "adminNoActiveSessions": "Nav aktīvu sesiju",
@@ -6517,13 +6517,13 @@
     "settingsAccountSecuritySubtitle": "Autentifikācija, PIN kods un vecāku kontrole",
     "settingsPersonalization": "Personalizēšana",
     "settingsPersonalizationSubtitle": "Motīvs, navigācija, sākuma rindas un bibliotēkas redzamība",
-    "plexPersonalizationSubtitle": "Sānjosla, sākuma ekrāna rindas, bibliotēkas, detaļu lapas un ekrānsaudzētājs",
-    "plexGeneralStyleSubtitle": "Tastatūra un spēļu kontrolieris",
-    "plexDetailsScreenSubtitle": "Pogas, informācija, sadaļas un ieteikumi",
-    "plexNavigationSubtitle": "Sānjoslas vienumi un automātiska atlase",
-    "plexHomeScreenSubtitle": "Rindas, to secība un Turpināt skatīties",
+    "sunfinPersonalizationSubtitle": "Sānjosla, sākuma ekrāna rindas, bibliotēkas, detaļu lapas un ekrānsaudzētājs",
+    "sunfinGeneralStyleSubtitle": "Tastatūra un spēļu kontrolieris",
+    "sunfinDetailsScreenSubtitle": "Pogas, informācija, sadaļas un ieteikumi",
+    "sunfinNavigationSubtitle": "Sānjoslas vienumi un automātiska atlase",
+    "sunfinHomeScreenSubtitle": "Rindas, to secība un Turpināt skatīties",
     "libraryNicknames": "Bibliotēku iesaukas",
-    "libraryNicknamesSubtitle": "Jūsu pašu nosaukumi bibliotēkām, redzami tikai Plexfin",
+    "libraryNicknamesSubtitle": "Jūsu pašu nosaukumi bibliotēkām, redzami tikai Sunfin",
     "libraryNicknameServerName": "Serverī: {name}",
     "libraryNicknameHint": "Atstājiet tukšu, lai izmantotu servera nosaukumu",
     "libraryNicknameNone": "Nav iesaukas",
@@ -6536,16 +6536,16 @@
     "settingsTransferImport": "Importēt iestatījumus",
     "settingsTransferFrom": "No {device}, {date}",
     "settingsTransferNothing": "Vēl nekas nav eksportēts",
-    "settingsTransferImportConfirm": "Aizstāt šīs ierīces iestatījumus ar šiem? {source}\n\nPēc tam Plexfin aizvērsies. Atveriet to vēlreiz, lai tos izmantotu.",
+    "settingsTransferImportConfirm": "Aizstāt šīs ierīces iestatījumus ar šiem? {source}\n\nPēc tam Sunfin aizvērsies. Atveriet to vēlreiz, lai tos izmantotu.",
     "settingsTransferImportAction": "Importēt un aizvērt",
     "settingsTransferFailed": "Neizdevās sasniegt jūsu Jellyfin kontu",
     "settingsTransferNote": "Pieteikšanās, logs un aparatūra paliek katrā ierīcē. Vispirms piesakieties otrā ierīcē, tad importējiet.",
     "settingsReset": "Atiestatīt visus iestatījumus",
     "settingsResetSubtitle": "Atjaunot šīs ierīces iestatījumiem noklusējuma vērtības",
-    "settingsResetConfirm": "Vai atjaunot katram šīs ierīces iestatījumam noklusējuma vērtību? Jūs paliksiet pierakstījies, un jūsu Jellyfin kontā eksportētie iestatījumi tiks saglabāti.\n\nPēc tam Plexfin aizvērsies. Atveriet to vēlreiz, lai turpinātu.",
+    "settingsResetConfirm": "Vai atjaunot katram šīs ierīces iestatījumam noklusējuma vērtību? Jūs paliksiet pierakstījies, un jūsu Jellyfin kontā eksportētie iestatījumi tiks saglabāti.\n\nPēc tam Sunfin aizvērsies. Atveriet to vēlreiz, lai turpinātu.",
     "adminShowButton": "Rādīt administrēšanas pogu",
     "adminShowButtonSubtitle": "Pievieno izvēlnei pogu, kas atver servera administrēšanu",
-    "plexDirectedBy": "Režisors: {names}",
+    "sunfinDirectedBy": "Režisors: {names}",
     "settingsDynamicContent": "Dinamisks saturs",
     "settingsDynamicContentSubtitle": "Multivides josla un vizuālie pārklājumi",
     "settingsPlaybackSyncplay": "Atskaņošana un SyncPlay",
@@ -6569,7 +6569,7 @@
     "settingsShowGenresButtonInNavigation": "Rādīt žanru pogu navigācijas joslā",
     "settingsShowFavoritesButtonInNavigation": "Parādiet izlases pogu navigācijas joslā",
     "settingsShowLibrariesButtonInNavigation": "Parādiet bibliotēkas pogu navigācijas joslā",
-    "settingsLibraryVisibilitySubtitle": "Pārslēgt mājas lapas redzamību katrai bibliotēkai. Restartējiet Plexfin, lai izmaiņas stātos spēkā.",
+    "settingsLibraryVisibilitySubtitle": "Pārslēgt mājas lapas redzamību katrai bibliotēkai. Restartējiet Sunfin, lai izmaiņas stātos spēkā.",
     "settingsMediaBarAndLocalPreviews": "Multivides josla un vietējie priekšskatījumi",
     "settingsVisualOverlays": "Vizuālie pārklājumi",
     "settingsSeasonalSurprise": "Sezonas pārsteigums",
@@ -6588,14 +6588,14 @@
     "settingsJoinDiscord": "Pievienojieties Discord",
     "settingsJoinDiscordSubtitle": "Tērzējiet ar kopienu",
     "settingsJoinTheDiscord": "Pievienojieties Discord",
-    "settingsSupportMoonfin": "Atbalstiet Plexfin",
+    "settingsSupportMoonfin": "Atbalstiet Sunfin",
     "settingsLegal": "JURIDISKĀS",
     "settingsLicenses": "Licences",
     "settingsOpenSourceLicenseNotices": "Atvērtā koda licences paziņojumi",
     "settingsPrivacyPolicy": "Privātuma politika",
-    "settingsPrivacyPolicySubtitle": "Kā Plexfin apstrādā jūsu datus",
+    "settingsPrivacyPolicySubtitle": "Kā Sunfin apstrādā jūsu datus",
     "settingsCheckForUpdates": "Pārbaudiet atjauninājumus",
-    "settingsCheckForUpdatesSubtitle": "Pārbaudiet jaunāko Plexfin versiju",
+    "settingsCheckForUpdatesSubtitle": "Pārbaudiet jaunāko Sunfin versiju",
     "settingsPoweredByFlutter": "Darbojas ar Flutter",
     "settingsLicenseNoticesCount": "{count, plural, zero {# licenču paziņojumu} one {# licences paziņojums} other {# licences paziņojumi}}",
     "@settingsLicenseNoticesCount": {
@@ -7128,12 +7128,12 @@
     "preferSdhSubtitles": "Dodiet priekšroku SDH subtitriem",
     "preferSdhSubtitlesSubtitle": "Veicot automātisko atlasi, piešķiriet prioritāti SDH/CC subtitru celiņiem.",
     "webDiagnostics": "Web diagnostika",
-    "webDiagnosticsTitle": "Plexfin Tīmekļa diagnostika",
+    "webDiagnosticsTitle": "Sunfin Tīmekļa diagnostika",
     "webDiagnosticsIntro": "Izmantojiet šo lapu, lai diagnosticētu pārlūkprogrammas savienojamības problēmas (CORS, jaukts saturs un atklāšanas iestatījumi).",
     "webDiagnosticsDetectedMixedContentFailure": "Konstatēta jaukta satura kļūme",
     "webDiagnosticsDetectedCorsPreflightFailure": "Konstatēta CORS/pirmslidojuma kļūme",
-    "webDiagnosticsMixedContentFailureBody": "Plexfin atklāja HTTPS lapu, kas mēģina izsaukt HTTP servera URL. Pārlūkprogrammas bloķē šo pieprasījumu, pirms tas sasniedz jūsu serveri.",
-    "webDiagnosticsCorsFailureBody": "Plexfin atklāja pārlūkprogrammas līmeņa pieprasījuma kļūmi, ko parasti izraisa trūkstošas ​​CORS vai pirmspārbaudes galvenes multivides serverī.",
+    "webDiagnosticsMixedContentFailureBody": "Sunfin atklāja HTTPS lapu, kas mēģina izsaukt HTTP servera URL. Pārlūkprogrammas bloķē šo pieprasījumu, pirms tas sasniedz jūsu serveri.",
+    "webDiagnosticsCorsFailureBody": "Sunfin atklāja pārlūkprogrammas līmeņa pieprasījuma kļūmi, ko parasti izraisa trūkstošas ​​CORS vai pirmspārbaudes galvenes multivides serverī.",
     "webDiagnosticsTargetUrl": "Mērķa URL: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7163,7 +7163,7 @@
     "notConfigured": "nav konfigurēts",
     "webDiagnosticsMixedContent": "Jaukts saturs",
     "webDiagnosticsMixedContentDetected": "Šī lapa tiek ielādēta, izmantojot HTTPS, bet viens vai vairāki konfigurētie URL ir HTTP. Pārlūkprogrammas neļauj HTTPS lapām izsaukt HTTP API.",
-    "webDiagnosticsMixedContentFix": "Labojums: apkalpojiet multivides serveri vai starpniekservera galapunktu, izmantojot HTTPS, vai ielādējiet Plexfin, izmantojot HTTP, tikai uzticamos lokālos tīklos.",
+    "webDiagnosticsMixedContentFix": "Labojums: apkalpojiet multivides serveri vai starpniekservera galapunktu, izmantojot HTTPS, vai ielādējiet Sunfin, izmantojot HTTP, tikai uzticamos lokālos tīklos.",
     "webDiagnosticsNoMixedContentDetected": "Pašreizējos izpildlaika iestatījumos nav konstatēta acīmredzama jaukta satura konfigurācija.",
     "webDiagnosticsCorsChecklist": "CORS kontrolsaraksts",
     "webDiagnosticsCorsChecklistItem1": "• Atļaut pārlūkprogrammas izcelsmi sadaļā Access-Control-Allow-Origin.",
@@ -7360,7 +7360,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "Klasiskais ir oriģinālais centrētais Plexfin izkārtojums. Modernais ir adaptīvs kinematogrāfisks izkārtojums.",
+    "detailScreenStyleSubtitle": "Klasiskais ir oriģinālais centrētais Sunfin izkārtojums. Modernais ir adaptīvs kinematogrāfisks izkārtojums.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7392,13 +7392,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "Izmantojiet Plexfin Recommends vietējās bibliotēkas algoritmu vai tiešsaistes TMDB līdzības rādītājus. Piezīme: tiešsaistes ieteikumiem nepieciešama Seerr integrācija.",
+    "recommendationSystemSubtitle": "Izmantojiet Sunfin Recommends vietējās bibliotēkas algoritmu vai tiešsaistes TMDB līdzības rādītājus. Piezīme: tiešsaistes ieteikumiem nepieciešama Seerr integrācija.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Plexfin Recommends",
+    "recommendationSystemMoonfin": "Sunfin Recommends",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Plexfin Recommends"
+        "description": "Recommendation system option: Sunfin Recommends"
     },
     "recommendationSystemTmdb": "TMDb līdzība",
     "@recommendationSystemTmdb": {
@@ -7408,7 +7408,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "Ierobežot Plexfin Recommends ieteikumus atbilstoši izvēlētā satura vecuma ierobežojumam",
+    "recommendationsApplyParentalRatingCapSubtitle": "Ierobežot Sunfin Recommends ieteikumus atbilstoši izvēlētā satura vecuma ierobežojumam",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7456,7 +7456,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "Pielāgotas tēmas maina vizuālos elementus visā Plexfin lietotnē. Izvēlieties vienu no šīm iespējām atbilstoši savam stilam.",
+    "customThemeSubtitle": "Pielāgotas tēmas maina vizuālos elementus visā Sunfin lietotnē. Izvēlieties vienu no šīm iespējām atbilstoši savam stilam.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7629,7 +7629,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "Pierakstieties Plexfin savā tālrunī",
+    "carSignInPrompt": "Pierakstieties Sunfin savā tālrunī",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8970,7 +8970,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller ir Flutter modernais GPU renderētājs, kas nodrošina plūstošākas animācijas un mazāku raustīšanos. Dažās TV pierīcēs un vecākos GPU tas var radīt traucējumus vai melnu attēlu; tādā gadījumā izslēdziet to. “Automātiski” izvēlas jūsu ierīcei piemērotāko noklusējumu. Lai lietotu izmaiņas, restartējiet Plexfin.",
+    "impellerRenderingSubtitle": "Impeller ir Flutter modernais GPU renderētājs, kas nodrošina plūstošākas animācijas un mazāku raustīšanos. Dažās TV pierīcēs un vecākos GPU tas var radīt traucējumus vai melnu attēlu; tādā gadījumā izslēdziet to. “Automātiski” izvēlas jūsu ierīcei piemērotāko noklusējumu. Lai lietotu izmaiņas, restartējiet Sunfin.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8981,7 +8981,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "Lai mainītu renderēšanas dzinēju, Plexfin ir jārestartē. Aizveriet lietotni tagad un atveriet to no jauna.",
+    "impellerRestartMessage": "Lai mainītu renderēšanas dzinēju, Sunfin ir jārestartē. Aizveriet lietotni tagad un atveriet to no jauna.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },

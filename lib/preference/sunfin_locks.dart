@@ -5,8 +5,8 @@ import '../util/platform_detection.dart';
 import 'preference_constants.dart';
 import 'user_preferences.dart';
 
-/// Plexfin: the look is the product, so every setting that changes how the
-/// app looks is fixed to its Plex value (user, 2026-10-23). What the user
+/// Sunfin: the look is the product, so every setting that changes how the
+/// app looks is fixed to its Sunfin value (user, 2026-10-23). What the user
 /// sees stays theirs: which sidebar items, libraries, home rows and detail
 /// buttons show up.
 ///
@@ -14,10 +14,10 @@ import 'user_preferences.dart';
 /// stored, so an old choice can't bring another look back. The stored
 /// values themselves are left alone.
 ///
-/// Screens not reskinned yet are held at their closest match to Plex until
-/// they get their own Plex layout.
-abstract final class PlexLocks {
-  /// The Plex look exists on the TV layout only.
+/// Screens not reskinned yet are held at their closest match to Sunfin until
+/// they get their own Sunfin layout.
+abstract final class SunfinLocks {
+  /// The Sunfin look exists on the TV layout only.
   static bool get active => PlatformDetection.isTV;
 
   /// Per-row image types on the home screen, one preference per row.
@@ -28,16 +28,16 @@ abstract final class PlexLocks {
     void lock<T>(Preference<T> pref, [T? value]) =>
         values[pref.key] = value ?? pref.defaultValue;
 
-    // Navigation: the Plex rail.
+    // Navigation: the Sunfin rail.
     lock(UserPreferences.navbarPosition, NavbarPosition.left);
     lock(UserPreferences.bottomNavbarStyle);
     lock(UserPreferences.navbarColor);
     lock(UserPreferences.navbarOpacity);
     lock(UserPreferences.navbarAlwaysExpanded);
 
-    // Home: the Plex header and poster rows replace these. Classic rows are
-    // what the Plex rows are built on, and they keep the detail page's rows
-    // on posters too, as in Plex.
+    // Home: the Sunfin header and poster rows replace these. Classic rows are
+    // what the Sunfin rows are built on, and they keep the detail page's rows
+    // on posters too, as in the reference design.
     lock(UserPreferences.homeRowsStyle, HomeRowsStyle.v1);
     lock(UserPreferences.modernCardsOnMyMediaRow);
     lock(UserPreferences.posterSize);
@@ -64,10 +64,10 @@ abstract final class PlexLocks {
     lock(UserPreferences.pageTransitionSpeed);
     lock(UserPreferences.navigationAnimationSpeed);
     lock(UserPreferences.modernCardTransitionSpeed);
-    // Plex shows the time in the top right on every screen, 12-hour.
+    // The reference design shows the time in the top right on every screen, 12-hour.
     lock(UserPreferences.clockBehavior, ClockBehavior.always);
     lock(UserPreferences.use24HourClock, false);
-    // Plex: a check on watched items, a count on shows with unwatched ones.
+    // The reference design: a check on watched items, a count on shows with unwatched ones.
     lock(UserPreferences.watchedIndicatorBehavior, WatchedIndicatorBehavior.always);
 
     // Visual extras.
@@ -79,13 +79,13 @@ abstract final class PlexLocks {
     lock(UserPreferences.loadingAnimationSpeed);
     lock(UserPreferences.showLoadingAnimationText);
 
-    // Details: Nouveau is the closest to Plex's page (text left, art top
-    // right, sections stacked below) until the Plex details page exists.
+    // Details: Nouveau is the closest to the reference design's page (text left, art top
+    // right, sections stacked below) until the Sunfin details page exists.
     lock(UserPreferences.detailScreenStyle, DetailScreenStyle.nouveau);
     lock(UserPreferences.detailsBackgroundBlurAmount);
     lock(UserPreferences.personalRatingStyle, PersonalRatingStyle.stars);
 
-    // Libraries: Plex's grid has a plain tinted page, no details header and
+    // Libraries: The reference design's grid has a plain tinted page, no details header and
     // a short line under each poster.
     lock(UserPreferences.hideBackdropsInLibraries, true);
     lock(UserPreferences.showMediaDetailsOnLibraryPage, false);
@@ -94,7 +94,7 @@ abstract final class PlexLocks {
     return values;
   }();
 
-  /// Plexfin's own rules rather than its look, so they hold on every device,
+  /// Sunfin's own rules rather than its look, so they hold on every device,
   /// the phone and the PC included.
   static final Map<String, Object?> _everywhere = {
     // Settings move between devices only when the user says so, through
@@ -110,14 +110,14 @@ abstract final class PlexLocks {
   static bool _heldEverywhere(String key) =>
       !debugSyncAllowed && _everywhere.containsKey(key);
 
-  /// True when [key] is held at its Plex value.
+  /// True when [key] is held at its Sunfin value.
   static bool isLocked(String key) =>
       _heldEverywhere(key) ||
       (active &&
           (_values.containsKey(key) ||
               _lockedPrefixes.any((prefix) => key.startsWith(prefix))));
 
-  /// The Plex value for [pref]; only meaningful when [isLocked].
+  /// The Sunfin value for [pref]; only meaningful when [isLocked].
   static T valueOf<T>(Preference<T> pref) => _heldEverywhere(pref.key)
       ? _everywhere[pref.key] as T
       : _values.containsKey(pref.key)

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:moonfin/data/models/aggregated_item.dart';
-import 'package:moonfin/ui/plex/plex_home_header.dart';
+import 'package:moonfin/ui/sunfin/sunfin_home_header.dart';
 
 AggregatedItem _movie(String overview) => AggregatedItem(
   id: 'm1',
@@ -27,7 +27,7 @@ void main() {
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              PlexHomeHeader(
+              SunfinHomeHeader(
                 item: _movie(overview),
                 leftInset: 20,
                 showCast: false,

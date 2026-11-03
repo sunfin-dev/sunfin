@@ -2467,7 +2467,7 @@ class ItemDetailViewModel extends ChangeNotifier {
 
   bool _notifyScheduled = false;
 
-  /// Plexfin: at most one notification per frame. Opening a page starts some
+  /// Sunfin: at most one notification per frame. Opening a page starts some
   /// ten independent loads (ratings, seasons, next up, similar, extras...)
   /// and each used to rebuild the whole details screen as it landed, mostly
   /// during the opening animation. Notifications are now gathered and sent at

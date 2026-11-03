@@ -57,7 +57,7 @@ class LockedFocusRow<T> extends StatefulWidget {
   final bool autofocus;
   final Clip clipBehavior;
 
-  /// Plex style (fork): the row stays still while focus moves across the
+  /// Sunfin style (fork): the row stays still while focus moves across the
   /// visible cards and only scrolls to keep the focused card, plus half of
   /// the next, on screen. Off: the focused card is pinned to the leading edge.
   final bool scrollOnlyAtEdges;

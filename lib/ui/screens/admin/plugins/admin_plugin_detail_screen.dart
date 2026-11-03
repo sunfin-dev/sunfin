@@ -244,7 +244,7 @@ class _AdminPluginDetailScreenState
   }
 
   /// A plugin's settings page is the server's own web client, signed in by
-  /// its own session. Plexfin opens it in a web view of its own (sign in there
+  /// its own session. Sunfin opens it in a web view of its own (sign in there
   /// once), or in the browser where there is no web view.
   Future<void> _openHtmlSettings(PluginInfo plugin) async {
     final token = GetIt.instance<MediaServerClient>().accessToken;

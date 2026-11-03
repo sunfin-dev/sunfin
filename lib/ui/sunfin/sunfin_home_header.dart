@@ -3,13 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../../data/models/aggregated_item.dart';
-import 'plex_header_cast.dart';
-import 'plex_style.dart';
+import 'sunfin_header_cast.dart';
+import 'sunfin_style.dart';
 
-/// Plex home header: describes the focused item above the rows.
+/// Sunfin home header: describes the focused item above the rows.
 ///
 /// CONTRACT (do not change the constructor without the lead):
-/// - Painted inside a box of full screen width and height [PlexStyle.rowsTop],
+/// - Painted inside a box of full screen width and height [SunfinStyle.rowsTop],
 ///   positioned at the top-left of the home screen, above the backdrop.
 /// - [leftInset] is the x of the first poster's left edge; the text column
 ///   starts there.
@@ -21,21 +21,21 @@ import 'plex_style.dart';
 ///
 /// Uses only fields already on the item: a fetch per focus change would cost
 /// the Shield a request for every D-pad press.
-class PlexHomeHeader extends StatelessWidget {
+class SunfinHomeHeader extends StatelessWidget {
   final AggregatedItem? item;
   final double leftInset;
 
   /// The cast line under the summary; off where the page has its own cast row.
   final bool showCast;
 
-  /// Plex's rating line, under the genres on the details pages; home has
+  /// The reference design's rating line, under the genres on the details pages; home has
   /// none.
   final Widget? ratingLine;
 
   /// A grey line under the summary, like the movie page's "Directed by".
   final String? footer;
 
-  /// How tall the header may be before it is cut; [PlexStyle.rowsTop], where
+  /// How tall the header may be before it is cut; [SunfinStyle.rowsTop], where
   /// home's rows start, unless the page puts its own content lower.
   final double? height;
 
@@ -43,7 +43,7 @@ class PlexHomeHeader extends StatelessWidget {
   /// whose content follows the header rather than sitting at a fixed place.
   final bool grow;
 
-  const PlexHomeHeader({
+  const SunfinHomeHeader({
     super.key,
     required this.item,
     required this.leftInset,
@@ -54,10 +54,10 @@ class PlexHomeHeader extends StatelessWidget {
     this.grow = false,
   });
 
-  static const _fade = PlexMotion.fade;
-  static final _scale = PlexStyle.s(1);
+  static const _fade = SunfinMotion.fade;
+  static final _scale = SunfinStyle.s(1);
 
-  /// Plex lets the title run past the summary column (a long show name
+  /// The reference design lets the title run past the summary column (a long show name
   /// reaches about half the screen), so the column is this wide and every
   /// line but the title is held to [_textWidth]. 960-wide units.
   static const _titleWidth = 620.0;
@@ -86,9 +86,9 @@ class PlexHomeHeader extends StatelessWidget {
       // takes up as much room as its text is drawn over.
       return RepaintBoundary(
         child: ConstrainedBox(
-          constraints: BoxConstraints(minHeight: height ?? PlexStyle.rowsTop),
+          constraints: BoxConstraints(minHeight: height ?? SunfinStyle.rowsTop),
           child: Padding(
-            padding: EdgeInsets.only(left: leftInset, top: PlexStyle.headerTop),
+            padding: EdgeInsets.only(left: leftInset, top: SunfinStyle.headerTop),
             child: Align(
               alignment: Alignment.topLeft,
               child: SizedBox(
@@ -108,7 +108,7 @@ class PlexHomeHeader extends StatelessWidget {
     // together on every focus change, and neither should repaint the other.
     return RepaintBoundary(
       child: SizedBox(
-        height: height ?? PlexStyle.rowsTop,
+        height: height ?? SunfinStyle.rowsTop,
         // The header never pushes the rows down: whatever does not fit above
         // rowsTop is cut, and OverflowBox keeps the Column from reporting an
         // overflow while it is.
@@ -123,9 +123,9 @@ class PlexHomeHeader extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(
                 left: leftInset,
-                top: PlexStyle.headerTop,
+                top: SunfinStyle.headerTop,
               ),
-              // The text sizes below are Plex's 960-wide measurements; one
+              // The text sizes below are the reference design's 960-wide measurements; one
               // scale lands the whole column on Moonfin's TV canvas.
               child: Transform.scale(
                 scale: _scale,
@@ -140,7 +140,7 @@ class PlexHomeHeader extends StatelessWidget {
   }
 }
 
-/// The summary column width (960-wide units): Plex wraps the summary at
+/// The summary column width (960-wide units): the reference design wraps the summary at
 /// ~46% of the screen, while the title may run wider.
 const _textWidth = 400.0;
 
@@ -314,7 +314,7 @@ class _HeaderText extends StatelessWidget {
     return rating == null || rating.isEmpty ? null : rating;
   }
 
-  /// Plex's "2h 35m left" chip; only when the item is part way through.
+  /// The reference design's "2h 35m left" chip; only when the item is part way through.
   Widget? _resumePill() {
     final runtime = item.runtime;
     final position = item.playbackPosition;
@@ -338,7 +338,7 @@ class _HeaderText extends StatelessWidget {
               child: CircularProgressIndicator(
                 value: progress,
                 strokeWidth: 2,
-                color: PlexStyle.accent,
+                color: SunfinStyle.accent,
                 backgroundColor: Colors.white.withValues(alpha: 0.25),
               ),
             ),
@@ -392,13 +392,13 @@ class _CastLineState extends State<_CastLine> {
     super.initState();
     _cast = widget.fromItem;
     if (_cast.isNotEmpty) return;
-    final cached = PlexHeaderCast.cached(widget.item);
+    final cached = SunfinHeaderCast.cached(widget.item);
     if (cached != null) {
       _cast = cached.join(', ');
       return;
     }
     _timer = Timer(_settle, () async {
-      final names = await PlexHeaderCast.resolve(widget.item);
+      final names = await SunfinHeaderCast.resolve(widget.item);
       if (mounted && names.isNotEmpty) setState(() => _cast = names.join(', '));
     });
   }

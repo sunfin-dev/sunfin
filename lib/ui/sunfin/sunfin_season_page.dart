@@ -23,14 +23,14 @@ import '../screens/detail/nouveau/people/nouveau_people_section.dart';
 import '../widgets/focus/context_menu_sheet.dart';
 import '../widgets/image_source.dart';
 import '../widgets/navigation_layout.dart';
-import 'plex_backdrop.dart';
-import 'plex_clock.dart';
-import 'plex_detail_parts.dart';
-import 'plex_home_header.dart';
-import 'plex_rating_line.dart';
-import 'plex_style.dart';
+import 'sunfin_backdrop.dart';
+import 'sunfin_clock.dart';
+import 'sunfin_detail_parts.dart';
+import 'sunfin_home_header.dart';
+import 'sunfin_rating_line.dart';
+import 'sunfin_style.dart';
 
-/// Plex's season page, which is where Plex sends you for an episode too
+/// The reference design's season page, which is where the reference design sends you for an episode too
 /// (user, 2026-10-23; reference 14 and the user's South Park screenshot):
 ///
 /// - season tabs along the top, the season on screen underlined, scrolled
@@ -41,9 +41,9 @@ import 'plex_style.dart';
 ///   audio and subtitle on the right;
 /// - the page's other sections below, in the user's order.
 ///
-/// The art sits in the top right over a colour taken from it (PlexBackdrop),
+/// The art sits in the top right over a colour taken from it (SunfinBackdrop),
 /// which the rail takes too.
-class PlexSeasonPage extends StatefulWidget {
+class SunfinSeasonPage extends StatefulWidget {
   final ItemDetailViewModel viewModel;
   final UserPreferences prefs;
   final ValueListenable<String?> backdropUrl;
@@ -54,7 +54,7 @@ class PlexSeasonPage extends StatefulWidget {
   /// user last was on this page.
   final FocusNode? initialFocusNode;
 
-  const PlexSeasonPage({
+  const SunfinSeasonPage({
     super.key,
     required this.viewModel,
     required this.prefs,
@@ -72,39 +72,39 @@ class PlexSeasonPage extends StatefulWidget {
       item?.type == 'Series';
 
   @override
-  State<PlexSeasonPage> createState() => _PlexSeasonPageState();
+  State<SunfinSeasonPage> createState() => _SunfinSeasonPageState();
 }
 
 /// The episode a season opens on.
 @visibleForTesting
-AggregatedItem? plexNextToWatch(List<AggregatedItem> episodes) =>
-    _PlexSeasonPageState._nextToWatch(episodes);
+AggregatedItem? sunfinNextToWatch(List<AggregatedItem> episodes) =>
+    _SunfinSeasonPageState._nextToWatch(episodes);
 
 /// A media chip's text, e.g. "English (EAC3 5.1)".
 @visibleForTesting
-String plexStreamLabel(Map<String, dynamic> stream, {bool audio = false}) =>
-    PlexMediaChips.streamLabel(stream, audio: audio);
+String sunfinStreamLabel(Map<String, dynamic> stream, {bool audio = false}) =>
+    SunfinMediaChips.streamLabel(stream, audio: audio);
 
 enum _Region { tabs, row, buttons, sections }
 
-// Layout, in Plex's 960-wide units (reference 14, the season page).
-final _tabsTop = PlexStyle.s(20);
-final _tabHeight = PlexStyle.s(26);
-final _rowTop = PlexStyle.s(246);
-final _cardWidth = PlexStyle.s(170);
-final _cardHeight = PlexStyle.s(96);
-final _cardGap = PlexStyle.s(20);
+// Layout, in the reference design's 960-wide units (reference 14, the season page).
+final _tabsTop = SunfinStyle.s(20);
+final _tabHeight = SunfinStyle.s(26);
+final _rowTop = SunfinStyle.s(246);
+final _cardWidth = SunfinStyle.s(170);
+final _cardHeight = SunfinStyle.s(96);
+final _cardGap = SunfinStyle.s(20);
 const _focusScale = 1.094;
-final _buttonsTop = PlexStyle.s(362);
-final _buttonSize = PlexStyle.s(32);
-final _buttonGap = PlexStyle.s(12);
-final _rightInset = PlexStyle.s(40);
-final _foldHeight = PlexStyle.s(440);
+final _buttonsTop = SunfinStyle.s(362);
+final _buttonSize = SunfinStyle.s(32);
+final _buttonGap = SunfinStyle.s(12);
+final _rightInset = SunfinStyle.s(40);
+final _foldHeight = SunfinStyle.s(440);
 
 const _episodeFields = 'Overview,RunTimeTicks,UserData,MediaStreams,PremiereDate';
 const _move = Duration(milliseconds: 180);
 
-class _PlexSeasonPageState extends State<PlexSeasonPage> {
+class _SunfinSeasonPageState extends State<SunfinSeasonPage> {
   final _actionsKey = GlobalKey<DetailActionButtonsState>();
   final _scroll = ScrollController();
   final _rowScroll = ScrollController();
@@ -114,13 +114,13 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
   final _discoveryKey = GlobalKey<NouveauDiscoverySectionState>();
 
   late final FocusNode _entryNode =
-      widget.initialFocusNode ?? FocusNode(debugLabel: 'plexSeasonEntry');
+      widget.initialFocusNode ?? FocusNode(debugLabel: 'sunfinSeasonEntry');
   final _tabNodes = <String, FocusNode>{};
   final _cardNodes = <String, FocusNode>{};
   final _selectKeys = LongPressSelectKeyHandler();
   final _buttonNodes = List.generate(
     3,
-    (i) => FocusNode(debugLabel: 'plexSeasonButton$i'),
+    (i) => FocusNode(debugLabel: 'sunfinSeasonButton$i'),
   );
 
   List<AggregatedItem> _seasons = const [];
@@ -128,7 +128,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
 
   /// The season whose episodes are on screen, and so the one underlined.
   /// Only ever set together with its episodes, so the tab can't disagree with
-  /// the row (Plex gets this wrong when opening an episode).
+  /// the row (the reference design gets this wrong when opening an episode).
   String? _seasonId;
   String? _wantedSeasonId;
   /// The episode the header, chips and Watched check describe. A notifier
@@ -145,7 +145,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
   AggregatedItem? get _item => _vm.item;
   List<AggregatedItem> get _episodes =>
       _episodesBySeason[_seasonId] ?? const [];
-  double get _inset => PlexStyle.contentInset;
+  double get _inset => SunfinStyle.contentInset;
 
   MediaServerClient get _client {
     final serverId = _item?.serverId ?? '';
@@ -225,7 +225,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
       seasonId ??= _firstSeasonToWatch(seasons)?.id;
       setState(() => _seasons = seasons);
     } catch (e) {
-      debugPrint('[PlexSeasonPage] seasons for $seriesId: $e');
+      debugPrint('[SunfinSeasonPage] seasons for $seriesId: $e');
     }
     if (seasonId == null) return;
     await _showSeason(seasonId, focusEpisodeId: focusEpisodeId);
@@ -249,7 +249,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
       );
       return _mapItems(nextUp).firstOrNull;
     } catch (e) {
-      debugPrint('[PlexSeasonPage] episode up to for $seriesId: $e');
+      debugPrint('[SunfinSeasonPage] episode up to for $seriesId: $e');
       return null;
     }
   }
@@ -276,7 +276,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
         episodes = _mapItems(data);
         _episodesBySeason[seasonId] = episodes;
       } catch (e) {
-        debugPrint('[PlexSeasonPage] episodes of $seasonId: $e');
+        debugPrint('[SunfinSeasonPage] episodes of $seasonId: $e');
         return;
       }
     }
@@ -293,7 +293,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
       // A season opens with its focused episode at the start of the row, not
       // squeezed against the far edge with half cards beside the rail.
       _startRowAt(episodes!.indexOf(target));
-      // And its tab in view: Plex leaves a late season's tab off screen when
+      // And its tab in view: the reference design leaves a late season's tab off screen when
       // it opens an episode, which is the bug the user asked us not to copy.
       _revealTab(seasonId, animate: _initialFocusDone);
       if (!_initialFocusDone) {
@@ -316,7 +316,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
       );
       if (mounted) setState(() => _seasons = _mapItems(data));
     } catch (e) {
-      debugPrint('[PlexSeasonPage] seasons for $seriesId: $e');
+      debugPrint('[SunfinSeasonPage] seasons for $seriesId: $e');
     }
     _episodesBySeason.clear();
     await _refreshSeason();
@@ -343,7 +343,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
     ];
   }
 
-  /// Where Plex lands in a season: the one part way through, else the first
+  /// Where the reference design lands in a season: the one part way through, else the first
   /// one not watched, else the first.
   static AggregatedItem? _nextToWatch(List<AggregatedItem> episodes) {
     if (episodes.isEmpty) return null;
@@ -358,10 +358,10 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
   // --- Focus --------------------------------------------------------------
 
   FocusNode _tabNode(String id) =>
-      _tabNodes.putIfAbsent(id, () => FocusNode(debugLabel: 'plexTab $id'));
+      _tabNodes.putIfAbsent(id, () => FocusNode(debugLabel: 'sunfinTab $id'));
 
   FocusNode _cardNode(String id) =>
-      _cardNodes.putIfAbsent(id, () => FocusNode(debugLabel: 'plexEp $id'));
+      _cardNodes.putIfAbsent(id, () => FocusNode(debugLabel: 'sunfinEp $id'));
 
   void _restoreFocus() {
     switch (_region) {
@@ -410,7 +410,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
     final extent = _cardWidth + _cardGap;
     final itemLeft = index * extent;
     final viewport = position.viewportDimension;
-    // Scroll only as far as needed to show the card whole, as Plex does.
+    // Scroll only as far as needed to show the card whole, as the reference design does.
     var target = position.pixels;
     if (itemLeft < position.pixels) {
       target = itemLeft;
@@ -500,7 +500,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
     _region = _Region.tabs;
     _revealTop();
     _revealTab(seasonId, animate: true);
-    // Moving along the tabs shows each season, like Plex, but only once the
+    // Moving along the tabs shows each season, like the reference design, but only once the
     // remote rests, so racing past twenty seasons loads one.
     _seasonDebounce?.cancel();
     _seasonDebounce = Timer(const Duration(milliseconds: 300), () {
@@ -609,7 +609,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
     unawaited(
       actions
           .playItem(context, episode, resume: _inProgress(episode))
-          .catchError((Object e) => debugPrint('[PlexSeasonPage] play: $e')),
+          .catchError((Object e) => debugPrint('[SunfinSeasonPage] play: $e')),
     );
   }
 
@@ -620,7 +620,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
         isPlayed: !episode.isPlayed,
       );
     } catch (e) {
-      debugPrint('[PlexSeasonPage] watched ${episode.id}: $e');
+      debugPrint('[SunfinSeasonPage] watched ${episode.id}: $e');
     }
     await _refreshSeason();
   }
@@ -778,7 +778,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
         Positioned.fill(
           child: ValueListenableBuilder<String?>(
             valueListenable: widget.backdropUrl,
-            builder: (context, url, _) => PlexBackdrop(
+            builder: (context, url, _) => SunfinBackdrop(
               url: url != null && url.isNotEmpty ? url : null,
             ),
           ),
@@ -800,21 +800,21 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
                   Padding(
                     padding: EdgeInsets.fromLTRB(
                       _inset,
-                      PlexStyle.s(24),
+                      SunfinStyle.s(24),
                       _rightInset,
                       0,
                     ),
                     child: section.child,
                   ),
-                SizedBox(height: PlexStyle.s(48)),
+                SizedBox(height: SunfinStyle.s(48)),
               ],
             ),
           ),
         ),
         Positioned(
-          top: _tabsTop + PlexStyle.s(4),
-          right: PlexStyle.s(44),
-          child: const PlexClock(),
+          top: _tabsTop + SunfinStyle.s(4),
+          right: SunfinStyle.s(44),
+          child: const SunfinClock(),
         ),
         // Only there to play: its playback path queues the rest of the season
         // and handles prerolls and the external player, as on every page.
@@ -848,15 +848,15 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
           right: 0,
           child: ValueListenableBuilder<AggregatedItem?>(
             valueListenable: _focusedNotifier,
-            builder: (context, focused, _) => PlexHomeHeader(
+            builder: (context, focused, _) => SunfinHomeHeader(
               item: focused,
               leftInset: _inset,
-              // Down to the episode row, which Plex's rating line leaves room
+              // Down to the episode row, which the reference design's rating line leaves room
               // for (reference 14).
-              height: _rowTop - PlexStyle.s(8),
+              height: _rowTop - SunfinStyle.s(8),
               ratingLine: focused == null
                   ? null
-                  : PlexRatingLine.of(
+                  : SunfinRatingLine.of(
                       item: focused,
                       // The page's fetched ratings are the opened item's.
                       extraRatings: focused.id == _vm.item?.id
@@ -871,7 +871,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
           Positioned(
             top: _tabsTop,
             left: 0,
-            right: PlexStyle.s(120),
+            right: SunfinStyle.s(120),
             height: _tabHeight,
             child: _buildTabs(),
           ),
@@ -895,7 +895,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
             valueListenable: _focusedNotifier,
             builder: (context, focused, _) => focused == null
                 ? const SizedBox.shrink()
-                : PlexMediaChips(item: focused),
+                : SunfinMediaChips(item: focused),
           ),
         ),
       ],
@@ -907,7 +907,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
     // one can always be scrolled to, even before it was ever on screen.
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      padding: EdgeInsets.symmetric(horizontal: _inset - PlexStyle.s(8)),
+      padding: EdgeInsets.symmetric(horizontal: _inset - SunfinStyle.s(8)),
       child: Row(
         children: [
           for (final season in _seasons)
@@ -992,7 +992,7 @@ class _PlexSeasonPageState extends State<PlexSeasonPage> {
                 listenable: i == 1
                     ? Listenable.merge([_buttonNodes[i], _focusedNotifier])
                     : _buttonNodes[i],
-                builder: (context, _) => PlexRoundButton(
+                builder: (context, _) => SunfinRoundButton(
                   icon: icons[i],
                   filled: i == 1 && (_focused?.isPlayed ?? false),
                   focused: _buttonNodes[i].hasFocus,
@@ -1022,28 +1022,28 @@ class _SeasonTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final style = TextStyle(
       color: Colors.white.withValues(alpha: selected || focused ? 1 : 0.6),
-      fontSize: PlexStyle.s(12.5),
+      fontSize: SunfinStyle.s(12.5),
       fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
     );
     return AnimatedContainer(
       duration: const Duration(milliseconds: 120),
-      margin: EdgeInsets.symmetric(horizontal: PlexStyle.s(4)),
-      padding: EdgeInsets.symmetric(horizontal: PlexStyle.s(10)),
+      margin: EdgeInsets.symmetric(horizontal: SunfinStyle.s(4)),
+      padding: EdgeInsets.symmetric(horizontal: SunfinStyle.s(10)),
       decoration: BoxDecoration(
         color: focused ? Colors.white.withValues(alpha: 0.16) : null,
-        borderRadius: BorderRadius.circular(PlexStyle.s(4)),
+        borderRadius: BorderRadius.circular(SunfinStyle.s(4)),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(label, style: style, maxLines: 1),
-          SizedBox(height: PlexStyle.s(3)),
-          // Plex's gold underline under the season on screen.
+          SizedBox(height: SunfinStyle.s(3)),
+          // The reference design's gold underline under the season on screen.
           Container(
-            height: PlexStyle.s(2),
-            width: PlexStyle.s(24),
-            color: selected ? PlexStyle.accent : Colors.transparent,
+            height: SunfinStyle.s(2),
+            width: SunfinStyle.s(24),
+            color: selected ? SunfinStyle.accent : Colors.transparent,
           ),
         ],
       ),
@@ -1087,7 +1087,7 @@ class _EpisodeCard extends StatelessWidget {
             position > Duration.zero
         ? (position.inMilliseconds / runtime.inMilliseconds).clamp(0.0, 1.0)
         : null;
-    final radius = BorderRadius.circular(PlexStyle.posterRadius);
+    final radius = BorderRadius.circular(SunfinStyle.posterRadius);
 
     return AnimatedScale(
       scale: focused ? _focusScale : 1,
@@ -1101,7 +1101,7 @@ class _EpisodeCard extends StatelessWidget {
           color: Colors.black.withValues(alpha: 0.35),
           border: Border.all(
             color: focused ? Colors.white : Colors.transparent,
-            width: PlexStyle.focusBorderWidth,
+            width: SunfinStyle.focusBorderWidth,
           ),
           boxShadow: focused
               ? const [BoxShadow(color: Color(0x66000000), blurRadius: 12)]
@@ -1134,10 +1134,10 @@ class _EpisodeCard extends StatelessWidget {
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  height: PlexStyle.s(3),
+                  height: SunfinStyle.s(3),
                   child: LinearProgressIndicator(
                     value: progress,
-                    color: PlexStyle.accent,
+                    color: SunfinStyle.accent,
                     backgroundColor: Colors.black.withValues(alpha: 0.5),
                   ),
                 ),
@@ -1149,7 +1149,7 @@ class _EpisodeCard extends StatelessWidget {
   }
 }
 
-/// Plex's corner tag: "E3", with a check before it once watched.
+/// The reference design's corner tag: "E3", with a check before it once watched.
 class _EpisodeBadge extends StatelessWidget {
   final int number;
   final bool played;
@@ -1158,11 +1158,11 @@ class _EpisodeBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = PlexStyle.s(10);
+    final size = SunfinStyle.s(10);
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: PlexStyle.s(5),
-        vertical: PlexStyle.s(2),
+        horizontal: SunfinStyle.s(5),
+        vertical: SunfinStyle.s(2),
       ),
       color: Colors.black.withValues(alpha: 0.75),
       child: Row(
@@ -1170,7 +1170,7 @@ class _EpisodeBadge extends StatelessWidget {
         children: [
           if (played) ...[
             Icon(Icons.check, size: size * 1.2, color: Colors.white),
-            SizedBox(width: PlexStyle.s(3)),
+            SizedBox(width: SunfinStyle.s(3)),
           ],
           Text(
             'E$number',

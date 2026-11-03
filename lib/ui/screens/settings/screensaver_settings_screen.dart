@@ -235,7 +235,7 @@ class _ScreensaverSettingsScreenState extends State<ScreensaverSettingsScreen> {
     final l10n = AppLocalizations.of(context);
     final orderedEntries = items.entries.toList()
       ..sort((a, b) {
-        // Plexfin: a long searchable list puts what is already ticked first,
+        // Sunfin: a long searchable list puts what is already ticked first,
         // so it can be seen without scrolling through every tag.
         if (searchable) {
           final aTicked = selected.contains(a.key);
@@ -616,7 +616,7 @@ class _ScreensaverSettingsScreenState extends State<ScreensaverSettingsScreen> {
                     ),
                     onTap: _showGenreSelector,
                   ),
-                  // Plexfin: tags as well as genres, for art that isn't fit
+                  // Sunfin: tags as well as genres, for art that isn't fit
                   // for children (user, 2026-10-23).
                   _ScreensaverActionTile(
                     icon: const Icon(Icons.sell_outlined),

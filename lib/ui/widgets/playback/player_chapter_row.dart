@@ -6,7 +6,7 @@ import 'package:server_core/server_core.dart';
 
 import '../../../l10n/app_localizations.dart';
 import '../../../util/focus/dpad_keys.dart';
-import '../../plex/plex_style.dart';
+import '../../sunfin/sunfin_style.dart';
 
 /// The chapters of what is playing, as a row of thumbnails under the TV
 /// controls. Down from the controls opens it: the player's next and previous
@@ -70,8 +70,8 @@ class PlayerChapterRow extends StatefulWidget {
 }
 
 class _PlayerChapterRowState extends State<PlayerChapterRow> {
-  static final _cardWidth = PlexStyle.s(150);
-  static final _gap = PlexStyle.s(12);
+  static final _cardWidth = SunfinStyle.s(150);
+  static final _gap = SunfinStyle.s(12);
   static double get _extent => _cardWidth + _gap;
 
   late int _index = PlayerChapterRow.chapterAt(
@@ -104,7 +104,7 @@ class _PlayerChapterRowState extends State<PlayerChapterRow> {
     if (next == _index) return;
     setState(() => _index = next);
     if (!_scroll.hasClients) return;
-    // Keeps one card of what came before in view, as the Plex rows do.
+    // Keeps one card of what came before in view, as the Sunfin rows do.
     final target = math
         .max(0.0, (next - 1) * _extent)
         .clamp(0.0, _scroll.position.maxScrollExtent);
@@ -150,7 +150,7 @@ class _PlayerChapterRowState extends State<PlayerChapterRow> {
       focusNode: widget.focusNode,
       onKeyEvent: _onKey,
       child: SizedBox(
-        height: _cardWidth * 9 / 16 + PlexStyle.s(44),
+        height: _cardWidth * 9 / 16 + SunfinStyle.s(44),
         child: ListView.builder(
           controller: _scroll,
           scrollDirection: Axis.horizontal,
@@ -233,10 +233,10 @@ class _ChapterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final radius = BorderRadius.circular(PlexStyle.posterRadius);
+    final radius = BorderRadius.circular(SunfinStyle.posterRadius);
     final caption = TextStyle(
       color: Colors.white.withValues(alpha: highlighted ? 1 : 0.75),
-      fontSize: PlexStyle.s(11.5),
+      fontSize: SunfinStyle.s(11.5),
     );
     return Align(
       alignment: Alignment.topLeft,
@@ -260,7 +260,7 @@ class _ChapterCard extends StatelessWidget {
                     color: Colors.white.withValues(alpha: 0.08),
                     border: Border.all(
                       color: highlighted ? Colors.white : Colors.transparent,
-                      width: PlexStyle.focusBorderWidth,
+                      width: SunfinStyle.focusBorderWidth,
                     ),
                   ),
                   child: ClipRRect(
@@ -269,7 +269,7 @@ class _ChapterCard extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: PlexStyle.s(6)),
+              SizedBox(height: SunfinStyle.s(6)),
               Text(
                 title,
                 maxLines: 1,

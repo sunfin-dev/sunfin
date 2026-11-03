@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "appTitle": "Plexfin",
+    "appTitle": "Sunfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Plexfin verze {version}",
+    "appVersionFooter": "Sunfin verze {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Plexfin nemá přístup k vaší systémové klíčence. Přihlášení může pokračovat, ale bezpečné úložiště tokenů nemusí být dostupné, dokud nebude klíčenka odemčena.",
+    "secureStorageUnavailableMessage": "Sunfin nemá přístup k vaší systémové klíčence. Přihlášení může pokračovat, ale bezpečné úložiště tokenů nemusí být dostupné, dokud nebude klíčenka odemčena.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -168,17 +168,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "Přepínejte mezi Plexfin a Neon Pulse bez restartování aplikace",
+    "settingsAppearanceThemeSubtitle": "Přepínejte mezi Sunfin a Neon Pulse bez restartování aplikace",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Plexfin",
+    "themeMoonfin": "Sunfin",
     "@themeMoonfin": {
-        "description": "Display name for the Plexfin theme"
+        "description": "Display name for the Sunfin theme"
     },
-    "themeMoonfinSubtitle": "Současný vzhled Plexfin, který jste si všichni zamilovali",
+    "themeMoonfinSubtitle": "Současný vzhled Sunfin, který jste si všichni zamilovali",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Plexfin theme"
+        "description": "Preview description for the Sunfin theme"
     },
     "themeNeonPulse": "Neonový puls",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Ukončit Plexfin?",
+    "exitApp": "Ukončit Sunfin?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "Není nastaveno. Plexfin zkusí výchozí mpv.conf ve složkách app/data.",
+    "notSetMpvConf": "Není nastaveno. Sunfin zkusí výchozí mpv.conf ve složkách app/data.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "Přepnout viditelnost domovské stránky podle knihovny. Restartujte Plexfin, aby se změny projevily.",
+    "libraryVisibilityDescription": "Přepnout viditelnost domovské stránky podle knihovny. Restartujte Sunfin, aby se změny projevily.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3561,9 +3561,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Plexfin",
+    "mediaBarModeMoonfin": "Sunfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Plexfin"
+        "description": "Media bar style option: Sunfin"
     },
     "mediaBarModeMakd": "MakD",
     "@mediaBarModeMakd": {
@@ -4121,8 +4121,8 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
-    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
-    "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
+    "aboutBasedOnMoonfin": "Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
+    "sourceCodeUrl": "https://github.com/sunfin-dev/sunfin",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
     },
@@ -4294,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Hrajte v Plexfin",
+    "playInMoonfin": "Hrajte v Sunfin",
     "@playInMoonfin": {
-        "description": "Button to play available media in Plexfin"
+        "description": "Button to play available media in Sunfin"
     },
     "requestedByName": "Požadováno {name}",
     "@requestedByName": {
@@ -4348,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "Položka nebyla nalezena ve vaší knihovně Plexfin",
+    "itemNotFoundInLibrary": "Položka nebyla nalezena ve vaší knihovně Sunfin",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4652,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "Probíhá restart serveru",
-    "adminServerRebootMessage": "Probíhá restart serveru, restartujte prosím Plexfin",
+    "adminServerRebootMessage": "Probíhá restart serveru, restartujte prosím Sunfin",
     "adminActiveSessions": "Aktivní relace",
     "adminSessionsLoadFailed": "Načtení relací se nezdařilo",
     "adminNoActiveSessions": "Žádné aktivní relace",
@@ -6517,13 +6517,13 @@
     "settingsAccountSecuritySubtitle": "Autentizace, PIN kód a rodičovská kontrola",
     "settingsPersonalization": "Personalizace",
     "settingsPersonalizationSubtitle": "Motiv, navigace, domovské řádky a viditelnost knihovny",
-    "plexPersonalizationSubtitle": "Postranní panel, řádky domovské obrazovky, knihovny, stránky s podrobnostmi a spořič obrazovky",
-    "plexGeneralStyleSubtitle": "Klávesnice a herní ovladač",
-    "plexDetailsScreenSubtitle": "Tlačítka, informace, sekce a doporučení",
-    "plexNavigationSubtitle": "Položky postranního panelu a automatický výběr",
-    "plexHomeScreenSubtitle": "Řádky, jejich pořadí a Pokračovat ve sledování",
+    "sunfinPersonalizationSubtitle": "Postranní panel, řádky domovské obrazovky, knihovny, stránky s podrobnostmi a spořič obrazovky",
+    "sunfinGeneralStyleSubtitle": "Klávesnice a herní ovladač",
+    "sunfinDetailsScreenSubtitle": "Tlačítka, informace, sekce a doporučení",
+    "sunfinNavigationSubtitle": "Položky postranního panelu a automatický výběr",
+    "sunfinHomeScreenSubtitle": "Řádky, jejich pořadí a Pokračovat ve sledování",
     "libraryNicknames": "Přezdívky knihoven",
-    "libraryNicknamesSubtitle": "Vlastní názvy knihoven, zobrazené jen v Plexfin",
+    "libraryNicknamesSubtitle": "Vlastní názvy knihoven, zobrazené jen v Sunfin",
     "libraryNicknameServerName": "Na serveru: {name}",
     "libraryNicknameHint": "Ponechte prázdné pro název ze serveru",
     "libraryNicknameNone": "Bez přezdívky",
@@ -6536,16 +6536,16 @@
     "settingsTransferImport": "Importovat nastavení",
     "settingsTransferFrom": "Z {device}, {date}",
     "settingsTransferNothing": "Zatím nic exportováno",
-    "settingsTransferImportConfirm": "Nahradit nastavení tohoto zařízení těmito? {source}\n\nPlexfin se poté zavře. Otevřete jej znovu, aby se použila.",
+    "settingsTransferImportConfirm": "Nahradit nastavení tohoto zařízení těmito? {source}\n\nSunfin se poté zavře. Otevřete jej znovu, aby se použila.",
     "settingsTransferImportAction": "Importovat a zavřít",
     "settingsTransferFailed": "Účet Jellyfin není dostupný",
     "settingsTransferNote": "Přihlášení, okno a hardware zůstávají na každém zařízení. Nejprve se přihlaste na druhém zařízení a pak importujte.",
     "settingsReset": "Obnovit všechna nastavení",
     "settingsResetSubtitle": "Vrátit nastavení tohoto zařízení na výchozí hodnoty",
-    "settingsResetConfirm": "Vrátit každé nastavení na tomto zařízení na výchozí hodnotu? Zůstanete přihlášeni a nastavení exportovaná do vašeho účtu Jellyfin zůstanou zachována.\n\nPlexfin se poté zavře. Pokračujte jeho opětovným otevřením.",
+    "settingsResetConfirm": "Vrátit každé nastavení na tomto zařízení na výchozí hodnotu? Zůstanete přihlášeni a nastavení exportovaná do vašeho účtu Jellyfin zůstanou zachována.\n\nSunfin se poté zavře. Pokračujte jeho opětovným otevřením.",
     "adminShowButton": "Zobrazit tlačítko správy",
     "adminShowButtonSubtitle": "Přidá do nabídky tlačítko, které otevře správu serveru",
-    "plexDirectedBy": "Režie: {names}",
+    "sunfinDirectedBy": "Režie: {names}",
     "settingsDynamicContent": "Dynamický obsah",
     "settingsDynamicContentSubtitle": "Panel médií a vizuální překryvy",
     "settingsPlaybackSyncplay": "Přehrávání a SyncPlay",
@@ -6569,7 +6569,7 @@
     "settingsShowGenresButtonInNavigation": "Zobrazit tlačítko žánry v navigační liště",
     "settingsShowFavoritesButtonInNavigation": "Zobrazit tlačítko oblíbených v navigační liště",
     "settingsShowLibrariesButtonInNavigation": "Zobrazit tlačítko knihoven v navigační liště",
-    "settingsLibraryVisibilitySubtitle": "Přepnout viditelnost domovské stránky podle knihovny. Restartujte Plexfin, aby se změny projevily.",
+    "settingsLibraryVisibilitySubtitle": "Přepnout viditelnost domovské stránky podle knihovny. Restartujte Sunfin, aby se změny projevily.",
     "settingsMediaBarAndLocalPreviews": "Panel médií a místní náhledy",
     "settingsVisualOverlays": "Vizuální překryvy",
     "settingsSeasonalSurprise": "Sezónní překvapení",
@@ -6588,14 +6588,14 @@
     "settingsJoinDiscord": "Připojte se k Discordu",
     "settingsJoinDiscordSubtitle": "Chatujte s komunitou",
     "settingsJoinTheDiscord": "Připojte se k Discordu",
-    "settingsSupportMoonfin": "Podpořte Plexfina",
+    "settingsSupportMoonfin": "Podpořte Sunfina",
     "settingsLegal": "PRÁVNÍ",
     "settingsLicenses": "licence",
     "settingsOpenSourceLicenseNotices": "Oznámení o licenci s otevřeným zdrojovým kódem",
     "settingsPrivacyPolicy": "Zásady ochrany osobních údajů",
-    "settingsPrivacyPolicySubtitle": "Jak Plexfin nakládá s vašimi daty",
+    "settingsPrivacyPolicySubtitle": "Jak Sunfin nakládá s vašimi daty",
     "settingsCheckForUpdates": "Zkontrolujte aktualizace",
-    "settingsCheckForUpdatesSubtitle": "Podívejte se na nejnovější vydání Plexfin",
+    "settingsCheckForUpdatesSubtitle": "Podívejte se na nejnovější vydání Sunfin",
     "settingsPoweredByFlutter": "Běží na Flutter",
     "settingsLicenseNoticesCount": "{count, plural, one {# licenční upozornění} few {# licenční upozornění} many {# licenčního upozornění} other {# licenčních upozornění}}",
     "@settingsLicenseNoticesCount": {
@@ -7128,12 +7128,12 @@
     "preferSdhSubtitles": "Preferujte titulky SDH",
     "preferSdhSubtitlesSubtitle": "Při automatickém výběru upřednostněte stopy titulků SDH/CC.",
     "webDiagnostics": "Webová diagnostika",
-    "webDiagnosticsTitle": "Plexfin Webová diagnostika",
+    "webDiagnosticsTitle": "Sunfin Webová diagnostika",
     "webDiagnosticsIntro": "Tato stránka slouží k diagnostice problémů s připojením prohlížeče (CORS, smíšený obsah a nastavení zjišťování).",
     "webDiagnosticsDetectedMixedContentFailure": "Zjištěno selhání smíšeného obsahu",
     "webDiagnosticsDetectedCorsPreflightFailure": "Zjištěno selhání CORS/předletové kontroly",
-    "webDiagnosticsMixedContentFailureBody": "Plexfin zjistil HTTPS stránku, která se pokouší volat URL HTTP serveru. Prohlížeče zablokují tento požadavek dříve, než se dostane na váš server.",
-    "webDiagnosticsCorsFailureBody": "Plexfin zjistil selhání požadavku na úrovni prohlížeče, které je běžně způsobeno chybějícími hlavičkami CORS nebo preflight na serveru médií.",
+    "webDiagnosticsMixedContentFailureBody": "Sunfin zjistil HTTPS stránku, která se pokouší volat URL HTTP serveru. Prohlížeče zablokují tento požadavek dříve, než se dostane na váš server.",
+    "webDiagnosticsCorsFailureBody": "Sunfin zjistil selhání požadavku na úrovni prohlížeče, které je běžně způsobeno chybějícími hlavičkami CORS nebo preflight na serveru médií.",
     "webDiagnosticsTargetUrl": "Cílová adresa URL: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7163,7 +7163,7 @@
     "notConfigured": "není nakonfigurováno",
     "webDiagnosticsMixedContent": "Smíšený obsah",
     "webDiagnosticsMixedContentDetected": "Tato stránka se načítá přes HTTPS, ale jedna nebo více nakonfigurovaných adres URL je HTTP. Prohlížeče blokují stránky HTTPS ve volání rozhraní API HTTP.",
-    "webDiagnosticsMixedContentFix": "Oprava: obsluhovat váš mediální server nebo proxy koncový bod přes HTTPS nebo načíst Plexfin přes HTTP pouze v důvěryhodných místních sítích.",
+    "webDiagnosticsMixedContentFix": "Oprava: obsluhovat váš mediální server nebo proxy koncový bod přes HTTPS nebo načíst Sunfin přes HTTP pouze v důvěryhodných místních sítích.",
     "webDiagnosticsNoMixedContentDetected": "Z aktuálního nastavení runtime nebyla zjištěna žádná zjevná konfigurace se smíšeným obsahem.",
     "webDiagnosticsCorsChecklist": "Kontrolní seznam CORS",
     "webDiagnosticsCorsChecklistItem1": "• Povolit původ prohlížeče v Access-Control-Allow-Origin.",
@@ -7360,7 +7360,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "Klasický je původní vystředěné rozvržení Plexfinu. Moderní je responzivní filmové rozvržení.",
+    "detailScreenStyleSubtitle": "Klasický je původní vystředěné rozvržení Sunfinu. Moderní je responzivní filmové rozvržení.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7392,13 +7392,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "Použijte algoritmus Plexfin doporučuje pro místní knihovnu, nebo online metriky podobnosti z TMDb. Poznámka: Online doporučení vyžadují integraci Seerr.",
+    "recommendationSystemSubtitle": "Použijte algoritmus Sunfin doporučuje pro místní knihovnu, nebo online metriky podobnosti z TMDb. Poznámka: Online doporučení vyžadují integraci Seerr.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Plexfin doporučuje",
+    "recommendationSystemMoonfin": "Sunfin doporučuje",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Plexfin Recommends"
+        "description": "Recommendation system option: Sunfin Recommends"
     },
     "recommendationSystemTmdb": "Podobnost podle TMDb",
     "@recommendationSystemTmdb": {
@@ -7408,7 +7408,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "Omezit návrhy Plexfin doporučuje podle rodičovského hodnocení cílového média",
+    "recommendationsApplyParentalRatingCapSubtitle": "Omezit návrhy Sunfin doporučuje podle rodičovského hodnocení cílového média",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7456,7 +7456,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "Vlastní motivy mění vzhled napříč celým Plexfinem. Vyberte si možnost, která vyhovuje vašemu stylu.",
+    "customThemeSubtitle": "Vlastní motivy mění vzhled napříč celým Sunfinem. Vyberte si možnost, která vyhovuje vašemu stylu.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7629,7 +7629,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "Přihlaste se do Plexfinu na telefonu",
+    "carSignInPrompt": "Přihlaste se do Sunfinu na telefonu",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8970,7 +8970,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller je moderní GPU renderer Flutteru pro plynulejší animace a méně zadrhávání. Na některých TV boxech a starších GPU může způsobovat grafické chyby nebo černé video; v takovém případě jej vypněte. Automaticky zvolí nejlepší výchozí nastavení pro vaše zařízení. Změna se projeví po restartu Plexfinu.",
+    "impellerRenderingSubtitle": "Impeller je moderní GPU renderer Flutteru pro plynulejší animace a méně zadrhávání. Na některých TV boxech a starších GPU může způsobovat grafické chyby nebo černé video; v takovém případě jej vypněte. Automaticky zvolí nejlepší výchozí nastavení pro vaše zařízení. Změna se projeví po restartu Sunfinu.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8981,7 +8981,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "Ke změně vykreslovacího jádra je nutné Plexfin restartovat. Zavřete aplikaci a znovu ji otevřete, aby se změna projevila.",
+    "impellerRestartMessage": "Ke změně vykreslovacího jádra je nutné Sunfin restartovat. Zavřete aplikaci a znovu ji otevřete, aby se změna projevila.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },

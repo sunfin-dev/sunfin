@@ -478,10 +478,10 @@ class _RemoteControlSheetState extends State<_RemoteControlSheet>
               session['DeviceName']?.toString() ??
               session['Client']?.toString() ??
               '',
-          // Moonfin's receivers (and this Plexfin fork) replace the phrase.
+          // Moonfin's receivers (and this Sunfin fork) replace the phrase.
           // Others may insert text, so leave their SendString as an explicit
           // one-shot send.
-          liveUpdates: RegExp('moonfin|plexfin').hasMatch(
+          liveUpdates: RegExp('moonfin|sunfin').hasMatch(
             (session['Client']?.toString() ?? '').toLowerCase(),
           ),
           connected: _searchConnected,

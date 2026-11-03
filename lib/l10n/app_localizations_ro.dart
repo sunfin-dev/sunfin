@@ -10,7 +10,7 @@ class AppLocalizationsRo extends AppLocalizations {
   AppLocalizationsRo([String locale = 'ro']) : super(locale);
 
   @override
-  String get appTitle => 'Plexfin';
+  String get appTitle => 'Sunfin';
 
   @override
   String get animeMarkerFiller => 'Filler';
@@ -108,7 +108,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String appVersionFooter(String version) {
-    return 'Plexfin versiunea $version';
+    return 'Sunfin versiunea $version';
   }
 
   @override
@@ -160,7 +160,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get secureStorageUnavailableMessage =>
-      'Plexfin nu a putut accesa breloul de chei al sistemului. Autentificarea poate continua, dar stocarea securizată a token-ului poate fi indisponibilă până la deblocarea breloului de chei.';
+      'Sunfin nu a putut accesa breloul de chei al sistemului. Autentificarea poate continua, dar stocarea securizată a token-ului poate fi indisponibilă până la deblocarea breloului de chei.';
 
   @override
   String get ok => 'OK';
@@ -173,7 +173,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get detailScreenStyleSubtitle =>
-      'Clasic este aspectul original Plexfin, centrat. Modern este un aspect cinematic adaptabil. Spotlight este un aspect cu accent pe imaginea principală și carduri de conținut pop-up. Nouveau este un aspect pe tot ecranul, cu secțiunile așezate una sub alta pe pagină. Minimalist înseamnă ilustrații, un singur buton de redare și episoadele.';
+      'Clasic este aspectul original Sunfin, centrat. Modern este un aspect cinematic adaptabil. Spotlight este un aspect cu accent pe imaginea principală și carduri de conținut pop-up. Nouveau este un aspect pe tot ecranul, cu secțiunile așezate una sub alta pe pagină. Minimalist înseamnă ilustrații, un singur buton de redare și episoadele.';
 
   @override
   String get detailScreenStyleMoonfin => 'Clasic';
@@ -425,10 +425,10 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get recommendationSystemSubtitle =>
-      'Folosește algoritmul local Plexfin Recommends pentru biblioteca ta, motorul Jellyfin Recommends de pe server sau metricile de similaritate TMDb online. Notă: recomandările online necesită integrarea Seerr.';
+      'Folosește algoritmul local Sunfin Recommends pentru biblioteca ta, motorul Jellyfin Recommends de pe server sau metricile de similaritate TMDb online. Notă: recomandările online necesită integrarea Seerr.';
 
   @override
-  String get recommendationSystemMoonfin => 'Plexfin Recommends';
+  String get recommendationSystemMoonfin => 'Sunfin Recommends';
 
   @override
   String get recommendationSystemJellyfin => 'Recomandări Jellyfin';
@@ -442,7 +442,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get recommendationsApplyParentalRatingCapSubtitle =>
-      'Limitează sugestiile Plexfin Recommends în funcție de clasificarea parentală a conținutului vizat';
+      'Limitează sugestiile Sunfin Recommends în funcție de clasificarea parentală a conținutului vizat';
 
   @override
   String get interfaceStyle => 'Stilul interfeței';
@@ -465,7 +465,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get interfaceLayoutSubtitle =>
-      'Suprascrie aspectul detectat când acest dispozitiv este recunoscut greșit. Repornește Plexfin pentru ca modificările să aibă efect.';
+      'Suprascrie aspectul detectat când acest dispozitiv este recunoscut greșit. Repornește Sunfin pentru ca modificările să aibă efect.';
 
   @override
   String get interfaceLayoutAutomatic => 'Automat';
@@ -537,7 +537,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get customThemeSubtitle =>
-      'Temele personalizate modifică elementele vizuale din întreaga aplicație Plexfin. Alege una dintre aceste opțiuni, potrivită stilului tău.';
+      'Temele personalizate modifică elementele vizuale din întreaga aplicație Sunfin. Alege una dintre aceste opțiuni, potrivită stilului tău.';
 
   @override
   String get keyboardPreferSystemIme => 'Preferă tastatura de sistem';
@@ -557,11 +557,11 @@ class AppLocalizationsRo extends AppLocalizations {
       'Permite unui controler de joc conectat să mute focalizarea și să selecteze elemente';
 
   @override
-  String get themeMoonfin => 'Plexfin';
+  String get themeMoonfin => 'Sunfin';
 
   @override
   String get themeMoonfinSubtitle =>
-      'Aspectul original, simplu și curat, implicit în Plexfin.';
+      'Aspectul original, simplu și curat, implicit în Sunfin.';
 
   @override
   String get themeNeonPulse => 'Neon Pulse';
@@ -637,7 +637,7 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
-  String get exitApp => 'Ieși din Plexfin?';
+  String get exitApp => 'Ieși din Sunfin?';
 
   @override
   String get exitAppConfirmation => 'Sigur vrei să ieși?';
@@ -1794,7 +1794,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get shuffleAllMusic => 'Redă aleatoriu toată muzica';
 
   @override
-  String get carSignInPrompt => 'Autentifică-te în Plexfin pe telefon';
+  String get carSignInPrompt => 'Autentifică-te în Sunfin pe telefon';
 
   @override
   String get carServerUnreachable => 'Serverul nu poate fi contactat';
@@ -2082,7 +2082,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get shortcutToggleFullscreen => 'Ecran complet activat sau dezactivat';
 
   @override
-  String get shortcutQuit => 'Ieși din Plexfin';
+  String get shortcutQuit => 'Ieși din Sunfin';
 
   @override
   String get shortcutPlayPause => 'Redă sau pune pe pauză';
@@ -3052,7 +3052,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get loadingAnimationDescription =>
-      'Personalizează animațiile de încărcare folosite în Plexfin';
+      'Personalizează animațiile de încărcare folosite în Sunfin';
 
   @override
   String get loadingAnimationConfiguration =>
@@ -3062,7 +3062,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get loadingAnimationImage => 'Imagine';
 
   @override
-  String get loadingAnimationImageMoonfinLogo => 'Sigla Plexfin';
+  String get loadingAnimationImageMoonfinLogo => 'Sigla Sunfin';
 
   @override
   String get loadingAnimationImageSpinner => 'Spinner';
@@ -3074,7 +3074,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get loadingAnimationImageMoonPhases => 'Fazele Lunii';
 
   @override
-  String get loadingAnimationImageMoonfinPhases => 'Fazele Plexfin';
+  String get loadingAnimationImageMoonfinPhases => 'Fazele Sunfin';
 
   @override
   String get loadingAnimationImageNeonfinPhases => 'Fazele Neonfin';
@@ -4089,7 +4089,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get notSetMpvConf =>
-      'Nesetat. Plexfin va încerca un mpv.conf implicit în folderele aplicației/datelor.';
+      'Nesetat. Sunfin va încerca un mpv.conf implicit în folderele aplicației/datelor.';
 
   @override
   String get selectMpvConf => 'Selectează mpv.conf';
@@ -4368,7 +4368,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get downloadLocationLimitedByAndroid =>
-      'Android permite aplicației Plexfin să scrie doar în folderele proprii, iar acest dispozitiv nu are stocare detașabilă. Activează mai sus „Salvează în folderul Descărcări” pentru a păstra descărcările într-un loc accesibil și altor aplicații.';
+      'Android permite aplicației Sunfin să scrie doar în folderele proprii, iar acest dispozitiv nu are stocare detașabilă. Activează mai sus „Salvează în folderul Descărcări” pentru a păstra descărcările într-un loc accesibil și altor aplicații.';
 
   @override
   String get saveToDownloadsFolder => 'Salvează în folderul Descărcări';
@@ -4558,7 +4558,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get libraryVisibilityDescription =>
-      'Comută vizibilitatea pe ecranul principal pentru fiecare bibliotecă. Repornește Plexfin pentru ca modificările să aibă efect.';
+      'Comută vizibilitatea pe ecranul principal pentru fiecare bibliotecă. Repornește Sunfin pentru ca modificările să aibă efect.';
 
   @override
   String get showInNavigation => 'Afișează în navigare';
@@ -4628,7 +4628,7 @@ class AppLocalizationsRo extends AppLocalizations {
       'Alege între diverse stiluri de bară media sau dezactiveaz-o';
 
   @override
-  String get mediaBarModeMoonfin => 'Plexfin';
+  String get mediaBarModeMoonfin => 'Sunfin';
 
   @override
   String get mediaBarModeMakd => 'MakD';
@@ -4966,7 +4966,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get screensaverBackdropBlack => 'Negru';
 
   @override
-  String get screensaverBackdropMoonfin => 'Plexfin';
+  String get screensaverBackdropMoonfin => 'Sunfin';
 
   @override
   String get screensaverBackdropCalm => 'Calm';
@@ -4981,7 +4981,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get screensaverAdditionalComponent => 'Componentă suplimentară';
 
   @override
-  String get screensaverComponentMoonfinLogo => 'Sigla Plexfin';
+  String get screensaverComponentMoonfinLogo => 'Sigla Sunfin';
 
   @override
   String get screensaverComponentRunner => 'Alergător';
@@ -5258,10 +5258,10 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get aboutBasedOnMoonfin =>
-      'Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core';
+      'Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core';
 
   @override
-  String get sourceCodeUrl => 'https://github.com/Moonfin-Client/Moonfin-Core';
+  String get sourceCodeUrl => 'https://github.com/sunfin-dev/sunfin';
 
   @override
   String get checkForUpdatesNow => 'Verifică actualizările acum';
@@ -5449,7 +5449,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get cancelRequest4k => 'Anulează cererea 4K';
 
   @override
-  String get playInMoonfin => 'Redă în Plexfin';
+  String get playInMoonfin => 'Redă în Sunfin';
 
   @override
   String get requestedByLabel => 'Solicitat de';
@@ -5495,7 +5495,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get itemNotFoundInLibrary =>
-      'Elementul nu a fost găsit în biblioteca ta Plexfin';
+      'Elementul nu a fost găsit în biblioteca ta Sunfin';
 
   @override
   String get errorSearchingLibrary => 'Eroare la căutarea în bibliotecă';
@@ -6091,7 +6091,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get adminServerRebootMessage =>
-      'Repornirea serverului este în curs, repornește Plexfin';
+      'Repornirea serverului este în curs, repornește Sunfin';
 
   @override
   String get adminActiveSessions => 'Sesiuni active';
@@ -10073,22 +10073,22 @@ class AppLocalizationsRo extends AppLocalizations {
       'Tema, navigarea, rândurile din ecranul principal și vizibilitatea bibliotecilor';
 
   @override
-  String get plexPersonalizationSubtitle =>
+  String get sunfinPersonalizationSubtitle =>
       'Bară laterală, rânduri de pornire, biblioteci, pagini de detalii și screensaver';
 
   @override
-  String get plexGeneralStyleSubtitle => 'Tastatură și controler de jocuri';
+  String get sunfinGeneralStyleSubtitle => 'Tastatură și controler de jocuri';
 
   @override
-  String get plexDetailsScreenSubtitle =>
+  String get sunfinDetailsScreenSubtitle =>
       'Butoane, informații, secțiuni și recomandări';
 
   @override
-  String get plexNavigationSubtitle =>
+  String get sunfinNavigationSubtitle =>
       'Elementele barei laterale și selecție automată';
 
   @override
-  String get plexHomeScreenSubtitle =>
+  String get sunfinHomeScreenSubtitle =>
       'Rânduri, ordinea lor și Continuă vizionarea';
 
   @override
@@ -10096,7 +10096,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get libraryNicknamesSubtitle =>
-      'Numele tale pentru biblioteci, afișate doar în Plexfin';
+      'Numele tale pentru biblioteci, afișate doar în Sunfin';
 
   @override
   String libraryNicknameServerName(String name) {
@@ -10146,7 +10146,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String settingsTransferImportConfirm(String source) {
-    return 'Înlocuiești setările acestui dispozitiv cu acestea? $source\n\nPlexfin se închide apoi. Deschide-l din nou pentru a le folosi.';
+    return 'Înlocuiești setările acestui dispozitiv cu acestea? $source\n\nSunfin se închide apoi. Deschide-l din nou pentru a le folosi.';
   }
 
   @override
@@ -10169,7 +10169,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get settingsResetConfirm =>
-      'Readuci fiecare setare a acestui dispozitiv la valoarea implicită? Rămâi conectat, iar setările exportate în contul tău Jellyfin se păstrează.\n\nApoi Plexfin se închide. Deschide-l din nou pentru a continua.';
+      'Readuci fiecare setare a acestui dispozitiv la valoarea implicită? Rămâi conectat, iar setările exportate în contul tău Jellyfin se păstrează.\n\nApoi Sunfin se închide. Deschide-l din nou pentru a continua.';
 
   @override
   String get adminShowButton => 'Afișează butonul de administrare';
@@ -10179,7 +10179,7 @@ class AppLocalizationsRo extends AppLocalizations {
       'Adaugă în meniu un buton care deschide administrarea serverului';
 
   @override
-  String plexDirectedBy(String names) {
+  String sunfinDirectedBy(String names) {
     return 'Regia: $names';
   }
 
@@ -10311,7 +10311,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get settingsLibraryVisibilitySubtitle =>
-      'Comută vizibilitatea pe ecranul principal pentru fiecare bibliotecă. Repornește Plexfin pentru ca modificările să aibă efect.';
+      'Comută vizibilitatea pe ecranul principal pentru fiecare bibliotecă. Repornește Sunfin pentru ca modificările să aibă efect.';
 
   @override
   String get settingsMediaBarAndLocalPreviews =>
@@ -10446,7 +10446,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get settingsJoinTheDiscord => 'Alătură-te pe Discord';
 
   @override
-  String get settingsSupportMoonfin => 'Susține Plexfin';
+  String get settingsSupportMoonfin => 'Susține Sunfin';
 
   @override
   String get settingsSupportMoonfinSubtitle =>
@@ -10467,14 +10467,14 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get settingsPrivacyPolicySubtitle =>
-      'Cum gestionează Plexfin datele tale';
+      'Cum gestionează Sunfin datele tale';
 
   @override
   String get settingsCheckForUpdates => 'Verifică actualizările';
 
   @override
   String get settingsCheckForUpdatesSubtitle =>
-      'Verifică cea mai recentă versiune Plexfin';
+      'Verifică cea mai recentă versiune Sunfin';
 
   @override
   String get settingsPoweredByFlutter => 'Realizat cu Flutter';
@@ -11299,7 +11299,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get webDiagnostics => 'Diagnosticare web';
 
   @override
-  String get webDiagnosticsTitle => 'Diagnosticare web Plexfin';
+  String get webDiagnosticsTitle => 'Diagnosticare web Sunfin';
 
   @override
   String get webDiagnosticsIntro =>
@@ -11315,11 +11315,11 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get webDiagnosticsMixedContentFailureBody =>
-      'Plexfin a detectat o pagină HTTPS care încearcă să apeleze un URL de server HTTP. Browserele blochează această cerere înainte să ajungă la server.';
+      'Sunfin a detectat o pagină HTTPS care încearcă să apeleze un URL de server HTTP. Browserele blochează această cerere înainte să ajungă la server.';
 
   @override
   String get webDiagnosticsCorsFailureBody =>
-      'Plexfin a detectat o eroare de cerere la nivel de browser, cauzată de obicei de lipsa antetelor CORS sau preflight de pe serverul media.';
+      'Sunfin a detectat o eroare de cerere la nivel de browser, cauzată de obicei de lipsa antetelor CORS sau preflight de pe serverul media.';
 
   @override
   String webDiagnosticsTargetUrl(String url) {
@@ -11368,7 +11368,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get webDiagnosticsMixedContentFix =>
-      'Soluție: servește serverul media sau endpointul proxy prin HTTPS ori încarcă Plexfin prin HTTP doar în rețele locale de încredere.';
+      'Soluție: servește serverul media sau endpointul proxy prin HTTPS ori încarcă Sunfin prin HTTP doar în rețele locale de încredere.';
 
   @override
   String get webDiagnosticsNoMixedContentDetected =>
@@ -13110,7 +13110,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get impellerRenderingSubtitle =>
-      'Impeller este motorul GPU modern al Flutter, pentru animații mai fluide și mai puține sacadări. Pe unele TV box-uri și plăci grafice mai vechi poate provoca artefacte sau imagine neagră; dezactivează-l dacă observi astfel de probleme. Opțiunea Automat alege cea mai bună valoare implicită pentru dispozitivul tău. Repornește Plexfin pentru a aplica modificarea.';
+      'Impeller este motorul GPU modern al Flutter, pentru animații mai fluide și mai puține sacadări. Pe unele TV box-uri și plăci grafice mai vechi poate provoca artefacte sau imagine neagră; dezactivează-l dacă observi astfel de probleme. Opțiunea Automat alege cea mai bună valoare implicită pentru dispozitivul tău. Repornește Sunfin pentru a aplica modificarea.';
 
   @override
   String get impellerAuto => 'Automat';
@@ -13126,7 +13126,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get impellerRestartMessage =>
-      'Plexfin trebuie repornit pentru a schimba motorul de randare. Închide aplicația acum, apoi redeschide-o pentru a aplica modificarea.';
+      'Sunfin trebuie repornit pentru a schimba motorul de randare. Închide aplicația acum, apoi redeschide-o pentru a aplica modificarea.';
 
   @override
   String get impellerCloseNow => 'Închide aplicația acum';
@@ -13649,7 +13649,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get autoDownloadTranscodedForegroundNote =>
-      'Calitățile transcodate se descarcă doar cât timp Plexfin este deschis. Calitatea originală se descarcă și în fundal.';
+      'Calitățile transcodate se descarcă doar cât timp Sunfin este deschis. Calitatea originală se descarcă și în fundal.';
 
   @override
   String get autoDownloadTranscodedRunningNote =>
@@ -13657,7 +13657,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get autoDownloadForegroundOnly =>
-      'Se descarcă doar cât timp Plexfin este deschis';
+      'Se descarcă doar cât timp Sunfin este deschis';
 
   @override
   String get autoDownloadQualityTitle => 'Calitatea descărcării automate';
@@ -13712,15 +13712,15 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get autoDownloadBackgroundRefreshSubtitle =>
-      'Permite sistemului să verifice periodic dacă există episoade noi cât timp Plexfin este închis';
+      'Permite sistemului să verifice periodic dacă există episoade noi cât timp Sunfin este închis';
 
   @override
   String get autoDownloadBackgroundRefreshDenied =>
-      'Reîmprospătarea aplicațiilor în fundal este dezactivată pentru Plexfin. Activeaz-o în Setările iOS.';
+      'Reîmprospătarea aplicațiilor în fundal este dezactivată pentru Sunfin. Activeaz-o în Setările iOS.';
 
   @override
   String get autoDownloadBackgroundRestrictedAndroid =>
-      'Utilizarea în fundal este restricționată pentru Plexfin în Setările Android.';
+      'Utilizarea în fundal este restricționată pentru Sunfin în Setările Android.';
 
   @override
   String get autoDownloadCheckNow => 'Verifică acum';
@@ -13947,13 +13947,13 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get topShelfDescription =>
-      'What the Apple TV home screen shows above the Plexfin icon when it is selected. This setting stays on this device.';
+      'What the Apple TV home screen shows above the Sunfin icon when it is selected. This setting stays on this device.';
 
   @override
   String get topShelfLatestMedia => 'Latest media';
 
   @override
-  String get topShelfAppBanner => 'Plexfin banner';
+  String get topShelfAppBanner => 'Sunfin banner';
 
   @override
   String get keepVideoClearOfDynamicIsland =>

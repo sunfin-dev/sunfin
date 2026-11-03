@@ -25,10 +25,10 @@ import '../../widgets/focus/context_menu_sheet.dart';
 import '../../widgets/quick_return_wrapper.dart';
 import '../../widgets/skeleton/skeleton_library_grid.dart';
 import '../../../l10n/app_localizations.dart';
-import '../../plex/plex_nav.dart';
+import '../../sunfin/sunfin_nav.dart';
 
 Color get _navyBackground => AppColorScheme.background;
-double get _horizontalPadding => plexBrowseMargin(60.0);
+double get _horizontalPadding => sunfinBrowseMargin(60.0);
 const _kCompactBreakpoint = 600.0;
 const _genresPageSize = 200;
 const _initialArtworkBatch = 12;
@@ -403,7 +403,7 @@ class _AllGenresScreenState extends State<AllGenresScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => plexNavShell(
+  Widget build(BuildContext context) => sunfinNavShell(
     background: _navyBackground,
     child: RequestInitialFocus(
       child: QuickReturnWrapper(

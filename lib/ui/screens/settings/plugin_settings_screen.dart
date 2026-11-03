@@ -4,7 +4,7 @@ import 'package:moonfin_design/moonfin_design.dart';
 import 'package:server_core/server_core.dart';
 
 import '../../../data/services/plugin_sync_service.dart';
-import '../../../preference/plex_locks.dart';
+import '../../../preference/sunfin_locks.dart';
 import '../../../preference/user_preferences.dart';
 import '../../widgets/adaptive/adaptive_dialog.dart';
 import '../../widgets/overlay_sheet.dart';
@@ -313,9 +313,9 @@ class _PluginSettingsSectionState extends State<PluginSettingsSection> {
                     ],
                   ),
                 ),
-                // Plexfin: no settings sync, so no switch, explainer or
+                // Sunfin: no settings sync, so no switch, explainer or
                 // profile actions for it.
-                if (!PlexLocks.isLocked(UserPreferences.pluginSyncEnabled.key)) ...[
+                if (!SunfinLocks.isLocked(UserPreferences.pluginSyncEnabled.key)) ...[
                 const SizedBox(height: 12),
                 Container(
                   decoration: BoxDecoration(

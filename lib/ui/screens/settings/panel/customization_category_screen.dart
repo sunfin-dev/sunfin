@@ -6,8 +6,8 @@ class _CustomizationCategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    // Plexfin: the subtitles name only what the locked look leaves to change.
-    final plex = PlexLocks.active;
+    // Sunfin: the subtitles name only what the locked look leaves to change.
+    final sunfin = SunfinLocks.active;
     return withCleanSettingsTypography(
       context,
       Scaffold(
@@ -25,8 +25,8 @@ class _CustomizationCategoryScreen extends StatelessWidget {
                   leading: const Icon(Icons.style),
                   title: Text(l10n.settingsGeneralStyle),
                   subtitle: Text(
-                    plex
-                        ? l10n.plexGeneralStyleSubtitle
+                    sunfin
+                        ? l10n.sunfinGeneralStyleSubtitle
                         : l10n.settingsGeneralStyleSubtitle,
                   ),
                   onTap: () =>
@@ -36,8 +36,8 @@ class _CustomizationCategoryScreen extends StatelessWidget {
                   leading: const Icon(Icons.article_outlined),
                   title: Text(l10n.settingsDetailsScreen),
                   subtitle: Text(
-                    plex
-                        ? l10n.plexDetailsScreenSubtitle
+                    sunfin
+                        ? l10n.sunfinDetailsScreenSubtitle
                         : l10n.settingsDetailsScreenSubtitle,
                   ),
                   onTap: () => context.pushSettingsScreen(
@@ -48,8 +48,8 @@ class _CustomizationCategoryScreen extends StatelessWidget {
                   leading: const Icon(Icons.view_sidebar),
                   title: Text(l10n.navigation),
                   subtitle: Text(
-                    plex
-                        ? l10n.plexNavigationSubtitle
+                    sunfin
+                        ? l10n.sunfinNavigationSubtitle
                         : l10n.navbarStyleToolbarAppearance,
                   ),
                   onTap: () => context.pushSettingsScreen(
@@ -74,8 +74,8 @@ class _CustomizationCategoryScreen extends StatelessWidget {
                   leading: const Icon(Icons.home),
                   title: Text(l10n.homeScreen),
                   subtitle: Text(
-                    plex
-                        ? l10n.plexHomeScreenSubtitle
+                    sunfin
+                        ? l10n.sunfinHomeScreenSubtitle
                         : l10n.settingsHomePageSubtitle,
                   ),
                   onTap: () => context.pushSettingsScreen(
@@ -95,10 +95,10 @@ class _CustomizationCategoryScreen extends StatelessWidget {
             _SectionHeader(l10n.extras),
             adaptiveListSection(
               children: [
-                // Plexfin: the Plex header replaces the media bar, and the
+                // Sunfin: the Sunfin header replaces the media bar, and the
                 // loading animation and seasonal effects are part of the
-                // fixed look (PlexLocks).
-                if (!PlexLocks.active) ...[
+                // fixed look (SunfinLocks).
+                if (!SunfinLocks.active) ...[
                   _TvSettingsListTile(
                     leading: const Icon(Icons.featured_play_list),
                     title: Text(l10n.mediaBar),
@@ -124,7 +124,7 @@ class _CustomizationCategoryScreen extends StatelessWidget {
                     const LocalPreviewsSettingsScreen(),
                   ),
                 ),
-                if (!PlexLocks.active)
+                if (!SunfinLocks.active)
                   _TvSettingsListTile(
                     leading: const Icon(Icons.auto_awesome),
                     title: Text(l10n.seasonalEffects),

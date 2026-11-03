@@ -51,7 +51,7 @@ ItemWatchState watchStateOf(AggregatedItem item) {
 
 /// The progress bar a poster card draws for [item], or null for none.
 ///
-/// Plexfin follows Plex: a show, season or collection shows its watched tick
+/// Sunfin follows the reference design: a show, season or collection shows its watched tick
 /// or unwatched count, never a bar (user, 2026-10-23). The server's played
 /// percentage on those is the share of episodes watched, so a finished show
 /// would otherwise carry a full bar.

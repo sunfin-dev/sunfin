@@ -23,14 +23,14 @@ import '../navigation/route_lifecycle_observer.dart';
 import '../screens/detail/item_detail_screen.dart' show TrackTile;
 import '../widgets/focus/context_menu_sheet.dart';
 import '../widgets/overlay_sheet.dart';
-import 'plex_backdrop.dart';
-import 'plex_clock.dart';
-import 'plex_nav.dart';
-import 'plex_poster.dart';
-import 'plex_spinner.dart';
-import 'plex_style.dart';
+import 'sunfin_backdrop.dart';
+import 'sunfin_clock.dart';
+import 'sunfin_nav.dart';
+import 'sunfin_poster.dart';
+import 'sunfin_spinner.dart';
+import 'sunfin_style.dart';
 
-/// Plex's library page (references 09-11), used for every library on TV:
+/// The reference design's library page (references 09-11), used for every library on TV:
 ///
 /// - tabs along the top: Recommended, Library and, when the library has any,
 ///   Collections, with the clock top right;
@@ -42,17 +42,17 @@ import 'plex_style.dart';
 /// - no art: the page is a wash of the focused title's colours.
 ///
 /// The header and tabs scroll away with the grid; the alphabet stays put.
-class PlexLibraryPage extends StatefulWidget {
+class SunfinLibraryPage extends StatefulWidget {
   final String libraryId;
   final String? serverId;
 
-  const PlexLibraryPage({super.key, required this.libraryId, this.serverId});
+  const SunfinLibraryPage({super.key, required this.libraryId, this.serverId});
 
   /// Whether [uri] opens this page (app_router.dart): a whole library or
   /// music library. A type or favourites view of one keeps the upstream grid,
   /// and so do its sub-pages (genres, letters).
   static bool handles(Uri uri) {
-    if (!PlexStyle.enabled) return false;
+    if (!SunfinStyle.enabled) return false;
     final segments = uri.pathSegments.where((s) => s.isNotEmpty).toList();
     if (segments.length != 2) return false;
     if (segments.first == 'music') return true;
@@ -63,7 +63,7 @@ class PlexLibraryPage extends StatefulWidget {
   }
 
   @override
-  State<PlexLibraryPage> createState() => _PlexLibraryPageState();
+  State<SunfinLibraryPage> createState() => _SunfinLibraryPageState();
 }
 
 enum _Tab { recommended, library, collections }
@@ -97,8 +97,8 @@ const _typeOptions = <_Kind, List<_TypeOption>>{
   _Kind.other: [_TypeOption(null)],
 };
 
-/// Plex's sort names for the options it shares with Moonfin, in Plex's order.
-const _plexSorts = <LibrarySortBy, String>{
+/// The reference design's sort names for the options it shares with Moonfin, in the reference design's order.
+const _sunfinSorts = <LibrarySortBy, String>{
   LibrarySortBy.name: 'Title',
   LibrarySortBy.premiereDate: 'Release Date',
   LibrarySortBy.criticRating: 'Critic Rating',
@@ -124,16 +124,16 @@ class _Hub {
 
 /// The alphabet letter [item] files under: its first letter once accents fold
 /// away, `#` for anything starting otherwise, null for no name at all.
-String? plexLibraryLetter(AggregatedItem item) {
+String? sunfinLibraryLetter(AggregatedItem item) {
   final key = alphabetSortKey(item);
   if (key.isEmpty) return null;
   final first = key[0];
   return RegExp('[A-Z]').hasMatch(first) ? first : '#';
 }
 
-/// The two lines under a library card, as Plex words them: a title and its
+/// The two lines under a library card, as the reference design words them: a title and its
 /// year; a show and season; a show and "S1 · E3"; an album and its artist.
-(String, String?) plexLibraryCaptions(
+(String, String?) sunfinLibraryCaptions(
   AggregatedItem item, {
   required String Function(int count) itemCount,
 }) {
@@ -156,12 +156,12 @@ String? plexLibraryLetter(AggregatedItem item) {
   };
 }
 
-/// Where the page was last left in each library, for this session: Plex
+/// Where the page was last left in each library, for this session: the reference design
 /// reopens a library on the tab and type it was on.
 final _lastTab = <String, _Tab>{};
 final _lastType = <String, int>{};
 
-class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
+class _SunfinLibraryPageState extends State<SunfinLibraryPage> with RouteAware {
   late final MediaServerClient _client;
   final _prefs = GetIt.instance<UserPreferences>();
   final _scroll = ScrollController();
@@ -180,17 +180,17 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
   Timer? _tintDebounce;
 
   final _tabNodes = {
-    for (final tab in _Tab.values) tab: FocusNode(debugLabel: 'plex-tab-$tab'),
+    for (final tab in _Tab.values) tab: FocusNode(debugLabel: 'sunfin-tab-$tab'),
   };
 
   /// Filter, type, sort, Play, Shuffle.
   final _barNodes = List.generate(
     5,
-    (i) => FocusNode(debugLabel: 'plex-library-bar-$i'),
+    (i) => FocusNode(debugLabel: 'sunfin-library-bar-$i'),
   );
   final _letterNodes = List.generate(
     _letters.length,
-    (i) => FocusNode(debugLabel: 'plex-letter-${_letters[i]}'),
+    (i) => FocusNode(debugLabel: 'sunfin-letter-${_letters[i]}'),
   );
   final _gridNodes = <FocusNode>[];
   final _hubKeys = <GlobalKey<_HubRowState>>[];
@@ -210,19 +210,19 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
     'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
   ];
 
-  // Plex's measurements (960-wide, see PlexStyle), from the rail's edge.
-  static final _tabsLeft = PlexStyle.s(40);
-  static final _barLeft = PlexStyle.s(20);
-  static final _barRight = PlexStyle.s(80);
-  static final _barTop = PlexStyle.s(80);
-  static final _barHeight = PlexStyle.s(32);
-  static final _headerHeight = PlexStyle.s(140);
-  static final _gridGap = PlexStyle.s(17);
-  static final _rowStride = PlexStyle.s(245);
-  static final _posterWidth = PlexStyle.s(120);
+  // The reference design's measurements (960-wide, see SunfinStyle), from the rail's edge.
+  static final _tabsLeft = SunfinStyle.s(40);
+  static final _barLeft = SunfinStyle.s(20);
+  static final _barRight = SunfinStyle.s(80);
+  static final _barTop = SunfinStyle.s(80);
+  static final _barHeight = SunfinStyle.s(32);
+  static final _headerHeight = SunfinStyle.s(140);
+  static final _gridGap = SunfinStyle.s(17);
+  static final _rowStride = SunfinStyle.s(245);
+  static final _posterWidth = SunfinStyle.s(120);
 
-  /// Where Plex holds the focused row once the page has scrolled.
-  static final _focusedRowTop = PlexStyle.s(160);
+  /// Where the reference design holds the focused row once the page has scrolled.
+  static final _focusedRowTop = SunfinStyle.s(160);
 
   _TypeOption get _type => _typeOptions[_kind ?? _Kind.other]![_typeIndex];
 
@@ -328,7 +328,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
         _ => _Kind.other,
       };
     } catch (e) {
-      debugPrint('[PlexLibrary] library type: $e');
+      debugPrint('[SunfinLibrary] library type: $e');
     }
     if (!mounted) return;
     setState(() {
@@ -384,10 +384,10 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
   bool get _focusOnPage {
     final focused = FocusManager.instance.primaryFocus?.context;
     return focused != null &&
-        focused.findAncestorStateOfType<_PlexLibraryPageState>() == this;
+        focused.findAncestorStateOfType<_SunfinLibraryPageState>() == this;
   }
 
-  /// A library opens on its first title, as in Plex (user, 2026-10-23), unless
+  /// A library opens on its first title, as in the reference design (user, 2026-10-23), unless
   /// the user has already moved somewhere on the page.
   void _maybeOpenOnFirstTitle() {
     if (_openedOnFirstTitle || _gridItems.isEmpty) return;
@@ -419,7 +419,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
       // Reopened on Collections: its first title takes focus, as on Library.
       if (_tab == _Tab.collections) _maybeOpenOnFirstTitle();
     } catch (e) {
-      debugPrint('[PlexLibrary] collections: $e');
+      debugPrint('[SunfinLibrary] collections: $e');
     }
   }
 
@@ -453,7 +453,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
         final items = _mapItems(await query);
         return items.isEmpty ? null : _Hub(title, items);
       } catch (e) {
-        debugPrint('[PlexLibrary] $title: $e');
+        debugPrint('[SunfinLibrary] $title: $e');
         return null;
       }
     }
@@ -607,7 +607,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
 
   FocusNode _gridNode(int index) {
     while (_gridNodes.length <= index) {
-      _gridNodes.add(FocusNode(debugLabel: 'plex-card-${_gridNodes.length}'));
+      _gridNodes.add(FocusNode(debugLabel: 'sunfin-card-${_gridNodes.length}'));
     }
     return _gridNodes[index];
   }
@@ -619,7 +619,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
   ];
 
   String _tabLabel(AppLocalizations l10n, _Tab tab) => switch (tab) {
-    // Plex's own word; Moonfin has no translation of it yet.
+    // The reference design's own word; Moonfin has no translation of it yet.
     _Tab.recommended => 'Recommended',
     _Tab.library => l10n.library,
     _Tab.collections => l10n.collections,
@@ -647,12 +647,12 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
   List<LibrarySortBy> get _sortOptions {
     final offered = _vm?.sortOptions ?? const <LibrarySortBy>[];
     return [
-      for (final sort in _plexSorts.keys)
+      for (final sort in _sunfinSorts.keys)
         if (offered.contains(sort)) sort,
     ];
   }
 
-  String _sortLabel(LibrarySortBy sort) => _plexSorts[sort] ?? sort.displayName;
+  String _sortLabel(LibrarySortBy sort) => _sunfinSorts[sort] ?? sort.displayName;
 
   Future<void> _openFilterMenu(BuildContext anchor) async {
     final vm = _vm;
@@ -695,7 +695,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
       anchor,
       [for (final sort in sorts) _sortLabel(sort)],
       selected: selected,
-      // Plex marks the active sort with its direction; picking it again turns
+      // The reference design marks the active sort with its direction; picking it again turns
       // the order round.
       selectedIcon: vm.sortDirection == SortDirection.ascending
           ? Symbols.arrow_upward
@@ -726,10 +726,10 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
       barrierDismissible: true,
       barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
       barrierColor: Colors.black26,
-      transitionDuration: PlexMotion.fade,
+      transitionDuration: SunfinMotion.fade,
       transitionBuilder: (_, animation, _, child) =>
           FadeTransition(opacity: animation, child: child),
-      pageBuilder: (_, _, _) => _PlexMenu(
+      pageBuilder: (_, _, _) => _SunfinMenu(
         anchor: topLeft & box.size,
         labels: labels,
         selected: selected,
@@ -782,7 +782,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
         ),
       );
     } catch (e) {
-      debugPrint('[PlexLibrary] play: $e');
+      debugPrint('[SunfinLibrary] play: $e');
       return;
     }
     if (items.isEmpty || !mounted) return;
@@ -828,7 +828,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
             item.id,
             serverId: item.serverId,
             type: item.type,
-            // Plex: a show picked in its library opens on its seasons.
+            // The reference design: a show picked in its library opens on its seasons.
             showOverview: item.type == 'Series',
           ),
         )
@@ -851,7 +851,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
     });
   }
 
-  String? _letterOf(AggregatedItem item) => plexLibraryLetter(item);
+  String? _letterOf(AggregatedItem item) => sunfinLibraryLetter(item);
 
   String? _tintUrlFor(AggregatedItem item) {
     final api = _client.imageApi;
@@ -878,7 +878,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
 
   String? _imageUrl(AggregatedItem item, double width, double aspectRatio) {
     final api = _client.imageApi;
-    final decode = PlexPosterCard.decodeWidth(context, width);
+    final decode = SunfinPosterCard.decodeWidth(context, width);
     final seriesId = item.seriesId;
     final seriesTag = item.seriesPrimaryImageTag;
     // Episodes in a portrait row wear their show's poster, as on home.
@@ -913,7 +913,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
     return null;
   }
 
-  (String, String?) _captions(AggregatedItem item) => plexLibraryCaptions(
+  (String, String?) _captions(AggregatedItem item) => sunfinLibraryCaptions(
     item,
     itemCount: AppLocalizations.of(context).itemCountLabel,
   );
@@ -922,7 +922,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
   // Focus movement.
 
   /// The page's width beside the rail, from the last layout.
-  double _contentWidth = PlexStyle.s(920);
+  double _contentWidth = SunfinStyle.s(920);
 
   /// Row to row in the grid as last laid out (artwork, captions and gap).
   double _stride = _rowStride;
@@ -946,8 +946,8 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
       unawaited(
         _scroll.animateTo(
           target,
-          duration: PlexMotion.move,
-          curve: PlexMotion.curve,
+          duration: SunfinMotion.move,
+          curve: SunfinMotion.curve,
         ),
       );
     }
@@ -1001,7 +1001,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
     final column = index % columns;
     if (key.isLeftKey) {
       if (column == 0) {
-        plexFocusRailFromEdge();
+        sunfinFocusRailFromEdge();
       } else {
         _focusCard(index - 1);
       }
@@ -1030,7 +1030,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
       if (below < count) {
         _focusCard(below);
       } else if (index ~/ columns < lastRow) {
-        // A short last row: Plex lands on its last title.
+        // A short last row: the reference design lands on its last title.
         _focusCard(count - 1);
       } else if (_tab == _Tab.library && vm != null && vm.hasMore) {
         _pendingFocus = below;
@@ -1101,15 +1101,15 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
 
   @override
   Widget build(BuildContext context) {
-    return plexNavShell(
-      background: PlexStyle.background,
+    return sunfinNavShell(
+      background: SunfinStyle.background,
       child: Stack(
         fit: StackFit.expand,
         children: [
           Positioned.fill(
             child: ValueListenableBuilder<String?>(
               valueListenable: _tintUrl,
-              builder: (_, url, _) => PlexBackdrop(url: url, showArt: false),
+              builder: (_, url, _) => SunfinBackdrop(url: url, showArt: false),
             ),
           ),
           // A box LayoutBuilder reruns only when the width changes (the rail
@@ -1124,7 +1124,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
                 slivers: [
                   SliverToBoxAdapter(child: _buildHeader(context)),
                   ..._buildContent(context),
-                  SliverToBoxAdapter(child: SizedBox(height: PlexStyle.s(60))),
+                  SliverToBoxAdapter(child: SizedBox(height: SunfinStyle.s(60))),
                 ],
               );
             },
@@ -1139,18 +1139,18 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
     final l10n = AppLocalizations.of(context);
     final tabs = _visibleTabs;
     return SizedBox(
-      height: _tab == _Tab.recommended ? PlexStyle.s(80) : _headerHeight,
+      height: _tab == _Tab.recommended ? SunfinStyle.s(80) : _headerHeight,
       child: Stack(
         children: [
           Positioned(
             left: _tabsLeft,
-            top: PlexStyle.s(18),
+            top: SunfinStyle.s(18),
             child: Row(
               children: [
                 for (var i = 0; i < tabs.length; i++)
                   Padding(
-                    padding: EdgeInsets.only(right: PlexStyle.s(30)),
-                    child: _PlexTab(
+                    padding: EdgeInsets.only(right: SunfinStyle.s(30)),
+                    child: _SunfinTab(
                       label: _tabLabel(l10n, tabs[i]),
                       active: tabs[i] == _tab,
                       focusNode: _tabNodes[tabs[i]]!,
@@ -1160,7 +1160,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
                         final key = event.logicalKey;
                         if (key.isLeftKey) {
                           if (i == 0) {
-                            plexFocusRailFromEdge();
+                            sunfinFocusRailFromEdge();
                           } else {
                             _tabNodes[tabs[i - 1]]!.requestFocus();
                           }
@@ -1183,7 +1183,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
               ],
             ),
           ),
-          PlexClock.corner(),
+          SunfinClock.corner(),
           if (_tab == _Tab.library && _vm != null)
             Positioned(
               left: _barLeft,
@@ -1210,7 +1210,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
       final at = order.indexOf(slot);
       if (key.isLeftKey) {
         if (at == 0) {
-          plexFocusRailFromEdge();
+          sunfinFocusRailFromEdge();
         } else {
           _barNodes[order[at - 1]].requestFocus();
         }
@@ -1233,7 +1233,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
 
     Widget dropdown(int slot, String label, void Function(BuildContext) open) =>
         Builder(
-          builder: (anchor) => _PlexBarButton(
+          builder: (anchor) => _SunfinBarButton(
             focusNode: _barNodes[slot],
             onKey: (event) => onKey(slot, event),
             onTap: () => open(anchor),
@@ -1241,7 +1241,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
               mainAxisSize: MainAxisSize.min,
               children: [
                 _barText(label),
-                SizedBox(width: PlexStyle.s(10)),
+                SizedBox(width: SunfinStyle.s(10)),
                 const _Caret(),
               ],
             ),
@@ -1252,7 +1252,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
       children: [
         dropdown(0, _filterLabel(l10n), _openFilterMenu),
         if (showType) ...[
-          SizedBox(width: PlexStyle.s(8)),
+          SizedBox(width: SunfinStyle.s(8)),
           dropdown(
             1,
             _typeLabel(l10n, _typeIndex.clamp(0, types.length - 1)),
@@ -1260,27 +1260,27 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
           ),
         ],
         if (showSort) ...[
-          SizedBox(width: PlexStyle.s(18)),
+          SizedBox(width: SunfinStyle.s(18)),
           Text(
             'by',
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.45),
-              fontSize: PlexStyle.s(12.5),
+              fontSize: SunfinStyle.s(12.5),
             ),
           ),
-          SizedBox(width: PlexStyle.s(18)),
+          SizedBox(width: SunfinStyle.s(18)),
           dropdown(2, _sortLabel(vm.sortBy), _openSortMenu),
         ],
         const Spacer(),
-        _PlexBarButton(
+        _SunfinBarButton(
           focusNode: _barNodes[3],
           square: true,
           onKey: (event) => onKey(3, event),
           onTap: () => unawaited(_play(shuffle: false)),
           child: const _BarIcon(Symbols.play_arrow, fill: true),
         ),
-        SizedBox(width: PlexStyle.s(16)),
-        _PlexBarButton(
+        SizedBox(width: SunfinStyle.s(16)),
+        _SunfinBarButton(
           focusNode: _barNodes[4],
           square: true,
           onKey: (event) => onKey(4, event),
@@ -1297,18 +1297,18 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
     final l10n = AppLocalizations.of(context);
     Widget message(Widget child) => SliverToBoxAdapter(
       child: SizedBox(
-        height: PlexStyle.s(300),
+        height: SunfinStyle.s(300),
         child: Center(child: child),
       ),
     );
     final text = TextStyle(
       color: Colors.white.withValues(alpha: 0.7),
-      fontSize: PlexStyle.s(13),
+      fontSize: SunfinStyle.s(13),
     );
 
     if (_tab == _Tab.recommended) {
       final hubs = _hubs;
-      if (hubs == null) return [message(const PlexSpinner())];
+      if (hubs == null) return [message(const SunfinSpinner())];
       if (hubs.isEmpty) return [message(Text(l10n.noItemsFound, style: text))];
       return [
         SliverList.builder(
@@ -1342,7 +1342,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
 
     final vm = _vm;
     if (vm == null || vm.state == LibraryBrowseState.loading) {
-      return [message(const PlexSpinner())];
+      return [message(const SunfinSpinner())];
     }
     if (vm.state == LibraryBrowseState.error) {
       return [
@@ -1365,8 +1365,8 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
       if (vm.loadingMore)
         SliverToBoxAdapter(
           child: Padding(
-            padding: EdgeInsets.only(top: PlexStyle.s(20)),
-            child: const Center(child: PlexSpinner()),
+            padding: EdgeInsets.only(top: SunfinStyle.s(20)),
+            child: const Center(child: SunfinSpinner()),
           ),
         ),
     ];
@@ -1375,23 +1375,23 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
   Widget _buildGrid(List<AggregatedItem> items) {
     final columns = _columns;
     final aspectRatio = _aspectRatio;
-    // Plex's six posters span 805 of its 960; a four-wide landscape grid
+    // The reference design's six posters span 805 of its 960; a four-wide landscape grid
     // fills the same width.
     final gridWidth = _posterWidth * 6 + _gridGap * 5;
-    final available = _contentWidth - PlexStyle.contentInset;
+    final available = _contentWidth - SunfinStyle.contentInset;
     final width = available.clamp(0.0, gridWidth);
     final cardWidth = (width - _gridGap * (columns - 1)) / columns;
-    final cellHeight = PlexPosterCard.cellHeight(cardWidth, aspectRatio);
-    // Posters keep Plex's 245 row to row; square and wide artwork, which Plex
+    final cellHeight = SunfinPosterCard.cellHeight(cardWidth, aspectRatio);
+    // Posters keep the reference design's 245 row to row; square and wide artwork, which the reference design
     // shows shorter, keep its gap instead.
     final rowGap = aspectRatio < 1
         ? (_rowStride - cellHeight).clamp(0.0, double.infinity)
-        : PlexStyle.s(20);
+        : SunfinStyle.s(20);
     _stride = cellHeight + rowGap;
     return SliverPadding(
       // The rest of the width (the alphabet's column) stays empty.
       padding: EdgeInsets.only(
-        left: PlexStyle.contentInset,
+        left: SunfinStyle.contentInset,
         right: (available - width).clamp(0.0, double.infinity),
       ),
       sliver: SliverGrid(
@@ -1404,7 +1404,7 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
         delegate: SliverChildBuilderDelegate((context, index) {
           final item = items[index];
           final (title, subtitle) = _captions(item);
-          return PlexPosterCard(
+          return SunfinPosterCard(
             key: ValueKey(item.id),
             item: item,
             imageUrl: _imageUrl(item, cardWidth, aspectRatio),
@@ -1428,14 +1428,14 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
   Widget _buildTracks(LibraryBrowseViewModel vm) {
     final items = vm.items;
     return SliverPadding(
-      padding: EdgeInsets.fromLTRB(PlexStyle.contentInset, 0, _barRight, 0),
+      padding: EdgeInsets.fromLTRB(SunfinStyle.contentInset, 0, _barRight, 0),
       sliver: SliverFixedExtentList.builder(
-        itemExtent: PlexStyle.s(48),
+        itemExtent: SunfinStyle.s(48),
         itemCount: items.length,
         itemBuilder: (context, index) {
           final track = items[index];
           return TrackTile(
-            key: ValueKey('plex-track-${track.id}'),
+            key: ValueKey('sunfin-track-${track.id}'),
             track: track,
             focusNode: _gridNode(index),
             onFocused: () {
@@ -1460,18 +1460,18 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
 
   Widget _buildLetters() {
     final order = _letterOrder;
-    final cell = PlexStyle.s(15.4);
+    final cell = SunfinStyle.s(15.4);
     return Positioned(
-      right: PlexStyle.s(50),
-      top: PlexStyle.s(98),
-      width: PlexStyle.s(20),
+      right: SunfinStyle.s(50),
+      top: SunfinStyle.s(98),
+      width: SunfinStyle.s(20),
       height: cell * order.length,
       child: ValueListenableBuilder<String?>(
         valueListenable: _activeLetter,
         builder: (context, active, _) => Column(
           children: [
             for (var i = 0; i < order.length; i++)
-              _PlexLetter(
+              _SunfinLetter(
                 letter: order[i],
                 height: cell,
                 active: order[i] == active,
@@ -1508,16 +1508,16 @@ class _PlexLibraryPageState extends State<PlexLibraryPage> with RouteAware {
   }
 }
 
-/// A tab at the top of the page: white when active, with Plex's gold line
+/// A tab at the top of the page: white when active, with the reference design's gold line
 /// under it, grey otherwise. Focus lights it in a soft pill.
-class _PlexTab extends StatefulWidget {
+class _SunfinTab extends StatefulWidget {
   final String label;
   final bool active;
   final FocusNode focusNode;
   final VoidCallback onSelect;
   final bool Function(KeyEvent event) onKey;
 
-  const _PlexTab({
+  const _SunfinTab({
     required this.label,
     required this.active,
     required this.focusNode,
@@ -1526,10 +1526,10 @@ class _PlexTab extends StatefulWidget {
   });
 
   @override
-  State<_PlexTab> createState() => _PlexTabState();
+  State<_SunfinTab> createState() => _SunfinTabState();
 }
 
-class _PlexTabState extends State<_PlexTab> {
+class _SunfinTabState extends State<_SunfinTab> {
   bool _focused = false;
 
   @override
@@ -1551,21 +1551,21 @@ class _PlexTabState extends State<_PlexTab> {
       },
       child: GestureDetector(
         onTap: widget.onSelect,
-        // The gold line runs the label's width, as in Plex.
+        // The gold line runs the label's width, as in the reference design.
         child: IntrinsicWidth(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               AnimatedContainer(
-                duration: PlexMotion.focus,
+                duration: SunfinMotion.focus,
                 padding: EdgeInsets.symmetric(
-                  horizontal: PlexStyle.s(9),
-                  vertical: PlexStyle.s(4),
+                  horizontal: SunfinStyle.s(9),
+                  vertical: SunfinStyle.s(4),
                 ),
                 decoration: BoxDecoration(
                   color: _focused ? Colors.white : Colors.transparent,
-                  borderRadius: BorderRadius.circular(PlexStyle.s(3)),
+                  borderRadius: BorderRadius.circular(SunfinStyle.s(3)),
                 ),
                 child: Text(
                   widget.label,
@@ -1573,16 +1573,16 @@ class _PlexTabState extends State<_PlexTab> {
                     color: _focused
                         ? Colors.black
                         : Colors.white.withValues(alpha: lit ? 0.95 : 0.6),
-                    fontSize: PlexStyle.s(12.5),
+                    fontSize: SunfinStyle.s(12.5),
                     fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
-              SizedBox(height: PlexStyle.s(3)),
+              SizedBox(height: SunfinStyle.s(3)),
               Container(
-                height: PlexStyle.s(1.75),
+                height: SunfinStyle.s(1.75),
                 color: widget.active && !_focused
-                    ? PlexStyle.accent
+                    ? SunfinStyle.accent
                     : Colors.transparent,
               ),
             ],
@@ -1593,16 +1593,16 @@ class _PlexTabState extends State<_PlexTab> {
   }
 }
 
-/// A button in the filter row: Plex's flat grey block, white with black
+/// A button in the filter row: the reference design's flat grey block, white with black
 /// content while focused.
-class _PlexBarButton extends StatefulWidget {
+class _SunfinBarButton extends StatefulWidget {
   final FocusNode focusNode;
   final bool Function(KeyEvent event) onKey;
   final VoidCallback onTap;
   final Widget child;
   final bool square;
 
-  const _PlexBarButton({
+  const _SunfinBarButton({
     required this.focusNode,
     required this.onKey,
     required this.onTap,
@@ -1611,15 +1611,15 @@ class _PlexBarButton extends StatefulWidget {
   });
 
   @override
-  State<_PlexBarButton> createState() => _PlexBarButtonState();
+  State<_SunfinBarButton> createState() => _SunfinBarButtonState();
 }
 
-class _PlexBarButtonState extends State<_PlexBarButton> {
+class _SunfinBarButtonState extends State<_SunfinBarButton> {
   bool _focused = false;
 
   @override
   Widget build(BuildContext context) {
-    final height = PlexStyle.s(32);
+    final height = SunfinStyle.s(32);
     return Focus(
       focusNode: widget.focusNode,
       onFocusChange: (focused) => setState(() => _focused = focused),
@@ -1635,18 +1635,18 @@ class _PlexBarButtonState extends State<_PlexBarButton> {
       child: GestureDetector(
         onTap: widget.onTap,
         child: AnimatedContainer(
-          duration: PlexMotion.focus,
+          duration: SunfinMotion.focus,
           height: height,
           width: widget.square ? height : null,
           padding: widget.square
               ? EdgeInsets.zero
-              : EdgeInsets.symmetric(horizontal: PlexStyle.s(16)),
+              : EdgeInsets.symmetric(horizontal: SunfinStyle.s(16)),
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: _focused
                 ? Colors.white
                 : Colors.white.withValues(alpha: 0.1),
-            borderRadius: BorderRadius.circular(PlexStyle.s(2)),
+            borderRadius: BorderRadius.circular(SunfinStyle.s(2)),
           ),
           child: IconTheme.merge(
             data: IconThemeData(color: _focused ? Colors.black : Colors.white),
@@ -1668,7 +1668,7 @@ class _BarLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
-      Text(text, maxLines: 1, style: TextStyle(fontSize: PlexStyle.s(12.5)));
+      Text(text, maxLines: 1, style: TextStyle(fontSize: SunfinStyle.s(12.5)));
 }
 
 class _BarIcon extends StatelessWidget {
@@ -1679,20 +1679,20 @@ class _BarIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
-      Icon(icon, size: PlexStyle.s(19), fill: fill ? 1 : 0);
+      Icon(icon, size: SunfinStyle.s(19), fill: fill ? 1 : 0);
 }
 
-/// Plex's small solid triangle after a dropdown's label.
+/// The reference design's small solid triangle after a dropdown's label.
 class _Caret extends StatelessWidget {
   const _Caret();
 
   @override
   Widget build(BuildContext context) =>
-      Icon(Symbols.arrow_drop_down, size: PlexStyle.s(22), fill: 1);
+      Icon(Symbols.arrow_drop_down, size: SunfinStyle.s(22), fill: 1);
 }
 
 /// One letter of the alphabet down the right edge.
-class _PlexLetter extends StatefulWidget {
+class _SunfinLetter extends StatefulWidget {
   final String letter;
   final double height;
   final bool active;
@@ -1700,7 +1700,7 @@ class _PlexLetter extends StatefulWidget {
   final bool Function(KeyEvent event) onKey;
   final VoidCallback onTap;
 
-  const _PlexLetter({
+  const _SunfinLetter({
     required this.letter,
     required this.height,
     required this.active,
@@ -1710,10 +1710,10 @@ class _PlexLetter extends StatefulWidget {
   });
 
   @override
-  State<_PlexLetter> createState() => _PlexLetterState();
+  State<_SunfinLetter> createState() => _SunfinLetterState();
 }
 
-class _PlexLetterState extends State<_PlexLetter> {
+class _SunfinLetterState extends State<_SunfinLetter> {
   bool _focused = false;
 
   @override
@@ -1722,7 +1722,7 @@ class _PlexLetterState extends State<_PlexLetter> {
     if (_focused) {
       color = Colors.black;
     } else if (widget.active) {
-      color = PlexStyle.accent;
+      color = SunfinStyle.accent;
     } else {
       color = Colors.white.withValues(alpha: 0.6);
     }
@@ -1745,13 +1745,13 @@ class _PlexLetterState extends State<_PlexLetter> {
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: _focused ? Colors.white : Colors.transparent,
-            borderRadius: BorderRadius.circular(PlexStyle.s(2)),
+            borderRadius: BorderRadius.circular(SunfinStyle.s(2)),
           ),
           child: Text(
             widget.letter,
             style: TextStyle(
               color: color,
-              fontSize: PlexStyle.s(11),
+              fontSize: SunfinStyle.s(11),
               fontWeight: widget.active || _focused
                   ? FontWeight.w600
                   : FontWeight.w400,
@@ -1765,13 +1765,13 @@ class _PlexLetterState extends State<_PlexLetter> {
 
 /// A dropdown's list, opened under its button: the current choice ticked
 /// (or, for the sort, marked with its direction) and focused first.
-class _PlexMenu extends StatefulWidget {
+class _SunfinMenu extends StatefulWidget {
   final Rect anchor;
   final List<String> labels;
   final int selected;
   final IconData selectedIcon;
 
-  const _PlexMenu({
+  const _SunfinMenu({
     required this.anchor,
     required this.labels,
     required this.selected,
@@ -1779,13 +1779,13 @@ class _PlexMenu extends StatefulWidget {
   });
 
   @override
-  State<_PlexMenu> createState() => _PlexMenuState();
+  State<_SunfinMenu> createState() => _SunfinMenuState();
 }
 
-class _PlexMenuState extends State<_PlexMenu> {
+class _SunfinMenuState extends State<_SunfinMenu> {
   late final _nodes = List.generate(
     widget.labels.length,
-    (i) => FocusNode(debugLabel: 'plex-menu-$i'),
+    (i) => FocusNode(debugLabel: 'sunfin-menu-$i'),
   );
   int _focused = -1;
 
@@ -1799,13 +1799,13 @@ class _PlexMenuState extends State<_PlexMenu> {
 
   @override
   Widget build(BuildContext context) {
-    final rowHeight = PlexStyle.s(30);
+    final rowHeight = SunfinStyle.s(30);
     final anchor = widget.anchor;
     final screen = MediaQuery.sizeOf(context);
-    final height = rowHeight * widget.labels.length + PlexStyle.s(12);
-    final below = anchor.bottom + PlexStyle.s(4);
-    final top = below + height > screen.height - PlexStyle.s(12)
-        ? (screen.height - PlexStyle.s(12) - height).clamp(0.0, below)
+    final height = rowHeight * widget.labels.length + SunfinStyle.s(12);
+    final below = anchor.bottom + SunfinStyle.s(4);
+    final top = below + height > screen.height - SunfinStyle.s(12)
+        ? (screen.height - SunfinStyle.s(12) - height).clamp(0.0, below)
         : below;
     final start = widget.selected < 0 ? 0 : widget.selected;
     return Stack(
@@ -1815,14 +1815,14 @@ class _PlexMenuState extends State<_PlexMenu> {
           top: top,
           child: Material(
             color: const Color(0xFF282A2D),
-            borderRadius: BorderRadius.circular(PlexStyle.s(3)),
+            borderRadius: BorderRadius.circular(SunfinStyle.s(3)),
             elevation: 8,
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: PlexStyle.s(6)),
+              padding: EdgeInsets.symmetric(vertical: SunfinStyle.s(6)),
               child: IntrinsicWidth(
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
-                    minWidth: anchor.width.clamp(PlexStyle.s(140), 600.0),
+                    minWidth: anchor.width.clamp(SunfinStyle.s(140), 600.0),
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -1881,7 +1881,7 @@ class _PlexMenuState extends State<_PlexMenu> {
     return Container(
       height: height,
       color: focused ? Colors.white : Colors.transparent,
-      padding: EdgeInsets.symmetric(horizontal: PlexStyle.s(14)),
+      padding: EdgeInsets.symmetric(horizontal: SunfinStyle.s(14)),
       child: Row(
         children: [
           Expanded(
@@ -1890,18 +1890,18 @@ class _PlexMenuState extends State<_PlexMenu> {
               maxLines: 1,
               style: TextStyle(
                 color: color.withValues(alpha: focused ? 1 : 0.9),
-                fontSize: PlexStyle.s(12.5),
+                fontSize: SunfinStyle.s(12.5),
               ),
             ),
           ),
-          SizedBox(width: PlexStyle.s(16)),
+          SizedBox(width: SunfinStyle.s(16)),
           SizedBox(
-            width: PlexStyle.s(16),
+            width: SunfinStyle.s(16),
             child: i == widget.selected
                 ? Icon(
                     widget.selectedIcon,
-                    size: PlexStyle.s(15),
-                    color: focused ? Colors.black : PlexStyle.accent,
+                    size: SunfinStyle.s(15),
+                    color: focused ? Colors.black : SunfinStyle.accent,
                   )
                 : null,
           ),
@@ -1945,12 +1945,12 @@ class _HubRowState extends State<_HubRow> {
   final _scroll = ScrollController();
   late final _nodes = List.generate(
     widget.items.length,
-    (i) => FocusNode(debugLabel: 'plex-hub-${widget.title}-$i'),
+    (i) => FocusNode(debugLabel: 'sunfin-hub-${widget.title}-$i'),
   );
   int _remembered = 0;
 
-  static final _width = PlexStyle.posterWidth;
-  static final _gap = PlexStyle.posterGap;
+  static final _width = SunfinStyle.posterWidth;
+  static final _gap = SunfinStyle.posterGap;
 
   @override
   void dispose() {
@@ -1976,8 +1976,8 @@ class _HubRowState extends State<_HubRow> {
       Scrollable.ensureVisible(
         row,
         alignment: 0.35,
-        duration: PlexMotion.move,
-        curve: PlexMotion.curve,
+        duration: SunfinMotion.move,
+        curve: SunfinMotion.curve,
       ),
     );
     if (_scroll.hasClients) {
@@ -1988,8 +1988,8 @@ class _HubRowState extends State<_HubRow> {
       unawaited(
         _scroll.animateTo(
           target,
-          duration: PlexMotion.move,
-          curve: PlexMotion.curve,
+          duration: SunfinMotion.move,
+          curve: SunfinMotion.curve,
         ),
       );
     }
@@ -2000,7 +2000,7 @@ class _HubRowState extends State<_HubRow> {
     final key = event.logicalKey;
     if (key.isLeftKey) {
       if (index == 0) {
-        plexFocusRailFromEdge();
+        sunfinFocusRailFromEdge();
       } else {
         _nodes[index - 1].requestFocus();
       }
@@ -2028,29 +2028,29 @@ class _HubRowState extends State<_HubRow> {
   @override
   Widget build(BuildContext context) {
     final height = _width * 1.5;
-    final grow = height * (PlexStyle.focusedPosterScale - 1) / 2;
+    final grow = height * (SunfinStyle.focusedPosterScale - 1) / 2;
     return Padding(
-      padding: EdgeInsets.only(top: PlexStyle.s(14)),
+      padding: EdgeInsets.only(top: SunfinStyle.s(14)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.only(left: PlexStyle.contentInset),
-            child: Text(widget.title, style: PlexStyle.rowTitleStyle),
+            padding: EdgeInsets.only(left: SunfinStyle.contentInset),
+            child: Text(widget.title, style: SunfinStyle.rowTitleStyle),
           ),
           SizedBox(
-            height: height + grow * 2 + PlexStyle.s(8),
+            height: height + grow * 2 + SunfinStyle.s(8),
             child: ListView.separated(
               controller: _scroll,
               scrollDirection: Axis.horizontal,
               clipBehavior: Clip.none,
-              padding: EdgeInsets.symmetric(horizontal: PlexStyle.contentInset),
+              padding: EdgeInsets.symmetric(horizontal: SunfinStyle.contentInset),
               itemCount: widget.items.length,
               separatorBuilder: (_, _) => SizedBox(width: _gap),
               itemBuilder: (context, index) {
                 final item = widget.items[index];
                 return Center(
-                  child: PlexPosterCard(
+                  child: SunfinPosterCard(
                     item: item,
                     imageUrl: widget.imageUrl(item, _width),
                     width: _width,

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../../plex/plex_style.dart';
+import '../../../sunfin/sunfin_style.dart';
 
-/// Plexfin's look for the server administration area, modelled on the
-/// settings pages of Plex's web app (user's pick, option A, 2026-10-28):
+/// Sunfin's look for the server administration area, modelled on the
+/// settings pages of the reference design's web app (user's pick, option A, 2026-10-28):
 /// a flat grey page, grey uppercase section names, the open page in a white
 /// pill like the sidebar, settings straight on the page between thin lines,
 /// gold buttons.
 abstract final class AdminLook {
-  static const page = PlexStyle.background;
+  static const page = SunfinStyle.background;
 
   /// Thin lines between settings and along the menu and bar.
   static const line = Color(0xFF33383C);
@@ -20,12 +20,12 @@ abstract final class AdminLook {
   static const muted = Color(0xFF9A9D9F);
 
   static const text = Colors.white;
-  static const gold = PlexStyle.accent;
+  static const gold = SunfinStyle.accent;
   static const onGold = Color(0xFF1F1F1F);
 
   /// The open page's pill in the menu.
   static const pill = Colors.white;
-  static const onPill = PlexStyle.background;
+  static const onPill = SunfinStyle.background;
 
   static const radius = 4.0;
   static final borderRadius = BorderRadius.circular(radius);

@@ -12,7 +12,7 @@ import 'package:moonfin/data/repositories/seerr_repository.dart';
 import 'package:moonfin/data/services/plugin_sync_service.dart';
 import 'package:moonfin/preference/seerr_preferences.dart';
 import 'package:moonfin/preference/user_preferences.dart';
-import 'package:moonfin/preference/plex_locks.dart';
+import 'package:moonfin/preference/sunfin_locks.dart';
 import 'package:server_core/server_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -111,8 +111,8 @@ void main() {
     final dio = Dio()..httpClientAdapter = _PluginAdapter();
     service = PluginSyncService(prefs, store, dio: dio);
     await prefs.set(UserPreferences.pluginSyncEnabled, true);
-    PlexLocks.debugSyncAllowed = true;
-    addTearDown(() => PlexLocks.debugSyncAllowed = false);
+    SunfinLocks.debugSyncAllowed = true;
+    addTearDown(() => SunfinLocks.debugSyncAllowed = false);
   });
 
   tearDown(() => GetIt.instance.reset());

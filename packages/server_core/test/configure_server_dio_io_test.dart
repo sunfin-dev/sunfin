@@ -43,10 +43,10 @@ void main() {
       }
     }
 
-    test('uses a browser-compatible Plexfin user agent', () async {
+    test('uses a browser-compatible Sunfin user agent', () async {
       expect(
         await userAgentOfNextRequest(),
-        'Mozilla/5.0 (compatible; Plexfin/Flutter)',
+        'Mozilla/5.0 (compatible; Sunfin/Flutter)',
       );
     });
 
@@ -55,7 +55,7 @@ void main() {
 
       expect(
         await userAgentOfNextRequest(),
-        'Mozilla/5.0 (compatible; Plexfin/2.3.2)',
+        'Mozilla/5.0 (compatible; Sunfin/2.3.2)',
       );
     });
 
@@ -64,7 +64,7 @@ void main() {
 
       expect(
         await userAgentOfNextRequest(),
-        'Mozilla/5.0 (compatible; Plexfin/2.3.2)',
+        'Mozilla/5.0 (compatible; Sunfin/2.3.2)',
       );
     });
 
@@ -73,7 +73,7 @@ void main() {
 
       expect(
         await userAgentOfNextRequest(),
-        'Mozilla/5.0 (compatible; Plexfin/Flutter)',
+        'Mozilla/5.0 (compatible; Sunfin/Flutter)',
       );
     });
   });

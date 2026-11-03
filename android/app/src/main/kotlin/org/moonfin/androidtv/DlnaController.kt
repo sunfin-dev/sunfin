@@ -183,7 +183,7 @@ class DlnaController(private val context: Context) {
     fun playToDevice(args: Map<*, *>, result: MethodChannel.Result) {
         val targetId = args["targetId"] as? String
         val streamUrl = args["streamUrl"] as? String
-        val title = args["title"] as? String ?: "Plexfin"
+        val title = args["title"] as? String ?: "Sunfin"
         val startTicks = (args["startPositionTicks"] as? Number)?.toLong()
 
         if (targetId.isNullOrEmpty() || streamUrl.isNullOrEmpty()) {

@@ -21,7 +21,7 @@ class _FakeClient implements MediaServerClient {
   DeviceInfo get deviceInfo => const DeviceInfo(
     id: 'device-1',
     name: 'SHIELD Android TV',
-    appName: 'Plexfin for Android TV',
+    appName: 'Sunfin for Android TV',
     appVersion: '2.7.0',
   );
 
@@ -182,7 +182,7 @@ void main() {
       auth,
       allOf(
         startsWith('MediaBrowser '),
-        contains('Client="Plexfin for Android TV"'),
+        contains('Client="Sunfin for Android TV"'),
         contains('DeviceId="device-1"'),
         contains('Token="token"'),
       ),

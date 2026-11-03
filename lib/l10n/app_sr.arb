@@ -1,6 +1,6 @@
 {
     "@@locale": "sr",
-    "appTitle": "Plexfin",
+    "appTitle": "Sunfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Plexfin верзија {version}",
+    "appVersionFooter": "Sunfin верзија {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Plexfin није могао да приступи системском привеску за кључеве. Пријава може да се настави, али безбедно чување токена можда неће бити доступно док не откључате привезак.",
+    "secureStorageUnavailableMessage": "Sunfin није могао да приступи системском привеску за кључеве. Пријава може да се настави, али безбедно чување токена можда неће бити доступно док не откључате привезак.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -172,13 +172,13 @@
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Плексфин (Plexfin)",
+    "themeMoonfin": "Плексфин (Sunfin)",
     "@themeMoonfin": {
-        "description": "Display name for the Plexfin theme"
+        "description": "Display name for the Sunfin theme"
     },
-    "themeMoonfinSubtitle": "Аутентично, нетакнуто подразумевано издање Плексфина (Plexfin).",
+    "themeMoonfinSubtitle": "Аутентично, нетакнуто подразумевано издање Плексфина (Sunfin).",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Plexfin theme"
+        "description": "Preview description for the Sunfin theme"
     },
     "themeNeonPulse": "Неонски пулс",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Изаћи из Плексфина (Plexfin)?",
+    "exitApp": "Изаћи из Плексфина (Sunfin)?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "Није постављено. Plexfin ће покушати са подразумеваним mpv.conf у app/data фасциклама.",
+    "notSetMpvConf": "Није постављено. Sunfin ће покушати са подразумеваним mpv.conf у app/data фасциклама.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "Укључите или искључите видљивост на почетној страници по библиотеци. Поново покрените Plexfin да би промене ступиле на снагу.",
+    "libraryVisibilityDescription": "Укључите или искључите видљивост на почетној страници по библиотеци. Поново покрените Sunfin да би промене ступиле на снагу.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3561,9 +3561,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Plexfin",
+    "mediaBarModeMoonfin": "Sunfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Plexfin"
+        "description": "Media bar style option: Sunfin"
     },
     "mediaBarModeMakd": "МакД",
     "@mediaBarModeMakd": {
@@ -4121,8 +4121,8 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
-    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
-    "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
+    "aboutBasedOnMoonfin": "Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
+    "sourceCodeUrl": "https://github.com/sunfin-dev/sunfin",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
     },
@@ -4294,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Пусти у Plexfin-у",
+    "playInMoonfin": "Пусти у Sunfin-у",
     "@playInMoonfin": {
-        "description": "Button to play available media in Plexfin"
+        "description": "Button to play available media in Sunfin"
     },
     "requestedByName": "Затражио/ла: {name}",
     "@requestedByName": {
@@ -4348,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "Ставка није пронађена у вашој Plexfin библиотеци",
+    "itemNotFoundInLibrary": "Ставка није пронађена у вашој Sunfin библиотеци",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4652,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "Рестарт сервера је у току",
-    "adminServerRebootMessage": "Поновно покретање сервера је у току, поново покрените Plexfin",
+    "adminServerRebootMessage": "Поновно покретање сервера је у току, поново покрените Sunfin",
     "adminActiveSessions": "Активне сесије",
     "adminSessionsLoadFailed": "Учитавање сесија није успело",
     "adminNoActiveSessions": "Нема активних сесија",
@@ -6517,13 +6517,13 @@
     "settingsAccountSecuritySubtitle": "Аутентификација, ПИН код и родитељски надзор",
     "settingsPersonalization": "Персонализација",
     "settingsPersonalizationSubtitle": "Тема, навигација, почетни редови и видљивост библиотеке",
-    "plexPersonalizationSubtitle": "Бочна трака, редови почетног екрана, библиотеке, странице са детаљима и чувар екрана",
-    "plexGeneralStyleSubtitle": "Тастатура и контролер за игре",
-    "plexDetailsScreenSubtitle": "Дугмад, информације, одељци и препоруке",
-    "plexNavigationSubtitle": "Ставке бочне траке и аутоматски избор",
-    "plexHomeScreenSubtitle": "Редови, њихов редослед и Наставите са гледањем",
+    "sunfinPersonalizationSubtitle": "Бочна трака, редови почетног екрана, библиотеке, странице са детаљима и чувар екрана",
+    "sunfinGeneralStyleSubtitle": "Тастатура и контролер за игре",
+    "sunfinDetailsScreenSubtitle": "Дугмад, информације, одељци и препоруке",
+    "sunfinNavigationSubtitle": "Ставке бочне траке и аутоматски избор",
+    "sunfinHomeScreenSubtitle": "Редови, њихов редослед и Наставите са гледањем",
     "libraryNicknames": "Надимци библиотека",
-    "libraryNicknamesSubtitle": "Ваши сопствени називи библиотека, видљиви само у Plexfin-у",
+    "libraryNicknamesSubtitle": "Ваши сопствени називи библиотека, видљиви само у Sunfin-у",
     "libraryNicknameServerName": "На серверу: {name}",
     "libraryNicknameHint": "Оставите празно за назив са сервера",
     "libraryNicknameNone": "Без надимка",
@@ -6536,16 +6536,16 @@
     "settingsTransferImport": "Увези подешавања",
     "settingsTransferFrom": "Са уређаја {device}, {date}",
     "settingsTransferNothing": "Још ништа није извезено",
-    "settingsTransferImportConfirm": "Заменити подешавања овог уређаја овим? {source}\n\nPlexfin се затим затвара. Поново га отворите да бисте их користили.",
+    "settingsTransferImportConfirm": "Заменити подешавања овог уређаја овим? {source}\n\nSunfin се затим затвара. Поново га отворите да бисте их користили.",
     "settingsTransferImportAction": "Увези и затвори",
     "settingsTransferFailed": "Jellyfin налог није доступан",
     "settingsTransferNote": "Пријава, прозор и хардвер остају на сваком уређају. Прво се пријавите на другом уређају, па затим увезите.",
     "settingsReset": "Ресетуј сва подешавања",
     "settingsResetSubtitle": "Врати подешавања овог уређаја на подразумеване вредности",
-    "settingsResetConfirm": "Вратити свако подешавање на овом уређају на подразумевану вредност? Остајете пријављени, а подешавања извезена на ваш Jellyfin налог се чувају.\n\nPlexfin се затим затвара. Поново га отворите да наставите.",
+    "settingsResetConfirm": "Вратити свако подешавање на овом уређају на подразумевану вредност? Остајете пријављени, а подешавања извезена на ваш Jellyfin налог се чувају.\n\nSunfin се затим затвара. Поново га отворите да наставите.",
     "adminShowButton": "Прикажи дугме за администрацију",
     "adminShowButtonSubtitle": "Додаје у мени дугме које отвара администрацију сервера",
-    "plexDirectedBy": "Режија: {names}",
+    "sunfinDirectedBy": "Режија: {names}",
     "settingsDynamicContent": "Динамиц Цонтент",
     "settingsDynamicContentSubtitle": "Медиа Бар и визуелни слојеви",
     "settingsPlaybackSyncplay": "Репродукција и SyncPlay",
@@ -6569,7 +6569,7 @@
     "settingsShowGenresButtonInNavigation": "Прикажи дугме за жанрове на траци за навигацију",
     "settingsShowFavoritesButtonInNavigation": "Прикажите дугме фаворита на траци за навигацију",
     "settingsShowLibrariesButtonInNavigation": "Прикажите дугме библиотеке на траци за навигацију",
-    "settingsLibraryVisibilitySubtitle": "Укључите или искључите видљивост на почетној страници по библиотеци. Поново покрените Plexfin да би промене ступиле на снагу.",
+    "settingsLibraryVisibilitySubtitle": "Укључите или искључите видљивост на почетној страници по библиотеци. Поново покрените Sunfin да би промене ступиле на снагу.",
     "settingsMediaBarAndLocalPreviews": "Трака медија и локални прегледи",
     "settingsVisualOverlays": "Висуал Оверлаис",
     "settingsSeasonalSurprise": "Сезонско изненађење",
@@ -6588,14 +6588,14 @@
     "settingsJoinDiscord": "Придружите се Discord-у",
     "settingsJoinDiscordSubtitle": "Разговарајте са заједницом",
     "settingsJoinTheDiscord": "Придружите се Discord серверу",
-    "settingsSupportMoonfin": "Подржите Plexfin",
+    "settingsSupportMoonfin": "Подржите Sunfin",
     "settingsLegal": "ПРАВНЕ ИНФОРМАЦИЈЕ",
     "settingsLicenses": "Лиценце",
     "settingsOpenSourceLicenseNotices": "Обавештења о лиценци отвореног кода",
     "settingsPrivacyPolicy": "Политика приватности",
-    "settingsPrivacyPolicySubtitle": "Како Plexfin рукује вашим подацима",
+    "settingsPrivacyPolicySubtitle": "Како Sunfin рукује вашим подацима",
     "settingsCheckForUpdates": "Проверите ажурирања",
-    "settingsCheckForUpdatesSubtitle": "Проверите да ли постоји ново Plexfin издање",
+    "settingsCheckForUpdatesSubtitle": "Проверите да ли постоји ново Sunfin издање",
     "settingsPoweredByFlutter": "Поверед би Флуттер",
     "settingsLicenseNoticesCount": "{count, plural, one {# лиценцно обавештење} few {# лиценцна обавештења} other {# лиценцних обавештења}}",
     "@settingsLicenseNoticesCount": {
@@ -7128,12 +7128,12 @@
     "preferSdhSubtitles": "Преферирај SDH титлове",
     "preferSdhSubtitlesSubtitle": "Дај предност SDH/CC записима титлова при аутоматском избору.",
     "webDiagnostics": "Веб дијагностика",
-    "webDiagnosticsTitle": "Plexfin веб дијагностика",
+    "webDiagnosticsTitle": "Sunfin веб дијагностика",
     "webDiagnosticsIntro": "Користите ову страницу за дијагностику проблема са повезивањем прегледача (CORS, мешовити садржај и подешавања откривања).",
     "webDiagnosticsDetectedMixedContentFailure": "Откривен квар због мешовитог садржаја",
     "webDiagnosticsDetectedCorsPreflightFailure": "Откривен квар CORS-а/preflight захтева",
-    "webDiagnosticsMixedContentFailureBody": "Plexfin је открио да HTTPS страница покушава да позове HTTP URL сервера. Прегледачи блокирају тај захтев пре него што стигне до вашег сервера.",
-    "webDiagnosticsCorsFailureBody": "Plexfin је открио квар захтева на нивоу прегледача који обично изазивају недостајућа CORS или preflight заглавља на медијском серверу.",
+    "webDiagnosticsMixedContentFailureBody": "Sunfin је открио да HTTPS страница покушава да позове HTTP URL сервера. Прегледачи блокирају тај захтев пре него што стигне до вашег сервера.",
+    "webDiagnosticsCorsFailureBody": "Sunfin је открио квар захтева на нивоу прегледача који обично изазивају недостајућа CORS или preflight заглавља на медијском серверу.",
     "webDiagnosticsTargetUrl": "Циљни URL: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7163,7 +7163,7 @@
     "notConfigured": "није конфигурисано",
     "webDiagnosticsMixedContent": "Мешовити садржај",
     "webDiagnosticsMixedContentDetected": "Ова страница се учитава преко HTTPS-а, али је један или више конфигурисаних URL-ова HTTP. Прегледачи блокирају HTTPS страницама позивање HTTP API-ја.",
-    "webDiagnosticsMixedContentFix": "Решење: послужите свој медијски сервер или прокси крајњу тачку преко HTTPS-а или учитајте Plexfin преко HTTP-а само на поузданим локалним мрежама.",
+    "webDiagnosticsMixedContentFix": "Решење: послужите свој медијски сервер или прокси крајњу тачку преко HTTPS-а или учитајте Sunfin преко HTTP-а само на поузданим локалним мрежама.",
     "webDiagnosticsNoMixedContentDetected": "Из тренутних подешавања извршавања није откривена очигледна конфигурација мешовитог садржаја.",
     "webDiagnosticsCorsChecklist": "CORS контролна листа",
     "webDiagnosticsCorsChecklistItem1": "• Дозволите извор прегледача у Access-Control-Allow-Origin.",
@@ -7360,7 +7360,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "Класик (Classic) је оригинални центрирани плексфин (Plexfin) распоред. Модерн (Modern) је респонзивни синематични распоред. Спотлајт (Spotlight) је распоред усредсређен на главни приказ (hero-first) са искачућим картицама садржаја. Нуво (Nouveau) је распоред преко целог екрана са одељцима који се нижу низ страницу.",
+    "detailScreenStyleSubtitle": "Класик (Classic) је оригинални центрирани плексфин (Sunfin) распоред. Модерн (Modern) је респонзивни синематични распоред. Спотлајт (Spotlight) је распоред усредсређен на главни приказ (hero-first) са искачућим картицама садржаја. Нуво (Nouveau) је распоред преко целог екрана са одељцима који се нижу низ страницу.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7392,13 +7392,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "Употребите алгоритам локалне библиотеке „Плексфин препоручује” (Plexfin Recommends) или мрежне метрике сличности ТМДБ-а (TMDb). Напомена: Мрежне препоруке изискују интеграцију са Сиром (Seerr).",
+    "recommendationSystemSubtitle": "Употребите алгоритам локалне библиотеке „Плексфин препоручује” (Sunfin Recommends) или мрежне метрике сличности ТМДБ-а (TMDb). Напомена: Мрежне препоруке изискују интеграцију са Сиром (Seerr).",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Плексфин (Plexfin) препоручује",
+    "recommendationSystemMoonfin": "Плексфин (Sunfin) препоручује",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Plexfin Recommends"
+        "description": "Recommendation system option: Sunfin Recommends"
     },
     "recommendationSystemTmdb": "ТМДБ (TMDb) сличност",
     "@recommendationSystemTmdb": {
@@ -7408,7 +7408,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "Лимитирај предлоге опције Плексфин препоручује (Plexfin Recommends) у складу са старосном класификацијом циљног медија",
+    "recommendationsApplyParentalRatingCapSubtitle": "Лимитирај предлоге опције Плексфин препоручује (Sunfin Recommends) у складу са старосном класификацијом циљног медија",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7456,7 +7456,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "Прилагођене теме мењају визуелне елементе у целом Plexfin-у. Изаберите једну од ових опција која одговара вашем стилу.",
+    "customThemeSubtitle": "Прилагођене теме мењају визуелне елементе у целом Sunfin-у. Изаберите једну од ових опција која одговара вашем стилу.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7629,7 +7629,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "Пријавите се на Plexfin на телефону",
+    "carSignInPrompt": "Пријавите се на Sunfin на телефону",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8970,7 +8970,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller је Flutter-ов модерни GPU приказивач за глаткије анимације и мање застајкивања. На неким ТВ уређајима и старијим GPU-овима може изазвати сметње или црни видео; искључите га ако то приметите. Аутоматски бира најбоље подешавање за ваш уређај. Поново покрените Plexfin да бисте применили промену.",
+    "impellerRenderingSubtitle": "Impeller је Flutter-ов модерни GPU приказивач за глаткије анимације и мање застајкивања. На неким ТВ уређајима и старијим GPU-овима може изазвати сметње или црни видео; искључите га ако то приметите. Аутоматски бира најбоље подешавање за ваш уређај. Поново покрените Sunfin да бисте применили промену.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8981,7 +8981,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "Plexfin мора поново да се покрене да би се променио механизам приказа. Затворите апликацију сада, а затим је поново отворите да бисте применили промену.",
+    "impellerRestartMessage": "Sunfin мора поново да се покрене да би се променио механизам приказа. Затворите апликацију сада, а затим је поново отворите да бисте применили промену.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },
@@ -9036,7 +9036,7 @@
     "@interfaceLayout": {
         "description": "Setting to override which UI layout the app uses"
     },
-    "interfaceLayoutSubtitle": "Заобиђите детектовани распоред када се овај уређај погрешно очита. Поново покрените Плексфин (Plexfin) да би промене ступиле на снагу.",
+    "interfaceLayoutSubtitle": "Заобиђите детектовани распоред када се овај уређај погрешно очита. Поново покрените Плексфин (Sunfin) да би промене ступиле на снагу.",
     "@interfaceLayoutSubtitle": {
         "description": "Subtitle for the interface layout setting"
     },
@@ -9272,7 +9272,7 @@
     "@loadingAnimation": {
         "description": "Setting title for custom loading animation"
     },
-    "loadingAnimationDescription": "Прилагодите анимације учитавања које се користе широм Плексфина (Plexfin)",
+    "loadingAnimationDescription": "Прилагодите анимације учитавања које се користе широм Плексфина (Sunfin)",
     "@loadingAnimationDescription": {
         "description": "Description for loading animation customization settings"
     },
@@ -9284,9 +9284,9 @@
     "@loadingAnimationImage": {
         "description": "Title for loading animation image selection"
     },
-    "loadingAnimationImageMoonfinLogo": "Плексфин лого (Plexfin Logo)",
+    "loadingAnimationImageMoonfinLogo": "Плексфин лого (Sunfin Logo)",
     "@loadingAnimationImageMoonfinLogo": {
-        "description": "Loading animation image option: Plexfin Logo"
+        "description": "Loading animation image option: Sunfin Logo"
     },
     "loadingAnimationImageSpinner": "Спинер",
     "@loadingAnimationImageSpinner": {
@@ -9302,7 +9302,7 @@
     },
     "loadingAnimationImageMoonfinPhases": "Плексфин мене",
     "@loadingAnimationImageMoonfinPhases": {
-        "description": "Loading animation image option: Plexfin Phases in brand gradient"
+        "description": "Loading animation image option: Sunfin Phases in brand gradient"
     },
     "loadingAnimationImageNeonfinPhases": "Неонфим мене",
     "@loadingAnimationImageNeonfinPhases": {
@@ -9517,9 +9517,9 @@
     "@screensaverBackdropBlack": {
         "description": "Screensaver backdrop: Black"
     },
-    "screensaverBackdropMoonfin": "Плексфин (Plexfin)",
+    "screensaverBackdropMoonfin": "Плексфин (Sunfin)",
     "@screensaverBackdropMoonfin": {
-        "description": "Screensaver backdrop: Plexfin"
+        "description": "Screensaver backdrop: Sunfin"
     },
     "screensaverBackdropCalm": "Смирено",
     "@screensaverBackdropCalm": {
@@ -9537,9 +9537,9 @@
     "@screensaverAdditionalComponent": {
         "description": "Setting for screensaver additional component"
     },
-    "screensaverComponentMoonfinLogo": "Плексфин лого (Plexfin Logo)",
+    "screensaverComponentMoonfinLogo": "Плексфин лого (Sunfin Logo)",
     "@screensaverComponentMoonfinLogo": {
-        "description": "Screensaver component: Plexfin Logo"
+        "description": "Screensaver component: Sunfin Logo"
     },
     "screensaverComponentRunner": "Покретач",
     "@screensaverComponentRunner": {

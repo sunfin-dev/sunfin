@@ -39,8 +39,8 @@ class _HomeScreenCategoryScreenState extends State<_HomeScreenCategoryScreen> {
       appBar: buildSettingsAppBar(context, Text(l10n.homeScreen)),
       body: ListView(
         children: [
-          // Plexfin: the Plex rows have a fixed layout (PlexLocks).
-          if (!PlexLocks.active) ...[
+          // Sunfin: the Sunfin rows have a fixed layout (SunfinLocks).
+          if (!SunfinLocks.active) ...[
             _SectionHeader(l10n.homeRowDisplay),
             adaptiveListSection(
               children: [
@@ -142,8 +142,8 @@ class _HomeScreenCategoryScreenState extends State<_HomeScreenCategoryScreen> {
             ],
           ),
 
-          // Plexfin: the Plex header and posters decide these.
-          if (!PlexLocks.active) ...[
+          // Sunfin: the Sunfin header and posters decide these.
+          if (!SunfinLocks.active) ...[
             _SectionHeader(l10n.mediaDetailsAndSpoilers),
             adaptiveListSection(
               children: [
@@ -196,7 +196,7 @@ class _HomeScreenCategoryScreenState extends State<_HomeScreenCategoryScreen> {
                 onTap: () =>
                     context.pushSettingsScreen(const HomeRowTogglesScreen()),
               ),
-              if (rowsStyle == HomeRowsStyle.v1 && !PlexLocks.active)
+              if (rowsStyle == HomeRowsStyle.v1 && !SunfinLocks.active)
                 _TvSettingsListTile(
                   leading: const Icon(Icons.image_outlined),
                   title: Text(l10n.perRowImageTypeSelection),

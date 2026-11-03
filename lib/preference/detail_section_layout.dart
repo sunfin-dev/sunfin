@@ -49,7 +49,7 @@ enum DetailSection {
     _modern,
   }),
   lyrics('lyrics', Icons.lyrics, DetailSectionGroup.header, {_classic}),
-  // Plexfin: only there to be moved; a show's episodes can't be switched off.
+  // Sunfin: only there to be moved; a show's episodes can't be switched off.
   episodes('episodes', Icons.view_carousel_outlined, DetailSectionGroup.sections, {
     _nouveau,
   }),
@@ -65,7 +65,7 @@ enum DetailSection {
     _spotlight,
     _nouveau,
   }),
-  // Plexfin: studios and media info live in the details block that closes
+  // Sunfin: studios and media info live in the details block that closes
   // the page, which doesn't move, so they sit under Other rather than among
   // the sections that can be put in order.
   studios('studios', Icons.business_outlined, DetailSectionGroup.other, {
@@ -294,7 +294,7 @@ final detailSectionLayout = ButtonLayout(
   hiddenDesktop: UserPreferences.hiddenDetailSectionsDesktop,
 );
 
-/// Plexfin: the [DetailSectionGroup.sections] group, which the user can also
+/// Sunfin: the [DetailSectionGroup.sections] group, which the user can also
 /// put in order (user, 2026-10-23). It shares the hidden list above, and only
 /// this group writes the order, so no other group's ids get dropped from it.
 final detailSectionOrderLayout = ButtonLayout(

@@ -22,8 +22,8 @@ import '../../../data/utils/video_range_label.dart';
 import '../../../playback/subtitle_style.dart';
 import '../../../util/fullscreen_helper.dart';
 import '../../../util/scroll_sensitivity_binding.dart';
-import '../../plex/plex_clock.dart';
-import '../../plex/plex_style.dart';
+import '../../sunfin/sunfin_clock.dart';
+import '../../sunfin/sunfin_style.dart';
 import '../../widgets/player_volume_control.dart';
 import '../../widgets/playback/playback_time_row.dart';
 import '../../widgets/playback/player_logo.dart';
@@ -3007,8 +3007,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
   // After a transport action from a remote key, reveal the OSD and focus the
   // seekbar when it was hidden, or the primary button when it was already up.
   void _revealControlsAfterTransport() {
-    if (PlexStyle.enabled) {
-      // Plexfin: as in Plex, the remote's play/pause key only plays or
+    if (SunfinStyle.enabled) {
+      // Sunfin: as in the reference design, the remote's play/pause key only plays or
       // pauses. Hidden controls stay hidden and focus stays where it was
       // (user, 2026-10-26).
       if (_controlsVisible) _scheduleHide();
@@ -3397,7 +3397,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
     } else {
       _togglePlayPause();
     }
-    if (PlexStyle.enabled) {
+    if (SunfinStyle.enabled) {
       _revealControlsAfterTransport();
       return KeyEventResult.handled;
     }
@@ -3859,11 +3859,11 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
               _openChapterRow();
               return KeyEventResult.handled;
             }
-            if (PlexStyle.enabled &&
+            if (SunfinStyle.enabled &&
                 event.logicalKey == LogicalKeyboardKey.arrowUp &&
                 !_isSkipSegmentButtonVisible) {
-              // Plexfin: up brings the controls with play/pause focused, as
-              // in Plex, not the seek bar (user, 2026-10-26).
+              // Sunfin: up brings the controls with play/pause focused, as
+              // in the reference design, not the seek bar (user, 2026-10-26).
               _showControls();
               _focusTvPlayPause();
               return KeyEventResult.handled;
@@ -4164,7 +4164,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                           child: ColoredBox(color: Colors.black),
                         ),
                       _buildPausedDescriptionOverlay(),
-                      // Plexfin: the controls fade in and out rather than
+                      // Sunfin: the controls fade in and out rather than
                       // popping (user, 2026-10-26); elsewhere they still
                       // switch at once.
                       _OsdFade(
@@ -4172,8 +4172,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                             _controlsVisible &&
                             !_isOsdLocked &&
                             !hideOsdForPreroll,
-                        duration: PlexStyle.enabled
-                            ? PlexMotion.fade
+                        duration: SunfinStyle.enabled
+                            ? SunfinMotion.fade
                             : Duration.zero,
                         builder: (context) => Stack(
                           fit: StackFit.expand,
@@ -4184,10 +4184,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                             // what gets hit-tested - only their pixels are
                             // re-sent by HdrOverlayCapture.
                             _buildTopOverlay(context),
-                            // Plexfin: the clock comes up with the controls,
-                            // top right, where every Plex page has it (user,
+                            // Sunfin: the clock comes up with the controls,
+                            // top right, where every Sunfin page has it (user,
                             // 2026-10-26).
-                            if (PlexStyle.enabled) PlexClock.corner(),
+                            if (SunfinStyle.enabled) SunfinClock.corner(),
                             if (!PlatformDetection.useLeanbackUi)
                               Positioned.fill(
                                 child: Center(
@@ -4730,7 +4730,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
             const SizedBox(width: AppSpacing.spaceSm),
             Expanded(child: _buildTitleInfo()),
             // Keeps a long title clear of the clock.
-            if (PlexStyle.enabled) SizedBox(width: PlexStyle.s(100)),
+            if (SunfinStyle.enabled) SizedBox(width: SunfinStyle.s(100)),
             if (PlatformDetection.useMobileUi &&
                 _prefs.get(UserPreferences.osdLockEnabled))
               IconButton(
@@ -5067,7 +5067,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
     );
   }
 
-  /// Plexfin: the time labels ("Ends at" moves with the clock while paused)
+  /// Sunfin: the time labels ("Ends at" moves with the clock while paused)
   /// are refreshed by a once-a-second tick that rebuilds only the seek bar,
   /// instead of a setState on the whole player.
   Widget _buildSeekbar() => ListenableBuilder(
@@ -8348,7 +8348,7 @@ class _OsdFadeState extends State<_OsdFade>
   );
   late final Animation<double> _opacity = CurvedAnimation(
     parent: _controller,
-    curve: PlexMotion.curve,
+    curve: SunfinMotion.curve,
   );
 
   @override

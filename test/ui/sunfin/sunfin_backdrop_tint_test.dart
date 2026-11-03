@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:moonfin/ui/plex/plex_backdrop_tint.dart';
+import 'package:moonfin/ui/sunfin/sunfin_backdrop_tint.dart';
 
 /// A 16x9 RGBA sample from rows of 16 'rrggbb' hex pixels.
 ByteData sample(List<String> rows) {
@@ -37,20 +37,20 @@ void main() {
   test(
     'The Bear takes its night sky in the top corners, not the brown frame',
     () {
-      final tint = PlexBackdropTint.fromSample(theBear)!;
+      final tint = SunfinBackdropTint.fromSample(theBear)!;
       // Blue clearly over red: the reported bug was a reddish brown here.
       expect(tint.topLeft.b, greaterThan(tint.topLeft.r + 0.03));
       expect(tint.topRight.b, greaterThan(tint.topRight.r + 0.03));
     },
   );
 
-  test('the corners differ, as on a Plex page', () {
-    final tint = PlexBackdropTint.fromSample(theBear)!;
+  test('the corners differ, as on a Sunfin page', () {
+    final tint = SunfinBackdropTint.fromSample(theBear)!;
     expect(tint.topLeft, isNot(tint.bottomLeft));
   });
 
   test('the page stays dark enough to read on', () {
-    final tint = PlexBackdropTint.fromSample(theBear)!;
+    final tint = SunfinBackdropTint.fromSample(theBear)!;
     for (final c in [
       tint.topLeft,
       tint.topRight,
@@ -63,7 +63,7 @@ void main() {
 
   test('all-black art has no colour to take', () {
     final black = sample(List.filled(9, List.filled(16, '000000').join(' ')));
-    expect(PlexBackdropTint.fromSample(black), isNull);
+    expect(SunfinBackdropTint.fromSample(black), isNull);
   });
 
   test('a large dark-blue setting outweighs a small, strong red subject', () {
@@ -75,7 +75,7 @@ void main() {
         return '1c2a4a';
       }).join(' '),
     );
-    final tint = PlexBackdropTint.fromSample(sample(rows))!;
+    final tint = SunfinBackdropTint.fromSample(sample(rows))!;
     for (final c in [
       tint.topLeft,
       tint.topRight,

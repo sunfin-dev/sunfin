@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 import '../l10n/app_localizations.dart';
-import '../preference/plex_locks.dart';
+import '../preference/sunfin_locks.dart';
 import '../preference/preference_constants.dart';
 import 'clock_format.dart';
 
@@ -85,9 +85,9 @@ String formatPlaybackTimeSlot(
         playbackSpeed: playbackSpeed,
       );
     case PlaybackTimeSlot.time:
-      // Plexfin: the clock sits in the player's top right instead (user,
+      // Sunfin: the clock sits in the player's top right instead (user,
       // 2026-10-26), so a slot still set to it from before stays empty.
-      if (PlexLocks.active) return '';
+      if (SunfinLocks.active) return '';
       return formatClockTime(
         DateTime.now(),
         use24Hour: use24Hour,

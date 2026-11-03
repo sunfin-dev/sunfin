@@ -17,7 +17,7 @@ void main() {
       expect(cardProgressOf(item), 40.0);
     });
 
-    test('a finished show draws no bar, as in Plex', () {
+    test('a finished show draws no bar, as in the reference design', () {
       final item = _item('Series', {
         'UserData': {'PlayedPercentage': 100.0, 'Played': true},
       });

@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "Plexfin" "\0"
-            VALUE "FileDescription", "Plexfin" "\0"
+            VALUE "CompanyName", "Sunfin" "\0"
+            VALUE "FileDescription", "Sunfin" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "plexfin" "\0"
+            VALUE "InternalName", "sunfin" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2026 org.moonfin. All rights reserved." "\0"
-            VALUE "OriginalFilename", "plexfin.exe" "\0"
-            VALUE "ProductName", "Plexfin" "\0"
+            VALUE "OriginalFilename", "sunfin.exe" "\0"
+            VALUE "ProductName", "Sunfin" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

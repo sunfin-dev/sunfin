@@ -58,7 +58,7 @@ import '../../../playback/device_profile_builder.dart';
 import '../../../playback/external_player_service.dart';
 import '../../../playback/letterbox_croppers.dart';
 import '../../../preference/bottom_nav_tabs.dart';
-import '../../../preference/plex_locks.dart';
+import '../../../preference/sunfin_locks.dart';
 import '../../../preference/preference_constants.dart';
 import '../../../auth/repositories/user_repository.dart';
 import '../../../preference/user_preferences.dart';
@@ -356,9 +356,9 @@ class _SettingsSidePanelState extends ConsumerState<SettingsSidePanel> {
             _PanelEntry(
               icon: Icons.palette,
               title: l10n.settingsPersonalization,
-              // Plexfin: name only what the locked look leaves to change.
-              subtitle: PlexLocks.active
-                  ? l10n.plexPersonalizationSubtitle
+              // Sunfin: name only what the locked look leaves to change.
+              subtitle: SunfinLocks.active
+                  ? l10n.sunfinPersonalizationSubtitle
                   : l10n.settingsPersonalizationSubtitle,
               onTap: () =>
                   context.pushSettingsScreen(const _CustomizationCategoryScreen()),

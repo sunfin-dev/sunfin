@@ -6,21 +6,21 @@ import '../../data/services/rating_icon_provider.dart';
 import '../../preference/user_preferences.dart';
 import '../widgets/rating_display.dart';
 
-/// Plex's rating line under a title's genres (references 05, 12 and 14):
+/// The reference design's rating line under a title's genres (references 05, 12 and 14):
 /// each score as a small logo and its number, then five stars holding the
 /// viewer's own rating, hollow until they rate (user's pick A,
 /// 2026-10-28, https://claude.ai/artifact/TnMTJm3n8J2xrCyoWmfYcz).
 ///
 /// The scores are the ones the details pages already show: the server's
-/// community score (drawn as Plex draws it, a star and a percentage), its
+/// community score (drawn as the reference design draws it, a star and a percentage), its
 /// critics' score, and the extra ratings when those are on. Sizes are in
-/// Plex's 960-wide units, as everything inside [PlexHomeHeader] is.
-class PlexRatingLine extends StatelessWidget {
+/// The reference design's 960-wide units, as everything inside [SunfinHomeHeader] is.
+class SunfinRatingLine extends StatelessWidget {
   final AggregatedItem item;
   final Map<String, double> extraRatings;
   final UserPreferences prefs;
 
-  const PlexRatingLine({
+  const SunfinRatingLine({
     super.key,
     required this.item,
     required this.extraRatings,
@@ -29,13 +29,13 @@ class PlexRatingLine extends StatelessWidget {
 
   /// Null where the line has nothing to stand for: ratings switched off, or
   /// Kids Mode, which shows none.
-  static PlexRatingLine? of({
+  static SunfinRatingLine? of({
     required AggregatedItem item,
     required Map<String, double> extraRatings,
     required UserPreferences prefs,
   }) {
     if (!prefs.effectiveShowDetailRatings) return null;
-    return PlexRatingLine(
+    return SunfinRatingLine(
       item: item,
       extraRatings: extraRatings,
       prefs: prefs,
@@ -96,15 +96,15 @@ class _Score extends StatelessWidget {
         ? const Icon(
             Symbols.star,
             fill: 1,
-            size: PlexRatingLine._starSize,
+            size: SunfinRatingLine._starSize,
             color: Colors.white,
-            shadows: PlexRatingLine._shadows,
+            shadows: SunfinRatingLine._shadows,
           )
         : asset == null
         ? null
         : Image.asset(
             asset,
-            height: PlexRatingLine._iconHeight,
+            height: SunfinRatingLine._iconHeight,
             filterQuality: FilterQuality.medium,
           );
     return Row(
@@ -116,9 +116,9 @@ class _Score extends StatelessWidget {
           maxLines: 1,
           style: TextStyle(
             color: Colors.white.withValues(alpha: 0.9),
-            fontSize: PlexRatingLine._fontSize,
+            fontSize: SunfinRatingLine._fontSize,
             fontWeight: FontWeight.w500,
-            shadows: PlexRatingLine._shadows,
+            shadows: SunfinRatingLine._shadows,
           ),
         ),
       ],
@@ -148,11 +148,11 @@ class _Stars extends StatelessWidget {
                 : Symbols.star,
             fill: halves > i * 2 ? 1 : 0,
             weight: 300,
-            size: PlexRatingLine._starSize,
+            size: SunfinRatingLine._starSize,
             color: halves > i * 2
                 ? Colors.white
                 : Colors.white.withValues(alpha: 0.6),
-            shadows: PlexRatingLine._shadows,
+            shadows: SunfinRatingLine._shadows,
           ),
         ],
       ],

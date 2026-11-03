@@ -67,9 +67,9 @@ class _NavigationCategoryScreenState extends State<_NavigationCategoryScreen> {
       appBar: buildSettingsAppBar(context, Text(l10n.navigation)),
       body: ListView(
         children: [
-          // Plexfin: the rail's look is fixed (PlexLocks); only the buttons
+          // Sunfin: the rail's look is fixed (SunfinLocks); only the buttons
           // below stay the user's choice.
-          if (!PlexLocks.active) ...[
+          if (!SunfinLocks.active) ...[
             _SectionHeader(l10n.appearance),
             adaptiveListSection(
               children: [
@@ -146,7 +146,7 @@ class _NavigationCategoryScreenState extends State<_NavigationCategoryScreen> {
               ],
             ),
           ],
-          // Plexfin: opening a sidebar row by resting on it (user,
+          // Sunfin: opening a sidebar row by resting on it (user,
           // 2026-10-23). The rail is TV only, and so is this.
           if (PlatformDetection.isTV) ...[
             const _SectionHeader('Sidebar'),

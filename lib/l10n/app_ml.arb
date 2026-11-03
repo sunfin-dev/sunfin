@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "appTitle": "Plexfin",
+    "appTitle": "Sunfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Plexfin പതിപ്പ് {version}",
+    "appVersionFooter": "Sunfin പതിപ്പ് {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Plexfin നിങ്ങളുടെ സിസ്റ്റം കീറിംഗ് ആക്സസ് ചെയ്യാനായില്ല. ലോഗിൻ തുടരാം, പക്ഷേ കീറിംഗ് അൺലോക്ക് ചെയ്യുന്നതുവരെ സുരക്ഷിത ടോക്കൺ സംഭരണം ലഭ്യമല്ലായിരിക്കാം.",
+    "secureStorageUnavailableMessage": "Sunfin നിങ്ങളുടെ സിസ്റ്റം കീറിംഗ് ആക്സസ് ചെയ്യാനായില്ല. ലോഗിൻ തുടരാം, പക്ഷേ കീറിംഗ് അൺലോക്ക് ചെയ്യുന്നതുവരെ സുരക്ഷിത ടോക്കൺ സംഭരണം ലഭ്യമല്ലായിരിക്കാം.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -168,17 +168,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "ആപ്പ് പുനരാരംഭിക്കാതെ തന്നെ Plexfin, Neon Pulse എന്നിവയ്ക്കിടയിൽ മാറുക",
+    "settingsAppearanceThemeSubtitle": "ആപ്പ് പുനരാരംഭിക്കാതെ തന്നെ Sunfin, Neon Pulse എന്നിവയ്ക്കിടയിൽ മാറുക",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Plexfin",
+    "themeMoonfin": "Sunfin",
     "@themeMoonfin": {
-        "description": "Display name for the Plexfin theme"
+        "description": "Display name for the Sunfin theme"
     },
-    "themeMoonfinSubtitle": "നിലവിലെ Plexfin നിങ്ങൾ എല്ലാവരും ഇഷ്ടപ്പെട്ടു",
+    "themeMoonfinSubtitle": "നിലവിലെ Sunfin നിങ്ങൾ എല്ലാവരും ഇഷ്ടപ്പെട്ടു",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Plexfin theme"
+        "description": "Preview description for the Sunfin theme"
     },
     "themeNeonPulse": "നിയോൺ പൾസ്",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Plexfin-ൽ നിന്ന് പുറത്തുകടക്കണോ?",
+    "exitApp": "Sunfin-ൽ നിന്ന് പുറത്തുകടക്കണോ?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "സജ്ജമാക്കിയിട്ടില്ല. ആപ്പ്/ഡാറ്റ ഫോൾഡറുകളിൽ Plexfin ഒരു ഡിഫോൾട്ട് mpv.conf പരീക്ഷിക്കും.",
+    "notSetMpvConf": "സജ്ജമാക്കിയിട്ടില്ല. ആപ്പ്/ഡാറ്റ ഫോൾഡറുകളിൽ Sunfin ഒരു ഡിഫോൾട്ട് mpv.conf പരീക്ഷിക്കും.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "ഓരോ ലൈബ്രറിയിലും ഹോം പേജ് ദൃശ്യപരത ടോഗിൾ ചെയ്യുക. മാറ്റങ്ങൾ പ്രാബല്യത്തിൽ വരാൻ Plexfin പുനരാരംഭിക്കുക.",
+    "libraryVisibilityDescription": "ഓരോ ലൈബ്രറിയിലും ഹോം പേജ് ദൃശ്യപരത ടോഗിൾ ചെയ്യുക. മാറ്റങ്ങൾ പ്രാബല്യത്തിൽ വരാൻ Sunfin പുനരാരംഭിക്കുക.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3557,13 +3557,13 @@
     "@mediaBarMode": {
         "description": "Setting for choosing media bar style"
     },
-    "mediaBarModeDescription": "Plexfin, MakD എന്നിവയ്ക്കിടയിൽ തിരഞ്ഞെടുക്കുക അല്ലെങ്കിൽ മീഡിയ ബാർ ഓഫാക്കുക",
+    "mediaBarModeDescription": "Sunfin, MakD എന്നിവയ്ക്കിടയിൽ തിരഞ്ഞെടുക്കുക അല്ലെങ്കിൽ മീഡിയ ബാർ ഓഫാക്കുക",
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Plexfin",
+    "mediaBarModeMoonfin": "Sunfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Plexfin"
+        "description": "Media bar style option: Sunfin"
     },
     "mediaBarModeMakd": "MakD",
     "@mediaBarModeMakd": {
@@ -4121,8 +4121,8 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
-    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
-    "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
+    "aboutBasedOnMoonfin": "Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
+    "sourceCodeUrl": "https://github.com/sunfin-dev/sunfin",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
     },
@@ -4294,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Plexfin എന്നതിൽ പ്ലേ ചെയ്യുക",
+    "playInMoonfin": "Sunfin എന്നതിൽ പ്ലേ ചെയ്യുക",
     "@playInMoonfin": {
-        "description": "Button to play available media in Plexfin"
+        "description": "Button to play available media in Sunfin"
     },
     "requestedByName": "{name} അഭ്യർത്ഥിച്ചു",
     "@requestedByName": {
@@ -4348,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "നിങ്ങളുടെ Plexfin ലൈബ്രറിയിൽ ഇനം കണ്ടെത്തിയില്ല",
+    "itemNotFoundInLibrary": "നിങ്ങളുടെ Sunfin ലൈബ്രറിയിൽ ഇനം കണ്ടെത്തിയില്ല",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4652,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "സെർവർ റീബൂട്ട് പുരോഗമിക്കുന്നു",
-    "adminServerRebootMessage": "സെർവർ റീബൂട്ട് പുരോഗതിയിലാണ്, Plexfin പുനരാരംഭിക്കുക",
+    "adminServerRebootMessage": "സെർവർ റീബൂട്ട് പുരോഗതിയിലാണ്, Sunfin പുനരാരംഭിക്കുക",
     "adminActiveSessions": "സജീവ സെഷനുകൾ",
     "adminSessionsLoadFailed": "സെഷനുകൾ ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു",
     "adminNoActiveSessions": "സജീവമായ സെഷനുകളൊന്നുമില്ല",
@@ -6517,13 +6517,13 @@
     "settingsAccountSecuritySubtitle": "പ്രാമാണീകരണം, പിൻ കോഡ്, രക്ഷാകർതൃ നിയന്ത്രണങ്ങൾ",
     "settingsPersonalization": "വ്യക്തിഗതമാക്കൽ",
     "settingsPersonalizationSubtitle": "തീം, നാവിഗേഷൻ, ഹോം വരികൾ, ലൈബ്രറി ദൃശ്യപരത",
-    "plexPersonalizationSubtitle": "സൈഡ്‌ബാർ, ഹോം വരികൾ, ലൈബ്രറികൾ, വിശദാംശ പേജുകൾ, സ്ക്രീൻ സേവർ",
-    "plexGeneralStyleSubtitle": "കീബോർഡും ഗെയിം കൺട്രോളറും",
-    "plexDetailsScreenSubtitle": "ബട്ടണുകൾ, വിവരങ്ങൾ, വിഭാഗങ്ങൾ, ശുപാർശകൾ",
-    "plexNavigationSubtitle": "സൈഡ്‌ബാർ ഇനങ്ങളും സ്വയമേവയുള്ള തിരഞ്ഞെടുപ്പും",
-    "plexHomeScreenSubtitle": "വരികൾ, അവയുടെ ക്രമം, കാണുന്നത് തുടരുക",
+    "sunfinPersonalizationSubtitle": "സൈഡ്‌ബാർ, ഹോം വരികൾ, ലൈബ്രറികൾ, വിശദാംശ പേജുകൾ, സ്ക്രീൻ സേവർ",
+    "sunfinGeneralStyleSubtitle": "കീബോർഡും ഗെയിം കൺട്രോളറും",
+    "sunfinDetailsScreenSubtitle": "ബട്ടണുകൾ, വിവരങ്ങൾ, വിഭാഗങ്ങൾ, ശുപാർശകൾ",
+    "sunfinNavigationSubtitle": "സൈഡ്‌ബാർ ഇനങ്ങളും സ്വയമേവയുള്ള തിരഞ്ഞെടുപ്പും",
+    "sunfinHomeScreenSubtitle": "വരികൾ, അവയുടെ ക്രമം, കാണുന്നത് തുടരുക",
     "libraryNicknames": "ലൈബ്രറി വിളിപ്പേരുകൾ",
-    "libraryNicknamesSubtitle": "ലൈബ്രറികൾക്ക് നിങ്ങളുടെ സ്വന്തം പേരുകൾ, Plexfin-ൽ മാത്രം കാണിക്കും",
+    "libraryNicknamesSubtitle": "ലൈബ്രറികൾക്ക് നിങ്ങളുടെ സ്വന്തം പേരുകൾ, Sunfin-ൽ മാത്രം കാണിക്കും",
     "libraryNicknameServerName": "സെർവറിൽ: {name}",
     "libraryNicknameHint": "സെർവറിലെ പേര് ഉപയോഗിക്കാൻ ശൂന്യമായി വിടുക",
     "libraryNicknameNone": "വിളിപ്പേരില്ല",
@@ -6536,16 +6536,16 @@
     "settingsTransferImport": "ക്രമീകരണങ്ങൾ ഇമ്പോർട്ട് ചെയ്യുക",
     "settingsTransferFrom": "{device} ൽ നിന്ന്, {date}",
     "settingsTransferNothing": "ഇതുവരെ ഒന്നും എക്സ്പോർട്ട് ചെയ്തിട്ടില്ല",
-    "settingsTransferImportConfirm": "ഈ ഉപകരണത്തിന്റെ ക്രമീകരണങ്ങൾ ഇവ കൊണ്ട് മാറ്റണോ? {source}\n\nതുടർന്ന് Plexfin അടയും. ഉപയോഗിക്കാൻ വീണ്ടും തുറക്കുക.",
+    "settingsTransferImportConfirm": "ഈ ഉപകരണത്തിന്റെ ക്രമീകരണങ്ങൾ ഇവ കൊണ്ട് മാറ്റണോ? {source}\n\nതുടർന്ന് Sunfin അടയും. ഉപയോഗിക്കാൻ വീണ്ടും തുറക്കുക.",
     "settingsTransferImportAction": "ഇമ്പോർട്ട് ചെയ്ത് അടയ്ക്കുക",
     "settingsTransferFailed": "നിങ്ങളുടെ Jellyfin അക്കൗണ്ടിൽ എത്താനായില്ല",
     "settingsTransferNote": "സൈൻ-ഇൻ, വിൻഡോ, ഹാർഡ്‌വെയർ എന്നിവ ഓരോ ഉപകരണത്തിലും വേറിട്ടുനിൽക്കും. ആദ്യം മറ്റേ ഉപകരണത്തിൽ സൈൻ ഇൻ ചെയ്ത് പിന്നീട് ഇമ്പോർട്ട് ചെയ്യുക.",
     "settingsReset": "എല്ലാ ക്രമീകരണങ്ങളും പുനഃസജ്ജമാക്കുക",
     "settingsResetSubtitle": "ഈ ഉപകരണത്തിന്റെ ക്രമീകരണങ്ങൾ ഡിഫോൾട്ടിലേക്ക് മാറ്റുക",
-    "settingsResetConfirm": "ഈ ഉപകരണത്തിലെ എല്ലാ ക്രമീകരണങ്ങളും ഡിഫോൾട്ടിലേക്ക് മാറ്റണോ? നിങ്ങൾ സൈൻ ഇൻ ചെയ്‌ത നിലയിൽ തുടരും, നിങ്ങളുടെ Jellyfin അക്കൗണ്ടിലേക്ക് എക്‌സ്‌പോർട്ട് ചെയ്‌ത ക്രമീകരണങ്ങൾ നിലനിൽക്കും.\n\nതുടർന്ന് Plexfin അടയും. തുടരാൻ ഇത് വീണ്ടും തുറക്കുക.",
+    "settingsResetConfirm": "ഈ ഉപകരണത്തിലെ എല്ലാ ക്രമീകരണങ്ങളും ഡിഫോൾട്ടിലേക്ക് മാറ്റണോ? നിങ്ങൾ സൈൻ ഇൻ ചെയ്‌ത നിലയിൽ തുടരും, നിങ്ങളുടെ Jellyfin അക്കൗണ്ടിലേക്ക് എക്‌സ്‌പോർട്ട് ചെയ്‌ത ക്രമീകരണങ്ങൾ നിലനിൽക്കും.\n\nതുടർന്ന് Sunfin അടയും. തുടരാൻ ഇത് വീണ്ടും തുറക്കുക.",
     "adminShowButton": "അഡ്മിനിസ്ട്രേഷൻ ബട്ടൺ കാണിക്കുക",
     "adminShowButtonSubtitle": "സെർവർ അഡ്മിനിസ്ട്രേഷൻ തുറക്കുന്ന ഒരു ബട്ടൺ മെനുവിൽ ചേർക്കുന്നു",
-    "plexDirectedBy": "സംവിധാനം: {names}",
+    "sunfinDirectedBy": "സംവിധാനം: {names}",
     "settingsDynamicContent": "ഡൈനാമിക് ഉള്ളടക്കം",
     "settingsDynamicContentSubtitle": "മീഡിയ ബാറും വിഷ്വൽ ഓവർലേകളും",
     "settingsPlaybackSyncplay": "പ്ലേബാക്ക് & SyncPlay",
@@ -6569,7 +6569,7 @@
     "settingsShowGenresButtonInNavigation": "നാവിഗേഷൻ ബാറിൽ വിഭാഗങ്ങളുടെ ബട്ടൺ കാണിക്കുക",
     "settingsShowFavoritesButtonInNavigation": "നാവിഗേഷൻ ബാറിൽ പ്രിയപ്പെട്ടവ ബട്ടൺ കാണിക്കുക",
     "settingsShowLibrariesButtonInNavigation": "നാവിഗേഷൻ ബാറിലെ ലൈബ്രറികളുടെ ബട്ടൺ കാണിക്കുക",
-    "settingsLibraryVisibilitySubtitle": "ഓരോ ലൈബ്രറിയിലും ഹോം പേജ് ദൃശ്യപരത ടോഗിൾ ചെയ്യുക. മാറ്റങ്ങൾ പ്രാബല്യത്തിൽ വരുന്നതിന് Plexfin പുനരാരംഭിക്കുക.",
+    "settingsLibraryVisibilitySubtitle": "ഓരോ ലൈബ്രറിയിലും ഹോം പേജ് ദൃശ്യപരത ടോഗിൾ ചെയ്യുക. മാറ്റങ്ങൾ പ്രാബല്യത്തിൽ വരുന്നതിന് Sunfin പുനരാരംഭിക്കുക.",
     "settingsMediaBarAndLocalPreviews": "മീഡിയ ബാറും പ്രാദേശിക പ്രിവ്യൂകളും",
     "settingsVisualOverlays": "വിഷ്വൽ ഓവർലേകൾ",
     "settingsSeasonalSurprise": "സീസണൽ സർപ്രൈസ്",
@@ -6588,14 +6588,14 @@
     "settingsJoinDiscord": "ചേരുക Discord",
     "settingsJoinDiscordSubtitle": "കമ്മ്യൂണിറ്റിയുമായി ചാറ്റ് ചെയ്യുക",
     "settingsJoinTheDiscord": "Discord എന്നതിൽ ചേരുക",
-    "settingsSupportMoonfin": "പിന്തുണ Plexfin",
+    "settingsSupportMoonfin": "പിന്തുണ Sunfin",
     "settingsLegal": "നിയമപരമായ",
     "settingsLicenses": "ലൈസൻസുകൾ",
     "settingsOpenSourceLicenseNotices": "ഓപ്പൺ സോഴ്സ് ലൈസൻസ് അറിയിപ്പുകൾ",
     "settingsPrivacyPolicy": "സ്വകാര്യതാ നയം",
-    "settingsPrivacyPolicySubtitle": "എങ്ങനെയാണ് Plexfin നിങ്ങളുടെ ഡാറ്റ കൈകാര്യം ചെയ്യുന്നത്",
+    "settingsPrivacyPolicySubtitle": "എങ്ങനെയാണ് Sunfin നിങ്ങളുടെ ഡാറ്റ കൈകാര്യം ചെയ്യുന്നത്",
     "settingsCheckForUpdates": "അപ്‌ഡേറ്റുകൾക്കായി പരിശോധിക്കുക",
-    "settingsCheckForUpdatesSubtitle": "ഏറ്റവും പുതിയ Plexfin റിലീസിനായി പരിശോധിക്കുക",
+    "settingsCheckForUpdatesSubtitle": "ഏറ്റവും പുതിയ Sunfin റിലീസിനായി പരിശോധിക്കുക",
     "settingsPoweredByFlutter": "Flutter നാൽ പ്രവർത്തിക്കുന്നത്",
     "settingsLicenseNoticesCount": "{count, plural, one {# ലൈസൻസ് അറിയിപ്പ്} other {# ലൈസൻസ് അറിയിപ്പുകൾ}}",
     "@settingsLicenseNoticesCount": {
@@ -7128,12 +7128,12 @@
     "preferSdhSubtitles": "SDH സബ്‌ടൈറ്റിലുകൾ തിരഞ്ഞെടുക്കുക",
     "preferSdhSubtitlesSubtitle": "സ്വയമേവ തിരഞ്ഞെടുക്കുമ്പോൾ SDH/CC സബ്‌ടൈറ്റിൽ ട്രാക്കുകൾക്ക് മുൻഗണന നൽകുക.",
     "webDiagnostics": "വെബ് ഡയഗ്നോസ്റ്റിക്സ്",
-    "webDiagnosticsTitle": "Plexfin വെബ് ഡയഗ്നോസ്റ്റിക്സ്",
+    "webDiagnosticsTitle": "Sunfin വെബ് ഡയഗ്നോസ്റ്റിക്സ്",
     "webDiagnosticsIntro": "ബ്രൗസർ കണക്റ്റിവിറ്റി പ്രശ്നങ്ങൾ (CORS, മിക്സഡ് ഉള്ളടക്കം, കണ്ടെത്തൽ ക്രമീകരണം) കണ്ടുപിടിക്കാൻ ഈ പേജ് ഉപയോഗിക്കുക.",
     "webDiagnosticsDetectedMixedContentFailure": "മിക്സഡ്-ഉള്ളടക്ക പരാജയം കണ്ടെത്തി",
     "webDiagnosticsDetectedCorsPreflightFailure": "CORS/പ്രീഫ്ലൈറ്റ് പരാജയം കണ്ടെത്തി",
-    "webDiagnosticsMixedContentFailureBody": "Plexfin ഒരു HTTP സെർവർ URL-ലേക്ക് വിളിക്കാൻ ശ്രമിക്കുന്ന ഒരു HTTPS പേജ് കണ്ടെത്തി. ഈ അഭ്യർത്ഥന നിങ്ങളുടെ സെർവറിൽ എത്തുന്നതിന് മുമ്പ് ബ്രൗസറുകൾ തടയുന്നു.",
-    "webDiagnosticsCorsFailureBody": "Plexfin മീഡിയ സെർവറിലെ CORS അല്ലെങ്കിൽ പ്രിഫ്ലൈറ്റ് ഹെഡറുകൾ നഷ്‌ടപ്പെടുന്നത് കാരണം സാധാരണയായി സംഭവിക്കുന്ന ബ്രൗസർ-ലെവൽ അഭ്യർത്ഥന പരാജയം കണ്ടെത്തി.",
+    "webDiagnosticsMixedContentFailureBody": "Sunfin ഒരു HTTP സെർവർ URL-ലേക്ക് വിളിക്കാൻ ശ്രമിക്കുന്ന ഒരു HTTPS പേജ് കണ്ടെത്തി. ഈ അഭ്യർത്ഥന നിങ്ങളുടെ സെർവറിൽ എത്തുന്നതിന് മുമ്പ് ബ്രൗസറുകൾ തടയുന്നു.",
+    "webDiagnosticsCorsFailureBody": "Sunfin മീഡിയ സെർവറിലെ CORS അല്ലെങ്കിൽ പ്രിഫ്ലൈറ്റ് ഹെഡറുകൾ നഷ്‌ടപ്പെടുന്നത് കാരണം സാധാരണയായി സംഭവിക്കുന്ന ബ്രൗസർ-ലെവൽ അഭ്യർത്ഥന പരാജയം കണ്ടെത്തി.",
     "webDiagnosticsTargetUrl": "ടാർഗെറ്റ് URL: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7163,7 +7163,7 @@
     "notConfigured": "ക്രമീകരിച്ചിട്ടില്ല",
     "webDiagnosticsMixedContent": "സമ്മിശ്ര ഉള്ളടക്കം",
     "webDiagnosticsMixedContentDetected": "ഈ പേജ് HTTPS-ൽ ലോഡുചെയ്‌തു, എന്നാൽ ഒന്നോ അതിലധികമോ കോൺഫിഗർ ചെയ്‌ത URL-കൾ HTTP ആണ്. HTTP API-കളെ വിളിക്കുന്നതിൽ നിന്ന് HTTPS പേജുകളെ ബ്രൗസറുകൾ തടയുന്നു.",
-    "webDiagnosticsMixedContentFix": "പരിഹരിക്കുക: HTTPS വഴി നിങ്ങളുടെ മീഡിയ സെർവർ അല്ലെങ്കിൽ പ്രോക്സി എൻഡ്‌പോയിൻ്റ് സേവിക്കുക, അല്ലെങ്കിൽ വിശ്വസനീയമായ പ്രാദേശിക നെറ്റ്‌വർക്കുകളിൽ മാത്രം HTTP വഴി Plexfin ലോഡ് ചെയ്യുക.",
+    "webDiagnosticsMixedContentFix": "പരിഹരിക്കുക: HTTPS വഴി നിങ്ങളുടെ മീഡിയ സെർവർ അല്ലെങ്കിൽ പ്രോക്സി എൻഡ്‌പോയിൻ്റ് സേവിക്കുക, അല്ലെങ്കിൽ വിശ്വസനീയമായ പ്രാദേശിക നെറ്റ്‌വർക്കുകളിൽ മാത്രം HTTP വഴി Sunfin ലോഡ് ചെയ്യുക.",
     "webDiagnosticsNoMixedContentDetected": "നിലവിലെ റൺടൈം ക്രമീകരണങ്ങളിൽ നിന്ന് വ്യക്തമായ മിക്സഡ്-ഉള്ളടക്ക കോൺഫിഗറേഷനൊന്നും കണ്ടെത്തിയില്ല.",
     "webDiagnosticsCorsChecklist": "CORS ചെക്ക്‌ലിസ്റ്റ്",
     "webDiagnosticsCorsChecklistItem1": "• Access-Control-Allow-Origin-ൽ ബ്രൗസർ ഉത്ഭവം അനുവദിക്കുക.",
@@ -7360,7 +7360,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "ക്ലാസിക് എന്നത് യഥാർത്ഥ കേന്ദ്രീകൃത Plexfin ലേഔട്ടാണ്. മോഡേൺ എന്നത് ഒരു റെസ്പോൺസീവ് സിനിമാറ്റിക് ലേഔട്ടാണ്.",
+    "detailScreenStyleSubtitle": "ക്ലാസിക് എന്നത് യഥാർത്ഥ കേന്ദ്രീകൃത Sunfin ലേഔട്ടാണ്. മോഡേൺ എന്നത് ഒരു റെസ്പോൺസീവ് സിനിമാറ്റിക് ലേഔട്ടാണ്.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7392,13 +7392,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "Plexfin Recommends ലോക്കൽ-ലൈബ്രറി അൽഗോരിതം അല്ലെങ്കിൽ ഓൺലൈൻ TMDb യുടെ സാമ്യതാ മെട്രിക്സ് ഉപയോഗിക്കുക. ശ്രദ്ധിക്കുക: ഓൺലൈൻ ശുപാർശകൾക്ക് Seerr സംയോജനം ആവശ്യമാണ്.",
+    "recommendationSystemSubtitle": "Sunfin Recommends ലോക്കൽ-ലൈബ്രറി അൽഗോരിതം അല്ലെങ്കിൽ ഓൺലൈൻ TMDb യുടെ സാമ്യതാ മെട്രിക്സ് ഉപയോഗിക്കുക. ശ്രദ്ധിക്കുക: ഓൺലൈൻ ശുപാർശകൾക്ക് Seerr സംയോജനം ആവശ്യമാണ്.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Plexfin Recommends",
+    "recommendationSystemMoonfin": "Sunfin Recommends",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Plexfin Recommends"
+        "description": "Recommendation system option: Sunfin Recommends"
     },
     "recommendationSystemTmdb": "TMDb സാമ്യത",
     "@recommendationSystemTmdb": {
@@ -7408,7 +7408,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "ലക്ഷ്യ മീഡിയയുടെ പേരന്റൽ റേറ്റിംഗ് അനുസരിച്ച് Plexfin Recommends നിർദ്ദേശങ്ങൾ പരിമിതപ്പെടുത്തുക",
+    "recommendationsApplyParentalRatingCapSubtitle": "ലക്ഷ്യ മീഡിയയുടെ പേരന്റൽ റേറ്റിംഗ് അനുസരിച്ച് Sunfin Recommends നിർദ്ദേശങ്ങൾ പരിമിതപ്പെടുത്തുക",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7456,7 +7456,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "ഇഷ്ടാനുസൃത തീമുകൾ Plexfin-ൽ ഉടനീളം വിഷ്വൽ ഘടകങ്ങൾ മാറ്റുന്നു. നിങ്ങളുടെ ശൈലിക്ക് അനുയോജ്യമായ ഒന്ന് തിരഞ്ഞെടുക്കുക.",
+    "customThemeSubtitle": "ഇഷ്ടാനുസൃത തീമുകൾ Sunfin-ൽ ഉടനീളം വിഷ്വൽ ഘടകങ്ങൾ മാറ്റുന്നു. നിങ്ങളുടെ ശൈലിക്ക് അനുയോജ്യമായ ഒന്ന് തിരഞ്ഞെടുക്കുക.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7629,7 +7629,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "നിങ്ങളുടെ ഫോണിൽ Plexfin ലേക്ക് സൈൻ ഇൻ ചെയ്യുക",
+    "carSignInPrompt": "നിങ്ങളുടെ ഫോണിൽ Sunfin ലേക്ക് സൈൻ ഇൻ ചെയ്യുക",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8970,7 +8970,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "സുഗമമായ ആനിമേഷനുകൾക്കും കുറഞ്ഞ സ്റ്റട്ടറിനുമായുള്ള Flutter-ന്റെ ആധുനിക GPU റെൻഡററാണ് Impeller. ചില TV ബോക്സുകളിലും പഴയ GPU-കളിലും ഇത് ഗ്ലിച്ചുകൾക്കോ കറുത്ത വീഡിയോയ്ക്കോ കാരണമായേക്കാം; അവ കാണുകയാണെങ്കിൽ ഇത് ഓഫ് ചെയ്യുക. ഓട്ടോമാറ്റിക് നിങ്ങളുടെ ഉപകരണത്തിനുള്ള മികച്ച ഡിഫോൾട്ട് തിരഞ്ഞെടുക്കുന്നു. പ്രയോഗിക്കാൻ Plexfin പുനരാരംഭിക്കുക.",
+    "impellerRenderingSubtitle": "സുഗമമായ ആനിമേഷനുകൾക്കും കുറഞ്ഞ സ്റ്റട്ടറിനുമായുള്ള Flutter-ന്റെ ആധുനിക GPU റെൻഡററാണ് Impeller. ചില TV ബോക്സുകളിലും പഴയ GPU-കളിലും ഇത് ഗ്ലിച്ചുകൾക്കോ കറുത്ത വീഡിയോയ്ക്കോ കാരണമായേക്കാം; അവ കാണുകയാണെങ്കിൽ ഇത് ഓഫ് ചെയ്യുക. ഓട്ടോമാറ്റിക് നിങ്ങളുടെ ഉപകരണത്തിനുള്ള മികച്ച ഡിഫോൾട്ട് തിരഞ്ഞെടുക്കുന്നു. പ്രയോഗിക്കാൻ Sunfin പുനരാരംഭിക്കുക.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8981,7 +8981,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "റെൻഡറിംഗ് എഞ്ചിൻ മാറ്റാൻ Plexfin പുനരാരംഭിക്കേണ്ടതുണ്ട്. ഇപ്പോൾ ആപ്പ് അടയ്ക്കുക, തുടർന്ന് പ്രയോഗിക്കാൻ അത് വീണ്ടും തുറക്കുക.",
+    "impellerRestartMessage": "റെൻഡറിംഗ് എഞ്ചിൻ മാറ്റാൻ Sunfin പുനരാരംഭിക്കേണ്ടതുണ്ട്. ഇപ്പോൾ ആപ്പ് അടയ്ക്കുക, തുടർന്ന് പ്രയോഗിക്കാൻ അത് വീണ്ടും തുറക്കുക.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },

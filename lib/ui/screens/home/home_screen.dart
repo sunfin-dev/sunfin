@@ -88,9 +88,9 @@ import 'home_view_model.dart';
 import '../../widgets/seerr/seerr_genre_label.dart';
 import '../../widgets/skeleton/skeleton_home_row.dart';
 import '../../widgets/skeleton/skeleton_shimmer.dart';
-import '../../plex/plex_backdrop.dart';
-import '../../plex/plex_home_header.dart';
-import '../../plex/plex_style.dart';
+import '../../sunfin/sunfin_backdrop.dart';
+import '../../sunfin/sunfin_home_header.dart';
+import '../../sunfin/sunfin_style.dart';
 
 Color get _homeBackground => AppColorScheme.background;
 
@@ -100,26 +100,26 @@ const _kHomeStartThreshold = 20.0;
 /// Room for the title, subtitle and gaps that sit under classic card artwork.
 const _classicCardMetadataHeight = 50.0;
 
-/// Plex mode: x of the first poster's left edge, which the header text column
-/// lines up with. Measured from the content edge: the Plex rail pushes the
+/// Sunfin mode: x of the first poster's left edge, which the header text column
+/// lines up with. Measured from the content edge: the Sunfin rail pushes the
 /// content right instead of covering it.
-const _kPlexPosterLeft = PlexStyle.contentInset;
+const _kPlexPosterLeft = SunfinStyle.contentInset;
 
-/// Plex mode: row title line height and its gap to the posters (TV canvas
-/// units, see PlexStyle).
-const _kPlexRowTitleHeight = 20.0 * PlexStyle.k;
-const _kPlexRowTitleGap = 12.0 * PlexStyle.k;
+/// Sunfin mode: row title line height and its gap to the posters (TV canvas
+/// units, see SunfinStyle).
+const _kPlexRowTitleHeight = 20.0 * SunfinStyle.k;
+const _kPlexRowTitleGap = 12.0 * SunfinStyle.k;
 
-/// Plex mode: row title top to the next row title top (462 px in the Plex
+/// Sunfin mode: row title top to the next row title top (462 px in the reference design
 /// reference).
-const _kPlexRowPitch = 231.0 * PlexStyle.k;
+const _kPlexRowPitch = 231.0 * SunfinStyle.k;
 
-/// Where a card in a home row opens. In Plex mode a show opens Plex's show
-/// page from every row, as in Plex (user, 2026-10-26), and so does an episode
+/// Where a card in a home row opens. In Sunfin mode a show opens the reference design's show
+/// page from every row, as in the reference design (user, 2026-10-26), and so does an episode
 /// outside Continue Watching and Next Up, since its card is the show's poster.
 /// Those two rows keep opening the season page at the episode.
 String _homeItemDestination(HomeRow row, AggregatedItem item) {
-  if (PlexStyle.enabled) {
+  if (SunfinStyle.enabled) {
     if (item.type == 'Series') {
       return Destinations.item(
         item.id,
@@ -445,9 +445,9 @@ class _HomeShellState extends State<_HomeShell>
       AggregatedItem? item, {
         bool preserveBackground = false,
       }) {
-    // Plex keeps the last title in the header while focus is in the sidebar;
+    // The reference design keeps the last title in the header while focus is in the sidebar;
     // only an empty home clears it.
-    if (item == null && PlexStyle.enabled && _viewModel.rows.isNotEmpty) {
+    if (item == null && SunfinStyle.enabled && _viewModel.rows.isNotEmpty) {
       return;
     }
     _selectionDebounce?.cancel();
@@ -586,7 +586,7 @@ class _HomeShellState extends State<_HomeShell>
     final useMakdBackdropFx =
         PlatformDetection.useMobileUi &&
         mediaBarMode == UserPreferences.mediaBarModeMakd;
-    final plexMode = PlexStyle.enabled;
+    final sunfinMode = SunfinStyle.enabled;
     final contentRows = _ContentRows(
       key: _contentRowsKey,
       viewModel: _viewModel,
@@ -613,38 +613,38 @@ class _HomeShellState extends State<_HomeShell>
         backgroundColor: _homeBackground,
         body: NavigationLayout(
           activeRoute: Destinations.home,
-          plexClock: true,
+          sunfinClock: true,
           child: QuickReturnWrapper(
             isAtStart: _isScrolledToTopNotifier,
             onReturn: () => _contentRowsKey.currentState?.returnToTop(),
             child: Stack(
               fit: StackFit.expand,
               children: [
-                if (plexMode) ...[
-                  // Plex: sharp backdrop always (no blur, ignores the
+                if (sunfinMode) ...[
+                  // The reference design: sharp backdrop always (no blur, ignores the
                   // backdrop pref), the header describing the focused item,
                   // and the rows in their own viewport below the header.
                   Positioned.fill(
                     child: ValueListenableBuilder<String?>(
                       valueListenable: _backdropUrlNotifier,
-                      builder: (context, url, _) => PlexBackdrop(url: url),
+                      builder: (context, url, _) => SunfinBackdrop(url: url),
                     ),
                   ),
                   Positioned(
                     top: 0,
                     left: 0,
                     right: 0,
-                    height: PlexStyle.rowsTop,
+                    height: SunfinStyle.rowsTop,
                     child: ValueListenableBuilder<AggregatedItem?>(
                       valueListenable: _selectedItemNotifier,
-                      builder: (context, item, _) => PlexHomeHeader(
+                      builder: (context, item, _) => SunfinHomeHeader(
                         item: item,
                         leftInset: _kPlexPosterLeft,
                       ),
                     ),
                   ),
                   Positioned(
-                    top: PlexStyle.rowsTop,
+                    top: SunfinStyle.rowsTop,
                     left: 0,
                     right: 0,
                     bottom: 0,
@@ -1097,9 +1097,9 @@ class _ContentRowsState extends State<_ContentRows>
   }
 
   double _desktopRowFocusTargetTop() {
-    // Plex: the rows viewport already starts below the header, so the
+    // The reference design: the rows viewport already starts below the header, so the
     // focused row's title sits at its very top.
-    if (PlexStyle.enabled) return 0.0;
+    if (SunfinStyle.enabled) return 0.0;
     if (!_scrollController.hasClients) return 0.0;
     final viewportHeight = _scrollController.position.viewportDimension;
     if (viewportHeight <= 0.0) return 0.0;
@@ -1268,9 +1268,9 @@ class _ContentRowsState extends State<_ContentRows>
   }
 
   bool _isMediaBarEnabledByMode() {
-    // Plex has no media bar; the header replaces it. Overridden here rather
+    // The reference design has no media bar; the header replaces it. Overridden here rather
     // than in the synced preference.
-    if (PlexStyle.enabled) return false;
+    if (SunfinStyle.enabled) return false;
     final mode = widget.prefs.get(UserPreferences.mediaBarMode);
     return UserPreferences.isMediaBarModeEnabled(mode);
   }
@@ -1444,7 +1444,7 @@ class _ContentRowsState extends State<_ContentRows>
         ? (fullScreenRows ? 95.0 : (navbarIsTop ? 45.0 : 15.0))
         : (navbarIsTop ? (PlatformDetection.useMobileUi ? 60.0 : 80.0) : (fullScreenRows ? 0.0 : 80.0));
 
-    final listTopPadding = PlexStyle.enabled || includeMediaBar || showInfoOverlay
+    final listTopPadding = SunfinStyle.enabled || includeMediaBar || showInfoOverlay
         ? 0.0
         : _isHomeRowsStyleV2()
             ? (fullScreenRows ? (safeTop + navbarHeight + 8.0).clamp(56.0, double.infinity) : safeTop + navbarHeight + 8)
@@ -1477,7 +1477,7 @@ class _ContentRowsState extends State<_ContentRows>
         PlatformDetection.isTV &&
             !fullScreenRows &&
             !showInfoOverlay &&
-            !PlexStyle.enabled
+            !SunfinStyle.enabled
         ? _focusedRowExtraSpacing * 2
         : 0.0;
 
@@ -1668,9 +1668,9 @@ class _ContentRowsState extends State<_ContentRows>
     final navbarPosition = widget.prefs.get(UserPreferences.navbarPosition);
     final isTopNavbarFocus =
         navbarPosition == NavbarPosition.top && global.dy < 140;
-    // Plex mode: posters start right of the rail, well inside 240, so ask
+    // Sunfin mode: posters start right of the rail, well inside 240, so ask
     // the sidebar instead of guessing from x.
-    final isLeftSidebarFocus = PlexStyle.enabled
+    final isLeftSidebarFocus = SunfinStyle.enabled
         ? LeftSidebar.isFocusedNotifier.value
         : navbarPosition == NavbarPosition.left && global.dx < 240;
     return isTopNavbarFocus || isLeftSidebarFocus;
@@ -2277,8 +2277,8 @@ class _ContentRowsState extends State<_ContentRows>
   }
 
   bool _isHomeRowsStyleV2() {
-    // Plex mode lays rows out on the classic path with its own cards.
-    if (PlexStyle.enabled) return false;
+    // Sunfin mode lays rows out on the classic path with its own cards.
+    if (SunfinStyle.enabled) return false;
     return widget.prefs.get(UserPreferences.homeRowsStyle) == HomeRowsStyle.v2;
   }
 
@@ -2286,8 +2286,8 @@ class _ContentRowsState extends State<_ContentRows>
     if (PlatformDetection.useMobileUi) {
       return false;
     }
-    // The Plex header replaces the info overlay.
-    if (PlexStyle.enabled) {
+    // The Sunfin header replaces the info overlay.
+    if (SunfinStyle.enabled) {
       return false;
     }
     if (_isHomeRowsStyleV2()) {
@@ -2578,7 +2578,7 @@ class _ContentRowsState extends State<_ContentRows>
             final global = box.localToGlobal(Offset.zero);
             final isTopNavbarFocus =
                 navbarPosition == NavbarPosition.top && global.dy < 120;
-            final isLeftSidebarFocus = PlexStyle.enabled
+            final isLeftSidebarFocus = SunfinStyle.enabled
                 ? LeftSidebar.isFocusedNotifier.value
                 : navbarPosition == NavbarPosition.left && global.dx < 220;
             if (isTopNavbarFocus || isLeftSidebarFocus) {
@@ -3403,7 +3403,7 @@ class _ContentRowsState extends State<_ContentRows>
             final fullScreenRows =
                 !PlatformDetection.useMobileUi &&
                 widget.prefs.get(UserPreferences.fullScreenRows) &&
-                !PlexStyle.enabled;
+                !SunfinStyle.enabled;
             if (fullScreenRows && _scrollController.hasClients) {
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 if (!mounted || !_scrollController.hasClients) {
@@ -3649,7 +3649,7 @@ class _ContentRowsState extends State<_ContentRows>
     final fullScreenRows =
         !PlatformDetection.useMobileUi &&
         widget.prefs.get(UserPreferences.fullScreenRows) &&
-        !PlexStyle.enabled;
+        !SunfinStyle.enabled;
 
     final shouldUpdateActiveRow = isDesktop &&
         _rowTopOffsets.isNotEmpty &&
@@ -3739,7 +3739,7 @@ class _ContentRowsState extends State<_ContentRows>
     final fullScreenRows =
         !PlatformDetection.useMobileUi &&
         prefs.get(UserPreferences.fullScreenRows) &&
-        !PlexStyle.enabled;
+        !SunfinStyle.enabled;
     if (!fullScreenRows) return;
 
     if (_mediaBarFocusNode.hasFocus) return;
@@ -3982,7 +3982,7 @@ class _ContentRowsState extends State<_ContentRows>
     final fullScreenRows =
         !PlatformDetection.useMobileUi &&
         prefs.get(UserPreferences.fullScreenRows) &&
-        !PlexStyle.enabled;
+        !SunfinStyle.enabled;
     if (fullScreenRows) {
       final desktopScale = _desktopUiScaleFactor();
       final viewportHeight = MediaQuery.sizeOf(context).height;
@@ -4031,7 +4031,7 @@ class _ContentRowsState extends State<_ContentRows>
     final fullScreenRows =
         !PlatformDetection.useMobileUi &&
         prefs.get(UserPreferences.fullScreenRows) &&
-        !PlexStyle.enabled;
+        !SunfinStyle.enabled;
     final homeRowsStyle = prefs.get(UserPreferences.homeRowsStyle);
     final showInfoOverlay = prefs.get(UserPreferences.homeRowInfoOverlay);
     final navbarPosition = prefs.get(UserPreferences.navbarPosition);
@@ -4114,10 +4114,10 @@ class _ContentRowsState extends State<_ContentRows>
       row.rowType == HomeRowType.libraryTilesSmall ||
       row.rowType == HomeRowType.libraryTiles;
 
-  /// Plex mode: rows drawn as Plex's portrait poster rows. Calendars, genres,
+  /// Sunfin mode: rows drawn as the reference design's portrait poster rows. Calendars, genres,
   /// studios, libraries, Live TV and music rows keep the upstream rendering.
   bool _isPlexPosterRow(HomeRow row) {
-    if (!PlexStyle.enabled || row.isLoading || row.isAudio) return false;
+    if (!SunfinStyle.enabled || row.isLoading || row.isAudio) return false;
     if (_isSeerrFilterRow(row) || _isLatestMusicRow(row)) return false;
     switch (row.id) {
       case 'merged_calendar' ||
@@ -4143,7 +4143,7 @@ class _ContentRowsState extends State<_ContentRows>
   bool _fullScreenRowsEnabled(UserPreferences prefs) =>
       !PlatformDetection.useMobileUi &&
       prefs.get(UserPreferences.fullScreenRows) &&
-      !PlexStyle.enabled;
+      !SunfinStyle.enabled;
 
   double _v2MetadataBudgetFor(HomeRow row, UserPreferences prefs) =>
       row.rowType == HomeRowType.libraryTiles
@@ -4180,7 +4180,7 @@ class _ContentRowsState extends State<_ContentRows>
     final fullScreenRows =
         !PlatformDetection.useMobileUi &&
         widget.prefs.get(UserPreferences.fullScreenRows) &&
-        !PlexStyle.enabled;
+        !SunfinStyle.enabled;
     final isRowsV2 =
         widget.prefs.get(UserPreferences.homeRowsStyle) == HomeRowsStyle.v2;
     final overlayActive = showInfoOverlay && _infoRevealed;
@@ -4388,7 +4388,7 @@ class _ContentRowsState extends State<_ContentRows>
     final fullScreenRows =
         !PlatformDetection.useMobileUi &&
         prefs.get(UserPreferences.fullScreenRows) &&
-        !PlexStyle.enabled;
+        !SunfinStyle.enabled;
     final navbarIsTop =
         widget.prefs.get(UserPreferences.navbarPosition) == NavbarPosition.top;
     final navbarIsLeft = !navbarIsTop;
@@ -4397,7 +4397,7 @@ class _ContentRowsState extends State<_ContentRows>
         : (navbarIsTop
               ? (PlatformDetection.useMobileUi ? 60.0 : 80.0)
               : (fullScreenRows ? 0.0 : 80.0));
-    final listTopPadding = PlexStyle.enabled || includeMediaBar || showInfoOverlay
+    final listTopPadding = SunfinStyle.enabled || includeMediaBar || showInfoOverlay
         ? 0.0
         : _isHomeRowsStyleV2()
         ? (fullScreenRows
@@ -4408,9 +4408,9 @@ class _ContentRowsState extends State<_ContentRows>
         navbarIsTop && PlatformDetection.isTV && !PlatformDetection.useMobileUi
         ? 48.0
         : 0.0;
-    // Plex: the row's own label inset brings titles and posters to
+    // The reference design: the row's own label inset brings titles and posters to
     // _kPlexPosterLeft, where the header text starts too.
-    final rowLeftInset = PlexStyle.enabled
+    final rowLeftInset = SunfinStyle.enabled
         ? _kPlexPosterLeft - _kHomeRowLabelInset
         : (navbarIsLeft && !PlatformDetection.useMobileUi
                   ? 56.0
@@ -4451,11 +4451,11 @@ class _ContentRowsState extends State<_ContentRows>
       // below for that reads as blank space here. It only needs to clear the
       // navbar the rows scroll behind.
       neededBottomPadding = minBottomPadding + _bottomNavbarInset();
-    } else if (PlexStyle.enabled) {
-      // Plex: the rows viewport starts at rowsTop, and the last row must
+    } else if (SunfinStyle.enabled) {
+      // The reference design: the rows viewport starts at rowsTop, and the last row must
       // still be able to bring its title to the top of it.
       final viewportHeight =
-          MediaQuery.of(context).size.height - PlexStyle.rowsTop;
+          MediaQuery.of(context).size.height - SunfinStyle.rowsTop;
       final lastRowExtent = rowExtents.isEmpty ? 0.0 : rowExtents.last;
       neededBottomPadding = (viewportHeight - lastRowExtent).clamp(
         minBottomPadding,
@@ -4721,7 +4721,7 @@ class _ContentRowsState extends State<_ContentRows>
                               vertical: (PlatformDetection.isTV &&
                                       !fullScreenRows &&
                                       !showInfoOverlay &&
-                                      !PlexStyle.enabled &&
+                                      !SunfinStyle.enabled &&
                                       rowIndex == activeRowIndex)
                                   ? _focusedRowExtraSpacing
                                   : 0,
@@ -5061,22 +5061,22 @@ class _ContentRowsState extends State<_ContentRows>
           (_classicCardMetadataHeight * metadataScale);
     }
 
-    // Plex: fixed portrait posters, no title text under them and no
+    // The reference design: fixed portrait posters, no title text under them and no
     // landscape expansion; the focus scale spills into the row's spare room.
-    final plexPosterRow = _isPlexPosterRow(row);
-    if (plexPosterRow) {
-      firstCardWidth = PlexStyle.posterWidth;
+    final sunfinPosterRow = _isPlexPosterRow(row);
+    if (sunfinPosterRow) {
+      firstCardWidth = SunfinStyle.posterWidth;
     }
 
-    final rowPadding = plexPosterRow ? 0.0 : 5.0 * metadataScale;
-    final topPadding = plexPosterRow
+    final rowPadding = sunfinPosterRow ? 0.0 : 5.0 * metadataScale;
+    final topPadding = sunfinPosterRow
         ? 0.0
         : rowPadding + _focusHeadroom(maxImageHeight, cardExpansion);
-    final lockedRowHeight = plexPosterRow
-        ? PlexStyle.posterHeight
+    final lockedRowHeight = sunfinPosterRow
+        ? SunfinStyle.posterHeight
         : maxCardHeight + topPadding + rowPadding;
 
-    final subtitle = plexPosterRow ? null : _rowSubtitle(row, l10n);
+    final subtitle = sunfinPosterRow ? null : _rowSubtitle(row, l10n);
     final hasSubtitle = subtitle != null && subtitle.isNotEmpty;
     final rowTotalHeight =
         lockedRowHeight + (hasSubtitle ? 18.0 : 0.0);
@@ -5108,7 +5108,7 @@ class _ContentRowsState extends State<_ContentRows>
       rowIndex: rowIndex,
       hasItems: row.items.isNotEmpty,
       height: rowTotalHeight,
-      plexPosterRow: plexPosterRow,
+      sunfinPosterRow: sunfinPosterRow,
       child: LockedFocusRow<AggregatedItem>(
         key: _rowKey(rowIndex),
         items: row.items,
@@ -5117,14 +5117,14 @@ class _ContentRowsState extends State<_ContentRows>
           controller: _rowHorizontalController(rowIndex),
           height: lockedRowHeight,
           itemExtent: firstCardWidth,
-          itemSpacing: plexPosterRow
-              ? PlexStyle.posterGap
+          itemSpacing: sunfinPosterRow
+              ? SunfinStyle.posterGap
               : _rowItemSpacing(firstCardWidth, cardExpansion),
           leadingPadding: isRowsV2 ? _kHomeRowLabelInset : 0,
-          clipBehavior: (isRowsV2 || cardExpansion || plexPosterRow)
+          clipBehavior: (isRowsV2 || cardExpansion || sunfinPosterRow)
               ? Clip.none
               : Clip.hardEdge,
-          scrollOnlyAtEdges: plexPosterRow,
+          scrollOnlyAtEdges: sunfinPosterRow,
           padding: EdgeInsets.fromLTRB(
             _kHomeRowLabelInset,
             topPadding,
@@ -5170,8 +5170,8 @@ class _ContentRowsState extends State<_ContentRows>
             _revealAndScrollToPinnedInfo(ignoreScrollCooldown: forceReveal),
           );
           final canPreview = _supportsEpisodePreview(item);
-          // Plex poster cards have no inline video preview.
-          if (!PlatformDetection.useMobileUi && canPreview && !plexPosterRow) {
+          // Sunfin poster cards have no inline video preview.
+          if (!PlatformDetection.useMobileUi && canPreview && !sunfinPosterRow) {
             _schedulePreview(item, delay: _previewStartDelay, rowIndex: rowIndex);
           } else {
             _finishSharedPreview();
@@ -5200,7 +5200,7 @@ class _ContentRowsState extends State<_ContentRows>
           final requestScale = MediaQuery.devicePixelRatioOf(
             context,
           ).clamp(1.0, 2.0);
-          if (plexPosterRow) {
+          if (sunfinPosterRow) {
             final image = _unfocusedCardImage(
               row,
               item,
@@ -5209,7 +5209,7 @@ class _ContentRowsState extends State<_ContentRows>
               useSeriesThumbs: useSeriesThumbs,
               requestScale: requestScale,
             );
-            return _PlexPosterCard(
+            return _SunfinPosterCard(
               imageUrl: image.url,
               title: item.type == 'Episode'
                   ? (item.seriesName ?? item.name)
@@ -5714,10 +5714,10 @@ class _ContentRowsState extends State<_ContentRows>
     required bool hasItems,
     required double height,
     required Widget child,
-    bool plexPosterRow = false,
+    bool sunfinPosterRow = false,
   }) {
-    if (plexPosterRow) {
-      // Plex: the title line sits at the row's top, a fixed gap above the
+    if (sunfinPosterRow) {
+      // The reference design: the title line sits at the row's top, a fixed gap above the
       // posters, with no subtitle or header controls.
       return RepaintBoundary(
         child: SingleChildScrollView(
@@ -5741,7 +5741,7 @@ class _ContentRowsState extends State<_ContentRows>
                     title,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: PlexStyle.rowTitleStyle,
+                    style: SunfinStyle.rowTitleStyle,
                   ),
                 ),
               ),
@@ -5863,8 +5863,8 @@ class _ContentRowsState extends State<_ContentRows>
     if (prefs.get(UserPreferences.homeRowsStyle) != HomeRowsStyle.v2) {
       return false;
     }
-    // Plex mode lays rows out on the classic path with its own cards.
-    if (PlexStyle.enabled) {
+    // Sunfin mode lays rows out on the classic path with its own cards.
+    if (SunfinStyle.enabled) {
       return false;
     }
     if (_isWideArtworkRow(row)) {
@@ -6246,18 +6246,18 @@ class _ContentRowsState extends State<_ContentRows>
   }) {
     final imageApi = widget.viewModel.imageApiForServer(item.serverId);
     if (_isPlexPosterRow(row)) {
-      // Plex: always the portrait poster; episodes take the series poster
+      // The reference design: always the portrait poster; episodes take the series poster
       // whatever the series-thumbnail preference says.
       const aspect = 2 / 3;
       final url = _cachedRowImageUrl(
         item,
         imageApi,
-        PlexStyle.posterHeight,
+        SunfinStyle.posterHeight,
         ImageType.poster,
         true,
         requestScale,
       );
-      return (url: url, width: PlexStyle.posterWidth, aspectRatio: aspect);
+      return (url: url, width: SunfinStyle.posterWidth, aspectRatio: aspect);
     }
     final isRowsV2 = _isRowModern(row, prefs);
     final isModernMyMediaStatic = _isModernMyMediaStatic(row, prefs);
@@ -6734,10 +6734,10 @@ class _ContentRowsState extends State<_ContentRows>
   }
 }
 
-/// Plex mode home card: a portrait poster with no title under it. Focus
+/// Sunfin mode home card: a portrait poster with no title under it. Focus
 /// scales it up from the centre and draws a thin white border; watch progress
 /// is a gold bar inside the poster's bottom edge.
-class _PlexPosterCard extends StatelessWidget {
+class _SunfinPosterCard extends StatelessWidget {
   final String? imageUrl;
   final String title;
   final bool isFocused;
@@ -6745,7 +6745,7 @@ class _PlexPosterCard extends StatelessWidget {
   final VoidCallback onTap;
   final VoidCallback onLongPress;
 
-  const _PlexPosterCard({
+  const _SunfinPosterCard({
     required this.imageUrl,
     required this.title,
     required this.isFocused,
@@ -6754,7 +6754,7 @@ class _PlexPosterCard extends StatelessWidget {
     required this.onLongPress,
   });
 
-  static const _focusDuration = PlexMotion.focus;
+  static const _focusDuration = SunfinMotion.focus;
 
   Widget _placeholder() => Center(
     child: Padding(
@@ -6771,19 +6771,19 @@ class _PlexPosterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final radius = BorderRadius.circular(PlexStyle.posterRadius);
+    final radius = BorderRadius.circular(SunfinStyle.posterRadius);
     final progress = ((playedPercentage ?? 0) / 100).clamp(0.0, 1.0);
     final url = imageUrl;
     return GestureDetector(
       onTap: onTap,
       onLongPress: onLongPress,
       child: AnimatedScale(
-        scale: isFocused ? PlexStyle.focusedPosterScale : 1.0,
+        scale: isFocused ? SunfinStyle.focusedPosterScale : 1.0,
         duration: _focusDuration,
-        curve: PlexMotion.curve,
+        curve: SunfinMotion.curve,
         child: Container(
-          width: PlexStyle.posterWidth,
-          height: PlexStyle.posterHeight,
+          width: SunfinStyle.posterWidth,
+          height: SunfinStyle.posterHeight,
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
             color: Colors.white.withValues(alpha: 0.08),
@@ -6794,7 +6794,7 @@ class _PlexPosterCard extends StatelessWidget {
                   borderRadius: radius,
                   border: Border.all(
                     color: Colors.white,
-                    width: PlexStyle.focusBorderWidth,
+                    width: SunfinStyle.focusBorderWidth,
                   ),
                 )
               : null,
@@ -6822,7 +6822,7 @@ class _PlexPosterCard extends StatelessWidget {
                       child: FractionallySizedBox(
                         alignment: Alignment.centerLeft,
                         widthFactor: progress,
-                        child: const ColoredBox(color: PlexStyle.accent),
+                        child: const ColoredBox(color: SunfinStyle.accent),
                       ),
                     ),
                   ),

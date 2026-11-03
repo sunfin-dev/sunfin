@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "appTitle": "Plexfin",
+    "appTitle": "Sunfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Plexfin weergawe {version}",
+    "appVersionFooter": "Sunfin weergawe {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Plexfin kon nie toegang tot jou stelselsleutelring kry nie. Aanmelding kan voortgaan, maar veilige tokenberging is dalk onbeskikbaar totdat die sleutelring ontsluit is.",
+    "secureStorageUnavailableMessage": "Sunfin kon nie toegang tot jou stelselsleutelring kry nie. Aanmelding kan voortgaan, maar veilige tokenberging is dalk onbeskikbaar totdat die sleutelring ontsluit is.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -168,17 +168,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "Skakel tussen Plexfin en Neon Pulse sonder om die toepassing te herbegin",
+    "settingsAppearanceThemeSubtitle": "Skakel tussen Sunfin en Neon Pulse sonder om die toepassing te herbegin",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Plexfin",
+    "themeMoonfin": "Sunfin",
     "@themeMoonfin": {
-        "description": "Display name for the Plexfin theme"
+        "description": "Display name for the Sunfin theme"
     },
-    "themeMoonfinSubtitle": "Huidige Plexfin-voorkoms waarvan jy almal begin hou het",
+    "themeMoonfinSubtitle": "Huidige Sunfin-voorkoms waarvan jy almal begin hou het",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Plexfin theme"
+        "description": "Preview description for the Sunfin theme"
     },
     "themeNeonPulse": "Neon polsslag",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Verlaat Plexfin?",
+    "exitApp": "Verlaat Sunfin?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "Nie gestel nie. Plexfin sal 'n verstek mpv.conf in app/data-vouers probeer.",
+    "notSetMpvConf": "Nie gestel nie. Sunfin sal 'n verstek mpv.conf in app/data-vouers probeer.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "Wissel tuisbladsigbaarheid per biblioteek. Herbegin Plexfin vir veranderinge om in werking te tree.",
+    "libraryVisibilityDescription": "Wissel tuisbladsigbaarheid per biblioteek. Herbegin Sunfin vir veranderinge om in werking te tree.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3561,9 +3561,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Plexfin",
+    "mediaBarModeMoonfin": "Sunfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Plexfin"
+        "description": "Media bar style option: Sunfin"
     },
     "mediaBarModeMakd": "MakD",
     "@mediaBarModeMakd": {
@@ -4121,8 +4121,8 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
-    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
-    "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
+    "aboutBasedOnMoonfin": "Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
+    "sourceCodeUrl": "https://github.com/sunfin-dev/sunfin",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
     },
@@ -4294,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Speel in Plexfin",
+    "playInMoonfin": "Speel in Sunfin",
     "@playInMoonfin": {
-        "description": "Button to play available media in Plexfin"
+        "description": "Button to play available media in Sunfin"
     },
     "requestedByName": "Versoek deur {name}",
     "@requestedByName": {
@@ -4348,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "Item nie in jou Plexfin-biblioteek gevind nie",
+    "itemNotFoundInLibrary": "Item nie in jou Sunfin-biblioteek gevind nie",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4652,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "Bediener herlaai aan die gang",
-    "adminServerRebootMessage": "Bediener herlaai aan die gang, herbegin asseblief Plexfin",
+    "adminServerRebootMessage": "Bediener herlaai aan die gang, herbegin asseblief Sunfin",
     "adminActiveSessions": "Aktiewe sessies",
     "adminSessionsLoadFailed": "Kon nie sessies laai nie",
     "adminNoActiveSessions": "Geen aktiewe sessies nie",
@@ -6517,13 +6517,13 @@
     "settingsAccountSecuritySubtitle": "Stawing, PIN-kode en ouerkontroles",
     "settingsPersonalization": "Verpersoonliking",
     "settingsPersonalizationSubtitle": "Tema, navigasie, tuisrye en biblioteeksigbaarheid",
-    "plexPersonalizationSubtitle": "Sybalk, tuisrye, biblioteke, besonderhedebladsye en skermbeveiliging",
-    "plexGeneralStyleSubtitle": "Sleutelbord en speletjiebeheerder",
-    "plexDetailsScreenSubtitle": "Knoppies, inligting, afdelings en aanbevelings",
-    "plexNavigationSubtitle": "Sybalkitems en outomatiese keuse",
-    "plexHomeScreenSubtitle": "Rye, hul volgorde en Hou aan kyk",
+    "sunfinPersonalizationSubtitle": "Sybalk, tuisrye, biblioteke, besonderhedebladsye en skermbeveiliging",
+    "sunfinGeneralStyleSubtitle": "Sleutelbord en speletjiebeheerder",
+    "sunfinDetailsScreenSubtitle": "Knoppies, inligting, afdelings en aanbevelings",
+    "sunfinNavigationSubtitle": "Sybalkitems en outomatiese keuse",
+    "sunfinHomeScreenSubtitle": "Rye, hul volgorde en Hou aan kyk",
     "libraryNicknames": "Biblioteek-byname",
-    "libraryNicknamesSubtitle": "Jou eie name vir biblioteke, net in Plexfin gewys",
+    "libraryNicknamesSubtitle": "Jou eie name vir biblioteke, net in Sunfin gewys",
     "libraryNicknameServerName": "Op die bediener: {name}",
     "libraryNicknameHint": "Laat leeg om die bediener se naam te gebruik",
     "libraryNicknameNone": "Geen bynaam nie",
@@ -6536,16 +6536,16 @@
     "settingsTransferImport": "Voer instellings in",
     "settingsTransferFrom": "Van {device}, {date}",
     "settingsTransferNothing": "Nog niks uitgevoer nie",
-    "settingsTransferImportConfirm": "Vervang hierdie toestel se instellings met dié? {source}\n\nPlexfin sluit daarna. Maak dit weer oop om hulle te gebruik.",
+    "settingsTransferImportConfirm": "Vervang hierdie toestel se instellings met dié? {source}\n\nSunfin sluit daarna. Maak dit weer oop om hulle te gebruik.",
     "settingsTransferImportAction": "Voer in en sluit",
     "settingsTransferFailed": "Kon nie jou Jellyfin-rekening bereik nie",
     "settingsTransferNote": "Aanmelding, venster en hardeware bly op elke toestel. Meld eers op die ander toestel aan en voer dan in.",
     "settingsReset": "Stel alle instellings terug",
     "settingsResetSubtitle": "Stel hierdie toestel se instellings terug na hul verstekwaardes",
-    "settingsResetConfirm": "Stel elke instelling op hierdie toestel terug na sy verstekwaarde? Jy bly aangemeld, en instellings wat na jou Jellyfin-rekening uitgevoer is, bly behoue.\n\nPlexfin sluit daarna. Maak dit weer oop om voort te gaan.",
+    "settingsResetConfirm": "Stel elke instelling op hierdie toestel terug na sy verstekwaarde? Jy bly aangemeld, en instellings wat na jou Jellyfin-rekening uitgevoer is, bly behoue.\n\nSunfin sluit daarna. Maak dit weer oop om voort te gaan.",
     "adminShowButton": "Wys administrasieknoppie",
     "adminShowButtonSubtitle": "Voeg 'n knoppie by die kieslys wat bedieneradministrasie oopmaak",
-    "plexDirectedBy": "Geregisseer deur {names}",
+    "sunfinDirectedBy": "Geregisseer deur {names}",
     "settingsDynamicContent": "Dinamiese inhoud",
     "settingsDynamicContentSubtitle": "Mediabalk en visuele oorlegsels",
     "settingsPlaybackSyncplay": "Speel en SyncPlay",
@@ -6569,7 +6569,7 @@
     "settingsShowGenresButtonInNavigation": "Wys die genres-knoppie in die navigasiebalk",
     "settingsShowFavoritesButtonInNavigation": "Wys die gunstelinge-knoppie in die navigasiebalk",
     "settingsShowLibrariesButtonInNavigation": "Wys die biblioteke-knoppie in die navigasiebalk",
-    "settingsLibraryVisibilitySubtitle": "Wissel tuisbladsigbaarheid per biblioteek. Herbegin Plexfin vir veranderinge om in werking te tree.",
+    "settingsLibraryVisibilitySubtitle": "Wissel tuisbladsigbaarheid per biblioteek. Herbegin Sunfin vir veranderinge om in werking te tree.",
     "settingsMediaBarAndLocalPreviews": "Mediabalk en plaaslike voorskoue",
     "settingsVisualOverlays": "Visuele oorlegsels",
     "settingsSeasonalSurprise": "Seisoenale verrassing",
@@ -6588,14 +6588,14 @@
     "settingsJoinDiscord": "Sluit aan by Discord",
     "settingsJoinDiscordSubtitle": "Gesels met die gemeenskap",
     "settingsJoinTheDiscord": "Sluit aan by die Discord",
-    "settingsSupportMoonfin": "Ondersteun Plexfin",
+    "settingsSupportMoonfin": "Ondersteun Sunfin",
     "settingsLegal": "WETLIK",
     "settingsLicenses": "Lisensies",
     "settingsOpenSourceLicenseNotices": "Oopbron lisensie kennisgewings",
     "settingsPrivacyPolicy": "Privaatheidsbeleid",
-    "settingsPrivacyPolicySubtitle": "Hoe Plexfin jou data hanteer",
+    "settingsPrivacyPolicySubtitle": "Hoe Sunfin jou data hanteer",
     "settingsCheckForUpdates": "Kyk vir opdaterings",
-    "settingsCheckForUpdatesSubtitle": "Kyk vir die nuutste Plexfin-vrystelling",
+    "settingsCheckForUpdatesSubtitle": "Kyk vir die nuutste Sunfin-vrystelling",
     "settingsPoweredByFlutter": "Aangedryf deur Flutter",
     "settingsLicenseNoticesCount": "{count, plural, one {# lisensiekennisgewing} other {# lisensiekennisgewings}}",
     "@settingsLicenseNoticesCount": {
@@ -7128,12 +7128,12 @@
     "preferSdhSubtitles": "Verkies SDH-onderskrifte",
     "preferSdhSubtitlesSubtitle": "Prioritiseer SDH/CC-onderskrifsnitte wanneer u outomaties kies.",
     "webDiagnostics": "Web diagnostiek",
-    "webDiagnosticsTitle": "Plexfin Webdiagnostiek",
+    "webDiagnosticsTitle": "Sunfin Webdiagnostiek",
     "webDiagnosticsIntro": "Gebruik hierdie bladsy om blaaierverbindingskwessies (CORS, gemengde inhoud en ontdekkinginstellings) te diagnoseer.",
     "webDiagnosticsDetectedMixedContentFailure": "Bespeur gemengde inhoud mislukking",
     "webDiagnosticsDetectedCorsPreflightFailure": "Bespeur CORS/Voorvlug-mislukking",
-    "webDiagnosticsMixedContentFailureBody": "Plexfin het 'n HTTPS-bladsy bespeur wat probeer om 'n HTTP-bediener-URL te bel. Blaaiers blokkeer hierdie versoek voordat dit jou bediener bereik.",
-    "webDiagnosticsCorsFailureBody": "Plexfin het 'n blaaiervlakversoekfout bespeur wat algemeen veroorsaak word deur ontbrekende CORS of voorafvlugopskrifte op die mediabediener.",
+    "webDiagnosticsMixedContentFailureBody": "Sunfin het 'n HTTPS-bladsy bespeur wat probeer om 'n HTTP-bediener-URL te bel. Blaaiers blokkeer hierdie versoek voordat dit jou bediener bereik.",
+    "webDiagnosticsCorsFailureBody": "Sunfin het 'n blaaiervlakversoekfout bespeur wat algemeen veroorsaak word deur ontbrekende CORS of voorafvlugopskrifte op die mediabediener.",
     "webDiagnosticsTargetUrl": "Teiken-URL: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7163,7 +7163,7 @@
     "notConfigured": "nie gekonfigureer nie",
     "webDiagnosticsMixedContent": "Gemengde inhoud",
     "webDiagnosticsMixedContentDetected": "Hierdie bladsy word oor HTTPS gelaai, maar een of meer gekonfigureerde URL's is HTTP. Blaaiers blokkeer HTTPS-bladsye om HTTP API's te roep.",
-    "webDiagnosticsMixedContentFix": "Stel reg: bedien jou mediabediener of instaanbediener-eindpunt via HTTPS, of laai Plexfin slegs oor HTTP op vertroude plaaslike netwerke.",
+    "webDiagnosticsMixedContentFix": "Stel reg: bedien jou mediabediener of instaanbediener-eindpunt via HTTPS, of laai Sunfin slegs oor HTTP op vertroude plaaslike netwerke.",
     "webDiagnosticsNoMixedContentDetected": "Geen ooglopende konfigurasie vir gemengde inhoud bespeur vanaf huidige looptydinstellings nie.",
     "webDiagnosticsCorsChecklist": "CORS Kontrolelys",
     "webDiagnosticsCorsChecklistItem1": "• Laat die blaaier oorsprong toe in Access-Control-Allow-Origin.",
@@ -7360,7 +7360,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "Klassiek is die oorspronklike gesentreerde Plexfin-uitleg. Modern is 'n responsiewe filmiese uitleg.",
+    "detailScreenStyleSubtitle": "Klassiek is die oorspronklike gesentreerde Sunfin-uitleg. Modern is 'n responsiewe filmiese uitleg.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7392,13 +7392,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "Gebruik die Plexfin Recommends-algoritme vir jou plaaslike biblioteek of TMDb se aanlyn ooreenkomsmetrieke. Let wel: aanlyn aanbevelings vereis Seerr-integrasie.",
+    "recommendationSystemSubtitle": "Gebruik die Sunfin Recommends-algoritme vir jou plaaslike biblioteek of TMDb se aanlyn ooreenkomsmetrieke. Let wel: aanlyn aanbevelings vereis Seerr-integrasie.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Plexfin Recommends",
+    "recommendationSystemMoonfin": "Sunfin Recommends",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Plexfin Recommends"
+        "description": "Recommendation system option: Sunfin Recommends"
     },
     "recommendationSystemTmdb": "TMDb-ooreenkoms",
     "@recommendationSystemTmdb": {
@@ -7408,7 +7408,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "Beperk Plexfin Recommends-voorstelle volgens die ouderdomsgradering van die teikenmedia",
+    "recommendationsApplyParentalRatingCapSubtitle": "Beperk Sunfin Recommends-voorstelle volgens die ouderdomsgradering van die teikenmedia",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7456,7 +7456,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "Pasgemaakte temas verander visuele elemente regoor Plexfin. Kies een van hierdie opsies wat by jou styl pas.",
+    "customThemeSubtitle": "Pasgemaakte temas verander visuele elemente regoor Sunfin. Kies een van hierdie opsies wat by jou styl pas.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7629,7 +7629,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "Meld op jou foon by Plexfin aan",
+    "carSignInPrompt": "Meld op jou foon by Sunfin aan",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8970,7 +8970,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller is Flutter se moderne GPU-weergeër vir gladder animasies en minder hakkel. Op sommige TV-bokse en ouer GPU's kan dit foute of swart video veroorsaak; skakel dit af as jy dit sien. Outomaties kies die beste verstek vir jou toestel. Herbegin Plexfin om dit toe te pas.",
+    "impellerRenderingSubtitle": "Impeller is Flutter se moderne GPU-weergeër vir gladder animasies en minder hakkel. Op sommige TV-bokse en ouer GPU's kan dit foute of swart video veroorsaak; skakel dit af as jy dit sien. Outomaties kies die beste verstek vir jou toestel. Herbegin Sunfin om dit toe te pas.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8981,7 +8981,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "Plexfin moet herbegin om die weergee-enjin te verander. Maak die app nou toe en heropen dit om die verandering toe te pas.",
+    "impellerRestartMessage": "Sunfin moet herbegin om die weergee-enjin te verander. Maak die app nou toe en heropen dit om die verandering toe te pas.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },

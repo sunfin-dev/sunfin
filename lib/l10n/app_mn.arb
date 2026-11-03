@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "appTitle": "Plexfin",
+    "appTitle": "Sunfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Plexfin хувилбар {version}",
+    "appVersionFooter": "Sunfin хувилбар {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Plexfin таны системийн түлхүүрт нэвтэрч чадсангүй. Нэвтрэхийг үргэлжлүүлж болох ч түлхүүрийн оосорыг нээх хүртэл аюулгүй жетон хадгалах боломжгүй байж магадгүй.",
+    "secureStorageUnavailableMessage": "Sunfin таны системийн түлхүүрт нэвтэрч чадсангүй. Нэвтрэхийг үргэлжлүүлж болох ч түлхүүрийн оосорыг нээх хүртэл аюулгүй жетон хадгалах боломжгүй байж магадгүй.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -168,17 +168,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "Програмыг дахин эхлүүлэхгүйгээр Plexfin болон Neon Pulse хооронд сэлгэнэ үү",
+    "settingsAppearanceThemeSubtitle": "Програмыг дахин эхлүүлэхгүйгээр Sunfin болон Neon Pulse хооронд сэлгэнэ үү",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Plexfin",
+    "themeMoonfin": "Sunfin",
     "@themeMoonfin": {
-        "description": "Display name for the Plexfin theme"
+        "description": "Display name for the Sunfin theme"
     },
-    "themeMoonfinSubtitle": "Одоогийн Plexfin та бүгд дурласан харагдана",
+    "themeMoonfinSubtitle": "Одоогийн Sunfin та бүгд дурласан харагдана",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Plexfin theme"
+        "description": "Preview description for the Sunfin theme"
     },
     "themeNeonPulse": "Неон импульс",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Plexfin гарах уу?",
+    "exitApp": "Sunfin гарах уу?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "Тохируулаагүй. Plexfin апп/өгөгдлийн хавтсанд өгөгдмөл mpv.conf-г оролдох болно.",
+    "notSetMpvConf": "Тохируулаагүй. Sunfin апп/өгөгдлийн хавтсанд өгөгдмөл mpv.conf-г оролдох болно.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "Номын сан бүрийн нүүр хуудасны харагдах байдлыг асаах/унтраах. Өөрчлөлтүүд хүчин төгөлдөр болохын тулд Plexfin-г дахин эхлүүлнэ үү.",
+    "libraryVisibilityDescription": "Номын сан бүрийн нүүр хуудасны харагдах байдлыг асаах/унтраах. Өөрчлөлтүүд хүчин төгөлдөр болохын тулд Sunfin-г дахин эхлүүлнэ үү.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3561,9 +3561,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Plexfin",
+    "mediaBarModeMoonfin": "Sunfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Plexfin"
+        "description": "Media bar style option: Sunfin"
     },
     "mediaBarModeMakd": "МакД",
     "@mediaBarModeMakd": {
@@ -4121,8 +4121,8 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
-    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
-    "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
+    "aboutBasedOnMoonfin": "Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
+    "sourceCodeUrl": "https://github.com/sunfin-dev/sunfin",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
     },
@@ -4294,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Plexfin дээр тоглох",
+    "playInMoonfin": "Sunfin дээр тоглох",
     "@playInMoonfin": {
-        "description": "Button to play available media in Plexfin"
+        "description": "Button to play available media in Sunfin"
     },
     "requestedByName": "Хүссэн {name}",
     "@requestedByName": {
@@ -4348,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "Таны Plexfin номын сангаас зүйл олдсонгүй",
+    "itemNotFoundInLibrary": "Таны Sunfin номын сангаас зүйл олдсонгүй",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4652,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "Серверийг дахин ачаалж байна",
-    "adminServerRebootMessage": "Серверийг дахин ачаалж байна, дахин эхлүүлнэ үү Plexfin",
+    "adminServerRebootMessage": "Серверийг дахин ачаалж байна, дахин эхлүүлнэ үү Sunfin",
     "adminActiveSessions": "Идэвхтэй сессүүд",
     "adminSessionsLoadFailed": "Сешнүүдийг ачаалж чадсангүй",
     "adminNoActiveSessions": "Идэвхтэй сесс байхгүй",
@@ -6517,13 +6517,13 @@
     "settingsAccountSecuritySubtitle": "Баталгаажуулалт, ПИН код, эцэг эхийн хяналт",
     "settingsPersonalization": "Хувийн тохиргоо",
     "settingsPersonalizationSubtitle": "Сэдэв, навигаци, гэрийн эгнээ, номын сангийн харагдац",
-    "plexPersonalizationSubtitle": "Хажуугийн самбар, нүүрийн мөрүүд, сангууд, дэлгэрэнгүй хуудас ба дэлгэц амраагч",
-    "plexGeneralStyleSubtitle": "Гар ба тоглоомын удирдлага",
-    "plexDetailsScreenSubtitle": "Товчлуур, мэдээлэл, хэсэг ба зөвлөмж",
-    "plexNavigationSubtitle": "Хажуугийн самбарын зүйлс ба автомат сонголт",
-    "plexHomeScreenSubtitle": "Мөрүүд, тэдгээрийн дараалал ба Үргэлжлүүлэн үзэх",
+    "sunfinPersonalizationSubtitle": "Хажуугийн самбар, нүүрийн мөрүүд, сангууд, дэлгэрэнгүй хуудас ба дэлгэц амраагч",
+    "sunfinGeneralStyleSubtitle": "Гар ба тоглоомын удирдлага",
+    "sunfinDetailsScreenSubtitle": "Товчлуур, мэдээлэл, хэсэг ба зөвлөмж",
+    "sunfinNavigationSubtitle": "Хажуугийн самбарын зүйлс ба автомат сонголт",
+    "sunfinHomeScreenSubtitle": "Мөрүүд, тэдгээрийн дараалал ба Үргэлжлүүлэн үзэх",
     "libraryNicknames": "Сангийн хоч нэр",
-    "libraryNicknamesSubtitle": "Сангуудад өгөх таны өөрийн нэр, зөвхөн Plexfin-д харагдана",
+    "libraryNicknamesSubtitle": "Сангуудад өгөх таны өөрийн нэр, зөвхөн Sunfin-д харагдана",
     "libraryNicknameServerName": "Сервер дээр: {name}",
     "libraryNicknameHint": "Серверийн нэрийг ашиглах бол хоосон үлдээнэ үү",
     "libraryNicknameNone": "Хоч нэргүй",
@@ -6536,16 +6536,16 @@
     "settingsTransferImport": "Тохиргоо импортлох",
     "settingsTransferFrom": "{device}-ээс, {date}",
     "settingsTransferNothing": "Одоогоор юу ч экспортлоогүй",
-    "settingsTransferImportConfirm": "Энэ төхөөрөмжийн тохиргоог эдгээрээр солих уу? {source}\n\nДараа нь Plexfin хаагдана. Ашиглахын тулд дахин нээнэ үү.",
+    "settingsTransferImportConfirm": "Энэ төхөөрөмжийн тохиргоог эдгээрээр солих уу? {source}\n\nДараа нь Sunfin хаагдана. Ашиглахын тулд дахин нээнэ үү.",
     "settingsTransferImportAction": "Импортлоод хаах",
     "settingsTransferFailed": "Jellyfin бүртгэлтэй холбогдож чадсангүй",
     "settingsTransferNote": "Нэвтрэлт, цонх, техник хангамж төхөөрөмж бүрт өөрийнхөөрөө үлдэнэ. Эхлээд нөгөө төхөөрөмж дээр нэвтэрч, дараа нь импортлоно уу.",
     "settingsReset": "Бүх тохиргоог анхны байдалд нь оруулах",
     "settingsResetSubtitle": "Энэ төхөөрөмжийн тохиргоог үндсэн утгад нь буцаах",
-    "settingsResetConfirm": "Энэ төхөөрөмжийн бүх тохиргоог үндсэн утгад нь буцаах уу? Та нэвтэрсэн хэвээр үлдэх бөгөөд Jellyfin бүртгэлдээ экспортолсон тохиргоо хадгалагдана.\n\nДараа нь Plexfin хаагдана. Үргэлжлүүлэхийн тулд дахин нээнэ үү.",
+    "settingsResetConfirm": "Энэ төхөөрөмжийн бүх тохиргоог үндсэн утгад нь буцаах уу? Та нэвтэрсэн хэвээр үлдэх бөгөөд Jellyfin бүртгэлдээ экспортолсон тохиргоо хадгалагдана.\n\nДараа нь Sunfin хаагдана. Үргэлжлүүлэхийн тулд дахин нээнэ үү.",
     "adminShowButton": "Удирдлагын товчийг харуулах",
     "adminShowButtonSubtitle": "Серверийн удирдлагыг нээх товчийг цэсэнд нэмнэ",
-    "plexDirectedBy": "Найруулагч: {names}",
+    "sunfinDirectedBy": "Найруулагч: {names}",
     "settingsDynamicContent": "Динамик контент",
     "settingsDynamicContentSubtitle": "Медиа мөр ба визуал давхаргууд",
     "settingsPlaybackSyncplay": "Тоглуулах & SyncPlay",
@@ -6569,7 +6569,7 @@
     "settingsShowGenresButtonInNavigation": "Навигацийн талбарт жанрын товчлуурыг харуул",
     "settingsShowFavoritesButtonInNavigation": "Навигацийн талбарт дуртай товчлууруудыг харуул",
     "settingsShowLibrariesButtonInNavigation": "Навигацийн талбар дахь номын сангийн товчийг харуул",
-    "settingsLibraryVisibilitySubtitle": "Номын сан бүрийн нүүр хуудасны харагдах байдлыг асаах/унтраах. Өөрчлөлтүүд хүчин төгөлдөр болохын тулд Plexfin-г дахин эхлүүлнэ үү.",
+    "settingsLibraryVisibilitySubtitle": "Номын сан бүрийн нүүр хуудасны харагдах байдлыг асаах/унтраах. Өөрчлөлтүүд хүчин төгөлдөр болохын тулд Sunfin-г дахин эхлүүлнэ үү.",
     "settingsMediaBarAndLocalPreviews": "Медиа талбар ба орон нутгийн урьдчилан үзэх",
     "settingsVisualOverlays": "Визуал давхаргууд",
     "settingsSeasonalSurprise": "Улирлын гэнэтийн бэлэг",
@@ -6588,14 +6588,14 @@
     "settingsJoinDiscord": "Discord-д нэгдээрэй",
     "settingsJoinDiscordSubtitle": "Нийгэмлэгтэй чатлах",
     "settingsJoinTheDiscord": "Discord-д нэгдээрэй",
-    "settingsSupportMoonfin": "Дэмжлэг Plexfin",
+    "settingsSupportMoonfin": "Дэмжлэг Sunfin",
     "settingsLegal": "ХУУЛЬ ЗҮЙН",
     "settingsLicenses": "Лицензүүд",
     "settingsOpenSourceLicenseNotices": "Нээлттэй эхийн лицензийн мэдэгдэл",
     "settingsPrivacyPolicy": "Нууцлалын бодлого",
-    "settingsPrivacyPolicySubtitle": "Plexfin таны өгөгдлийг хэрхэн зохицуулдаг вэ",
+    "settingsPrivacyPolicySubtitle": "Sunfin таны өгөгдлийг хэрхэн зохицуулдаг вэ",
     "settingsCheckForUpdates": "Шинэчлэлтүүдийг шалгана уу",
-    "settingsCheckForUpdatesSubtitle": "Хамгийн сүүлийн үеийн Plexfin хувилбарыг шалгана уу",
+    "settingsCheckForUpdatesSubtitle": "Хамгийн сүүлийн үеийн Sunfin хувилбарыг шалгана уу",
     "settingsPoweredByFlutter": "Flutter-ээр дэмжигдсэн",
     "settingsLicenseNoticesCount": "{count, plural, one {# лицензийн мэдэгдэл} other {# лицензийн мэдэгдэл}}",
     "@settingsLicenseNoticesCount": {
@@ -7128,12 +7128,12 @@
     "preferSdhSubtitles": "SDH хадмал орчуулгыг илүүд үзнэ үү",
     "preferSdhSubtitlesSubtitle": "Автоматаар сонгохдоо SDH/CC хадмал орчуулгыг эрэмбэлэх.",
     "webDiagnostics": "Вэб оношлогоо",
-    "webDiagnosticsTitle": "Plexfin Вэб оношилгоо",
+    "webDiagnosticsTitle": "Sunfin Вэб оношилгоо",
     "webDiagnosticsIntro": "Энэ хуудсыг хөтчийн холболтын асуудлыг оношлоход ашиглана уу (CORS, холимог контент болон нээлтийн тохиргоо).",
     "webDiagnosticsDetectedMixedContentFailure": "Холимог агуулгын алдаа илэрсэн",
     "webDiagnosticsDetectedCorsPreflightFailure": "Илэрсэн CORS/Нислэгийн өмнөх алдаа",
-    "webDiagnosticsMixedContentFailureBody": "Plexfin HTTP серверийн URL руу залгахыг оролдож буй HTTPS хуудсыг илрүүллээ. Хөтөчүүд энэ хүсэлтийг таны серверт хүрэхээс өмнө блоклодог.",
-    "webDiagnosticsCorsFailureBody": "Plexfin хөтчийн түвшний хүсэлтийн алдаа илрүүллээ. Энэ нь ихэвчлэн медиа сервер дээр CORS эсвэл preflight толгой дутуугаас үүсдэг.",
+    "webDiagnosticsMixedContentFailureBody": "Sunfin HTTP серверийн URL руу залгахыг оролдож буй HTTPS хуудсыг илрүүллээ. Хөтөчүүд энэ хүсэлтийг таны серверт хүрэхээс өмнө блоклодог.",
+    "webDiagnosticsCorsFailureBody": "Sunfin хөтчийн түвшний хүсэлтийн алдаа илрүүллээ. Энэ нь ихэвчлэн медиа сервер дээр CORS эсвэл preflight толгой дутуугаас үүсдэг.",
     "webDiagnosticsTargetUrl": "Зорилтот URL: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7163,7 +7163,7 @@
     "notConfigured": "тохируулаагүй",
     "webDiagnosticsMixedContent": "Холимог контент",
     "webDiagnosticsMixedContentDetected": "Энэ хуудсыг HTTPS-ээр ачаалсан боловч тохируулсан нэг буюу хэд хэдэн URL нь HTTP байна. Хөтчүүд HTTPS хуудсыг HTTP API дуудахыг хориглодог.",
-    "webDiagnosticsMixedContentFix": "Засвар: медиа сервер эсвэл прокси цэгээ HTTPS-ээр нийлүүлнэ үү, эсвэл Plexfin-ийг зөвхөн итгэмжлэгдсэн дотоод сүлжээнд HTTP-ээр ачаална уу.",
+    "webDiagnosticsMixedContentFix": "Засвар: медиа сервер эсвэл прокси цэгээ HTTPS-ээр нийлүүлнэ үү, эсвэл Sunfin-ийг зөвхөн итгэмжлэгдсэн дотоод сүлжээнд HTTP-ээр ачаална уу.",
     "webDiagnosticsNoMixedContentDetected": "Одоогийн ажиллах тохиргооноос холимог контентын илэрхий тохиргоо илрээгүй.",
     "webDiagnosticsCorsChecklist": "CORS шалгах жагсаалт",
     "webDiagnosticsCorsChecklistItem1": "• Access-Control-Allow-Origin-д хөтчийн origin-ыг зөвшөөрнө үү.",
@@ -7360,7 +7360,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "Сонгодог нь Plexfin-ий анхны төвлөрсөн байрлал. Орчин үеийн нь дэлгэцэд зохицдог кино маягийн байрлал.",
+    "detailScreenStyleSubtitle": "Сонгодог нь Sunfin-ий анхны төвлөрсөн байрлал. Орчин үеийн нь дэлгэцэд зохицдог кино маягийн байрлал.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7392,13 +7392,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "Plexfin Recommends дотоод сангийн алгоритм эсвэл онлайн TMDb-ийн ижил төстэй байдлын хэмжүүрийг ашиглана. Тэмдэглэл: Онлайн зөвлөмжид Seerr холболт шаардлагатай.",
+    "recommendationSystemSubtitle": "Sunfin Recommends дотоод сангийн алгоритм эсвэл онлайн TMDb-ийн ижил төстэй байдлын хэмжүүрийг ашиглана. Тэмдэглэл: Онлайн зөвлөмжид Seerr холболт шаардлагатай.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Plexfin Recommends",
+    "recommendationSystemMoonfin": "Sunfin Recommends",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Plexfin Recommends"
+        "description": "Recommendation system option: Sunfin Recommends"
     },
     "recommendationSystemTmdb": "TMDb-ийн ижил төстэй байдал",
     "@recommendationSystemTmdb": {
@@ -7408,7 +7408,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "Plexfin Recommends-ийн саналыг сонгосон медиагийн насны ангиллаар хязгаарлана",
+    "recommendationsApplyParentalRatingCapSubtitle": "Sunfin Recommends-ийн саналыг сонгосон медиагийн насны ангиллаар хязгаарлана",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7456,7 +7456,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "Захиалгат загвар нь Plexfin даяарх харагдах байдлыг өөрчилнө. Өөрийн хэв маягт тохирох нэгийг сонгоно уу.",
+    "customThemeSubtitle": "Захиалгат загвар нь Sunfin даяарх харагдах байдлыг өөрчилнө. Өөрийн хэв маягт тохирох нэгийг сонгоно уу.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7629,7 +7629,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "Утсан дээрээ Plexfin-д нэвтэрнэ үү",
+    "carSignInPrompt": "Утсан дээрээ Sunfin-д нэвтэрнэ үү",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8970,7 +8970,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller бол илүү жигд хөдөлгөөн, бага доголдолтой байхад зориулсан Flutter-ийн орчин үеийн GPU дүрслэгч юм. Зарим ТВ хайрцаг болон хуучин GPU дээр гажилт эсвэл хар дэлгэц үүсгэж болзошгүй; тийм зүйл харвал Унтраах болгоно уу. Автомат нь таны төхөөрөмжид тохирох үндсэн утгыг сонгоно. Хэрэглэхийн тулд Plexfin-ийг дахин эхлүүлнэ үү.",
+    "impellerRenderingSubtitle": "Impeller бол илүү жигд хөдөлгөөн, бага доголдолтой байхад зориулсан Flutter-ийн орчин үеийн GPU дүрслэгч юм. Зарим ТВ хайрцаг болон хуучин GPU дээр гажилт эсвэл хар дэлгэц үүсгэж болзошгүй; тийм зүйл харвал Унтраах болгоно уу. Автомат нь таны төхөөрөмжид тохирох үндсэн утгыг сонгоно. Хэрэглэхийн тулд Sunfin-ийг дахин эхлүүлнэ үү.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8981,7 +8981,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "Дүрслэлийн хөдөлгүүрийг солихын тулд Plexfin дахин эхлэх шаардлагатай. Аппыг одоо хаагаад дахин нээж хэрэглэнэ үү.",
+    "impellerRestartMessage": "Дүрслэлийн хөдөлгүүрийг солихын тулд Sunfin дахин эхлэх шаардлагатай. Аппыг одоо хаагаад дахин нээж хэрэглэнэ үү.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },

@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:moonfin/ui/plex/plex_backdrop.dart';
+import 'package:moonfin/ui/sunfin/sunfin_backdrop.dart';
 
-// The values were solved per pixel from Plex TV screenshots of three titles
+// The values were solved per pixel from Sunfin TV screenshots of three titles
 // (2026-11-03); these pin what was measured, not a style choice.
 void main() {
-  double at(double u, double v) => PlexBackdrop.artMaskAt(u, v);
+  double at(double u, double v) => SunfinBackdrop.artMaskAt(u, v);
 
   test('the art shows at about 59% where it is clearest', () {
     expect(at(0.6, 0.4), closeTo(0.59, 0.005));

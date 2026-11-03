@@ -130,7 +130,7 @@ AggregatedItem? _seriesCardForLatestTvItem(AggregatedItem item) {
   rawData['Name'] = seriesName;
   rawData.remove('IndexNumber');
   rawData.remove('ParentIndexNumber');
-  // Plexfin: what the episode or season says about itself is wrong for the
+  // Sunfin: what the episode or season says about itself is wrong for the
   // show (its summary, date, length, rating), so the card drops it and
   // [withRealSeries] fills in the show's own details.
   for (final key in _standInDropKeys) {
@@ -191,7 +191,7 @@ AggregatedItem? _seriesCardForLatestTvItem(AggregatedItem item) {
 
 /// Set on a show card [normalizeLatestMediaItems] built from one of the
 /// show's new episodes or seasons, until [withRealSeries] replaces it.
-const latestSeriesStandInKey = 'PlexfinSeriesStandIn';
+const latestSeriesStandInKey = 'SunfinSeriesStandIn';
 
 const _standInDropKeys = [
   'Overview',

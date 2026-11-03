@@ -4,7 +4,7 @@ import 'package:server_core/server_core.dart';
 import '../../../data/services/connectivity_service.dart';
 import '../../../data/services/media_server_client_factory.dart';
 import '../../../data/services/plugin_sync_service.dart';
-import '../../../preference/plex_locks.dart';
+import '../../../preference/sunfin_locks.dart';
 import '../../../preference/preference_constants.dart';
 import '../../../preference/user_preferences.dart';
 import '../../widgets/navigation_layout.dart';
@@ -76,8 +76,8 @@ class SetupWizardGate {
       UserPreferences.setupWizardVersion;
 
   bool shouldRun(MediaServerClient client) {
-    // Plexfin: every question here picks part of the look, which is fixed.
-    if (PlexLocks.active) return false;
+    // Sunfin: every question here picks part of the look, which is fixed.
+    if (SunfinLocks.active) return false;
     if (_rerunning) return true;
     if (_deferredThisLaunch) return false;
 

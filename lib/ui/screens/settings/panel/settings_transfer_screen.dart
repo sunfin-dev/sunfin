@@ -1,6 +1,6 @@
 part of '../settings_side_panel.dart';
 
-/// Plexfin: moves every setting from one device to another through the
+/// Sunfin: moves every setting from one device to another through the
 /// user's Jellyfin account (SettingsTransfer). The other device signs in on
 /// its own first; logins never travel.
 class _SettingsTransferScreen extends StatefulWidget {

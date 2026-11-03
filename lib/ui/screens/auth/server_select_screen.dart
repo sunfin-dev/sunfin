@@ -252,7 +252,7 @@ class _ServerSelectScreenState extends State<ServerSelectScreen> {
       final resolvedUserName = (currentUser.name ?? '').trim();
       final user = PrivateUser(
         id: resolvedUserId,
-        name: resolvedUserName.isNotEmpty ? resolvedUserName : 'Plexfin User',
+        name: resolvedUserName.isNotEmpty ? resolvedUserName : 'Sunfin User',
         serverId: server.id,
         accessToken: credentials.accessToken,
         lastUsed: DateTime.now(),

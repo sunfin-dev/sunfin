@@ -25,7 +25,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   // plugins.
   ::CoInitializeEx(nullptr, COINIT_APARTMENTTHREADED);
 
-  // Plexfin leaves moonfin:// to the stock Moonfin app: registering it here
+  // Sunfin leaves moonfin:// to the stock Moonfin app: registering it here
   // would take over its links, so nothing is written to the registry.
 
   flutter::DartProject project(L"data");
@@ -39,7 +39,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   FlutterWindow window(project);
   Win32Window::Point origin(10, 10);
   Win32Window::Size size(1280, 720);
-  if (!window.Create(L"Plexfin", origin, size)) {
+  if (!window.Create(L"Sunfin", origin, size)) {
     return EXIT_FAILURE;
   }
   window.SetQuitOnClose(true);

@@ -61,7 +61,7 @@ import 'util/http_overrides_stub.dart'
 import 'util/game_core_licenses.dart';
 import 'util/device_performance.dart';
 import 'ui/navigation/app_router.dart';
-import 'ui/plex/plex_frame_log.dart';
+import 'ui/sunfin/sunfin_frame_log.dart';
 import 'ui/screensaver/screensaver_controller.dart';
 import 'util/platform_detection.dart';
 import 'util/process_exit_reporter.dart';
@@ -1017,17 +1017,17 @@ void main() async {
     GetIt.instance<AirPlayCommandBridge>().start();
   } catch (_) {}
 
-  // Plexfin: `build.ps1 -Profile` turns these on, so the timeline names every
+  // Sunfin: `build.ps1 -Profile` turns these on, so the timeline names every
   // widget that builds, lays out and paints. They cost nothing in release.
   if (kProfileMode &&
-      const bool.fromEnvironment('PLEXFIN_PROFILE_WIDGETS')) {
+      const bool.fromEnvironment('SUNFIN_PROFILE_WIDGETS')) {
     debugProfileBuildsEnabled = true;
     debugProfileLayoutsEnabled = true;
     debugProfilePaintsEnabled = true;
   }
 
   if (PlatformDetection.isTV) {
-    PlexFrameLog.start(
+    SunfinFrameLog.start(
       // The top page, pushed ones included (uri only names the base route).
       route: () {
         final config = appRouter.routerDelegate.currentConfiguration;

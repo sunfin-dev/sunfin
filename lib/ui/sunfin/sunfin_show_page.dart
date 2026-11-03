@@ -26,14 +26,14 @@ import '../screens/detail/nouveau/people/nouveau_people_section.dart';
 import '../widgets/focus/context_menu_sheet.dart';
 import '../widgets/image_source.dart';
 import '../widgets/navigation_layout.dart';
-import 'plex_backdrop.dart';
-import 'plex_clock.dart';
-import 'plex_detail_parts.dart';
-import 'plex_home_header.dart';
-import 'plex_rating_line.dart';
-import 'plex_style.dart';
+import 'sunfin_backdrop.dart';
+import 'sunfin_clock.dart';
+import 'sunfin_detail_parts.dart';
+import 'sunfin_home_header.dart';
+import 'sunfin_rating_line.dart';
+import 'sunfin_style.dart';
 
-/// Plex's show page, where Plex goes when a show is picked in its library
+/// The reference design's show page, where the reference design goes when a show is picked in its library
 /// (user, 2026-10-23; references 12 and 13):
 ///
 /// - the show's header, as on home;
@@ -44,7 +44,7 @@ import 'plex_style.dart';
 ///
 /// Anywhere else (Continue Watching, home rows, search) a show still opens
 /// the season page at the episode it's up to; only the library asks for this.
-class PlexShowPage extends StatefulWidget {
+class SunfinShowPage extends StatefulWidget {
   final ItemDetailViewModel viewModel;
   final UserPreferences prefs;
   final ValueListenable<String?> backdropUrl;
@@ -55,7 +55,7 @@ class PlexShowPage extends StatefulWidget {
   /// user last was on this page.
   final FocusNode? initialFocusNode;
 
-  const PlexShowPage({
+  const SunfinShowPage({
     super.key,
     required this.viewModel,
     required this.prefs,
@@ -68,35 +68,35 @@ class PlexShowPage extends StatefulWidget {
   static bool handles(AggregatedItem? item) => item?.type == 'Series';
 
   @override
-  State<PlexShowPage> createState() => _PlexShowPageState();
+  State<SunfinShowPage> createState() => _SunfinShowPageState();
 }
 
 enum _Region { buttons, seasons, sections }
 
-// Layout, in Plex's 960-wide units (references 12 and 13, the show page).
-final _buttonsTop = PlexStyle.s(243);
-final _buttonSize = PlexStyle.s(32);
-final _buttonGap = PlexStyle.s(12);
-final _seasonsLabelTop = PlexStyle.s(300);
-final _postersTop = PlexStyle.s(341);
-final _posterWidth = PlexStyle.s(120);
-final _posterHeight = PlexStyle.s(180);
-final _posterGap = PlexStyle.s(16);
+// Layout, in the reference design's 960-wide units (references 12 and 13, the show page).
+final _buttonsTop = SunfinStyle.s(243);
+final _buttonSize = SunfinStyle.s(32);
+final _buttonGap = SunfinStyle.s(12);
+final _seasonsLabelTop = SunfinStyle.s(300);
+final _postersTop = SunfinStyle.s(341);
+final _posterWidth = SunfinStyle.s(120);
+final _posterHeight = SunfinStyle.s(180);
+final _posterGap = SunfinStyle.s(16);
 const _focusScale = 1.09;
 
 /// How far a focused poster grows past its box on each side.
 final _grow = _posterHeight * (_focusScale - 1) / 2;
-final _captionGap = PlexStyle.s(8);
-final _captionHeight = PlexStyle.s(36);
+final _captionGap = SunfinStyle.s(8);
+final _captionHeight = SunfinStyle.s(36);
 final _rowHeight =
     _grow + _posterHeight + _grow + _captionGap + _captionHeight;
 final _foldHeight = _postersTop - _grow + _rowHeight;
-final _rightInset = PlexStyle.s(40);
+final _rightInset = SunfinStyle.s(40);
 
 const _episodeFields = 'Overview,RunTimeTicks,UserData,MediaStreams,PremiereDate';
 const _move = Duration(milliseconds: 180);
 
-class _PlexShowPageState extends State<PlexShowPage> {
+class _SunfinShowPageState extends State<SunfinShowPage> {
   final _actionsKey = GlobalKey<DetailActionButtonsState>();
   final _scroll = ScrollController();
   final _rowScroll = ScrollController();
@@ -106,12 +106,12 @@ class _PlexShowPageState extends State<PlexShowPage> {
   final _discoveryKey = GlobalKey<NouveauDiscoverySectionState>();
 
   late final FocusNode _entryNode =
-      widget.initialFocusNode ?? FocusNode(debugLabel: 'plexShowEntry');
+      widget.initialFocusNode ?? FocusNode(debugLabel: 'sunfinShowEntry');
   final _seasonNodes = <String, FocusNode>{};
   final _seasonSelectKeys = LongPressSelectKeyHandler();
   final _buttonNodes = List.generate(
     3,
-    (i) => FocusNode(debugLabel: 'plexShowButton$i'),
+    (i) => FocusNode(debugLabel: 'sunfinShowButton$i'),
   );
 
   List<AggregatedItem> _seasons = const [];
@@ -129,13 +129,13 @@ class _PlexShowPageState extends State<PlexShowPage> {
 
   /// The top and each section are handed back unchanged unless what they
   /// show changed; the page builds again on every view-model update.
-  final _memo = PlexMemo();
+  final _memo = SunfinMemo();
   int _prefsRevision = 0;
 
   ItemDetailViewModel get _vm => widget.viewModel;
   AggregatedItem? get _item => _vm.item;
   bool get _played => _playedOverride ?? _item?.isPlayed ?? false;
-  double get _inset => PlexStyle.contentInset;
+  double get _inset => SunfinStyle.contentInset;
 
   MediaServerClient get _client {
     final serverId = _item?.serverId ?? '';
@@ -199,7 +199,7 @@ class _PlexShowPageState extends State<PlexShowPage> {
       );
       if (mounted) setState(() => _seasons = _mapItems(data));
     } catch (e) {
-      debugPrint('[PlexShowPage] seasons for $seriesId: $e');
+      debugPrint('[SunfinShowPage] seasons for $seriesId: $e');
     }
   }
 
@@ -222,7 +222,7 @@ class _PlexShowPageState extends State<PlexShowPage> {
       }
       if (mounted) setState(() => _upTo = upTo);
     } catch (e) {
-      debugPrint('[PlexShowPage] episode up to for $seriesId: $e');
+      debugPrint('[SunfinShowPage] episode up to for $seriesId: $e');
     }
   }
 
@@ -241,7 +241,7 @@ class _PlexShowPageState extends State<PlexShowPage> {
       );
       return _mapItems(data).firstOrNull;
     } catch (e) {
-      debugPrint('[PlexShowPage] first episode of $seriesId: $e');
+      debugPrint('[SunfinShowPage] first episode of $seriesId: $e');
       return null;
     }
   }
@@ -266,7 +266,7 @@ class _PlexShowPageState extends State<PlexShowPage> {
 
   FocusNode _seasonNode(String id) => _seasonNodes.putIfAbsent(
     id,
-    () => FocusNode(debugLabel: 'plexShowSeason $id'),
+    () => FocusNode(debugLabel: 'sunfinShowSeason $id'),
   );
 
   void _restoreFocus() {
@@ -318,11 +318,11 @@ class _PlexShowPageState extends State<PlexShowPage> {
   }
 
   /// Scrolls just far enough to show the posters and their captions whole,
-  /// as Plex does when focus reaches the seasons (reference 13).
+  /// as the reference design does when focus reaches the seasons (reference 13).
   void _revealSeasons() {
     if (!_scroll.hasClients) return;
     final position = _scroll.position;
-    final target = (_foldHeight - position.viewportDimension + PlexStyle.s(12))
+    final target = (_foldHeight - position.viewportDimension + SunfinStyle.s(12))
         .clamp(position.minScrollExtent, position.maxScrollExtent);
     if ((target - position.pixels).abs() < 1) return;
     _scroll.animateTo(target, duration: _move, curve: Curves.easeOutCubic);
@@ -422,7 +422,7 @@ class _PlexShowPageState extends State<PlexShowPage> {
     if (episode == null || actions == null || !mounted) return;
     await actions
         .playItem(context, episode, resume: _inProgress(episode))
-        .catchError((Object e) => debugPrint('[PlexShowPage] play: $e'));
+        .catchError((Object e) => debugPrint('[SunfinShowPage] play: $e'));
   }
 
   Future<void> _toggleWatched() async {
@@ -436,7 +436,7 @@ class _PlexShowPageState extends State<PlexShowPage> {
       );
       if (mounted) setState(() => _playedOverride = played);
     } catch (e) {
-      debugPrint('[PlexShowPage] watched ${item.id}: $e');
+      debugPrint('[SunfinShowPage] watched ${item.id}: $e');
     }
     await _load();
   }
@@ -609,7 +609,7 @@ class _PlexShowPageState extends State<PlexShowPage> {
         Positioned.fill(
           child: ValueListenableBuilder<String?>(
             valueListenable: widget.backdropUrl,
-            builder: (context, url, _) => PlexBackdrop(
+            builder: (context, url, _) => SunfinBackdrop(
               url: url != null && url.isNotEmpty ? url : null,
             ),
           ),
@@ -645,18 +645,18 @@ class _PlexShowPageState extends State<PlexShowPage> {
                   Padding(
                     padding: EdgeInsets.fromLTRB(
                       _inset,
-                      PlexStyle.s(24),
+                      SunfinStyle.s(24),
                       _rightInset,
                       0,
                     ),
                     child: section.child,
                   ),
-                SizedBox(height: PlexStyle.s(48)),
+                SizedBox(height: SunfinStyle.s(48)),
               ],
             ),
           ),
         ),
-        PlexClock.corner(),
+        SunfinClock.corner(),
         // Only there to play: its playback path queues the rest of the show
         // and handles prerolls and the external player, as on every page.
         Offstage(
@@ -687,12 +687,12 @@ class _PlexShowPageState extends State<PlexShowPage> {
           top: 0,
           left: 0,
           right: 0,
-          child: PlexHomeHeader(
+          child: SunfinHomeHeader(
             item: item,
             leftInset: _inset,
             showCast: false,
-            height: _buttonsTop - PlexStyle.s(8),
-            ratingLine: PlexRatingLine.of(
+            height: _buttonsTop - SunfinStyle.s(8),
+            ratingLine: SunfinRatingLine.of(
               item: item,
               extraRatings: _vm.ratings,
               prefs: widget.prefs,
@@ -710,7 +710,7 @@ class _PlexShowPageState extends State<PlexShowPage> {
             left: _inset,
             child: Text(
               AppLocalizations.of(context).seasons,
-              style: PlexStyle.rowTitleStyle.copyWith(
+              style: SunfinStyle.rowTitleStyle.copyWith(
                 color: Colors.white.withValues(alpha: 0.75),
               ),
             ),
@@ -750,12 +750,12 @@ class _PlexShowPageState extends State<PlexShowPage> {
               child: ListenableBuilder(
                 listenable: _buttonNodes[i],
                 builder: (context, _) => i == 0
-                    ? PlexPlayButton(
+                    ? SunfinPlayButton(
                         label: playLabel,
                         focused: _buttonNodes[i].hasFocus,
                         size: _buttonSize,
                       )
-                    : PlexRoundButton(
+                    : SunfinRoundButton(
                         icon: i == 1 ? Symbols.check_circle : Symbols.more_horiz,
                         filled: i == 1 && _played,
                         focused: _buttonNodes[i].hasFocus,
@@ -849,10 +849,10 @@ class _SeasonCard extends StatelessWidget {
           )
         : null;
     final unplayed = season.unplayedItemCount ?? 0;
-    final radius = BorderRadius.circular(PlexStyle.posterRadius);
+    final radius = BorderRadius.circular(SunfinStyle.posterRadius);
     final captionStyle = TextStyle(
       color: Colors.white.withValues(alpha: 0.9),
-      fontSize: PlexStyle.s(12.5),
+      fontSize: SunfinStyle.s(12.5),
     );
 
     return SizedBox(
@@ -873,7 +873,7 @@ class _SeasonCard extends StatelessWidget {
                 color: Colors.black.withValues(alpha: 0.35),
                 border: Border.all(
                   color: focused ? Colors.white : Colors.transparent,
-                  width: PlexStyle.focusBorderWidth,
+                  width: SunfinStyle.focusBorderWidth,
                 ),
                 boxShadow: focused
                     ? const [BoxShadow(color: Color(0x66000000), blurRadius: 12)]
@@ -934,7 +934,7 @@ class _SeasonCard extends StatelessWidget {
   }
 }
 
-/// Plex's corner tag on a season: the episodes left to watch, or a check
+/// The reference design's corner tag on a season: the episodes left to watch, or a check
 /// once there are none.
 class _CornerBadge extends StatelessWidget {
   final int? count;
@@ -943,11 +943,11 @@ class _CornerBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = PlexStyle.s(11);
+    final size = SunfinStyle.s(11);
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: PlexStyle.s(5),
-        vertical: PlexStyle.s(2),
+        horizontal: SunfinStyle.s(5),
+        vertical: SunfinStyle.s(2),
       ),
       color: Colors.black.withValues(alpha: 0.8),
       child: count == null

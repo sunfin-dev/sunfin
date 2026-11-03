@@ -31,10 +31,10 @@ import '../../util/platform_detection.dart';
 import '../navigation/destinations.dart';
 import '../navigation/home_refresh_bus.dart';
 import '../navigation/route_lifecycle_observer.dart';
-import '../plex/plex_backdrop_tint.dart';
-import '../plex/plex_icons.dart';
-import '../plex/plex_library_page.dart';
-import '../plex/plex_style.dart';
+import '../sunfin/sunfin_backdrop_tint.dart';
+import '../sunfin/sunfin_icons.dart';
+import '../sunfin/sunfin_library_page.dart';
+import '../sunfin/sunfin_style.dart';
 import 'navigation_layout.dart';
 import 'settings/settings_panel.dart';
 import '../screens/downloads/downloads_panel.dart';
@@ -59,7 +59,7 @@ import 'adaptive/sf_symbol.dart';
 
 const _kExpandedWidthDesktop = 240.0;
 const _kExpandedWidthMobile = 260.0;
-const _kExpandDuration = PlexMotion.move;
+const _kExpandDuration = SunfinMotion.move;
 const _kExpandedWidthTV = 280.0;
 const _kCollapsedWidthTV = 72.0;
 const _kExpandedBackdropWidthTV = _kExpandedWidthTV - 16.0;
@@ -76,23 +76,23 @@ class LeftSidebar extends StatefulWidget {
   /// current focus is within the sidebar; it's resilient during teardown.
   static final ValueNotifier<bool> isFocusedNotifier = ValueNotifier<bool>(false);
 
-  /// Plex mode: how much of the screen's left edge the rail takes, which is
+  /// Sunfin mode: how much of the screen's left edge the rail takes, which is
   /// where the content starts. It jumps to the target of an expand or
   /// collapse; the rail and content get there over [expandDuration] on
-  /// [expandCurve]. Zero outside Plex mode. Follows the sidebar of the route
+  /// [expandCurve]. Zero outside Sunfin mode. Follows the sidebar of the route
   /// on screen.
   static final ValueNotifier<double> railWidthNotifier = ValueNotifier<double>(
     0,
   );
 
   static const expandDuration = _kExpandDuration;
-  static const expandCurve = PlexMotion.curve;
+  static const expandCurve = SunfinMotion.curve;
 
-  /// Plex mode: how wide the open rail is. It fits the longest label the
+  /// Sunfin mode: how wide the open rail is. It fits the longest label the
   /// rail shows (a long library name widens it), so the layout reads it here
   /// to slide the content by the same amount.
-  static final ValueNotifier<double> plexExpandedWidthNotifier =
-      ValueNotifier<double>(PlexStyle.railExpandedWidth);
+  static final ValueNotifier<double> sunfinExpandedWidthNotifier =
+      ValueNotifier<double>(SunfinStyle.railExpandedWidth);
 
   /// Set by [NavigationLayout] so its content can move with this rail.
   final ValueNotifier<bool>? expandedNotifier;
@@ -116,7 +116,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
   final _sidebarFocus = FocusScopeNode(debugLabel: 'LeftSidebar');
   final _homeFocusNode = FocusNode(debugLabel: 'LeftSidebarHome');
   final _searchFocusNode = FocusNode(debugLabel: 'LeftSidebarSearch');
-  // Plex mode lists every library as its own row; keyed by library id so a
+  // Sunfin mode lists every library as its own row; keyed by library id so a
   // row keeps its node (and focus) across library reloads.
   final Map<String, FocusNode> _libraryFocusNodes = {};
   final _settingsFocusNode = FocusNode(debugLabel: 'LeftSidebarSettings');
@@ -313,7 +313,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
   void _onPrefsChanged() {
     if (!mounted) return;
     _updateClock();
-    // Plexfin: the list only depends on the server's views, which notify on
+    // Sunfin: the list only depends on the server's views, which notify on
     // their own (_onUserViewsChanged), and, with several servers, on the
     // per-server visibility kept here. Any other setting used to cost a
     // server round trip for a list that could not have changed.
@@ -323,7 +323,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
     }
     _lastMultiServerLibraries = multiServer;
     setState(() {});
-    // Plex mode can be switched on or off from the settings.
+    // Sunfin mode can be switched on or off from the settings.
     _publishRailState();
   }
 
@@ -331,22 +331,22 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
   void _publishRailState() {
     if (!mounted) return;
     widget.expandedNotifier?.value = _isExpanded;
-    LeftSidebar.railWidthNotifier.value = !PlexStyle.enabled
+    LeftSidebar.railWidthNotifier.value = !SunfinStyle.enabled
         ? 0
         : _isExpanded
-        ? LeftSidebar.plexExpandedWidthNotifier.value
-        : PlexStyle.railCollapsedWidth;
+        ? LeftSidebar.sunfinExpandedWidthNotifier.value
+        : SunfinStyle.railCollapsedWidth;
   }
 
   // Row geometry around a label in the open rail: 18 padding each side, the
   // 32 icon slot and a 12 gap (see _SidebarItem); the profile row adds the
   // same 80 around the user's name (margins, avatar, gap).
-  static const _plexLabelChrome = 80.0;
-  static const _plexLabelMargin = 0.0;
-  String _plexWidthKey = '';
+  static const _sunfinLabelChrome = 80.0;
+  static const _sunfinLabelMargin = 0.0;
+  String _sunfinWidthKey = '';
 
-  /// Plex mode: every label the open rail can show, as _buildContent does.
-  List<String> _plexRailLabels(AppLocalizations l10n) {
+  /// Sunfin mode: every label the open rail can show, as _buildContent does.
+  List<String> _sunfinRailLabels(AppLocalizations l10n) {
     final kidsMode = _kidsMode;
     final seerrPrefs = GetIt.instance<SeerrPreferences>();
     return [
@@ -371,14 +371,14 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
     ];
   }
 
-  /// Plex mode: the open rail's width, measured from its longest label with
+  /// Sunfin mode: the open rail's width, measured from its longest label with
   /// the font it is drawn in, never wider than 40% of the screen.
-  double _plexExpandedWidth() {
+  double _sunfinExpandedWidth() {
     final l10n = AppLocalizations.of(context);
-    final labels = _plexRailLabels(l10n);
+    final labels = _sunfinRailLabels(l10n);
     final userName = _userRepo.currentUser?.name ?? '';
     final key = '${labels.join('\u0000')}\u0001$userName';
-    if (key == _plexWidthKey) return LeftSidebar.plexExpandedWidthNotifier.value;
+    if (key == _sunfinWidthKey) return LeftSidebar.sunfinExpandedWidthNotifier.value;
 
     final base = DefaultTextStyle.of(context).style;
     final scaler = MediaQuery.textScalerOf(context);
@@ -403,18 +403,18 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
     }
     // An app started while the display is off sees a zero-width screen, and
     // a cap under the floor would throw.
-    final width = (widest + _plexLabelChrome + _plexLabelMargin).clamp(
-      PlexStyle.railCollapsedWidth,
+    final width = (widest + _sunfinLabelChrome + _sunfinLabelMargin).clamp(
+      SunfinStyle.railCollapsedWidth,
       math.max<double>(
-        PlexStyle.railCollapsedWidth,
+        SunfinStyle.railCollapsedWidth,
         MediaQuery.sizeOf(context).width * 0.4,
       ),
     );
-    _plexWidthKey = key;
+    _sunfinWidthKey = key;
     // Published after the frame: listeners rebuild the layout.
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      LeftSidebar.plexExpandedWidthNotifier.value = width;
+      LeftSidebar.sunfinExpandedWidthNotifier.value = width;
       _publishRailState();
     });
     return width;
@@ -576,7 +576,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
               !identical(primary, _sidebarFocus) &&
               _isDescendantOf(primary, _sidebarFocus);
           if (!hasSpecificChild) {
-            // Plex lands on the section you are in, not always on Home.
+            // The reference design lands on the section you are in, not always on Home.
             _activeEntryFocusNode().requestFocus();
           }
         });
@@ -647,8 +647,8 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
           }
         }
       }
-      // The top row hands up to the avatar: Search in Plex mode, else Home.
-      final topNode = PlexStyle.enabled ? _searchFocusNode : _homeFocusNode;
+      // The top row hands up to the avatar: Search in Sunfin mode, else Home.
+      final topNode = SunfinStyle.enabled ? _searchFocusNode : _homeFocusNode;
       if (PlatformDetection.isTV &&
           event.logicalKey == LogicalKeyboardKey.arrowUp &&
           topNode.hasFocus) {
@@ -739,15 +739,15 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
     }
   }
 
-  /// The page beside the rail is a [PlexLibraryPage], which the query decides
+  /// The page beside the rail is a [SunfinLibraryPage], which the query decides
   /// (a type or favourites view of a library is the upstream grid).
   bool _onPlexLibraryPage() {
     final route = widget.activeRoute;
     if (route != null && route.isNotEmpty) {
-      return PlexLibraryPage.handles(Uri.parse(route));
+      return SunfinLibraryPage.handles(Uri.parse(route));
     }
     try {
-      return PlexLibraryPage.handles(GoRouterState.of(context).uri);
+      return SunfinLibraryPage.handles(GoRouterState.of(context).uri);
     } catch (_) {
       return false;
     }
@@ -774,9 +774,9 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
   );
 
   /// The row focus lands on when the rail opens: the section on screen in
-  /// Plex mode, otherwise Home as upstream does.
+  /// Sunfin mode, otherwise Home as upstream does.
   FocusNode _activeEntryFocusNode() {
-    if (PlexStyle.enabled) {
+    if (SunfinStyle.enabled) {
       if (_isActive(Destinations.search)) return _searchFocusNode;
       for (final lib in _navLibraries) {
         final node = _libraryFocusNodes[lib.id];
@@ -945,14 +945,14 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
     );
   }
 
-  /// Plex mode: a solid rail in the theme's surface colour, the same collapsed
+  /// Sunfin mode: a solid rail in the theme's surface colour, the same collapsed
   /// and expanded. It no longer floats over the page: navigation_layout.dart
   /// puts the content beside it, so nothing scrolls under the icons.
   Widget _buildPlexRail() {
-    final expandedWidth = _plexExpandedWidth();
+    final expandedWidth = _sunfinExpandedWidth();
     final surface = AppColorScheme.surface.withValues(alpha: 1);
-    // Details pages draw the same Plex page as home (user, 2026-10-23), and
-    // so do Plex library pages (user, 2026-10-27).
+    // Details pages draw the same Sunfin page as home (user, 2026-10-23), and
+    // so do Sunfin library pages (user, 2026-10-27).
     final onPlexPage =
         _isActive(Destinations.home) ||
         _currentPath().startsWith('/item/') ||
@@ -960,31 +960,31 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
     return AnimatedContainer(
       duration: _kExpandDuration,
       curve: LeftSidebar.expandCurve,
-      width: _isExpanded ? expandedWidth : PlexStyle.railCollapsedWidth,
+      width: _isExpanded ? expandedWidth : SunfinStyle.railCollapsedWidth,
       // On home and details pages the rail, open or collapsed, takes the
       // page's tint beside it and fades with it, so there is no seam (user,
       // 2026-10-22). Elsewhere it is the theme's surface.
       // The page's tint runs from one colour at the top of its left edge to
-      // another at the bottom (Plex's four-corner wash), so the rail draws the
+      // another at the bottom (the reference design's four-corner wash), so the rail draws the
       // same blend.
       child: ValueListenableBuilder<(Color, Color)?>(
-        valueListenable: PlexStyle.pageTint,
-        builder: (context, tint, child) => TweenAnimationBuilder<PlexTint>(
-          tween: PlexTintTween(
+        valueListenable: SunfinStyle.pageTint,
+        builder: (context, tint, child) => TweenAnimationBuilder<SunfinTint>(
+          tween: SunfinTintTween(
             end: onPlexPage && tint != null
-                ? PlexTint(
+                ? SunfinTint(
                     topLeft: tint.$1,
                     topRight: tint.$1,
                     bottomLeft: tint.$2,
                     bottomRight: tint.$2,
                   )
-                : PlexTint.solid(surface),
+                : SunfinTint.solid(surface),
           ),
-          duration: PlexStyle.tintDuration,
+          duration: SunfinStyle.tintDuration,
           curve: Curves.easeOut,
           builder: (context, value, child) =>
               CustomPaint(
-                painter: PlexTintPainter(value, shadeMiddle: false),
+                painter: SunfinTintPainter(value, shadeMiddle: false),
                 child: child,
               ),
           child: child,
@@ -1002,7 +1002,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
   }
 
   Widget _buildTvLayout() {
-    if (PlexStyle.enabled) return _buildPlexRail();
+    if (SunfinStyle.enabled) return _buildPlexRail();
     final backdropColor = _overlayColor().withValues(alpha: _overlayOpacity());
     final isNeon = ThemeRegistry.active.id == ThemeRegistry.neonPulseId;
     final desktopHoverRail =
@@ -1182,7 +1182,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
     final navLibraries = _navLibraries;
     final showLibraries =
         !kidsMode && _prefs.get(UserPreferences.showLibrariesInToolbar);
-    final plexMode = PlexStyle.enabled;
+    final sunfinMode = SunfinStyle.enabled;
     final showFolders = _prefs.get(UserPreferences.enableFolderView);
     final showSyncPlay =
         !kidsMode &&
@@ -1191,10 +1191,10 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
     final seerrPrefs = GetIt.instance<SeerrPreferences>();
     final seerrNavLabel = seerrPrefs.labelOrDefault(l10n.seerr);
     final clockBehavior = _prefs.get(UserPreferences.clockBehavior);
-    // Plexfin: the clock lives in the page's top right, as in Plex, so the
+    // Sunfin: the clock lives in the page's top right, as in the reference design, so the
     // open rail doesn't show a second one.
     final showClock =
-        !plexMode &&
+        !sunfinMode &&
         (clockBehavior == ClockBehavior.always ||
             clockBehavior == ClockBehavior.inMenus);
     return Column(
@@ -1226,12 +1226,12 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
               final homeItem = _SidebarItem(
                   key: const ValueKey('sidebar-home'),
                   autoSelect: true,
-                  icon: plexMode ? Symbols.home : Icons.home_rounded,
+                  icon: sunfinMode ? Symbols.home : Icons.home_rounded,
                   label: l10n.home,
                   baseColor: nextMainSidebarColor(),
                   focusNode: _homeFocusNode,
                   showLabel: _showLabels,
-                  active: plexMode && _isActive(Destinations.home),
+                  active: sunfinMode && _isActive(Destinations.home),
                   onPressed: () {
                     _onNavigate();
                     if (_isActive(Destinations.home)) {
@@ -1247,12 +1247,12 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
               final searchItem = _SidebarItem(
                   key: const ValueKey('sidebar-search'),
                   autoSelect: true,
-                  icon: plexMode ? Symbols.search : Icons.search_rounded,
+                  icon: sunfinMode ? Symbols.search : Icons.search_rounded,
                   label: l10n.search,
                   baseColor: nextMainSidebarColor(),
                   focusNode: _searchFocusNode,
                   showLabel: _showLabels,
-                  active: plexMode && _isActive(Destinations.search),
+                  active: sunfinMode && _isActive(Destinations.search),
                   onPressed: () {
                     _onNavigate();
                     if (_isActive(Destinations.search)) {
@@ -1265,8 +1265,8 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                 );
 
               final items = <Widget>[
-                // Plex order: Search, Home, then each library as its own row.
-                if (plexMode) ...[
+                // Sunfin order: Search, Home, then each library as its own row.
+                if (sunfinMode) ...[
                   searchItem,
                   homeItem,
                   if (showLibraries)
@@ -1274,8 +1274,8 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                       _SidebarItem(
                         key: ValueKey('sidebar-library-${lib.id}'),
                         autoSelect: true,
-                        icon: plexLibraryIcon(lib.collectionType),
-                        iconBuilder: plexLibraryIconBuilder(lib.collectionType),
+                        icon: sunfinLibraryIcon(lib.collectionType),
+                        iconBuilder: sunfinLibraryIconBuilder(lib.collectionType),
                         label: lib.name,
                         baseColor: nextMainSidebarColor(),
                         focusNode: _libraryFocusNode(lib.id),
@@ -1313,8 +1313,8 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                     key: const ValueKey('sidebar-genres'),
                     autoSelect: true,
                     baseColor: nextMainSidebarColor(),
-                    iconBuilder: plexMode
-                        ? plexGenresIcon
+                    iconBuilder: sunfinMode
+                        ? sunfinGenresIcon
                         : (size, color) => Image.asset(
                             'assets/icons/genres.png',
                             width: size,
@@ -1426,7 +1426,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                       context.navigateTopLevel(Destinations.seerrDiscover);
                     },
                   ),
-                if (!plexMode && showLibraries && navLibraries.isNotEmpty) ...[
+                if (!sunfinMode && showLibraries && navLibraries.isNotEmpty) ...[
                   _SidebarItem(
                     key: const ValueKey('sidebar-libraries'),
                     baseColor: nextMainSidebarColor(),
@@ -1523,7 +1523,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                     key: const ValueKey('sidebar-admin'),
                     autoSelect: true,
                     baseColor: nextMainSidebarColor(),
-                    icon: plexMode
+                    icon: sunfinMode
                         ? Symbols.admin_panel_settings
                         : Icons.admin_panel_settings,
                     label: l10n.administration,
@@ -1534,8 +1534,8 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                       context.navigateTopLevel(Destinations.admin);
                     },
                   ),
-                // Plex pins Settings to the bottom; see below the list.
-                if (!plexMode) _settingsItem(l10n, nextMainSidebarColor()),
+                // Sunfin pins Settings to the bottom; see below the list.
+                if (!sunfinMode) _settingsItem(l10n, nextMainSidebarColor()),
               ];
 
               return SingleChildScrollView(
@@ -1546,7 +1546,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                     minHeight: math.max(0, constraints.maxHeight - 8),
                   ),
                   child: Column(
-                    mainAxisAlignment: plexMode
+                    mainAxisAlignment: sunfinMode
                         ? MainAxisAlignment.start
                         : MainAxisAlignment.center,
                     children: items,
@@ -1556,7 +1556,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
             },
           ),
         ),
-        if (plexMode) _settingsItem(l10n, null),
+        if (sunfinMode) _settingsItem(l10n, null),
         SidebarMusicCard(
           isExpanded: _showLabels,
           focusNode: _musicCardFocusNode,
@@ -1600,7 +1600,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
   Widget _settingsItem(AppLocalizations l10n, Color? baseColor) {
     return _SidebarItem(
       key: const ValueKey('sidebar-settings'),
-      icon: PlexStyle.enabled ? Symbols.settings : Icons.settings_rounded,
+      icon: SunfinStyle.enabled ? Symbols.settings : Icons.settings_rounded,
       label: l10n.settings,
       baseColor: baseColor,
       focusNode: _settingsFocusNode,
@@ -1717,10 +1717,10 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
       ),
     );
 
-    // Plex's collapsed rail is narrower than the avatar plus upstream's
+    // The reference design's collapsed rail is narrower than the avatar plus upstream's
     // margins, so the margin shrinks to centre the avatar in it.
-    final sidePad = PlexStyle.enabled && tvCompact
-        ? math.max(0.0, (PlexStyle.railCollapsedWidth - 40) / 2)
+    final sidePad = SunfinStyle.enabled && tvCompact
+        ? math.max(0.0, (SunfinStyle.railCollapsedWidth - 40) / 2)
         : 8.0;
 
     return Padding(
@@ -1737,7 +1737,7 @@ class _LeftSidebarState extends State<LeftSidebar> with RouteAware {
                     return KeyEventResult.handled;
                   }
                   if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
-                    (PlexStyle.enabled ? _searchFocusNode : _homeFocusNode)
+                    (SunfinStyle.enabled ? _searchFocusNode : _homeFocusNode)
                         .requestFocus();
                     return KeyEventResult.handled;
                   }
@@ -1776,7 +1776,7 @@ class _SidebarItem extends StatefulWidget {
   /// Unread count drawn as a small red circle on the icon. Zero draws nothing.
   final int badgeCount;
 
-  /// The section on screen (Plex mode): gold icon on a faint tile while the
+  /// The section on screen (Sunfin mode): gold icon on a faint tile while the
   /// row is not focused.
   final bool active;
 
@@ -1883,16 +1883,16 @@ class _SidebarItemState extends State<_SidebarItem> {
     final fgColor = tvFocused
         ? Colors.black
         : showActive
-        ? PlexStyle.accent
+        ? SunfinStyle.accent
         : highlighted
         ? (useBaseForFocus ? baseColor : focusColor)
         : baseColor;
     final iconSize = desktopSidebar ? 28.0 : 24.0;
     final iconSlotWidth = desktopSidebar ? 36.0 : 32.0;
     final labelFontSize = desktopSidebar ? 16.0 : 14.0;
-    // Plex mode: the icon sits centred in the narrower collapsed rail.
-    final compactPad = PlexStyle.enabled
-        ? math.max(0.0, (PlexStyle.railCollapsedWidth - iconSlotWidth) / 2)
+    // Sunfin mode: the icon sits centred in the narrower collapsed rail.
+    final compactPad = SunfinStyle.enabled
+        ? math.max(0.0, (SunfinStyle.railCollapsedWidth - iconSlotWidth) / 2)
         : 12.0;
 
     return Padding(
@@ -1931,7 +1931,7 @@ class _SidebarItemState extends State<_SidebarItem> {
                           : focusColor.withValues(alpha: 0.12))
                     : Colors.transparent,
                 borderRadius: PlatformDetection.isTV
-                    ? AppRadius.circular(PlexStyle.enabled ? 6 : 24)
+                    ? AppRadius.circular(SunfinStyle.enabled ? 6 : 24)
                     : BorderRadius.zero,
               ),
               child: Row(
@@ -1942,18 +1942,18 @@ class _SidebarItemState extends State<_SidebarItem> {
                       count: widget.badgeCount,
                       child:
                           widget.iconBuilder?.call(iconSize, fgColor) ??
-                          // Plex's own thin-line drawings (plex_icons.dart).
-                          (PlexStyle.enabled
-                              ? plexRailIcon(widget.icon, iconSize, fgColor)
+                          // The reference design's own thin-line drawings (sunfin_icons.dart).
+                          (SunfinStyle.enabled
+                              ? sunfinRailIcon(widget.icon, iconSize, fgColor)
                               : null) ??
                           (widget.icon != null
-                              ? (PlexStyle.enabled
-                                    // Thin outline icons, as in Plex.
+                              ? (SunfinStyle.enabled
+                                    // Thin outline icons, as in the reference design.
                                     ? Icon(
                                         widget.icon!,
                                         size: iconSize,
                                         color: fgColor,
-                                        weight: plexIconWeight,
+                                        weight: sunfinIconWeight,
                                       )
                                     : AdaptiveIcon(
                                         widget.icon!,

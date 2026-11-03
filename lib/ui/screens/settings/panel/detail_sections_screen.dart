@@ -52,7 +52,7 @@ class _DetailSectionsScreen extends StatelessWidget {
                       _SectionHeader(_groupTitle(group, l10n)),
                       ButtonLayoutList(
                         key: ValueKey('detailSections:${group.name}'),
-                        // Plexfin: the page's sections can also be moved.
+                        // Sunfin: the page's sections can also be moved.
                         layout: group == DetailSectionGroup.sections
                             ? detailSectionOrderLayout
                             : detailSectionLayout,

@@ -15,9 +15,9 @@ import '../../../../preference/detail_section_layout.dart';
 import '../../../../preference/user_preferences.dart';
 import '../../../../util/platform_detection.dart';
 import '../../../../util/seerr_credits.dart';
-import '../../../plex/plex_backdrop.dart';
-import '../../../plex/plex_clock.dart';
-import '../../../plex/plex_style.dart';
+import '../../../sunfin/sunfin_backdrop.dart';
+import '../../../sunfin/sunfin_clock.dart';
+import '../../../sunfin/sunfin_style.dart';
 import '../../../widgets/fullscreen_backdrop_switcher.dart';
 import '../../../widgets/navigation_layout.dart';
 import '../detail_layout_metrics.dart';
@@ -145,7 +145,7 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
 
   ItemDetailViewModel get _vm => widget.viewModel;
 
-  /// Plexfin: every view-model update (ratings, similar titles, extras, the
+  /// Sunfin: every view-model update (ratings, similar titles, extras, the
   /// collection) used to rebuild and lay out every section again, 33-47 ms on
   /// the Shield, about four times while a page opens. A section is now built
   /// again only when what it shows has changed; otherwise the widget from last
@@ -738,7 +738,7 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
 
   void _onPrefsChanged() => _prefsRevision++;
 
-  /// Plexfin: the hero (title, metadata, ratings, buttons) was built again
+  /// Sunfin: the hero (title, metadata, ratings, buttons) was built again
   /// on every view-model update, 2-3 heavy frames while a page opens. It's
   /// handed back unchanged unless something it shows changed: the item and
   /// everything the hero and its buttons read from the view model.
@@ -1113,8 +1113,8 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
     return NouveauLandscapeLayout(
       backdrop: backdrop,
       hero: hero,
-      // Plex's clock sits at the page's top right and scrolls away with it.
-      heroOverlays: [if (PlexStyle.enabled) PlexClock.corner()],
+      // The reference design's clock sits at the page's top right and scrolls away with it.
+      heroOverlays: [if (SunfinStyle.enabled) SunfinClock.corner()],
       sections: sections,
       scrollController: _scrollController,
       heroPadding: landscapeContentInsets,
@@ -1315,7 +1315,7 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
   }
 
   List<GlobalKey> _orderedMediaSectionKeys(AggregatedItem item) {
-    // Plexfin: in the order the user set under Details Screen > Sections. A
+    // Sunfin: in the order the user set under Details Screen > Sections. A
     // part drawn from several settings (the people from cast and crew) goes
     // where the first of them sits. The collection is the page itself on a
     // box set or playlist, so it stays first.
@@ -1403,11 +1403,11 @@ class NouveauDetailContentState extends State<NouveauDetailContent> {
     String? backdropUrl,
     AggregatedItem item,
   ) {
-    // Plexfin: Plex's page, as on home: the art sharp in the top right over a
+    // Sunfin: The reference design's page, as on home: the art sharp in the top right over a
     // colour taken from it, which the rail beside the page also takes, so
     // there is no seam (user, 2026-10-23).
-    if (PlexStyle.enabled) {
-      return PlexBackdrop(
+    if (SunfinStyle.enabled) {
+      return SunfinBackdrop(
         url: backdropUrl != null && backdropUrl.isNotEmpty ? backdropUrl : null,
       );
     }

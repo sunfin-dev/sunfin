@@ -326,7 +326,7 @@ void episodeListHoldingTests() {
       expect(requested, isEmpty);
     });
 
-    // The Plex season page opened from S2E1, then a season 1 episode
+    // The Sunfin season page opened from S2E1, then a season 1 episode
     // picked: the browsed season is 2, the pick lives in 1.
     test('falls back to the pick\'s own season, never a list without it',
         () async {

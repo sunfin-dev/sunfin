@@ -12,7 +12,7 @@ void main() {
   group('what goes to another device', () {
     test('the user\'s choices do', () {
       for (final key in [
-        'pref_plexfin_library_nicknames',
+        'pref_sunfin_library_nicknames',
         'home_sections_config',
         'seerr_api_key_u1',
         'tmdbApiKey',
@@ -110,7 +110,7 @@ void main() {
     () async {
       final shield = await _prefs({
         'device_id': 'shield',
-        'theme': 'plex',
+        'theme': 'sunfin',
         'rows': ['resume', 'latest'],
         'volume_steps': 5,
       });
@@ -127,7 +127,7 @@ void main() {
       expect(written, 3);
       expect(windows.getString('device_id'), 'windows');
       expect(windows.getDouble('window_width'), 1600.0);
-      expect(windows.getString('theme'), 'plex');
+      expect(windows.getString('theme'), 'sunfin');
       expect(windows.getStringList('rows'), ['resume', 'latest']);
       expect(windows.getInt('volume_steps'), 5);
       expect(windows.containsKey('only_on_windows'), isFalse);
@@ -179,7 +179,7 @@ void main() {
     await SettingsTransfer.apply(prefs, {
       'format': SettingsTransfer.formatVersion,
       'values': {
-        'theme_{server}_{user}': ['s', 'plex'],
+        'theme_{server}_{user}': ['s', 'sunfin'],
         'clock': ['b', true],
       },
     });
@@ -196,14 +196,14 @@ void main() {
         ...SettingsTransfer.encode({
           'format': SettingsTransfer.formatVersion,
           'values': {
-            'theme': ['s', 'plex'],
+            'theme': ['s', 'sunfin'],
           },
         }),
       },
     });
     expect(stored.customPrefs.containsKey('tvhome'), isFalse);
     expect(SettingsTransfer.decode(stored.customPrefs)?['values'], {
-      'theme': ['s', 'plex'],
+      'theme': ['s', 'sunfin'],
     });
   });
 
@@ -211,7 +211,7 @@ void main() {
     test('puts the user\'s and the device\'s settings back', () {
       for (final key in [
         'home_sections_config',
-        'pref_plexfin_library_nicknames',
+        'pref_sunfin_library_nicknames',
         'hardware_decoding',
         'pref_audio_passthrough_mode',
         'player_volume',
@@ -260,5 +260,19 @@ void main() {
       },
     });
     expect(prefs.getString('device_id'), 'windows');
+  });
+
+  // Exported before the app was renamed: its own settings carried the old
+  // name and land under the new one.
+  test('a snapshot from before the rename lands under the new names', () async {
+    final prefs = await _prefs({});
+    await SettingsTransfer.apply(prefs, {
+      'format': SettingsTransfer.formatVersion,
+      'values': {
+        'pref_plexfin_library_nicknames': ['s', '{"a":"Films"}'],
+      },
+    });
+    expect(prefs.getString('pref_sunfin_library_nicknames'), '{"a":"Films"}');
+    expect(prefs.containsKey('pref_plexfin_library_nicknames'), isFalse);
   });
 }

@@ -32,7 +32,7 @@ import '../screens/browse/library_letters_screen.dart';
 import '../screens/browse/library_suggestions_screen.dart';
 import '../screens/browse/book_browse_screen.dart';
 import '../screens/browse/music_browse_screen.dart';
-import '../plex/plex_library_page.dart';
+import '../sunfin/sunfin_library_page.dart';
 import '../../data/models/tmdb_item_ref.dart';
 import '../screens/detail/item_detail_screen.dart';
 import '../screens/games/game_library_screen.dart';
@@ -324,10 +324,10 @@ final appRouter = GoRouter(
             .map(Uri.decodeComponent)
             .toList();
         final favorites = state.uri.queryParameters['favorites'] == '1';
-        // Plexfin: a whole library opens Plex's library page; a type or
+        // Sunfin: a whole library opens the reference design's library page; a type or
         // favourites view of one keeps the upstream grid.
-        if (PlexLibraryPage.handles(state.uri)) {
-          return PlexLibraryPage(
+        if (SunfinLibraryPage.handles(state.uri)) {
+          return SunfinLibraryPage(
             libraryId: libraryId,
             serverId: state.uri.queryParameters['serverId'],
           );
@@ -394,9 +394,9 @@ final appRouter = GoRouter(
       path: Destinations.musicBrowse,
       builder: (context, state) {
         final libraryId = state.pathParameters['libraryId']!;
-        // Plexfin: music gets the same Plex library page as everything else.
-        if (PlexLibraryPage.handles(state.uri)) {
-          return PlexLibraryPage(libraryId: libraryId);
+        // Sunfin: music gets the same Sunfin library page as everything else.
+        if (SunfinLibraryPage.handles(state.uri)) {
+          return SunfinLibraryPage(libraryId: libraryId);
         }
         return MusicBrowseScreen(libraryId: libraryId);
       },

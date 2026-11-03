@@ -1,6 +1,6 @@
 part of '../settings_side_panel.dart';
 
-/// Plexfin: the user's own names for their libraries, shown everywhere in the
+/// Sunfin: the user's own names for their libraries, shown everywhere in the
 /// app and never written to the server (LibraryNicknames).
 class _LibraryNicknamesScreen extends StatefulWidget {
   const _LibraryNicknamesScreen();

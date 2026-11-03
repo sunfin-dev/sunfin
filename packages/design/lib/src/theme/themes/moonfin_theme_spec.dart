@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import '../app_colors.dart';
 import '../theme_spec.dart';
 
-// Plexfin: Plex gold where Moonfin had Jellyfin cyan, with dark text on the
-// gold as Plex draws it.
-const _plexGold = Color(0xFFE5A00D);
+// Sunfin: Sunfin gold where Moonfin had Jellyfin cyan, with dark text on the
+// gold as the reference design draws it.
+const _sunfinGold = Color(0xFFE5A00D);
 const _onPlexGold = Color(0xFF1F1F1F);
 
 const moonfinThemeSpec = ThemeSpec(
   id: 'moonfin',
-  displayName: 'Plexfin',
+  displayName: 'Sunfin',
   colors: ThemeColorTokens(
     background: AppColors.black700,
     onBackground: AppColors.white,
@@ -18,7 +18,7 @@ const moonfinThemeSpec = ThemeSpec(
     onSurface: AppColors.white,
     surfaceVariant: Color(0xFF252525),
     scrim: Color(0xCC000000),
-    accent: _plexGold,
+    accent: _sunfinGold,
     onAccent: _onPlexGold,
     buttonNormal: Color(0xFF2A2A2A),
     buttonFocused: AppColors.white,
@@ -30,14 +30,14 @@ const moonfinThemeSpec = ThemeSpec(
     inputBackground: Color(0xFF2A2A2A),
     inputFocused: Color(0xFF3A3A3A),
     inputBorder: Color(0xFF404040),
-    inputBorderFocused: _plexGold,
+    inputBorderFocused: _sunfinGold,
     rangeTrack: Color(0xFF404040),
-    rangeProgress: _plexGold,
-    rangeThumb: _plexGold,
+    rangeProgress: _sunfinGold,
+    rangeThumb: _sunfinGold,
     seekbarBuffered: Color(0x80FFFFFF),
-    badgeBackground: _plexGold,
+    badgeBackground: _sunfinGold,
     onBadge: _onPlexGold,
-    badgeUnplayed: _plexGold,
+    badgeUnplayed: _sunfinGold,
     badgeWatched: AppColors.green500,
     recordingActive: AppColors.red500,
     recordingScheduled: AppColors.orange500,
@@ -45,7 +45,7 @@ const moonfinThemeSpec = ThemeSpec(
   borders: ThemeBorderTokens(
     cardBorder: BorderSide(color: Colors.transparent),
     chipBorder: BorderSide(color: Color(0x40FFFFFF)),
-    focusBorder: BorderSide(color: _plexGold, width: 2),
+    focusBorder: BorderSide(color: _sunfinGold, width: 2),
     cardRadius: BorderRadius.all(Radius.circular(8)),
     chipRadius: BorderRadius.all(Radius.circular(999)),
     chipBackground: Color(0x1FFFFFFF),

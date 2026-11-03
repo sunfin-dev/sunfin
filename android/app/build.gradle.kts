@@ -27,14 +27,13 @@ fun loadAndroidTvVersionName(rootDir: File, fallback: String): String {
 plugins {
     id("com.android.application")
     // START: FlutterFire Configuration
-    // Applied only for a normal build. google-services.json lists clients for
-    // the real application ids, so a test build under MOONFIN_TEST_ID_SUFFIX
-    // (see productFlavors) would fail with "No matching client found". Skipping
-    // it there is safe because push messaging bails immediately on TV anyway -
-    // push_messaging_service.dart:38 returns unless PlatformDetection.isMobile,
-    // and the initializeApp call is try/caught regardless.
-    id("com.google.gms.google-services")
-        .apply(System.getenv("MOONFIN_TEST_ID_SUFFIX").isNullOrEmpty())
+    // Sunfin: never applied. google-services.json is Moonfin's own Firebase
+    // project and lists only Moonfin's application ids, so Sunfin's ids fail
+    // with "No matching client found", and a fork must not ship it anyway.
+    // Without it Firebase is simply absent: push messaging bails on TV
+    // (push_messaging_service.dart returns unless PlatformDetection.isMobile)
+    // and the initializeApp call is try/caught everywhere.
+    id("com.google.gms.google-services") apply false
     // END: FlutterFire Configuration
     id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
@@ -82,8 +81,9 @@ android {
 
     flavorDimensions += "device"
     productFlavors {
-        val baseAppId = "org.moonfin.androidtv"
-        val baseAppName = "Plexfin"
+        // Sunfin's own id: installs next to Moonfin and never over it.
+        val baseAppId = "dev.sunfin.app"
+        val baseAppName = "Sunfin"
         // Optional application-id suffix for on-device testing, set through the
         // environment so an unset build is byte-identical to before:
         //   MOONFIN_TEST_ID_SUFFIX=.hwtest flutter build apk --flavor androidTv --debug
@@ -99,8 +99,6 @@ android {
         val tvAbis = listOf("arm64-v8a", "armeabi-v7a", "x86_64")
         create("mobile") {
             dimension = "device"
-            // Plexfin: the same suffix as the TV build, so the phone app
-            // installs next to stock Moonfin instead of over it.
             applicationId = baseAppId + testIdSuffix
             versionCode = flutter.versionCode
             versionName = flutter.versionName
@@ -121,11 +119,9 @@ android {
             versionCode = androidTvVersionCode
             versionName = androidTvVersionName
             ndk { abiFilters += tvAbis }
-            // Plexfin: the suffix only keeps this build installable next to
-            // stock Moonfin; the name already tells them apart, so no "Test".
             manifestPlaceholders["appName"] = baseAppName
             // Impeller off on TV: the GLES fallback stutters on TV-box GPUs.
-            // Plexfin tried it on (2026-10-26): smoother details pages, but
+            // Sunfin tried it on (2026-10-26): smoother details pages, but
             // during video playback the Shield ran out of memory and Android
             // killed the app (and the launcher) within minutes. Stays off.
             manifestPlaceholders["enableImpeller"] = "false"

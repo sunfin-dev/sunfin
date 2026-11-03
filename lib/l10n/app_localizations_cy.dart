@@ -10,7 +10,7 @@ class AppLocalizationsCy extends AppLocalizations {
   AppLocalizationsCy([String locale = 'cy']) : super(locale);
 
   @override
-  String get appTitle => 'Plexfin';
+  String get appTitle => 'Sunfin';
 
   @override
   String get animeMarkerFiller => 'Filler';
@@ -108,7 +108,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String appVersionFooter(String version) {
-    return 'fersiwn Plexfin $version';
+    return 'fersiwn Sunfin $version';
   }
 
   @override
@@ -160,7 +160,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get secureStorageUnavailableMessage =>
-      'Ni allai Plexfin gyrchu cylch allweddi eich system. Gall mewngofnodi barhau, ond mae\'n bosibl na fydd storfa docynnau ddiogel ar gael nes bod y cylch allweddi wedi\'i ddatgloi.';
+      'Ni allai Sunfin gyrchu cylch allweddi eich system. Gall mewngofnodi barhau, ond mae\'n bosibl na fydd storfa docynnau ddiogel ar gael nes bod y cylch allweddi wedi\'i ddatgloi.';
 
   @override
   String get ok => 'iawn';
@@ -173,7 +173,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get detailScreenStyleSubtitle =>
-      'Clasurol yw cynllun canolog gwreiddiol Plexfin. Modern yw cynllun sinematig ymatebol.';
+      'Clasurol yw cynllun canolog gwreiddiol Sunfin. Modern yw cynllun sinematig ymatebol.';
 
   @override
   String get detailScreenStyleMoonfin => 'Clasurol';
@@ -410,10 +410,10 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get recommendationSystemSubtitle =>
-      'Defnyddiwch algorithm llyfrgell leol Plexfin Recommends neu Fetrigau Tebygrwydd ar-lein TMDb. Sylwer: mae angen integreiddio Seerr ar gyfer argymhellion ar-lein.';
+      'Defnyddiwch algorithm llyfrgell leol Sunfin Recommends neu Fetrigau Tebygrwydd ar-lein TMDb. Sylwer: mae angen integreiddio Seerr ar gyfer argymhellion ar-lein.';
 
   @override
-  String get recommendationSystemMoonfin => 'Plexfin Recommends';
+  String get recommendationSystemMoonfin => 'Sunfin Recommends';
 
   @override
   String get recommendationSystemJellyfin => 'Jellyfin Recommends';
@@ -427,7 +427,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get recommendationsApplyParentalRatingCapSubtitle =>
-      'Cyfyngu awgrymiadau Plexfin Recommends yn ôl dosbarthiad oedran y cyfrwng targed';
+      'Cyfyngu awgrymiadau Sunfin Recommends yn ôl dosbarthiad oedran y cyfrwng targed';
 
   @override
   String get interfaceStyle => 'Arddull y Rhyngwyneb';
@@ -450,7 +450,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get interfaceLayoutSubtitle =>
-      'Override the detected layout when this device is read wrong. Restart Plexfin for changes to take effect.';
+      'Override the detected layout when this device is read wrong. Restart Sunfin for changes to take effect.';
 
   @override
   String get interfaceLayoutAutomatic => 'Automatic';
@@ -515,14 +515,14 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get settingsAppearanceThemeSubtitle =>
-      'Newid rhwng Plexfin a Neon Pulse heb ailgychwyn yr app';
+      'Newid rhwng Sunfin a Neon Pulse heb ailgychwyn yr app';
 
   @override
   String get customThemeTitle => 'Thema Bersonol';
 
   @override
   String get customThemeSubtitle =>
-      'Mae themâu personol yn newid elfennau gweledol ar draws Plexfin. Dewiswch un o\'r opsiynau hyn i weddu i\'ch arddull.';
+      'Mae themâu personol yn newid elfennau gweledol ar draws Sunfin. Dewiswch un o\'r opsiynau hyn i weddu i\'ch arddull.';
 
   @override
   String get keyboardPreferSystemIme => 'Mae\'n well gennyf bysellfwrdd system';
@@ -542,11 +542,11 @@ class AppLocalizationsCy extends AppLocalizations {
       'Let a connected game controller move focus and select items';
 
   @override
-  String get themeMoonfin => 'Plexfin';
+  String get themeMoonfin => 'Sunfin';
 
   @override
   String get themeMoonfinSubtitle =>
-      'Golwg gyfredol Plexfin rydych chi i gyd wedi dod i garu';
+      'Golwg gyfredol Sunfin rydych chi i gyd wedi dod i garu';
 
   @override
   String get themeNeonPulse => 'Pwls Neon';
@@ -621,7 +621,7 @@ class AppLocalizationsCy extends AppLocalizations {
   }
 
   @override
-  String get exitApp => 'Gadael Plexfin?';
+  String get exitApp => 'Gadael Sunfin?';
 
   @override
   String get exitAppConfirmation => 'Ydych chi\'n siŵr eich bod am adael?';
@@ -1785,7 +1785,7 @@ class AppLocalizationsCy extends AppLocalizations {
   String get shuffleAllMusic => 'Hapchwarae\'r holl gerddoriaeth';
 
   @override
-  String get carSignInPrompt => 'Mewngofnodwch i Plexfin ar eich ffôn';
+  String get carSignInPrompt => 'Mewngofnodwch i Sunfin ar eich ffôn';
 
   @override
   String get carServerUnreachable => 'Methu cyrraedd eich gweinydd';
@@ -2072,7 +2072,7 @@ class AppLocalizationsCy extends AppLocalizations {
   String get shortcutToggleFullscreen => 'Fullscreen on or off';
 
   @override
-  String get shortcutQuit => 'Quit Plexfin';
+  String get shortcutQuit => 'Quit Sunfin';
 
   @override
   String get shortcutPlayPause => 'Play or pause';
@@ -3035,7 +3035,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get loadingAnimationDescription =>
-      'Customize the loading animations used throughout Plexfin';
+      'Customize the loading animations used throughout Sunfin';
 
   @override
   String get loadingAnimationConfiguration => 'Loading Animation Configuration';
@@ -3044,7 +3044,7 @@ class AppLocalizationsCy extends AppLocalizations {
   String get loadingAnimationImage => 'Image';
 
   @override
-  String get loadingAnimationImageMoonfinLogo => 'Plexfin Logo';
+  String get loadingAnimationImageMoonfinLogo => 'Sunfin Logo';
 
   @override
   String get loadingAnimationImageSpinner => 'Spinner';
@@ -3056,7 +3056,7 @@ class AppLocalizationsCy extends AppLocalizations {
   String get loadingAnimationImageMoonPhases => 'Moon Phases';
 
   @override
-  String get loadingAnimationImageMoonfinPhases => 'Plexfin Phases';
+  String get loadingAnimationImageMoonfinPhases => 'Sunfin Phases';
 
   @override
   String get loadingAnimationImageNeonfinPhases => 'Neonfin Phases';
@@ -4065,7 +4065,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get notSetMpvConf =>
-      'Heb ei osod. Bydd Plexfin yn ceisio mpv.conf rhagosodedig mewn ffolderi app/data.';
+      'Heb ei osod. Bydd Sunfin yn ceisio mpv.conf rhagosodedig mewn ffolderi app/data.';
 
   @override
   String get selectMpvConf => 'Dewiswch mpv.conf';
@@ -4344,14 +4344,14 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get downloadLocationLimitedByAndroid =>
-      'Android only lets Plexfin write to the folders it owns, and this device has no removable storage. Turn on Save to Downloads folder above to keep downloads somewhere other apps can reach.';
+      'Android only lets Sunfin write to the folders it owns, and this device has no removable storage. Turn on Save to Downloads folder above to keep downloads somewhere other apps can reach.';
 
   @override
   String get saveToDownloadsFolder => 'Cadw i ffolder Lawrlwythiadau';
 
   @override
   String get downloadsVisibleToOtherApps =>
-      'Lawrlwythiadau / Plexfin - yn weladwy i apiau eraill';
+      'Lawrlwythiadau / Sunfin - yn weladwy i apiau eraill';
 
   @override
   String get dangerZone => 'Parth Perygl';
@@ -4381,7 +4381,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get saveToDownloadsFolderDescription =>
-      'Bydd cyfryngau wedi\'u lawrlwytho yn cael eu cadw i Lawrlwythiadau / Plexfin ar eich dyfais. Bydd y ffeiliau hyn yn weladwy i apiau eraill fel eich oriel neu chwaraewr cerddoriaeth.\n\nBydd lawrlwythiadau presennol yn aros yn eu lleoliad presennol.';
+      'Bydd cyfryngau wedi\'u lawrlwytho yn cael eu cadw i Lawrlwythiadau / Sunfin ar eich dyfais. Bydd y ffeiliau hyn yn weladwy i apiau eraill fel eich oriel neu chwaraewr cerddoriaeth.\n\nBydd lawrlwythiadau presennol yn aros yn eu lleoliad presennol.';
 
   @override
   String get transcodingTimeRemainingUnavailable =>
@@ -4532,7 +4532,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get libraryVisibilityDescription =>
-      'Toglo gwelededd tudalen gartref fesul llyfrgell. Ailgychwyn Plexfin i newidiadau ddod i rym.';
+      'Toglo gwelededd tudalen gartref fesul llyfrgell. Ailgychwyn Sunfin i newidiadau ddod i rym.';
 
   @override
   String get showInNavigation => 'Dangos yn llywio';
@@ -4601,7 +4601,7 @@ class AppLocalizationsCy extends AppLocalizations {
       'Dewiswch rhwng gwahanol arddulliau bar cyfryngau, neu diffoddwch y bar cyfryngau';
 
   @override
-  String get mediaBarModeMoonfin => 'Plexfin';
+  String get mediaBarModeMoonfin => 'Sunfin';
 
   @override
   String get mediaBarModeMakd => 'MakD';
@@ -4934,7 +4934,7 @@ class AppLocalizationsCy extends AppLocalizations {
   String get screensaverBackdropBlack => 'Black';
 
   @override
-  String get screensaverBackdropMoonfin => 'Plexfin';
+  String get screensaverBackdropMoonfin => 'Sunfin';
 
   @override
   String get screensaverBackdropCalm => 'Calm';
@@ -4949,7 +4949,7 @@ class AppLocalizationsCy extends AppLocalizations {
   String get screensaverAdditionalComponent => 'Additional Component';
 
   @override
-  String get screensaverComponentMoonfinLogo => 'Plexfin Logo';
+  String get screensaverComponentMoonfinLogo => 'Sunfin Logo';
 
   @override
   String get screensaverComponentRunner => 'Runner';
@@ -5221,10 +5221,10 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get aboutBasedOnMoonfin =>
-      'Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core';
+      'Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core';
 
   @override
-  String get sourceCodeUrl => 'https://github.com/Moonfin-Client/Moonfin-Core';
+  String get sourceCodeUrl => 'https://github.com/sunfin-dev/sunfin';
 
   @override
   String get checkForUpdatesNow => 'Gwiriwch am Ddiweddariadau Nawr';
@@ -5409,7 +5409,7 @@ class AppLocalizationsCy extends AppLocalizations {
   String get cancelRequest4k => 'Cancel 4K Request';
 
   @override
-  String get playInMoonfin => 'Chwarae yn Plexfin';
+  String get playInMoonfin => 'Chwarae yn Sunfin';
 
   @override
   String get requestedByLabel => 'Requested by';
@@ -5455,7 +5455,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get itemNotFoundInLibrary =>
-      'Ni chanfuwyd yr eitem yn eich llyfrgell Plexfin';
+      'Ni chanfuwyd yr eitem yn eich llyfrgell Sunfin';
 
   @override
   String get errorSearchingLibrary => 'Gwall wrth chwilio\'r llyfrgell';
@@ -6051,7 +6051,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get adminServerRebootMessage =>
-      'Ailgychwyn gweinydd ar y gweill, ailgychwynwch Plexfin';
+      'Ailgychwyn gweinydd ar y gweill, ailgychwynwch Sunfin';
 
   @override
   String get adminActiveSessions => 'Sesiynau Gweithredol';
@@ -10003,28 +10003,29 @@ class AppLocalizationsCy extends AppLocalizations {
       'Thema, llywio, rhesi cartref, a gwelededd llyfrgell';
 
   @override
-  String get plexPersonalizationSubtitle =>
+  String get sunfinPersonalizationSubtitle =>
       'Bar ochr, rhesi cartref, llyfrgelloedd, tudalennau manylion ac arbedwr sgrin';
 
   @override
-  String get plexGeneralStyleSubtitle => 'Bysellfwrdd a rheolydd gemau';
+  String get sunfinGeneralStyleSubtitle => 'Bysellfwrdd a rheolydd gemau';
 
   @override
-  String get plexDetailsScreenSubtitle =>
+  String get sunfinDetailsScreenSubtitle =>
       'Botymau, gwybodaeth, adrannau ac argymhellion';
 
   @override
-  String get plexNavigationSubtitle => 'Eitemau\'r bar ochr a dewis awtomatig';
+  String get sunfinNavigationSubtitle =>
+      'Eitemau\'r bar ochr a dewis awtomatig';
 
   @override
-  String get plexHomeScreenSubtitle => 'Rhesi, eu trefn a Parhewch i Wylio';
+  String get sunfinHomeScreenSubtitle => 'Rhesi, eu trefn a Parhewch i Wylio';
 
   @override
   String get libraryNicknames => 'Llysenwau llyfrgelloedd';
 
   @override
   String get libraryNicknamesSubtitle =>
-      'Eich enwau eich hun ar lyfrgelloedd, yn Plexfin yn unig';
+      'Eich enwau eich hun ar lyfrgelloedd, yn Sunfin yn unig';
 
   @override
   String libraryNicknameServerName(String name) {
@@ -10073,7 +10074,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String settingsTransferImportConfirm(String source) {
-    return 'Disodli gosodiadau\'r ddyfais hon â\'r rhain? $source\n\nBydd Plexfin yn cau wedyn. Agorwch ef eto i\'w defnyddio.';
+    return 'Disodli gosodiadau\'r ddyfais hon â\'r rhain? $source\n\nBydd Sunfin yn cau wedyn. Agorwch ef eto i\'w defnyddio.';
   }
 
   @override
@@ -10095,7 +10096,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get settingsResetConfirm =>
-      'Rhoi pob gosodiad ar y ddyfais hon yn ôl i\'w ragosodiad? Byddwch yn aros wedi mewngofnodi, a bydd gosodiadau a allforiwyd i\'ch cyfrif Jellyfin yn cael eu cadw.\n\nMae Plexfin yn cau wedyn. Agorwch ef eto i barhau.';
+      'Rhoi pob gosodiad ar y ddyfais hon yn ôl i\'w ragosodiad? Byddwch yn aros wedi mewngofnodi, a bydd gosodiadau a allforiwyd i\'ch cyfrif Jellyfin yn cael eu cadw.\n\nMae Sunfin yn cau wedyn. Agorwch ef eto i barhau.';
 
   @override
   String get adminShowButton => 'Dangos botwm gweinyddu';
@@ -10105,7 +10106,7 @@ class AppLocalizationsCy extends AppLocalizations {
       'Yn ychwanegu botwm i\'r ddewislen sy\'n agor gweinyddu\'r gweinydd';
 
   @override
-  String plexDirectedBy(String names) {
+  String sunfinDirectedBy(String names) {
     return 'Cyfarwyddwyd gan $names';
   }
 
@@ -10236,7 +10237,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get settingsLibraryVisibilitySubtitle =>
-      'Toglo gwelededd tudalen gartref fesul llyfrgell. Ailgychwyn Plexfin i newidiadau ddod i rym.';
+      'Toglo gwelededd tudalen gartref fesul llyfrgell. Ailgychwyn Sunfin i newidiadau ddod i rym.';
 
   @override
   String get settingsMediaBarAndLocalPreviews =>
@@ -10368,7 +10369,7 @@ class AppLocalizationsCy extends AppLocalizations {
   String get settingsJoinTheDiscord => 'Ymunwch â\'r Discord';
 
   @override
-  String get settingsSupportMoonfin => 'Cefnogwch Plexfin';
+  String get settingsSupportMoonfin => 'Cefnogwch Sunfin';
 
   @override
   String get settingsSupportMoonfinSubtitle => 'Rhowch goffi i\'r datblygwr';
@@ -10388,14 +10389,14 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get settingsPrivacyPolicySubtitle =>
-      'Sut mae Plexfin yn trin eich data';
+      'Sut mae Sunfin yn trin eich data';
 
   @override
   String get settingsCheckForUpdates => 'Gwiriwch am Ddiweddariadau';
 
   @override
   String get settingsCheckForUpdatesSubtitle =>
-      'Gwiriwch am y datganiad Plexfin diweddaraf';
+      'Gwiriwch am y datganiad Sunfin diweddaraf';
 
   @override
   String get settingsPoweredByFlutter => 'Wedi\'i bweru gan Flutter';
@@ -11215,7 +11216,7 @@ class AppLocalizationsCy extends AppLocalizations {
   String get webDiagnostics => 'Diagnosteg gwe';
 
   @override
-  String get webDiagnosticsTitle => 'Plexfin Diagnosteg Gwe';
+  String get webDiagnosticsTitle => 'Sunfin Diagnosteg Gwe';
 
   @override
   String get webDiagnosticsIntro =>
@@ -11231,11 +11232,11 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get webDiagnosticsMixedContentFailureBody =>
-      'Canfu Plexfin dudalen HTTPS yn ceisio galw URL gweinydd HTTP. Mae porwyr yn rhwystro\'r cais hwn cyn iddo gyrraedd eich gweinydd.';
+      'Canfu Sunfin dudalen HTTPS yn ceisio galw URL gweinydd HTTP. Mae porwyr yn rhwystro\'r cais hwn cyn iddo gyrraedd eich gweinydd.';
 
   @override
   String get webDiagnosticsCorsFailureBody =>
-      'Canfu Plexfin fethiant cais ar lefel porwr a achosir yn aml gan fod penawdau CORS neu rag-hedfan ar goll ar y gweinydd cyfryngau.';
+      'Canfu Sunfin fethiant cais ar lefel porwr a achosir yn aml gan fod penawdau CORS neu rag-hedfan ar goll ar y gweinydd cyfryngau.';
 
   @override
   String webDiagnosticsTargetUrl(String url) {
@@ -11284,7 +11285,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get webDiagnosticsMixedContentFix =>
-      'Trwsio: gwasanaethwch eich gweinydd cyfryngau neu bwynt terfyn dirprwy trwy HTTPS, neu llwythwch Plexfin dros HTTP ar rwydweithiau lleol dibynadwy yn unig.';
+      'Trwsio: gwasanaethwch eich gweinydd cyfryngau neu bwynt terfyn dirprwy trwy HTTPS, neu llwythwch Sunfin dros HTTP ar rwydweithiau lleol dibynadwy yn unig.';
 
   @override
   String get webDiagnosticsNoMixedContentDetected =>
@@ -13017,7 +13018,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get impellerRenderingSubtitle =>
-      'Impeller yw rendrwr GPU modern Flutter, ar gyfer animeiddiadau llyfnach a llai o hercian. Ar rai bocsys teledu a GPUau hŷn gall achosi namau neu fideo du; diffoddwch ef os gwelwch chi\'r rheini. Mae Awtomatig yn dewis y rhagosodiad gorau ar gyfer eich dyfais. Ailgychwynnwch Plexfin i\'w osod.';
+      'Impeller yw rendrwr GPU modern Flutter, ar gyfer animeiddiadau llyfnach a llai o hercian. Ar rai bocsys teledu a GPUau hŷn gall achosi namau neu fideo du; diffoddwch ef os gwelwch chi\'r rheini. Mae Awtomatig yn dewis y rhagosodiad gorau ar gyfer eich dyfais. Ailgychwynnwch Sunfin i\'w osod.';
 
   @override
   String get impellerAuto => 'Awtomatig';
@@ -13033,7 +13034,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get impellerRestartMessage =>
-      'Mae angen i Plexfin ailgychwyn i newid yr injan rendro. Caewch yr ap nawr, yna ei ailagor i osod y newid.';
+      'Mae angen i Sunfin ailgychwyn i newid yr injan rendro. Caewch yr ap nawr, yna ei ailagor i osod y newid.';
 
   @override
   String get impellerCloseNow => 'Cau\'r ap nawr';
@@ -13550,7 +13551,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get autoDownloadTranscodedForegroundNote =>
-      'Transcoded qualities only download while Plexfin is open. Original quality also downloads in the background.';
+      'Transcoded qualities only download while Sunfin is open. Original quality also downloads in the background.';
 
   @override
   String get autoDownloadTranscodedRunningNote =>
@@ -13558,7 +13559,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get autoDownloadForegroundOnly =>
-      'Downloads only while Plexfin is open';
+      'Downloads only while Sunfin is open';
 
   @override
   String get autoDownloadQualityTitle => 'Auto-download quality';
@@ -13613,15 +13614,15 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get autoDownloadBackgroundRefreshSubtitle =>
-      'Allow the system to check for new episodes periodically while Plexfin is closed';
+      'Allow the system to check for new episodes periodically while Sunfin is closed';
 
   @override
   String get autoDownloadBackgroundRefreshDenied =>
-      'Background App Refresh is disabled for Plexfin. Enable it in iOS Settings.';
+      'Background App Refresh is disabled for Sunfin. Enable it in iOS Settings.';
 
   @override
   String get autoDownloadBackgroundRestrictedAndroid =>
-      'Background usage is restricted for Plexfin in Android Settings.';
+      'Background usage is restricted for Sunfin in Android Settings.';
 
   @override
   String get autoDownloadCheckNow => 'Check now';
@@ -13842,13 +13843,13 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get topShelfDescription =>
-      'What the Apple TV home screen shows above the Plexfin icon when it is selected. This setting stays on this device.';
+      'What the Apple TV home screen shows above the Sunfin icon when it is selected. This setting stays on this device.';
 
   @override
   String get topShelfLatestMedia => 'Latest media';
 
   @override
-  String get topShelfAppBanner => 'Plexfin banner';
+  String get topShelfAppBanner => 'Sunfin banner';
 
   @override
   String get keepVideoClearOfDynamicIsland =>

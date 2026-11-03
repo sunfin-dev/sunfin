@@ -5,7 +5,7 @@ import 'package:moonfin_design/moonfin_design.dart';
 import '../../l10n/app_localizations.dart';
 import '../../util/app_exit.dart';
 import '../../util/focus/key_event_utils.dart';
-import '../plex/plex_style.dart';
+import '../sunfin/sunfin_style.dart';
 import 'navigation_layout.dart';
 import 'overlay_sheet.dart';
 
@@ -87,7 +87,7 @@ class _ExitConfirmationContentState extends State<_ExitConfirmationContent> {
     super.dispose();
   }
 
-  /// The title with "fin" of the app name in Plex gold, as in the wordmark.
+  /// The title with "fin" of the app name in Sunfin gold, as in the wordmark.
   /// Languages that don't name the app keep the plain title.
   Widget _title() {
     const style = TextStyle(
@@ -107,7 +107,7 @@ class _ExitConfirmationContentState extends State<_ExitConfirmationContent> {
           TextSpan(text: title.substring(0, finAt)),
           const TextSpan(
             text: 'fin',
-            style: TextStyle(color: PlexStyle.accent),
+            style: TextStyle(color: SunfinStyle.accent),
           ),
           TextSpan(text: title.substring(finAt + 3)),
         ],
@@ -116,9 +116,9 @@ class _ExitConfirmationContentState extends State<_ExitConfirmationContent> {
     );
   }
 
-  static const _appName = 'Plexfin';
+  static const _appName = 'Sunfin';
 
-  /// Plexfin's exit card (user, 2026-10-23, option B): the fin mark, a thin
+  /// Sunfin's exit card (user, 2026-10-23, option B): the fin mark, a thin
   /// gold top edge, and gold pill buttons.
   @override
   Widget build(BuildContext context) {
@@ -150,7 +150,7 @@ class _ExitConfirmationContentState extends State<_ExitConfirmationContent> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const ColoredBox(
-                  color: PlexStyle.accent,
+                  color: SunfinStyle.accent,
                   child: SizedBox(height: 3),
                 ),
                 Padding(
@@ -235,13 +235,13 @@ class _ExitDialogButtonState extends State<_ExitDialogButton> {
       onKeyEvent: (node, event) => handleOneShotSelect(event, widget.onPressed),
       child: GestureDetector(
         onTap: widget.onPressed,
-        // Plex's Play/Resume pill: gold with dark text when focused.
+        // The reference design's Play/Resume pill: gold with dark text when focused.
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 120),
           padding: const EdgeInsets.symmetric(horizontal: 34, vertical: 11),
           decoration: BoxDecoration(
             color: _focused
-                ? PlexStyle.accent
+                ? SunfinStyle.accent
                 : Colors.white.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(999),
           ),

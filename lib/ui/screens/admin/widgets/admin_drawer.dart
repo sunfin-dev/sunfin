@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../../preference/user_preferences.dart';
 import '../../../navigation/destinations.dart';
-import '../../../plex/plex_style.dart';
+import '../../../sunfin/sunfin_style.dart';
 import 'admin_look.dart';
 
 class AdminDrawer extends StatefulWidget {
@@ -125,7 +125,7 @@ class _AdminDrawerState extends State<AdminDrawer> {
     );
   }
 
-  /// A plain row; the open page sits in Plexfin's white pill. Dragging a
+  /// A plain row; the open page sits in Sunfin's white pill. Dragging a
   /// row after a long press still reorders the menu.
   Widget _tile(BuildContext context, _AdminNavEntry entry, int index) {
     final theme = Theme.of(context);
@@ -157,7 +157,7 @@ class _AdminDrawerState extends State<AdminDrawer> {
                     Icon(
                       entry.icon,
                       size: 19,
-                      weight: plexIconWeight,
+                      weight: sunfinIconWeight,
                       color: color,
                     ),
                     const SizedBox(width: 12),

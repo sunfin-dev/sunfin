@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.14)
 project(moonfin LANGUAGES CXX)
 
-set(BINARY_NAME "plexfin")
+set(BINARY_NAME "sunfin")
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
 # versions of CMake.

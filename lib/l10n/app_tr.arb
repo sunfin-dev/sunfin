@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "appTitle": "Plexfin",
+    "appTitle": "Sunfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Plexfin sürümü {version}",
+    "appVersionFooter": "Sunfin sürümü {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Plexfin sistem anahtarlığınıza erişemedi. Giriş işlemine devam edilebilir, ancak anahtarlık kilidi açılana kadar güvenli jeton depolama özelliği kullanılamayabilir.",
+    "secureStorageUnavailableMessage": "Sunfin sistem anahtarlığınıza erişemedi. Giriş işlemine devam edilebilir, ancak anahtarlık kilidi açılana kadar güvenli jeton depolama özelliği kullanılamayabilir.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -172,13 +172,13 @@
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Plexfin",
+    "themeMoonfin": "Sunfin",
     "@themeMoonfin": {
-        "description": "Display name for the Plexfin theme"
+        "description": "Display name for the Sunfin theme"
     },
-    "themeMoonfinSubtitle": "Orijinal, sade Plexfin varsayılanı.",
+    "themeMoonfinSubtitle": "Orijinal, sade Sunfin varsayılanı.",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Plexfin theme"
+        "description": "Preview description for the Sunfin theme"
     },
     "themeNeonPulse": "Neon Pulse",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Plexfin'den çıkılsın mı?",
+    "exitApp": "Sunfin'den çıkılsın mı?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3075,7 +3075,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "Ayarlanmadı. Plexfin, uygulama/veri klasörlerinde varsayılan bir mpv.conf dosyasını deneyecektir.",
+    "notSetMpvConf": "Ayarlanmadı. Sunfin, uygulama/veri klasörlerinde varsayılan bir mpv.conf dosyasını deneyecektir.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3503,9 +3503,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Plexfin",
+    "mediaBarModeMoonfin": "Sunfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Plexfin"
+        "description": "Media bar style option: Sunfin"
     },
     "mediaBarModeMakd": "MakD",
     "@mediaBarModeMakd": {
@@ -4206,9 +4206,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Plexfin'da oynat",
+    "playInMoonfin": "Sunfin'da oynat",
     "@playInMoonfin": {
-        "description": "Button to play available media in Plexfin"
+        "description": "Button to play available media in Sunfin"
     },
     "requestedByName": "{name} tarafından istendi",
     "@requestedByName": {
@@ -4260,7 +4260,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "Öğe Plexfin kitaplığınızda bulunamadı",
+    "itemNotFoundInLibrary": "Öğe Sunfin kitaplığınızda bulunamadı",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4516,7 +4516,7 @@
         }
     },
     "adminServerRebootInProgress": "Sunucu yeniden başlatma işlemi devam ediyor",
-    "adminServerRebootMessage": "Sunucu yeniden başlatılıyor, lütfen Plexfin'i yeniden başlatın",
+    "adminServerRebootMessage": "Sunucu yeniden başlatılıyor, lütfen Sunfin'i yeniden başlatın",
     "adminActiveSessions": "Aktif Oturumlar",
     "adminSessionsLoadFailed": "Oturumlar yüklenemedi",
     "adminNoActiveSessions": "Aktif oturum yok",
@@ -6307,12 +6307,12 @@
     "@subtitlePreviewText": {
         "description": "Sample text shown in the subtitle live preview"
     },
-    "libraryVisibilityDescription": "Kitaplık başına ana sayfa görünürlüğünü değiştirin. Değişikliklerin etkili olması için Plexfin yeniden başlatın.",
+    "libraryVisibilityDescription": "Kitaplık başına ana sayfa görünürlüğünü değiştirin. Değişikliklerin etkili olması için Sunfin yeniden başlatın.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
-    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
-    "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
+    "aboutBasedOnMoonfin": "Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
+    "sourceCodeUrl": "https://github.com/sunfin-dev/sunfin",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
     },
@@ -6530,13 +6530,13 @@
     "settingsAccountSecuritySubtitle": "Kimlik doğrulama, PIN kodu ve ebeveyn denetimleri",
     "settingsPersonalization": "Kişiselleştirme",
     "settingsPersonalizationSubtitle": "Tema, gezinme, ana sayfa satırları ve kitaplık görünürlüğü",
-    "plexPersonalizationSubtitle": "Kenar çubuğu, ana sayfa satırları, kitaplıklar, ayrıntı sayfaları ve ekran koruyucu",
-    "plexGeneralStyleSubtitle": "Klavye ve oyun kumandası",
-    "plexDetailsScreenSubtitle": "Düğmeler, bilgiler, bölümler ve öneriler",
-    "plexNavigationSubtitle": "Kenar çubuğu öğeleri ve otomatik seçim",
-    "plexHomeScreenSubtitle": "Satırlar, sıraları ve İzlemeye Devam Et",
+    "sunfinPersonalizationSubtitle": "Kenar çubuğu, ana sayfa satırları, kitaplıklar, ayrıntı sayfaları ve ekran koruyucu",
+    "sunfinGeneralStyleSubtitle": "Klavye ve oyun kumandası",
+    "sunfinDetailsScreenSubtitle": "Düğmeler, bilgiler, bölümler ve öneriler",
+    "sunfinNavigationSubtitle": "Kenar çubuğu öğeleri ve otomatik seçim",
+    "sunfinHomeScreenSubtitle": "Satırlar, sıraları ve İzlemeye Devam Et",
     "libraryNicknames": "Kitaplık takma adları",
-    "libraryNicknamesSubtitle": "Kitaplıklar için kendi adlarınız, yalnızca Plexfin'de görünür",
+    "libraryNicknamesSubtitle": "Kitaplıklar için kendi adlarınız, yalnızca Sunfin'de görünür",
     "libraryNicknameServerName": "Sunucuda: {name}",
     "libraryNicknameHint": "Sunucudaki adı kullanmak için boş bırakın",
     "libraryNicknameNone": "Takma ad yok",
@@ -6549,16 +6549,16 @@
     "settingsTransferImport": "Ayarları içe aktar",
     "settingsTransferFrom": "{device} cihazından, {date}",
     "settingsTransferNothing": "Henüz dışa aktarılan bir şey yok",
-    "settingsTransferImportConfirm": "Bu cihazın ayarları bunlarla değiştirilsin mi? {source}\n\nPlexfin ardından kapanır. Kullanmak için yeniden açın.",
+    "settingsTransferImportConfirm": "Bu cihazın ayarları bunlarla değiştirilsin mi? {source}\n\nSunfin ardından kapanır. Kullanmak için yeniden açın.",
     "settingsTransferImportAction": "İçe aktar ve kapat",
     "settingsTransferFailed": "Jellyfin hesabınıza ulaşılamadı",
     "settingsTransferNote": "Oturum, pencere ve donanım her cihazda kendine ait kalır. Önce diğer cihazda oturum açın, sonra içe aktarın.",
     "settingsReset": "Tüm ayarları sıfırla",
     "settingsResetSubtitle": "Bu cihazın ayarlarını varsayılanlara döndür",
-    "settingsResetConfirm": "Bu cihazdaki her ayar varsayılanına döndürülsün mü? Oturumunuz açık kalır ve Jellyfin hesabınıza dışa aktarılan ayarlar korunur.\n\nPlexfin ardından kapanır. Devam etmek için yeniden açın.",
+    "settingsResetConfirm": "Bu cihazdaki her ayar varsayılanına döndürülsün mü? Oturumunuz açık kalır ve Jellyfin hesabınıza dışa aktarılan ayarlar korunur.\n\nSunfin ardından kapanır. Devam etmek için yeniden açın.",
     "adminShowButton": "Yönetim düğmesini göster",
     "adminShowButtonSubtitle": "Menüye sunucu yönetimini açan bir düğme ekler",
-    "plexDirectedBy": "Yönetmen: {names}",
+    "sunfinDirectedBy": "Yönetmen: {names}",
     "settingsDynamicContent": "Dinamik İçerik",
     "settingsDynamicContentSubtitle": "Medya Çubuğu ve görsel katmanlar",
     "settingsPlaybackSyncplay": "Oynatma & SyncPlay",
@@ -6582,7 +6582,7 @@
     "settingsShowGenresButtonInNavigation": "Gezinme çubuğunda türler butonunu göster",
     "settingsShowFavoritesButtonInNavigation": "Gezinme çubuğunda favoriler butonunu göster",
     "settingsShowLibrariesButtonInNavigation": "Gezinti çubuğunda kütüphaneler butonunu göster",
-    "settingsLibraryVisibilitySubtitle": "Kitaplık başına ana sayfa görünürlüğünü değiştirin. Değişikliklerin etkili olması için Plexfin yeniden başlatın.",
+    "settingsLibraryVisibilitySubtitle": "Kitaplık başına ana sayfa görünürlüğünü değiştirin. Değişikliklerin etkili olması için Sunfin yeniden başlatın.",
     "settingsMediaBarAndLocalPreviews": "Medya Çubuğu ve Yerel Önizlemeler",
     "settingsVisualOverlays": "Görsel Kaplamalar",
     "settingsSeasonalSurprise": "Sezonluk Sürpriz",
@@ -6601,14 +6601,14 @@
     "settingsJoinDiscord": "Discord'a Katıl",
     "settingsJoinDiscordSubtitle": "Toplulukla sohbet et",
     "settingsJoinTheDiscord": "Discord'a Katıl",
-    "settingsSupportMoonfin": "Plexfin'e Destek Ol",
+    "settingsSupportMoonfin": "Sunfin'e Destek Ol",
     "settingsLegal": "YASAL",
     "settingsLicenses": "Lisanslar",
     "settingsOpenSourceLicenseNotices": "Açık kaynak lisans bildirimleri",
     "settingsPrivacyPolicy": "Gizlilik Politikası",
-    "settingsPrivacyPolicySubtitle": "Plexfin verilerinizi nasıl işler",
+    "settingsPrivacyPolicySubtitle": "Sunfin verilerinizi nasıl işler",
     "settingsCheckForUpdates": "Güncellemeleri Kontrol Et",
-    "settingsCheckForUpdatesSubtitle": "En son Plexfin sürümünü kontrol edin",
+    "settingsCheckForUpdatesSubtitle": "En son Sunfin sürümünü kontrol edin",
     "settingsPoweredByFlutter": "Flutter tarafından desteklenmektedir",
     "settingsLicenseNoticesCount": "{count, plural, one {# lisans bildirimi} other {# lisans bildirimi}}",
     "@settingsLicenseNoticesCount": {
@@ -7128,12 +7128,12 @@
     "preferSdhSubtitles": "SDH altyazıları tercih et",
     "preferSdhSubtitlesSubtitle": "Otomatik seçim yaparken SDH/CC altyazı parçalarına öncelik ver.",
     "webDiagnostics": "Web Tanılama",
-    "webDiagnosticsTitle": "Plexfin Web Tanılama",
+    "webDiagnosticsTitle": "Sunfin Web Tanılama",
     "webDiagnosticsIntro": "Tarayıcı bağlantı sorunlarını (CORS, karma içerik ve keşif ayarları) tanılamak için bu sayfayı kullanın.",
     "webDiagnosticsDetectedMixedContentFailure": "Karma İçerik Hatası Tespit Edildi",
     "webDiagnosticsDetectedCorsPreflightFailure": "CORS/Ön Kontrol Hatası Tespit Edildi",
-    "webDiagnosticsMixedContentFailureBody": "Plexfin, bir HTTPS sayfasının HTTP sunucu URL'sini çağırmaya çalıştığını tespit etti. Tarayıcılar, bu isteği henüz sunucunuza ulaşmadan engeller.",
-    "webDiagnosticsCorsFailureBody": "Plexfin, genellikle medya sunucusundaki eksik CORS veya ön kontrol (preflight) üst bilgilerinden kaynaklanan, tarayıcı düzeyinde bir istek hatası tespit etti.",
+    "webDiagnosticsMixedContentFailureBody": "Sunfin, bir HTTPS sayfasının HTTP sunucu URL'sini çağırmaya çalıştığını tespit etti. Tarayıcılar, bu isteği henüz sunucunuza ulaşmadan engeller.",
+    "webDiagnosticsCorsFailureBody": "Sunfin, genellikle medya sunucusundaki eksik CORS veya ön kontrol (preflight) üst bilgilerinden kaynaklanan, tarayıcı düzeyinde bir istek hatası tespit etti.",
     "webDiagnosticsTargetUrl": "Hedef URL: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7163,7 +7163,7 @@
     "notConfigured": "Yapılandırılmadı",
     "webDiagnosticsMixedContent": "Karma İçerik",
     "webDiagnosticsMixedContentDetected": "Bu sayfa HTTPS üzerinden yüklendi, ancak yapılandırılan URL'lerden biri veya daha fazlası HTTP. Tarayıcılar, HTTPS sayfalarının HTTP API'lerini çağırmasını engeller.",
-    "webDiagnosticsMixedContentFix": "Çözüm: Medya sunucunuzu veya vekil sunucu (proxy) uç noktanızı HTTPS üzerinden sunun ya da Plexfin'i yalnızca güvenilir yerel ağlarda HTTP üzerinden yükleyin.",
+    "webDiagnosticsMixedContentFix": "Çözüm: Medya sunucunuzu veya vekil sunucu (proxy) uç noktanızı HTTPS üzerinden sunun ya da Sunfin'i yalnızca güvenilir yerel ağlarda HTTP üzerinden yükleyin.",
     "webDiagnosticsNoMixedContentDetected": "Mevcut çalışma zamanı ayarlarında bariz bir karma içerik yapılandırması tespit edilmedi.",
     "webDiagnosticsCorsChecklist": "CORS Kontrol Listesi",
     "webDiagnosticsCorsChecklistItem1": "• Access-Control-Allow-Origin üst bilgisinde tarayıcı kaynağına izin verin.",
@@ -8175,7 +8175,7 @@
     "@contextMenuHideFromNextUp": {
         "description": "Context menu action to hide a show from the Next Up section"
     },
-    "carSignInPrompt": "Plexfin'e telefon üzerinden giriş yap",
+    "carSignInPrompt": "Sunfin'e telefon üzerinden giriş yap",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8191,7 +8191,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "Plexfin Önerileri'ni hedef medyanın ebeveyn yaş sınırına göre kısıtla",
+    "recommendationsApplyParentalRatingCapSubtitle": "Sunfin Önerileri'ni hedef medyanın ebeveyn yaş sınırına göre kısıtla",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -8302,7 +8302,7 @@
     "@glassQualityReduced": {
         "description": "Glass quality option: lightweight zero-blur glass"
     },
-    "customThemeSubtitle": "Özel temalar, Plexfin genelindeki görsel ögeleri değiştirir. Tarzınıza uygun seçeneklerden birini belirleyin.",
+    "customThemeSubtitle": "Özel temalar, Sunfin genelindeki görsel ögeleri değiştirir. Tarzınıza uygun seçeneklerden birini belirleyin.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -8531,7 +8531,7 @@
     },
     "rewatchPlaylist": "Oynatma Listesini Yeniden İzle",
     "noSubtitlesFound": "Altyazı bulunamadı.",
-    "impellerRenderingSubtitle": "Impeller, daha akıcı animasyonlar ve daha az takılma sağlayan Flutter'ın modern GPU işleme motorudur. Bazı TV kutularında (TV Box) ve eski grafik işlemcilerde (GPU) ekran bozulmalarına veya siyah ekrana neden olabilir; bu gibi durumlarla karşılaşırsanız özelliği Kapatın. Otomatik seçeneği, cihazınız için en iyi varsayılanı belirler. Değişiklikleri uygulamak için Plexfin'i yeniden başlatın.",
+    "impellerRenderingSubtitle": "Impeller, daha akıcı animasyonlar ve daha az takılma sağlayan Flutter'ın modern GPU işleme motorudur. Bazı TV kutularında (TV Box) ve eski grafik işlemcilerde (GPU) ekran bozulmalarına veya siyah ekrana neden olabilir; bu gibi durumlarla karşılaşırsanız özelliği Kapatın. Otomatik seçeneği, cihazınız için en iyi varsayılanı belirler. Değişiklikleri uygulamak için Sunfin'i yeniden başlatın.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8576,11 +8576,11 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemMoonfin": "Plexfin Önerileri",
+    "recommendationSystemMoonfin": "Sunfin Önerileri",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Plexfin Recommends"
+        "description": "Recommendation system option: Sunfin Recommends"
     },
-    "recommendationSystemSubtitle": "Plexfin Önerileri yerel kütüphane algoritmasını, Jellyfin Önerileri sunucu motorunu veya çevrimiçi TMDb Benzerlik Metriklerini kullanın. Not: Çevrimiçi öneriler Seerr entegrasyonu gerektirir.",
+    "recommendationSystemSubtitle": "Sunfin Önerileri yerel kütüphane algoritmasını, Jellyfin Önerileri sunucu motorunu veya çevrimiçi TMDb Benzerlik Metriklerini kullanın. Not: Çevrimiçi öneriler Seerr entegrasyonu gerektirir.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
@@ -8601,7 +8601,7 @@
     "@detailScreenStyleModern": {
         "description": "Detail screen style option: the responsive cinematic layout"
     },
-    "detailScreenStyleSubtitle": "Klasik, orijinal ortalanmış Plexfin düzenidir. Modern, duyarlı sinematik bir düzendir. Spotlight, açılır içerik kartlarına sahip, ana görsel odaklı bir düzendir. Nouveau, bölümlerin sayfa boyunca alt alta sıralandığı tam ekran bir düzendir. Minimalist ise sadece kapak görselinden, tek bir oynatma butonundan ve bölümlerden oluşur.",
+    "detailScreenStyleSubtitle": "Klasik, orijinal ortalanmış Sunfin düzenidir. Modern, duyarlı sinematik bir düzendir. Spotlight, açılır içerik kartlarına sahip, ana görsel odaklı bir düzendir. Nouveau, bölümlerin sayfa boyunca alt alta sıralandığı tam ekran bir düzendir. Minimalist ise sadece kapak görselinden, tek bir oynatma butonundan ve bölümlerden oluşur.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -8670,7 +8670,7 @@
     },
     "forced": "Zorunlu",
     "transcodeAudioCodecNotSupported": "Ses kodeki desteklenmiyor.",
-    "impellerRestartMessage": "İşleme motorunu değiştirmek için Plexfin'in yeniden başlatılması gerekiyor. Değişiklikleri uygulamak için uygulamayı şimdi kapatın ve ardından tekrar açın.",
+    "impellerRestartMessage": "İşleme motorunu değiştirmek için Sunfin'in yeniden başlatılması gerekiyor. Değişiklikleri uygulamak için uygulamayı şimdi kapatın ve ardından tekrar açın.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },
@@ -9547,7 +9547,7 @@
     "@sdCard": {
         "description": "Download location option for a removable storage volume"
     },
-    "downloadLocationLimitedByAndroid": "Android, Plexfin uygulamasının yalnızca kendi sahip olduğu klasörlere yazmasına izin veriyor ve bu cihazda çıkarılabilir depolama alanı yok. İndirmelerin diğer uygulamaların erişebileceği bir yere kaydedilmesi için yukarıdaki 'İndirilenler klasörüne kaydet' seçeneğini açın.",
+    "downloadLocationLimitedByAndroid": "Android, Sunfin uygulamasının yalnızca kendi sahip olduğu klasörlere yazmasına izin veriyor ve bu cihazda çıkarılabilir depolama alanı yok. İndirmelerin diğer uygulamaların erişebileceği bir yere kaydedilmesi için yukarıdaki 'İndirilenler klasörüne kaydet' seçeneğini açın.",
     "@downloadLocationLimitedByAndroid": {
         "description": "Note shown when the only download location Android allows is the default one"
     },
@@ -9701,7 +9701,7 @@
     "@interfaceLayout": {
         "description": "Setting to override which UI layout the app uses"
     },
-    "interfaceLayoutSubtitle": "Bu cihaz için algılanan düzen yanlış okunduğunda geçersiz kılın. Değişikliklerin etkili olması için Plexfin'i yeniden başlatın.",
+    "interfaceLayoutSubtitle": "Bu cihaz için algılanan düzen yanlış okunduğunda geçersiz kılın. Değişikliklerin etkili olması için Sunfin'i yeniden başlatın.",
     "@interfaceLayoutSubtitle": {
         "description": "Subtitle for the interface layout setting"
     },
@@ -10759,7 +10759,7 @@
     "@shortcutToggleFullscreen": {
         "description": "F11 and Alt+Enter anywhere, F in the player"
     },
-    "shortcutQuit": "Plexfin'den çık",
+    "shortcutQuit": "Sunfin'den çık",
     "@shortcutQuit": {
         "description": "What Ctrl+Q does on desktop"
     },
@@ -10982,7 +10982,7 @@
     "@loadingAnimation": {
         "description": "Setting title for custom loading animation"
     },
-    "loadingAnimationDescription": "Plexfin genelinde kullanılan yükleme animasyonlarını özelleştir",
+    "loadingAnimationDescription": "Sunfin genelinde kullanılan yükleme animasyonlarını özelleştir",
     "@loadingAnimationDescription": {
         "description": "Description for loading animation customization settings"
     },
@@ -10994,9 +10994,9 @@
     "@loadingAnimationImage": {
         "description": "Title for loading animation image selection"
     },
-    "loadingAnimationImageMoonfinLogo": "Plexfin Logo",
+    "loadingAnimationImageMoonfinLogo": "Sunfin Logo",
     "@loadingAnimationImageMoonfinLogo": {
-        "description": "Loading animation image option: Plexfin Logo"
+        "description": "Loading animation image option: Sunfin Logo"
     },
     "loadingAnimationImageSpinner": "Yükleme çarkı",
     "@loadingAnimationImageSpinner": {
@@ -11010,9 +11010,9 @@
     "@loadingAnimationImageMoonPhases": {
         "description": "Loading animation image option: Moon Phases"
     },
-    "loadingAnimationImageMoonfinPhases": "Plexfin Evreleri",
+    "loadingAnimationImageMoonfinPhases": "Sunfin Evreleri",
     "@loadingAnimationImageMoonfinPhases": {
-        "description": "Loading animation image option: Plexfin Phases in brand gradient"
+        "description": "Loading animation image option: Sunfin Phases in brand gradient"
     },
     "loadingAnimationImageNeonfinPhases": "Neonfin Evreleri",
     "@loadingAnimationImageNeonfinPhases": {
@@ -11285,9 +11285,9 @@
     "@screensaverBackdropBlack": {
         "description": "Screensaver backdrop: Black"
     },
-    "screensaverBackdropMoonfin": "Plexfin",
+    "screensaverBackdropMoonfin": "Sunfin",
     "@screensaverBackdropMoonfin": {
-        "description": "Screensaver backdrop: Plexfin"
+        "description": "Screensaver backdrop: Sunfin"
     },
     "screensaverBackdropCalm": "Sakin",
     "@screensaverBackdropCalm": {
@@ -11305,9 +11305,9 @@
     "@screensaverAdditionalComponent": {
         "description": "Setting for screensaver additional component"
     },
-    "screensaverComponentMoonfinLogo": "Plexfin Logo",
+    "screensaverComponentMoonfinLogo": "Sunfin Logo",
     "@screensaverComponentMoonfinLogo": {
-        "description": "Screensaver component: Plexfin Logo"
+        "description": "Screensaver component: Sunfin Logo"
     },
     "screensaverComponentRunner": "Kayan Yazı",
     "@screensaverComponentRunner": {

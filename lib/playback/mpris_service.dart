@@ -370,7 +370,7 @@ class _MprisPlayer extends DBusObject {
       case 'HasTrackList':
         return const DBusBoolean(false);
       case 'Identity':
-        return const DBusString('Plexfin');
+        return const DBusString('Sunfin');
       case 'DesktopEntry':
         return const DBusString('org.moonfin.linux');
       case 'SupportedUriSchemes':

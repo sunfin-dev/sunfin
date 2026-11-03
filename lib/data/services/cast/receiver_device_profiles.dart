@@ -23,7 +23,7 @@ Map<String, dynamic> chromecastDeviceProfile({int? maxBitrateMbps}) {
       : castCeiling;
   final bitrate = requested < castCeiling ? requested : castCeiling;
   return <String, dynamic>{
-    'Name': 'Plexfin Chromecast',
+    'Name': 'Sunfin Chromecast',
     'MaxStaticBitrate': bitrate,
     'MaxStreamingBitrate': bitrate,
     'MusicStreamingTranscodingBitrate': 384000,
@@ -111,7 +111,7 @@ Map<String, dynamic> chromecastDeviceProfile({int? maxBitrateMbps}) {
 Map<String, dynamic> airPlayDeviceProfile() {
   const bitrate = 15000000;
   return <String, dynamic>{
-    'Name': 'Plexfin AirPlay',
+    'Name': 'Sunfin AirPlay',
     'MaxStaticBitrate': bitrate,
     'MaxStreamingBitrate': bitrate,
     'MusicStreamingTranscodingBitrate': 384000,

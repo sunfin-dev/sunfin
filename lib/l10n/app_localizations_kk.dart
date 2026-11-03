@@ -10,7 +10,7 @@ class AppLocalizationsKk extends AppLocalizations {
   AppLocalizationsKk([String locale = 'kk']) : super(locale);
 
   @override
-  String get appTitle => 'Plexfin';
+  String get appTitle => 'Sunfin';
 
   @override
   String get animeMarkerFiller => 'Filler';
@@ -108,7 +108,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String appVersionFooter(String version) {
-    return 'Plexfin нұсқасы $version';
+    return 'Sunfin нұсқасы $version';
   }
 
   @override
@@ -160,7 +160,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get secureStorageUnavailableMessage =>
-      'Plexfin жүйе кілттеріне қол жеткізе алмады. Жүйеге кіруді жалғастыруға болады, бірақ кілт сақинасының құлпы ашылғанша қауіпсіз таңбалауыш қоймасы қолжетімсіз болуы мүмкін.';
+      'Sunfin жүйе кілттеріне қол жеткізе алмады. Жүйеге кіруді жалғастыруға болады, бірақ кілт сақинасының құлпы ашылғанша қауіпсіз таңбалауыш қоймасы қолжетімсіз болуы мүмкін.';
 
   @override
   String get ok => 'Жарайды';
@@ -173,7 +173,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get detailScreenStyleSubtitle =>
-      '«Классикалық» — Plexfin бағдарламасының бастапқы, ортаға тураланған қалыбы. «Заманауи» — бейімделгіш кинематографиялық қалып.';
+      '«Классикалық» — Sunfin бағдарламасының бастапқы, ортаға тураланған қалыбы. «Заманауи» — бейімделгіш кинематографиялық қалып.';
 
   @override
   String get detailScreenStyleMoonfin => 'Классикалық';
@@ -410,10 +410,10 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get recommendationSystemSubtitle =>
-      'Plexfin ұсынады жергілікті кітапхана алгоритмін немесе TMDb ұсынатын желілік ұқсастық метрикаларын пайдаланыңыз. Ескертпе: желілік ұсыныстар Seerr интеграциясын талап етеді.';
+      'Sunfin ұсынады жергілікті кітапхана алгоритмін немесе TMDb ұсынатын желілік ұқсастық метрикаларын пайдаланыңыз. Ескертпе: желілік ұсыныстар Seerr интеграциясын талап етеді.';
 
   @override
-  String get recommendationSystemMoonfin => 'Plexfin ұсынады';
+  String get recommendationSystemMoonfin => 'Sunfin ұсынады';
 
   @override
   String get recommendationSystemJellyfin => 'Jellyfin Recommends';
@@ -427,7 +427,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get recommendationsApplyParentalRatingCapSubtitle =>
-      'Plexfin ұсынады тізіміндегі ұсыныстарды таңдалған медиафайлдың жас шектеуі бойынша шектеу';
+      'Sunfin ұсынады тізіміндегі ұсыныстарды таңдалған медиафайлдың жас шектеуі бойынша шектеу';
 
   @override
   String get interfaceStyle => 'Интерфейс стилі';
@@ -450,7 +450,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get interfaceLayoutSubtitle =>
-      'Override the detected layout when this device is read wrong. Restart Plexfin for changes to take effect.';
+      'Override the detected layout when this device is read wrong. Restart Sunfin for changes to take effect.';
 
   @override
   String get interfaceLayoutAutomatic => 'Automatic';
@@ -515,14 +515,14 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get settingsAppearanceThemeSubtitle =>
-      'Қолданбаны қайта іске қоспай, Plexfin және Neon Pulse арасында ауысыңыз';
+      'Қолданбаны қайта іске қоспай, Sunfin және Neon Pulse арасында ауысыңыз';
 
   @override
   String get customThemeTitle => 'Жеке тақырып';
 
   @override
   String get customThemeSubtitle =>
-      'Жеке тақырыптар Plexfin бойынша визуалды элементтерді өзгертеді. Өз стиліңізге сай нұсқаны таңдаңыз.';
+      'Жеке тақырыптар Sunfin бойынша визуалды элементтерді өзгертеді. Өз стиліңізге сай нұсқаны таңдаңыз.';
 
   @override
   String get keyboardPreferSystemIme => 'Жүйелік пернетақтаны таңдау';
@@ -542,10 +542,10 @@ class AppLocalizationsKk extends AppLocalizations {
       'Let a connected game controller move focus and select items';
 
   @override
-  String get themeMoonfin => 'Plexfin';
+  String get themeMoonfin => 'Sunfin';
 
   @override
-  String get themeMoonfinSubtitle => 'Ағымдағы Plexfin келбеті бәріңізге ұнады';
+  String get themeMoonfinSubtitle => 'Ағымдағы Sunfin келбеті бәріңізге ұнады';
 
   @override
   String get themeNeonPulse => 'Неон импульсі';
@@ -620,7 +620,7 @@ class AppLocalizationsKk extends AppLocalizations {
   }
 
   @override
-  String get exitApp => 'Plexfin шығу керек пе?';
+  String get exitApp => 'Sunfin шығу керек пе?';
 
   @override
   String get exitAppConfirmation => 'Шығыңыз келетініне сенімдісіз бе?';
@@ -1767,7 +1767,7 @@ class AppLocalizationsKk extends AppLocalizations {
   String get shuffleAllMusic => 'Барлық музыканы араластыру';
 
   @override
-  String get carSignInPrompt => 'Телефоныңызда Plexfin-ге кіріңіз';
+  String get carSignInPrompt => 'Телефоныңызда Sunfin-ге кіріңіз';
 
   @override
   String get carServerUnreachable => 'Серверге қосылу мүмкін емес';
@@ -2054,7 +2054,7 @@ class AppLocalizationsKk extends AppLocalizations {
   String get shortcutToggleFullscreen => 'Fullscreen on or off';
 
   @override
-  String get shortcutQuit => 'Quit Plexfin';
+  String get shortcutQuit => 'Quit Sunfin';
 
   @override
   String get shortcutPlayPause => 'Play or pause';
@@ -3016,7 +3016,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get loadingAnimationDescription =>
-      'Customize the loading animations used throughout Plexfin';
+      'Customize the loading animations used throughout Sunfin';
 
   @override
   String get loadingAnimationConfiguration => 'Loading Animation Configuration';
@@ -3025,7 +3025,7 @@ class AppLocalizationsKk extends AppLocalizations {
   String get loadingAnimationImage => 'Image';
 
   @override
-  String get loadingAnimationImageMoonfinLogo => 'Plexfin Logo';
+  String get loadingAnimationImageMoonfinLogo => 'Sunfin Logo';
 
   @override
   String get loadingAnimationImageSpinner => 'Spinner';
@@ -3037,7 +3037,7 @@ class AppLocalizationsKk extends AppLocalizations {
   String get loadingAnimationImageMoonPhases => 'Moon Phases';
 
   @override
-  String get loadingAnimationImageMoonfinPhases => 'Plexfin Phases';
+  String get loadingAnimationImageMoonfinPhases => 'Sunfin Phases';
 
   @override
   String get loadingAnimationImageNeonfinPhases => 'Neonfin Phases';
@@ -4047,7 +4047,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get notSetMpvConf =>
-      'Орнатылмаған. Plexfin қолданба/деректер қалталарында әдепкі mpv.conf файлын қолданып көреді.';
+      'Орнатылмаған. Sunfin қолданба/деректер қалталарында әдепкі mpv.conf файлын қолданып көреді.';
 
   @override
   String get selectMpvConf => 'mpv.conf таңдаңыз';
@@ -4326,7 +4326,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get downloadLocationLimitedByAndroid =>
-      'Android only lets Plexfin write to the folders it owns, and this device has no removable storage. Turn on Save to Downloads folder above to keep downloads somewhere other apps can reach.';
+      'Android only lets Sunfin write to the folders it owns, and this device has no removable storage. Turn on Save to Downloads folder above to keep downloads somewhere other apps can reach.';
 
   @override
   String get saveToDownloadsFolder => 'Жүктеулер қалтасына сақтаңыз';
@@ -4517,7 +4517,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get libraryVisibilityDescription =>
-      'Әрбір кітапхананың басты бетінің көріну мүмкіндігін ауыстырып-қосқыш. Өзгерістердің күшіне енуі үшін Plexfin қолданбасын қайта іске қосыңыз.';
+      'Әрбір кітапхананың басты бетінің көріну мүмкіндігін ауыстырып-қосқыш. Өзгерістердің күшіне енуі үшін Sunfin қолданбасын қайта іске қосыңыз.';
 
   @override
   String get showInNavigation => 'Навигацияда көрсету';
@@ -4586,7 +4586,7 @@ class AppLocalizationsKk extends AppLocalizations {
       'Түрлі медиа жолақ мәнерлерінің бірін таңдаңыз немесе медиа жолағын өшіріңіз';
 
   @override
-  String get mediaBarModeMoonfin => 'Plexfin';
+  String get mediaBarModeMoonfin => 'Sunfin';
 
   @override
   String get mediaBarModeMakd => 'МакД';
@@ -4923,7 +4923,7 @@ class AppLocalizationsKk extends AppLocalizations {
   String get screensaverBackdropBlack => 'Black';
 
   @override
-  String get screensaverBackdropMoonfin => 'Plexfin';
+  String get screensaverBackdropMoonfin => 'Sunfin';
 
   @override
   String get screensaverBackdropCalm => 'Calm';
@@ -4938,7 +4938,7 @@ class AppLocalizationsKk extends AppLocalizations {
   String get screensaverAdditionalComponent => 'Additional Component';
 
   @override
-  String get screensaverComponentMoonfinLogo => 'Plexfin Logo';
+  String get screensaverComponentMoonfinLogo => 'Sunfin Logo';
 
   @override
   String get screensaverComponentRunner => 'Runner';
@@ -5214,10 +5214,10 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get aboutBasedOnMoonfin =>
-      'Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core';
+      'Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core';
 
   @override
-  String get sourceCodeUrl => 'https://github.com/Moonfin-Client/Moonfin-Core';
+  String get sourceCodeUrl => 'https://github.com/sunfin-dev/sunfin';
 
   @override
   String get checkForUpdatesNow => 'Қазір жаңартуларды тексеріңіз';
@@ -5401,7 +5401,7 @@ class AppLocalizationsKk extends AppLocalizations {
   String get cancelRequest4k => 'Cancel 4K Request';
 
   @override
-  String get playInMoonfin => 'Plexfin ойынында ойнаңыз';
+  String get playInMoonfin => 'Sunfin ойынында ойнаңыз';
 
   @override
   String get requestedByLabel => 'Requested by';
@@ -5446,8 +5446,7 @@ class AppLocalizationsKk extends AppLocalizations {
   String get keep => 'Сақтау';
 
   @override
-  String get itemNotFoundInLibrary =>
-      'Элемент Plexfin кітапханасынан табылмады';
+  String get itemNotFoundInLibrary => 'Элемент Sunfin кітапханасынан табылмады';
 
   @override
   String get errorSearchingLibrary => 'Кітапхананы іздеу қатесі';
@@ -6040,7 +6039,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get adminServerRebootMessage =>
-      'Сервер қайта жүктелуде, Plexfin қайта іске қосыңыз';
+      'Сервер қайта жүктелуде, Sunfin қайта іске қосыңыз';
 
   @override
   String get adminActiveSessions => 'Белсенді сессиялар';
@@ -9994,22 +9993,22 @@ class AppLocalizationsKk extends AppLocalizations {
       'Тақырып, шарлау, негізгі жолдар және кітапхананың көрінуі';
 
   @override
-  String get plexPersonalizationSubtitle =>
+  String get sunfinPersonalizationSubtitle =>
       'Бүйірлік панель, басты бет жолдары, кітапханалар, толық ақпарат беттері және скринсейвер';
 
   @override
-  String get plexGeneralStyleSubtitle => 'Пернетақта және ойын контроллері';
+  String get sunfinGeneralStyleSubtitle => 'Пернетақта және ойын контроллері';
 
   @override
-  String get plexDetailsScreenSubtitle =>
+  String get sunfinDetailsScreenSubtitle =>
       'Түймелер, ақпарат, бөлімдер және ұсыныстар';
 
   @override
-  String get plexNavigationSubtitle =>
+  String get sunfinNavigationSubtitle =>
       'Бүйірлік панель элементтері және автоматты таңдау';
 
   @override
-  String get plexHomeScreenSubtitle =>
+  String get sunfinHomeScreenSubtitle =>
       'Жолдар, олардың реті және «Көруді жалғастыру»';
 
   @override
@@ -10017,7 +10016,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get libraryNicknamesSubtitle =>
-      'Кітапханаларға өз аттарыңыз, тек Plexfin ішінде көрсетіледі';
+      'Кітапханаларға өз аттарыңыз, тек Sunfin ішінде көрсетіледі';
 
   @override
   String libraryNicknameServerName(String name) {
@@ -10067,7 +10066,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String settingsTransferImportConfirm(String source) {
-    return 'Осы құрылғының параметрлерін осылармен ауыстыру керек пе? $source\n\nКейін Plexfin жабылады. Оларды қолдану үшін қайта ашыңыз.';
+    return 'Осы құрылғының параметрлерін осылармен ауыстыру керек пе? $source\n\nКейін Sunfin жабылады. Оларды қолдану үшін қайта ашыңыз.';
   }
 
   @override
@@ -10090,7 +10089,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get settingsResetConfirm =>
-      'Осы құрылғыдағы әр баптауды әдепкі мәніне қайтару керек пе? Сіз жүйеде қаласыз, ал Jellyfin тіркелгіңізге экспортталған баптаулар сақталады.\n\nОсыдан кейін Plexfin жабылады. Жалғастыру үшін оны қайта ашыңыз.';
+      'Осы құрылғыдағы әр баптауды әдепкі мәніне қайтару керек пе? Сіз жүйеде қаласыз, ал Jellyfin тіркелгіңізге экспортталған баптаулар сақталады.\n\nОсыдан кейін Sunfin жабылады. Жалғастыру үшін оны қайта ашыңыз.';
 
   @override
   String get adminShowButton => 'Әкімшілік түймесін көрсету';
@@ -10100,7 +10099,7 @@ class AppLocalizationsKk extends AppLocalizations {
       'Мәзірге сервер әкімшілігін ашатын түйме қосады';
 
   @override
-  String plexDirectedBy(String names) {
+  String sunfinDirectedBy(String names) {
     return 'Режиссёр: $names';
   }
 
@@ -10231,7 +10230,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get settingsLibraryVisibilitySubtitle =>
-      'Әрбір кітапхананың басты бетінің көріну мүмкіндігін ауыстырып-қосқыш. Өзгерістердің күшіне енуі үшін Plexfin қолданбасын қайта іске қосыңыз.';
+      'Әрбір кітапхананың басты бетінің көріну мүмкіндігін ауыстырып-қосқыш. Өзгерістердің күшіне енуі үшін Sunfin қолданбасын қайта іске қосыңыз.';
 
   @override
   String get settingsMediaBarAndLocalPreviews =>
@@ -10363,7 +10362,7 @@ class AppLocalizationsKk extends AppLocalizations {
   String get settingsJoinTheDiscord => 'Discord қосылыңыз';
 
   @override
-  String get settingsSupportMoonfin => 'Қолдау Plexfin';
+  String get settingsSupportMoonfin => 'Қолдау Sunfin';
 
   @override
   String get settingsSupportMoonfinSubtitle =>
@@ -10384,14 +10383,14 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get settingsPrivacyPolicySubtitle =>
-      'Plexfin деректеріңізді қалай өңдейді';
+      'Sunfin деректеріңізді қалай өңдейді';
 
   @override
   String get settingsCheckForUpdates => 'Жаңартуларды тексеріңіз';
 
   @override
   String get settingsCheckForUpdatesSubtitle =>
-      'Соңғы Plexfin шығарылымын тексеріңіз';
+      'Соңғы Sunfin шығарылымын тексеріңіз';
 
   @override
   String get settingsPoweredByFlutter => 'Flutter арқылы қуатталған';
@@ -11212,7 +11211,7 @@ class AppLocalizationsKk extends AppLocalizations {
   String get webDiagnostics => 'Веб-диагностика';
 
   @override
-  String get webDiagnosticsTitle => 'Plexfin веб-диагностикасы';
+  String get webDiagnosticsTitle => 'Sunfin веб-диагностикасы';
 
   @override
   String get webDiagnosticsIntro =>
@@ -11228,11 +11227,11 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get webDiagnosticsMixedContentFailureBody =>
-      'Plexfin HTTPS бетінің HTTP сервер URL-іне қоңырау шалу әрекетін анықтады. Браузерлер бұл сұранысты серверіңізге жетпей тұрып бұғаттайды.';
+      'Sunfin HTTPS бетінің HTTP сервер URL-іне қоңырау шалу әрекетін анықтады. Браузерлер бұл сұранысты серверіңізге жетпей тұрып бұғаттайды.';
 
   @override
   String get webDiagnosticsCorsFailureBody =>
-      'Plexfin браузер деңгейіндегі сұраныс қатесін анықтады, ол әдетте медиасервердегі CORS немесе preflight тақырыптарының болмауынан туындайды.';
+      'Sunfin браузер деңгейіндегі сұраныс қатесін анықтады, ол әдетте медиасервердегі CORS немесе preflight тақырыптарының болмауынан туындайды.';
 
   @override
   String webDiagnosticsTargetUrl(String url) {
@@ -11281,7 +11280,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get webDiagnosticsMixedContentFix =>
-      'Түзету: медиасерверіңізді немесе прокси нүктеңізді HTTPS арқылы ұсыныңыз, немесе Plexfin-ді HTTP арқылы тек сенімді жергілікті желілерде жүктеңіз.';
+      'Түзету: медиасерверіңізді немесе прокси нүктеңізді HTTPS арқылы ұсыныңыз, немесе Sunfin-ді HTTP арқылы тек сенімді жергілікті желілерде жүктеңіз.';
 
   @override
   String get webDiagnosticsNoMixedContentDetected =>
@@ -13010,7 +13009,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get impellerRenderingSubtitle =>
-      'Impeller — плавнырақ анимациялар мен азырақ кідірістер үшін Flutter-дің заманауи GPU рендерері. Кейбір ТД-приставкаларда және ескі GPU-ларда ол ақаулар немесе қара бейне тудыруы мүмкін; мұны көрсеңіз, өшіріңіз. «Автоматты» құрылғыңызға ең қолайлы әдепкіні таңдайды. Қолдану үшін Plexfin-ді қайта іске қосыңыз.';
+      'Impeller — плавнырақ анимациялар мен азырақ кідірістер үшін Flutter-дің заманауи GPU рендерері. Кейбір ТД-приставкаларда және ескі GPU-ларда ол ақаулар немесе қара бейне тудыруы мүмкін; мұны көрсеңіз, өшіріңіз. «Автоматты» құрылғыңызға ең қолайлы әдепкіні таңдайды. Қолдану үшін Sunfin-ді қайта іске қосыңыз.';
 
   @override
   String get impellerAuto => 'Автоматты';
@@ -13026,7 +13025,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get impellerRestartMessage =>
-      'Рендеринг қозғалтқышын өзгерту үшін Plexfin-ді қайта іске қосу қажет. Қолдану үшін қолданбаны қазір жауып, содан кейін қайта ашыңыз.';
+      'Рендеринг қозғалтқышын өзгерту үшін Sunfin-ді қайта іске қосу қажет. Қолдану үшін қолданбаны қазір жауып, содан кейін қайта ашыңыз.';
 
   @override
   String get impellerCloseNow => 'Қолданбаны қазір жабу';
@@ -13542,7 +13541,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get autoDownloadTranscodedForegroundNote =>
-      'Transcoded qualities only download while Plexfin is open. Original quality also downloads in the background.';
+      'Transcoded qualities only download while Sunfin is open. Original quality also downloads in the background.';
 
   @override
   String get autoDownloadTranscodedRunningNote =>
@@ -13550,7 +13549,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get autoDownloadForegroundOnly =>
-      'Downloads only while Plexfin is open';
+      'Downloads only while Sunfin is open';
 
   @override
   String get autoDownloadQualityTitle => 'Auto-download quality';
@@ -13605,15 +13604,15 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get autoDownloadBackgroundRefreshSubtitle =>
-      'Allow the system to check for new episodes periodically while Plexfin is closed';
+      'Allow the system to check for new episodes periodically while Sunfin is closed';
 
   @override
   String get autoDownloadBackgroundRefreshDenied =>
-      'Background App Refresh is disabled for Plexfin. Enable it in iOS Settings.';
+      'Background App Refresh is disabled for Sunfin. Enable it in iOS Settings.';
 
   @override
   String get autoDownloadBackgroundRestrictedAndroid =>
-      'Background usage is restricted for Plexfin in Android Settings.';
+      'Background usage is restricted for Sunfin in Android Settings.';
 
   @override
   String get autoDownloadCheckNow => 'Check now';
@@ -13834,13 +13833,13 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get topShelfDescription =>
-      'What the Apple TV home screen shows above the Plexfin icon when it is selected. This setting stays on this device.';
+      'What the Apple TV home screen shows above the Sunfin icon when it is selected. This setting stays on this device.';
 
   @override
   String get topShelfLatestMedia => 'Latest media';
 
   @override
-  String get topShelfAppBanner => 'Plexfin banner';
+  String get topShelfAppBanner => 'Sunfin banner';
 
   @override
   String get keepVideoClearOfDynamicIsland =>

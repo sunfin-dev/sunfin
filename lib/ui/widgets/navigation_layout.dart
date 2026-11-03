@@ -8,8 +8,8 @@ import '../../preference/user_preferences.dart';
 import '../../util/focus/dpad_keys.dart';
 import '../../util/platform_detection.dart';
 import '../../util/overlay_color_palette.dart';
-import '../plex/plex_clock.dart';
-import '../plex/plex_style.dart';
+import '../sunfin/sunfin_clock.dart';
+import '../sunfin/sunfin_style.dart';
 import 'bottom_nav/bottom_navbar.dart';
 import 'download_progress_bar.dart';
 import 'left_sidebar.dart';
@@ -32,9 +32,9 @@ class NavigationLayout extends StatefulWidget {
   /// content scrolls. No effect off-TV, where the toolbar is already fixed.
   final bool pinTopToolbar;
 
-  /// Plex mode: the clock in the top right, fixed to the screen so it stays put
-  /// while the page slides beside the opening rail (Plex home).
-  final bool plexClock;
+  /// Sunfin mode: the clock in the top right, fixed to the screen so it stays put
+  /// while the page slides beside the opening rail (Sunfin home).
+  final bool sunfinClock;
 
   static bool get allowBottomNavbar =>
       PlatformDetection.useMobileUi && !PlatformDetection.isWeb;
@@ -114,7 +114,7 @@ class NavigationLayout extends StatefulWidget {
     this.showBackButton = false,
     this.showNavigationChrome = true,
     this.pinTopToolbar = false,
-    this.plexClock = false,
+    this.sunfinClock = false,
   });
 
   @override
@@ -131,9 +131,9 @@ class _NavigationLayoutState extends State<NavigationLayout>
   late BottomNavbarStyle _bottomStyle;
   bool _keyboardVisible = false;
 
-  // Plex mode: the rail's expanded state, which places the content beside it.
+  // Sunfin mode: the rail's expanded state, which places the content beside it.
   final _railExpanded = ValueNotifier<bool>(false);
-  late bool _plexMode;
+  late bool _sunfinMode;
 
   // Split shrinks while the user scrolls down and comes back on the way up.
   // The flag only flips at the thresholds, so scrolling rebuilds nothing.
@@ -154,7 +154,7 @@ class _NavigationLayoutState extends State<NavigationLayout>
       _prefs.set(UserPreferences.navbarPosition, _position);
     }
     _bottomStyle = _prefs.get(UserPreferences.bottomNavbarStyle);
-    _plexMode = PlexStyle.enabled;
+    _sunfinMode = SunfinStyle.enabled;
     _prefs.addListener(_onPrefsChanged);
     WidgetsBinding.instance.addObserver(this);
     NavigationLayout.positionNotifier.addListener(_onPositionNotified);
@@ -262,11 +262,11 @@ class _NavigationLayoutState extends State<NavigationLayout>
   }
 
   // The bar's height, and with it the content inset, depends on the style.
-  // So does Plex mode, which moves the content beside the rail.
+  // So does Sunfin mode, which moves the content beside the rail.
   void _onPrefsChanged() {
     if (!mounted) return;
-    final plexMode = PlexStyle.enabled;
-    if (plexMode != _plexMode) setState(() => _plexMode = plexMode);
+    final sunfinMode = SunfinStyle.enabled;
+    if (sunfinMode != _sunfinMode) setState(() => _sunfinMode = sunfinMode);
     final style = _prefs.get(UserPreferences.bottomNavbarStyle);
     if (style == _bottomStyle) return;
     _expandBottomBar();
@@ -503,7 +503,7 @@ class _NavigationLayoutState extends State<NavigationLayout>
       ),
     );
 
-    if (PlatformDetection.isTV && _plexMode) {
+    if (PlatformDetection.isTV && _sunfinMode) {
       return _buildPlexSidebar(content, sidebar);
     }
 
@@ -551,9 +551,9 @@ class _NavigationLayoutState extends State<NavigationLayout>
     );
   }
 
-  /// Plex mode: the content starts at the rail's right edge instead of lying
+  /// Sunfin mode: the content starts at the rail's right edge instead of lying
   /// under it, and slides right as the rail opens (in step with it) rather
-  /// than reflowing, as in the Plex app. It keeps the width it has beside
+  /// than reflowing, as in the reference app. It keeps the width it has beside
   /// the collapsed rail, so a grid keeps its columns and the right edge runs
   /// off screen while the rail is open.
   Widget _buildPlexSidebar(Widget content, Widget sidebar) {
@@ -569,13 +569,13 @@ class _NavigationLayoutState extends State<NavigationLayout>
         Expanded(
           child: LayoutBuilder(
             builder: (context, constraints) {
-              final reserved = showRail ? PlexStyle.railCollapsedWidth : 0.0;
+              final reserved = showRail ? SunfinStyle.railCollapsedWidth : 0.0;
               return Stack(
                 children: [
                   ListenableBuilder(
                     listenable: Listenable.merge([
                       _railExpanded,
-                      LeftSidebar.plexExpandedWidthNotifier,
+                      LeftSidebar.sunfinExpandedWidthNotifier,
                     ]),
                     builder: (context, child) => AnimatedPositioned(
                       duration: LeftSidebar.expandDuration,
@@ -585,15 +585,15 @@ class _NavigationLayoutState extends State<NavigationLayout>
                       left: !showRail
                           ? 0
                           : _railExpanded.value
-                          ? LeftSidebar.plexExpandedWidthNotifier.value
-                          : PlexStyle.railCollapsedWidth,
+                          ? LeftSidebar.sunfinExpandedWidthNotifier.value
+                          : SunfinStyle.railCollapsedWidth,
                       width: math.max(0, constraints.maxWidth - reserved),
                       child: child!,
                     ),
                     child: body,
                   ),
                   Positioned(top: 0, left: 0, bottom: 0, child: sidebar),
-                  if (widget.plexClock) PlexClock.corner(),
+                  if (widget.sunfinClock) SunfinClock.corner(),
                 ],
               );
             },
@@ -604,7 +604,7 @@ class _NavigationLayoutState extends State<NavigationLayout>
     );
   }
 
-  /// Plex mode: left on the content's leftmost item opens the rail. Screens
+  /// Sunfin mode: left on the content's leftmost item opens the rail. Screens
   /// see the key first, so one that uses left itself keeps it; this only
   /// gets the presses they let through.
   KeyEventResult _onPlexContentKey(FocusNode node, KeyEvent event) {

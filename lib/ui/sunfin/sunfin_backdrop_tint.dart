@@ -9,34 +9,34 @@ import 'package:http/http.dart' as http;
 import 'package:image/image.dart' as img;
 import 'package:server_core/server_core.dart' show serverImageHeaders;
 
-import 'plex_style.dart';
+import 'sunfin_style.dart';
 
-/// The page colours Plex derives from the backdrop, one per corner of the
+/// The page colours the reference design derives from the backdrop, one per corner of the
 /// page, taken from the same corner of the art and blended across the page
-/// (Plex's "UltraBlur"; user, 2026-10-26: "multiple gradients ... more
+/// (the reference design's "UltraBlur"; user, 2026-10-26: "multiple gradients ... more
 /// liveliness"). The page's left edge, where the rail sits, runs from
 /// [topLeft] to [bottomLeft].
 @immutable
-class PlexTint {
+class SunfinTint {
   final Color topLeft;
   final Color topRight;
   final Color bottomLeft;
   final Color bottomRight;
 
-  const PlexTint({
+  const SunfinTint({
     required this.topLeft,
     required this.topRight,
     required this.bottomLeft,
     required this.bottomRight,
   });
 
-  const PlexTint.solid(Color color)
+  const SunfinTint.solid(Color color)
     : topLeft = color,
       topRight = color,
       bottomLeft = color,
       bottomRight = color;
 
-  static const fallback = PlexTint.solid(PlexStyle.background);
+  static const fallback = SunfinTint.solid(SunfinStyle.background);
 
   /// The colour at a point of the page, x and y from 0 to 1: the corners
   /// blended on an eased curve, which reads as one soft wash rather than
@@ -55,7 +55,7 @@ class PlexTint {
 
   @override
   bool operator ==(Object other) =>
-      other is PlexTint &&
+      other is SunfinTint &&
       other.topLeft == topLeft &&
       other.topRight == topRight &&
       other.bottomLeft == bottomLeft &&
@@ -65,11 +65,11 @@ class PlexTint {
   int get hashCode => Object.hash(topLeft, topRight, bottomLeft, bottomRight);
 }
 
-class PlexTintTween extends Tween<PlexTint> {
-  PlexTintTween({super.begin, super.end});
+class SunfinTintTween extends Tween<SunfinTint> {
+  SunfinTintTween({super.begin, super.end});
 
   @override
-  PlexTint lerp(double t) => PlexTint(
+  SunfinTint lerp(double t) => SunfinTint(
     topLeft: Color.lerp(begin!.topLeft, end!.topLeft, t)!,
     topRight: Color.lerp(begin!.topRight, end!.topRight, t)!,
     bottomLeft: Color.lerp(begin!.bottomLeft, end!.bottomLeft, t)!,
@@ -80,14 +80,14 @@ class PlexTintTween extends Tween<PlexTint> {
 /// Paints [tint] over its whole box: a fine mesh whose vertices carry the
 /// blended colour, so the GPU fills it in one cheap draw and it can be
 /// repainted on every frame of a tint change.
-class PlexTintPainter extends CustomPainter {
-  final PlexTint tint;
+class SunfinTintPainter extends CustomPainter {
+  final SunfinTint tint;
 
   /// Darkens the middle of the box (the page); off for the rail, which only
   /// continues the page's left edge.
   final bool shadeMiddle;
 
-  const PlexTintPainter(this.tint, {this.shadeMiddle = true});
+  const SunfinTintPainter(this.tint, {this.shadeMiddle = true});
 
   static const _columns = 12;
   static const _rows = 8;
@@ -131,7 +131,7 @@ class PlexTintPainter extends CustomPainter {
     );
   }
 
-  /// Plex's page is darker in the middle, behind the header text, so the
+  /// The reference design's page is darker in the middle, behind the header text, so the
   /// corners read as lit (about 30% there on the reference screens). The
   /// edges keep their colour, so the rail still meets the page without a
   /// seam.
@@ -147,19 +147,19 @@ class PlexTintPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(PlexTintPainter oldDelegate) =>
+  bool shouldRepaint(SunfinTintPainter oldDelegate) =>
       oldDelegate.tint != tint || oldDelegate.shadeMiddle != shadeMiddle;
 }
 
-/// The page tint Plex derives from the backdrop: region averages of the art,
+/// The page tint the reference design derives from the backdrop: region averages of the art,
 /// darkened until they read as a background.
 ///
 /// Asks the server for a 32-pixel-wide PNG of the same backdrop (about a
 /// kilobyte, fetched directly so it never queues behind the posters) and
 /// averages it on the CPU. A GPU route (downscale or readback of the decoded
 /// art) never completed on the Shield, which left every page grey.
-abstract final class PlexBackdropTint {
-  /// Relative luminance the tint is darkened to (Plex's page measures
+abstract final class SunfinBackdropTint {
+  /// Relative luminance the tint is darkened to (the reference design's page measures
   /// around 0.04-0.06 in the reference screenshots).
   static const targetLuminance = 0.05;
 
@@ -175,20 +175,20 @@ abstract final class PlexBackdropTint {
   static const _hueBins = 12;
 
   /// Most recently used last; a hit moves the entry to the end.
-  static final LinkedHashMap<String, PlexTint> _cache =
-      LinkedHashMap<String, PlexTint>();
-  static final Map<String, Future<PlexTint?>> _inFlight = {};
+  static final LinkedHashMap<String, SunfinTint> _cache =
+      LinkedHashMap<String, SunfinTint>();
+  static final Map<String, Future<SunfinTint?>> _inFlight = {};
 
   /// A tint computed earlier for [url], without starting any work.
-  static PlexTint? cached(String url) {
+  static SunfinTint? cached(String url) {
     final tint = _cache.remove(url);
     if (tint != null) _cache[url] = tint;
     return tint;
   }
 
   /// The tint for [url], or null when the art can't be read (the caller
-  /// keeps [PlexTint.fallback]).
-  static Future<PlexTint?> resolve(String url) {
+  /// keeps [SunfinTint.fallback]).
+  static Future<SunfinTint?> resolve(String url) {
     final hit = cached(url);
     if (hit != null) return Future.value(hit);
     // A block body on purpose: `=> _inFlight.remove(url)` would hand
@@ -198,7 +198,7 @@ abstract final class PlexBackdropTint {
     });
   }
 
-  static Future<PlexTint?> _compute(String url) async {
+  static Future<SunfinTint?> _compute(String url) async {
     final sampleUrl = _sampleUrl(url);
     if (sampleUrl == null) return null;
     final response = await http
@@ -227,10 +227,10 @@ abstract final class PlexBackdropTint {
   /// The tint for a 16x9 RGBA sample of the art, or null when it is too dark
   /// to have a colour.
   @visibleForTesting
-  static PlexTint? fromSample(ByteData bytes) {
+  static SunfinTint? fromSample(ByteData bytes) {
     // Each corner of the page from the same corner of the art. Corners, not
     // quarters: on a mostly-sky scene quarters all came out sky blue, where
-    // Plex shows the grass in one corner and a character's hair in another.
+    // The reference design shows the grass in one corner and a character's hair in another.
     final samples = _samples(bytes);
     final picks = [
       _dominant(samples, (x, y) => x < _cornerColumns && y < _cornerRows),
@@ -253,7 +253,7 @@ abstract final class PlexBackdropTint {
       picks[corner] = pick;
     }
     final raw = [for (final p in picks) p.color];
-    // Measured on the Plex TV app (2026-10-26, five titles against the
+    // Measured on the reference TV app (2026-10-26, five titles against the
     // server's corner colours): each corner keeps the brightness of its
     // colour in the art, compressed into about 0.018-0.055 luminance, so a
     // dark scene gives a dark page and a snowy one a lighter one, and the
@@ -273,7 +273,7 @@ abstract final class PlexBackdropTint {
     // A corner too dark to have a colour borrows its neighbour's.
     Color pick(int i, int across, int down) =>
         corners[i] ?? corners[across] ?? corners[down] ?? any;
-    return PlexTint(
+    return SunfinTint(
       topLeft: pick(0, 1, 2),
       topRight: pick(1, 0, 3),
       bottomLeft: pick(2, 3, 0),
@@ -364,7 +364,7 @@ abstract final class PlexBackdropTint {
     // turns into the page colour or, for near-black art, the fallback.
     if (weights[best] == 0) {
       final plain = _average(samples, include, (s) => s.alpha);
-      return (color: plain ?? PlexStyle.background, family: null);
+      return (color: plain ?? SunfinStyle.background, family: null);
     }
     // The winning family and its two neighbours, so a hue that sits on a bin
     // edge still counts in full.
@@ -373,7 +373,7 @@ abstract final class PlexBackdropTint {
       include,
       (s) => _sameFamily(s.bin, best) ? s.weight : 0,
     );
-    return (color: color ?? PlexStyle.background, family: best);
+    return (color: color ?? SunfinStyle.background, family: best);
   }
 
   /// The [weightOf]-weighted average of the pixels [include] accepts.
@@ -476,9 +476,9 @@ abstract final class PlexBackdropTint {
         : _maxLuminance;
   }
 
-  /// Plex's page colours are less vivid than vivid art, but never washed out:
+  /// The reference design's page colours are less vivid than vivid art, but never washed out:
   /// pale art that still has a hue (snow, a white-blue poster) keeps a clear
-  /// tint of it, as Plex's Interstellar page does (about 0.24), where it used
+  /// tint of it, as the reference design's Interstellar page does (about 0.24), where it used
   /// to come out flat grey (The Bear, user 2026-10-26). Truly grey art stays
   /// grey.
   static Color _soften(Color color) {
@@ -518,7 +518,7 @@ abstract final class PlexBackdropTint {
   }
 }
 
-/// One sample pixel with what [PlexBackdropTint._dominant] needs of it.
+/// One sample pixel with what [SunfinBackdropTint._dominant] needs of it.
 class _Sample {
   final int x, y;
   final int r, g, b;
@@ -548,8 +548,8 @@ class _Sample {
   }();
 
   int get bin =>
-      (hue / 360 * PlexBackdropTint._hueBins).floor() %
-      PlexBackdropTint._hueBins;
+      (hue / 360 * SunfinBackdropTint._hueBins).floor() %
+      SunfinBackdropTint._hueBins;
 
   static double _ramp(double x, double from, double to) =>
       ((x - from) / (to - from)).clamp(0.0, 1.0);

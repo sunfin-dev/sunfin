@@ -181,7 +181,7 @@ class HomeSectionConfig {
   bool get isPluginDynamic => kind == HomeSectionKind.pluginDynamic;
 
   static List<HomeSectionConfig> defaults() => const [
-    // Plexfin: off out of the box. Plex's home has no library tiles (the
+    // Sunfin: off out of the box. The reference design's home has no library tiles (the
     // rail lists every library) and the tiles have no artwork (user,
     // 2026-10-28). Kids Mode still brings them back as its way in.
     HomeSectionConfig(

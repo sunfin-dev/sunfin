@@ -1,6 +1,6 @@
 {
     "@@locale": "lt",
-    "appTitle": "Plexfin",
+    "appTitle": "Sunfin",
     "@appTitle": {
         "description": "The application title"
     },
@@ -82,7 +82,7 @@
     "@selectServer": {
         "description": "Button to navigate back to server selection"
     },
-    "appVersionFooter": "Plexfin versija {version}",
+    "appVersionFooter": "Sunfin versija {version}",
     "@appVersionFooter": {
         "description": "App version shown in footer",
         "placeholders": {
@@ -156,7 +156,7 @@
     "@secureStorageUnavailable": {
         "description": "Dialog title when system keyring is inaccessible"
     },
-    "secureStorageUnavailableMessage": "Plexfin negalėjo pasiekti jūsų sistemos raktų pakabuko. Prisijungimas gali būti tęsiamas, tačiau saugi žetonų saugykla gali būti nepasiekiama, kol nebus atrakintas raktų pakabukas.",
+    "secureStorageUnavailableMessage": "Sunfin negalėjo pasiekti jūsų sistemos raktų pakabuko. Prisijungimas gali būti tęsiamas, tačiau saugi žetonų saugykla gali būti nepasiekiama, kol nebus atrakintas raktų pakabukas.",
     "@secureStorageUnavailableMessage": {
         "description": "Explanation when secure storage is not available"
     },
@@ -168,17 +168,17 @@
     "@settingsAppearanceTheme": {
         "description": "Title for the theme selection screen and theme settings entry"
     },
-    "settingsAppearanceThemeSubtitle": "Perjunkite „Plexfin“ ir „Neon Pulse“ iš naujo nepaleidę programos",
+    "settingsAppearanceThemeSubtitle": "Perjunkite „Sunfin“ ir „Neon Pulse“ iš naujo nepaleidę programos",
     "@settingsAppearanceThemeSubtitle": {
         "description": "Subtitle for the theme selection screen and theme settings entry"
     },
-    "themeMoonfin": "Plexfin",
+    "themeMoonfin": "Sunfin",
     "@themeMoonfin": {
-        "description": "Display name for the Plexfin theme"
+        "description": "Display name for the Sunfin theme"
     },
-    "themeMoonfinSubtitle": "Dabartinė Plexfin išvaizda, kurią jūs visi pamėgote",
+    "themeMoonfinSubtitle": "Dabartinė Sunfin išvaizda, kurią jūs visi pamėgote",
     "@themeMoonfinSubtitle": {
-        "description": "Preview description for the Plexfin theme"
+        "description": "Preview description for the Sunfin theme"
     },
     "themeNeonPulse": "Neoninis pulsas",
     "@themeNeonPulse": {
@@ -249,7 +249,7 @@
             }
         }
     },
-    "exitApp": "Išeiti iš Plexfin?",
+    "exitApp": "Išeiti iš Sunfin?",
     "@exitApp": {
         "description": "Title of exit confirmation dialog"
     },
@@ -3109,7 +3109,7 @@
     "@customMpvConfPath": {
         "description": "Setting for custom mpv.conf path"
     },
-    "notSetMpvConf": "Nenustatyta. „Plexfin“ išbandys numatytąjį mpv.conf failą programų / duomenų aplankuose.",
+    "notSetMpvConf": "Nenustatyta. „Sunfin“ išbandys numatytąjį mpv.conf failą programų / duomenų aplankuose.",
     "@notSetMpvConf": {
         "description": "Description when no custom mpv.conf is set"
     },
@@ -3336,7 +3336,7 @@
     "@saveToDownloadsFolder": {
         "description": "Setting for saving to downloads folder"
     },
-    "downloadsVisibleToOtherApps": "Atsisiuntimai / Plexfin – matoma kitoms programoms",
+    "downloadsVisibleToOtherApps": "Atsisiuntimai / Sunfin – matoma kitoms programoms",
     "@downloadsVisibleToOtherApps": {
         "description": "Description for downloads folder visibility"
     },
@@ -3512,7 +3512,7 @@
     "@libraryVisibility": {
         "description": "Section title for library visibility"
     },
-    "libraryVisibilityDescription": "Perjungti pagrindinio puslapio matomumą pagal biblioteką. Iš naujo paleiskite „Plexfin“, kad pakeitimai įsigaliotų.",
+    "libraryVisibilityDescription": "Perjungti pagrindinio puslapio matomumą pagal biblioteką. Iš naujo paleiskite „Sunfin“, kad pakeitimai įsigaliotų.",
     "@libraryVisibilityDescription": {
         "description": "Explanation shown on the library visibility settings screen"
     },
@@ -3561,9 +3561,9 @@
     "@mediaBarModeDescription": {
         "description": "Description for media bar style setting"
     },
-    "mediaBarModeMoonfin": "Plexfin",
+    "mediaBarModeMoonfin": "Sunfin",
     "@mediaBarModeMoonfin": {
-        "description": "Media bar style option: Plexfin"
+        "description": "Media bar style option: Sunfin"
     },
     "mediaBarModeMakd": "MakD",
     "@mediaBarModeMakd": {
@@ -4121,8 +4121,8 @@
     "@sourceCode": {
         "description": "Link to source code"
     },
-    "aboutBasedOnMoonfin": "Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
-    "sourceCodeUrl": "https://github.com/Moonfin-Client/Moonfin-Core",
+    "aboutBasedOnMoonfin": "Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core",
+    "sourceCodeUrl": "https://github.com/sunfin-dev/sunfin",
     "@sourceCodeUrl": {
         "description": "Displayed source code repository URL"
     },
@@ -4294,9 +4294,9 @@
     "@cancelRequest": {
         "description": "Button/dialog title to cancel a media request"
     },
-    "playInMoonfin": "Žaisk „Plexfin“.",
+    "playInMoonfin": "Žaisk „Sunfin“.",
     "@playInMoonfin": {
-        "description": "Button to play available media in Plexfin"
+        "description": "Button to play available media in Sunfin"
     },
     "requestedByName": "Užklausą pateikė {name}",
     "@requestedByName": {
@@ -4348,7 +4348,7 @@
     "@keep": {
         "description": "Button to keep/dismiss a cancel dialog"
     },
-    "itemNotFoundInLibrary": "Elementas nerastas jūsų Plexfin bibliotekoje",
+    "itemNotFoundInLibrary": "Elementas nerastas jūsų Sunfin bibliotekoje",
     "@itemNotFoundInLibrary": {
         "description": "Snackbar when Seerr item cannot be found in Jellyfin"
     },
@@ -4652,7 +4652,7 @@
         }
     },
     "adminServerRebootInProgress": "Vyksta serverio perkrovimas",
-    "adminServerRebootMessage": "Serveris perkraunamas, iš naujo paleiskite „Plexfin“.",
+    "adminServerRebootMessage": "Serveris perkraunamas, iš naujo paleiskite „Sunfin“.",
     "adminActiveSessions": "Aktyvūs užsiėmimai",
     "adminSessionsLoadFailed": "Nepavyko įkelti seansų",
     "adminNoActiveSessions": "Nėra aktyvių seansų",
@@ -6517,13 +6517,13 @@
     "settingsAccountSecuritySubtitle": "Autentifikavimas, PIN kodas ir tėvų kontrolė",
     "settingsPersonalization": "Personalizavimas",
     "settingsPersonalizationSubtitle": "Tema, naršymas, pagrindinės eilutės ir bibliotekos matomumas",
-    "plexPersonalizationSubtitle": "Šoninė juosta, pradžios ekrano eilutės, bibliotekos, išsamios informacijos puslapiai ir ekrano užsklanda",
-    "plexGeneralStyleSubtitle": "Klaviatūra ir žaidimų valdiklis",
-    "plexDetailsScreenSubtitle": "Mygtukai, informacija, skyriai ir rekomendacijos",
-    "plexNavigationSubtitle": "Šoninės juostos elementai ir automatinis pasirinkimas",
-    "plexHomeScreenSubtitle": "Eilutės, jų tvarka ir Žiūrėti toliau",
+    "sunfinPersonalizationSubtitle": "Šoninė juosta, pradžios ekrano eilutės, bibliotekos, išsamios informacijos puslapiai ir ekrano užsklanda",
+    "sunfinGeneralStyleSubtitle": "Klaviatūra ir žaidimų valdiklis",
+    "sunfinDetailsScreenSubtitle": "Mygtukai, informacija, skyriai ir rekomendacijos",
+    "sunfinNavigationSubtitle": "Šoninės juostos elementai ir automatinis pasirinkimas",
+    "sunfinHomeScreenSubtitle": "Eilutės, jų tvarka ir Žiūrėti toliau",
     "libraryNicknames": "Bibliotekų slapyvardžiai",
-    "libraryNicknamesSubtitle": "Jūsų pačių bibliotekų pavadinimai, rodomi tik Plexfin",
+    "libraryNicknamesSubtitle": "Jūsų pačių bibliotekų pavadinimai, rodomi tik Sunfin",
     "libraryNicknameServerName": "Serveryje: {name}",
     "libraryNicknameHint": "Palikite tuščią, kad būtų naudojamas serverio pavadinimas",
     "libraryNicknameNone": "Slapyvardžio nėra",
@@ -6536,16 +6536,16 @@
     "settingsTransferImport": "Importuoti nustatymus",
     "settingsTransferFrom": "Iš {device}, {date}",
     "settingsTransferNothing": "Dar nieko neeksportuota",
-    "settingsTransferImportConfirm": "Pakeisti šio įrenginio nustatymus šiais? {source}\n\nPo to Plexfin užsidarys. Atidarykite jį iš naujo, kad juos naudotumėte.",
+    "settingsTransferImportConfirm": "Pakeisti šio įrenginio nustatymus šiais? {source}\n\nPo to Sunfin užsidarys. Atidarykite jį iš naujo, kad juos naudotumėte.",
     "settingsTransferImportAction": "Importuoti ir uždaryti",
     "settingsTransferFailed": "Nepavyko pasiekti jūsų Jellyfin paskyros",
     "settingsTransferNote": "Prisijungimas, langas ir aparatinė įranga lieka kiekviename įrenginyje. Pirmiausia prisijunkite kitame įrenginyje, tada importuokite.",
     "settingsReset": "Atkurti visus nustatymus",
     "settingsResetSubtitle": "Grąžinti šio įrenginio nustatymus į numatytuosius",
-    "settingsResetConfirm": "Grąžinti kiekvieną šio įrenginio nustatymą į numatytąjį? Liksite prisijungę, o į jūsų Jellyfin paskyrą eksportuoti nustatymai išliks.\n\nPo to Plexfin užsidarys. Norėdami tęsti, atidarykite jį iš naujo.",
+    "settingsResetConfirm": "Grąžinti kiekvieną šio įrenginio nustatymą į numatytąjį? Liksite prisijungę, o į jūsų Jellyfin paskyrą eksportuoti nustatymai išliks.\n\nPo to Sunfin užsidarys. Norėdami tęsti, atidarykite jį iš naujo.",
     "adminShowButton": "Rodyti administravimo mygtuką",
     "adminShowButtonSubtitle": "Prideda į meniu mygtuką, kuris atidaro serverio administravimą",
-    "plexDirectedBy": "Režisierius: {names}",
+    "sunfinDirectedBy": "Režisierius: {names}",
     "settingsDynamicContent": "Dinaminis turinys",
     "settingsDynamicContentSubtitle": "Medijos juosta ir vaizdinės perdangos",
     "settingsPlaybackSyncplay": "Atkūrimas ir SyncPlay",
@@ -6569,7 +6569,7 @@
     "settingsShowGenresButtonInNavigation": "Rodyti žanrų mygtuką naršymo juostoje",
     "settingsShowFavoritesButtonInNavigation": "Rodyti parankinių mygtuką naršymo juostoje",
     "settingsShowLibrariesButtonInNavigation": "Rodyti bibliotekų mygtuką naršymo juostoje",
-    "settingsLibraryVisibilitySubtitle": "Perjungti pagrindinio puslapio matomumą pagal biblioteką. Iš naujo paleiskite „Plexfin“, kad pakeitimai įsigaliotų.",
+    "settingsLibraryVisibilitySubtitle": "Perjungti pagrindinio puslapio matomumą pagal biblioteką. Iš naujo paleiskite „Sunfin“, kad pakeitimai įsigaliotų.",
     "settingsMediaBarAndLocalPreviews": "Medijos juosta ir vietinės peržiūros",
     "settingsVisualOverlays": "Vaizdinės perdangos",
     "settingsSeasonalSurprise": "Sezoninė staigmena",
@@ -6588,14 +6588,14 @@
     "settingsJoinDiscord": "Prisijunkite prie „Discord“.",
     "settingsJoinDiscordSubtitle": "Kalbėkitės su bendruomene",
     "settingsJoinTheDiscord": "Prisijunkite prie Discord",
-    "settingsSupportMoonfin": "Palaikykite Plexfin",
+    "settingsSupportMoonfin": "Palaikykite Sunfin",
     "settingsLegal": "TEISINĖ",
     "settingsLicenses": "Licencijos",
     "settingsOpenSourceLicenseNotices": "Atvirojo kodo licencijos pranešimai",
     "settingsPrivacyPolicy": "Privatumo politika",
-    "settingsPrivacyPolicySubtitle": "Kaip Plexfin tvarko jūsų duomenis",
+    "settingsPrivacyPolicySubtitle": "Kaip Sunfin tvarko jūsų duomenis",
     "settingsCheckForUpdates": "Patikrinkite, ar nėra atnaujinimų",
-    "settingsCheckForUpdatesSubtitle": "Patikrinkite naujausią „Plexfin“ leidimą",
+    "settingsCheckForUpdatesSubtitle": "Patikrinkite naujausią „Sunfin“ leidimą",
     "settingsPoweredByFlutter": "Maitinamas Flutter",
     "settingsLicenseNoticesCount": "{count, plural, one {# licencijos pranešimas} few {# licencijos pranešimai} many {# licencijos pranešimo} other {# licencijos pranešimų}}",
     "@settingsLicenseNoticesCount": {
@@ -7128,12 +7128,12 @@
     "preferSdhSubtitles": "Pirmenybė teikiama SDH subtitrams",
     "preferSdhSubtitlesSubtitle": "Automatinio pasirinkimo metu pirmenybę teikite SDH/CC subtitrų takeliams.",
     "webDiagnostics": "Interneto diagnostika",
-    "webDiagnosticsTitle": "Plexfin Žiniatinklio diagnostika",
+    "webDiagnosticsTitle": "Sunfin Žiniatinklio diagnostika",
     "webDiagnosticsIntro": "Naudokite šį puslapį norėdami diagnozuoti naršyklės ryšio problemas (CORS, mišraus turinio ir atradimo nustatymus).",
     "webDiagnosticsDetectedMixedContentFailure": "Aptiktas mišraus turinio gedimas",
     "webDiagnosticsDetectedCorsPreflightFailure": "Aptiktas CORS / išankstinio skrydžio gedimas",
-    "webDiagnosticsMixedContentFailureBody": "Plexfin aptiko HTTPS puslapį, bandantį iškviesti HTTP serverio URL. Naršyklės blokuoja šią užklausą, kol ji pasiekia jūsų serverį.",
-    "webDiagnosticsCorsFailureBody": "Plexfin aptiko naršyklės lygio užklausos gedimą, kurį dažniausiai sukelia trūkstamos CORS arba išankstinio patikrinimo antraštės medijos serveryje.",
+    "webDiagnosticsMixedContentFailureBody": "Sunfin aptiko HTTPS puslapį, bandantį iškviesti HTTP serverio URL. Naršyklės blokuoja šią užklausą, kol ji pasiekia jūsų serverį.",
+    "webDiagnosticsCorsFailureBody": "Sunfin aptiko naršyklės lygio užklausos gedimą, kurį dažniausiai sukelia trūkstamos CORS arba išankstinio patikrinimo antraštės medijos serveryje.",
     "webDiagnosticsTargetUrl": "Tikslinis URL: {url}",
     "@webDiagnosticsTargetUrl": {
         "description": "Target URL shown in diagnostics summary",
@@ -7163,7 +7163,7 @@
     "notConfigured": "nesukonfigūruotas",
     "webDiagnosticsMixedContent": "Mišrus turinys",
     "webDiagnosticsMixedContentDetected": "Šis puslapis įkeltas per HTTPS, bet vienas ar daugiau sukonfigūruotų URL yra HTTP. Naršyklės blokuoja HTTPS puslapius, kad jie negalėtų iškviesti HTTP API.",
-    "webDiagnosticsMixedContentFix": "Pataisymas: aptarnaukite medijos serverį arba tarpinį serverį per HTTPS arba įkelkite Plexfin per HTTP tik patikimuose vietiniuose tinkluose.",
+    "webDiagnosticsMixedContentFix": "Pataisymas: aptarnaukite medijos serverį arba tarpinį serverį per HTTPS arba įkelkite Sunfin per HTTP tik patikimuose vietiniuose tinkluose.",
     "webDiagnosticsNoMixedContentDetected": "Iš dabartinių vykdymo laiko nustatymų neaptikta jokios akivaizdžios mišraus turinio konfigūracijos.",
     "webDiagnosticsCorsChecklist": "CORS kontrolinis sąrašas",
     "webDiagnosticsCorsChecklistItem1": "• Leisti naršyklės kilmę Access-Control-Allow-Origin.",
@@ -7360,7 +7360,7 @@
     "@detailScreenStyle": {
         "description": "Label for the media detail screen layout style setting"
     },
-    "detailScreenStyleSubtitle": "Klasikinis – originalus centruotas Plexfin išdėstymas. Modernus – prisitaikantis kinematografinis išdėstymas.",
+    "detailScreenStyleSubtitle": "Klasikinis – originalus centruotas Sunfin išdėstymas. Modernus – prisitaikantis kinematografinis išdėstymas.",
     "@detailScreenStyleSubtitle": {
         "description": "Explanation under the detail screen style setting"
     },
@@ -7392,13 +7392,13 @@
     "@recommendationSystem": {
         "description": "Label for the Recommendation System setting"
     },
-    "recommendationSystemSubtitle": "Naudokite Plexfin Recommends vietinės bibliotekos algoritmą arba internetinius TMDB panašumo rodiklius. Pastaba: internetinėms rekomendacijoms reikia Seerr integracijos.",
+    "recommendationSystemSubtitle": "Naudokite Sunfin Recommends vietinės bibliotekos algoritmą arba internetinius TMDB panašumo rodiklius. Pastaba: internetinėms rekomendacijoms reikia Seerr integracijos.",
     "@recommendationSystemSubtitle": {
         "description": "Explanation under the recommendation system setting"
     },
-    "recommendationSystemMoonfin": "Plexfin Recommends",
+    "recommendationSystemMoonfin": "Sunfin Recommends",
     "@recommendationSystemMoonfin": {
-        "description": "Recommendation system option: Plexfin Recommends"
+        "description": "Recommendation system option: Sunfin Recommends"
     },
     "recommendationSystemTmdb": "TMDb panašumas",
     "@recommendationSystemTmdb": {
@@ -7408,7 +7408,7 @@
     "@recommendationsApplyParentalRatingCap": {
         "description": "Label for the toggle that controls whether similar suggestions are capped by target media parental rating"
     },
-    "recommendationsApplyParentalRatingCapSubtitle": "Riboti Plexfin Recommends pasiūlymus pagal pasirinktos medijos amžiaus cenzą",
+    "recommendationsApplyParentalRatingCapSubtitle": "Riboti Sunfin Recommends pasiūlymus pagal pasirinktos medijos amžiaus cenzą",
     "@recommendationsApplyParentalRatingCapSubtitle": {
         "description": "Explanation under the parental rating cap setting toggle"
     },
@@ -7456,7 +7456,7 @@
     "@customThemeTitle": {
         "description": "Title for the custom theme settings section"
     },
-    "customThemeSubtitle": "Pasirinktinės temos keičia vaizdo elementus visoje Plexfin programoje. Pasirinkite vieną iš šių parinkčių pagal savo stilių.",
+    "customThemeSubtitle": "Pasirinktinės temos keičia vaizdo elementus visoje Sunfin programoje. Pasirinkite vieną iš šių parinkčių pagal savo stilių.",
     "@customThemeSubtitle": {
         "description": "Description under custom themes section"
     },
@@ -7629,7 +7629,7 @@
     "@shuffleAllMusic": {
         "description": "Car browse action that shuffles the whole music library"
     },
-    "carSignInPrompt": "Prisijunkite prie Plexfin telefone",
+    "carSignInPrompt": "Prisijunkite prie Sunfin telefone",
     "@carSignInPrompt": {
         "description": "Shown in the car when no account is signed in"
     },
@@ -8970,7 +8970,7 @@
     "@impellerRendering": {
         "description": "Title of the setting that selects the Flutter rendering engine (Impeller vs. legacy)."
     },
-    "impellerRenderingSubtitle": "Impeller – modernus Flutter GPU atvaizdavimo variklis, užtikrinantis sklandesnes animacijas ir mažiau trūkčiojimų. Kai kuriuose TV priedėliuose ir senesniuose GPU jis gali sukelti trikdžius ar juodą vaizdą; tokiu atveju jį išjunkite. „Automatinis“ parenka geriausią numatytąjį variantą jūsų įrenginiui. Kad pakeitimai įsigaliotų, paleiskite Plexfin iš naujo.",
+    "impellerRenderingSubtitle": "Impeller – modernus Flutter GPU atvaizdavimo variklis, užtikrinantis sklandesnes animacijas ir mažiau trūkčiojimų. Kai kuriuose TV priedėliuose ir senesniuose GPU jis gali sukelti trikdžius ar juodą vaizdą; tokiu atveju jį išjunkite. „Automatinis“ parenka geriausią numatytąjį variantą jūsų įrenginiui. Kad pakeitimai įsigaliotų, paleiskite Sunfin iš naujo.",
     "@impellerRenderingSubtitle": {
         "description": "Explanatory description under the rendering engine setting."
     },
@@ -8981,7 +8981,7 @@
     "@impellerRestartTitle": {
         "description": "Title of the dialog shown after changing the rendering engine."
     },
-    "impellerRestartMessage": "Kad būtų pakeistas atvaizdavimo variklis, Plexfin reikia paleisti iš naujo. Uždarykite programą dabar ir vėl ją atidarykite.",
+    "impellerRestartMessage": "Kad būtų pakeistas atvaizdavimo variklis, Sunfin reikia paleisti iš naujo. Uždarykite programą dabar ir vėl ją atidarykite.",
     "@impellerRestartMessage": {
         "description": "Body of the dialog shown after changing the rendering engine."
     },

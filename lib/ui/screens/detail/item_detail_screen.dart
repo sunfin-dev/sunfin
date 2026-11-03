@@ -90,10 +90,10 @@ import '../../widgets/seerr/seerr_stats_card.dart';
 import '../../widgets/seerr/seerr_status_dot.dart';
 import '../../widgets/seerr/seerr_status_pill.dart';
 import '../../widgets/change_artwork_dialog.dart';
-import '../../plex/plex_season_page.dart';
-import '../../plex/plex_movie_page.dart';
-import '../../plex/plex_show_page.dart';
-import '../../plex/plex_style.dart';
+import '../../sunfin/sunfin_season_page.dart';
+import '../../sunfin/sunfin_movie_page.dart';
+import '../../sunfin/sunfin_show_page.dart';
+import '../../sunfin/sunfin_style.dart';
 import '../../widgets/navigation_layout.dart';
 import '../../widgets/bottom_nav/bottom_navbar.dart';
 import '../../widgets/horizontal_scroll_section.dart';
@@ -277,7 +277,7 @@ class ItemDetailScreen extends StatefulWidget {
   /// see [ItemDetailViewModel.contextSeasonId].
   final String? contextSeasonId;
 
-  /// Plexfin: a show opened from its library lands on Plex's show page with
+  /// Sunfin: a show opened from its library lands on the reference design's show page with
   /// its seasons, rather than at the episode it's up to (user, 2026-10-23).
   final bool showOverview;
 
@@ -815,13 +815,13 @@ class _ItemDetailScreenState extends State<ItemDetailScreen>
           ],
         ),
       ),
-      // Plexfin: a show picked in its library opens Plex's show page; from
+      // Sunfin: a show picked in its library opens the reference design's show page; from
       // anywhere else it opens the season page at the episode it's up to.
       ItemDetailState.ready
-          when PlexStyle.enabled &&
+          when SunfinStyle.enabled &&
               widget.showOverview &&
-              PlexShowPage.handles(_viewModel.item) =>
-        PlexShowPage(
+              SunfinShowPage.handles(_viewModel.item) =>
+        SunfinShowPage(
           viewModel: _viewModel,
           prefs: _prefs,
           backdropUrl: _backdropUrl,
@@ -832,10 +832,10 @@ class _ItemDetailScreenState extends State<ItemDetailScreen>
           },
           initialFocusNode: _ensureInitialFocusNode(),
         ),
-      // Plexfin: movies open Plex's movie page (user, 2026-10-28).
+      // Sunfin: movies open the reference design's movie page (user, 2026-10-28).
       ItemDetailState.ready
-          when PlexStyle.enabled && PlexMoviePage.handles(_viewModel.item) =>
-        PlexMoviePage(
+          when SunfinStyle.enabled && SunfinMoviePage.handles(_viewModel.item) =>
+        SunfinMoviePage(
           viewModel: _viewModel,
           prefs: _prefs,
           backdropUrl: _backdropUrl,
@@ -847,11 +847,11 @@ class _ItemDetailScreenState extends State<ItemDetailScreen>
           autoPlay: widget.autoPlay,
           initialFocusNode: _ensureInitialFocusNode(),
         ),
-      // Plexfin: episodes and seasons open Plex's season page (user,
+      // Sunfin: episodes and seasons open the reference design's season page (user,
       // 2026-10-23).
       ItemDetailState.ready
-          when PlexStyle.enabled && PlexSeasonPage.handles(_viewModel.item) =>
-        PlexSeasonPage(
+          when SunfinStyle.enabled && SunfinSeasonPage.handles(_viewModel.item) =>
+        SunfinSeasonPage(
           viewModel: _viewModel,
           prefs: _prefs,
           backdropUrl: _backdropUrl,
@@ -8289,8 +8289,8 @@ class DetailActionButtonsState extends State<DetailActionButtons> {
     );
   }
 
-  /// Plexfin: the arranged buttons from the last build, in the user's order,
-  /// for the Plex pages that draw their own row and keep this one offstage.
+  /// Sunfin: the arranged buttons from the last build, in the user's order,
+  /// for the Sunfin pages that draw their own row and keep this one offstage.
   List<(DetailButton, Widget)> _lastArranged = const [];
 
   /// Plays the title's trailer, local first, as the Trailer button does.

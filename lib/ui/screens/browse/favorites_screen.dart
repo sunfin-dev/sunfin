@@ -29,12 +29,12 @@ import '../../widgets/quick_return_wrapper.dart';
 import '../../widgets/rating_display.dart';
 import '../../widgets/sliding_pill_tabs.dart';
 import '../../widgets/skeleton/skeleton_library_grid.dart';
-import '../../plex/plex_nav.dart';
+import '../../sunfin/sunfin_nav.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../util/error_message.dart';
 
 Color get _navyBackground => AppColorScheme.background;
-double get _horizontalPadding => plexBrowseMargin(60.0);
+double get _horizontalPadding => sunfinBrowseMargin(60.0);
 const _kCompactBreakpoint = 600.0;
 
 bool _isCompact(BuildContext context) =>
@@ -84,7 +84,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
     WidgetsBinding.instance.addObserver(this);
     _backgroundSub = _backgroundService.backgroundStream.listen((url) {
       if (!mounted) return;
-      // Plexfin: library backdrops are locked off, so a new URL changes
+      // Sunfin: library backdrops are locked off, so a new URL changes
       // nothing on screen and isn't worth rebuilding the whole grid for.
       if (_prefs.get(UserPreferences.hideBackdropsInLibraries)) {
         _backdropUrl = url;
@@ -389,7 +389,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
   }
 
   @override
-  Widget build(BuildContext context) => plexNavShell(
+  Widget build(BuildContext context) => sunfinNavShell(
     background: _navyBackground,
     child: RequestInitialFocus(
       targetNode:
@@ -429,7 +429,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
           Column(
             children: [
               ValueListenableBuilder<int>(
-                // Plexfin: only the header follows the focused item, not the grid.
+                // Sunfin: only the header follows the focused item, not the grid.
                 valueListenable: _vm.focusRevision,
                 builder: (context, _, _) => _FavoritesHeader(
                   totalCount: _vm.totalCount,

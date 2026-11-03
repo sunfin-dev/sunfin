@@ -6,7 +6,7 @@ import 'package:moonfin_design/moonfin_design.dart';
 
 import '../../../../../util/platform_detection.dart';
 import '../../../../widgets/media_badge.dart';
-import '../../../../plex/plex_style.dart';
+import '../../../../sunfin/sunfin_style.dart';
 import '../../../../widgets/offline_aware_image.dart';
 import 'nouveau_overflow_text.dart';
 
@@ -418,10 +418,10 @@ class _NouveauPosterCardState extends State<NouveauPosterCard> {
     required Color foreground,
     required double overlayHeight,
   }) {
-    // Plexfin: no blur on the TV. Skia redraws a backdrop blur on every frame
+    // Sunfin: no blur on the TV. Skia redraws a backdrop blur on every frame
     // of this fade, which froze the details page for 80-150 ms per remote
     // press on the Shield (2026-10-26); a darker plain panel reads the same.
-    final blur = !PlexStyle.enabled;
+    final blur = !SunfinStyle.enabled;
     final panel = Container(
       width: double.infinity,
       height: overlayHeight,

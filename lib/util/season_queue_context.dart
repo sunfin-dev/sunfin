@@ -143,7 +143,7 @@ bool isSeasonFinale(
 /// [picked], else the first season in [seasonIds] whose episodes do, else an
 /// empty list, so the pick plays on its own.
 ///
-/// A page opened on one season can play an episode of another (the Plex
+/// A page opened on one season can play an episode of another (the reference design
 /// season page's tabs). Queueing the browsed season then started its first
 /// episode instead of the one picked (user, 2026-10-30).
 Future<List<AggregatedItem>> episodeListHolding(

@@ -54,7 +54,7 @@ class _PluginAdapter implements HttpClientAdapter {
   void close({bool force = false}) {}
 }
 
-/// Plexfin: settings move only through Transfer settings (user,
+/// Sunfin: settings move only through Transfer settings (user,
 /// 2026-10-28), so on TV the plugin's settings profile is never read or
 /// written on its own.
 void main() {

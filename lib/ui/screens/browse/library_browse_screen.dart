@@ -42,14 +42,14 @@ import '../detail/item_detail_screen.dart';
 import '../../widgets/local_search_field.dart';
 import '../../widgets/skeleton/skeleton_library_grid.dart';
 import '../../../l10n/app_localizations.dart';
-import '../../plex/plex_nav.dart';
-import '../../plex/plex_style.dart';
+import '../../sunfin/sunfin_nav.dart';
+import '../../sunfin/sunfin_style.dart';
 import '../../widgets/left_sidebar.dart';
 import '../../util/error_message.dart';
 
 Color get _navyBackground => AppColorScheme.background;
 Color get _jellyfinBlue => AppColorScheme.accent;
-double get _horizontalPadding => plexBrowseMargin(60.0);
+double get _horizontalPadding => sunfinBrowseMargin(60.0);
 const _kCompactBreakpoint = 600.0;
 
 const _kLoadMoreExtent = 400.0;
@@ -163,7 +163,7 @@ class _LibraryBrowseScreenState extends State<LibraryBrowseScreen>
     _scrollController.addListener(_onScroll);
     _backgroundSub = _backgroundService.backgroundStream.listen((url) {
       if (!mounted) return;
-      // Plexfin: library backdrops are locked off, so a new URL changes
+      // Sunfin: library backdrops are locked off, so a new URL changes
       // nothing on screen and isn't worth rebuilding the whole grid for.
       if (_prefs.get(UserPreferences.hideBackdropsInLibraries)) {
         _backdropUrl = url;
@@ -234,12 +234,12 @@ class _LibraryBrowseScreenState extends State<LibraryBrowseScreen>
 
   bool _firstItemFocusDone = false;
 
-  /// Plexfin: a library opens on its first title, as in Plex, rather than on
+  /// Sunfin: a library opens on its first title, as in the reference design, rather than on
   /// the home button in the toolbar (user, 2026-10-23). Once only, and only
   /// while focus is still where the page opening left it, so a user who has
   /// already moved keeps their place.
   void _maybeFocusFirstItem({int attempt = 0}) {
-    if (_firstItemFocusDone || !PlexStyle.enabled || _vm.items.isEmpty) return;
+    if (_firstItemFocusDone || !SunfinStyle.enabled || _vm.items.isEmpty) return;
     _firstItemFocusDone = true;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted || !(ModalRoute.of(context)?.isCurrent ?? true)) return;
@@ -480,7 +480,7 @@ class _LibraryBrowseScreenState extends State<LibraryBrowseScreen>
             serverId: item.serverId,
             type: item.type,
             channelId: item.channelId,
-            // Plex: a show picked here opens on its seasons.
+            // The reference design: a show picked here opens on its seasons.
             showOverview: item.type == 'Series',
           ),
         )
@@ -853,7 +853,7 @@ class _LibraryBrowseScreenState extends State<LibraryBrowseScreen>
   }
 
   @override
-  Widget build(BuildContext context) => plexNavShell(
+  Widget build(BuildContext context) => sunfinNavShell(
     background: _navyBackground,
     child: RequestInitialFocus(
       targetNode: _homeButtonFocusNode,
@@ -909,7 +909,7 @@ class _LibraryBrowseScreenState extends State<LibraryBrowseScreen>
           Column(
             children: [
               ValueListenableBuilder<int>(
-                // Plexfin: only the header follows the focused item, not the grid.
+                // Sunfin: only the header follows the focused item, not the grid.
                 valueListenable: _vm.focusRevision,
                 builder: (context, _, _) => _LibraryHeader(
                   libraryName: () {

@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:jellyfin_preference/jellyfin_preference.dart';
-import 'package:moonfin/preference/plex_locks.dart';
+import 'package:moonfin/preference/sunfin_locks.dart';
 import 'package:moonfin/preference/preference_constants.dart';
 import 'package:moonfin/preference/user_preferences.dart';
 import 'package:moonfin/util/platform_detection.dart';
@@ -21,7 +21,7 @@ void main() {
   group('on TV', () {
     setUp(() => PlatformDetection.setTvMode(true));
 
-    test('the look reads as Plex whatever is stored', () async {
+    test('the look reads as Sunfin whatever is stored', () async {
       final prefs = await _prefs({
         'pref_navbar_position': 'top',
         'pref_detail_screen_style': 'modern',
@@ -74,14 +74,14 @@ void main() {
 
     test('per-row image types are locked by prefix', () {
       final pref = UserPreferences.homeRowImageType(HomeSectionType.resume);
-      expect(PlexLocks.isLocked(pref.key), isTrue);
+      expect(SunfinLocks.isLocked(pref.key), isTrue);
     });
   });
 
   test('off TV the look is free', () async {
     final prefs = await _prefs({'pref_navbar_position': 'top'});
 
-    expect(PlexLocks.isLocked(UserPreferences.navbarPosition.key), isFalse);
+    expect(SunfinLocks.isLocked(UserPreferences.navbarPosition.key), isFalse);
     expect(prefs.get(UserPreferences.navbarPosition), NavbarPosition.top);
   });
 

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
-/// Plexfin rail icons, drawn to Plex's sidebar (reference 01): thin 1.5
-/// outlines on a 24 grid like the Movies icon the user picked, with Plex's
+/// Sunfin rail icons, drawn to the reference design's sidebar (reference 01): thin 1.5
+/// outlines on a 24 grid like the Movies icon the user picked, with the reference design's
 /// solid gear for Settings (user, 2026-10-26: "redraw the rest to match").
 /// Drawn black and recoloured, so they follow the row's colour like the font
 /// icons did.
@@ -22,12 +22,12 @@ const _search =
     '$_open<circle cx="10.5" cy="10.5" r="6.75"/>'
     '<path d="M15.4 15.4 20.5 20.5"/>$_close';
 
-/// A monitor on a short stand bar, Plex's TV Shows icon.
+/// A monitor on a short stand bar, the reference design's TV Shows icon.
 const _tv =
     '$_open<rect x="2.75" y="4.25" width="18.5" height="12.5" rx="1.25"/>'
     '<path d="M8 20.25h8"/>$_close';
 
-/// Plex's beamed pair of notes, heads filled.
+/// The reference design's beamed pair of notes, heads filled.
 const _music =
     '$_open<path d="M8.75 17.5V4.75h10.5V17.5M8.75 7.75h10.5"/>'
     '<circle cx="6.6" cy="17.6" r="2.15" fill="#000" stroke="none"/>'
@@ -86,7 +86,7 @@ const _genres =
     '<rect x="4" y="13.5" width="7" height="7" rx="1"/>'
     '<circle cx="16.75" cy="17" r="3.5"/>$_close';
 
-/// Plex's gear is solid with a round hole.
+/// The reference design's gear is solid with a round hole.
 const _settings =
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'
     '<path fill="#000" fill-rule="evenodd" d="M19.54 12.93 L21.75 14.21 '
@@ -130,11 +130,11 @@ Widget _svg(String svg, double size, Color color) => SvgPicture.string(
   colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
 );
 
-/// The Plex drawing for a rail icon, or null when there is none for it.
-Widget? plexRailIcon(IconData? icon, double size, Color color) {
+/// The Sunfin drawing for a rail icon, or null when there is none for it.
+Widget? sunfinRailIcon(IconData? icon, double size, Color color) {
   final svg = icon == null ? null : _byIcon[icon];
   return svg == null ? null : _svg(svg, size, color);
 }
 
 /// Genres has a picture rather than a font icon upstream.
-Widget plexGenresIcon(double size, Color color) => _svg(_genres, size, color);
+Widget sunfinGenresIcon(double size, Color color) => _svg(_genres, size, color);

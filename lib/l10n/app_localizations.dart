@@ -223,7 +223,7 @@ abstract class AppLocalizations {
   /// The application title
   ///
   /// In en, this message translates to:
-  /// **'Plexfin'**
+  /// **'Sunfin'**
   String get appTitle;
 
   /// Badge on an anime episode that is filler, meaning it is not adapted from the source manga
@@ -403,7 +403,7 @@ abstract class AppLocalizations {
   /// App version shown in footer
   ///
   /// In en, this message translates to:
-  /// **'Plexfin version {version}'**
+  /// **'Sunfin version {version}'**
   String appVersionFooter(String version);
 
   /// Section heading for previously saved servers
@@ -499,7 +499,7 @@ abstract class AppLocalizations {
   /// Explanation when secure storage is not available
   ///
   /// In en, this message translates to:
-  /// **'Plexfin could not access your system keyring. Login can continue, but secure token storage may be unavailable until the keyring is unlocked.'**
+  /// **'Sunfin could not access your system keyring. Login can continue, but secure token storage may be unavailable until the keyring is unlocked.'**
   String get secureStorageUnavailableMessage;
 
   /// Generic OK button label
@@ -523,7 +523,7 @@ abstract class AppLocalizations {
   /// Explanation under the detail screen style setting
   ///
   /// In en, this message translates to:
-  /// **'Classic is the original centered Plexfin layout. Modern is a responsive cinematic layout. Spotlight is a hero-first layout with pop-up content cards. Nouveau is a full-screen layout with sections stacked down the page. Minimalist is artwork, one play button and the episodes.'**
+  /// **'Classic is the original centered Sunfin layout. Modern is a responsive cinematic layout. Spotlight is a hero-first layout with pop-up content cards. Nouveau is a full-screen layout with sections stacked down the page. Minimalist is artwork, one play button and the episodes.'**
   String get detailScreenStyleSubtitle;
 
   /// Detail screen style option: the classic centered layout
@@ -751,13 +751,13 @@ abstract class AppLocalizations {
   /// Explanation under the recommendation system setting
   ///
   /// In en, this message translates to:
-  /// **'Use the Plexfin Recommends local-library algorithm, Jellyfin Recommends server engine, or the online TMDb\'s Similarity Metrics. Note: Online recommendations require Seerr integration.'**
+  /// **'Use the Sunfin Recommends local-library algorithm, Jellyfin Recommends server engine, or the online TMDb\'s Similarity Metrics. Note: Online recommendations require Seerr integration.'**
   String get recommendationSystemSubtitle;
 
-  /// Recommendation system option: Plexfin Recommends
+  /// Recommendation system option: Sunfin Recommends
   ///
   /// In en, this message translates to:
-  /// **'Plexfin Recommends'**
+  /// **'Sunfin Recommends'**
   String get recommendationSystemMoonfin;
 
   /// Recommendation system option: Jellyfin Recommends
@@ -781,7 +781,7 @@ abstract class AppLocalizations {
   /// Explanation under the parental rating cap setting toggle
   ///
   /// In en, this message translates to:
-  /// **'Limit Plexfin Recommends suggestions by parental rating of target media'**
+  /// **'Limit Sunfin Recommends suggestions by parental rating of target media'**
   String get recommendationsApplyParentalRatingCapSubtitle;
 
   /// Label for the Automatic/Apple/Material interface style setting
@@ -823,7 +823,7 @@ abstract class AppLocalizations {
   /// Subtitle for the interface layout setting
   ///
   /// In en, this message translates to:
-  /// **'Override the detected layout when this device is read wrong. Restart Plexfin for changes to take effect.'**
+  /// **'Override the detected layout when this device is read wrong. Restart Sunfin for changes to take effect.'**
   String get interfaceLayoutSubtitle;
 
   /// Interface layout option: detect from the device
@@ -955,7 +955,7 @@ abstract class AppLocalizations {
   /// Description under custom themes section
   ///
   /// In en, this message translates to:
-  /// **'Custom themes alter visual elements across Plexfin. Choose one of these options to suit your style.'**
+  /// **'Custom themes alter visual elements across Sunfin. Choose one of these options to suit your style.'**
   String get customThemeSubtitle;
 
   /// Settings label for preferring the native system keyboard instead of the custom TV keyboard
@@ -988,16 +988,16 @@ abstract class AppLocalizations {
   /// **'Let a connected game controller move focus and select items'**
   String get gamepadNavigationDescription;
 
-  /// Display name for the Plexfin theme
+  /// Display name for the Sunfin theme
   ///
   /// In en, this message translates to:
-  /// **'Plexfin'**
+  /// **'Sunfin'**
   String get themeMoonfin;
 
-  /// Preview description for the Plexfin theme
+  /// Preview description for the Sunfin theme
   ///
   /// In en, this message translates to:
-  /// **'The original clean Plexfin default.'**
+  /// **'The original clean Sunfin default.'**
   String get themeMoonfinSubtitle;
 
   /// Display name for the Neon Pulse theme
@@ -1123,7 +1123,7 @@ abstract class AppLocalizations {
   /// Title of exit confirmation dialog
   ///
   /// In en, this message translates to:
-  /// **'Exit Plexfin?'**
+  /// **'Exit Sunfin?'**
   String get exitApp;
 
   /// Body text of exit confirmation dialog
@@ -3073,7 +3073,7 @@ abstract class AppLocalizations {
   /// Shown in the car when no account is signed in
   ///
   /// In en, this message translates to:
-  /// **'Sign in to Plexfin on your phone'**
+  /// **'Sign in to Sunfin on your phone'**
   String get carSignInPrompt;
 
   /// Shown in the car when the media server can't be reached
@@ -3553,7 +3553,7 @@ abstract class AppLocalizations {
   /// What Ctrl+Q does on desktop
   ///
   /// In en, this message translates to:
-  /// **'Quit Plexfin'**
+  /// **'Quit Sunfin'**
   String get shortcutQuit;
 
   /// Player shortcut action
@@ -5209,7 +5209,7 @@ abstract class AppLocalizations {
   /// Description for loading animation customization settings
   ///
   /// In en, this message translates to:
-  /// **'Customize the loading animations used throughout Plexfin'**
+  /// **'Customize the loading animations used throughout Sunfin'**
   String get loadingAnimationDescription;
 
   /// Subtitle header for loading animation settings
@@ -5224,10 +5224,10 @@ abstract class AppLocalizations {
   /// **'Image'**
   String get loadingAnimationImage;
 
-  /// Loading animation image option: Plexfin Logo
+  /// Loading animation image option: Sunfin Logo
   ///
   /// In en, this message translates to:
-  /// **'Plexfin Logo'**
+  /// **'Sunfin Logo'**
   String get loadingAnimationImageMoonfinLogo;
 
   /// Loading animation image option: Spinner
@@ -5248,10 +5248,10 @@ abstract class AppLocalizations {
   /// **'Moon Phases'**
   String get loadingAnimationImageMoonPhases;
 
-  /// Loading animation image option: Plexfin Phases in brand gradient
+  /// Loading animation image option: Sunfin Phases in brand gradient
   ///
   /// In en, this message translates to:
-  /// **'Plexfin Phases'**
+  /// **'Sunfin Phases'**
   String get loadingAnimationImageMoonfinPhases;
 
   /// Loading animation image option: Neonfin Phases in neon colors
@@ -7129,7 +7129,7 @@ abstract class AppLocalizations {
   /// Description when no custom mpv.conf is set
   ///
   /// In en, this message translates to:
-  /// **'Not set. Plexfin will try a default mpv.conf in app/data folders.'**
+  /// **'Not set. Sunfin will try a default mpv.conf in app/data folders.'**
   String get notSetMpvConf;
 
   /// Dialog title for selecting mpv.conf
@@ -7627,7 +7627,7 @@ abstract class AppLocalizations {
   /// Note shown when the only download location Android allows is the default one
   ///
   /// In en, this message translates to:
-  /// **'Android only lets Plexfin write to the folders it owns, and this device has no removable storage. Turn on Save to Downloads folder above to keep downloads somewhere other apps can reach.'**
+  /// **'Android only lets Sunfin write to the folders it owns, and this device has no removable storage. Turn on Save to Downloads folder above to keep downloads somewhere other apps can reach.'**
   String get downloadLocationLimitedByAndroid;
 
   /// Setting for saving to downloads folder
@@ -7975,7 +7975,7 @@ abstract class AppLocalizations {
   /// Explanation shown on the library visibility settings screen
   ///
   /// In en, this message translates to:
-  /// **'Toggle home page visibility per library. Restart Plexfin for changes to take effect.'**
+  /// **'Toggle home page visibility per library. Restart Sunfin for changes to take effect.'**
   String get libraryVisibilityDescription;
 
   /// Toggle for showing library in navigation
@@ -8098,10 +8098,10 @@ abstract class AppLocalizations {
   /// **'Choose between various media bar styles, or turn the media bar off'**
   String get mediaBarModeDescription;
 
-  /// Media bar style option: Plexfin
+  /// Media bar style option: Sunfin
   ///
   /// In en, this message translates to:
-  /// **'Plexfin'**
+  /// **'Sunfin'**
   String get mediaBarModeMoonfin;
 
   /// Media bar style option: MakD
@@ -8716,10 +8716,10 @@ abstract class AppLocalizations {
   /// **'Black'**
   String get screensaverBackdropBlack;
 
-  /// Screensaver backdrop: Plexfin
+  /// Screensaver backdrop: Sunfin
   ///
   /// In en, this message translates to:
-  /// **'Plexfin'**
+  /// **'Sunfin'**
   String get screensaverBackdropMoonfin;
 
   /// Screensaver backdrop: Calm
@@ -8746,10 +8746,10 @@ abstract class AppLocalizations {
   /// **'Additional Component'**
   String get screensaverAdditionalComponent;
 
-  /// Screensaver component: Plexfin Logo
+  /// Screensaver component: Sunfin Logo
   ///
   /// In en, this message translates to:
-  /// **'Plexfin Logo'**
+  /// **'Sunfin Logo'**
   String get screensaverComponentMoonfinLogo;
 
   /// Screensaver component: Runner
@@ -9247,13 +9247,13 @@ abstract class AppLocalizations {
   /// About screen credit line naming the upstream project and its license
   ///
   /// In en, this message translates to:
-  /// **'Plexfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core'**
+  /// **'Sunfin is based on Moonfin (GPL-2.0) - github.com/Moonfin-Client/Moonfin-Core'**
   String get aboutBasedOnMoonfin;
 
   /// Displayed source code repository URL
   ///
   /// In en, this message translates to:
-  /// **'https://github.com/Moonfin-Client/Moonfin-Core'**
+  /// **'https://github.com/sunfin-dev/sunfin'**
   String get sourceCodeUrl;
 
   /// Button to check for updates
@@ -9562,10 +9562,10 @@ abstract class AppLocalizations {
   /// **'Cancel 4K Request'**
   String get cancelRequest4k;
 
-  /// Button to play available media in Plexfin
+  /// Button to play available media in Sunfin
   ///
   /// In en, this message translates to:
-  /// **'Play in Plexfin'**
+  /// **'Play in Sunfin'**
   String get playInMoonfin;
 
   /// Label above the name of whoever requested media, where the name sits on its own line
@@ -9643,7 +9643,7 @@ abstract class AppLocalizations {
   /// Snackbar when Seerr item cannot be found in Jellyfin
   ///
   /// In en, this message translates to:
-  /// **'Item not found in your Plexfin library'**
+  /// **'Item not found in your Sunfin library'**
   String get itemNotFoundInLibrary;
 
   /// Snackbar when library search fails
@@ -10729,7 +10729,7 @@ abstract class AppLocalizations {
   /// No description provided for @adminServerRebootMessage.
   ///
   /// In en, this message translates to:
-  /// **'Server reboot in progress, please restart Plexfin'**
+  /// **'Server reboot in progress, please restart Sunfin'**
   String get adminServerRebootMessage;
 
   /// No description provided for @adminActiveSessions.
@@ -17638,35 +17638,35 @@ abstract class AppLocalizations {
   /// **'Theme, navigation, home rows, and library visibility'**
   String get settingsPersonalizationSubtitle;
 
-  /// No description provided for @plexPersonalizationSubtitle.
+  /// No description provided for @sunfinPersonalizationSubtitle.
   ///
   /// In en, this message translates to:
   /// **'Sidebar, home rows, libraries, details pages and screensaver'**
-  String get plexPersonalizationSubtitle;
+  String get sunfinPersonalizationSubtitle;
 
-  /// No description provided for @plexGeneralStyleSubtitle.
+  /// No description provided for @sunfinGeneralStyleSubtitle.
   ///
   /// In en, this message translates to:
   /// **'Keyboard and game controller'**
-  String get plexGeneralStyleSubtitle;
+  String get sunfinGeneralStyleSubtitle;
 
-  /// No description provided for @plexDetailsScreenSubtitle.
+  /// No description provided for @sunfinDetailsScreenSubtitle.
   ///
   /// In en, this message translates to:
   /// **'Buttons, info, sections and recommendations'**
-  String get plexDetailsScreenSubtitle;
+  String get sunfinDetailsScreenSubtitle;
 
-  /// No description provided for @plexNavigationSubtitle.
+  /// No description provided for @sunfinNavigationSubtitle.
   ///
   /// In en, this message translates to:
   /// **'Sidebar items and auto-select'**
-  String get plexNavigationSubtitle;
+  String get sunfinNavigationSubtitle;
 
-  /// No description provided for @plexHomeScreenSubtitle.
+  /// No description provided for @sunfinHomeScreenSubtitle.
   ///
   /// In en, this message translates to:
   /// **'Rows, their order and Continue Watching'**
-  String get plexHomeScreenSubtitle;
+  String get sunfinHomeScreenSubtitle;
 
   /// No description provided for @libraryNicknames.
   ///
@@ -17677,7 +17677,7 @@ abstract class AppLocalizations {
   /// No description provided for @libraryNicknamesSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Your own names for libraries, shown only in Plexfin'**
+  /// **'Your own names for libraries, shown only in Sunfin'**
   String get libraryNicknamesSubtitle;
 
   /// No description provided for @libraryNicknameServerName.
@@ -17755,7 +17755,7 @@ abstract class AppLocalizations {
   /// No description provided for @settingsTransferImportConfirm.
   ///
   /// In en, this message translates to:
-  /// **'Replace this device\'s settings with these? {source}\n\nPlexfin closes afterwards. Open it again to use them.'**
+  /// **'Replace this device\'s settings with these? {source}\n\nSunfin closes afterwards. Open it again to use them.'**
   String settingsTransferImportConfirm(String source);
 
   /// No description provided for @settingsTransferImportAction.
@@ -17791,7 +17791,7 @@ abstract class AppLocalizations {
   /// No description provided for @settingsResetConfirm.
   ///
   /// In en, this message translates to:
-  /// **'Put every setting on this device back to its default? You stay signed in, and settings exported to your Jellyfin account are kept.\n\nPlexfin closes afterwards. Open it again to continue.'**
+  /// **'Put every setting on this device back to its default? You stay signed in, and settings exported to your Jellyfin account are kept.\n\nSunfin closes afterwards. Open it again to continue.'**
   String get settingsResetConfirm;
 
   /// No description provided for @adminShowButton.
@@ -17806,11 +17806,11 @@ abstract class AppLocalizations {
   /// **'Adds a button to the menu that opens server administration'**
   String get adminShowButtonSubtitle;
 
-  /// Plex movie page line under the summary
+  /// Sunfin movie page line under the summary
   ///
   /// In en, this message translates to:
   /// **'Directed by {names}'**
-  String plexDirectedBy(String names);
+  String sunfinDirectedBy(String names);
 
   /// No description provided for @settingsDynamicContent.
   ///
@@ -18025,7 +18025,7 @@ abstract class AppLocalizations {
   /// No description provided for @settingsLibraryVisibilitySubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Toggle home page visibility per library. Restart Plexfin for changes to take effect.'**
+  /// **'Toggle home page visibility per library. Restart Sunfin for changes to take effect.'**
   String get settingsLibraryVisibilitySubtitle;
 
   /// No description provided for @settingsMediaBarAndLocalPreviews.
@@ -18253,7 +18253,7 @@ abstract class AppLocalizations {
   /// No description provided for @settingsSupportMoonfin.
   ///
   /// In en, this message translates to:
-  /// **'Support Plexfin'**
+  /// **'Support Sunfin'**
   String get settingsSupportMoonfin;
 
   /// No description provided for @settingsSupportMoonfinSubtitle.
@@ -18289,7 +18289,7 @@ abstract class AppLocalizations {
   /// No description provided for @settingsPrivacyPolicySubtitle.
   ///
   /// In en, this message translates to:
-  /// **'How Plexfin handles your data'**
+  /// **'How Sunfin handles your data'**
   String get settingsPrivacyPolicySubtitle;
 
   /// No description provided for @settingsCheckForUpdates.
@@ -18301,7 +18301,7 @@ abstract class AppLocalizations {
   /// No description provided for @settingsCheckForUpdatesSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Check for the latest Plexfin release'**
+  /// **'Check for the latest Sunfin release'**
   String get settingsCheckForUpdatesSubtitle;
 
   /// No description provided for @settingsPoweredByFlutter.
@@ -19705,7 +19705,7 @@ abstract class AppLocalizations {
   /// No description provided for @webDiagnosticsTitle.
   ///
   /// In en, this message translates to:
-  /// **'Plexfin Web Diagnostics'**
+  /// **'Sunfin Web Diagnostics'**
   String get webDiagnosticsTitle;
 
   /// No description provided for @webDiagnosticsIntro.
@@ -19729,13 +19729,13 @@ abstract class AppLocalizations {
   /// No description provided for @webDiagnosticsMixedContentFailureBody.
   ///
   /// In en, this message translates to:
-  /// **'Plexfin detected an HTTPS page trying to call an HTTP server URL. Browsers block this request before it reaches your server.'**
+  /// **'Sunfin detected an HTTPS page trying to call an HTTP server URL. Browsers block this request before it reaches your server.'**
   String get webDiagnosticsMixedContentFailureBody;
 
   /// No description provided for @webDiagnosticsCorsFailureBody.
   ///
   /// In en, this message translates to:
-  /// **'Plexfin detected a browser-level request failure that is commonly caused by missing CORS or preflight headers on the media server.'**
+  /// **'Sunfin detected a browser-level request failure that is commonly caused by missing CORS or preflight headers on the media server.'**
   String get webDiagnosticsCorsFailureBody;
 
   /// Target URL shown in diagnostics summary
@@ -19819,7 +19819,7 @@ abstract class AppLocalizations {
   /// No description provided for @webDiagnosticsMixedContentFix.
   ///
   /// In en, this message translates to:
-  /// **'Fix: serve your media server or proxy endpoint via HTTPS, or load Plexfin over HTTP on trusted local networks only.'**
+  /// **'Fix: serve your media server or proxy endpoint via HTTPS, or load Sunfin over HTTP on trusted local networks only.'**
   String get webDiagnosticsMixedContentFix;
 
   /// No description provided for @webDiagnosticsNoMixedContentDetected.
@@ -22720,7 +22720,7 @@ abstract class AppLocalizations {
   /// Explanatory description under the rendering engine setting.
   ///
   /// In en, this message translates to:
-  /// **'Impeller is Flutter\'s modern GPU renderer for smoother animations and less stutter. On some TV boxes and older GPUs it can cause glitches or black video; switch it Off if you see those. Automatic picks the best default for your device. Restart Plexfin to apply.'**
+  /// **'Impeller is Flutter\'s modern GPU renderer for smoother animations and less stutter. On some TV boxes and older GPUs it can cause glitches or black video; switch it Off if you see those. Automatic picks the best default for your device. Restart Sunfin to apply.'**
   String get impellerRenderingSubtitle;
 
   /// No description provided for @impellerAuto.
@@ -22750,7 +22750,7 @@ abstract class AppLocalizations {
   /// Body of the dialog shown after changing the rendering engine.
   ///
   /// In en, this message translates to:
-  /// **'Plexfin needs to restart to change the rendering engine. Close the app now, then reopen it to apply.'**
+  /// **'Sunfin needs to restart to change the rendering engine. Close the app now, then reopen it to apply.'**
   String get impellerRestartMessage;
 
   /// Button that closes the app so the new rendering engine takes effect on next launch.
@@ -23698,7 +23698,7 @@ abstract class AppLocalizations {
   /// Shown under transcoded options when choosing the quality of an auto-download subscription
   ///
   /// In en, this message translates to:
-  /// **'Transcoded qualities only download while Plexfin is open. Original quality also downloads in the background.'**
+  /// **'Transcoded qualities only download while Sunfin is open. Original quality also downloads in the background.'**
   String get autoDownloadTranscodedForegroundNote;
 
   /// Shown under a running transcoded download that a subscription queued
@@ -23710,7 +23710,7 @@ abstract class AppLocalizations {
   /// Short note next to a followed series in a transcoded quality
   ///
   /// In en, this message translates to:
-  /// **'Downloads only while Plexfin is open'**
+  /// **'Downloads only while Sunfin is open'**
   String get autoDownloadForegroundOnly;
 
   /// Title of the quality sheet when it is opened to create an auto-download subscription
@@ -23806,19 +23806,19 @@ abstract class AppLocalizations {
   /// Explains the background refresh setting
   ///
   /// In en, this message translates to:
-  /// **'Allow the system to check for new episodes periodically while Plexfin is closed'**
+  /// **'Allow the system to check for new episodes periodically while Sunfin is closed'**
   String get autoDownloadBackgroundRefreshSubtitle;
 
   /// Shown when iOS forbids background refresh for the app
   ///
   /// In en, this message translates to:
-  /// **'Background App Refresh is disabled for Plexfin. Enable it in iOS Settings.'**
+  /// **'Background App Refresh is disabled for Sunfin. Enable it in iOS Settings.'**
   String get autoDownloadBackgroundRefreshDenied;
 
   /// Shown when Android restricts the app from running in the background
   ///
   /// In en, this message translates to:
-  /// **'Background usage is restricted for Plexfin in Android Settings.'**
+  /// **'Background usage is restricted for Sunfin in Android Settings.'**
   String get autoDownloadBackgroundRestrictedAndroid;
 
   /// Button that runs a subscription check immediately
@@ -24113,7 +24113,7 @@ abstract class AppLocalizations {
   /// **'Apple TV home screen'**
   String get appleTvHomeScreen;
 
-  /// Apple TV settings label for what the tvOS home screen shows above the Plexfin icon. Top Shelf is Apple's name for that area
+  /// Apple TV settings label for what the tvOS home screen shows above the Sunfin icon. Top Shelf is Apple's name for that area
   ///
   /// In en, this message translates to:
   /// **'Top Shelf'**
@@ -24122,7 +24122,7 @@ abstract class AppLocalizations {
   /// Apple TV settings subtitle for the Top Shelf option
   ///
   /// In en, this message translates to:
-  /// **'What the Apple TV home screen shows above the Plexfin icon when it is selected. This setting stays on this device.'**
+  /// **'What the Apple TV home screen shows above the Sunfin icon when it is selected. This setting stays on this device.'**
   String get topShelfDescription;
 
   /// Top Shelf option that shows a carousel of the newest items from the home screen's Latest rows
@@ -24131,10 +24131,10 @@ abstract class AppLocalizations {
   /// **'Latest media'**
   String get topShelfLatestMedia;
 
-  /// Top Shelf option that shows only the static Plexfin logo banner, nothing from the library
+  /// Top Shelf option that shows only the static Sunfin logo banner, nothing from the library
   ///
   /// In en, this message translates to:
-  /// **'Plexfin banner'**
+  /// **'Sunfin banner'**
   String get topShelfAppBanner;
 
   /// iPhone playback setting that holds the picture back from the camera housing in landscape
