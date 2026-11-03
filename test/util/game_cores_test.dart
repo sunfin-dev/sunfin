@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -147,37 +146,10 @@ void main() {
     // FBNeo's license asks that frontends not redistribute the core, and the
     // Apple builds can only run what ships inside the bundle, so they leave it
     // out. Android and desktop are unaffected because the user downloads the
-    // core there themselves.
+    // core there themselves. (The Apple fetch scripts are checked against this
+    // catalog on the experimental branch, where those builds live.)
     test('FBNeo is not bundled on Apple', () {
       expect(appleBundledCores.contains('fbneo'), isFalse);
-      expect(
-        _defaultFetchCores('ios/game_host/fetch_cores.sh').contains('fbneo'),
-        isFalse,
-      );
-      expect(
-        _defaultFetchCores(
-          'tvos/scripts/cores/fetch_cores.sh',
-        ).contains('fbneo'),
-        isFalse,
-      );
-    });
-
-    test('Apple fetch scripts match the catalog bundle membership', () {
-      expect(
-        _defaultFetchCores('ios/game_host/fetch_cores.sh'),
-        appleBundledCores,
-      );
-      expect(
-        _defaultFetchCores('tvos/scripts/cores/fetch_cores.sh'),
-        appleBundledCores,
-      );
-    });
-
-    test('macOS fetch script matches the catalog bundle membership', () {
-      expect(
-        _defaultFetchCores('macos/game_host/fetch_cores.sh'),
-        macosBundledCores,
-      );
     });
   });
 
@@ -425,21 +397,6 @@ void main() {
   });
 }
 
-Set<String> _defaultFetchCores(String relativePath) {
-  final script = File(relativePath).readAsStringSync();
-  final declarations = RegExp(
-    r'(?:CORES|cores)=\(([^)]*)\)',
-    dotAll: true,
-  ).allMatches(script);
-  for (final declaration in declarations) {
-    final cores = RegExp(
-      r'[a-z0-9_]+',
-    ).allMatches(declaration.group(1)!).map((match) => match.group(0)!).toSet();
-    if (cores.isNotEmpty) return cores;
-  }
-
-  throw StateError('No default core declaration found in $relativePath.');
-}
 
 void _coreOptionDefaultsTests() {
   group('withCoreOptionDefaults', () {
