@@ -1,5 +1,6 @@
-<h1 align="center">Sunfin</h1>
-<h3 align="center">A Jellyfin client for Android TV, Mobile and Desktop</h3>
+<p align="center">
+  <img src=".github/banner.png" alt="Sunfin: a Jellyfin client for Android TV, Mobile and Desktop" width="1280">
+</p>
 
 ---
 
@@ -29,7 +30,7 @@ Sunfin is pre-release (version 0.x). Push notifications from the Moonfin server 
 | Android TV  | Main target (tested on NVIDIA Shield TV)                       |
 | Android     | Phones and tablets, Moonfin's mobile layout                    |
 | Windows     | Portable build, TV look with keyboard and mouse                |
-| Others      | The Moonfin code for macOS, Linux, iOS, tvOS and web is still here but has not been built or tested for Sunfin |
+| Others      | iOS, macOS, Linux, tvOS and web live on the [`experimental`](https://github.com/sunfin-dev/sunfin/tree/experimental) branch until they have been built and tested for Sunfin |
 
 ## Building
 
