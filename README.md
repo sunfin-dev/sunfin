@@ -20,6 +20,8 @@ Sunfin is a Jellyfin client built with Flutter. It is made first for the living 
 
 Phones and Windows currently use Moonfin's layouts with Sunfin's branding and colours.
 
+Sunfin is pre-release (version 0.x). Push notifications from the Moonfin server plugin are not supported, because they depend on Moonfin's own Firebase project.
+
 ## Platforms
 
 | Platform    | Status                                                         |

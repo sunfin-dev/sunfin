@@ -261,18 +261,4 @@ void main() {
     });
     expect(prefs.getString('device_id'), 'windows');
   });
-
-  // Exported before the app was renamed: its own settings carried the old
-  // name and land under the new one.
-  test('a snapshot from before the rename lands under the new names', () async {
-    final prefs = await _prefs({});
-    await SettingsTransfer.apply(prefs, {
-      'format': SettingsTransfer.formatVersion,
-      'values': {
-        'pref_plexfin_library_nicknames': ['s', '{"a":"Films"}'],
-      },
-    });
-    expect(prefs.getString('pref_sunfin_library_nicknames'), '{"a":"Films"}');
-    expect(prefs.containsKey('pref_plexfin_library_nicknames'), isFalse);
-  });
 }

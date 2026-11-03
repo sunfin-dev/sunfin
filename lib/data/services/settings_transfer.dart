@@ -21,14 +21,6 @@ abstract final class SettingsTransfer {
   static const displayPreferencesId = 'sunfin-settings-transfer';
   static const client = 'sunfin';
 
-  /// Where the app kept the snapshot under its earlier name, and the part of
-  /// setting names that changed with it, so a snapshot exported before the
-  /// rename (2026-11-03) still imports. Can go once no account holds one.
-  static const _legacyDisplayPreferencesId = 'plexfin-settings-transfer';
-  static const _legacyClient = 'plexfin';
-  static const _legacyName = 'plexfin';
-  static const _name = 'sunfin';
-
   /// 2: setting names carry [_serverToken] and [_userToken] instead of the
   /// exporting device's ids. Version 1 snapshots kept them, so their
   /// per-account settings landed where no other device looks.
@@ -242,7 +234,7 @@ abstract final class SettingsTransfer {
     final values = <String, Object?>{
       for (final MapEntry(:key, :value)
           in (snapshot['values'] as Map).cast<String, Object?>().entries)
-        ?_fromTokens(key.replaceAll(_legacyName, _name), account): value,
+        ?_fromTokens(key, account): value,
     };
     for (final key in prefs.getKeys().toList()) {
       if (travels(key) && !values.containsKey(key)) await prefs.remove(key);
@@ -290,16 +282,6 @@ abstract final class SettingsTransfer {
       displayPreferencesId,
       client: client,
     );
-    final current = decode(stored.customPrefs);
-    if (current != null) return current;
-    try {
-      final legacy = await api.getDisplayPreferences(
-        _legacyDisplayPreferencesId,
-        client: _legacyClient,
-      );
-      return decode(legacy.customPrefs);
-    } catch (_) {
-      return null;
-    }
+    return decode(stored.customPrefs);
   }
 }

@@ -38,7 +38,6 @@ import '../../data/services/watch_next_service.dart';
 import '../../data/services/media_server_client_factory.dart';
 import '../../data/services/achievements_service.dart';
 import '../../data/services/plugin_sync_service.dart';
-import '../../data/services/push_messaging_service.dart';
 import '../../data/services/remote_search_session.dart';
 import '../../data/services/server_messages_service.dart';
 import '../../data/services/socket_handler.dart';
@@ -429,15 +428,11 @@ class SessionRepository {
 
     await _pluginSyncService.syncOnLogin(client, serverId: serverId);
 
-    // Register the FCM token now that a session exists, and push the current
-    // notification prefs so defaults reach the plugin. Startup registration
-    // bails before login, so this is where closed-app push actually enrolls.
+    // Push the current notification prefs so defaults reach the plugin.
+    // Sunfin has no closed-app push (that ran through Moonfin's own Firebase
+    // project), so nothing registers a device token here.
     if (PlatformDetection.isMobile) {
       try {
-        if (GetIt.instance.isRegistered<PushMessagingService>()) {
-          await GetIt.instance<PushMessagingService>()
-              .registerWithCurrentToken();
-        }
         await _pluginSyncService.pushNotificationPrefs(client);
       } catch (_) {}
     }
@@ -545,16 +540,6 @@ class SessionRepository {
 
     _cancelSocketIdleTimer();
     _socketSuspended = false;
-
-    // Drop this device's push registration while the session/token is still
-    // live, otherwise the plugin keeps sending closed-app pushes after logout.
-    if (PlatformDetection.isMobile && !tokenKnownInvalid) {
-      try {
-        if (GetIt.instance.isRegistered<PushMessagingService>()) {
-          await GetIt.instance<PushMessagingService>().unregister();
-        }
-      } catch (_) {}
-    }
 
     _pluginSyncService.resetState();
     if (GetIt.instance.isRegistered<AchievementsService>()) {

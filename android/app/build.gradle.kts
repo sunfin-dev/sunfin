@@ -26,15 +26,6 @@ fun loadAndroidTvVersionName(rootDir: File, fallback: String): String {
 
 plugins {
     id("com.android.application")
-    // START: FlutterFire Configuration
-    // Sunfin: never applied. google-services.json is Moonfin's own Firebase
-    // project and lists only Moonfin's application ids, so Sunfin's ids fail
-    // with "No matching client found", and a fork must not ship it anyway.
-    // Without it Firebase is simply absent: push messaging bails on TV
-    // (push_messaging_service.dart returns unless PlatformDetection.isMobile)
-    // and the initializeApp call is try/caught everywhere.
-    id("com.google.gms.google-services") apply false
-    // END: FlutterFire Configuration
     id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
