@@ -64,6 +64,12 @@ class ConnectivityService extends ChangeNotifier {
   /// a false "offline" flash at boot.
   bool _initialCheckDone = false;
 
+  /// The newest stream event that arrived while the initial check was out. A
+  /// link that comes up in that window (a TV started asleep reports "none",
+  /// then Ethernet a few milliseconds later) reports only once, and dropping
+  /// it left the app offline until the next flip.
+  List<ConnectivityResult>? _resultsDuringInitialCheck;
+
   /// Set when a sync was skipped because the app was backgrounded.
   bool _pendingSync = false;
 
@@ -122,10 +128,22 @@ class ConnectivityService extends ChangeNotifier {
     }
     _initialCheckDone = true;
     notifyListeners();
+    // Only a link that came up is replayed: a "none" in the window is the
+    // false offline flash the wait is there to hide.
+    final missed = _resultsDuringInitialCheck;
+    _resultsDuringInitialCheck = null;
+    if (missed != null &&
+        !_isOnline &&
+        missed.any((r) => r != ConnectivityResult.none)) {
+      _onConnectivityChanged(missed);
+    }
   }
 
   void _onConnectivityChanged(List<ConnectivityResult> results) {
-    if (!_initialCheckDone) return;
+    if (!_initialCheckDone) {
+      _resultsDuringInitialCheck = results;
+      return;
+    }
 
     final wasOnline = _isOnline;
     final wasReachable = _serverReachable;

@@ -3250,6 +3250,21 @@ class _ContentRowsState extends State<_ContentRows>
     };
   }
 
+  /// An empty home is what a stale offline verdict looks like, and reloading
+  /// on that verdict builds the same nothing again, so Retry asks the network
+  /// first. A server that is back reloads through the reachability listener.
+  Future<void> _retryHomeRows() async {
+    final getIt = GetIt.instance;
+    if (getIt.isRegistered<ConnectivityService>()) {
+      try {
+        await getIt<ConnectivityService>().recheckNow();
+      } catch (_) {}
+      if (!mounted) return;
+    }
+    if (widget.viewModel.isLoading) return;
+    widget.viewModel.refresh(preserveExisting: false);
+  }
+
   void _ensureInitialHomeFocus(List<HomeRow> rows, {int attempt = 0}) {
     if (!mounted) {
       return;
@@ -4480,8 +4495,7 @@ class _ContentRowsState extends State<_ContentRows>
             ),
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () =>
-                  widget.viewModel.refresh(preserveExisting: false),
+              onPressed: _retryHomeRows,
               child: Text(l10n.retryHomeRows),
             ),
           ],

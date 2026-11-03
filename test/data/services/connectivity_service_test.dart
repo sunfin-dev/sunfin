@@ -137,6 +137,59 @@ void main() {
     }
   });
 
+  // A Shield started asleep answers the boot check with "none" and reports
+  // Ethernet a few milliseconds later, before that check is done. Dropping
+  // the event left the home empty with nothing left to ask again.
+  test('a link that comes up during the boot check is not lost', () async {
+    final events = StreamController<List<ConnectivityResult>>();
+    addTearDown(events.close);
+    final check = Completer<List<ConnectivityResult>>();
+    when(() => connectivity.onConnectivityChanged)
+        .thenAnswer((_) => events.stream);
+    when(() => connectivity.checkConnectivity())
+        .thenAnswer((_) => check.future);
+    final service = ConnectivityService(
+      connectivity: connectivity,
+      retryBase: const Duration(milliseconds: 50),
+    );
+    addTearDown(service.dispose);
+
+    service.initialize();
+    events.add([ConnectivityResult.ethernet]);
+    await Future<void>.delayed(Duration.zero);
+    check.complete([ConnectivityResult.none]);
+    await Future<void>.delayed(Duration.zero);
+    expect(service.isOnline, isTrue);
+
+    // The probe follows the replayed event after its usual debounce.
+    await Future<void>.delayed(const Duration(milliseconds: 2400));
+    expect(service.canReachServer, isTrue);
+    expect(probes, 1);
+  });
+
+  // The wait exists to hide a false "offline" at boot, so a "none" seen while
+  // the check reported a link must not be replayed.
+  test('a "none" during the boot check is not replayed', () async {
+    final events = StreamController<List<ConnectivityResult>>();
+    addTearDown(events.close);
+    final check = Completer<List<ConnectivityResult>>();
+    when(() => connectivity.onConnectivityChanged)
+        .thenAnswer((_) => events.stream);
+    when(() => connectivity.checkConnectivity())
+        .thenAnswer((_) => check.future);
+    final service = ConnectivityService(connectivity: connectivity);
+    addTearDown(service.dispose);
+
+    service.initialize();
+    events.add([ConnectivityResult.none]);
+    await Future<void>.delayed(Duration.zero);
+    check.complete([ConnectivityResult.wifi]);
+    await Future<void>.delayed(const Duration(milliseconds: 100));
+
+    expect(service.isOnline, isTrue);
+    expect(service.canReachServer, isTrue);
+  });
+
   test('leaves the server alone while the device itself is offline', () async {
     failuresLeft = 99;
     final service = serviceOnline(online: false);
