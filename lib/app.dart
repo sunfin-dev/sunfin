@@ -938,8 +938,8 @@ class _GlobalShortcutScopeState extends State<_GlobalShortcutScope>
   }
 
   // When the screensaver comes up, silence the theme song playing under it and
-  // close any keyboard left open, which stayed up over the screensaver (user,
-  // 2026-10-29). Nothing is submitted; the system keyboard goes too in case it
+  // close any keyboard left open, which stayed up over the screensaver.
+  // Nothing is submitted; the system keyboard goes too in case it
   // was the one in use.
   void _onScreensaverVisibleChanged() {
     if (_screensaverController.visible.value) {

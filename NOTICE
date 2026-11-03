@@ -1,0 +1,22 @@
+Sunfin
+https://github.com/sunfin-dev/sunfin
+
+Sunfin is a modified version of Moonfin (https://github.com/Moonfin-Client/Moonfin-Core),
+forked from Moonfin 2.7.0. Moonfin is licensed under the GNU General Public License,
+version 2, and so is Sunfin (see LICENSE).
+
+The Sunfin contributors have modified files of Moonfin since 22 October 2026. Every
+change, with its date and author, is recorded in this repository's git history; the
+commits after the tag 2.7.0 are Sunfin's. Files added by Sunfin are covered by the same
+license.
+
+Copyright for Moonfin's code remains with the Moonfin authors. Copyright for the changes
+belongs to the Sunfin contributors.
+
+Sunfin bundles third-party components under their own licenses: the fonts in
+assets/fonts (license texts in assets/fonts and assets/licenses/fonts), the emulator
+cores credited in assets/licenses/cores, and the packages listed on the app's licenses
+screen (Settings > About > Licenses).
+
+Plex, Jellyfin and Emby are trademarks of their respective owners. Sunfin is not
+affiliated with or endorsed by any of them, or by the Moonfin project.

@@ -145,7 +145,7 @@ bool isSeasonFinale(
 ///
 /// A page opened on one season can play an episode of another (the reference design
 /// season page's tabs). Queueing the browsed season then started its first
-/// episode instead of the one picked (user, 2026-10-30).
+/// episode instead of the one picked.
 Future<List<AggregatedItem>> episodeListHolding(
   AggregatedItem picked, {
   required List<AggregatedItem> onScreen,

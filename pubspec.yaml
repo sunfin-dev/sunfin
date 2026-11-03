@@ -1,11 +1,11 @@
 name: moonfin
 description: "Sunfin - Jellyfin client for Android TV, phones and Windows (a fork of Moonfin)"
 publish_to: 'none'
-version: 0.12.4+30000202
+version: 0.12.5+30000203
 
 moonfin:
-  android_tv_version: 0.12.4
-  android_tv_build_number: 2000102
+  android_tv_version: 0.12.5
+  android_tv_build_number: 2000103
   beta: false
   beta_number: 1
 
@@ -283,6 +283,7 @@ flutter:
     - assets/fonts/
     - assets/subtitle_fonts/
     - assets/licenses/cores/
+    - assets/licenses/fonts/
 
   fonts:
     # The web engine fetches Roboto from fonts.gstatic.com unless it finds a

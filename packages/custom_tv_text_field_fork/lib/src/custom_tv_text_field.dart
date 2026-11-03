@@ -161,7 +161,7 @@ class CustomTVTextFieldState extends State<CustomTVTextField>
 
   /// A computer has a keyboard of its own. A click there types straight into
   /// the field with a real caret, never the on-screen keyboard meant for a
-  /// remote (user, 2026-10-30: the Windows build draws the TV fields).
+  /// remote (the Windows build draws the TV fields).
   static bool get _isDesktop =>
       !kIsWeb &&
       (defaultTargetPlatform == TargetPlatform.windows ||

@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:flutter/scheduler.dart';
 
 /// Sunfin: frame timing on the device, for tuning how smooth the app feels
-/// (user, 2026-10-26). Writes one line per second of animation to logcat
+/// on real hardware. Writes one line per second of animation to logcat
 /// (`adb logcat -s flutter`), tagged `SunfinFrames`, and stays silent while
 /// nothing moves:
 ///

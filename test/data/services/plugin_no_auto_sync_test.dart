@@ -54,8 +54,8 @@ class _PluginAdapter implements HttpClientAdapter {
   void close({bool force = false}) {}
 }
 
-/// Sunfin: settings move only through Transfer settings (user,
-/// 2026-10-28), so on TV the plugin's settings profile is never read or
+/// Sunfin: settings move only through Transfer settings,
+/// so on TV the plugin's settings profile is never read or
 /// written on its own.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();

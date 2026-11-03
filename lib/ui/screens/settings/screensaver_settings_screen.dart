@@ -617,7 +617,7 @@ class _ScreensaverSettingsScreenState extends State<ScreensaverSettingsScreen> {
                     onTap: _showGenreSelector,
                   ),
                   // Sunfin: tags as well as genres, for art that isn't fit
-                  // for children (user, 2026-10-23).
+                  // for children.
                   _ScreensaverActionTile(
                     icon: const Icon(Icons.sell_outlined),
                     title: const Text('Excluded tags'),

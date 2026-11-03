@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../sunfin/sunfin_style.dart';
 
 /// Sunfin's look for the server administration area, modelled on the
-/// settings pages of the reference design's web app (user's pick, option A, 2026-10-28):
+/// settings pages of the reference design's web app:
 /// a flat grey page, grey uppercase section names, the open page in a white
 /// pill like the sidebar, settings straight on the page between thin lines,
 /// gold buttons.

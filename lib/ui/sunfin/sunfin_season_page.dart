@@ -31,7 +31,7 @@ import 'sunfin_rating_line.dart';
 import 'sunfin_style.dart';
 
 /// The reference design's season page, which is where the reference design sends you for an episode too
-/// (user, 2026-10-23; reference 14 and the user's South Park screenshot):
+/// (reference 14):
 ///
 /// - season tabs along the top, the season on screen underlined, scrolled
 ///   so it is always in view;
@@ -65,7 +65,7 @@ class SunfinSeasonPage extends StatefulWidget {
   });
 
   /// The item types this page draws. A show opens on it too, at the episode
-  /// it's up to, the same page Continue Watching leads to (user, 2026-10-23).
+  /// it's up to, the same page Continue Watching leads to.
   static bool handles(AggregatedItem? item) =>
       item?.type == 'Episode' ||
       item?.type == 'Season' ||
@@ -294,7 +294,7 @@ class _SunfinSeasonPageState extends State<SunfinSeasonPage> {
       // squeezed against the far edge with half cards beside the rail.
       _startRowAt(episodes!.indexOf(target));
       // And its tab in view: the reference design leaves a late season's tab off screen when
-      // it opens an episode, which is the bug the user asked us not to copy.
+      // it opens an episode, a bug not worth copying.
       _revealTab(seasonId, animate: _initialFocusDone);
       if (!_initialFocusDone) {
         _initialFocusDone = true;
@@ -460,7 +460,7 @@ class _SunfinSeasonPageState extends State<SunfinSeasonPage> {
   KeyEventResult _onTabKey(String seasonId, KeyEvent event) {
     final index = _seasons.indexWhere((s) => s.id == seasonId);
     // OK picks the season on release; held, it brings the season's menu, so
-    // a watched season can be marked unwatched from here (user, 2026-10-30).
+    // a watched season can be marked unwatched from here.
     final select = _selectKeys.handleKeyEvent(
       event,
       onTap: () => _selectSeasonNow(seasonId),

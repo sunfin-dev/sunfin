@@ -5,8 +5,7 @@ import 'package:server_core/server_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Sunfin: copies every setting from one device to another through the
-/// user's own Jellyfin account (user, 2026-10-27: "copy all of my settings
-/// from my shield to the windows build").
+/// user's own Jellyfin account, e.g. from a TV box to the Windows build.
 ///
 /// Export saves a snapshot of the app's stored settings in the account's
 /// display preferences, which every Jellyfin server keeps per user with no
@@ -146,8 +145,8 @@ abstract final class SettingsTransfer {
     return !_login.hasMatch(key);
   }
 
-  /// Sunfin: puts every setting on this device back to its default (user,
-  /// 2026-10-28). Only this device: a snapshot exported to the account
+  /// Sunfin: puts every setting on this device back to its default.
+  /// Only this device: a snapshot exported to the account
   /// stays there to import later. Returns how many settings went back.
   static Future<int> reset(SharedPreferences prefs) async {
     var removed = 0;

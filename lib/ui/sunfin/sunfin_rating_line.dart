@@ -8,8 +8,7 @@ import '../widgets/rating_display.dart';
 
 /// The reference design's rating line under a title's genres (references 05, 12 and 14):
 /// each score as a small logo and its number, then five stars holding the
-/// viewer's own rating, hollow until they rate (user's pick A,
-/// 2026-10-28, https://claude.ai/artifact/TnMTJm3n8J2xrCyoWmfYcz).
+/// viewer's own rating, hollow until they rate.
 ///
 /// The scores are the ones the details pages already show: the server's
 /// community score (drawn as the reference design draws it, a star and a percentage), its

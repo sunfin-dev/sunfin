@@ -88,8 +88,8 @@ class NouveauSegmentedSelectorState<T>
   }
 
   /// Sunfin: a show with many seasons runs the row past the screen edge, and
-  /// nothing scrolled it, so the focused season sat off screen (user,
-  /// 2026-10-23). Keeps [value]'s segment in view.
+  /// nothing scrolled it, so the focused season sat off screen.
+  /// Keeps [value]'s segment in view.
   void _reveal(T value, {required bool animate}) {
     final segmentContext = _focusNodes[value]?.context;
     if (segmentContext == null || !segmentContext.mounted) return;

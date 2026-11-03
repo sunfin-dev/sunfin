@@ -10,8 +10,7 @@ import '../../sunfin/sunfin_style.dart';
 
 /// The chapters of what is playing, as a row of thumbnails under the TV
 /// controls. Down from the controls opens it: the player's next and previous
-/// buttons step episodes, so chapters live here instead of behind a button
-/// (user, 2026-10-30).
+/// buttons step episodes, so chapters live here instead of behind a button.
 ///
 /// One focus node for the whole row; left and right move the highlight, OK
 /// jumps to that chapter, and up or back leave the row.
@@ -32,7 +31,7 @@ class PlayerChapterRow extends StatefulWidget {
   final VoidCallback onActivity;
 
   /// The video's own frame at a time, from its trickplay images, for the
-  /// chapters the server made no picture of (user, 2026-10-30). Null when
+  /// chapters the server made no picture of. Null when
   /// the item has none.
   final Widget? Function(Duration at)? frameAt;
 

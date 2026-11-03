@@ -295,7 +295,7 @@ final detailSectionLayout = ButtonLayout(
 );
 
 /// Sunfin: the [DetailSectionGroup.sections] group, which the user can also
-/// put in order (user, 2026-10-23). It shares the hidden list above, and only
+/// put in order. It shares the hidden list above, and only
 /// this group writes the order, so no other group's ids get dropped from it.
 final detailSectionOrderLayout = ButtonLayout(
   hiddenTv: UserPreferences.hiddenDetailSectionsTv,

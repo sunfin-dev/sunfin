@@ -25,8 +25,7 @@ import 'sunfin_home_header.dart';
 import 'sunfin_rating_line.dart';
 import 'sunfin_style.dart';
 
-/// The reference design's movie page (references 05 to 07; the user's picks from
-/// https://claude.ai/artifact/TnMTJm3n8J2xrCyoWmfYcz, 2026-10-28):
+/// Sunfin's movie page, modelled on the reference design (references 05 to 07):
 ///
 /// - the title, year, runtime and age rating, genres, the rating line, the
 ///   summary and "Directed by";

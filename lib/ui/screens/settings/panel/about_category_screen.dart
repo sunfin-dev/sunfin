@@ -135,11 +135,9 @@ class _AboutCategoryScreen extends StatelessWidget {
                 leading: const Icon(Icons.description),
                 title: Text(l10n.settingsLicenses),
                 subtitle: Text(l10n.settingsOpenSourceLicenseNotices),
-                onTap: () => showQrOrLaunch(
-                  context,
-                  url: '$_repository/blob/main/LICENSE',
-                  title: l10n.settingsLicenses,
-                ),
+                // Sunfin: the notices of every bundled package, font and
+                // core, in the app; Sunfin's own GPL text is in the source.
+                onTap: () => context.pushSettingsScreen(const _LicensesScreen()),
               ),
               // Sunfin: upstream's privacy policy does not cover this fork.
               if (_showUpstreamLinks)

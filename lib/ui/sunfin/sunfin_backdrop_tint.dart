@@ -13,8 +13,8 @@ import 'sunfin_style.dart';
 
 /// The page colours the reference design derives from the backdrop, one per corner of the
 /// page, taken from the same corner of the art and blended across the page
-/// (the reference design's "UltraBlur"; user, 2026-10-26: "multiple gradients ... more
-/// liveliness"). The page's left edge, where the rail sits, runs from
+/// (the reference design's "UltraBlur"), so the page has several gradients
+/// rather than one flat colour. The page's left edge, where the rail sits, runs from
 /// [topLeft] to [bottomLeft].
 @immutable
 class SunfinTint {
@@ -345,8 +345,8 @@ abstract final class SunfinBackdropTint {
   /// accepts: the hue family that covers the most of it, averaged, and that
   /// family (null when nothing there has a colour).
   ///
-  /// Chosen over a saturation-weighted mean (user, 2026-10-26, after a
-  /// side-by-side on 40 titles): that let small, strong patches of the
+  /// Chosen over a saturation-weighted mean after a side-by-side on 40
+  /// titles: that let small, strong patches of the
   /// subject (a red shirt, skin, fire) and dark frames around the art win
   /// over a large background, so The Bear's night sky came out brown.
   /// Near-black and grey pixels carry no reliable hue and count for nothing;
@@ -406,7 +406,7 @@ abstract final class SunfinBackdropTint {
   static const _secondShare = 0.25;
 
   /// Art with one colour all around and a second, large one in the middle
-  /// (Ali G: a yellow wall, a blue jacket; user, 2026-10-29) came out the
+  /// (a yellow wall, a blue jacket) came out the
   /// same colour in every corner. The second colour then takes the corner
   /// where it is strongest. Art whose corners already differ is left alone.
   /// Returns that corner (0-3, as in [fromSample]) and its pick.
@@ -479,7 +479,7 @@ abstract final class SunfinBackdropTint {
   /// The reference design's page colours are less vivid than vivid art, but never washed out:
   /// pale art that still has a hue (snow, a white-blue poster) keeps a clear
   /// tint of it, as the reference design's Interstellar page does (about 0.24), where it used
-  /// to come out flat grey (The Bear, user 2026-10-26). Truly grey art stays
+  /// to come out flat grey. Truly grey art stays
   /// grey.
   static Color _soften(Color color) {
     final hsv = HSVColor.fromColor(color);

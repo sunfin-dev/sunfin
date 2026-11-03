@@ -3009,8 +3009,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
   void _revealControlsAfterTransport() {
     if (SunfinStyle.enabled) {
       // Sunfin: as in the reference design, the remote's play/pause key only plays or
-      // pauses. Hidden controls stay hidden and focus stays where it was
-      // (user, 2026-10-26).
+      // pauses. Hidden controls stay hidden and focus stays where it was.
       if (_controlsVisible) _scheduleHide();
       return;
     }
@@ -3863,7 +3862,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                 event.logicalKey == LogicalKeyboardKey.arrowUp &&
                 !_isSkipSegmentButtonVisible) {
               // Sunfin: up brings the controls with play/pause focused, as
-              // in the reference design, not the seek bar (user, 2026-10-26).
+              // in the reference design, not the seek bar.
               _showControls();
               _focusTvPlayPause();
               return KeyEventResult.handled;
@@ -4165,7 +4164,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                         ),
                       _buildPausedDescriptionOverlay(),
                       // Sunfin: the controls fade in and out rather than
-                      // popping (user, 2026-10-26); elsewhere they still
+                      // popping; elsewhere they still
                       // switch at once.
                       _OsdFade(
                         visible:
@@ -4185,8 +4184,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                             // re-sent by HdrOverlayCapture.
                             _buildTopOverlay(context),
                             // Sunfin: the clock comes up with the controls,
-                            // top right, where every Sunfin page has it (user,
-                            // 2026-10-26).
+                            // top right, where every Sunfin page has it.
+                            // 
                             if (SunfinStyle.enabled) SunfinClock.corner(),
                             if (!PlatformDetection.useLeanbackUi)
                               Positioned.fill(
@@ -5666,8 +5665,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
             ),
             const SizedBox(width: 4),
             // The next episode, never the next chapter: a file without
-            // chapters turned a chapter skip into an episode skip (user,
-            // 2026-10-30). Chapters have their own row, down from here. On a
+            // chapters turned a chapter skip into an episode skip.
+            // Chapters have their own row, down from here. On a
             // lone movie it runs the item to its end.
             _controlButton(
               Icons.skip_next_rounded,

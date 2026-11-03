@@ -1011,8 +1011,8 @@ class _SearchScreenState extends State<SearchScreen>
                               ),
                               // The accent caret vanished on the focused
                               // field's light fill, and the hint stayed, so a
-                              // click seemed to do nothing (user,
-                              // 2026-10-29). The caret takes the text colour
+                              // click seemed to do nothing.
+                              // The caret takes the text colour
                               // and the hint goes once the field has focus.
                               cursorColor: searchTextColor,
                               cursorWidth: 2,

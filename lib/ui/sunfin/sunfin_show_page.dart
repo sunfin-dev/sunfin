@@ -34,7 +34,7 @@ import 'sunfin_rating_line.dart';
 import 'sunfin_style.dart';
 
 /// The reference design's show page, where the reference design goes when a show is picked in its library
-/// (user, 2026-10-23; references 12 and 13):
+/// (references 12 and 13):
 ///
 /// - the show's header, as on home;
 /// - Play (the episode it's up to) / Watched / More;
@@ -359,8 +359,8 @@ class _SunfinShowPageState extends State<SunfinShowPage> {
 
   KeyEventResult _onSeasonKey(int index, KeyEvent event) {
     // OK opens the season on release, held it brings the season's menu, as
-    // on every other poster (user, 2026-10-30: mark a watched season
-    // unwatched to see it again).
+    // on every other poster, so a watched season can be marked unwatched to
+    // see it again.
     final season = _seasons[index];
     final select = _seasonSelectKeys.handleKeyEvent(
       event,
