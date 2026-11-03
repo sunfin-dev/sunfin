@@ -1,5 +1,5 @@
 <h1 align="center">Sunfin</h1>
-<h3 align="center">A calm, poster-first Jellyfin client for Android TV, phones and Windows</h3>
+<h3 align="center">A Jellyfin client for Android TV, Mobile and Desktop</h3>
 
 ---
 
