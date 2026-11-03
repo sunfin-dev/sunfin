@@ -88,6 +88,7 @@ import 'home_view_model.dart';
 import '../../widgets/seerr/seerr_genre_label.dart';
 import '../../widgets/skeleton/skeleton_home_row.dart';
 import '../../widgets/skeleton/skeleton_shimmer.dart';
+import '../../widgets/app_update_dialog.dart';
 import '../../sunfin/sunfin_backdrop.dart';
 import '../../sunfin/sunfin_home_header.dart';
 import '../../sunfin/sunfin_style.dart';
@@ -256,6 +257,11 @@ class _HomeShellState extends State<_HomeShell>
     _lastObservedPath = appRouter.routerDelegate.currentConfiguration.uri.path;
     homeRefreshBus.addListener(_onHomeRefreshRequested);
     userDataSync.addListener(_onUserDataChanged);
+    // Sunfin: the update prompt waits for the home screen, so it never cuts
+    // into login or server selection.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) unawaited(promptForAppUpdateAtStartup(context));
+    });
     if (homeRefreshBus.consumePending()) {
       _viewModel.refresh(preserveExisting: true);
     }

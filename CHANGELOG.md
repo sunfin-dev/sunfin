@@ -2,6 +2,15 @@
 
 Sunfin's version numbers count up from 0.1.0, where the fork began: a small change adds 0.0.1, a bigger one raises the middle number and starts the last at 1 again. Sunfin stays below 1.0 until it is ready for everyone.
 
+## 0.13.1
+
+- **In-app updates.** Sunfin updates itself from its GitHub releases. An update can be installed from the prompt or from *Settings → About → Check for Updates*.
+  - Android: Sunfin downloads the APK and opens Android's installer, which asks you to confirm. The first time, Android asks you to allow Sunfin to install apps.
+  - Windows: Sunfin downloads the zip, closes, replaces its files and starts again. If Sunfin's folder isn't writable (for example under *Program Files*), the release page opens instead.
+  - Every download is checked against the release's `SHA256SUMS.txt` before it is installed.
+- **Update check at start.** On every start Sunfin asks GitHub for a newer release and offers it on the home screen. *Cancel* keeps that version quiet for a day.
+- **Skip buttons are optional.** The player's skip back and skip forward buttons are hidden by default, since left and right on the remote or keyboard already skip. *Settings → Video Playback → Show skip buttons* brings them back.
+
 ## 0.12.5
 
 - License notices: a `NOTICE` file states that Sunfin is a modified version of Moonfin and where the changes are recorded. The licenses of the bundled fonts now ship with the app and appear on the licenses screen.

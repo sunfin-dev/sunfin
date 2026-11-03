@@ -79,8 +79,13 @@ class AppDistribution {
   /// Returns false for store/managed distributions (AAB, AUR, PKG, Microsoft
   /// Store, signed IPA), which update through their store.
   ///
-  /// Sunfin: always false. The checker only knows upstream Moonfin releases
-  /// (apk, androidTvApk, macosDmg, windows and linux returned true upstream),
-  /// so this fork never checks automatically and hides "Check for updates".
-  static bool get supportsInAppUpdates => false;
+  /// Sunfin: the builds published on Sunfin's GitHub releases, which the app
+  /// can also download and install itself (see AppUpdateInstaller).
+  static bool get supportsInAppUpdates => switch (channel) {
+        DistributionChannel.apk ||
+        DistributionChannel.androidTvApk ||
+        DistributionChannel.windows =>
+          true,
+        _ => false,
+      };
 }

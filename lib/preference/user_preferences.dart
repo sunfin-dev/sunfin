@@ -446,6 +446,7 @@ class UserPreferences extends ChangeNotifier {
     'pref_syncplay_enabled',
     'showChapterMarkers',
     'showDescriptionOnPause',
+    'showSkipButtons',
     'since_you_watched_1_enabled',
     'since_you_watched_2_enabled',
     'since_you_watched_3_enabled',
@@ -2478,6 +2479,13 @@ class UserPreferences extends ChangeNotifier {
   static final skipForwardLength = Preference(
     key: 'skipForwardLength',
     defaultValue: 30000,
+  );
+
+  /// Sunfin: the player's skip back/forward buttons. Off by default: left and
+  /// right on the remote or keyboard already skip.
+  static final showSkipButtons = Preference(
+    key: 'showSkipButtons',
+    defaultValue: false,
   );
 
   static final unpauseRewindDuration = Preference(

@@ -32,6 +32,7 @@ object Media3Bridge {
         "selectedBitrateMbps" to null,
         "skipBackMs" to 10000,
         "skipForwardMs" to 10000,
+        "showSkipButtons" to true,
         "topTitle" to "",
         "topSubtitle" to "",
         "artworkUrl" to "",
@@ -491,6 +492,7 @@ object Media3Bridge {
         val selectedBitrateMbps = (args["selectedBitrateMbps"] as? Number)?.toInt()
         val skipBackMs = (args["skipBackMs"] as? Number)?.toInt() ?: 10000
         val skipForwardMs = (args["skipForwardMs"] as? Number)?.toInt() ?: 10000
+        val showSkipButtons = args["showSkipButtons"] as? Boolean ?: true
         val topTitle = args["topTitle"]?.toString() ?: ""
         val topSubtitle = args["topSubtitle"]?.toString() ?: ""
         val artworkUrl = args["artworkUrl"]?.toString() ?: ""
@@ -559,6 +561,7 @@ object Media3Bridge {
             "selectedBitrateMbps" to selectedBitrateMbps,
             "skipBackMs" to skipBackMs,
             "skipForwardMs" to skipForwardMs,
+            "showSkipButtons" to showSkipButtons,
             "topTitle" to topTitle,
             "topSubtitle" to topSubtitle,
             "artworkUrl" to artworkUrl,
